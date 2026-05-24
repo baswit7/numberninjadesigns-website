@@ -16,14 +16,18 @@ The checked-in runtime is intentionally small:
 
 | Capability | Implementation | Constraint |
 | --- | --- | --- |
-| Root presence | `index.html` | Minimal static page; not yet a conversion landing page |
-| Privacy disclosure | `privacy.html` | Public static text; integration completeness must be reviewed |
+| Root presence | `index.html` | Premium business landing page for the apparel brand and official Etsy channel |
+| Privacy disclosure | `privacy.html` | Public policy tied to NumberNinjaTees and Pinterest Marketing OS |
+| Terms and contact | `terms.html`, `contact.html` | Business identity, Etsy sales boundary and reviewer contact |
+| Pinterest review | `pinterest-api.html` | Public API purpose, safeguards, scopes and submission-ready text |
+| Pinterest redirect | `pinterest/callback/index.html` | Public callback landing page; it never exposes or exchanges tokens |
 | TikTok redirect path | `tiktok/callback/index.html` | Public callback location; it does not exchange OAuth codes |
 | TikTok ownership proof | Root verification text files | Filenames are externally referenced contracts |
 
-There is no client application runtime, API layer, job runner, database,
-authentication service or secrets store in this repository at the current
-baseline.
+There is no client application runtime, protected API layer, job runner,
+database, authentication service or secrets store in this public repository.
+The Pinterest review pages make that boundary explicit rather than implying a
+static site performs authenticated automation.
 
 ## Architecture Boundaries
 
@@ -71,6 +75,17 @@ For TikTok, Pinterest, Etsy or later platform integrations:
    access, bounded retries, rate-limit backoff, audit logging and revocation.
 5. The UI exposes connection health with consistent states: connected (green),
    reconnecting (orange), and error (red).
+
+The registered Pinterest redirect candidate published by this repository is:
+
+```text
+https://baswit7.github.io/numberninjatees.github.io/pinterest/callback/
+```
+
+Pinterest requires an OAuth redirect URI to match the registered value exactly.
+A public static landing page alone is not evidence of token exchange or API
+execution; Standard access review must demonstrate the protected OAuth/API
+flow separately.
 
 ## UX And Design Rules
 

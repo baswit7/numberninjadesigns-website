@@ -19,14 +19,16 @@ changing the currently published integration behavior.
 **Goal:** convert the minimal host into a fast, credible brand/integration
 presence.
 
-- Rebuild the landing page using the NumberNinjaTees design system.
-- Strengthen the privacy page against actual platform scopes and data handling.
-- Add responsive accessibility, canonical metadata and appropriate social
-  preview/structured-data assets.
-- Preserve required TikTok redirect and verification routes.
+- Delivered on the Pinterest review feature branch: responsive business landing
+  page, policy, terms, contact, Pinterest use-case page and callback landing
+  route.
+- Delivered on the Pinterest review feature branch: canonical metadata,
+  semantic navigation and documented brand/API ownership.
+- Remaining publication gate: deploy through GitHub Pages and verify each
+  public URL before submitting the application.
 
-**Exit criteria:** mobile-first pages pass accessibility, metadata and
-performance validation and accurately describe enabled integrations.
+**Exit criteria:** mobile-first pages pass link, viewport and public deployment
+validation and accurately describe enabled integrations.
 
 ## Phase 3 - Integration Contract Design
 

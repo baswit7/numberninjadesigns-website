@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Pinterest API use case and OAuth review information for NumberNinjaTees Marketing OS.">
+  <link rel="canonical" href="https://baswit7.github.io/numberninjatees.github.io/pinterest-api.html">
+  <title>Pinterest API Use Case — NumberNinjaTees Marketing OS</title>
+  <style>
+    :root { --bg:#070707;--surface:#0f0f0f;--card:#141414;--text:#edebe3;--muted:#777;--accent:#00ff94;--red:#ff3b3b;--gold:#c8a84c;--line:rgba(237,235,227,.12);--max:1120px; }
+    *,*::before,*::after { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0;background:radial-gradient(circle at 88% 4%,rgba(0,255,148,.11),transparent 27rem),radial-gradient(circle at 10% 40%,rgba(200,168,76,.05),transparent 22rem),var(--bg);color:var(--text);font-family:Arial,"Helvetica Neue",sans-serif;line-height:1.68; }
+    a { color:inherit;text-decoration:none; } a:hover { color:var(--accent); } a:focus-visible { outline:2px solid var(--accent);outline-offset:3px; }
+    .skip { position:absolute;left:-9999px;top:1rem;padding:.65rem 1rem;background:var(--accent);color:#04130d;font-weight:700;z-index:9; } .skip:focus { left:1rem; }
+    .container { width:min(calc(100% - 2rem),var(--max));margin:0 auto; }
+    header { position:sticky;top:0;z-index:3;background:rgba(7,7,7,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line); }
+    .nav { display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;min-height:72px;padding:.75rem 0; }
+    .brand { display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase; } .mark { display:grid;place-items:center;height:42px;width:42px;border:1px solid var(--accent);color:var(--accent);font:700 .85rem Consolas,monospace; }
+    .links { display:flex;gap:.2rem;flex-wrap:wrap;color:var(--muted);font-size:.94rem; } .links a { padding:.5rem .6rem;border-radius:4px; } .links a[aria-current=page],.links a:hover { color:var(--text);background:var(--surface); }
+    .hero { padding:clamp(3.2rem,8vw,5.6rem) 0 2.6rem; }
+    .status { display:inline-flex;align-items:center;gap:.48rem;padding:.45rem .75rem;border:1px solid rgba(0,255,148,.3);border-radius:999px;color:var(--accent);font:700 .74rem Consolas,monospace;text-transform:uppercase;letter-spacing:.12em; } .status::before { content:"";width:7px;height:7px;border-radius:50%;background:var(--accent); }
+    h1 { margin:1rem 0 1rem;font-size:clamp(2rem,5.7vw,3.9rem);line-height:1.08;letter-spacing:-.045em;text-transform:uppercase;max-width:930px; }
+    .intro { max-width:770px;color:#bcb9b1;font-size:1.08rem;margin:0; }
+    .identity { display:flex;flex-wrap:wrap;gap:.7rem;margin:1.8rem 0 0; } .chip { padding:.5rem .72rem;background:var(--surface);border:1px solid var(--line);color:#bebbb2;font: .8rem Consolas,monospace; }
+    .layout { display:grid;gap:1rem;padding:1rem 0 4.8rem; }
+    .panel { padding:clamp(1.25rem,3.6vw,1.9rem);background:var(--card);border:1px solid var(--line);border-radius:8px; }
+    .panel.full { grid-column:1/-1; } .panel-accent { border-top:2px solid var(--accent); }
+    h2 { margin:0 0 .8rem;font-size:1.25rem;text-transform:uppercase;line-height:1.25; } h2 small { display:block;margin-bottom:.45rem;color:var(--gold);font:700 .73rem Consolas,monospace;letter-spacing:.15em; }
+    h3 { margin:1.35rem 0 .5rem;text-transform:uppercase;font-size:1rem; }
+    p { margin:.55rem 0;color:#c9c6bd; } ul,ol { margin:.65rem 0 .2rem;padding-left:1.25rem;color:#c9c6bd; } li { margin:.4rem 0; }
+    .check li::marker { color:var(--accent); } .deny li::marker { color:var(--red); }
+    code { padding:.18rem .35rem;border:1px solid rgba(0,255,148,.2);background:#0b1812;color:var(--accent);font: .9em Consolas,monospace; }
+    .scope-list { display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem; }
+    .copy {
+      margin-top:1rem;
+      padding:1.1rem;
+      overflow-wrap:anywhere;
+      white-space:pre-wrap;
+      background:#0a0a0a;
+      border:1px solid var(--line);
+      color:#d6d3ca;
+      font: .89rem/1.7 Consolas,"Courier New",monospace;
+    }
+    .note { margin-top:1rem;padding:1rem 1.1rem;border-left:3px solid var(--gold);background:var(--surface);color:var(--text); }
+    .text-link { color:var(--accent);font-weight:700; }
+    footer { border-top:1px solid var(--line);background:var(--surface);padding:2rem 0;color:var(--muted);font-size:.93rem; } .footer-grid { display:grid;gap:1rem; } .footer-title { color:var(--text);font-weight:700; } .footer-links { display:flex;flex-wrap:wrap;gap:.7rem 1.2rem; }
+    @media (min-width:820px) { .layout { grid-template-columns:repeat(2,minmax(0,1fr)); } .footer-grid { grid-template-columns:1.2fr 1fr; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html"><span class="mark">NNT</span><span>NumberNinjaTees</span></a>
+      <div class="links"><a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a><a href="pinterest-api.html" aria-current="page">Pinterest API</a></div>
+    </nav>
+  </header>
+  <main id="content" class="container">
+    <section class="hero">
+      <span class="status">Public Review Documentation</span>
+      <h1>Pinterest API Use Case — NumberNinjaTees Marketing OS</h1>
+      <p class="intro">A transparent description of the intended Pinterest integration for the NumberNinjaTees apparel brand, owned by Bas Wit in IJmuiden, The Netherlands.</p>
+      <div class="identity">
+        <span class="chip">APP: NumberNinjaTees Marketing OS</span>
+        <span class="chip">BRAND: NumberNinjaTees</span>
+        <span class="chip">SALES: ETSY</span>
+        <span class="chip">USE: OWN BRAND MARKETING</span>
+      </div>
+    </section>
+
+    <section class="layout" aria-label="Pinterest app review information">
+      <article class="panel panel-accent full">
+        <h2><small>Exact App Description</small>Application Purpose</h2>
+        <p>NumberNinjaTees Marketing OS is an automation and analytics platform for managing apparel marketing campaigns for the NumberNinjaTees brand.</p>
+        <p>The platform helps create product pins, manage Pinterest boards, optimize product descriptions, track content performance and improve marketing workflows for data-focused apparel products targeted at data analysts, programmers, developers, Excel users and tech enthusiasts.</p>
+        <p>The Pinterest API is used only for authorized NumberNinjaTees accounts through OAuth. The app does not scrape Pinterest, does not access accounts without permission, does not sell Pinterest data and does not post spam. API access is used for creating and managing the brand’s own pins and boards and for analyzing performance of the brand’s own Pinterest content.</p>
+      </article>
+
+      <article class="panel">
+        <h2><small>Authorized Activity</small>API Actions</h2>
+        <p>The integration is intended only for NumberNinjaTees brand marketing. With authorized access, it may:</p>
+        <ul class="check">
+          <li>Read the brand's own Pinterest boards.</li>
+          <li>Create and publish product Pins for the brand's own apparel listings only after intentional operator approval.</li>
+          <li>Manage the brand's own Pins and boards.</li>
+          <li>Analyze performance of the brand's own Pinterest content.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2><small>Safeguards</small>Prohibited Activity</h2>
+        <p>NumberNinjaTees Marketing OS is not designed or permitted to:</p>
+        <ul class="deny">
+          <li>Scrape Pinterest content or bypass Pinterest APIs.</li>
+          <li>Post spam or create misleading engagement.</li>
+          <li>Sell or share Pinterest data for third-party marketing.</li>
+          <li>Access an account without OAuth authorization.</li>
+          <li>Expose tokens, client secrets or credentials publicly.</li>
+          <li>Automatically publish a Pin without the authorized operator selecting and approving that content.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2><small>Permission Request</small>Possible Scopes</h2>
+        <p>The app may request only scopes required for its authorized brand workflow:</p>
+        <div class="scope-list" aria-label="Possible Pinterest scopes">
+          <code>pins:read</code><code>pins:write</code><code>boards:read</code><code>boards:write</code><code>user_accounts:read</code><code>analytics:read</code>
+        </div>
+        <p class="note"><code>analytics:read</code> is requested only if available and necessary for approved brand-content analysis. Final requested permissions will follow Pinterest's available scopes and minimum-access principle.</p>
+      </article>
+
+      <article class="panel">
+        <h2><small>Authorization</small>OAuth Redirect Flow</h2>
+        <ol>
+          <li>The authorized NumberNinjaTees operator starts a Pinterest connection.</li>
+          <li>Pinterest presents its OAuth authorization screen and requested scopes.</li>
+          <li>After approval, Pinterest redirects to the registered callback URL.</li>
+          <li>Secrets and tokens are never displayed on public pages or committed to this site repository.</li>
+          <li>Authorized actions apply only to NumberNinjaTees marketing content.</li>
+        </ol>
+        <p><strong>Redirect URL for review:</strong><br><a class="text-link" href="pinterest/callback/">https://baswit7.github.io/numberninjatees.github.io/pinterest/callback/</a></p>
+      </article>
+
+      <article class="panel full">
+        <h2><small>Submission Ready Text</small>Review Notes</h2>
+        <p>The following text can be used in the Pinterest application review notes:</p>
+        <div class="copy">NumberNinjaTees is an apparel brand owned by Bas Wit in IJmuiden, The Netherlands. NumberNinjaTees Marketing OS is used only to manage the brand's own Pinterest marketing for data and coding apparel sold through its Etsy shop. Through OAuth-authorized access, the app reads and manages the brand's own boards and Pins and analyzes the performance of its own Pinterest content. Any Pin creation or publication is intentionally approved by the authorized operator. It does not scrape Pinterest, collect passwords or session cookies, access accounts without permission, sell Pinterest data, or post spam. Public privacy policy: https://baswit7.github.io/numberninjatees.github.io/privacy.html. Public use case: https://baswit7.github.io/numberninjatees.github.io/pinterest-api.html. OAuth redirect URL: https://baswit7.github.io/numberninjatees.github.io/pinterest/callback/.</div>
+        <div class="note">For Standard access review, NumberNinjaTees can provide a screen recording of the OAuth authorization flow and an authorized API action against its own account. This public page documents the purpose and safeguards; it does not expose credentials.</div>
+      </article>
+
+      <article class="panel full">
+        <h2><small>Public References</small>Policies And Contact</h2>
+        <p>Privacy handling is detailed in the <a class="text-link" href="privacy.html">Privacy Policy</a>. Website and third-party platform terms are described in <a class="text-link" href="terms.html">Terms</a>. Platform reviewers can reach the business through the <a class="text-link" href="contact.html">Contact page</a>.</p>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="footer-title">&copy; 2026 NumberNinjaTees</div><div>Owner: Bas Wit | Location: IJmuiden, The Netherlands</div><div>Official Etsy shop: <a class="text-link" href="https://numberninjatees.etsy.com" target="_blank" rel="noopener noreferrer">numberninjatees.etsy.com</a></div></div>
+      <nav class="footer-links" aria-label="Legal and contact"><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a><a href="pinterest-api.html">Pinterest API</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -13,12 +13,21 @@ Entries follow semantic intent rather than documenting every commit.
   `assets`, `docs` and `archive`.
 - Repository hygiene configuration through `.editorconfig` and `.gitignore`.
 - Consistent LF text normalization policy through `.gitattributes`.
+- A mobile-first NumberNinjaTees business homepage with Etsy sales-channel
+  identification and complete legal/reviewer navigation.
+- Public terms and contact pages tied to NumberNinjaTees, Bas Wit and
+  IJmuiden, The Netherlands.
+- A Pinterest API use-case page containing app purpose, exact submission
+  description, OAuth safeguards, candidate scopes and reviewer notes.
+- A non-secret Pinterest OAuth redirect landing endpoint at
+  `/pinterest/callback/`.
+- A Pinterest review checklist with required submission URLs and Standard
+  access demo preparation.
 
 ### Preserved
 
-- Existing public root page, privacy page, TikTok callback page and TikTok
-  verification content and behaviour remain unchanged. Future text changes
-  follow the repository line-ending policy.
+- Existing TikTok callback and TikTok verification content and behaviour remain
+  unchanged. Future text changes follow the repository line-ending policy.
 
 ## Existing Baseline - 2026-05-24
 
