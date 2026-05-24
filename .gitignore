@@ -1,0 +1,19 @@
+# Local operating system and editor state
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and test output
+*.log
+coverage/
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+
+# Dependency and build output if tooling is introduced
+node_modules/
+dist/
+.cache/
