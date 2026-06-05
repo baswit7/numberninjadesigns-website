@@ -43,3 +43,19 @@ flowchart LR
 ```
 
 The readiness graph has no executable edge. A `ready-for-future-review` decision is not execution permission.
+
+## Phase 12 Dashboard Boundary State
+
+Phase 12 adds design-only dashboard projection boundaries. It does not add dashboard UI or runtime refresh execution.
+
+```mermaid
+flowchart LR
+  GovernanceEvidence["Governance Evidence"] --> Projection["Read-Only Dashboard Projection"]
+  ReadinessEvidence["Readiness Evidence"] --> Projection
+  ValidationReports["Validation Reports"] --> Projection
+  Projection --> View["Future Dashboard View"]
+  Refresh["Composite Refresh Orchestration"] -. "separate future boundary" .-> ValidationReports
+  View --> Boundary["No Runtime Mutation"]
+```
+
+The dashboard boundary graph is projection-only. A future dashboard view may display evidence and staleness, but it must not refresh, execute, deploy, call providers, read secrets, or mutate runtime state.

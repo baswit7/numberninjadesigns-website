@@ -9,10 +9,15 @@ This repository now includes a non-executing Execution Governance Layer for Stud
 
 Phase 10 adds a non-executing Execution Readiness Layer on top of Phase 9. It models future execution plans, steps, dependency checks, preflight checks, approval-chain completeness, rollback coverage, idempotency coverage, and readiness decisions. It does not execute workflows, agents, providers, deployments, queues, schedulers, workers, or external mutations.
 
+## Studio OS Phase 12
+
+Phase 12 adds dashboard/runtime boundary design only. It separates future read-only dashboard projection from composite refresh orchestration, defines no-write validation mode, and keeps validator and business logic out of dashboard code. It does not add dashboard UI or runtime capability.
+
 Run validation locally:
 
 ```powershell
 .\scripts\validation\validate-studio-os.ps1
+.\scripts\validation\validate-architecture.ps1
 .\scripts\validation\validate-execution-contracts.ps1
 .\scripts\validation\validate-readiness-contracts.ps1
 .\scripts\validation\validate-execution-plans.ps1
