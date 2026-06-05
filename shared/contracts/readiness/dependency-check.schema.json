@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/dependency-check.schema.json",
+  "title": "Studio OS Dependency Readiness Check",
+  "description": "Readiness-only dependency check for future execution planning.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "dependencyCheckId",
+    "planId",
+    "stepId",
+    "dependencyType",
+    "dependencyName",
+    "status",
+    "reason",
+    "checkedAt",
+    "readOnlyEvidence"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "dependencyCheckId": { "type": "string", "pattern": "^dependency-[a-z0-9-]{8,80}$" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "stepId": { "type": "string", "pattern": "^ready-step-[a-z0-9-]{8,80}$" },
+    "dependencyType": { "type": "string", "enum": ["contract", "document", "configuration", "runtime-model", "governance-record"] },
+    "dependencyName": { "type": "string", "minLength": 3, "maxLength": 160 },
+    "status": { "type": "string", "enum": ["satisfied", "missing", "incompatible", "blocked", "unknown"] },
+    "reason": { "type": "string", "minLength": 5, "maxLength": 500 },
+    "checkedAt": { "type": "string", "format": "date-time" },
+    "readOnlyEvidence": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "type": "string", "minLength": 3, "maxLength": 200 }
+    }
+  }
+}

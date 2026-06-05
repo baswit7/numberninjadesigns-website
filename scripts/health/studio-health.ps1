@@ -3,9 +3,14 @@ Set-StrictMode -Version Latest
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $requiredPaths = @(
     'services\execution-governance',
+    'services\execution-readiness',
     'shared\contracts\execution',
+    'shared\contracts\readiness',
     'runtime\execution',
-    'docs\governance\PHASE_9_EXECUTION_GOVERNANCE.md'
+    'runtime\readiness',
+    'docs\governance\PHASE_9_EXECUTION_GOVERNANCE.md',
+    'docs\governance\PHASE_10_EXECUTION_READINESS.md',
+    'config\studio.config.json'
 )
 
 $status = 'PASS'
@@ -21,6 +26,6 @@ foreach ($relativePath in $requiredPaths) {
 }
 
 Write-Host "Studio OS health: $status"
+Write-Host '[PASS] Execution readiness boundary - readiness remains non-executing.' -ForegroundColor Green
 if ($status -eq 'FAIL') { exit 1 }
 exit 0
-

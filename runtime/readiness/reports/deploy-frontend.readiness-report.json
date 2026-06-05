@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "readiness-report-deploy-frontend-review",
+  "planId": "ready-plan-deploy-frontend-review",
+  "generatedAt": "2026-06-05T18:05:00Z",
+  "summary": "Readiness-only report for future frontend deployment review; no execution, provider call, deployment, or secret access is enabled.",
+  "checks": [
+    {
+      "name": "execution boundary",
+      "status": "pass",
+      "message": "All execution capability flags are false."
+    },
+    {
+      "name": "approval chain",
+      "status": "warning",
+      "message": "Approval metadata is present but incomplete and not execution permission."
+    },
+    {
+      "name": "rollback and idempotency",
+      "status": "pass",
+      "message": "Coverage exists through Phase 9 governance models."
+    }
+  ],
+  "decision": "not-ready",
+  "boundaryAudit": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false,
+    "dashboardUiAdded": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/execution-plan.schema.json",
+  "title": "Studio OS Readiness Execution Plan",
+  "description": "Non-executing plan model for validating future execution readiness before an execution plane exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "planId",
+    "requestId",
+    "name",
+    "createdAt",
+    "environment",
+    "purpose",
+    "phase9Compatibility",
+    "steps",
+    "readinessBoundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "requestId": { "type": "string", "pattern": "^exec-req-[a-z0-9-]{8,80}$" },
+    "name": { "type": "string", "minLength": 3, "maxLength": 160 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "environment": { "type": "string", "enum": ["local", "preview", "production", "unknown"] },
+    "purpose": { "type": "string", "minLength": 10, "maxLength": 500 },
+    "phase9Compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executionRequestModeled", "approvalMetadataIsNotPermission", "riskCompatibilityRequired"],
+      "properties": {
+        "executionRequestModeled": { "type": "boolean" },
+        "approvalMetadataIsNotPermission": { "type": "boolean", "const": true },
+        "riskCompatibilityRequired": { "type": "boolean", "const": true }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": { "$ref": "execution-step.schema.json" }
+    },
+    "readinessBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executionEnabled", "providerCallsAllowed", "deploymentAllowed", "secretAccessAllowed"],
+      "properties": {
+        "executionEnabled": { "type": "boolean", "const": false },
+        "providerCallsAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

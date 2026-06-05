@@ -1,26 +1,27 @@
 ﻿{
-    "name":  "validate-architecture",
+    "name":  "validate-readiness-boundaries",
     "status":  "PASS",
-    "generatedAt":  "2026-06-05T18:52:36.5559203Z",
-    "executionBoundary":  {
+    "generatedAt":  "2026-06-05T18:53:18.0799576Z",
+    "readinessBoundary":  {
                               "executionEnabled":  false,
                               "providerCallsAllowed":  false,
                               "deploymentAllowed":  false,
-                              "secretAccessAllowed":  false
+                              "secretAccessAllowed":  false,
+                              "dashboardUiAdded":  false
                           },
     "checks":  [
                    {
-                       "name":  "path:docs\\ARCHITECTURE.md",
+                       "name":  "path:services\\execution-readiness",
                        "status":  "PASS",
                        "message":  "required path present"
                    },
                    {
-                       "name":  "path:docs\\AI_EXECUTION_GRAPH.md",
+                       "name":  "path:shared\\contracts\\readiness",
                        "status":  "PASS",
                        "message":  "required path present"
                    },
                    {
-                       "name":  "path:docs\\governance\\EXECUTION_BOUNDARY.md",
+                       "name":  "path:runtime\\readiness",
                        "status":  "PASS",
                        "message":  "required path present"
                    },
@@ -30,29 +31,24 @@
                        "message":  "required path present"
                    },
                    {
-                       "name":  "architecture-doc",
+                       "name":  "boundary:shared\\contracts\\readiness",
                        "status":  "PASS",
-                       "message":  "architecture doc describes Phase 9 governance layer"
+                       "message":  "all readiness boundary and permission flags remain disabled"
                    },
                    {
-                       "name":  "readiness-architecture-doc",
+                       "name":  "boundary:runtime\\readiness",
                        "status":  "PASS",
-                       "message":  "architecture doc describes Phase 10 readiness layer"
+                       "message":  "all readiness boundary and permission flags remain disabled"
                    },
                    {
-                       "name":  "execution-graph",
+                       "name":  "capability-scan",
                        "status":  "PASS",
-                       "message":  "execution graph is evaluative only"
+                       "message":  "no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found"
                    },
                    {
-                       "name":  "boundary-doc",
+                       "name":  "dashboard-ui",
                        "status":  "PASS",
-                       "message":  "boundary doc lists prohibited behavior"
-                   },
-                   {
-                       "name":  "readiness-boundary-doc",
-                       "status":  "PASS",
-                       "message":  "readiness boundary doc lists non-permission semantics"
+                       "message":  "no readiness dashboard UI added"
                    }
                ]
 }

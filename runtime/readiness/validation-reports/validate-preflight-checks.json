@@ -1,0 +1,29 @@
+﻿{
+    "name":  "validate-preflight-checks",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:53:18.1927562Z",
+    "readinessBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false,
+                              "dashboardUiAdded":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:runtime\\readiness\\preflight-checks",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "preflight:deploy-frontend.preflight.json",
+                       "status":  "PASS",
+                       "message":  "preflight modeled as pass"
+                   },
+                   {
+                       "name":  "capability-scan",
+                       "status":  "PASS",
+                       "message":  "no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found"
+                   }
+               ]
+}

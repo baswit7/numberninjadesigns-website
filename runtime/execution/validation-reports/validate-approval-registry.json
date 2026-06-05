@@ -1,23 +1,23 @@
-{
-  "name": "validate-approval-registry",
-  "status": "PASS",
-  "generatedAt": "2026-06-05T15:18:59.9610929Z",
-  "executionBoundary": {
-    "executionEnabled": false,
-    "providerCallsAllowed": false,
-    "deploymentAllowed": false,
-    "secretAccessAllowed": false
-  },
-  "checks": [
-    {
-      "name": "path:runtime\\execution\\approvals",
-      "status": "PASS",
-      "message": "required path present"
-    },
-    {
-      "name": "approval:deploy-frontend.approval.json",
-      "status": "PASS",
-      "message": "approval state modeled as missing"
-    }
-  ]
+﻿{
+    "name":  "validate-approval-registry",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:52:57.4747450Z",
+    "executionBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:runtime\\execution\\approvals",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "approval:deploy-frontend.approval.json",
+                       "status":  "PASS",
+                       "message":  "approval state modeled as missing"
+                   }
+               ]
 }

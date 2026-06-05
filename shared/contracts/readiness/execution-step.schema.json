@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/execution-step.schema.json",
+  "title": "Studio OS Readiness Execution Step",
+  "description": "Non-executing model of a future execution step. It contains no command, provider, deployment, secret, or credential fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "stepId",
+    "planId",
+    "name",
+    "stepType",
+    "riskLevel",
+    "dependsOn",
+    "requiredApprovals",
+    "requiredPreflightChecks",
+    "requiresRollbackCoverage",
+    "requiresIdempotencyCoverage",
+    "executionBoundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "stepId": { "type": "string", "pattern": "^ready-step-[a-z0-9-]{8,80}$" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "name": { "type": "string", "minLength": 3, "maxLength": 160 },
+    "stepType": {
+      "type": "string",
+      "enum": [
+        "content-change",
+        "configuration-change",
+        "contract-change",
+        "deployment-review",
+        "provider-call-review",
+        "workflow-review",
+        "data-change-review"
+      ]
+    },
+    "riskLevel": { "type": "string", "enum": ["low", "medium", "high", "blocked"] },
+    "dependsOn": {
+      "type": "array",
+      "maxItems": 30,
+      "items": { "type": "string", "pattern": "^ready-step-[a-z0-9-]{8,80}$" }
+    },
+    "requiredApprovals": {
+      "type": "array",
+      "maxItems": 10,
+      "items": { "type": "string", "minLength": 3, "maxLength": 120 }
+    },
+    "requiredPreflightChecks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": { "type": "string", "pattern": "^preflight-[a-z0-9-]{8,80}$" }
+    },
+    "requiresRollbackCoverage": { "type": "boolean" },
+    "requiresIdempotencyCoverage": { "type": "boolean" },
+    "executionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executionEnabled", "providerCallsAllowed", "deploymentAllowed", "secretAccessAllowed"],
+      "properties": {
+        "executionEnabled": { "type": "boolean", "const": false },
+        "providerCallsAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

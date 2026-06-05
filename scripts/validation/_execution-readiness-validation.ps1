@@ -1,11 +1,10 @@
 Set-StrictMode -Version Latest
 
 function Get-RepoRoot {
-    $scriptPath = $PSScriptRoot
-    return (Resolve-Path (Join-Path $scriptPath '..\..')).Path
+    return (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 }
 
-function Write-ValidationResult {
+function Write-ReadinessValidationResult {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
         [Parameter(Mandatory = $true)][ValidateSet('PASS', 'WARNING', 'FAIL')][string]$Status,
@@ -20,7 +19,7 @@ function Write-ValidationResult {
     Write-Host "[$Status] $Name - $Message" -ForegroundColor $color
 }
 
-function New-ValidationReport {
+function New-ReadinessValidationReport {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
         [Parameter(Mandatory = $true)][ValidateSet('PASS', 'WARNING', 'FAIL')][string]$Status,
@@ -28,18 +27,19 @@ function New-ValidationReport {
     )
 
     $repoRoot = Get-RepoRoot
-    $reportDir = Join-Path $repoRoot 'runtime\execution\validation-reports'
+    $reportDir = Join-Path $repoRoot 'runtime\readiness\validation-reports'
     New-Item -ItemType Directory -Force -Path $reportDir | Out-Null
 
     $report = [ordered]@{
         name = $Name
         status = $Status
         generatedAt = (Get-Date).ToUniversalTime().ToString('o')
-        executionBoundary = [ordered]@{
+        readinessBoundary = [ordered]@{
             executionEnabled = $false
             providerCallsAllowed = $false
             deploymentAllowed = $false
             secretAccessAllowed = $false
+            dashboardUiAdded = $false
         }
         checks = $Checks
     }
@@ -49,7 +49,7 @@ function New-ValidationReport {
     return $path
 }
 
-function Add-Check {
+function Add-ReadinessCheck {
     param(
         [Parameter(Mandatory = $true)][ref]$Checks,
         [Parameter(Mandatory = $true)][string]$Name,
@@ -62,15 +62,15 @@ function Add-Check {
         status = $Status
         message = $Message
     }
-    Write-ValidationResult -Name $Name -Status $Status -Message $Message
+    Write-ReadinessValidationResult -Name $Name -Status $Status -Message $Message
 
     if ($Status -eq 'FAIL') {
-        New-ValidationReport -Name $script:ValidationName -Status 'FAIL' -Checks $Checks.Value | Out-Null
+        New-ReadinessValidationReport -Name $script:ValidationName -Status 'FAIL' -Checks $Checks.Value | Out-Null
         exit 1
     }
 }
 
-function Read-JsonFile {
+function Read-ReadinessJsonFile {
     param([Parameter(Mandatory = $true)][string]$Path)
 
     try {
@@ -81,7 +81,7 @@ function Read-JsonFile {
     }
 }
 
-function Assert-PathExists {
+function Assert-ReadinessPathExists {
     param(
         [Parameter(Mandatory = $true)][ref]$Checks,
         [Parameter(Mandatory = $true)][string]$RelativePath
@@ -90,13 +90,13 @@ function Assert-PathExists {
     $repoRoot = Get-RepoRoot
     $path = Join-Path $repoRoot $RelativePath
     if (-not (Test-Path -LiteralPath $path)) {
-        Add-Check -Checks $Checks -Name "path:$RelativePath" -Status 'FAIL' -Message 'required path missing'
+        Add-ReadinessCheck -Checks $Checks -Name "path:$RelativePath" -Status 'FAIL' -Message 'required path missing'
     }
-    Add-Check -Checks $Checks -Name "path:$RelativePath" -Status 'PASS' -Message 'required path present'
+    Add-ReadinessCheck -Checks $Checks -Name "path:$RelativePath" -Status 'PASS' -Message 'required path present'
     return $path
 }
 
-function Assert-NoEnabledExecutionBoundary {
+function Assert-ReadinessBoundaryDisabled {
     param(
         [Parameter(Mandatory = $true)][ref]$Checks,
         [Parameter(Mandatory = $true)][string]$RelativePath
@@ -105,31 +105,28 @@ function Assert-NoEnabledExecutionBoundary {
     $repoRoot = Get-RepoRoot
     $path = Join-Path $repoRoot $RelativePath
     if (-not (Test-Path -LiteralPath $path)) {
-        Add-Check -Checks $Checks -Name "boundary:$RelativePath" -Status 'WARNING' -Message 'path missing; no boundary data scanned'
-        return
+        Add-ReadinessCheck -Checks $Checks -Name "boundary:$RelativePath" -Status 'FAIL' -Message 'required boundary path missing'
     }
 
     $matches = Get-ChildItem -LiteralPath $path -Recurse -File -Include *.json |
-        Select-String -Pattern '"(executionEnabled|providerCallsAllowed|deploymentAllowed|secretAccessAllowed)"\s*:\s*true'
+        Select-String -Pattern '"(executionEnabled|providerCallsAllowed|deploymentAllowed|secretAccessAllowed|executionPermissionGranted|approvalMetadataIsExecutionPermission|dashboardUiAdded)"\s*:\s*true'
 
     if ($matches) {
-        Add-Check -Checks $Checks -Name "boundary:$RelativePath" -Status 'FAIL' -Message 'enabled execution boundary flag found'
+        Add-ReadinessCheck -Checks $Checks -Name "boundary:$RelativePath" -Status 'FAIL' -Message 'enabled execution or permission flag found'
     }
 
-    Add-Check -Checks $Checks -Name "boundary:$RelativePath" -Status 'PASS' -Message 'all execution boundary flags remain disabled'
+    Add-ReadinessCheck -Checks $Checks -Name "boundary:$RelativePath" -Status 'PASS' -Message 'all readiness boundary and permission flags remain disabled'
 }
 
-function Assert-NoExecutionImplementations {
+function Assert-NoReadinessExecutionCapability {
     param([Parameter(Mandatory = $true)][ref]$Checks)
 
     $repoRoot = Get-RepoRoot
     $scanRoots = @(
-        'services\execution-governance',
         'services\execution-readiness',
-        'runtime\execution',
+        'shared\contracts\readiness',
         'runtime\readiness',
-        'shared\contracts\execution',
-        'shared\contracts\readiness'
+        'config'
     )
     $patterns = @(
         'Invoke-RestMethod',
@@ -139,7 +136,8 @@ function Assert-NoExecutionImplementations {
         'Start-Process\s+.*vercel',
         'gh\s+api',
         'openai\.com',
-        'api\.anthropic\.com'
+        'api\.anthropic\.com',
+        '"(command|script|shell|apiKey|token|secret|credential)"\s*:'
     )
 
     foreach ($root in $scanRoots) {
@@ -149,10 +147,24 @@ function Assert-NoExecutionImplementations {
             $matches = Get-ChildItem -LiteralPath $path -Recurse -File |
                 Select-String -Pattern $pattern
             if ($matches) {
-                Add-Check -Checks $Checks -Name "execution-scan:$root" -Status 'FAIL' -Message "prohibited execution pattern found: $pattern"
+                Add-ReadinessCheck -Checks $Checks -Name "capability-scan:$root" -Status 'FAIL' -Message "prohibited readiness boundary pattern found: $pattern"
             }
         }
     }
 
-    Add-Check -Checks $Checks -Name 'execution-scan' -Status 'PASS' -Message 'no execution, provider, deployment, queue, scheduler, or worker implementation found'
+    Add-ReadinessCheck -Checks $Checks -Name 'capability-scan' -Status 'PASS' -Message 'no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found'
+}
+
+function Get-ReadinessFiles {
+    param(
+        [Parameter(Mandatory = $true)][ref]$Checks,
+        [Parameter(Mandatory = $true)][string]$RelativePath
+    )
+
+    $path = Assert-ReadinessPathExists -Checks $Checks -RelativePath $RelativePath
+    $files = @(Get-ChildItem -LiteralPath $path -Filter *.json -File)
+    if ($files.Count -lt 1) {
+        Add-ReadinessCheck -Checks $Checks -Name "files:$RelativePath" -Status 'FAIL' -Message 'at least one readiness JSON file is required'
+    }
+    return $files
 }

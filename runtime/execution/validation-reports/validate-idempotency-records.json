@@ -1,23 +1,23 @@
-{
-  "name": "validate-idempotency-records",
-  "status": "PASS",
-  "generatedAt": "2026-06-05T15:19:12.7906427Z",
-  "executionBoundary": {
-    "executionEnabled": false,
-    "providerCallsAllowed": false,
-    "deploymentAllowed": false,
-    "secretAccessAllowed": false
-  },
-  "checks": [
-    {
-      "name": "path:runtime\\execution\\idempotency",
-      "status": "PASS",
-      "message": "required path present"
-    },
-    {
-      "name": "idempotency:deploy-frontend.idempotency.json",
-      "status": "PASS",
-      "message": "idempotency strategy modeled as business-key"
-    }
-  ]
+﻿{
+    "name":  "validate-idempotency-records",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:52:57.7521810Z",
+    "executionBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:runtime\\execution\\idempotency",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "idempotency:deploy-frontend.idempotency.json",
+                       "status":  "PASS",
+                       "message":  "idempotency strategy modeled as business-key"
+                   }
+               ]
 }

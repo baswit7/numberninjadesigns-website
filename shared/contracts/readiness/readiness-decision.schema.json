@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/readiness-decision.schema.json",
+  "title": "Studio OS Readiness Decision",
+  "description": "Readiness-only decision. A ready decision does not authorize or perform execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "readinessDecisionId",
+    "planId",
+    "decision",
+    "reason",
+    "blockingReasons",
+    "evaluatedAt",
+    "executionPermissionGranted",
+    "readinessBoundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "readinessDecisionId": { "type": "string", "pattern": "^readiness-decision-[a-z0-9-]{8,80}$" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "decision": { "type": "string", "enum": ["ready-for-future-review", "not-ready", "blocked"] },
+    "reason": { "type": "string", "minLength": 5, "maxLength": 500 },
+    "blockingReasons": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "type": "string", "minLength": 3, "maxLength": 160 }
+    },
+    "evaluatedAt": { "type": "string", "format": "date-time" },
+    "executionPermissionGranted": { "type": "boolean", "const": false },
+    "readinessBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executionEnabled", "providerCallsAllowed", "deploymentAllowed", "secretAccessAllowed"],
+      "properties": {
+        "executionEnabled": { "type": "boolean", "const": false },
+        "providerCallsAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

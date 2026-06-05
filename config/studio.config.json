@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "studioOs": {
+    "phase": 10,
+    "executionGovernanceEnabled": true,
+    "executionReadinessEnabled": true,
+    "executionPlaneEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false,
+    "dashboardUiEnabled": false
+  },
+  "runtime": {
+    "executionReportsPath": "runtime/execution/validation-reports",
+    "readinessReportsPath": "runtime/readiness/validation-reports"
+  }
+}

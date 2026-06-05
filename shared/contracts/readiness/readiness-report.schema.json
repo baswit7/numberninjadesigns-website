@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/readiness-report.schema.json",
+  "title": "Studio OS Readiness Report",
+  "description": "Machine-readable readiness-only report generated before any execution plane exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reportId",
+    "planId",
+    "generatedAt",
+    "summary",
+    "checks",
+    "decision",
+    "boundaryAudit"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "reportId": { "type": "string", "pattern": "^readiness-report-[a-z0-9-]{8,80}$" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string", "minLength": 10, "maxLength": 500 },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "message"],
+        "properties": {
+          "name": { "type": "string", "minLength": 3, "maxLength": 160 },
+          "status": { "type": "string", "enum": ["pass", "warning", "fail", "blocked"] },
+          "message": { "type": "string", "minLength": 3, "maxLength": 300 }
+        }
+      }
+    },
+    "decision": { "type": "string", "enum": ["ready-for-future-review", "not-ready", "blocked"] },
+    "boundaryAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executionEnabled", "providerCallsAllowed", "deploymentAllowed", "secretAccessAllowed", "dashboardUiAdded"],
+      "properties": {
+        "executionEnabled": { "type": "boolean", "const": false },
+        "providerCallsAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false },
+        "dashboardUiAdded": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/readiness/preflight-check.schema.json",
+  "title": "Studio OS Preflight Readiness Check",
+  "description": "Non-executing preflight check used to validate future execution readiness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "preflightCheckId",
+    "planId",
+    "stepId",
+    "checkType",
+    "status",
+    "severity",
+    "reason",
+    "checkedAt",
+    "evidence"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "preflightCheckId": { "type": "string", "pattern": "^preflight-[a-z0-9-]{8,80}$" },
+    "planId": { "type": "string", "pattern": "^ready-plan-[a-z0-9-]{8,80}$" },
+    "stepId": { "type": "string", "pattern": "^ready-step-[a-z0-9-]{8,80}$" },
+    "checkType": { "type": "string", "enum": ["boundary", "schema", "risk", "rollback", "idempotency", "approval-chain", "dependency"] },
+    "status": { "type": "string", "enum": ["pass", "warning", "fail", "blocked"] },
+    "severity": { "type": "string", "enum": ["info", "low", "medium", "high", "blocking"] },
+    "reason": { "type": "string", "minLength": 5, "maxLength": 500 },
+    "checkedAt": { "type": "string", "format": "date-time" },
+    "evidence": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "type": "string", "minLength": 3, "maxLength": 200 }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+﻿{
+    "name":  "validate-execution-plans",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:52:58.0414999Z",
+    "readinessBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false,
+                              "dashboardUiAdded":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:runtime\\readiness\\plans",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "plan:deploy-frontend.readiness-plan.json",
+                       "status":  "PASS",
+                       "message":  "plan ready-plan-deploy-frontend-review is readiness-only and has modeled steps"
+                   },
+                   {
+                       "name":  "boundary:runtime\\readiness\\plans",
+                       "status":  "PASS",
+                       "message":  "all readiness boundary and permission flags remain disabled"
+                   },
+                   {
+                       "name":  "capability-scan",
+                       "status":  "PASS",
+                       "message":  "no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found"
+                   }
+               ]
+}

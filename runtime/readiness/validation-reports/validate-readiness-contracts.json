@@ -1,0 +1,64 @@
+﻿{
+    "name":  "validate-readiness-contracts",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:52:57.9669862Z",
+    "readinessBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false,
+                              "dashboardUiAdded":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:shared\\contracts\\readiness",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "contract:execution-plan.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:execution-step.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:dependency-check.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:preflight-check.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:approval-chain.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:readiness-decision.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "contract:readiness-report.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is versioned and strict"
+                   },
+                   {
+                       "name":  "boundary:shared\\contracts\\readiness",
+                       "status":  "PASS",
+                       "message":  "all readiness boundary and permission flags remain disabled"
+                   },
+                   {
+                       "name":  "capability-scan",
+                       "status":  "PASS",
+                       "message":  "no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found"
+                   }
+               ]
+}

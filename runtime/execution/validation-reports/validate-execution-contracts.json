@@ -1,58 +1,58 @@
-{
-  "name": "validate-execution-contracts",
-  "status": "PASS",
-  "generatedAt": "2026-06-05T15:19:00.4268451Z",
-  "executionBoundary": {
-    "executionEnabled": false,
-    "providerCallsAllowed": false,
-    "deploymentAllowed": false,
-    "secretAccessAllowed": false
-  },
-  "checks": [
-    {
-      "name": "path:shared\\contracts\\execution",
-      "status": "PASS",
-      "message": "required path present"
-    },
-    {
-      "name": "contract:execution-request.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "contract:approval-record.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "contract:risk-assessment.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "contract:rollback-plan.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "contract:execution-policy.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "contract:idempotency-record.schema.json",
-      "status": "PASS",
-      "message": "contract is valid JSON with strict root object"
-    },
-    {
-      "name": "boundary:shared\\contracts\\execution",
-      "status": "PASS",
-      "message": "all execution boundary flags remain disabled"
-    },
-    {
-      "name": "execution-scan",
-      "status": "PASS",
-      "message": "no execution, provider, deployment, queue, scheduler, or worker implementation found"
-    }
-  ]
+﻿{
+    "name":  "validate-execution-contracts",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:52:36.7989465Z",
+    "executionBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:shared\\contracts\\execution",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "contract:execution-request.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "contract:approval-record.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "contract:risk-assessment.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "contract:rollback-plan.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "contract:execution-policy.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "contract:idempotency-record.schema.json",
+                       "status":  "PASS",
+                       "message":  "contract is valid JSON with strict root object"
+                   },
+                   {
+                       "name":  "boundary:shared\\contracts\\execution",
+                       "status":  "PASS",
+                       "message":  "all execution boundary flags remain disabled"
+                   },
+                   {
+                       "name":  "execution-scan",
+                       "status":  "PASS",
+                       "message":  "no execution, provider, deployment, queue, scheduler, or worker implementation found"
+                   }
+               ]
 }

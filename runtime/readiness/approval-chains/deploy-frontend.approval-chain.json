@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "approvalChainId": "approval-chain-deploy-frontend-review",
+  "planId": "ready-plan-deploy-frontend-review",
+  "requestId": "exec-req-deploy-frontend",
+  "requiredApprovers": [
+    "owner"
+  ],
+  "approvalRecords": [
+    "approval-deploy-frontend"
+  ],
+  "status": "incomplete",
+  "approvalMetadataIsExecutionPermission": false,
+  "reason": "The Phase 9 approval record is present but not approved; this is incomplete readiness evidence and does not authorize execution.",
+  "checkedAt": "2026-06-05T18:03:00Z"
+}

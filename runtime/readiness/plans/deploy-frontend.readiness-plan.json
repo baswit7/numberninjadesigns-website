@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "planId": "ready-plan-deploy-frontend-review",
+  "requestId": "exec-req-deploy-frontend",
+  "name": "Frontend deployment readiness review",
+  "createdAt": "2026-06-05T18:00:00Z",
+  "environment": "preview",
+  "purpose": "Validate whether a future frontend deployment request has governance coverage before any execution plane exists.",
+  "phase9Compatibility": {
+    "executionRequestModeled": true,
+    "approvalMetadataIsNotPermission": true,
+    "riskCompatibilityRequired": true
+  },
+  "steps": [
+    {
+      "schemaVersion": "1.0.0",
+      "stepId": "ready-step-frontend-boundary-review",
+      "planId": "ready-plan-deploy-frontend-review",
+      "name": "Confirm deployment boundary remains disabled",
+      "stepType": "deployment-review",
+      "riskLevel": "medium",
+      "dependsOn": [],
+      "requiredApprovals": [
+        "owner"
+      ],
+      "requiredPreflightChecks": [
+        "preflight-frontend-boundary-review"
+      ],
+      "requiresRollbackCoverage": true,
+      "requiresIdempotencyCoverage": true,
+      "executionBoundary": {
+        "executionEnabled": false,
+        "providerCallsAllowed": false,
+        "deploymentAllowed": false,
+        "secretAccessAllowed": false
+      }
+    }
+  ],
+  "readinessBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  }
+}

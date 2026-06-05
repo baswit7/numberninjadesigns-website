@@ -1,0 +1,34 @@
+﻿{
+    "name":  "validate-approval-chains",
+    "status":  "PASS",
+    "generatedAt":  "2026-06-05T18:53:18.4765856Z",
+    "readinessBoundary":  {
+                              "executionEnabled":  false,
+                              "providerCallsAllowed":  false,
+                              "deploymentAllowed":  false,
+                              "secretAccessAllowed":  false,
+                              "dashboardUiAdded":  false
+                          },
+    "checks":  [
+                   {
+                       "name":  "path:runtime\\readiness\\approval-chains",
+                       "status":  "PASS",
+                       "message":  "required path present"
+                   },
+                   {
+                       "name":  "approval-chain:deploy-frontend.approval-chain.json",
+                       "status":  "PASS",
+                       "message":  "approval chain modeled as incomplete"
+                   },
+                   {
+                       "name":  "boundary:runtime\\readiness\\approval-chains",
+                       "status":  "PASS",
+                       "message":  "all readiness boundary and permission flags remain disabled"
+                   },
+                   {
+                       "name":  "capability-scan",
+                       "status":  "PASS",
+                       "message":  "no execution, provider, deployment, queue, scheduler, worker, command, secret, or credential capability found"
+                   }
+               ]
+}

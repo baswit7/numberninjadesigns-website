@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "dependencyCheckId": "dependency-frontend-governance-contracts",
+  "planId": "ready-plan-deploy-frontend-review",
+  "stepId": "ready-step-frontend-boundary-review",
+  "dependencyType": "governance-record",
+  "dependencyName": "Phase 9 execution governance records",
+  "status": "satisfied",
+  "reason": "The future plan references existing Phase 9 request, approval, rollback, risk, and idempotency records without treating them as execution permission.",
+  "checkedAt": "2026-06-05T18:02:00Z",
+  "readOnlyEvidence": [
+    "runtime/execution/requests/deploy-frontend.review.json",
+    "runtime/execution/approvals/deploy-frontend.approval.json",
+    "runtime/execution/rollback-plans/deploy-frontend.rollback.json",
+    "runtime/execution/idempotency/deploy-frontend.idempotency.json"
+  ]
+}
