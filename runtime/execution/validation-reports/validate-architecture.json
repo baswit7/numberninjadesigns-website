@@ -1,0 +1,43 @@
+{
+  "name": "validate-architecture",
+  "status": "PASS",
+  "generatedAt": "2026-06-05T15:19:00.3018559Z",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  },
+  "checks": [
+    {
+      "name": "path:docs\\ARCHITECTURE.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:docs\\AI_EXECUTION_GRAPH.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:docs\\governance\\EXECUTION_BOUNDARY.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "architecture-doc",
+      "status": "PASS",
+      "message": "architecture doc describes Phase 9 governance layer"
+    },
+    {
+      "name": "execution-graph",
+      "status": "PASS",
+      "message": "execution graph is evaluative only"
+    },
+    {
+      "name": "boundary-doc",
+      "status": "PASS",
+      "message": "boundary doc lists prohibited behavior"
+    }
+  ]
+}

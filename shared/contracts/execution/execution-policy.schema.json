@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/execution/execution-policy.schema.json",
+  "title": "Studio OS Execution Policy",
+  "description": "Governance decision model. Phase 9 policy never enables real execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "policyId",
+    "requestId",
+    "decision",
+    "reason",
+    "approvalRequired",
+    "riskAccepted",
+    "rollbackRequired",
+    "idempotencyRequired",
+    "executionBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "policyId": {
+      "type": "string",
+      "pattern": "^policy-[a-z0-9-]{8,80}$"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^exec-req-[a-z0-9-]{8,80}$"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "allow-for-future-execution-review",
+        "deny",
+        "blocked"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 500
+    },
+    "approvalRequired": {
+      "type": "boolean"
+    },
+    "riskAccepted": {
+      "type": "boolean"
+    },
+    "rollbackRequired": {
+      "type": "boolean"
+    },
+    "idempotencyRequired": {
+      "type": "boolean"
+    },
+    "executionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionEnabled",
+        "providerCallsAllowed",
+        "deploymentAllowed",
+        "secretAccessAllowed"
+      ],
+      "properties": {
+        "executionEnabled": {
+          "type": "boolean",
+          "const": false
+        },
+        "providerCallsAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "deploymentAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "secretAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    }
+  }
+}

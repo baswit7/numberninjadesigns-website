@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "rollbackPlanId": "rollback-deploy-frontend-review",
+  "requestId": "exec-req-deploy-frontend-review",
+  "reversible": true,
+  "readiness": "partial",
+  "preconditions": [
+    "future execution system must provide immutable release identifiers",
+    "future execution system must provide verified previous release reference"
+  ],
+  "rollbackSteps": [
+    "identify previous approved release",
+    "request human review for rollback",
+    "validate post-rollback health using non-provider checks"
+  ],
+  "validationChecks": [
+    "rollback plan contains preconditions",
+    "rollback plan contains validation checks"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "validate-coordination-contracts",
+  "status": "PASS",
+  "generatedAt": "2026-06-05T15:19:00.0613097Z",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  },
+  "checks": [
+    {
+      "name": "path:docs\\governance\\PHASE_8_COORDINATION_ARCHITECTURE_AUDIT.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:docs\\governance\\PHASE_9_COMPATIBILITY_REPORT.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "coordination-compatibility",
+      "status": "PASS",
+      "message": "Phase 9 is layered above Phase 8 audit context without duplicating coordination runtime"
+    }
+  ]
+}

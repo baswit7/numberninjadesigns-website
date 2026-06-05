@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/execution/approval-record.schema.json",
+  "title": "Studio OS Approval Record",
+  "description": "Human approval state for a future execution request. This record never executes the request.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "approvalId",
+    "requestId",
+    "status",
+    "reviewedBy",
+    "reviewedAt",
+    "reason",
+    "constraints"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "approvalId": {
+      "type": "string",
+      "pattern": "^approval-[a-z0-9-]{8,80}$"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^exec-req-[a-z0-9-]{8,80}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "missing",
+        "pending",
+        "approved",
+        "denied",
+        "expired"
+      ]
+    },
+    "reviewedBy": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 500
+    },
+    "constraints": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 160
+      }
+    }
+  }
+}

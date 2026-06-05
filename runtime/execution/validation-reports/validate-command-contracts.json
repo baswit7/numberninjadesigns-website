@@ -1,0 +1,33 @@
+{
+  "name": "validate-command-contracts",
+  "status": "PASS",
+  "generatedAt": "2026-06-05T15:19:00.1664130Z",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  },
+  "checks": [
+    {
+      "name": "path:shared\\contracts\\execution\\execution-request.schema.json",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:shared\\contracts\\execution\\execution-policy.schema.json",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "boundary:shared\\contracts\\execution",
+      "status": "PASS",
+      "message": "all execution boundary flags remain disabled"
+    },
+    {
+      "name": "command-contract-boundary",
+      "status": "PASS",
+      "message": "command-like execution requests are modeled as governance contracts only"
+    }
+  ]
+}

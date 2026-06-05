@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "idempotencyId": "idempotency-deploy-frontend-review",
+  "requestId": "exec-req-deploy-frontend-review",
+  "idempotencyKey": "deployment-review-frontend-production",
+  "strategy": "business-key",
+  "replaySafe": false,
+  "dedupeWindowMinutes": 1440,
+  "conflictPolicy": "require-review"
+}

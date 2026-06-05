@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/execution/idempotency-record.schema.json",
+  "title": "Studio OS Idempotency Record",
+  "description": "Governance model for evaluating repeat safety before any future action is enabled.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "idempotencyId",
+    "requestId",
+    "idempotencyKey",
+    "strategy",
+    "replaySafe",
+    "dedupeWindowMinutes",
+    "conflictPolicy"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "idempotencyId": {
+      "type": "string",
+      "pattern": "^idempotency-[a-z0-9-]{8,80}$"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^exec-req-[a-z0-9-]{8,80}$"
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 160
+    },
+    "strategy": {
+      "type": "string",
+      "enum": [
+        "request-hash",
+        "business-key",
+        "manual-review"
+      ]
+    },
+    "replaySafe": {
+      "type": "boolean"
+    },
+    "dedupeWindowMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10080
+    },
+    "conflictPolicy": {
+      "type": "string",
+      "enum": [
+        "deny-conflict",
+        "require-review",
+        "allow-identical-only"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "requestId": "exec-req-provider-call-review",
+  "requestedAction": "provider-call-review",
+  "requestedBy": "studio-os-governance",
+  "createdAt": "2026-06-05T00:00:00Z",
+  "environment": "unknown",
+  "scope": {
+    "targetType": "external-system-reference",
+    "targetName": "provider-call",
+    "changeSummary": "Evaluate whether a future provider call request is allowed by governance boundaries."
+  },
+  "approvalRequirement": "owner-only",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  }
+}

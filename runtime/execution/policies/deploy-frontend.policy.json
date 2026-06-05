@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "policyId": "policy-deploy-frontend-review",
+  "requestId": "exec-req-deploy-frontend-review",
+  "decision": "blocked",
+  "reason": "approval missing and deployment execution prohibited in Phase 9",
+  "approvalRequired": true,
+  "riskAccepted": false,
+  "rollbackRequired": true,
+  "idempotencyRequired": true,
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  }
+}

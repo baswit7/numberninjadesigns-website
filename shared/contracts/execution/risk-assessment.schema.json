@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/execution/risk-assessment.schema.json",
+  "title": "Studio OS Execution Risk Assessment",
+  "description": "Non-executing risk classification for a future action.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assessmentId",
+    "requestId",
+    "riskLevel",
+    "riskScore",
+    "factors",
+    "blockingConditions",
+    "assessedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "assessmentId": {
+      "type": "string",
+      "pattern": "^risk-[a-z0-9-]{8,80}$"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^exec-req-[a-z0-9-]{8,80}$"
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "blocked"
+      ]
+    },
+    "riskScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "factors": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "impact",
+          "likelihood"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120
+          },
+          "impact": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "likelihood": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    },
+    "blockingConditions": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 160
+      }
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

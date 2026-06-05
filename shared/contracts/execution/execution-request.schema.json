@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjatees.github.io/contracts/execution/execution-request.schema.json",
+  "title": "Studio OS Execution Request",
+  "description": "Non-executing governance model for a requested future action.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "requestedAction",
+    "requestedBy",
+    "createdAt",
+    "environment",
+    "scope",
+    "approvalRequirement",
+    "executionBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^exec-req-[a-z0-9-]{8,80}$"
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "content-review",
+        "deployment-review",
+        "provider-call-review",
+        "workflow-review",
+        "data-change-review",
+        "configuration-change-review"
+      ]
+    },
+    "requestedBy": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "local",
+        "preview",
+        "production",
+        "unknown"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetType",
+        "targetName",
+        "changeSummary"
+      ],
+      "properties": {
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "document",
+            "contract",
+            "runtime-output",
+            "configuration",
+            "service-model",
+            "external-system-reference"
+          ]
+        },
+        "targetName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "changeSummary": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 500
+        }
+      }
+    },
+    "approvalRequirement": {
+      "type": "string",
+      "enum": [
+        "none",
+        "single-human",
+        "two-person",
+        "owner-only"
+      ]
+    },
+    "executionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionEnabled",
+        "providerCallsAllowed",
+        "deploymentAllowed",
+        "secretAccessAllowed"
+      ],
+      "properties": {
+        "executionEnabled": {
+          "type": "boolean",
+          "const": false
+        },
+        "providerCallsAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "deploymentAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "secretAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    }
+  }
+}

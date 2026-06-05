@@ -1,0 +1,43 @@
+{
+  "name": "validate-studio-os",
+  "status": "PASS",
+  "generatedAt": "2026-06-05T15:19:00.4603145Z",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  },
+  "checks": [
+    {
+      "name": "path:README.md",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:services\\execution-governance",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:shared\\contracts\\execution",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "path:runtime\\execution",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "boundary:runtime\\execution",
+      "status": "PASS",
+      "message": "all execution boundary flags remain disabled"
+    },
+    {
+      "name": "execution-scan",
+      "status": "PASS",
+      "message": "no execution, provider, deployment, queue, scheduler, or worker implementation found"
+    }
+  ]
+}

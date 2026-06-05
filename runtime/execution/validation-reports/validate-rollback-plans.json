@@ -1,0 +1,23 @@
+{
+  "name": "validate-rollback-plans",
+  "status": "PASS",
+  "generatedAt": "2026-06-05T15:19:12.6191761Z",
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  },
+  "checks": [
+    {
+      "name": "path:runtime\\execution\\rollback-plans",
+      "status": "PASS",
+      "message": "required path present"
+    },
+    {
+      "name": "rollback:deploy-frontend.rollback.json",
+      "status": "PASS",
+      "message": "rollback readiness modeled as partial"
+    }
+  ]
+}

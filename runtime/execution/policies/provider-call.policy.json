@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "policyId": "policy-provider-call-review",
+  "requestId": "exec-req-provider-call-review",
+  "decision": "blocked",
+  "reason": "provider execution prohibited",
+  "approvalRequired": true,
+  "riskAccepted": false,
+  "rollbackRequired": true,
+  "idempotencyRequired": true,
+  "executionBoundary": {
+    "executionEnabled": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "secretAccessAllowed": false
+  }
+}
