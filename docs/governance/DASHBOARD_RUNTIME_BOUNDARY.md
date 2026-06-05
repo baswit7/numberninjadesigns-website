@@ -44,7 +44,7 @@ The dashboard may read a projection that was produced by trusted validation tool
 
 ## Projection Contract
 
-A future dashboard projection must be a derived artifact, not a source of authority. It should contain:
+The Phase 13 projection contract layer defines the machine-readable shape for derived dashboard projections. A dashboard projection must be a derived artifact, not a source of authority. It should contain:
 
 - Source report identities.
 - Source document identities.
@@ -65,6 +65,14 @@ It must not contain:
 - Execution payloads.
 - Deployment payloads.
 - Scheduler or queue configuration.
+
+Phase 13 contract artifacts:
+
+- `shared/contracts/projections/dashboard-projection.schema.json`
+- `shared/contracts/projections/no-write-validator.interface.schema.json`
+- `shared/contracts/projections/projection-contract.manifest.json`
+- `services/dashboard-adapter/README.md`
+- `scripts/validation/validate-projection-contracts.ps1`
 
 ## Composite Refresh Boundary
 

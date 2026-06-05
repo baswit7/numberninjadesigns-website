@@ -10,11 +10,15 @@ Assert-PathExists -Checks ([ref]$checks) -RelativePath 'services\execution-gover
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'services\execution-readiness' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'shared\contracts\execution' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'shared\contracts\readiness' | Out-Null
+Assert-PathExists -Checks ([ref]$checks) -RelativePath 'shared\contracts\projections' | Out-Null
+Assert-PathExists -Checks ([ref]$checks) -RelativePath 'services\dashboard-adapter' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'runtime\execution' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'runtime\readiness' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'docs\governance\PHASE_10_EXECUTION_READINESS.md' | Out-Null
+Assert-PathExists -Checks ([ref]$checks) -RelativePath 'docs\governance\PHASE_13_PROJECTION_CONTRACT_REPORT.md' | Out-Null
 Assert-NoEnabledExecutionBoundary -Checks ([ref]$checks) -RelativePath 'runtime\execution'
 Assert-NoEnabledExecutionBoundary -Checks ([ref]$checks) -RelativePath 'runtime\readiness'
+Assert-NoEnabledExecutionBoundary -Checks ([ref]$checks) -RelativePath 'shared\contracts\projections'
 Assert-NoExecutionImplementations -Checks ([ref]$checks)
 
 $reportPath = New-ValidationReport -Name $script:ValidationName -Status 'PASS' -Checks $checks
