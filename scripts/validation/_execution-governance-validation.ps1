@@ -129,7 +129,9 @@ function Assert-NoExecutionImplementations {
         'runtime\execution',
         'runtime\readiness',
         'shared\contracts\execution',
-        'shared\contracts\readiness'
+        'shared\contracts\readiness',
+        'shared\contracts\projections',
+        'services\dashboard-adapter'
     )
     $patterns = @(
         'Invoke-RestMethod',
