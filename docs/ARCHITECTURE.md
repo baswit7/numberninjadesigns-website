@@ -36,25 +36,3 @@ Phase 12 introduces dashboard/runtime boundary design documentation only:
 - `docs/governance/PHASE_READINESS_MATRIX.md`
 
 The design separates read-only dashboard projection from composite refresh orchestration. It defines future no-write validation mode, prohibits dashboard-driven runtime mutation, and keeps validator and business-rule ownership outside dashboard code. Phase 12 does not add dashboard UI, execution dispatch, provider integrations, deployment automation, queues, schedulers, executors, agents, workers, or background runners.
-
-## Phase 13 Contract Addition
-
-Phase 13 introduces the Projection Contract and No-Write Validator Interface layer:
-
-- `shared/contracts/projections/`
-- `services/dashboard-adapter/`
-- `docs/governance/PROJECTION_CONTRACT.md`
-- `docs/governance/PHASE_13_PROJECTION_CONTRACT_REPORT.md`
-- `scripts/validation/validate-projection-contracts.ps1`
-
-The layer defines allowed read-only projection shape, adapter-only projection production, passive dashboard consumption, and structural no-write validation. Runtime evidence remains the source of truth. The projection contract layer does not add dashboard UI, dashboard writes, runtime mutation, execution dispatch, provider integrations, deployment automation, queues, schedulers, executors, agents, workers, background runners, browser storage, secrets, or credential handling.
-
-## Phase 14 Fixture Validation Addition
-
-Phase 14 adds read-only projection fixture validation and stale-projection detection:
-
-- `shared/contracts/projections/fixtures/`
-- `docs/governance/PHASE_14_PROJECTION_FIXTURE_VALIDATION_REPORT.md`
-- `scripts/validation/validate-projection-contracts.ps1`
-
-The layer validates fresh and stale projection examples against the Phase 13 authority boundary. Staleness is determined from fixture timestamps only: if source evidence is newer than the projection generation timestamp, the projection must be marked stale. Phase 14 does not add dashboard UI, dashboard writes, runtime mutation, execution dispatch, provider integrations, deployment automation, queues, schedulers, executors, agents, workers, background runners, browser storage, secrets, or credential handling.
