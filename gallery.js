@@ -6,6 +6,7 @@
   var empty = document.querySelector("[data-gallery-empty]");
   var modal = document.querySelector("[data-preview-modal]");
   var modalImg = document.querySelector("[data-preview-image]");
+  var modalMockup = document.querySelector("[data-preview-mockup]");
   var modalTitle = document.querySelector("[data-preview-title]");
   var modalMeta = document.querySelector("[data-preview-meta]");
   var close = document.querySelector("[data-preview-close]");
@@ -45,11 +46,13 @@
   }
 
   function openPreview(card) {
-    if (!modal || !modalImg || !modalTitle || !modalMeta) return;
+    if (!modal || !modalImg || !modalMockup || !modalTitle || !modalMeta) return;
+    modalMockup.src = card.dataset.mockupImage || card.querySelector("img").src;
+    modalMockup.alt = card.dataset.title + " product mockup";
     modalImg.src = card.dataset.fullImage || card.querySelector("img").src;
-    modalImg.alt = card.querySelector("img").alt;
+    modalImg.alt = card.dataset.title + " original PNG artwork";
     modalTitle.textContent = card.dataset.title;
-    modalMeta.textContent = card.dataset.categoryLabel + " / " + card.dataset.status;
+    modalMeta.textContent = card.dataset.categoryLabel;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     if (close) close.focus();
