@@ -1,5 +1,5 @@
 # numberninjatees.github.io
-NumberNinjaTees website and verification host
+NinjaNumberTees website and verification host
 
 ## Studio OS Phase 9
 
