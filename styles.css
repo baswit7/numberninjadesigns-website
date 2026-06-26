@@ -95,12 +95,12 @@ main {
 }
 
 .hero {
-  min-height: 70vh;
+  min-height: clamp(640px, 74vh, 820px);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
   align-items: center;
-  gap: 42px;
-  padding: 72px 0 48px;
+  gap: clamp(28px, 6vw, 76px);
+  padding: clamp(64px, 8vw, 112px) 0 clamp(56px, 7vw, 86px);
 }
 
 h1,
@@ -114,7 +114,24 @@ h3 {
 
 h1 {
   font-size: clamp(2.8rem, 8vw, 6.5rem);
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+}
+
+.hero-title {
+  display: grid;
+  gap: 0.015em;
+  max-width: min-content;
+  font-size: clamp(4.4rem, 9.2vw, 8.1rem);
+  line-height: 0.86;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 70px rgba(0, 255, 148, 0.11);
+}
+
+.hero-title span {
+  display: block;
+  white-space: nowrap;
 }
 
 h2 {
@@ -139,12 +156,14 @@ p {
 
 .hero-copy {
   display: grid;
-  gap: 24px;
+  gap: clamp(22px, 3vw, 34px);
+  align-content: center;
 }
 
 .hero-copy p {
-  max-width: 760px;
-  font-size: clamp(1rem, 2vw, 1.24rem);
+  max-width: 720px;
+  font-size: clamp(1rem, 1.55vw, 1.18rem);
+  line-height: 1.75;
 }
 
 .actions {
@@ -540,6 +559,15 @@ ul {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .hero-copy,
+  .signal-panel {
+    animation: heroFade 420ms ease-out both;
+  }
+
+  .signal-panel {
+    animation-delay: 80ms;
+  }
+
   .button,
   .collection-grid a,
   .design-card {
@@ -550,5 +578,17 @@ ul {
   .collection-grid a:hover,
   .design-card:hover {
     transform: translateY(-2px);
+  }
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
