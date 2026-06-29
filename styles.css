@@ -124,14 +124,26 @@ h1 {
   font-size: clamp(4.4rem, 9.2vw, 8.1rem);
   line-height: 0.86;
   overflow-wrap: normal;
+  position: relative;
   word-break: keep-all;
   text-wrap: balance;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 70px rgba(0, 255, 148, 0.11);
 }
 
-.hero-title span {
-  display: block;
+.hero-title-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+.hero-title::before {
+  content: "Ninja\A Number\A Tees";
+  display: block;
+  color: var(--text);
+  white-space: pre-line;
 }
 
 h2 {
