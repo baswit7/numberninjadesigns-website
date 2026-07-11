@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NinjaNumberTees | Official Data Humor Apparel Brand</title>
-  <meta name="description" content="Official website of NinjaNumberTees, an independent creative apparel brand for spreadsheet, data, dashboard, coding and technology humor.">
+  <title>NumberNinjaTees | Apparel and Digital Products for Data Professionals</title>
+  <meta name="description" content="Products for people who work with data: NumberNinjaTees apparel, validated Excel tools and practical resources for data professionals.">
   <link rel="canonical" href="https://www.ninjanumbertees.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="NinjaNumberTees | Official Website">
-  <meta property="og:description" content="Independent creative apparel for data, spreadsheets, analytics, coding and dashboard humor.">
+  <meta name="theme-color" content="#070707">
+  <meta property="og:title" content="Products for people who work with data | NumberNinjaTees">
+  <meta property="og:description" content="T-shirts, Excel tools and productivity products for data professionals.">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
   <meta property="og:url" content="https://www.ninjanumbertees.com/">
+  <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="commerce.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "NinjaNumberTees",
+    "name": "NumberNinjaTees",
     "url": "https://www.ninjanumbertees.com/",
     "email": "hello@ninjanumbertees.com",
+    "slogan": "Products for people who work with data.",
     "areaServed": "International",
     "address": {
       "@type": "PostalAddress",
@@ -28,86 +31,198 @@
   }
   </script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="NinjaNumberTees home">NinjaNumberTees</a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="https://numberninjatees.etsy.com" rel="noopener">Shop</a>
-      <a href="designs.html">Designs</a>
+<body class="commerce-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header commerce-header">
+    <a class="brand" href="index.html" aria-label="NumberNinjaTees home">NumberNinjaTees</a>
+    <nav class="commerce-nav commerce-nav-desktop" aria-label="Primary navigation">
+      <a aria-current="page" href="index.html">Home</a>
+      <a href="designs.html">Apparel</a>
+      <a href="#digital-products">Digital Products</a>
+      <a href="#bundles">Bundles</a>
+      <a href="#free-resources">Free Resources</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
     </nav>
+    <details class="mobile-menu" data-mobile-menu>
+      <summary>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        Menu
+      </summary>
+      <nav aria-label="Mobile navigation">
+        <a aria-current="page" href="index.html">Home</a>
+        <a href="designs.html">Apparel</a>
+        <a href="#digital-products">Digital Products</a>
+        <a href="#bundles">Bundles</a>
+        <a href="#free-resources">Free Resources</a>
+        <a href="about.html">About</a>
+      </nav>
+    </details>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <h1 class="hero-title" aria-label="NinjaNumberTees"><span class="hero-title-text">NinjaNumberTees</span></h1>
-        <p>Independent creative apparel for spreadsheet tacticians, data analysts, dashboard builders, developers and technology teams who prefer sharp humor over corporate slogans.</p>
-        <div class="actions">
-          <a class="button button-primary" href="designs.html">View designs</a>
-          <a class="button button-secondary" href="developer.html">API review info</a>
+  <main id="main-content" class="commerce-main">
+    <section class="commerce-hero commerce-wrap" aria-labelledby="hero-title">
+      <div class="commerce-hero-copy">
+        <h1 id="hero-title">Products for people who work with data.</h1>
+        <p>T-shirts, Excel tools and productivity products for data professionals.</p>
+        <div class="commerce-actions">
+          <a class="commerce-button commerce-button-primary" href="https://numberninjatees.etsy.com" rel="noopener noreferrer">
+            Shop Apparel
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="commerce-button commerce-button-outline" href="#digital-products">
+            Explore Digital Products
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
-      <div class="signal-panel" aria-label="Brand overview">
-        <div class="status-line"><span></span> Official website</div>
-        <p class="panel-title">Built for data, Excel, BI and programming culture.</p>
-        <p class="muted">Operated from the Netherlands. Transparent contact, privacy, terms, data deletion and developer API use information are published for platform review.</p>
+
+      <div class="hero-product-composition" role="img" aria-label="NumberNinjaTees apparel and Budget Planner preview">
+        <figure class="hero-apparel-visual">
+          <img src="assets/designs/mockups/29-excel-overlord.png" width="1200" height="1500" alt="Excel Overlord NumberNinjaTees T-shirt mockup" fetchpriority="high" decoding="async">
+          <figcaption class="sr-only">Real NumberNinjaTees apparel from the existing design gallery.</figcaption>
+        </figure>
+        <div class="workbook-preview hero-workbook" role="img" aria-label="Derived preview of the validated Budget Planner workbook structure">
+          <div class="workbook-heading">
+            <strong class="workbook-title">Budget Planner Basic</strong>
+            <span class="workbook-status">Coming soon</span>
+          </div>
+          <ul class="workbook-tabs">
+            <li class="is-active">Dashboard</li><li>Income</li><li>Expenses</li><li>Categories</li>
+          </ul>
+          <div class="workbook-grid workbook-grid-hero" aria-hidden="true">
+            <span>1</span><strong>Total Income</strong><span></span>
+            <span>2</span><strong>Total Expenses</strong><span></span>
+            <span>3</span><strong>Net Savings</strong><span></span>
+          </div>
+          <p class="workbook-formulas">SUM&nbsp; · &nbsp;SUMIF&nbsp; · &nbsp;SUMIFS</p>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-heading">
-        <h2>Featured Designs</h2>
-        <p>Selected real NinjaNumberTees design assets from the public gallery.</p>
+    <section class="brand-pillars commerce-wrap" aria-label="NumberNinjaTees product pillars">
+      <article class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m16 8-9 5 4 10 5-2v18h16V21l5 2 4-10-9-5c-2 3-5 4-8 4s-6-1-8-4Z"/></svg>
+        <h2>Wear It</h2>
+        <p>Merchandise for people who live in spreadsheets, dashboards and code.</p>
+      </article>
+      <article class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 5h16l8 8v30H12zM28 5v10h8M17 25h14M17 31h14"/></svg>
+        <h2>Use It</h2>
+        <p>Practical Excel and finance tools built for real-world use.</p>
+      </article>
+      <article class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 10c7-2 13 0 19 4v27c-6-4-12-6-19-4zM43 10c-7-2-13 0-19 4v27c6-4 12-6 19-4z"/></svg>
+        <h2>Master It</h2>
+        <p>Bundles, resources and future learning products.</p>
+      </article>
+    </section>
+
+    <section id="apparel" class="commerce-section commerce-wrap" aria-labelledby="apparel-title">
+      <div class="commerce-section-heading section-heading-row">
+        <div>
+          <h2 id="apparel-title">Apparel</h2>
+          <p>Data culture, worn well.</p>
+        </div>
+        <a class="text-link" href="designs.html">Browse all designs <span aria-hidden="true">→</span></a>
       </div>
-      <div class="design-grid featured-grid">
-        <article class="design-card">
-          <img class="asset-image" loading="lazy" decoding="async" src="assets/designs/thumbs/01-data-driven.jpg" alt="Data Driven NinjaNumberTees design">
-          <h3>Data Driven</h3>
-          <p>Collection: Data & Analytics. A technical apparel design for data-minded operators.</p>
-          <span class="tag">live</span>
+
+      <div class="apparel-rail">
+        <article class="apparel-item">
+          <a href="designs.html#spreadsheet-humor" aria-label="View spreadsheet humor apparel">
+            <img src="assets/designs/mockups/29-excel-overlord.png" width="1200" height="1500" loading="lazy" decoding="async" alt="Excel Overlord NumberNinjaTees shirt">
+            <span class="apparel-name">Excel Overlord</span>
+            <span class="apparel-meta">Spreadsheet Humor</span>
+          </a>
         </article>
-        <article class="design-card">
-          <img class="asset-image" loading="lazy" decoding="async" src="assets/designs/thumbs/02-powered-by-coffee-and-sql.jpg" alt="Powered by Coffee and SQL NinjaNumberTees design">
-          <h3>Powered by Coffee and SQL</h3>
-          <p>Collection: Coding & Developer Humor. Built for query-heavy workdays.</p>
-          <span class="tag">live</span>
+        <article class="apparel-item">
+          <a href="designs.html#coding-and-developer-humor" aria-label="View coding and developer apparel">
+            <img src="assets/designs/mockups/07-my-brain-runs-on-sql.png" width="1200" height="1500" loading="lazy" decoding="async" alt="My Brain Runs on SQL NumberNinjaTees shirt">
+            <span class="apparel-name">My Brain Runs on SQL</span>
+            <span class="apparel-meta">Coding &amp; Developer Humor</span>
+          </a>
         </article>
-        <article class="design-card">
-          <img class="asset-image" loading="lazy" decoding="async" src="assets/designs/thumbs/13-kpi-hunter.jpg" alt="KPI Hunter NinjaNumberTees design">
-          <h3>KPI Hunter</h3>
-          <p>Collection: Dashboard & BI. Track it, improve it, crush it.</p>
-          <span class="tag">live</span>
+        <article class="apparel-item">
+          <a href="designs.html#dashboard-and-bi" aria-label="View dashboard and business intelligence apparel">
+            <img src="assets/designs/mockups/13-kpi-hunter.png" width="1200" height="1500" loading="lazy" decoding="async" alt="KPI Hunter NumberNinjaTees shirt">
+            <span class="apparel-name">KPI Hunter</span>
+            <span class="apparel-meta">Dashboard &amp; BI</span>
+          </a>
         </article>
+      </div>
+
+      <ul class="apparel-types">
+        <li>T-shirts</li><li>Hoodies</li><li>Mugs</li><li>Stickers</li>
+      </ul>
+      <a class="commerce-button commerce-button-primary section-cta" href="https://numberninjatees.etsy.com" rel="noopener noreferrer">
+        Shop Apparel
+        <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </section>
+
+    <section id="digital-products" class="commerce-section commerce-wrap digital-products-section" aria-labelledby="digital-products-title">
+      <div class="commerce-section-heading">
+        <h2 id="digital-products-title">Digital Products</h2>
+        <p>Practical tools that turn financial complexity into a clearer structure.</p>
+      </div>
+      <div class="catalog-mount" data-product-feature="budget-planner-basic" aria-busy="true">
+        <p class="catalog-loading" role="status">Preparing the verified product preview…</p>
+      </div>
+      <noscript>
+        <article class="product-story-noscript">
+          <h3>Budget Planner Basic</h3>
+          <p>Coming soon. A validated Excel budget workbook with Dashboard, Income, Expenses and Categories sheets.</p>
+          <a href="budget-planner-basic.html">View product preview</a>
+        </article>
+      </noscript>
+    </section>
+
+    <section id="bundles" class="commerce-section commerce-wrap" aria-labelledby="bundles-title">
+      <div class="commerce-section-heading">
+        <h2 id="bundles-title">Bundles</h2>
+        <p>Complete toolkits for your workflow are planned, but not available yet.</p>
+      </div>
+      <div class="bundle-rail" data-bundle-list aria-busy="true">
+        <p class="catalog-loading" role="status">Loading bundle roadmap…</p>
       </div>
     </section>
 
-    <section class="section split-section">
-      <div>
-        <h2>Latest Designs</h2>
-        <p>The gallery now includes 55 real design assets copied into the public website asset library.</p>
+    <section id="free-resources" class="commerce-section commerce-wrap resources-section" aria-labelledby="resources-title">
+      <div class="resources-copy">
+        <h2 id="resources-title">Free Resources</h2>
+        <p>Practical downloads and guides are in development. Nothing is available to download yet.</p>
+        <span class="resources-status">In development</span>
       </div>
-      <a class="button button-secondary" href="designs.html">Open full gallery</a>
+      <svg class="resource-document" viewBox="0 0 240 300" aria-hidden="true"><path d="M30 12h118l62 62v214H30zM148 12v62h62M62 116h116M62 154h116M62 192h116M62 230h82"/></svg>
     </section>
 
-    <section class="section">
-      <div class="section-heading">
-        <h2>Collections</h2>
-        <p>Organized for reviewers, shoppers and future product publishing workflows.</p>
-      </div>
-      <div class="collection-grid">
-        <a href="designs.html#spreadsheet-humor">Spreadsheet Humor</a>
-        <a href="designs.html#data-and-analytics">Data & Analytics</a>
-        <a href="designs.html#coding-and-developer-humor">Coding & Developer Humor</a>
-        <a href="designs.html#dashboard-and-bi">Dashboard & BI</a>
-        <a href="designs.html#ai-and-machine-learning">AI & Machine Learning</a>
-        <a href="designs.html#work-chaos-office-humor">Work Chaos / Office Humor</a>
-      </div>
+    <section class="closing-statement commerce-wrap" aria-label="Brand promise">
+      <p>Wear it. Use it. Master it.</p>
     </section>
   </main>
 
-  <footer class="footer"><div class="footer-brand"><strong>NinjaNumberTees</strong><span>Official Website</span><span>Operated from the Netherlands</span><a href="mailto:hello@ninjanumbertees.com">hello@ninjanumbertees.com</a></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="https://numberninjatees.etsy.com" rel="noopener">Shop</a><a href="designs.html">Designs</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Data Deletion</a><a href="developer.html">Developer</a><a href="developer.html">API Use</a></nav><p class="footer-meta">Copyright © 2026 NinjaNumberTees.</p></footer>
+  <footer class="footer commerce-footer commerce-wrap">
+    <div class="footer-brand">
+      <strong>NumberNinjaTees</strong>
+      <span>Products for people who work with data.</span>
+      <span>Operated from the Netherlands</span>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="https://numberninjatees.etsy.com" rel="noopener noreferrer">Shop</a>
+      <a href="designs.html">Designs</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="data-deletion.html">Data Deletion</a>
+      <a href="developer.html">Developer</a>
+      <a href="developer.html">API Use</a>
+    </nav>
+    <p class="footer-meta">Copyright © 2026 NumberNinjaTees.</p>
+  </footer>
+
+  <script src="data/products.js" defer></script>
+  <script src="commerce.js" defer></script>
 </body>
 </html>
