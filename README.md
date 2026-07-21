@@ -1,5 +1,6 @@
-# numberninjatees.github.io
-NinjaNumberTees website and verification host
+# NumberNinjaDesigns website
+
+Production storefront and verification host for NumberNinjaDesigns. The legacy repository and canonical domain identifiers remain unchanged until a separately authorized external cutover.
 
 ## Studio OS Phase 9
 

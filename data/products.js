@@ -9,7 +9,7 @@
     return Object.freeze(value);
   }
 
-  global.NumberNinjaCatalog = deepFreeze({
+  global.NumberNinjaDesignsCatalog = deepFreeze({
     products: [
       {
         id: "budget-planner-basic",

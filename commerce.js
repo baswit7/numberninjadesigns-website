@@ -1,7 +1,7 @@
 (function initializeCommerce() {
   "use strict";
 
-  var LOG_PREFIX = "[NumberNinjaTees Commerce]";
+  var LOG_PREFIX = "[NumberNinjaDesigns Commerce]";
 
   function log(level, message, detail) {
     if (!window.console || typeof window.console[level] !== "function") return;
@@ -136,7 +136,7 @@
 
   function start() {
     setupMobileMenus();
-    var catalog = window.NumberNinjaCatalog;
+    var catalog = window.NumberNinjaDesignsCatalog;
     var mounts = document.querySelectorAll("[data-product-feature], [data-bundle-list]");
     if (!mounts.length) {
       log("info", "Static commerce page ready.");

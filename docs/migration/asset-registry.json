@@ -1,0 +1,2512 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "NumberNinjaDesigns",
+  "generatedAt": "2026-07-21",
+  "inventoryScope": "Production assets referenced by the 55-item design catalog, active storefront favicon and NumberNinjaDesigns brand/social assets.",
+  "designCount": 55,
+  "assetCount": 169,
+  "visibleTextPolicy": "Catalog titles record intended artwork text; no OCR assertion is made.",
+  "publicationStatusSource": "data/designs.json status field; favicon and social asset are referenced by active public HTML pages; wordmark is an approved reusable brand source.",
+  "designs": [
+    {
+      "designId": "01-data-driven",
+      "title": "Data Driven",
+      "visibleText": [
+        "Data Driven"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/01-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1024
+          },
+          "sizeBytes": 1789578,
+          "sha256": "7564ce45b3caf8a4f939190da9a3ec9d9517fc047af9e5386639fc897909c6b6"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/01-data-driven.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 102511,
+          "sha256": "f3cfd0ffdf8595e658f7ddc26a98c8c37e013e20aecd563246385b8a6a51b139"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/01-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 299312,
+          "sha256": "dad7edeea9043392e9f1069944591549c6d9e33bb1a68c1719191116ffefa73d"
+        }
+      ]
+    },
+    {
+      "designId": "02-powered-by-coffee-and-sql",
+      "title": "Powered by Coffee and SQL",
+      "visibleText": [
+        "Powered by Coffee and SQL"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/02-powered-by-coffee-and-sql.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1375,
+            "height": 1144
+          },
+          "sizeBytes": 1343658,
+          "sha256": "703a1f0841791ea58a9a8088d5f8dd0d6a20e045a86ea9eb9283af3f48bb2212"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/02-powered-by-coffee-and-sql.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 599
+          },
+          "sizeBytes": 71019,
+          "sha256": "b98316a6e6826cc45d7f9b1a282ac0faaa1c901e2d5d1c5496a377a4fed5e9ca"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/02-powered-by-coffee-and-sql.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 290359,
+          "sha256": "0c475ffa4459348a3d68ad27635d35924db898e4de2bc9daaec8c68372103aab"
+        }
+      ]
+    },
+    {
+      "designId": "03-sheet-happens",
+      "title": "Sheet Happens",
+      "visibleText": [
+        "Sheet Happens"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/03-sheet-happens.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2605534,
+          "sha256": "cb39ff6429601bb7f0212590aac9ae01eb7aa767aeee0c59047186f70cf397d9"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/03-sheet-happens.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 45610,
+          "sha256": "689c5451543e155f87b1d52214ab71658ef298687cf5edbeda3d59890223f11d"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/03-sheet-happens.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 149669,
+          "sha256": "c0d9f237f8d107eeb07eb4a02a68c04d22250477f0f0f148f7ea46217557781f"
+        }
+      ]
+    },
+    {
+      "designId": "04-caffeine-code-repeat",
+      "title": "Caffeine Code Repeat",
+      "visibleText": [
+        "Caffeine Code Repeat"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/04-caffeine-code-repeat.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2381307,
+          "sha256": "f3fc8753a6af90977c5ecbedefe8bbaed2a1d9aa1591046b8323615a8ae41cdc"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/04-caffeine-code-repeat.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 34183,
+          "sha256": "463511367b33709fd4af725ff083492605148ec531785a8140edd66b0713950e"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/04-caffeine-code-repeat.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 118392,
+          "sha256": "dd885a44c61c7402e8c7a02fdbf135a25c2cd34c2aaadf632385783772c15527"
+        }
+      ]
+    },
+    {
+      "designId": "05-data-rebel",
+      "title": "Data Rebel",
+      "visibleText": [
+        "Data Rebel"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/05-data-rebel.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1024
+          },
+          "sizeBytes": 2017273,
+          "sha256": "805b51eda7a48e525e3f337bd4eb27367b08e63ba40b026708642b7053235bf6"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/05-data-rebel.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 96227,
+          "sha256": "13a88ff5e60ebf91bb1726dc18fec1992d6d64c2ef124d2874815297c5494b8d"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/05-data-rebel.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 299360,
+          "sha256": "4a8a3708b8ec1d397da69ba2b1fd9991ec91e86681ad96460d990a87339d2b78"
+        }
+      ]
+    },
+    {
+      "designId": "06-overthinking-is-my-cardio",
+      "title": "Overthinking Is My Cardio",
+      "visibleText": [
+        "Overthinking Is My Cardio"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/06-overthinking-is-my-cardio.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2312463,
+          "sha256": "c60da7a61f52343f44d92ca573bfeef2e004ba5d3691e9b7568a4eb7022cf5e7"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/06-overthinking-is-my-cardio.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 182019,
+          "sha256": "6ff32ac1ece858a6e2a90365349345ba2c1f09a8b5e90aac6e993a4516182fcf"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/06-overthinking-is-my-cardio.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 502086,
+          "sha256": "e3ca42461ad87ae816f8b5f8b58cb2dd3e43a1364ba7abae889e6907f0ac000d"
+        }
+      ]
+    },
+    {
+      "designId": "07-my-brain-runs-on-sql",
+      "title": "My Brain Runs on SQL",
+      "visibleText": [
+        "My Brain Runs on SQL"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/07-my-brain-runs-on-sql.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2050169,
+          "sha256": "1bc51d92f5f4a328da30792beaeaffd70f0ce8d04590eb0bf5f0d3ba0e1fa185"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/07-my-brain-runs-on-sql.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 43639,
+          "sha256": "abb2b5cc6be4744fb2ae27d829ae72ca9b6bbc86994ec0e8a6feb82cb0ed6169"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/07-my-brain-runs-on-sql.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 150704,
+          "sha256": "855f1d946f3e3521ec58f71545dd1ae7cac3fc63243abaee9e6836b6309040cb"
+        }
+      ]
+    },
+    {
+      "designId": "08-data-gt-opinions",
+      "title": "Data Greater Than Opinions",
+      "visibleText": [
+        "Data Greater Than Opinions"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/08-data-gt-opinions.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1393,
+            "height": 1129
+          },
+          "sizeBytes": 922884,
+          "sha256": "6b1d56ac1d2e29a2289210420d4503e255ce23809400ed5b70b2a8039808f1c8"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/08-data-gt-opinions.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 584
+          },
+          "sizeBytes": 48444,
+          "sha256": "2daf211b0e9fb7339aeedbbd22e290dca6250d0522e63f2d045010e8e149bb6c"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/08-data-gt-opinions.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 216546,
+          "sha256": "961872d281fb883d7ea4a766a21f92545a9469d6225f1eacb0275fdcdf0c837e"
+        }
+      ]
+    },
+    {
+      "designId": "09-python-is-my-spirit-animal",
+      "title": "Python Is My Spirit Animal",
+      "visibleText": [
+        "Python Is My Spirit Animal"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/09-python-is-my-spirit-animal.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1300,
+            "height": 1210
+          },
+          "sizeBytes": 1060876,
+          "sha256": "fe52042eb7dca35b6183f6246d67d2e6e43bf31a26f302f606fa89418098ce60"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/09-python-is-my-spirit-animal.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 670
+          },
+          "sizeBytes": 67952,
+          "sha256": "f4f73bb563ec5b46bb17142d0491a1314b41eb374a51fed7cdc90a7ec50ce5b2"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/09-python-is-my-spirit-animal.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 270063,
+          "sha256": "73a48aba983f04bd7e04ec29af9e3f3160c770e669698fb413e730a4e91161e4"
+        }
+      ]
+    },
+    {
+      "designId": "10-knowledge-is-power",
+      "title": "Knowledge Is Power",
+      "visibleText": [
+        "Knowledge Is Power"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/10-knowledge-is-power.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2789464,
+          "sha256": "611e238bf0527e2be9afb79c98acc30039af6ac004f7e48cd4403be9dd680c39"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/10-knowledge-is-power.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 78330,
+          "sha256": "ce3a4a593b58426443df56196fe288121bb52f45c007b49cf637eef80ab56f91"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/10-knowledge-is-power.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 230545,
+          "sha256": "c87313a5820fd833504df970c187b78c7b5dcf432af27fff049beb24e60b1d5f"
+        }
+      ]
+    },
+    {
+      "designId": "11-brain-loading",
+      "title": "Brain Loading",
+      "visibleText": [
+        "Brain Loading"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/11-brain-loading.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2036275,
+          "sha256": "3c2159aff56310dde7259909cffb911f2823bf7c5470a5eb5859b8166450d977"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/11-brain-loading.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 167063,
+          "sha256": "436e25cd28b3b1535de924c37710b9e79acd10b027d6f65cf3584e73e3a04be3"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/11-brain-loading.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 465133,
+          "sha256": "563665ed938ef9a6af159b5ad2be892d8c50230df2b6b5ac9c333e08a57c783f"
+        }
+      ]
+    },
+    {
+      "designId": "12-data-driven",
+      "title": "Data Driven",
+      "visibleText": [
+        "Data Driven"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/12-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2439456,
+          "sha256": "4892626ae95d746e7be579125160ed58bb95795221ff5186c42e6b0325085c89"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/12-data-driven.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 56740,
+          "sha256": "92891260849d3855b04b04c70000720edb655623714f139af3e68472f43efcf9"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/12-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 160290,
+          "sha256": "0024be9385b0e4b536ce5499962291cc30a83c4895f77aa67b4a6a1680890dfc"
+        }
+      ]
+    },
+    {
+      "designId": "13-kpi-hunter",
+      "title": "KPI Hunter",
+      "visibleText": [
+        "KPI Hunter"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/13-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2812610,
+          "sha256": "a3496884a816fdc0ead33b4a6a5e80eac007fbe6214029e61df0b05ef6ad8ff9"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/13-kpi-hunter.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 56959,
+          "sha256": "7fca1ee17778ae473d597817b8dbb2c678fd5541647136d5075863aa177134a1"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/13-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 173977,
+          "sha256": "6e974bed9e64207deee7a8987a2ba416080d9dc121ce1a9cf08d527cb91b3539"
+        }
+      ]
+    },
+    {
+      "designId": "14-eat-sleep-query-repeat",
+      "title": "Eat Sleep Query Repeat",
+      "visibleText": [
+        "Eat Sleep Query Repeat"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/14-eat-sleep-query-repeat.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1267540,
+          "sha256": "44c80216c8d89fdeb695aeb718ad4b22ea9ab1252eb4957b28eeb158cf264038"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/14-eat-sleep-query-repeat.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 71006,
+          "sha256": "437b79ecf2458accec43e96c821bc5314649c2a3e096d41792d62f369021eb1a"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/14-eat-sleep-query-repeat.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 312987,
+          "sha256": "144d2f200c05f0994ef010d00356ed5a50f0ecf14caab59973ec4138fd7319cb"
+        }
+      ]
+    },
+    {
+      "designId": "15-respect-the-brainpower",
+      "title": "Respect The Brainpower",
+      "visibleText": [
+        "Respect The Brainpower"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/15-respect-the-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2714543,
+          "sha256": "3eceb0f087f20e2786922831f8c7b301b958038ffa6413d732c49a217d76b761"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/15-respect-the-brainpower.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 50153,
+          "sha256": "7d6e8c61d1f150533c6456e3a892d07cdb35d36194b4467893b67af85f3a9830"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/15-respect-the-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 162488,
+          "sha256": "955085aef69fe7896153cb07d4ea4c2794ccb6bc342d884c8b5493c0abd51bed"
+        }
+      ]
+    },
+    {
+      "designId": "16-chief-nerd-officer",
+      "title": "Chief Nerd Officer",
+      "visibleText": [
+        "Chief Nerd Officer"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/16-chief-nerd-officer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1146,
+            "height": 1373
+          },
+          "sizeBytes": 1361988,
+          "sha256": "9617268836ddac17db2f35d787f0e943567e7975a8a2806f3faf45137b7ed25f"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/16-chief-nerd-officer.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 601,
+            "height": 720
+          },
+          "sizeBytes": 77655,
+          "sha256": "72dc0b98d148e0c07fb5b6da9004a348caef5b0a1650a7616a29b5db7fb45c53"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/16-chief-nerd-officer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 299755,
+          "sha256": "6718e39a3c92bbe5e546c32c7cdfb447916147aff0fd73c7dd27b4750f81be4f"
+        }
+      ]
+    },
+    {
+      "designId": "17-error-404-self-not-found",
+      "title": "Error 404 Self Not Found",
+      "visibleText": [
+        "Error 404 Self Not Found"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/17-error-404-self-not-found.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2363804,
+          "sha256": "ad899936130491226e041f8d476df0ac8d0b8463cd70151fc2f51f7bf8da698f"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/17-error-404-self-not-found.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 34519,
+          "sha256": "4d24621081d862cf3ff39a7badf53185c0fe205fbaa3d11adf8d17b19dad1b8b"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/17-error-404-self-not-found.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 114604,
+          "sha256": "297c1c7c8f20da181f4452b1be462a4d509c20d8dc9f5b08ce9ec1b4242c3fe8"
+        }
+      ]
+    },
+    {
+      "designId": "18-data-slayer",
+      "title": "Data Slayer",
+      "visibleText": [
+        "Data Slayer"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/18-data-slayer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1096336,
+          "sha256": "da2e6ba0ad1ec411bfa278a5484f84387142bfaf3a4c7e4314146ac28ede8081"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/18-data-slayer.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 80946,
+          "sha256": "a8b86304a22f4790e444a270fff2e23c8f9714e212df40c9935669aa3a46cc81"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/18-data-slayer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 296838,
+          "sha256": "ddd84dc70c75f3c4fe610add3e142aa3085f55bb4cec66397d271387be8babf5"
+        }
+      ]
+    },
+    {
+      "designId": "19-number-one-nerd",
+      "title": "Number One Nerd",
+      "visibleText": [
+        "Number One Nerd"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/19-number-one-nerd.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2624391,
+          "sha256": "d88b9f4d0b51fbd6bec8df0f0b5c9772586d412d4d5db8675d1ffd8251f6cdf3"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/19-number-one-nerd.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 57138,
+          "sha256": "1bc6dd8d3c87e1fdab1fadeaff757305e722332d98073910493300950116d3cb"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/19-number-one-nerd.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 171464,
+          "sha256": "7173facd417ed6580a3eaf763cb2344e89a50ebe6c09b1de1d2ac5796e7cc049"
+        }
+      ]
+    },
+    {
+      "designId": "20-left-brain-right-brain-i-use-both",
+      "title": "Left Brain Right Brain I Use Both",
+      "visibleText": [
+        "Left Brain Right Brain I Use Both"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/20-left-brain-right-brain-i-use-both.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1915947,
+          "sha256": "551f22a9049e35e77e981a352535b881d3ad270c855c8131cfcb88dbc39de508"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/20-left-brain-right-brain-i-use-both.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 145922,
+          "sha256": "1296678364a62be781d9c8e8262ad6456c528df3f64989688b587057f4bb8306"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/20-left-brain-right-brain-i-use-both.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 419303,
+          "sha256": "b7c9b8cfee4882b202148a9432cdfe992d4bea5c9f08a3d35b6e94b0fad8992b"
+        }
+      ]
+    },
+    {
+      "designId": "21-nerd-king",
+      "title": "Nerd King",
+      "visibleText": [
+        "Nerd King"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/21-nerd-king.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2252449,
+          "sha256": "a013f9152b5a4d3322918333fa609622b3c9cebe4d56b3378a27043543911148"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/21-nerd-king.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 26713,
+          "sha256": "6a9a19abebd0e67cc19cb8ac1e466ca318d994112d46a8b0896b42528a96b673"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/21-nerd-king.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 99116,
+          "sha256": "aabf8bc9cdae3e792dca06d44adf529363e662791c761b20dc08861f7bad951a"
+        }
+      ]
+    },
+    {
+      "designId": "22-data-driven",
+      "title": "Data Driven",
+      "visibleText": [
+        "Data Driven"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/22-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1709218,
+          "sha256": "38b06e24d55258574087bdb31f7adddde7ea4eac945ced10d75e4dfc2861b92a"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/22-data-driven.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 120284,
+          "sha256": "35aac9370012af92fa9db5d226bc88bf8f1ae4a1caa356c4b155f7d680b5b3e9"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/22-data-driven.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 391910,
+          "sha256": "d824523ecb88e8fb88602c3d5e21490e6bffa8acdf3f5fe8c6c20323ee69df95"
+        }
+      ]
+    },
+    {
+      "designId": "23-logic-gt-emotion",
+      "title": "Logic Greater Than Emotion",
+      "visibleText": [
+        "Logic Greater Than Emotion"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/23-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2065281,
+          "sha256": "12be83f05bad5e7b6e23e406c7d2ac4fad97a1e377430dc6d587836559b3b122"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/23-logic-gt-emotion.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 55035,
+          "sha256": "02f2e5b8198c5ed380893e85c8cad686cf6008d2bdcd8a77f90017ce44ebc2bd"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/23-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 172677,
+          "sha256": "abadbf1b620938f43844f104cecb56f2f4a3f65e7321c3af0d27ed9fd38e7b77"
+        }
+      ]
+    },
+    {
+      "designId": "24-nerd-mode-activated",
+      "title": "Nerd Mode Activated",
+      "visibleText": [
+        "Nerd Mode Activated"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/24-nerd-mode-activated.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2037152,
+          "sha256": "4be7414f74b8e6e6ded20d7233790769bce4856d9c00d28fb28e91c134d480cd"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/24-nerd-mode-activated.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 152802,
+          "sha256": "e5384ba6fd59278f2e5c4c587cfc7337fa63e0675dab0f49f8bd5fde92bfaba0"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/24-nerd-mode-activated.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 456709,
+          "sha256": "98df98a8962fcf92c8e60df090046d6c678d77efae370b5ae5d77a7db4dc481c"
+        }
+      ]
+    },
+    {
+      "designId": "25-kpi-hunter",
+      "title": "KPI Hunter",
+      "visibleText": [
+        "KPI Hunter"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/25-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1832969,
+          "sha256": "2d35d4c11c2cd340933c56d6aca879392307a924de2d4a6311870c0c5284e6cf"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/25-kpi-hunter.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 126444,
+          "sha256": "86fd53348356df26cc304fe3591aee5b23b584c5b1a7cac44542c7e171fcf3db"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/25-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 401145,
+          "sha256": "c57a63cd486f20c48ca1f92a5bca9d3ff64e8ef593f63694c5c1277b48a76d7d"
+        }
+      ]
+    },
+    {
+      "designId": "26-analyze-and-conquer",
+      "title": "Analyze and Conquer",
+      "visibleText": [
+        "Analyze and Conquer"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/26-analyze-and-conquer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1402,
+            "height": 1122
+          },
+          "sizeBytes": 1098928,
+          "sha256": "c33eda380f382a3d6cba629581b545d575c31fa987c50b3828557d8bdd62837a"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/26-analyze-and-conquer.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 576
+          },
+          "sizeBytes": 65844,
+          "sha256": "235a1e0a31cb15acc49bb396197e90aba24300283e5ba9ff4a04aab90ac10f97"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/26-analyze-and-conquer.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 244297,
+          "sha256": "e21ae2653654cd148e30d78a972709c56bb7d48f49c17c27ec3290359a26cc10"
+        }
+      ]
+    },
+    {
+      "designId": "27-python-gt-everything",
+      "title": "Python Greater Than Everything",
+      "visibleText": [
+        "Python Greater Than Everything"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/27-python-gt-everything.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2443985,
+          "sha256": "a76c6692a2d60a3c66cc1a71dfe0bbe92fecb37b4cd2dd2d209da983941d58a7"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/27-python-gt-everything.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 48291,
+          "sha256": "04154d068b19b358f28223e154c12b86f257a2df98c1e79cd7bd52d72ad6c870"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/27-python-gt-everything.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 148820,
+          "sha256": "cf9a50e4ca735f41970011f8e221ab8356e0d28ca465ddfa16e04efa0978fe3f"
+        }
+      ]
+    },
+    {
+      "designId": "28-release-my-inner-nerd",
+      "title": "Release My Inner Nerd",
+      "visibleText": [
+        "Release My Inner Nerd"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/28-release-my-inner-nerd.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2655034,
+          "sha256": "ee2ad9d026a15db6e84801cf84faf6854e3151c8462cdf8f92dc66605c1c30aa"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/28-release-my-inner-nerd.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 46936,
+          "sha256": "200d72358f3c36f1f11600b19b8b460767960233072aa583568ca98e81807502"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/28-release-my-inner-nerd.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 149918,
+          "sha256": "5497ee1c0d45db7fb4903e5b1bdc18f508ae66e85d46702c4ae4a27eaf095686"
+        }
+      ]
+    },
+    {
+      "designId": "29-excel-overlord",
+      "title": "Excel Overlord",
+      "visibleText": [
+        "Excel Overlord"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/29-excel-overlord.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2503161,
+          "sha256": "28d9b92637d48c5f051fc9426c028d998f897e9e9631172b1b396d8f6fa82494"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/29-excel-overlord.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 37366,
+          "sha256": "6efdedcda18aa82000f23a03bca3ce1602f54d7f861457aaebe4861e8e60a119"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/29-excel-overlord.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 133918,
+          "sha256": "7c5583b016390bc0a6e090bb540067aba22ebee1353c5edd31d06f346deae087"
+        }
+      ]
+    },
+    {
+      "designId": "30-problem-solving",
+      "title": "Problem Solving",
+      "visibleText": [
+        "Problem Solving"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/30-problem-solving.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1402,
+            "height": 1122
+          },
+          "sizeBytes": 1051794,
+          "sha256": "011e08710b0ee10b2b50b0943fc738d111dbd9519aae0128c5c9d92259324573"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/30-problem-solving.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 576
+          },
+          "sizeBytes": 53952,
+          "sha256": "056835d16513d8ad2baa7da322ff4e8a45b390a6434aee7f7bd6170e29ddc469"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/30-problem-solving.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 230734,
+          "sha256": "abdd8caee3016ce2956a7b858f95f9583835dc7470ac7e04bc398f3cebc62d7a"
+        }
+      ]
+    },
+    {
+      "designId": "31-overthinking-loading",
+      "title": "Overthinking Loading",
+      "visibleText": [
+        "Overthinking Loading"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/31-overthinking-loading.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2343280,
+          "sha256": "c855b5c215d5e3e36ae896503c81f9df6936be2fa8841a1dfb4002d268dc8ff3"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/31-overthinking-loading.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 31804,
+          "sha256": "28b8e5d517062d5ed4619bf38f46caa060199e399563180593fd14517f1a05ff"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/31-overthinking-loading.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 109570,
+          "sha256": "e24bcdd6c9b2680d88f5c065003ae818f4c018ee5f68e240f251d09568469888"
+        }
+      ]
+    },
+    {
+      "designId": "32-too-smart-for-small-talk",
+      "title": "Too Smart For Small Talk",
+      "visibleText": [
+        "Too Smart For Small Talk"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/32-too-smart-for-small-talk.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2708931,
+          "sha256": "7da1793dc0aa0b55b06649ec99649b87808dbc2bc824aa0b2c2acbff0d9a0c5c"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/32-too-smart-for-small-talk.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 58238,
+          "sha256": "455eae1aefb573ed6024ef8f2549fe1ac4cd9e58448ab77b16019b7dc3e4bab1"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/32-too-smart-for-small-talk.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 175668,
+          "sha256": "fccac23ae56afb9b6e13914111d753e1c7ce5de550a5c440c5aea78e639a51e9"
+        }
+      ]
+    },
+    {
+      "designId": "33-data-over-drama",
+      "title": "Data Over Drama",
+      "visibleText": [
+        "Data Over Drama"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/33-data-over-drama.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1605454,
+          "sha256": "869dc71e24ab240546c1ccff7f29a3518b1eb6c03a22aaf77416da9011d91a28"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/33-data-over-drama.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 116478,
+          "sha256": "6e6d6d51c3209d12232be07bfc26a3f434c0dbd58d85ee81517093e64f8a6484"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/33-data-over-drama.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 365236,
+          "sha256": "e7beedb259563783ee98344c0a77f15c4d52e9ba07d8cd16b46ef330cce82aa7"
+        }
+      ]
+    },
+    {
+      "designId": "34-spreadsheet-wizard",
+      "title": "Spreadsheet Wizard",
+      "visibleText": [
+        "Spreadsheet Wizard"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/34-spreadsheet-wizard.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sizeBytes": 2245185,
+          "sha256": "3773add9e84dfc0f374e9024b59901793305b7da538465b94a3b9a62493bf20f"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/34-spreadsheet-wizard.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 480
+          },
+          "sizeBytes": 29778,
+          "sha256": "66f9ed095a8ada86d14b6de54e9449c181688dcead1e497155fb981e8d7e1e76"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/34-spreadsheet-wizard.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 100884,
+          "sha256": "1a6c5b27e9d66d8ce2c4c125298948e5bdc11314d2f1011676031158f355d5d8"
+        }
+      ]
+    },
+    {
+      "designId": "35-nerd-mode-activated",
+      "title": "Nerd Mode Activated",
+      "visibleText": [
+        "Nerd Mode Activated"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/35-nerd-mode-activated.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2264451,
+          "sha256": "d2e93e73df8193772283e85ed712faec0d16b596aec54106258afbc9b6200ab1"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/35-nerd-mode-activated.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 183085,
+          "sha256": "b233734e6ef271cc19f09850d795f7a5f5a71c86fba3199c56c64594037e243a"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/35-nerd-mode-activated.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 494698,
+          "sha256": "be7e97b7d4851f8fc87d66314986108ecada3473e6d0466d63b342c715dad8a1"
+        }
+      ]
+    },
+    {
+      "designId": "36-target-the-data",
+      "title": "Target The Data",
+      "visibleText": [
+        "Target The Data"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/36-target-the-data.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1037496,
+          "sha256": "9de0a88a48ed161513e1ecde6b95215247be100e271aa13a1a35d8bcf58b100b"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/36-target-the-data.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 71599,
+          "sha256": "42b0ca918d233e4179bb6dfe398d3a39b7fee3e8f9350eb76e969e544e87e445"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/36-target-the-data.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 283689,
+          "sha256": "b4fd1fbb553c72c8e0e7b9ebfd3c87fd95c0c839cc9d7540c2325ef33d9a7608"
+        }
+      ]
+    },
+    {
+      "designId": "37-logic-gt-emotion",
+      "title": "Logic Greater Than Emotion",
+      "visibleText": [
+        "Logic Greater Than Emotion"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/37-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1270589,
+          "sha256": "4a9b7c93c4936de5122676bd70d469e2c9f3797e1dcbd61c5be74af9353dc9db"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/37-logic-gt-emotion.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 74244,
+          "sha256": "9d950fc23ba6c6ffe3373761ddc5492b5a4c9eadd3c0641594d8e39a4be960d4"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/37-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 300770,
+          "sha256": "b294567248ac3dc3c0cf8201b1d933903d4b7e2d870c5aa311c3c764fc231d83"
+        }
+      ]
+    },
+    {
+      "designId": "38-sql-ninja",
+      "title": "SQL Ninja",
+      "visibleText": [
+        "SQL Ninja"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/38-sql-ninja.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sizeBytes": 2769705,
+          "sha256": "dafafde857b86266aa52248535ad6d862d31813d289be48f24e84d7384bf52de"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/38-sql-ninja.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 480
+          },
+          "sizeBytes": 47756,
+          "sha256": "4372db159bedb0b92a4b584c830d53ab3a62bb20d0c1c404a616286e065b3e64"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/38-sql-ninja.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 165482,
+          "sha256": "4ddcc5a9712bb6d56f14436853e94d534a7c3f6c707e55cf7ec6052b426f9597"
+        }
+      ]
+    },
+    {
+      "designId": "39-select-star-from-life",
+      "title": "Select Star From Life",
+      "visibleText": [
+        "Select Star From Life"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/39-select-star-from-life.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1370,
+            "height": 1148
+          },
+          "sizeBytes": 944933,
+          "sha256": "bf440ec4118080071471c5cc5e5f030bfd3a304e036ca1241cf044667aca48e2"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/39-select-star-from-life.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 603
+          },
+          "sizeBytes": 56258,
+          "sha256": "ce7d0e156715afb5ca51cad8be2c6032e37322db96b540220343db95402e0edd"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/39-select-star-from-life.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 224617,
+          "sha256": "d294e4fd302676a7ecdce8328854ebc7bea49d6e56367d36eeae1733e0eead0f"
+        }
+      ]
+    },
+    {
+      "designId": "40-supreme-nerd-leader",
+      "title": "Supreme Nerd Leader",
+      "visibleText": [
+        "Supreme Nerd Leader"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/40-supreme-nerd-leader.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1936119,
+          "sha256": "88b004cac215e931aec7b6ac6ba7bb894989be892dbd499962a3ac5d8cdd6a28"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/40-supreme-nerd-leader.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 136462,
+          "sha256": "cad945880bc5d28d89dc5e854b6ce122dc0da5ba6d9febdcdcfa297a0d4a9a53"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/40-supreme-nerd-leader.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 422592,
+          "sha256": "95bef865e6004f6084696dae6d35a13e101a133062c98a6a0d2f5b7dcb3186bd"
+        }
+      ]
+    },
+    {
+      "designId": "41-nerd-mode",
+      "title": "Nerd Mode",
+      "visibleText": [
+        "Nerd Mode"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/41-nerd-mode.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2894267,
+          "sha256": "9487df765c502d5806027742dc9150f722a832e479be950f50e1814eb11b77f5"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/41-nerd-mode.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 67516,
+          "sha256": "8384677bde495e247c369a38f421951112cc7d1f4cebb3762a5019d797adde06"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/41-nerd-mode.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 201520,
+          "sha256": "b2765eb0e872f3bccd3cefef5cd40c3c7c6159e2b9c9d3c6973d873694cff082"
+        }
+      ]
+    },
+    {
+      "designId": "42-nerd-king",
+      "title": "Nerd King",
+      "visibleText": [
+        "Nerd King"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/42-nerd-king.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1145,
+            "height": 1374
+          },
+          "sizeBytes": 1329455,
+          "sha256": "6227c051a4f2faa0f80d307c0edf1e7640b7dae110a366e90aa003396ec792b7"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/42-nerd-king.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 600,
+            "height": 720
+          },
+          "sizeBytes": 79322,
+          "sha256": "71ee64464042cae927eae6cdd5ef348275464bfe4de232b6fde7798bd9cdde1b"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/42-nerd-king.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 296110,
+          "sha256": "47acc00fd3e07887867cb5a8dcec9ac315acad8ba48594bba28cf8230f36f63d"
+        }
+      ]
+    },
+    {
+      "designId": "43-kpi-hunter",
+      "title": "KPI Hunter",
+      "visibleText": [
+        "KPI Hunter"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/43-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1511154,
+          "sha256": "8cbd683846972213b7d37e0c48757c2fc6df727b0211762698b1e3069fc62dcc"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/43-kpi-hunter.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 93559,
+          "sha256": "941cc065957110ebd37e500cf15b5c96e84a76c8eac3552cffbf242d21e89ae9"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/43-kpi-hunter.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 353466,
+          "sha256": "42dfa913aed73d3a608c20a87871563a9e9abf0691a140cfb16850b16dfad3f0"
+        }
+      ]
+    },
+    {
+      "designId": "44-discipline-today-success-tomorrow",
+      "title": "Discipline Today Success Tomorrow",
+      "visibleText": [
+        "Discipline Today Success Tomorrow"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/44-discipline-today-success-tomorrow.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2018836,
+          "sha256": "13557c003d520d9fee2e82393f5cff5531b418a7bd6ea280fdb8094c1f93a174"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/44-discipline-today-success-tomorrow.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 143588,
+          "sha256": "18cb1f2dc0d8ed0afe09ebcd86ff4945cd5577a8c80a7b601bcd020f66cd6424"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/44-discipline-today-success-tomorrow.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 436305,
+          "sha256": "7143ad4a1148d3f7f81fb2056e8cff2b5f39c030da837daadb15435d1a9c21ff"
+        }
+      ]
+    },
+    {
+      "designId": "45-dashboard-addict-gt-everything",
+      "title": "Dashboard Addict Greater Than Everything",
+      "visibleText": [
+        "Dashboard Addict Greater Than Everything"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/45-dashboard-addict-gt-everything.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1501136,
+          "sha256": "339762143c06751777772b02c9e918f158d22fa298dc6bd60febe60b5594e56c"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/45-dashboard-addict-gt-everything.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 93981,
+          "sha256": "356a2782b7a2d4bab91a0444084c1ab92299df7ca29638aa511a6aa0dcb3df24"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/45-dashboard-addict-gt-everything.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 341375,
+          "sha256": "5f35e2e5026987ab11365a324188a14b12046675eb5bdee1027d205a43727761"
+        }
+      ]
+    },
+    {
+      "designId": "46-respect-the-brainpower",
+      "title": "Respect The Brainpower",
+      "visibleText": [
+        "Respect The Brainpower"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/46-respect-the-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2345579,
+          "sha256": "d351c11290c9e0da8d0ce0b1ce64d8db88c7279955e6ae3a2dbbee7c819842e2"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/46-respect-the-brainpower.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 200171,
+          "sha256": "b0ea817dda0ee669c48e60696460c959923a5bc03c61184c639eb819530597bb"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/46-respect-the-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 537700,
+          "sha256": "13018fec7ff3080c33727ad546588137033080ba8254aaf7e263469aa8f91b1a"
+        }
+      ]
+    },
+    {
+      "designId": "47-keep-calm-and-check-the-data",
+      "title": "Keep Calm and Check The Data",
+      "visibleText": [
+        "Keep Calm and Check The Data"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/47-keep-calm-and-check-the-data.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1155338,
+          "sha256": "07da705bc4fc9d092dbbdc46bc3c937adf3a62ffdbda27556aae2eef074c2adf"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/47-keep-calm-and-check-the-data.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 86113,
+          "sha256": "f53cb538298f4d49d3d5f1df067fd313828febb6f8f854fb94e1675736fe0ff8"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/47-keep-calm-and-check-the-data.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 328386,
+          "sha256": "e0e652b536c6ae3646ed00a089438e3d83ba2eeac1129a07c0c463978453a7ee"
+        }
+      ]
+    },
+    {
+      "designId": "48-dashboard-hero",
+      "title": "Dashboard Hero",
+      "visibleText": [
+        "Dashboard Hero"
+      ],
+      "visibleTextBasis": "catalog-title",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/48-dashboard-hero.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1306,
+            "height": 1204
+          },
+          "sizeBytes": 1343397,
+          "sha256": "1a4f2a046f190f9b82aefccc138300b2e9d03389f41ff6ab1297f291018a966c"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/48-dashboard-hero.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 664
+          },
+          "sizeBytes": 74533,
+          "sha256": "5f5be6b4976613fcb90147060d9577adf8e0d0d19c599198e8076622af4cc6b6"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/48-dashboard-hero.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 334470,
+          "sha256": "c3667e5cfae0eeea299bc3e783852d555bdd8a45fc8cc3bfd099f4f08d3e8142"
+        }
+      ]
+    },
+    {
+      "designId": "49-logic-gt-emotion",
+      "title": "Logic Greater Than Emotion",
+      "visibleText": [
+        "LOGIC",
+        "> EMOTION"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/49-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2783006,
+          "sha256": "6b92f798dc4b8d0c0cd6dfb646f6b41118894751669e7bb5f53bbe4e9649543d"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/49-logic-gt-emotion.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 65977,
+          "sha256": "3634d9912b8f870b5acb7a395586d6d470c5b35d91e1531b738bc29f9464ec73"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/49-logic-gt-emotion.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 211645,
+          "sha256": "d65368af1c7e3900916ac2a5bcd1dedda5d6910af09749b2f915de7df6775216"
+        }
+      ]
+    },
+    {
+      "designId": "50-spreadsheet-wizard",
+      "title": "Spreadsheet Wizard",
+      "visibleText": [
+        "Spreadsheet Wizard",
+        "Level 99 Excel"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/50-spreadsheet-wizard.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "sizeBytes": 1320176,
+          "sha256": "52db628ce389f1a98a3ce4982afaf4e2f44582e3078636310938c5767ab2d293"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/50-spreadsheet-wizard.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 540
+          },
+          "sizeBytes": 45950,
+          "sha256": "8ebe4d4a9a4a0b0117fb3ccf87ca522644fe5bea9df88fdad43796d0ff253e12"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/50-spreadsheet-wizard.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 278373,
+          "sha256": "6ed67624a3e8f479ea1f10683312a57672461ab714ee174cc0d67d9a703e0f69"
+        }
+      ]
+    },
+    {
+      "designId": "51-dashboard-addict",
+      "title": "Dashboard Addict",
+      "visibleText": [
+        "DASHBOARD ADDICT",
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/51-dashboard-addict.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 1803632,
+          "sha256": "bed62d7efd45afcb642d08776f47255a22b179311a380619a740eaa6be7ec6be"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/51-dashboard-addict.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 126701,
+          "sha256": "f67810e64a840db7a5a8806e25825bd97f0cccfe8c204940e8658b7416eb03d2"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/51-dashboard-addict.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 419806,
+          "sha256": "fc056727d571e83be820efa84de7215f1a2aada117a2c5482277eabfe2ca9293"
+        }
+      ]
+    },
+    {
+      "designId": "52-consistency-small-actions-big-results",
+      "title": "Consistency Small Actions Big Results",
+      "visibleText": [
+        "CONSISTENCY",
+        "SMALL ACTIONS.",
+        "BIG RESULTS."
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/52-consistency-small-actions-big-results.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1254,
+            "height": 1254
+          },
+          "sizeBytes": 2138089,
+          "sha256": "44999fba95dc53616b6ebd5535b217d03ea662a023ef502f2b731de4b49287a4"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/52-consistency-small-actions-big-results.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 720
+          },
+          "sizeBytes": 165414,
+          "sha256": "5fb615388525b766ff1156bf7263b77dea461e6a51eac2e5612b2a51449eb01f"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/52-consistency-small-actions-big-results.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 485758,
+          "sha256": "421a3e24795982684d657c24047a55d8a935001b1acd6af4e773fa2a7a36f32f"
+        }
+      ]
+    },
+    {
+      "designId": "53-leader-of-the-nerds",
+      "title": "Leader Of The Nerds",
+      "visibleText": [
+        "LEADER OF THE NERDS"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/53-leader-of-the-nerds.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2420555,
+          "sha256": "bfe9f4dc03d65820f5f98449221bb21a8c14c67e6ba937f73cab3c6bc82173ae"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/53-leader-of-the-nerds.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 44368,
+          "sha256": "dc7eb0bab89cc7a3f517d670cc6fbb79dc5f0aae6d61273c9104efb5badeccb8"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/53-leader-of-the-nerds.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 169113,
+          "sha256": "159288ef34819e31c4a4af3e57da3c60590aed3b48e27295464d1d118961cdda"
+        }
+      ]
+    },
+    {
+      "designId": "54-release-my-inner-brainpower",
+      "title": "Release My Inner Brainpower",
+      "visibleText": [
+        "RELEASE MY INNER BRAINPOWER"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/54-release-my-inner-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1536
+          },
+          "sizeBytes": 2587902,
+          "sha256": "9db38c31abdca9cf75f2ce0ab288e643f487004e18c797128680eefbbdb8bf8b"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/54-release-my-inner-brainpower.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 480,
+            "height": 720
+          },
+          "sizeBytes": 87551,
+          "sha256": "a591e38d029deaa3e11a2ff14ee40615cbc9db75f46d7511eb6f2d714cb12c3d"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/54-release-my-inner-brainpower.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 255505,
+          "sha256": "009f94e283df7d6219d84d723a0b3bb84e89f06fc22121e789b0e69985c818bf"
+        }
+      ]
+    },
+    {
+      "designId": "55-data-thinker",
+      "title": "Data Thinker",
+      "visibleText": [
+        "DATA THINKER"
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "live",
+      "variants": [
+        {
+          "role": "artwork",
+          "path": "assets/designs/55-data-thinker.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1402,
+            "height": 1122
+          },
+          "sizeBytes": 1086741,
+          "sha256": "29ee99a773904dbf8b993b021eb5d1c97a6857956d444bce56014e259b7a83c3"
+        },
+        {
+          "role": "thumbnail",
+          "path": "assets/designs/thumbs/55-data-thinker.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 720,
+            "height": 576
+          },
+          "sizeBytes": 56612,
+          "sha256": "6f3908500249d4a3ce2d3f397c99efb6d4269307129e23ee3bff6ffc4df18a9a"
+        },
+        {
+          "role": "mockup",
+          "path": "assets/designs/mockups/55-data-thinker.png",
+          "mimeType": "image/png",
+          "dimensions": {
+            "width": 1200,
+            "height": 1500
+          },
+          "sizeBytes": 261988,
+          "sha256": "e61fce15210fc7936e832c42f9cbdbf28433e57eb55bc6f06e25a7c459891b4c"
+        }
+      ]
+    }
+  ],
+  "standaloneAssets": [
+    {
+      "role": "favicon",
+      "path": "favicon.svg",
+      "mimeType": "image/svg+xml",
+      "dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "sizeBytes": 278,
+      "sha256": "68b9258e73f57b4b3b6d18799a3d1df3d4a7a3ac463969cfd8b29e6577c817d2",
+      "visibleText": [],
+      "visibleTextBasis": "no-text-icon",
+      "publicationStatus": "active"
+    },
+    {
+      "role": "wordmark",
+      "path": "assets/brand/numberninjadesigns-wordmark.svg",
+      "mimeType": "image/svg+xml",
+      "dimensions": {
+        "width": 720,
+        "height": 96
+      },
+      "sizeBytes": 580,
+      "sha256": "3ad2400c8edd1986968f0b2ef652af5b34b613132ca5282901ef3ffd52912c7f",
+      "visibleText": [
+        "NumberNinjaDesigns"
+      ],
+      "visibleTextBasis": "deterministic-svg-source",
+      "publicationStatus": "approved"
+    },
+    {
+      "role": "social-source",
+      "path": "assets/brand/numberninjadesigns-social.svg",
+      "mimeType": "image/svg+xml",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "sizeBytes": 1681,
+      "sha256": "6e3bbe73e20c9bd38ed7358436a17260bc9e67e2c0698236401edf70211f02e6",
+      "visibleText": [
+        "NumberNinjaDesigns",
+        "Products for people who work with data.",
+        "PHYSICAL PRODUCTS / DIGITAL PRODUCTS",
+        "TACTICAL TECH. ZERO CORPORATE NOISE."
+      ],
+      "visibleTextBasis": "deterministic-svg-source",
+      "publicationStatus": "approved-source"
+    },
+    {
+      "role": "open-graph-social",
+      "path": "assets/brand/numberninjadesigns-social.png",
+      "mimeType": "image/png",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "sizeBytes": 68172,
+      "sha256": "7ec7b43665de6b1d28b76eabc78fb12ecabd6906c241d11717ee71000bf334fb",
+      "visibleText": [
+        "NumberNinjaDesigns",
+        "Products for people who work with data.",
+        "PHYSICAL PRODUCTS / DIGITAL PRODUCTS",
+        "TACTICAL TECH. ZERO CORPORATE NOISE."
+      ],
+      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "publicationStatus": "active"
+    }
+  ]
+}

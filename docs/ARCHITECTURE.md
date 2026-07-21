@@ -2,7 +2,7 @@
 
 ## Current Repository Role
 
-This repository hosts static NinjaNumberTees verification pages and Studio OS governance documentation.
+This repository hosts static NumberNinjaDesigns verification pages and Studio OS governance documentation.
 
 ## Phase 9 Addition
 
