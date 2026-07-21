@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRepository": "baswit7/numberninjatees.github.io",
+  "targetRepository": "baswit7/numberninjadesigns-website",
+  "targetRole": "external NumberNinjaDesigns storefront",
+  "oldIdentifier": "numberninjatees",
+  "newIdentifier": "numberninjadesigns",
+  "owner": "NumberNinjaDesigns",
+  "migrationStatus": "SOURCE_VALIDATED_PENDING_PREVIEW",
+  "validation": {
+    "command": "node scripts/validation/validate-website-cutover.mjs",
+    "requiredResult": "PASS",
+    "designFitParity": "55/55"
+  },
+  "evidence": [
+    "docs/migration/reconstruction-manifest.json",
+    "docs/migration/asset-registry.json",
+    "docs/migration/numberninjadesigns-cutover-runbook.md"
+  ],
+  "rollback": {
+    "currentProductionDeploymentId": "dpl_6Ys6zsZ595BdNKprr2U1bbj1bbZU",
+    "previousProductionDeploymentId": "dpl_EGLjp1omN851bBdBvgihp5qtd6jQ",
+    "domainsRemainAttached": true
+  },
+  "remainingManualAction": [
+    "Validate the Vercel preview generated from the cutover branch.",
+    "Merge only after green checks and preview evidence.",
+    "Verify production before repository and project renames."
+  ]
+}

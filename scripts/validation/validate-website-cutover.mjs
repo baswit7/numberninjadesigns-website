@@ -1,0 +1,321 @@
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { dirname, extname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const EXPECTED_BRAND = "NumberNinjaDesigns";
+const EXPECTED_ETSY_URL = "https://www.etsy.com/shop/NumberNinjaDesigns";
+const failures = [];
+const passes = [];
+
+function relativePath(path) {
+  return path.slice(ROOT.length + 1).replaceAll("\\", "/");
+}
+
+function read(relative) {
+  return readFileSync(resolve(ROOT, relative), "utf8");
+}
+
+function parseJson(relative) {
+  try {
+    return JSON.parse(read(relative));
+  } catch (error) {
+    failures.push(relative + ": invalid JSON: " + error.message);
+    return null;
+  }
+}
+
+function assert(condition, summary) {
+  if (condition) passes.push(summary);
+  else failures.push(summary);
+}
+
+function sha256(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function attributeValues(source, tag, attribute) {
+  const values = [];
+  const expression = new RegExp("<" + tag + "\\b[^>]*\\b" + attribute + "\\s*=\\s*([\"'])(.*?)\\1", "gis");
+  let match;
+  while ((match = expression.exec(source))) values.push(match[2]);
+  return values;
+}
+
+function idsIn(source) {
+  return attributeValues(source, "[a-z][a-z0-9:-]*", "id");
+}
+
+function stripMarkup(value) {
+  return value.replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&copy;/g, "©")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function imageDimensions(path) {
+  const bytes = readFileSync(path);
+  const extension = extname(path).toLowerCase();
+  if (extension === ".png") {
+    if (bytes.length < 24 || bytes.toString("ascii", 1, 4) !== "PNG") throw new Error("invalid PNG");
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+  if (extension === ".jpg" || extension === ".jpeg") {
+    if (bytes.length < 4 || bytes[0] !== 0xff || bytes[1] !== 0xd8) throw new Error("invalid JPEG");
+    const sof = new Set([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf]);
+    let offset = 2;
+    while (offset + 8 < bytes.length) {
+      if (bytes[offset] !== 0xff) {
+        offset += 1;
+        continue;
+      }
+      const marker = bytes[offset + 1];
+      if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) {
+        offset += 2;
+        continue;
+      }
+      const length = bytes.readUInt16BE(offset + 2);
+      if (sof.has(marker)) {
+        return { height: bytes.readUInt16BE(offset + 5), width: bytes.readUInt16BE(offset + 7) };
+      }
+      if (length < 2) throw new Error("invalid JPEG segment");
+      offset += 2 + length;
+    }
+    throw new Error("JPEG dimensions not found");
+  }
+  if (extension === ".svg") {
+    const source = bytes.toString("utf8");
+    const viewBox = source.match(/\bviewBox\s*=\s*["']\s*[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)\s*["']/i);
+    if (!viewBox) throw new Error("SVG viewBox not found");
+    return { width: Number(viewBox[1]), height: Number(viewBox[2]) };
+  }
+  throw new Error("unsupported image extension " + extension);
+}
+
+function cssBracesBalanced(source) {
+  const sanitized = source.replace(/\/\*[\s\S]*?\*\//g, "");
+  let depth = 0;
+  let quote = "";
+  for (let index = 0; index < sanitized.length; index += 1) {
+    const character = sanitized[index];
+    if (quote) {
+      if (character === "\\") index += 1;
+      else if (character === quote) quote = "";
+      continue;
+    }
+    if (character === "'" || character === "\"") {
+      quote = character;
+      continue;
+    }
+    if (character === "{") depth += 1;
+    if (character === "}") depth -= 1;
+    if (depth < 0) return false;
+  }
+  return depth === 0 && quote === "";
+}
+
+const publicHtml = [
+  "index.html",
+  "about.html",
+  "budget-planner-basic.html",
+  "contact.html",
+  "data-deletion.html",
+  "designs.html",
+  "developer.html",
+  "privacy.html",
+  "terms.html"
+];
+const callbackHtml = ["tiktok/callback/index.html"];
+const allHtml = publicHtml.concat(callbackHtml);
+const htmlCache = new Map(allHtml.map((file) => [file, read(file)]));
+
+for (const file of publicHtml) {
+  const html = htmlCache.get(file);
+  assert(/^<!doctype html>/i.test(html.trimStart()), file + ": HTML5 doctype");
+  assert(/<html\b[^>]*\blang=["'][a-z]{2}(?:-[A-Z]{2})?["']/i.test(html), file + ": language declared");
+  assert(/<meta\b[^>]*\bcharset=["']?utf-8/i.test(html), file + ": UTF-8 metadata");
+  assert(/<meta\b[^>]*\bname=["']viewport["'][^>]*\bcontent=/i.test(html), file + ": responsive viewport");
+  assert(/<title>[^<]{8,}<\/title>/i.test(html), file + ": non-empty title");
+  assert(/<meta\b[^>]*\bname=["']description["'][^>]*\bcontent=["'][^"']{30,}["']/i.test(html), file + ": SEO description");
+  assert(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']https:\/\//i.test(html), file + ": HTTPS canonical");
+  for (const property of ["og:title", "og:description", "og:type", "og:url"]) {
+    assert(new RegExp("<meta\\b[^>]*\\bproperty=[\"']" + property + "[\"'][^>]*\\bcontent=", "i").test(html), file + ": " + property + " metadata");
+  }
+  assert((html.match(/<main\b/gi) || []).length === 1, file + ": one main landmark");
+  assert(/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html), file + ": primary heading");
+  assert(/<link\b[^>]*\brel=["']icon["']/i.test(html), file + ": favicon linked");
+
+  const ids = idsIn(html);
+  assert(ids.length === new Set(ids).size, file + ": IDs are unique");
+
+  for (const imageTag of html.match(/<img\b[^>]*>/gi) || []) {
+    assert(/\balt\s*=\s*["'][^"']*["']/i.test(imageTag), file + ": image has alt attribute");
+  }
+  for (const buttonTag of html.match(/<button\b[^>]*>/gi) || []) {
+    assert(/\btype\s*=\s*["'](?:button|submit|reset)["']/i.test(buttonTag), file + ": button type declared");
+  }
+  for (const scriptBody of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      JSON.parse(scriptBody[1]);
+      passes.push(file + ": JSON-LD parses");
+    } catch (error) {
+      failures.push(file + ": JSON-LD invalid: " + error.message);
+    }
+  }
+}
+
+function validateLocalReference(owner, value) {
+  if (!value || value.startsWith("#") || /^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(value)) return;
+  const split = value.split("#");
+  const local = decodeURIComponent(split[0]);
+  const fragment = split[1] || "";
+  const ownerPath = resolve(ROOT, owner);
+  const target = local ? resolve(dirname(ownerPath), local) : ownerPath;
+  assert(existsSync(target), owner + ": local reference exists: " + value);
+  if (existsSync(target) && fragment && extname(target).toLowerCase() === ".html") {
+    const targetSource = readFileSync(target, "utf8");
+    assert(idsIn(targetSource).includes(fragment), owner + ": fragment target exists: " + value);
+  }
+}
+
+for (const [file, html] of htmlCache) {
+  for (const href of attributeValues(html, "a", "href")) {
+    validateLocalReference(file, href);
+    if (/etsy\.(?:com|me)/i.test(href)) {
+      assert(href === EXPECTED_ETSY_URL, file + ": Etsy URL is exact");
+    }
+  }
+  for (const href of attributeValues(html, "link", "href")) validateLocalReference(file, href);
+  for (const src of attributeValues(html, "script", "src")) validateLocalReference(file, src);
+  for (const src of attributeValues(html, "img", "src")) validateLocalReference(file, src);
+}
+
+for (const cssFile of ["styles.css", "commerce.css"]) {
+  const css = read(cssFile);
+  assert(cssBracesBalanced(css), cssFile + ": CSS braces and quotes balance");
+  for (const match of css.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) validateLocalReference(cssFile, match[1]);
+}
+
+const brandFiles = allHtml.concat([
+  "README.md",
+  "docs/ARCHITECTURE.md",
+  "commerce.js",
+  "data/products.js",
+  "data/designs.json"
+]);
+for (const file of brandFiles) {
+  const source = read(file);
+  assert(!/(?:NumberNinjaTees|NinjaNumberTees)/.test(source), file + ": no legacy cased brand token");
+  assert(!/numberninjatees\.etsy\.com/i.test(source), file + ": no legacy Etsy shop URL");
+}
+
+const indexText = stripMarkup(htmlCache.get("index.html"));
+assert(indexText.includes("Physical Products"), "index.html: Physical Products is visible");
+assert(indexText.includes("Digital Products"), "index.html: Digital Products is visible");
+assert(htmlCache.get("index.html").includes(EXPECTED_ETSY_URL), "index.html: new Etsy shop is linked");
+assert(htmlCache.get("index.html").includes('"name": "NumberNinjaDesigns"'), "index.html: structured organization name migrated");
+
+const designs = parseJson("data/designs.json");
+if (designs) {
+  assert(Array.isArray(designs) && designs.length === 55, "data/designs.json: exactly 55 catalog items");
+  const ids = designs.map((design) => design.id);
+  assert(ids.length === new Set(ids).size, "data/designs.json: design IDs unique");
+  for (const design of designs) {
+    assert(design.status === "live", "design " + design.id + ": live status preserved");
+    assert(design.description.includes(EXPECTED_BRAND), "design " + design.id + ": exact brand in description");
+    for (const field of ["image", "thumbnail", "mockupImage"]) {
+      assert(typeof design[field] === "string" && existsSync(resolve(ROOT, design[field])), "design " + design.id + ": " + field + " exists");
+    }
+  }
+  const cards = htmlCache.get("designs.html").match(/<article\b[^>]*\bdata-design-card\b[^>]*>/gi) || [];
+  assert(cards.length === 55, "designs.html: exactly 55 rendered design cards");
+  const cardIds = cards.map((card) => (card.match(/\bid=["']([^"']+)["']/i) || [])[1]).filter(Boolean);
+  assert(cardIds.length === 55 && cardIds.every((id) => ids.includes(id.split("-").slice(-1)[0]) || ids.some((designId) => id.endsWith(designId))), "designs.html: all cards retain catalog identifiers");
+}
+
+const assetRegistry = parseJson("docs/migration/asset-registry.json");
+if (assetRegistry && designs) {
+  assert(assetRegistry.schemaVersion === "1.0.0", "asset registry: schema version");
+  assert(assetRegistry.brand === EXPECTED_BRAND, "asset registry: exact brand");
+  assert(assetRegistry.designCount === 55 && assetRegistry.designs.length === 55, "asset registry: 55 design records");
+  assert(assetRegistry.assetCount >= 166, "asset registry: baseline catalog assets plus approved brand assets");
+  let countedAssets = 0;
+  for (const registered of assetRegistry.designs) {
+    const design = designs.find((item) => item.id === registered.designId);
+    assert(Boolean(design), "asset registry: catalog match for " + registered.designId);
+    assert(Array.isArray(registered.visibleText) && registered.visibleText.length > 0, "asset registry: visible text for " + registered.designId);
+    assert(typeof registered.visibleTextBasis === "string" && registered.visibleTextBasis.length > 0, "asset registry: visible text basis for " + registered.designId);
+    assert(design && registered.publicationStatus === design.status, "asset registry: publication status for " + registered.designId);
+    assert(Array.isArray(registered.variants) && registered.variants.length === 3, "asset registry: three variants for " + registered.designId);
+    for (const variant of registered.variants) {
+      countedAssets += 1;
+      const full = resolve(ROOT, variant.path);
+      assert(existsSync(full), "asset registry: file exists " + variant.path);
+      if (!existsSync(full)) continue;
+      const dimensions = imageDimensions(full);
+      assert(dimensions.width === variant.dimensions.width && dimensions.height === variant.dimensions.height, "asset registry: dimensions match " + variant.path);
+      assert(statSync(full).size === variant.sizeBytes, "asset registry: byte size matches " + variant.path);
+      assert(sha256(full) === variant.sha256, "asset registry: SHA-256 matches " + variant.path);
+    }
+  }
+  for (const asset of assetRegistry.standaloneAssets || []) {
+    countedAssets += 1;
+    const full = resolve(ROOT, asset.path);
+    assert(existsSync(full), "asset registry: standalone file exists " + asset.path);
+    if (!existsSync(full)) continue;
+    const dimensions = imageDimensions(full);
+    assert(dimensions.width === asset.dimensions.width && dimensions.height === asset.dimensions.height, "asset registry: standalone dimensions match " + asset.path);
+    assert(statSync(full).size === asset.sizeBytes, "asset registry: standalone size matches " + asset.path);
+    assert(sha256(full) === asset.sha256, "asset registry: standalone SHA-256 matches " + asset.path);
+    assert(Array.isArray(asset.visibleText), "asset registry: standalone visible text recorded " + asset.path);
+    assert(typeof asset.publicationStatus === "string", "asset registry: standalone publication status recorded " + asset.path);
+  }
+  assert(countedAssets === assetRegistry.assetCount, "asset registry: asset count reconciles");
+}
+
+const reconstruction = parseJson("docs/migration/reconstruction-manifest.json");
+if (reconstruction) {
+  const entries = reconstruction.entries || [];
+  assert(reconstruction.schemaVersion === "1.0.0", "reconstruction manifest: schema version");
+  assert(entries.length === 792 && reconstruction.summary.totalPaths === 792, "reconstruction manifest: 792 dirty paths classified");
+  assert(new Set(entries.map((entry) => entry.path)).size === 792, "reconstruction manifest: dirty paths unique");
+  const included = entries.filter((entry) => entry.includeDecision === "include");
+  const excluded = entries.filter((entry) => entry.includeDecision === "exclude");
+  assert(included.length === 7 && excluded.length === 785, "reconstruction manifest: include/exclude totals");
+  assert(entries.filter((entry) => entry.sourceStatus === "modified").length === 9, "reconstruction manifest: 9 modified paths");
+  assert(entries.filter((entry) => entry.sourceStatus === "untracked").length === 783, "reconstruction manifest: 783 untracked paths");
+  for (const entry of entries) {
+    assert(typeof entry.rationale === "string" && entry.rationale.length > 0, "reconstruction entry rationale: " + entry.path);
+    assert(typeof entry.reconstructionMethod === "string" && entry.reconstructionMethod.length > 0, "reconstruction entry method: " + entry.path);
+    assert(Array.isArray(entry.validation) && entry.validation.length > 0, "reconstruction entry validation: " + entry.path);
+    const sourceHash = entry.hashes && entry.hashes.sourceSha256;
+    assert(sourceHash === null || /^[a-f0-9]{64}$/.test(sourceHash), "reconstruction entry safe source hash: " + entry.path);
+    if (entry.includeDecision === "include") {
+      const full = resolve(ROOT, entry.path);
+      assert(existsSync(full), "reconstruction included file exists: " + entry.path);
+      assert(entry.hashes.reconstructedSha256 === sha256(full), "reconstruction included hash matches: " + entry.path);
+    } else {
+      assert(entry.hashes.reconstructedSha256 === null, "reconstruction excluded path was not copied: " + entry.path);
+    }
+  }
+}
+
+const sitemap = read("sitemap.xml");
+const sitemapUrls = Array.from(sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g), (match) => match[1]);
+assert(sitemapUrls.length > 0 && sitemapUrls.length === new Set(sitemapUrls).size, "sitemap.xml: unique HTTPS locations");
+assert(/Sitemap:\s*https:\/\//i.test(read("robots.txt")), "robots.txt: sitemap declared");
+
+console.log("Website cutover validation");
+console.log("PASS assertions: " + passes.length);
+if (failures.length) {
+  console.error("FAIL assertions: " + failures.length);
+  for (const failure of failures) console.error("- " + failure);
+  process.exitCode = 1;
+} else {
+  console.log("FAIL assertions: 0");
+  console.log("Result: PASS");
+}

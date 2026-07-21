@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 96" role="img" aria-labelledby="title desc">
+  <title id="title">NumberNinjaDesigns</title>
+  <desc id="desc">NumberNinjaDesigns tactical technology wordmark</desc>
+  <rect width="720" height="96" rx="12" fill="#070707"/>
+  <path d="M24 70V26h12l28 44V26h12v44H64L36 26v44z" fill="#00FF94"/>
+  <path d="M24 78h52" stroke="#EDEBE3" stroke-width="5"/>
+  <text x="100" y="62" fill="#EDEBE3" font-family="Orbitron, JetBrains Mono, monospace" font-size="34" font-weight="700" letter-spacing="1">NumberNinjaDesigns</text>
+</svg>
