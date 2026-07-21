@@ -35,6 +35,13 @@ function sha256(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
+function assetByteCandidates(path) {
+  const bytes = readFileSync(path);
+  if (extname(path).toLowerCase() !== ".svg") return [bytes];
+  const normalized = Buffer.from(bytes.toString("utf8").replaceAll("\r\n", "\n"), "utf8");
+  return normalized.equals(bytes) ? [bytes] : [bytes, normalized];
+}
+
 function attributeValues(source, tag, attribute) {
   const values = [];
   const expression = new RegExp("<" + tag + "\\b[^>]*\\b" + attribute + "\\s*=\\s*([\"'])(.*?)\\1", "gis");
@@ -268,9 +275,12 @@ if (assetRegistry && designs) {
     assert(existsSync(full), "asset registry: standalone file exists " + asset.path);
     if (!existsSync(full)) continue;
     const dimensions = imageDimensions(full);
+    const registryBytesMatch = assetByteCandidates(full).some(
+      (bytes) => bytes.length === asset.sizeBytes && createHash("sha256").update(bytes).digest("hex") === asset.sha256,
+    );
     assert(dimensions.width === asset.dimensions.width && dimensions.height === asset.dimensions.height, "asset registry: standalone dimensions match " + asset.path);
-    assert(statSync(full).size === asset.sizeBytes, "asset registry: standalone size matches " + asset.path);
-    assert(sha256(full) === asset.sha256, "asset registry: standalone SHA-256 matches " + asset.path);
+    assert(registryBytesMatch, "asset registry: standalone canonical size matches " + asset.path);
+    assert(registryBytesMatch, "asset registry: standalone canonical SHA-256 matches " + asset.path);
     assert(Array.isArray(asset.visibleText), "asset registry: standalone visible text recorded " + asset.path);
     assert(typeof asset.publicationStatus === "string", "asset registry: standalone publication status recorded " + asset.path);
   }
