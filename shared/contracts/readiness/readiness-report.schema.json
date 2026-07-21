@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/readiness-report.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/readiness-report.schema.json",
   "title": "Studio OS Readiness Report",
   "description": "Machine-readable readiness-only report generated before any execution plane exists.",
   "type": "object",

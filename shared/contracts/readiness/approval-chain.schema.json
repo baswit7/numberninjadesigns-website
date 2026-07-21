@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/approval-chain.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/approval-chain.schema.json",
   "title": "Studio OS Approval Chain Readiness",
   "description": "Readiness model for approval-chain completeness. Approval metadata is never execution permission.",
   "type": "object",

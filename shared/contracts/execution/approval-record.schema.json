@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/approval-record.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/approval-record.schema.json",
   "title": "Studio OS Approval Record",
   "description": "Human approval state for a future execution request. This record never executes the request.",
   "type": "object",

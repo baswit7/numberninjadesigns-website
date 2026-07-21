@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/execution-step.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/execution-step.schema.json",
   "title": "Studio OS Readiness Execution Step",
   "description": "Non-executing model of a future execution step. It contains no command, provider, deployment, secret, or credential fields.",
   "type": "object",

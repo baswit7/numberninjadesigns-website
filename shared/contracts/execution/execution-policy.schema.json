@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/execution-policy.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/execution-policy.schema.json",
   "title": "Studio OS Execution Policy",
   "description": "Governance decision model. Phase 9 policy never enables real execution.",
   "type": "object",

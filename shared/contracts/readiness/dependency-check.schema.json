@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/dependency-check.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/dependency-check.schema.json",
   "title": "Studio OS Dependency Readiness Check",
   "description": "Readiness-only dependency check for future execution planning.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/preflight-check.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/preflight-check.schema.json",
   "title": "Studio OS Preflight Readiness Check",
   "description": "Non-executing preflight check used to validate future execution readiness.",
   "type": "object",

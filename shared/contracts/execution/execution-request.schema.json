@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/execution-request.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/execution-request.schema.json",
   "title": "Studio OS Execution Request",
   "description": "Non-executing governance model for a requested future action.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/execution-plan.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/execution-plan.schema.json",
   "title": "Studio OS Readiness Execution Plan",
   "description": "Non-executing plan model for validating future execution readiness before an execution plane exists.",
   "type": "object",
