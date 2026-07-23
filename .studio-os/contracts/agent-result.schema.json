@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.numberninjadesigns.com/.studio-os/contracts/agent-result.schema.json",
+  "title": "Studio OS Agent Result",
+  "description": "Auditable completion contract returned to the central supervisor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "taskId",
+    "agent",
+    "findings",
+    "rootCause",
+    "changedFiles",
+    "checksRun",
+    "passedChecks",
+    "failedChecks",
+    "unresolvedRisks",
+    "missingEvidence",
+    "recommendedNextAction",
+    "inputTokens",
+    "cachedInputTokens",
+    "outputTokens",
+    "tokenUsage",
+    "duration",
+    "retryCount"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "completed-with-risks",
+        "blocked",
+        "failed",
+        "no-change"
+      ]
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"
+    },
+    "agent": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,63}$"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "rootCause": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "changedFiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/changedFile"
+      },
+      "uniqueItems": true
+    },
+    "checksRun": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/check"
+      }
+    },
+    "passedChecks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "uniqueItems": true
+    },
+    "failedChecks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "uniqueItems": true
+    },
+    "unresolvedRisks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      },
+      "uniqueItems": true
+    },
+    "missingEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      },
+      "uniqueItems": true
+    },
+    "recommendedNextAction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "inputTokens": {
+      "$ref": "#/$defs/nullableUsage"
+    },
+    "cachedInputTokens": {
+      "$ref": "#/$defs/nullableUsage"
+    },
+    "outputTokens": {
+      "$ref": "#/$defs/nullableUsage"
+    },
+    "tokenUsage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputTokens",
+        "cachedInputTokens",
+        "outputTokens",
+        "totalTokens"
+      ],
+      "properties": {
+        "inputTokens": {
+          "$ref": "#/$defs/nullableUsage"
+        },
+        "cachedInputTokens": {
+          "$ref": "#/$defs/nullableUsage"
+        },
+        "outputTokens": {
+          "$ref": "#/$defs/nullableUsage"
+        },
+        "totalTokens": {
+          "$ref": "#/$defs/nullableUsage"
+        }
+      }
+    },
+    "duration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Measured wall-clock duration in milliseconds, or null when unavailable."
+    },
+    "retryCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "$defs": {
+    "nullableUsage": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "severity",
+        "summary",
+        "evidence"
+      ],
+      "properties": {
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error",
+            "blocker"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "changedFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "operation",
+        "summary"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "created",
+            "modified",
+            "deleted",
+            "renamed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "not-run"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0.0",
+  "supervisor": "central-supervisor",
+  "defaults": {
+    "smallTaskMode": "single-agent",
+    "maximumConcurrentSubagents": 3,
+    "subagentSpawnAllowed": false,
+    "maximumStandardOpenFiles": 12,
+    "maximumRetries": 1,
+    "fileOwnership": "one-writer-per-file",
+    "pathScopePolicy": "Derive allowedReadPaths and allowedWritePaths from task relevantPaths, remove protected paths, then reserve each writable file to one agent.",
+    "unmatchedTaskAction": "supervisor-review",
+    "missingEvidenceAction": "stop-or-narrow"
+  },
+  "classificationOrder": [
+    "release",
+    "architecture",
+    "cross-module",
+    "complex-bug",
+    "local-ui",
+    "module-feature",
+    "tests",
+    "docs",
+    "small-bug"
+  ],
+  "routes": [
+    {
+      "taskType": "small-bug",
+      "strategy": "single-agent",
+      "primaryAgent": "module-engineer",
+      "optionalAgents": [],
+      "maximumAgents": 1,
+      "tokenBudget": 8000,
+      "maximumIterations": 1,
+      "selectWhen": [
+        "Reproduction and correction are bounded to one module and at most a few files.",
+        "No architecture or cross-module contract decision is required."
+      ],
+      "rejectWhen": [
+        "Root cause is unknown across boundaries.",
+        "Fix ownership overlaps another active task."
+      ],
+      "requiredGates": [
+        "focused regression check",
+        "exclusive file ownership"
+      ]
+    },
+    {
+      "taskType": "complex-bug",
+      "strategy": "diagnose-implement-verify",
+      "primaryAgent": "bug-diagnostics",
+      "optionalAgents": [
+        "module-engineer",
+        "data-generator-engineer",
+        "test-verifier"
+      ],
+      "maximumAgents": 3,
+      "tokenBudget": 24000,
+      "maximumIterations": 2,
+      "selectWhen": [
+        "Root cause is uncertain, intermittent or crosses concerns.",
+        "Regression risk requires independent verification."
+      ],
+      "rejectWhen": [
+        "The defect is already isolated and qualifies as small-bug."
+      ],
+      "requiredGates": [
+        "reproduction evidence",
+        "root-cause statement",
+        "focused regression check",
+        "non-overlapping file ownership"
+      ]
+    },
+    {
+      "taskType": "local-ui",
+      "strategy": "single-agent-with-optional-verification",
+      "primaryAgent": "local-ui-engineer",
+      "optionalAgents": [
+        "test-verifier"
+      ],
+      "maximumAgents": 2,
+      "tokenBudget": 16000,
+      "maximumIterations": 2,
+      "selectWhen": [
+        "Primary behavior is in a static local browser interface.",
+        "Runtime writes, credentials and external provider calls are not required."
+      ],
+      "rejectWhen": [
+        "The request needs server-side authorization or an enabled execution plane.",
+        "Business logic is the primary change."
+      ],
+      "requiredGates": [
+        "responsive browser review",
+        "loading-empty-error-recovery states",
+        "localStorage safety where applicable"
+      ]
+    },
+    {
+      "taskType": "module-feature",
+      "strategy": "bounded-module-owner",
+      "primaryAgent": "module-engineer",
+      "optionalAgents": [
+        "data-generator-engineer",
+        "local-ui-engineer",
+        "test-verifier"
+      ],
+      "maximumAgents": 3,
+      "tokenBudget": 20000,
+      "maximumIterations": 2,
+      "selectWhen": [
+        "One module owns the feature and its public boundary is stable."
+      ],
+      "rejectWhen": [
+        "More than one module contract changes.",
+        "The feature requires forbidden provider, deployment or secret capability."
+      ],
+      "requiredGates": [
+        "module contract compatibility",
+        "module-scoped tests",
+        "deterministic output where applicable"
+      ]
+    },
+    {
+      "taskType": "cross-module",
+      "strategy": "architecture-first-parallel",
+      "primaryAgent": "architecture-analyst",
+      "optionalAgents": [
+        "module-engineer",
+        "data-generator-engineer",
+        "test-verifier"
+      ],
+      "maximumAgents": 3,
+      "tokenBudget": 30000,
+      "maximumIterations": 2,
+      "selectWhen": [
+        "Acceptance criteria change or connect two or more module boundaries."
+      ],
+      "rejectWhen": [
+        "Ownership or interface contracts are not yet separable.",
+        "The requested integration bypasses governance or readiness boundaries."
+      ],
+      "requiredGates": [
+        "written boundary decision",
+        "exclusive file ownership map",
+        "contract compatibility check",
+        "integration verification"
+      ]
+    },
+    {
+      "taskType": "tests",
+      "strategy": "single-agent",
+      "primaryAgent": "test-verifier",
+      "optionalAgents": [],
+      "maximumAgents": 1,
+      "tokenBudget": 12000,
+      "maximumIterations": 1,
+      "selectWhen": [
+        "The requested outcome is test coverage, validation or evidence collection."
+      ],
+      "rejectWhen": [
+        "Passing the tests requires an unapproved implementation change."
+      ],
+      "requiredGates": [
+        "test-to-requirement traceability",
+        "reported commands and outcomes"
+      ]
+    },
+    {
+      "taskType": "release",
+      "strategy": "independent-audit",
+      "primaryAgent": "release-auditor",
+      "optionalAgents": [
+        "diff-reviewer",
+        "test-verifier"
+      ],
+      "maximumAgents": 2,
+      "tokenBudget": 12000,
+      "maximumIterations": 1,
+      "selectWhen": [
+        "The user asks for readiness, compatibility, rollback or release review."
+      ],
+      "rejectWhen": [
+        "The request asks for deployment or publication while deployment is disabled.",
+        "Required implementation results are missing."
+      ],
+      "requiredGates": [
+        "documented validation suite",
+        "rollback review",
+        "protected-boundary check",
+        "explicit release verdict"
+      ]
+    },
+    {
+      "taskType": "docs",
+      "strategy": "single-agent",
+      "primaryAgent": "central-supervisor",
+      "optionalAgents": [],
+      "maximumAgents": 1,
+      "tokenBudget": 8000,
+      "maximumIterations": 1,
+      "selectWhen": [
+        "The requested artifact is documentation without an architecture change."
+      ],
+      "rejectWhen": [
+        "Documentation would claim nonexistent implementation or telemetry."
+      ],
+      "requiredGates": [
+        "command and path accuracy",
+        "limitation disclosure"
+      ]
+    },
+    {
+      "taskType": "architecture",
+      "strategy": "architecture-owner-with-review",
+      "primaryAgent": "architecture-analyst",
+      "optionalAgents": [
+        "diff-reviewer",
+        "release-auditor"
+      ],
+      "maximumAgents": 3,
+      "tokenBudget": 18000,
+      "maximumIterations": 2,
+      "selectWhen": [
+        "The task changes boundaries, contracts, ownership or long-term integration design."
+      ],
+      "rejectWhen": [
+        "The requested architecture contradicts disabled execution capabilities without an explicit approved phase change."
+      ],
+      "requiredGates": [
+        "boundary and dependency analysis",
+        "migration impact",
+        "security and operational constraints",
+        "decision record"
+      ]
+    }
+  ],
+  "pathRules": [
+    {
+      "matchSegments": [
+        "generated",
+        "cache",
+        "secrets",
+        "node_modules",
+        "assets",
+        "branding",
+        "runtime",
+        "output",
+        "outputs",
+        "tmp",
+        "build",
+        "dist",
+        "coverage",
+        "__pycache__"
+      ],
+      "action": "deny-write",
+      "override": "Only an explicit user instruction naming the exact path may be escalated to the supervisor; secret contents remain unreadable and unreportable."
+    },
+    {
+      "match": "runtime/**/validation-reports/**",
+      "action": "deny-write",
+      "override": "Only a task explicitly requesting regeneration of validation reports may authorize it."
+    },
+    {
+      "match": "modules/listing-intelligence-engine/output/**",
+      "action": "deny-write",
+      "override": "Only an explicit generation task may authorize a new output directory."
+    }
+  ]
+}
