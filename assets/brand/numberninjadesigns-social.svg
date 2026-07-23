@@ -1,23 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">NumberNinjaDesigns</title>
-  <desc id="desc">Physical and digital products for people who work with data</desc>
+  <desc id="desc">Smart designs for everyday life</desc>
   <defs>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" fill="none" stroke="#00FF94" stroke-opacity=".08"/>
-    </pattern>
-    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#00FF94" stop-opacity=".20"/>
-      <stop offset="1" stop-color="#00FF94" stop-opacity="0"/>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#E2F4F1"/>
+      <stop offset="1" stop-color="#F7F8F6"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="#070707"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <path d="M0 0h520L180 630H0z" fill="url(#glow)"/>
-  <rect x="72" y="72" width="1056" height="486" rx="18" fill="#0F0F0F" stroke="#00FF94" stroke-opacity=".55" stroke-width="2"/>
-  <path d="M126 245V139h28l68 106V139h28v106h-28l-68-106v106z" fill="#00FF94"/>
-  <path d="M126 266h124" stroke="#EDEBE3" stroke-width="10"/>
-  <text x="302" y="218" fill="#EDEBE3" font-family="Orbitron, JetBrains Mono, monospace" font-size="58" font-weight="700" letter-spacing="1">NumberNinjaDesigns</text>
-  <text x="126" y="355" fill="#EDEBE3" font-family="JetBrains Mono, monospace" font-size="31">Products for people who work with data.</text>
-  <text x="126" y="427" fill="#00FF94" font-family="JetBrains Mono, monospace" font-size="25" font-weight="700" letter-spacing="3">PHYSICAL PRODUCTS  /  DIGITAL PRODUCTS</text>
-  <text x="126" y="493" fill="#777777" font-family="JetBrains Mono, monospace" font-size="20">TACTICAL TECH. ZERO CORPORATE NOISE.</text>
+  <rect width="1200" height="630" fill="#F7F8F6"/>
+  <path d="M0 0h340c84 96 94 242 23 357C289 479 160 552 0 529z" fill="url(#wash)"/>
+  <path d="M1022 0h178v630H970c78-104 93-214 49-330-35-94-34-194 3-300z" fill="#12B8AA"/>
+  <path d="M1128 0h72v242l-112-142z" fill="#2869E8"/>
+  <g transform="translate(92 158)">
+    <rect width="196" height="196" rx="8" fill="#FFFFFF"/>
+    <circle cx="98" cy="98" r="72" fill="#FFFFFF" stroke="#12B8AA" stroke-width="5"/>
+    <path d="M54 93c0-31 20-52 48-52 24 0 42 12 51 32l-18 12H66l-12 8z" fill="#0B1830"/>
+    <path d="M61 94h73c0 31-14 50-37 50S61 125 61 94z" fill="#0B1830"/>
+    <path d="M77 99c12-10 34-10 46 0-12 11-34 11-46 0z" fill="#FFFFFF"/>
+    <circle cx="89" cy="101" r="4" fill="#0B1830"/>
+    <circle cx="111" cy="101" r="4" fill="#0B1830"/>
+    <path d="M137 56l31-18-11 28 25 10-40 11z" fill="#0B1830"/>
+    <path d="M127 153v-22h13v22zm19 0v-37h13v37zm19 0V99h13v54z" fill="#12B8AA"/>
+  </g>
+  <text x="320" y="230" fill="#0B1830" font-family="Arial, Segoe UI, sans-serif" font-size="58" font-weight="800" letter-spacing="-3">Number</text>
+  <text x="520" y="230" fill="#12B8AA" font-family="Arial, Segoe UI, sans-serif" font-size="58" font-weight="800" letter-spacing="-3">Ninja</text>
+  <text x="660" y="230" fill="#0B1830" font-family="Arial, Segoe UI, sans-serif" font-size="58" font-weight="800" letter-spacing="-3">Designs</text>
+  <text x="320" y="302" fill="#0B1830" font-family="Arial, Segoe UI, sans-serif" font-size="27" font-weight="800" letter-spacing="1">SMART DESIGNS FOR EVERYDAY LIFE</text>
+  <path d="M320 332h525" stroke="#12B8AA" stroke-width="7" stroke-linecap="round"/>
+  <text x="320" y="390" fill="#5F6977" font-family="Arial, Segoe UI, sans-serif" font-size="25">Digital tools • practical templates • original gifts</text>
+  <text x="320" y="430" fill="#5F6977" font-family="Arial, Segoe UI, sans-serif" font-size="25">For work, home, hobbies and meaningful moments</text>
+  <g fill="#FFFFFF" stroke="#D5E3E0" stroke-width="2">
+    <rect x="957" y="185" width="102" height="142" rx="8"/>
+    <rect x="1045" y="245" width="102" height="150" rx="8"/>
+    <rect x="1090" y="165" width="84" height="128" rx="8"/>
+  </g>
+  <g stroke="#12B8AA" stroke-width="5" stroke-linecap="round">
+    <path d="M977 220h57M1065 281h57M1110 201h44"/>
+  </g>
+  <g fill="#12B8AA">
+    <circle cx="1031" cy="205" r="8"/>
+    <circle cx="1118" cy="266" r="8"/>
+    <circle cx="1151" cy="186" r="8"/>
+  </g>
 </svg>

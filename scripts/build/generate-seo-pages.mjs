@@ -94,6 +94,14 @@ for (const design of catalog) {
 
 const collections = Object.values(content.collections);
 const guidesBySlug = new Map(content.guides.map((guide) => [guide.slug, guide]));
+const featuredCollectionConcepts = new Map([
+  ["spreadsheet-humor", "sheet-happens"],
+  ["data-analytics", "data-driven"],
+  ["coding-developer-humor", "my-brain-runs-on-sql"],
+  ["dashboard-bi", "kpi-hunter"],
+  ["ai-machine-learning", "logic-gt-emotion"],
+  ["office-humor", "leader-of-the-nerds"]
+]);
 
 assert(content.schemaVersion === "1.0.0", "Unsupported SEO content schema version.");
 assert(origin === "https://www.numberninjadesigns.com", "Unexpected production origin.");
@@ -514,11 +522,11 @@ ${structuredData(schema)}
       <h2 id="all-collections">Explore all collections</h2>
       <div class="collection-index-grid">${collections.map((collection) => {
         const collectionGroups = groups.filter((group) => content.collections[group.category].slug === collection.slug);
-        const lead = collectionGroups[0];
+        const lead = groupsBySlug.get(featuredCollectionConcepts.get(collection.slug)) || collectionGroups[0];
         const first = lead.variants[0];
         const thumbnail = registryByDesignId.get(first.id).thumbnail;
         return `<a class="collection-index-card" href="${collection.slug}/">
-          <img src="${prefix}${first.thumbnail}" width="${thumbnail.dimensions.width}" height="${thumbnail.dimensions.height}" alt="${escapeHtml(lead.title)} from the ${escapeHtml(collection.name)} collection" loading="lazy" decoding="async">
+          <span class="collection-index-media"><img src="${prefix}${first.thumbnail}" width="${thumbnail.dimensions.width}" height="${thumbnail.dimensions.height}" alt="${escapeHtml(lead.title)} from the ${escapeHtml(collection.name)} collection" loading="lazy" decoding="async"></span>
           <span><small>${collectionGroups.length} concepts</small><strong>${escapeHtml(collection.h1)}</strong><span>${escapeHtml(collection.description)}</span></span>
         </a>`;
       }).join("")}</div>
