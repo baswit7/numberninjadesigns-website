@@ -13,6 +13,8 @@ Assert-PathExists -Checks ([ref]$checks) -RelativePath 'shared\contracts\readine
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'runtime\execution' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'runtime\readiness' | Out-Null
 Assert-PathExists -Checks ([ref]$checks) -RelativePath 'docs\governance\PHASE_10_EXECUTION_READINESS.md' | Out-Null
+Assert-PathExists -Checks ([ref]$checks) -RelativePath 'modules\ai-workforce-control-center\index.html' | Out-Null
+Assert-PathExists -Checks ([ref]$checks) -RelativePath 'shared\contracts\ai-workforce' | Out-Null
 Assert-NoEnabledExecutionBoundary -Checks ([ref]$checks) -RelativePath 'runtime\execution'
 Assert-NoEnabledExecutionBoundary -Checks ([ref]$checks) -RelativePath 'runtime\readiness'
 Assert-NoExecutionImplementations -Checks ([ref]$checks)

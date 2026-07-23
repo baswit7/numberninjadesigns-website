@@ -8,7 +8,7 @@
     "providerCallsAllowed": false,
     "deploymentAllowed": false,
     "secretAccessAllowed": false,
-    "dashboardUiEnabled": false
+    "dashboardUiEnabled": true
   },
   "runtime": {
     "executionReportsPath": "runtime/execution/validation-reports",

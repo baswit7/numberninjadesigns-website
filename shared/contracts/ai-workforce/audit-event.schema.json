@@ -1,0 +1,4 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","title":"AIWorkforceAuditEvent","type":"object","additionalProperties":false,
+  "required":["id","timestamp","action","actor","summary"],"properties":{"id":{"type":"string","minLength":1},"timestamp":{"type":"string","format":"date-time"},"action":{"type":"string","pattern":"^[a-z]+(?:[.-][a-z]+)+$"},"actor":{"type":"string","minLength":1},"summary":{"type":"string","minLength":1,"maxLength":1000},"correlationId":{"type":"string"},"causationId":{"type":"string"},"metadata":{"type":"object"},"prompt":{"type":"string"},"response":{"type":"string"},"toolCalls":{"type":"array"},"apiCalls":{"type":"array"},"mcpCalls":{"type":"array"},"runtimeMs":{"type":"integer","minimum":0},"cost":{"type":"number","minimum":0},"tokens":{"type":"integer","minimum":0},"errors":{"type":"array"},"retryCount":{"type":"integer","minimum":0}}
+}
