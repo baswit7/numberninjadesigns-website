@@ -1,8 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 96" role="img" aria-labelledby="title desc">
   <title id="title">NumberNinjaDesigns</title>
-  <desc id="desc">NumberNinjaDesigns tactical technology wordmark</desc>
-  <rect width="720" height="96" rx="12" fill="#070707"/>
-  <path d="M24 70V26h12l28 44V26h12v44H64L36 26v44z" fill="#00FF94"/>
-  <path d="M24 78h52" stroke="#EDEBE3" stroke-width="5"/>
-  <text x="100" y="62" fill="#EDEBE3" font-family="Orbitron, JetBrains Mono, monospace" font-size="34" font-weight="700" letter-spacing="1">NumberNinjaDesigns</text>
+  <desc id="desc">NumberNinjaDesigns wordmark in the Etsy brand palette</desc>
+  <rect width="720" height="96" rx="12" fill="#F7F8F6"/>
+  <g transform="translate(18 15)">
+    <circle cx="33" cy="33" r="31" fill="#FFFFFF" stroke="#12B8AA" stroke-width="3"/>
+    <path d="M15 34c0-13 8-22 20-22 10 0 18 5 22 14l-8 5H20l-5 3z" fill="#0B1830"/>
+    <path d="M18 34h30c0 13-6 21-15 21S18 47 18 34z" fill="#0B1830"/>
+    <path d="M24 36c5-4 14-4 19 0-5 5-14 5-19 0z" fill="#FFFFFF"/>
+    <circle cx="29" cy="37" r="2" fill="#0B1830"/>
+    <circle cx="39" cy="37" r="2" fill="#0B1830"/>
+    <path d="M50 17l12-7-4 12 10 4-16 4z" fill="#0B1830"/>
+  </g>
+  <text x="94" y="62" fill="#0B1830" font-family="Arial, Segoe UI, sans-serif" font-size="39" font-weight="800" letter-spacing="-2">Number</text>
+  <text x="242" y="62" fill="#12B8AA" font-family="Arial, Segoe UI, sans-serif" font-size="39" font-weight="800" letter-spacing="-2">Ninja</text>
+  <text x="340" y="62" fill="#0B1830" font-family="Arial, Segoe UI, sans-serif" font-size="39" font-weight="800" letter-spacing="-2">Designs</text>
 </svg>

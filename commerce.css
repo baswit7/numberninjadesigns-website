@@ -1,17 +1,18 @@
 :root {
   --commerce-max: 1440px;
-  --commerce-bg: #070707;
-  --commerce-surface: #0f0f0f;
-  --commerce-surface-2: #151515;
-  --commerce-accent: #00ff94;
-  --commerce-text: #edebe3;
-  --commerce-muted: #92928e;
-  --commerce-line: rgba(237, 235, 227, 0.22);
-  --commerce-ledger: #f1f1e9;
-  --commerce-ledger-stripe: #e4ebe0;
-  --commerce-ink: #123c2d;
-  --commerce-radius: 7px;
-  --commerce-display: "Arial Narrow", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
+  --commerce-bg: #f7f8f6;
+  --commerce-surface: #ffffff;
+  --commerce-surface-2: #edf7f5;
+  --commerce-accent: #12b8aa;
+  --commerce-accent-strong: #07998e;
+  --commerce-text: #0b1830;
+  --commerce-muted: #5f6977;
+  --commerce-line: rgba(11, 24, 48, 0.16);
+  --commerce-ledger: #fbfdfc;
+  --commerce-ledger-stripe: #dff2ee;
+  --commerce-ink: #0b1830;
+  --commerce-radius: 10px;
+  --commerce-display: "Arial Black", "Segoe UI", Arial, sans-serif;
   --commerce-mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
 }
 
@@ -24,7 +25,7 @@ body.commerce-page {
   overflow-x: hidden;
   background: var(--commerce-bg);
   color: var(--commerce-text);
-  font-family: var(--commerce-mono);
+  font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.55;
 }
 
@@ -121,11 +122,14 @@ body.commerce-page {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: var(--commerce-accent);
-  font-family: var(--commerce-mono);
+  background: linear-gradient(90deg, var(--commerce-text) 0 30%, var(--commerce-accent) 30% 54%, var(--commerce-text) 54% 100%);
+  color: transparent;
+  font-family: var(--commerce-display);
   font-size: clamp(0.92rem, 4vw, 1.15rem);
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.055em;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .commerce-nav-desktop {
@@ -184,8 +188,8 @@ body.commerce-page {
   display: grid;
   gap: 0;
   border: 1px solid var(--commerce-line);
-  background: #090909;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  background: var(--commerce-surface);
+  box-shadow: 0 24px 60px rgba(11, 24, 48, 0.16);
 }
 
 .mobile-menu:not([open]) nav {
@@ -256,7 +260,7 @@ body.commerce-page {
 .commerce-button-primary {
   border-color: var(--commerce-accent);
   background: var(--commerce-accent);
-  color: #03130c;
+  color: var(--commerce-text);
 }
 
 .commerce-button-outline {
@@ -303,15 +307,25 @@ body.commerce-page {
 
 .hero-apparel-visual {
   margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(11, 24, 48, 0.16);
+  border-radius: var(--commerce-radius);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(18, 184, 170, 0.11), transparent 48%),
+    #050505;
 }
 
 .hero-apparel-visual img {
   width: min(100%, 520px);
+  height: 100%;
   margin-inline: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
   filter: contrast(1.04);
+  transform: scale(1.58);
+  transform-origin: 50% 48%;
 }
 
 .workbook-preview {
@@ -327,7 +341,7 @@ body.commerce-page {
     rgba(176, 195, 173, 0.28) 62px
   );
   color: var(--commerce-ink);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 28px 70px rgba(11, 24, 48, 0.13);
 }
 
 .hero-workbook,
@@ -492,11 +506,24 @@ body.commerce-page {
   gap: 9px;
 }
 
+.apparel-media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(11, 24, 48, 0.16);
+  border-radius: var(--commerce-radius);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(18, 184, 170, 0.11), transparent 48%),
+    #050505;
+  transition: border-color 160ms ease;
+}
+
 .apparel-item img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
-  background: #050505;
+  transform: scale(1.62);
+  transform-origin: 50% 48%;
 }
 
 .apparel-name {
@@ -547,7 +574,7 @@ body.commerce-page {
   min-height: 140px;
   place-content: center;
   gap: 18px;
-  border: 1px dashed rgba(0, 255, 148, 0.42);
+  border: 1px dashed rgba(18, 184, 170, 0.44);
   padding: 24px;
   color: var(--commerce-muted);
   text-align: center;
@@ -1367,6 +1394,7 @@ body.commerce-page {
 
   .commerce-button,
   .text-link,
+  .apparel-media,
   .apparel-item img,
   .faq-list summary {
     transition: border-color 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
@@ -1377,8 +1405,14 @@ body.commerce-page {
     transform: translateY(-2px);
   }
 
-  .apparel-item a:hover img {
-    transform: scale(1.012);
+  .apparel-item a:hover .apparel-media,
+  .apparel-item a:focus-visible .apparel-media {
+    border-color: rgba(18, 184, 170, 0.62);
+  }
+
+  .apparel-item a:hover img,
+  .apparel-item a:focus-visible img {
+    transform: scale(1.68);
   }
 }
 

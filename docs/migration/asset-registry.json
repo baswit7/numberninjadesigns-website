@@ -2462,8 +2462,8 @@
         "width": 720,
         "height": 96
       },
-      "sizeBytes": 580,
-      "sha256": "3ad2400c8edd1986968f0b2ef652af5b34b613132ca5282901ef3ffd52912c7f",
+      "sizeBytes": 1242,
+      "sha256": "5dcd7dcd02d20b1d885b8e8691328fab7aea1c14f6fd19a52cf12ce5a81f6eb6",
       "visibleText": [
         "NumberNinjaDesigns"
       ],
@@ -2478,13 +2478,13 @@
         "width": 1200,
         "height": 630
       },
-      "sizeBytes": 1681,
-      "sha256": "6e3bbe73e20c9bd38ed7358436a17260bc9e67e2c0698236401edf70211f02e6",
+      "sizeBytes": 2868,
+      "sha256": "d43b8ff9abce81e58ff0f771b1a14ea086f14d13ee9d857a22521f577abcb01a",
       "visibleText": [
         "NumberNinjaDesigns",
-        "Products for people who work with data.",
-        "PHYSICAL PRODUCTS / DIGITAL PRODUCTS",
-        "TACTICAL TECH. ZERO CORPORATE NOISE."
+        "SMART DESIGNS FOR EVERYDAY LIFE",
+        "Digital tools • practical templates • original gifts",
+        "For work, home, hobbies and meaningful moments"
       ],
       "visibleTextBasis": "deterministic-svg-source",
       "publicationStatus": "approved-source"
@@ -2497,15 +2497,15 @@
         "width": 1200,
         "height": 630
       },
-      "sizeBytes": 68172,
-      "sha256": "7ec7b43665de6b1d28b76eabc78fb12ecabd6906c241d11717ee71000bf334fb",
+      "sizeBytes": 220456,
+      "sha256": "c2a994977f08b39ed5ec8650706b48208aafe1ccfd248248c2e260ab36665dcc",
       "visibleText": [
         "NumberNinjaDesigns",
-        "Products for people who work with data.",
-        "PHYSICAL PRODUCTS / DIGITAL PRODUCTS",
-        "TACTICAL TECH. ZERO CORPORATE NOISE."
+        "SMART DESIGNS FOR EVERYDAY LIFE",
+        "Digital tools • practical templates • original gifts",
+        "For work, home, hobbies and meaningful moments"
       ],
-      "visibleTextBasis": "visual-inspection-2026-07-21",
+      "visibleTextBasis": "browser-rendered-from-approved-svg-2026-07-23",
       "publicationStatus": "active"
     }
   ]

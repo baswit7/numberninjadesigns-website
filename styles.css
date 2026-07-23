@@ -1,15 +1,16 @@
 :root {
-  color-scheme: dark;
-  --bg: #070707;
-  --surface: #0f0f0f;
-  --surface-2: #161616;
-  --accent: #00ff94;
-  --text: #edebe3;
-  --muted: #8b8b8b;
-  --line: rgba(237, 235, 227, 0.14);
-  --danger: #ff4f5e;
-  --warn: #ffb84d;
-  --radius: 8px;
+  color-scheme: light;
+  --bg: #f7f8f6;
+  --surface: #ffffff;
+  --surface-2: #edf7f5;
+  --accent: #12b8aa;
+  --accent-strong: #07998e;
+  --text: #0b1830;
+  --muted: #5f6977;
+  --line: rgba(11, 24, 48, 0.14);
+  --danger: #c93245;
+  --warn: #b66a00;
+  --radius: 10px;
   --max: 1180px;
 }
 
@@ -34,9 +35,11 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 80% 0%, rgba(0, 255, 148, 0.09), transparent 28rem), var(--bg);
+  background:
+    radial-gradient(circle at 82% 0%, rgba(18, 184, 170, 0.13), transparent 30rem),
+    linear-gradient(180deg, #f0f9f7 0, var(--bg) 31rem);
   color: var(--text);
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -79,10 +82,13 @@ main {
 }
 
 .brand {
-  font-family: Orbitron, "Arial Black", system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: 0;
-  color: var(--accent);
+  background: linear-gradient(90deg, var(--text) 0 30%, var(--accent) 30% 54%, var(--text) 54% 100%);
+  color: transparent;
+  font-family: "Arial Black", "Segoe UI", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .nav,
@@ -111,8 +117,8 @@ main {
 h1,
 h2,
 h3 {
-  font-family: Orbitron, "Arial Black", system-ui, sans-serif;
-  letter-spacing: 0;
+  font-family: "Arial Black", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -0.045em;
   line-height: 1.05;
   margin: 0;
 }
@@ -132,7 +138,7 @@ h1 {
   position: relative;
   word-break: keep-all;
   text-wrap: balance;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 70px rgba(0, 255, 148, 0.11);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 28px 70px rgba(18, 184, 170, 0.12);
 }
 
 .hero-title-text {
@@ -205,17 +211,17 @@ p {
 .button-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #03130c;
+  color: var(--text);
 }
 
 .button-secondary {
-  background: rgba(237, 235, 227, 0.04);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .signal-panel,
 .design-card,
 .policy-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 247, 245, 0.86));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -224,7 +230,7 @@ p {
   padding: 28px;
   display: grid;
   gap: 18px;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.35);
+  box-shadow: 0 20px 70px rgba(11, 24, 48, 0.1);
 }
 
 .status-line {
@@ -241,7 +247,7 @@ p {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 20px rgba(0, 255, 148, 0.8);
+  box-shadow: 0 0 18px rgba(18, 184, 170, 0.46);
 }
 
 .panel-title {
@@ -288,16 +294,16 @@ p {
 }
 
 .design-card:focus-within {
-  border-color: rgba(0, 255, 148, 0.72);
+  border-color: rgba(18, 184, 170, 0.72);
 }
 
 .asset-placeholder {
   min-height: 220px;
   display: grid;
   place-items: center;
-  border: 1px dashed rgba(0, 255, 148, 0.45);
+  border: 1px dashed rgba(18, 184, 170, 0.45);
   border-radius: var(--radius);
-  background: repeating-linear-gradient(135deg, rgba(0,255,148,0.07), rgba(0,255,148,0.07) 8px, transparent 8px, transparent 18px);
+  background: repeating-linear-gradient(135deg, rgba(18, 184, 170, 0.08), rgba(18, 184, 170, 0.08) 8px, transparent 8px, transparent 18px);
   color: var(--accent);
   text-align: center;
   font-weight: 900;
@@ -307,7 +313,7 @@ p {
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border: 1px solid rgba(237, 235, 227, 0.12);
+  border: 1px solid rgba(11, 24, 48, 0.12);
   border-radius: var(--radius);
   background: #000000;
   padding: 0;
@@ -349,7 +355,7 @@ p {
 .tag,
 .status-pill {
   width: fit-content;
-  border: 1px solid rgba(0, 255, 148, 0.4);
+  border: 1px solid rgba(18, 184, 170, 0.44);
   border-radius: 999px;
   padding: 4px 10px;
   color: var(--accent);
@@ -383,7 +389,7 @@ p {
 }
 
 .collection-grid a:hover {
-  border-color: rgba(0, 255, 148, 0.65);
+  border-color: rgba(18, 184, 170, 0.65);
 }
 
 .gallery-toolbar {
@@ -414,7 +420,7 @@ p {
   min-height: 42px;
   min-width: 220px;
   color: var(--text);
-  background: #090909;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 8px 12px;
@@ -441,8 +447,8 @@ p {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(0, 255, 148, 0.12);
-  color: var(--accent);
+  background: rgba(18, 184, 170, 0.12);
+  color: var(--accent-strong);
   padding: 8px 10px;
   cursor: pointer;
   font-weight: 900;
@@ -450,14 +456,14 @@ p {
 
 .preview-button:hover,
 .buy-links a:hover {
-  border-color: rgba(0, 255, 148, 0.65);
-  color: var(--accent);
+  border-color: rgba(18, 184, 170, 0.65);
+  color: var(--accent-strong);
 }
 
 .empty-state {
   margin-top: 22px;
   padding: 22px;
-  border: 1px dashed rgba(0, 255, 148, 0.38);
+  border: 1px dashed rgba(18, 184, 170, 0.4);
   border-radius: var(--radius);
   color: var(--muted);
 }
@@ -549,7 +555,7 @@ p {
   height: 42px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #090909;
+  background: var(--surface);
   color: var(--text);
   cursor: pointer;
 }
@@ -589,8 +595,8 @@ ul {
 }
 
 .footer-brand strong {
-  color: var(--accent);
-  font-family: Orbitron, "Arial Black", system-ui, sans-serif;
+  color: var(--text);
+  font-family: "Arial Black", "Segoe UI", system-ui, sans-serif;
 }
 
 .footer-meta {
