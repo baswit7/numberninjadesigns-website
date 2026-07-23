@@ -253,7 +253,7 @@ for (const file of identityContractFiles) {
 }
 
 const indexText = stripMarkup(htmlCache.get("index.html"));
-assert(indexText.includes("Physical Products"), "index.html: Physical Products is visible");
+assert(indexText.includes("Data, Excel, SQL and BI designs"), "index.html: focused design catalog is visible");
 assert(indexText.includes("Digital Products"), "index.html: Digital Products is visible");
 assert(htmlCache.get("index.html").includes(EXPECTED_ETSY_URL), "index.html: new Etsy shop is linked");
 assert(htmlCache.get("index.html").includes('"name": "NumberNinjaDesigns"'), "index.html: structured organization name migrated");
