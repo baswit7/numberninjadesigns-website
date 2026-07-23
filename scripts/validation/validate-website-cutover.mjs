@@ -199,7 +199,7 @@ for (const file of publicHtml) {
 function validateLocalReference(owner, value) {
   if (!value || value.startsWith("#") || /^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(value)) return;
   const split = value.split("#");
-  const local = decodeURIComponent(split[0]);
+  const local = decodeURIComponent(split[0].split("?")[0]);
   const fragment = split[1] || "";
   const ownerPath = resolve(ROOT, owner);
   const target = local ? resolve(dirname(ownerPath), local) : ownerPath;
@@ -278,7 +278,11 @@ assert(/\.concept-card-image img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss),
 assert(/\.collection-index-media img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: collection artwork cannot be cropped");
 assert(/\.gallery-list \.asset-image\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: catalog artwork cannot be cropped");
 assert(/\.variant-card img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: detail artwork cannot be cropped");
-assert(/\.variant-card\.is-mockup img\s*\{[^}]*object-fit:\s*cover;/s.test(seoCss), "seo.css: product mockups retain their intended frame");
+assert(/\.variant-card\.is-mockup img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: product mockups remain fully visible");
+assert(/\.variant-card\.is-mockup img\s*\{[^}]*filter:\s*brightness\(2\.35\) contrast\(0\.62\) saturate\(1\.2\);/s.test(seoCss), "seo.css: dark product mockups use the approved high-contrast treatment");
+assert(!/\.variant-card\.is-mockup img\s*\{[^}]*transform:/s.test(seoCss), "seo.css: product mockups are centered without artificial crop scaling");
+assert(/\.variant-gallery\.variant-count-2\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.78fr\) minmax\(0,\s*1\.22fr\);/s.test(seoCss), "seo.css: single-artwork detail pages make the product mockup the visual focus");
+assert(/\.variant-gallery\.has-multiple:not\(\.variant-count-2\) \.variant-card\.is-mockup\s*\{[^}]*grid-column:\s*1\s*\/\s*-1;/s.test(seoCss), "seo.css: multi-artwork detail pages center the product mockup across the gallery");
 assert(!seoCss.includes("-webkit-line-clamp"), "seo.css: collection copy is never truncated");
 
 const designs = parseJson("data/designs.json");
