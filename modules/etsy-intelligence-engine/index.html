@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070707"><title>Etsy Intelligence Engine | NumberNinjaDesigns</title><meta name="description" content="NumberNinjaDesigns local-first Etsy market intelligence, opportunity scoring, product blueprints and revenue forecasting."><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=20260723-2"></head>
+<body>
+<div class="shell">
+  <aside class="sidebar"><a class="brand" href="#overview"><span>NUMBER<br>NINJA<br>DESIGNS</span><b>◆</b></a><nav id="nav" aria-label="Intelligence modules"></nav><div class="system"><strong>SYSTEM STATUS</strong><span>ENGINE <i>ONLINE</i></span><span>DATA PIPELINE <i>READY</i></span><span>STORAGE <i>LOCAL</i></span></div></aside>
+  <main><header class="topbar"><button class="menu" id="menu" aria-label="Open menu">☰</button><div><h1>MARKET INTELLIGENCE</h1><p>DIGITAL PRODUCTION / DECISION LAYER</p></div><div class="health"><span><small>ENGINE</small><b><i></i> OPERATIONAL</b></span><span><small>DATA</small><b id="data-status">NO DATA</b></span></div><button class="primary" id="import-trigger">⇧ IMPORT CSV</button><input type="file" id="file-input" accept=".csv,text/csv" multiple hidden></header>
+  <section class="workspace" id="view" aria-live="polite"></section>
+  <footer><span><i></i> LOCAL-FIRST</span><span id="footer-count">0 MARKET SIGNALS</span><span>CONFIG-DRIVEN SCORING</span><span>NO DATA LEAVES THIS BROWSER</span></footer>
+  </main>
+</div>
+<dialog id="import-dialog"><form method="dialog"><header><div><h2>IMPORT MARKET DATA</h2><p>Map each CSV to an isolated importer.</p></div><button value="cancel" aria-label="Close">×</button></header><label>DATA SOURCE<select id="source-type"><option value="etsy-listings">Etsy Listings Export</option><option value="similar-keywords">Similar Keywords</option><option value="top-listings">Top Listings</option></select></label><div class="drop" id="drop-zone"><strong>DROP CSV FILES HERE</strong><span>or select files from your device</span><button type="button" class="primary" id="choose-files">SELECT CSV</button></div><p class="privacy">Files are parsed locally. No market data is uploaded.</p></form></dialog>
+<script type="module" src="app.js?v=20260723-2"></script></body></html>
