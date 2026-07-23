@@ -685,7 +685,7 @@ function guideHub() {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head({ prefix, title, description, pathname })}
+${head({ prefix, title, description, pathname, seoVersion: "20260723-guide-grid" })}
   <script type="application/ld+json">
 ${structuredData(schema)}
   </script>

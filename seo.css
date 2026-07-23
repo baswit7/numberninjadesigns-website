@@ -689,7 +689,7 @@
   }
 
   .guide-index-card {
-    grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.28fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .guide-index-card:nth-child(even) > a {

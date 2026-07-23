@@ -180,6 +180,10 @@ for (const slug of sourceConceptSlugs.filter((slug) => !publishedGroups.has(slug
 for (const slug of collectionSlugs) assert(existsSync(resolve(ROOT, "collections", slug, "index.html")), `Missing collection page: ${slug}.`);
 for (const slug of guideSlugs) assert(existsSync(resolve(ROOT, "guides", slug, "index.html")), `Missing guide page: ${slug}.`);
 
+const guideHubSource = read("guides/index.html");
+assert((guideHubSource.match(/class="guide-index-card"/g) || []).length === guideSlugs.length, "guides/index.html: every guide is rendered exactly once.");
+assert(guideHubSource.includes("seo.css?v=20260723-guide-grid"), "guides/index.html: guide hub is missing the balanced-grid stylesheet cache key.");
+
 const rootHtml = readdirSync(ROOT, { withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
   .map((entry) => resolve(ROOT, entry.name));
