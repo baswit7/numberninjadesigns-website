@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "PREPARED_DOMAIN_OWNERSHIP_PENDING",
+  "brand": "NumberNinjaDesigns",
+  "canonicalOrigin": "https://www.numberninjadesigns.com",
+  "apexDomain": "numberninjadesigns.com",
+  "contactDomain": "numberninjadesigns.com",
+  "redirectSources": [
+    "https://numberninjadesigns.com",
+    "https://ninjanumbertees.com",
+    "https://www.ninjanumbertees.com"
+  ],
+  "externalStorefront": "https://www.etsy.com/shop/NumberNinjaDesigns",
+  "productionGate": {
+    "domainRegistered": false,
+    "vercelOwnershipVerified": false,
+    "apexDnsReady": false,
+    "wwwDnsReady": false,
+    "tlsReady": false,
+    "mailMxReady": false,
+    "redirectsVerified": false
+  },
+  "rollback": {
+    "currentCanonicalOrigin": "https://www.ninjanumbertees.com",
+    "currentProductionDeploymentId": "dpl_CfqxcZDzXK1tG2oemBhLNxh9PapA",
+    "safetyRef": "safety/pre-numberninjadesigns-domain-identity-20260721-223621"
+  },
+  "releaseRule": "Do not merge or promote until every production gate is true."
+}

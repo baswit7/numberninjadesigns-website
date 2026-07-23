@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/readiness/readiness-decision.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/readiness/readiness-decision.schema.json",
   "title": "Studio OS Readiness Decision",
   "description": "Readiness-only decision. A ready decision does not authorize or perform execution.",
   "type": "object",

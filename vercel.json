@@ -1,5 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "numberninjadesigns.com" }],
+      "destination": "https://www.numberninjadesigns.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "ninjanumbertees.com" }],
+      "destination": "https://www.numberninjadesigns.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.ninjanumbertees.com" }],
+      "destination": "https://www.numberninjadesigns.com/:path*",
+      "permanent": true
+    }
+  ]
 }

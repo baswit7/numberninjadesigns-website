@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/rollback-plan.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/rollback-plan.schema.json",
   "title": "Studio OS Rollback Plan",
   "description": "Readiness model for reversing a future action. This plan does not perform rollback.",
   "type": "object",

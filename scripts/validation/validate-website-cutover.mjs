@@ -6,6 +6,9 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const EXPECTED_BRAND = "NumberNinjaDesigns";
 const EXPECTED_ETSY_URL = "https://www.etsy.com/shop/NumberNinjaDesigns";
+const EXPECTED_SITE_ORIGIN = "https://www.numberninjadesigns.com";
+const EXPECTED_EMAIL_SUFFIX = "@numberninjadesigns.com";
+const LEGACY_IDENTITY = /(?:NumberNinjaTees|NinjaNumberTees|ninjanumbertees\.com|numberninjatees\.github\.io)/i;
 const failures = [];
 const passes = [];
 
@@ -139,6 +142,21 @@ const publicHtml = [
 const callbackHtml = ["tiktok/callback/index.html"];
 const allHtml = publicHtml.concat(callbackHtml);
 const htmlCache = new Map(allHtml.map((file) => [file, read(file)]));
+const identityContractFiles = [
+  "shared/contracts/execution/approval-record.schema.json",
+  "shared/contracts/execution/execution-policy.schema.json",
+  "shared/contracts/execution/execution-request.schema.json",
+  "shared/contracts/execution/idempotency-record.schema.json",
+  "shared/contracts/execution/risk-assessment.schema.json",
+  "shared/contracts/execution/rollback-plan.schema.json",
+  "shared/contracts/readiness/approval-chain.schema.json",
+  "shared/contracts/readiness/dependency-check.schema.json",
+  "shared/contracts/readiness/execution-plan.schema.json",
+  "shared/contracts/readiness/execution-step.schema.json",
+  "shared/contracts/readiness/preflight-check.schema.json",
+  "shared/contracts/readiness/readiness-decision.schema.json",
+  "shared/contracts/readiness/readiness-report.schema.json"
+];
 
 for (const file of publicHtml) {
   const html = htmlCache.get(file);
@@ -149,6 +167,9 @@ for (const file of publicHtml) {
   assert(/<title>[^<]{8,}<\/title>/i.test(html), file + ": non-empty title");
   assert(/<meta\b[^>]*\bname=["']description["'][^>]*\bcontent=["'][^"']{30,}["']/i.test(html), file + ": SEO description");
   assert(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']https:\/\//i.test(html), file + ": HTTPS canonical");
+  const canonical = (html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["']/i) || [])[1];
+  assert(Boolean(canonical) && canonical.startsWith(EXPECTED_SITE_ORIGIN + "/"), file + ": canonical uses the NumberNinjaDesigns domain");
+  assert(!LEGACY_IDENTITY.test(html), file + ": no active legacy identity");
   for (const property of ["og:title", "og:description", "og:type", "og:url"]) {
     assert(new RegExp("<meta\\b[^>]*\\bproperty=[\"']" + property + "[\"'][^>]*\\bcontent=", "i").test(html), file + ": " + property + " metadata");
   }
@@ -195,6 +216,9 @@ for (const [file, html] of htmlCache) {
     if (/etsy\.(?:com|me)/i.test(href)) {
       assert(href === EXPECTED_ETSY_URL, file + ": Etsy URL is exact");
     }
+    if (/^mailto:/i.test(href)) {
+      assert(href.toLowerCase().endsWith(EXPECTED_EMAIL_SUFFIX), file + ": email uses the NumberNinjaDesigns domain");
+    }
   }
   for (const href of attributeValues(html, "link", "href")) validateLocalReference(file, href);
   for (const src of attributeValues(html, "script", "src")) validateLocalReference(file, src);
@@ -211,13 +235,21 @@ const brandFiles = allHtml.concat([
   "README.md",
   "docs/ARCHITECTURE.md",
   "commerce.js",
+  "styles.css",
   "data/products.js",
   "data/designs.json"
 ]);
 for (const file of brandFiles) {
   const source = read(file);
   assert(!/(?:NumberNinjaTees|NinjaNumberTees)/.test(source), file + ": no legacy cased brand token");
+  assert(!/Ninja\\A\s*Number\\A\s*Tees/i.test(source), file + ": no legacy visual brand token");
   assert(!/numberninjatees\.etsy\.com/i.test(source), file + ": no legacy Etsy shop URL");
+}
+
+for (const file of identityContractFiles) {
+  const contract = parseJson(file);
+  assert(Boolean(contract) && contract.$id.startsWith(EXPECTED_SITE_ORIGIN + "/contracts/"), file + ": schema identity uses the NumberNinjaDesigns domain");
+  assert(!LEGACY_IDENTITY.test(read(file)), file + ": no legacy schema identity");
 }
 
 const indexText = stripMarkup(htmlCache.get("index.html"));
@@ -317,7 +349,19 @@ if (reconstruction) {
 const sitemap = read("sitemap.xml");
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g), (match) => match[1]);
 assert(sitemapUrls.length > 0 && sitemapUrls.length === new Set(sitemapUrls).size, "sitemap.xml: unique HTTPS locations");
-assert(/Sitemap:\s*https:\/\//i.test(read("robots.txt")), "robots.txt: sitemap declared");
+assert(sitemapUrls.every((url) => url.startsWith(EXPECTED_SITE_ORIGIN + "/")), "sitemap.xml: all locations use the NumberNinjaDesigns domain");
+assert(read("robots.txt").includes("Sitemap: " + EXPECTED_SITE_ORIGIN + "/sitemap.xml"), "robots.txt: canonical sitemap declared");
+
+const vercelConfig = parseJson("vercel.json");
+if (vercelConfig) {
+  const expectedRedirectHosts = ["numberninjadesigns.com", "ninjanumbertees.com", "www.ninjanumbertees.com"];
+  const redirects = Array.isArray(vercelConfig.redirects) ? vercelConfig.redirects : [];
+  for (const host of expectedRedirectHosts) {
+    const redirect = redirects.find((item) => Array.isArray(item.has) && item.has.some((condition) => condition.type === "host" && condition.value === host));
+    assert(Boolean(redirect), "vercel.json: redirect registered for " + host);
+    assert(Boolean(redirect) && redirect.destination === EXPECTED_SITE_ORIGIN + "/:path*" && redirect.permanent === true, "vercel.json: " + host + " permanently redirects to the canonical identity");
+  }
+}
 
 console.log("Website cutover validation");
 console.log("PASS assertions: " + passes.length);

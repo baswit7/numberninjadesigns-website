@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/risk-assessment.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/risk-assessment.schema.json",
   "title": "Studio OS Execution Risk Assessment",
   "description": "Non-executing risk classification for a future action.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://numberninjatees.github.io/contracts/execution/idempotency-record.schema.json",
+  "$id": "https://www.numberninjadesigns.com/contracts/execution/idempotency-record.schema.json",
   "title": "Studio OS Idempotency Record",
   "description": "Governance model for evaluating repeat safety before any future action is enabled.",
   "type": "object",
