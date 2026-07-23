@@ -325,6 +325,7 @@
 }
 
 .variant-card.is-mockup img {
+  filter: brightness(1.52) contrast(0.84) saturate(1.06);
   transform: scale(1.3);
   transform-origin: center center;
 }

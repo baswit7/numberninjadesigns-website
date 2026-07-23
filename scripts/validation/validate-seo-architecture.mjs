@@ -135,38 +135,48 @@ function allSchemaTypes(value, output = []) {
 
 const catalog = json("data/designs.json");
 const seo = json("data/seo-content.json");
-const groups = new Map();
+const sourceGroups = new Map();
+const publishedGroups = new Map();
 for (const design of catalog) {
-  if (!groups.has(design.slug)) groups.set(design.slug, []);
-  groups.get(design.slug).push(design);
+  if (!sourceGroups.has(design.slug)) sourceGroups.set(design.slug, []);
+  sourceGroups.get(design.slug).push(design);
+  if (design.status === "live") {
+    if (!publishedGroups.has(design.slug)) publishedGroups.set(design.slug, []);
+    publishedGroups.get(design.slug).push(design);
+  }
 }
 
 const collectionSlugs = Object.values(seo.collections).map((collection) => collection.slug);
 const guideSlugs = seo.guides.map((guide) => guide.slug);
-const conceptSlugs = [...groups.keys()];
+const sourceConceptSlugs = [...sourceGroups.keys()];
+const publishedConceptSlugs = [...publishedGroups.keys()];
 
 assert(catalog.length === 55, `Catalog must contain 55 variants; found ${catalog.length}.`);
-assert(groups.size === 45, `Catalog must resolve to 45 unique concepts; found ${groups.size}.`);
-assert(Object.keys(seo.products).length === groups.size, "Every concept needs exactly one curated SEO copy record.");
-assert(new Set(Object.keys(seo.products)).size === groups.size, "SEO product slugs must be unique.");
+assert(sourceGroups.size === 45, `Catalog must resolve to 45 source concepts; found ${sourceGroups.size}.`);
+assert(Object.keys(seo.products).length === sourceGroups.size, "Every source concept needs exactly one curated SEO copy record.");
+assert(new Set(Object.keys(seo.products)).size === sourceGroups.size, "SEO product slugs must be unique.");
+assert(publishedGroups.size > 0, "At least one quality-approved concept must be published.");
 assert(Object.values(seo.collections).length === 6, "Exactly six topical collections are required.");
 assert(new Set(collectionSlugs).size === collectionSlugs.length, "Collection slugs must be unique.");
 assert(new Set(guideSlugs).size === guideSlugs.length, "Guide slugs must be unique.");
 
-for (const slug of conceptSlugs) {
+for (const slug of sourceConceptSlugs) {
   assert(Boolean(seo.products[slug]), `Missing curated SEO copy for ${slug}.`);
-  const category = groups.get(slug)[0].category;
+  const category = sourceGroups.get(slug)[0].category;
   assert(Boolean(seo.collections[category]), `Missing collection mapping for ${category}.`);
 }
 
 const conceptFiles = walk(resolve(ROOT, "designs")).filter((path) => extname(path) === ".html");
 const collectionFiles = walk(resolve(ROOT, "collections")).filter((path) => extname(path) === ".html");
 const guideFiles = walk(resolve(ROOT, "guides")).filter((path) => extname(path) === ".html");
-assert(conceptFiles.length === 45, `Expected 45 generated concept pages; found ${conceptFiles.length}.`);
+assert(conceptFiles.length === publishedGroups.size, `Expected ${publishedGroups.size} quality-approved concept pages; found ${conceptFiles.length}.`);
 assert(collectionFiles.length === 7, `Expected 7 generated collection pages; found ${collectionFiles.length}.`);
 assert(guideFiles.length === 4, `Expected 4 generated guide pages; found ${guideFiles.length}.`);
 
-for (const slug of conceptSlugs) assert(existsSync(resolve(ROOT, "designs", slug, "index.html")), `Missing concept page: ${slug}.`);
+for (const slug of publishedConceptSlugs) assert(existsSync(resolve(ROOT, "designs", slug, "index.html")), `Missing quality-approved concept page: ${slug}.`);
+for (const slug of sourceConceptSlugs.filter((slug) => !publishedGroups.has(slug))) {
+  assert(!existsSync(resolve(ROOT, "designs", slug, "index.html")), `Quality-held concept page must not be generated: ${slug}.`);
+}
 for (const slug of collectionSlugs) assert(existsSync(resolve(ROOT, "collections", slug, "index.html")), `Missing collection page: ${slug}.`);
 for (const slug of guideSlugs) assert(existsSync(resolve(ROOT, "guides", slug, "index.html")), `Missing guide page: ${slug}.`);
 
@@ -175,6 +185,12 @@ const rootHtml = readdirSync(ROOT, { withFileTypes: true })
   .map((entry) => resolve(ROOT, entry.name));
 const callbackHtml = walk(resolve(ROOT, "tiktok")).filter((path) => extname(path) === ".html");
 const publicHtml = [...rootHtml, ...conceptFiles, ...collectionFiles, ...guideFiles, ...callbackHtml];
+const publicSource = publicHtml.map((file) => readFileSync(file, "utf8")).join("\n");
+for (const design of catalog.filter((item) => item.status === "quality-hold")) {
+  assert(!publicSource.includes(design.thumbnail), `Quality-held thumbnail must not be published: ${design.id}.`);
+  assert(!publicSource.includes(design.image), `Quality-held artwork must not be published: ${design.id}.`);
+  assert(!publicSource.includes(design.mockupImage), `Quality-held mockup must not be published: ${design.id}.`);
+}
 const indexableCanonicals = new Map();
 const titleOwners = new Map();
 const descriptionOwners = new Map();
@@ -244,7 +260,7 @@ for (const file of conceptFiles) {
   const relativePath = repoPath(file);
   const slug = relativePath.split("/")[1];
   const source = readFileSync(file, "utf8");
-  const group = groups.get(slug);
+  const group = publishedGroups.get(slug);
   const collection = seo.collections[group[0].category];
   const schemaTypes = [];
   const schemaExpression = /<script\b[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
@@ -267,7 +283,7 @@ for (const file of collectionFiles.filter((path) => repoPath(path) !== "collecti
   const slug = relativePath.split("/")[1];
   const source = readFileSync(file, "utf8");
   const collection = Object.values(seo.collections).find((candidate) => candidate.slug === slug);
-  const expectedConcepts = [...groups.values()].filter((variants) => variants[0].category === Object.keys(seo.collections).find((key) => seo.collections[key].slug === slug)).length;
+  const expectedConcepts = [...publishedGroups.values()].filter((variants) => variants[0].category === Object.keys(seo.collections).find((key) => seo.collections[key].slug === slug)).length;
   assert(Boolean(collection), `${relativePath}: unknown collection.`);
   assert((source.match(/class="concept-card"/g) || []).length === expectedConcepts, `${relativePath}: concept count does not match catalog.`);
   assert((source.match(/<details>/g) || []).length === 3, `${relativePath}: collection must render three useful FAQ answers.`);
@@ -292,7 +308,7 @@ for (const relativePath of noindexFiles) {
 const sitemapSource = read("sitemap.xml");
 const sitemapLocs = [...sitemapSource.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
 const sitemapLastmods = [...sitemapSource.matchAll(/<lastmod>(.*?)<\/lastmod>/g)].map((match) => match[1]);
-assert(sitemapLocs.length === 60, `Sitemap must contain 60 indexable URLs; found ${sitemapLocs.length}.`);
+assert(sitemapLocs.length === indexableCanonicals.size, `Sitemap must contain all ${indexableCanonicals.size} indexable URLs; found ${sitemapLocs.length}.`);
 assert(new Set(sitemapLocs).size === sitemapLocs.length, "Sitemap contains duplicate URLs.");
 assert(sitemapLastmods.length === sitemapLocs.length, "Every sitemap URL needs a lastmod.");
 assert(sitemapLastmods.every((value) => value === GENERATED_DATE), `Every sitemap lastmod must be ${GENERATED_DATE}.`);

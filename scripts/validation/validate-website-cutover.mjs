@@ -225,7 +225,7 @@ for (const [file, html] of htmlCache) {
   for (const src of attributeValues(html, "img", "src")) validateLocalReference(file, src);
 }
 
-for (const cssFile of ["styles.css", "commerce.css"]) {
+for (const cssFile of ["styles.css", "commerce.css", "seo.css"]) {
   const css = read(cssFile);
   assert(cssBracesBalanced(css), cssFile + ": CSS braces and quotes balance");
   for (const match of css.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) validateLocalReference(cssFile, match[1]);
@@ -262,18 +262,28 @@ const designs = parseJson("data/designs.json");
 if (designs) {
   assert(Array.isArray(designs) && designs.length === 55, "data/designs.json: exactly 55 catalog items");
   const ids = designs.map((design) => design.id);
+  const liveDesigns = designs.filter((design) => design.status === "live");
+  const qualityHolds = designs.filter((design) => design.status === "quality-hold");
   assert(ids.length === new Set(ids).size, "data/designs.json: design IDs unique");
+  assert(liveDesigns.length > 0, "data/designs.json: quality-approved designs remain publishable");
+  assert(qualityHolds.length > 0, "data/designs.json: incomplete artwork is explicitly quality-held");
   for (const design of designs) {
-    assert(design.status === "live", "design " + design.id + ": live status preserved");
+    assert(["live", "quality-hold"].includes(design.status), "design " + design.id + ": supported publication status");
     assert(design.description.includes(EXPECTED_BRAND), "design " + design.id + ": exact brand in description");
     for (const field of ["image", "thumbnail", "mockupImage"]) {
       assert(typeof design[field] === "string" && existsSync(resolve(ROOT, design[field])), "design " + design.id + ": " + field + " exists");
     }
   }
   const cards = htmlCache.get("designs.html").match(/<article\b[^>]*\bdata-design-card\b[^>]*>/gi) || [];
-  assert(cards.length === 55, "designs.html: exactly 55 rendered design cards");
+  assert(cards.length === liveDesigns.length, "designs.html: only quality-approved design cards are rendered");
   const cardIds = cards.map((card) => (card.match(/\bid=["']([^"']+)["']/i) || [])[1]).filter(Boolean);
-  assert(cardIds.length === 55 && cardIds.every((id) => ids.includes(id.split("-").slice(-1)[0]) || ids.some((designId) => id.endsWith(designId))), "designs.html: all cards retain catalog identifiers");
+  const liveIds = liveDesigns.map((design) => design.id);
+  assert(cardIds.length === liveDesigns.length && cardIds.every((id) => liveIds.some((designId) => id.endsWith(designId))), "designs.html: every rendered card maps to a quality-approved catalog item");
+  for (const design of qualityHolds) {
+    assert(!htmlCache.get("designs.html").includes(design.thumbnail), "designs.html: quality-held thumbnail is not published " + design.id);
+    assert(!htmlCache.get("designs.html").includes(design.image), "designs.html: quality-held artwork is not published " + design.id);
+    assert(!htmlCache.get("designs.html").includes(design.mockupImage), "designs.html: quality-held mockup is not published " + design.id);
+  }
 }
 
 const assetRegistry = parseJson("docs/migration/asset-registry.json");

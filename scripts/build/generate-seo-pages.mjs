@@ -11,6 +11,7 @@ function readJson(relativePath) {
 }
 
 const catalog = readJson("data/designs.json");
+const publishedCatalog = catalog.filter((design) => design.status === "live");
 const content = readJson("data/seo-content.json");
 const assetRegistry = readJson("docs/migration/asset-registry.json");
 const origin = content.siteOrigin.replace(/\/$/, "");
@@ -78,7 +79,7 @@ const registryByDesignId = new Map(
 
 const groups = [];
 const groupsBySlug = new Map();
-for (const design of catalog) {
+for (const design of publishedCatalog) {
   if (!groupsBySlug.has(design.slug)) {
     const group = {
       slug: design.slug,
@@ -93,6 +94,7 @@ for (const design of catalog) {
 }
 
 const collections = Object.values(content.collections);
+const catalogConceptSlugs = new Set(catalog.map((design) => design.slug));
 const guidesBySlug = new Map(content.guides.map((guide) => [guide.slug, guide]));
 const featuredCollectionConcepts = new Map([
   ["spreadsheet-humor", "sheet-happens"],
@@ -105,10 +107,18 @@ const featuredCollectionConcepts = new Map([
 
 assert(content.schemaVersion === "1.0.0", "Unsupported SEO content schema version.");
 assert(origin === "https://www.numberninjadesigns.com", "Unexpected production origin.");
-assert(groups.length === 45, `Expected 45 unique concepts, found ${groups.length}.`);
 assert(catalog.length === 55, `Expected 55 catalog variants, found ${catalog.length}.`);
+assert(catalogConceptSlugs.size === 45, `Expected 45 source concepts, found ${catalogConceptSlugs.size}.`);
+assert(publishedCatalog.length > 0, "At least one quality-approved catalog variant is required.");
 assert(collections.length === 6, `Expected 6 collections, found ${collections.length}.`);
 assert(content.guides.length >= 3, "At least three guides are required.");
+
+for (const design of catalog) {
+  assert(["live", "quality-hold"].includes(design.status), `Unsupported publication status for ${design.id}.`);
+  assert(registryByDesignId.has(design.id), `Missing asset registry entry for ${design.id}.`);
+  assert(content.products[design.slug], `Missing curated product copy for ${design.slug}.`);
+  assert(content.collections[design.category], `Missing collection content for ${design.category}.`);
+}
 
 for (const group of groups) {
   assert(content.products[group.slug], `Missing curated product copy for ${group.slug}.`);
@@ -119,13 +129,18 @@ for (const group of groups) {
 }
 
 for (const slug of Object.keys(content.products)) {
-  assert(groupsBySlug.has(slug), `SEO product copy has no catalog concept: ${slug}.`);
+  assert(catalogConceptSlugs.has(slug), `SEO product copy has no catalog concept: ${slug}.`);
 }
 
 for (const guide of content.guides) {
   assert(guide.sections.length >= 4, `Guide ${guide.slug} needs at least four sections.`);
-  assert(guide.featuredDesigns.every((slug) => groupsBySlug.has(slug)), `Guide ${guide.slug} references an unknown design.`);
+  assert(guide.featuredDesigns.every((slug) => catalogConceptSlugs.has(slug)), `Guide ${guide.slug} references an unknown design.`);
+  assert(guide.featuredDesigns.some((slug) => groupsBySlug.has(slug)), `Guide ${guide.slug} needs at least one quality-approved featured design.`);
   assert(guide.collectionSlugs.every((slug) => collectionBySlug(slug)), `Guide ${guide.slug} references an unknown collection.`);
+}
+
+function publishedGuideGroups(guide) {
+  return guide.featuredDesigns.map((slug) => groupsBySlug.get(slug)).filter(Boolean);
 }
 
 function head({ prefix, title, description, pathname, image, type = "website", robots = "index,follow,max-image-preview:large" }) {
@@ -544,6 +559,7 @@ ${structuredData(schema)}
 
 function guidePage(guide) {
   const prefix = "../../";
+  const featuredGroups = publishedGuideGroups(guide);
   const pathname = `/guides/${guide.slug}/`;
   const title = guide.seoTitle;
   const crumbs = [
@@ -614,7 +630,7 @@ ${structuredData(schema)}
       <section class="guide-featured" aria-labelledby="guide-featured-title">
         <p class="eyebrow">Concepts mentioned</p>
         <h2 id="guide-featured-title">Compare the featured designs</h2>
-        <div class="concept-grid">${guide.featuredDesigns.map((slug) => conceptCard(groupsBySlug.get(slug), prefix)).join("")}</div>
+        <div class="concept-grid">${featuredGroups.map((group) => conceptCard(group, prefix)).join("")}</div>
       </section>
       <section class="guide-collections" aria-labelledby="guide-collections-title">
         <h2 id="guide-collections-title">Continue by collection</h2>
@@ -685,7 +701,7 @@ ${structuredData(schema)}
     <section class="seo-section" aria-labelledby="all-guides">
       <h2 id="all-guides">Read the guides</h2>
       <div class="guide-index-grid">${content.guides.map((guide, index) => {
-        const featured = groupsBySlug.get(guide.featuredDesigns[0]);
+        const featured = publishedGuideGroups(guide)[0];
         const first = featured.variants[0];
         const thumbnail = registryByDesignId.get(first.id).thumbnail;
         return `<article class="guide-index-card">
@@ -704,8 +720,8 @@ ${structuredData(schema)}
 function galleryPage() {
   const prefix = "";
   const pathname = "/designs.html";
-  const title = `55 Data, Excel, SQL & Office Designs | ${content.brand}`;
-  const description = "Browse 55 original NumberNinjaDesigns artwork variants across data analytics, Excel, SQL, Python, dashboards, AI and office humor.";
+  const title = `${publishedCatalog.length} Data, Excel, SQL & Office Designs | ${content.brand}`;
+  const description = `Browse ${publishedCatalog.length} quality-approved NumberNinjaDesigns artwork variants across data analytics, Excel, SQL, Python, dashboards, AI and office humor.`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -727,7 +743,7 @@ function galleryPage() {
     const count = groups.filter((group) => content.collections[group.category].slug === collection.slug).length;
     return `<a href="collections/${collection.slug}/"><strong>${escapeHtml(collection.name)}</strong><span>${count} concepts</span></a>`;
   }).join("");
-  const cards = catalog.map((design, index) => {
+  const cards = publishedCatalog.map((design, index) => {
     const collection = content.collections[design.category];
     const assets = registryByDesignId.get(design.id);
     return `<article class="design-card" data-design-card data-index="${index + 1}" data-title="${escapeHtml(design.title)}" data-category="${collection.slug}" data-category-label="${escapeHtml(collection.name)}" data-status="${escapeHtml(design.status)}" data-mockup-image="${escapeHtml(design.mockupImage)}" data-full-image="${escapeHtml(design.image)}" id="${collection.slug}-${design.id}">
@@ -755,17 +771,17 @@ ${structuredData(schema)}
   ${header(prefix, "designs")}
   <main id="main-content">
     <section class="gallery-intro">
-      <p class="eyebrow">55 verified artwork variants · 45 unique concepts</p>
+      <p class="eyebrow">${publishedCatalog.length} quality-approved artwork variants · ${groups.length} unique concepts</p>
       <h1>Designs for data people, spreadsheet pros and code thinkers</h1>
       <p class="lede">Explore original artwork and product mockups, compare visual variants and open a concept page for context and a focused Etsy availability check.</p>
       <div class="collection-jump-grid" aria-label="Design collections">${collectionLinks}</div>
     </section>
     <section class="section gallery-section" aria-labelledby="gallery-title">
-      <div class="section-heading"><h2 id="gallery-title">Complete design catalog</h2><p>Filter all 55 visual variants. Repeated phrases lead to one authoritative concept page.</p></div>
+      <div class="section-heading"><h2 id="gallery-title">Quality-approved design catalog</h2><p>Filter all ${publishedCatalog.length} finished visual variants. Repeated phrases lead to one authoritative concept page.</p></div>
       <div class="gallery-toolbar" aria-label="Design gallery controls">
         <div class="field-group"><label for="gallery-filter">Filter by collection</label><select id="gallery-filter" data-gallery-filter><option value="all">All collections</option>${collections.map((collection) => `<option value="${collection.slug}">${escapeHtml(collection.name)}</option>`).join("")}</select></div>
         <div class="field-group"><label for="gallery-sort">Sort designs</label><select id="gallery-sort" data-gallery-sort><option value="latest">Catalog order</option><option value="title">Title A–Z</option></select></div>
-        <span class="gallery-count" data-gallery-count aria-live="polite">55 designs visible</span>
+        <span class="gallery-count" data-gallery-count aria-live="polite">${publishedCatalog.length} designs visible</span>
       </div>
       <div class="empty-state" data-gallery-empty hidden>No designs match this filter.</div>
       <div class="design-grid gallery-list">${cards}</div>
@@ -823,4 +839,4 @@ for (const guide of content.guides) write(`guides/${guide.slug}/index.html`, gui
 for (const group of groups) write(`designs/${group.slug}/index.html`, productPage(group));
 write("sitemap.xml", sitemap());
 
-console.log(`Generated ${groups.length} concept pages, ${collections.length + 1} collection pages, ${content.guides.length + 1} guide pages, designs.html and sitemap.xml.`);
+console.log(`Generated ${groups.length} quality-approved concept pages from ${publishedCatalog.length} live variants, ${collections.length + 1} collection pages, ${content.guides.length + 1} guide pages, designs.html and sitemap.xml.`);
