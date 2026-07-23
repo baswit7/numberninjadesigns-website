@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://studio-os.local/contracts/ai-workforce/agent-definition.schema.json",
+  "title":"AgentDefinition","type":"object","additionalProperties":false,
+  "required":["id","name","team","role","systemPrompt","expertise","tools","provider","status"],
+  "properties":{
+    "id":{"type":"string","pattern":"^[a-z0-9][a-z0-9-]{1,63}$"},"name":{"type":"string","minLength":1,"maxLength":64},
+    "team":{"enum":["Executive","Development","Business","Marketing","Automation","Monitoring"]},"role":{"type":"string","minLength":1,"maxLength":96},
+    "systemPrompt":{"type":"string","minLength":1,"maxLength":16000},"expertise":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "tools":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},"provider":{"type":"string","minLength":1},
+    "status":{"enum":["online","offline","starting","stopping","degraded","error"]},"createdAt":{"type":"string","format":"date-time"}
+  }
+}

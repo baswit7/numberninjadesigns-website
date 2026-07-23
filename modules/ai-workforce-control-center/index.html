@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="NumberNinjaDesigns Studio OS control center voor digitale en fysieke productie, agent orchestration, governance en monitoring.">
+  <title>Studio OS Control Center | NumberNinjaDesigns</title>
+  <link rel="stylesheet" href="styles.css?v=20260723-2">
+</head>
+<body>
+  <a class="skip" href="#workspace">Naar inhoud</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Hoofdnavigatie">
+      <div class="brand"><span class="brand-mark">N</span><span><b>NumberNinjaDesigns</b><small>STUDIO OS · CONTROL PLANE</small></span></div>
+      <nav id="nav"></nav>
+      <div class="boundary"><span class="status-dot amber"></span><span><b>READ-ONLY</b><small>Execution boundary</small></span></div>
+    </aside>
+    <header class="topbar">
+      <button class="icon-btn mobile-menu" id="menuButton" aria-label="Menu openen">☰</button>
+      <div><h1 id="pageTitle">Command Center</h1><p id="pageSubtitle">AI Workforce Control Center</p></div>
+      <div class="top-actions">
+        <label class="search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Zoek agent, taak of workflow" aria-label="Globaal zoeken"></label>
+        <button class="btn secondary" id="exportButton">Export audit</button>
+        <button class="btn primary" id="addAgentButton">+ Agent</button>
+      </div>
+    </header>
+    <main id="workspace" tabindex="-1"></main>
+    <footer><span><i class="status-dot"></i> CONFIGURATIE GELADEN</span><span id="clock"></span><span>NumberNinjaDesigns · Studio OS boundary</span></footer>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="agentDialog">
+    <form method="dialog" id="agentForm">
+      <div class="dialog-head"><div><h2>Agent registreren</h2><p>Voegt een lokale agentdefinitie toe. Er worden geen providers aangeroepen.</p></div><button class="icon-btn" value="cancel" formnovalidate aria-label="Sluiten">×</button></div>
+      <div class="form-grid">
+        <label>Naam<input name="name" required maxlength="64"></label>
+        <label>Team<select name="team" required></select></label>
+        <label>Rol<input name="role" required maxlength="96"></label>
+        <label>Provider<select name="provider"><option>OpenAI</option><option>Anthropic</option><option>Local</option><option>Custom MCP</option></select></label>
+        <label class="wide">Expertise (komma-gescheiden)<input name="expertise" maxlength="240"></label>
+        <label class="wide">Systeemprompt<textarea name="systemPrompt" required rows="5" maxlength="4000"></textarea></label>
+      </div>
+      <div class="dialog-actions"><button class="btn secondary" value="cancel" formnovalidate>Annuleren</button><button class="btn primary" value="default">Registreren</button></div>
+    </form>
+  </dialog>
+  <script src="app.js?v=20260723"></script>
+</body>
+</html>

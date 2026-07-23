@@ -1,0 +1,1 @@
+{"name":"@numberninjadesigns/listing-intelligence-engine","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test","generate":"node src/cli.js"}}

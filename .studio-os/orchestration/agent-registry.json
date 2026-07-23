@@ -1,0 +1,502 @@
+{
+  "schemaVersion": "1.0.0",
+  "supervisorAgentId": "central-supervisor",
+  "policies": {
+    "maximumConcurrentSubagents": 3,
+    "subagentsMaySpawnSubagents": false,
+    "smallTasksUseSingleAgent": true,
+    "maximumStandardOpenFiles": 12,
+    "maximumRetries": 1,
+    "oneWriterPerFile": true,
+    "protectedPathSegments": [
+      "generated",
+      "cache",
+      "secrets",
+      "node_modules",
+      "assets",
+      "branding",
+      "runtime",
+      "output",
+      "outputs",
+      "tmp",
+      "build",
+      "dist",
+      "coverage",
+      "__pycache__"
+    ],
+    "resultContract": ".studio-os/contracts/agent-result.schema.json"
+  },
+  "agents": [
+    {
+      "id": "central-supervisor",
+      "displayName": "Central Supervisor",
+      "role": "Sole task router, scope owner and result integrator",
+      "minimumContext": ["task objective and acceptance criteria", "context/repository-map.json", "matching routing rule", "task-scoped git status"],
+      "requiredInput": ["objective", "known evidence", "relevant paths", "acceptance criteria"],
+      "startConditions": ["Every request enters through the supervisor."],
+      "stopConditions": ["Acceptance gates pass", "a mandatory stop rule is reached", "the one permitted retry fails"],
+      "modelLevel": "strong reasoning for routing and final risk; standard for bounded single-agent work",
+      "expectedBenefit": "Reuses one repository map, prevents duplicate discovery, overlapping writers and unvalidated integration.",
+      "tokenRisk": "High if it scans the repository; controlled by the 12-file ceiling and compact result contracts.",
+      "separationReason": "Must remain independent from specialist implementation so scope and acceptance decisions are not self-approved.",
+      "accessMode": "read-write",
+      "taskTypes": [
+        "small-bug",
+        "complex-bug",
+        "local-ui",
+        "module-feature",
+        "cross-module",
+        "tests",
+        "release",
+        "docs",
+        "architecture"
+      ],
+      "responsibilities": [
+        "Classify the task from evidence before delegation.",
+        "Create bounded task manifests and assign exclusive file ownership.",
+        "Execute genuinely small tasks directly or assign exactly one specialist.",
+        "Integrate results, enforce gates and provide the final audit."
+      ],
+      "selectionSignals": [
+        "Every task starts here.",
+        "Scope crosses agent outputs or needs a stop decision.",
+        "The task is small enough for a single bounded execution."
+      ],
+      "rejectionSignals": [
+        "None for intake; specialist implementation is delegated when bounded parallel work materially reduces risk or latency."
+      ],
+      "allowedActions": [
+        "Read task-scoped source files.",
+        "Spawn at most three registered direct subagents.",
+        "Assign and revoke exclusive write ownership.",
+        "Run task-scoped validation and integrate non-overlapping changes."
+      ],
+      "prohibitedActions": [
+        "Enable execution, provider, deployment or secret access.",
+        "Allow a subagent to delegate or spawn.",
+        "Approve overlapping writers.",
+        "Suppress missing evidence or failed checks."
+      ],
+      "canSpawnSubagents": true,
+      "maximumDirectSubagents": 3,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "task-manifest.allowedWritePaths",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "May write only files reserved to the supervisor; must not overlap active specialist ownership.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "bug-diagnostics",
+      "displayName": "Bug Diagnostics Agent",
+      "role": "Evidence-first root-cause investigator",
+      "minimumContext": ["exact failure output", "failing test or validator", "directly called source and contract files", "task-scoped diff"],
+      "requiredInput": ["reproduction signal", "expected behavior", "allowed read paths"],
+      "startConditions": ["Root cause is not already proven and a concrete failure can be reproduced or inspected."],
+      "stopConditions": ["Root cause is evidenced", "minimum missing evidence is identified", "the investigation would require broader repository context"],
+      "modelLevel": "strong reasoning",
+      "expectedBenefit": "Separates causal analysis from repair and reduces speculative changes across layered contracts.",
+      "tokenRisk": "Medium-high when logs are broad; only the failing slice is allowed.",
+      "separationReason": "Must not implement its own recommendation; independent implementation limits confirmation bias.",
+      "accessMode": "read-only",
+      "taskTypes": [
+        "small-bug",
+        "complex-bug"
+      ],
+      "responsibilities": [
+        "Reproduce failures with the smallest relevant context.",
+        "Separate root cause from symptoms and identify regression risk.",
+        "Return evidence and a bounded repair recommendation."
+      ],
+      "selectionSignals": [
+        "Observed behavior has an unknown cause.",
+        "A cross-cutting or intermittent defect needs isolation."
+      ],
+      "rejectionSignals": [
+        "The exact one-file correction and validation are already known.",
+        "The request is feature delivery without a defect."
+      ],
+      "allowedActions": [
+        "Read allowed paths and run non-mutating diagnostics."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Broaden scope or rewrite unrelated code.",
+        "Access protected paths or secrets."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "none",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Read-only; return evidence and a repair recommendation.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "module-engineer",
+      "displayName": "Module Engineer",
+      "role": "Production implementation owner for isolated modules",
+      "minimumContext": ["module README", "direct source/config/contracts", "relevant tests", "task manifest"],
+      "requiredInput": ["stable module boundary", "implementation objective", "exclusive write paths", "validation commands"],
+      "startConditions": ["The change is bounded to one existing module or a diagnosed repair."],
+      "stopConditions": ["Module acceptance checks pass", "a boundary decision is missing", "scope expands beyond the manifest"],
+      "modelLevel": "standard; strong reasoning for schema or migration changes",
+      "expectedBenefit": "Keeps isolated modules independent and avoids loading unrelated storefront or governance context.",
+      "tokenRisk": "Medium; schemas, implementation and tests must stay within one module slice.",
+      "separationReason": "Do not combine with UI, data-specialist or verifier roles when their interfaces can be frozen and independently checked.",
+      "accessMode": "read-write",
+      "taskTypes": [
+        "small-bug",
+        "complex-bug",
+        "module-feature",
+        "cross-module"
+      ],
+      "responsibilities": [
+        "Implement bounded changes at existing module boundaries.",
+        "Preserve deterministic behavior, contracts and local-first operation.",
+        "Add proportionate error handling and verification."
+      ],
+      "selectionSignals": [
+        "The change primarily affects module business logic, adapters or contracts.",
+        "A diagnosed defect is ready for implementation."
+      ],
+      "rejectionSignals": [
+        "The task is UI-only, test-only, release-only or documentation-only.",
+        "Required architecture boundaries are unresolved."
+      ],
+      "allowedActions": [
+        "Read and write manifest-authorized module paths.",
+        "Run module-scoped tests and deterministic generators."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Publish, deploy or call undocumented external endpoints.",
+        "Write generated, cache or secret paths."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "task-manifest.allowedWritePaths",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Exactly one active writer per assigned file.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "data-generator-engineer",
+      "displayName": "Data and Generator Engineer",
+      "role": "Deterministic normalization, scoring, schema and package-generation specialist",
+      "minimumContext": ["one intelligence-engine README", "direct schemas/config", "assigned engine/core/source files", "relevant fixtures and tests"],
+      "requiredInput": ["validated input contract", "determinism or scoring objective", "exclusive engine paths", "expected provenance"],
+      "startConditions": ["The task affects Etsy Intelligence or Listing Intelligence data, scoring, export or schema behavior."],
+      "stopConditions": ["Deterministic and boundary checks pass", "required input evidence is absent", "UI or publishing becomes the primary scope"],
+      "modelLevel": "strong reasoning",
+      "expectedBenefit": "Preserves provenance, deterministic output and schema integrity without loading dashboard or storefront context.",
+      "tokenRisk": "Medium-high; allow only one data pipeline and its direct fixtures per assignment.",
+      "separationReason": "Data quality and byte-stable generation require different evidence from presentation and general module delivery.",
+      "accessMode": "read-write",
+      "taskTypes": ["small-bug", "complex-bug", "module-feature", "cross-module"],
+      "responsibilities": [
+        "Maintain canonical imports, normalization, scoring and provenance.",
+        "Preserve deterministic listing-package output and schema compatibility.",
+        "Add focused data, fixture and generator regression checks."
+      ],
+      "selectionSignals": [
+        "The changed behavior is in modules/etsy-intelligence-engine engine/core/importers.",
+        "The changed behavior is in modules/listing-intelligence-engine schemas/config/src generation."
+      ],
+      "rejectionSignals": ["The task is UI-only, publication, external connector or general documentation work."],
+      "allowedActions": ["Read and write manifest-authorized engine, schema, config, fixture and test paths.", "Run deterministic module tests and temp-directory exports."],
+      "prohibitedActions": ["Spawn agents.", "Publish to Etsy or call undocumented endpoints.", "Modify generated output when source inputs are available."],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {"source": "task-manifest.allowedReadPaths", "fallback": "deny-all"},
+      "allowedWritePaths": {"source": "task-manifest.allowedWritePaths", "fallback": "deny-all"},
+      "writePolicy": "Exactly one active writer per assigned file.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "local-ui-engineer",
+      "displayName": "Local UI Engineer",
+      "role": "Responsive local-first browser UX owner",
+      "minimumContext": ["relevant module README", "assigned HTML/CSS/browser JavaScript", "stable view model", "UX acceptance criteria"],
+      "requiredInput": ["browser behavior", "responsive states", "exclusive UI paths"],
+      "startConditions": ["The data/view contract is stable and the change is local-browser only."],
+      "stopConditions": ["Responsive and failure states pass", "server authorization or external mutation becomes necessary"],
+      "modelLevel": "standard",
+      "expectedBenefit": "Improves static dashboard UX without loading engine or governance implementation context.",
+      "tokenRisk": "Medium; visual review can broaden unless restricted to one UI surface.",
+      "separationReason": "UI code cannot own business rules, runtime authorization or generator determinism.",
+      "accessMode": "read-write",
+      "taskTypes": [
+        "local-ui",
+        "module-feature",
+        "small-bug"
+      ],
+      "responsibilities": [
+        "Build accessible responsive UI within static-file constraints.",
+        "Preserve read-only runtime boundaries and safe localStorage behavior.",
+        "Verify loading, empty, error and recovery states."
+      ],
+      "selectionSignals": [
+        "The primary acceptance criteria are browser interaction or visual behavior.",
+        "The change is confined to a local module UI."
+      ],
+      "rejectionSignals": [
+        "The task primarily changes Node business logic or governance policy.",
+        "A browser mutation would cross a disabled runtime boundary."
+      ],
+      "allowedActions": [
+        "Read and write assigned HTML, CSS and browser JavaScript.",
+        "Run local static serving and browser checks."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Treat browser roles as authorization.",
+        "Store secrets or enable external mutations."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "task-manifest.allowedWritePaths",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Exactly one active writer per assigned file.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "test-verifier",
+      "displayName": "Test and Verification Agent",
+      "role": "Independent task-scoped verifier",
+      "minimumContext": ["acceptance criteria", "changed-path diff", "relevant test command", "direct contract or fixture"],
+      "requiredInput": ["candidate change", "required gates", "allowed test paths"],
+      "startConditions": ["A reviewable artifact or explicit test-only objective exists."],
+      "stopConditions": ["Required checks are reproducible and reported", "implementation changes would be required without authorization"],
+      "modelLevel": "standard",
+      "expectedBenefit": "Provides independent regression evidence without re-reading unchanged implementation areas.",
+      "tokenRisk": "Medium; keep evidence to changed paths and failing output.",
+      "separationReason": "Must not modify production code merely to make its own checks pass.",
+      "accessMode": "read-write-tests-only",
+      "taskTypes": [
+        "tests",
+        "small-bug",
+        "complex-bug",
+        "local-ui",
+        "module-feature",
+        "cross-module",
+        "release"
+      ],
+      "responsibilities": [
+        "Add or run focused checks mapped to acceptance criteria.",
+        "Report commands, outcomes and unavailable evidence without invention.",
+        "Identify regressions and nondeterminism."
+      ],
+      "selectionSignals": [
+        "Independent verification reduces release or regression risk.",
+        "The task is explicitly test-focused."
+      ],
+      "rejectionSignals": [
+        "No runnable or reviewable artifact is available.",
+        "The only requested change is prose with no executable gate."
+      ],
+      "allowedActions": [
+        "Read allowed implementation and test paths.",
+        "Write only assigned tests or validation assets.",
+        "Run non-destructive checks."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Modify implementation files owned by another agent.",
+        "Convert missing telemetry into a passing result."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "task-manifest.allowedWritePaths",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Test files require exclusive ownership; implementation remains read-only unless separately assigned.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "diff-reviewer",
+      "displayName": "Diff Reviewer",
+      "role": "Independent scope, ownership and contract-drift reviewer",
+      "minimumContext": ["task manifest", "task-scoped final diff", "git status", "direct README or contract"],
+      "requiredInput": ["intended scope", "changed-file list", "final diff"],
+      "startConditions": ["Implementation is complete and no writer is still active on the reviewed files."],
+      "stopConditions": ["Every changed line is classified", "the diff contains unrelated user-owned work that cannot be separated"],
+      "modelLevel": "standard",
+      "expectedBenefit": "Detects scope leakage and collisions cheaply in the repository's dirty worktree.",
+      "tokenRisk": "Low-medium when limited to the task diff rather than full files.",
+      "separationReason": "The implementer cannot independently approve its own scope and contract compliance.",
+      "accessMode": "read-only",
+      "taskTypes": ["small-bug", "complex-bug", "local-ui", "module-feature", "cross-module", "release", "architecture"],
+      "responsibilities": ["Review only the assigned diff.", "Flag scope leakage, protected-path changes, ownership conflicts and contract drift.", "Return prioritized evidence without editing."],
+      "selectionSignals": ["The worktree is dirty.", "A change crosses contracts or is release-bound."],
+      "rejectionSignals": ["No diff exists.", "The requested task is read-only evidence collection."],
+      "allowedActions": ["Read task-scoped status, diff and direct contracts."],
+      "prohibitedActions": ["Spawn agents.", "Modify or stage files.", "Read unrelated untracked output or generated assets."],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {"source": "task-manifest.allowedReadPaths", "fallback": "deny-all"},
+      "allowedWritePaths": {"source": "none", "fallback": "deny-all"},
+      "writePolicy": "Read-only.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "release-auditor",
+      "displayName": "Release Auditor",
+      "role": "Readiness, compatibility and rollback reviewer",
+      "minimumContext": ["final diff", "test results", "config/studio.config.json", "relevant validators", "rollback evidence"],
+      "requiredInput": ["integrated candidate", "gate list", "validation evidence"],
+      "startConditions": ["Implementation and diff review are complete."],
+      "stopConditions": ["A PASS/CONDITIONAL PASS/FAIL/BLOCKED verdict is evidenced", "deployment or secret access is requested"],
+      "modelLevel": "standard",
+      "expectedBenefit": "Creates a fail-closed release decision without granting deployment authority.",
+      "tokenRisk": "Low-medium when limited to final diff and gate evidence.",
+      "separationReason": "Release readiness must be independent from implementation and scope routing.",
+      "accessMode": "read-only",
+      "taskTypes": [
+        "release",
+        "cross-module",
+        "architecture"
+      ],
+      "responsibilities": [
+        "Check validation evidence, compatibility, rollback and documented limitations.",
+        "Confirm that disabled execution boundaries remain closed.",
+        "Issue a release verdict without deploying."
+      ],
+      "selectionSignals": [
+        "A release or cross-module integration needs an independent gate.",
+        "Rollback or contract compatibility is material."
+      ],
+      "rejectionSignals": [
+        "Implementation or required checks are incomplete.",
+        "The request asks this repository to deploy while deployment is disabled."
+      ],
+      "allowedActions": [
+        "Read manifests, diffs and validation results.",
+        "Run documented non-destructive readiness checks."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Deploy, publish or override a failed gate.",
+        "Access credentials or secret stores."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "none",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Read-only; the supervisor owns any persisted final report.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    },
+    {
+      "id": "architecture-analyst",
+      "displayName": "Architecture Analyst",
+      "role": "Read-only boundary, dependency and migration analyst",
+      "taskTypes": [
+        "architecture",
+        "cross-module"
+      ],
+      "minimumContext": ["repository map", "affected module READMEs", "direct shared contracts", "task evidence"],
+      "requiredInput": ["proposed boundary change", "affected interfaces", "constraints"],
+      "startConditions": ["Two or more module boundaries or a shared contract decision are affected."],
+      "stopConditions": ["Boundary decision and dependency order are evidenced", "implementation detail is the only remaining work"],
+      "modelLevel": "strong reasoning",
+      "expectedBenefit": "Freezes interfaces before parallel work and avoids cross-module rework.",
+      "tokenRisk": "High if repository-wide; restricted to the affected boundaries and contracts.",
+      "separationReason": "Must not implement or document its own architecture decision; supervisor and implementers retain those responsibilities.",
+      "accessMode": "read-only",
+      "responsibilities": [
+        "Design module boundaries before cross-module implementation.",
+        "Identify dependencies, compatibility constraints and migration impact.",
+        "Return a compact decision recommendation to the supervisor."
+      ],
+      "selectionSignals": [
+        "The deliverable changes a contract or architecture boundary.",
+        "Cross-module ownership needs a stable boundary first."
+      ],
+      "rejectionSignals": [
+        "The task is a pure implementation or test change with settled boundaries.",
+        "The requested design would imply currently forbidden execution capability."
+      ],
+      "allowedActions": [
+        "Read task-scoped architecture, contracts and module documentation."
+      ],
+      "prohibitedActions": [
+        "Spawn agents.",
+        "Claim unimplemented runtime capability.",
+        "Modify generated, cache or secret paths."
+      ],
+      "canSpawnSubagents": false,
+      "maximumDirectSubagents": 0,
+      "maximumStandardOpenFiles": 12,
+      "allowedReadPaths": {
+        "source": "task-manifest.allowedReadPaths",
+        "fallback": "deny-all"
+      },
+      "allowedWritePaths": {
+        "source": "none",
+        "fallback": "deny-all"
+      },
+      "writePolicy": "Read-only; the supervisor assigns any resulting documentation or implementation work separately.",
+      "outputContract": ".studio-os/contracts/agent-result.schema.json"
+    }
+  ],
+  "rejectedAgentTypes": [
+    {
+      "type": "permanent-context-scout",
+      "reason": "The repository map and module READMEs already provide stable routing context; a permanent scout would duplicate supervisor reads.",
+      "retainedBy": "central-supervisor",
+      "reconsiderWhen": "The affected boundary cannot be identified within the 12-file context ceiling."
+    },
+    {
+      "type": "standalone-security-secrets-reviewer",
+      "reason": "Provider calls, deployment and secret access are fail-closed; a permanent specialist has no recurring writable scope today.",
+      "retainedBy": "release-auditor",
+      "reconsiderWhen": "An authenticated remote connector, vault integration or externally reachable write path is explicitly authorized."
+    },
+    {
+      "type": "standalone-documentation-agent",
+      "reason": "Module documentation is an implementation contract and is safest with the owning implementer; a separate prose pass risks drift.",
+      "retainedBy": "central-supervisor",
+      "reconsiderWhen": "A documentation-only migration spans many stable modules and has independent acceptance criteria."
+    }
+  ]
+}

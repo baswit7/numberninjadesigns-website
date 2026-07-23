@@ -1,0 +1,8 @@
+{
+  "schemaVersion":"1.0.0","etsy":{"titleMax":140,"tagCount":13,"tagMax":20},
+  "supportedLocales":["en-US","en-GB","nl-NL","de-DE","de-AT","fr-FR","fr-BE","es-ES","it-IT","pt-PT","pl-PL","sv-SE","da-DK","nb-NO","fi-FI"],
+  "currencies":["USD","GBP","EUR","PLN","SEK","DKK","NOK"],
+  "qualityWeights":{"input":15,"seo":15,"title":10,"tags":10,"description":10,"visuals":10,"localization":5,"pricing":10,"compliance":15},
+  "pricing":{"complexityPremium":0.08,"filePremium":0.02,"languagePremium":0.03,"introDiscount":0.2,"floorFactor":0.75,"premiumFactor":1.3},
+  "staleExportDays":90,"abTest":{"minimumDays":14},"writeOperations":false
+}
