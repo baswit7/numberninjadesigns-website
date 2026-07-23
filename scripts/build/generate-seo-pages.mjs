@@ -143,9 +143,10 @@ function publishedGuideGroups(guide) {
   return guide.featuredDesigns.map((slug) => groupsBySlug.get(slug)).filter(Boolean);
 }
 
-function head({ prefix, title, description, pathname, image, type = "website", robots = "index,follow,max-image-preview:large" }) {
+function head({ prefix, title, description, pathname, image, type = "website", robots = "index,follow,max-image-preview:large", seoVersion = "" }) {
   const canonical = absolute(pathname);
   const socialImage = image || absolute("/assets/brand/numberninjadesigns-social.png");
+  const seoStylesheet = `${prefix}seo.css${seoVersion ? `?v=${encodeURIComponent(seoVersion)}` : ""}`;
   return `  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
@@ -166,7 +167,7 @@ function head({ prefix, title, description, pathname, image, type = "website", r
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${escapeHtml(socialImage)}">
   <link rel="stylesheet" href="${prefix}styles.css">
-  <link rel="stylesheet" href="${prefix}seo.css">
+  <link rel="stylesheet" href="${seoStylesheet}">
   <script src="${prefix}local-links.js" defer></script>`;
 }
 
@@ -323,7 +324,7 @@ function productPage(group) {
           <span class="variant-media">
             <img src="${prefix}${first.mockupImage}" width="${mockup.dimensions.width}" height="${mockup.dimensions.height}" alt="${escapeHtml(group.title)} product mockup" loading="lazy" decoding="async">
           </span>
-          <figcaption>Product mockup · zoomed for clarity</figcaption>
+          <figcaption>Product mockup · enhanced for clarity</figcaption>
         </figure>`;
   const variants = `${artworkVariants}${mockupVariant}`;
 
@@ -335,7 +336,8 @@ ${head({
   title,
   description,
   pathname,
-  image: artworkImages[0]
+  image: artworkImages[0],
+  seoVersion: "20260723-product-stage"
 })}
   <script type="application/ld+json">
 ${structuredData(schema)}
@@ -358,7 +360,7 @@ ${structuredData(schema)}
         </div>
         <p class="availability-note"><strong>Availability policy:</strong> Etsy confirms the live listing, product format, size, color, price, dispatch and shipping. This catalog never invents stock or commercial details.</p>
       </div>
-      <div class="variant-gallery has-multiple" aria-label="${escapeHtml(group.title)} artwork and product preview">
+      <div class="variant-gallery has-multiple variant-count-${group.variants.length + 1}" aria-label="${escapeHtml(group.title)} artwork and product preview">
         ${variants}
       </div>
     </article>
@@ -683,7 +685,7 @@ function guideHub() {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${head({ prefix, title, description, pathname })}
+${head({ prefix, title, description, pathname, seoVersion: "20260723-guide-grid" })}
   <script type="application/ld+json">
 ${structuredData(schema)}
   </script>
