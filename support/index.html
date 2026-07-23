@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="nl-NL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <meta name="theme-color" content="#070707">
+  <meta name="color-scheme" content="dark">
+  <title>Product Support | NumberNinjaDesigns</title>
+  <meta name="description" content="Krijg directe, brongebonden hulp voor NumberNinjaDesigns digitale planners en trackers, met veilige escalatie naar persoonlijke ondersteuning.">
+  <link rel="canonical" href="https://www.numberninjadesigns.com/support/">
+  <meta property="og:title" content="Product Support | NumberNinjaDesigns">
+  <meta property="og:description" content="Directe producthulp voor digitale planners en trackers, gebaseerd op gecontroleerde NumberNinjaDesigns-productinformatie.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.numberninjadesigns.com/support/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./data.js" defer></script>
+  <script src="./app.js" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "NumberNinjaDesigns Product Support",
+      "url": "https://www.numberninjadesigns.com/support/",
+      "description": "Brongebonden ondersteuning voor digitale planners en trackers van NumberNinjaDesigns.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "NumberNinjaDesigns",
+        "url": "https://www.numberninjadesigns.com/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Naar de hoofdinhoud</a>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="NumberNinjaDesigns home">
+      <span class="brand-mark" aria-hidden="true">ƒ</span>
+      <span><strong>NumberNinjaDesigns</strong><small>Digital Production Support</small></span>
+    </a>
+    <nav aria-label="Hoofdnavigatie">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#digital-products">Digitale producten</a>
+      <a href="https://www.etsy.com/shop/NumberNinjaDesigns" rel="noopener noreferrer">Etsy shop</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div>
+        <h1>Directe hulp voor je digitale product.</h1>
+        <p>Kies je product en stel je vraag. De supportagent antwoordt uitsluitend uit gecontroleerde productinformatie. Is het antwoord niet betrouwbaar genoeg, dan wordt een supportverzoek voor je voorbereid.</p>
+      </div>
+      <div class="availability" id="availability" data-state="loading" role="status" aria-live="polite">
+        <span aria-hidden="true"></span>
+        <strong id="availabilityTitle">Productkennis laden</strong>
+        <small id="availabilityDetail">De lokale websitecatalogus wordt gecontroleerd.</small>
+      </div>
+    </section>
+
+    <section class="support-shell" aria-labelledby="support-title">
+      <div class="question-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Nieuwe supportvraag</p>
+            <h2 id="support-title">Waar kunnen we mee helpen?</h2>
+          </div>
+          <span>01 / Vraag</span>
+        </div>
+
+        <form id="support-form" novalidate>
+          <div class="field-grid">
+            <label>
+              <span>Product</span>
+              <select id="product" required></select>
+            </label>
+            <label>
+              <span>Taal</span>
+              <select id="locale" required>
+                <option value="nl-NL">Nederlands</option>
+                <option value="en-US">English (US)</option>
+                <option value="en-GB">English (UK)</option>
+                <option value="de-DE">Deutsch</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="profile-status" id="profile-status" role="status"></p>
+
+          <fieldset>
+            <legend>Veelgestelde vragen</legend>
+            <div class="quick-actions">
+              <button type="button" data-question="contents">Wat zit er in dit product?</button>
+              <button type="button" data-question="compatibility">Werkt dit in Google Sheets?</button>
+              <button type="button" data-question="configuration">Welke talen, valuta en thema’s zijn beschikbaar?</button>
+              <button type="button" data-question="download">Hoe open ik mijn download?</button>
+            </div>
+          </fieldset>
+
+          <label class="question-field">
+            <span>Je vraag</span>
+            <textarea id="question" rows="6" minlength="8" maxlength="1500" required placeholder="Beschrijf wat je wilt doen en waar je vastloopt."></textarea>
+            <small>Deel geen wachtwoorden, betaalgegevens of persoonlijke financiële informatie.</small>
+          </label>
+
+          <div class="form-footer">
+            <p id="form-status" role="status" aria-live="polite">Klaar om gecontroleerde productkennis te raadplegen.</p>
+            <button class="button button-primary" id="submit-question" type="submit">Vraag beantwoorden</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="answer-panel" id="answer-panel" data-state="idle" aria-labelledby="answer-title">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Supportantwoord</p>
+            <h2 id="answer-title">Antwoord en vervolgstap</h2>
+          </div>
+          <span id="confidence">Nog geen antwoord</span>
+        </div>
+
+        <div class="empty-state" id="empty-state">
+          <span aria-hidden="true">?</span>
+          <p>Stel een vraag of kies een veelgestelde vraag om de productkennis te raadplegen.</p>
+        </div>
+
+        <div class="loading-state" id="loading-state" hidden>
+          <span aria-hidden="true"></span>
+          <p>Bronnen controleren en antwoord samenstellen…</p>
+        </div>
+
+        <div id="answer-content" hidden>
+          <p class="answer-text" id="answer-text"></p>
+          <section class="sources" id="sources" aria-labelledby="sources-title">
+            <h3 id="sources-title">Gebruikte bronnen</h3>
+            <ol id="source-list"></ol>
+          </section>
+          <aside class="escalation" id="escalation" hidden>
+            <h3>Persoonlijke opvolging nodig</h3>
+            <p id="escalation-text"></p>
+            <a class="button button-secondary" id="email-support" href="mailto:support@numberninjadesigns.com">Supportverzoek e-mailen</a>
+            <small>Je e-mailprogramma opent pas wanneer je op deze knop klikt. Er wordt niets automatisch verzonden.</small>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Supportgrenzen">
+      <div><strong>Brongebonden</strong><span>Geen verzonnen functies of compatibiliteit.</span></div>
+      <div><strong>Privacy-first</strong><span>Geen uploads en geen browseropslag van je vraag.</span></div>
+      <div><strong>Eerlijke escalatie</strong><span>Een supportverzoek is pas verzonden nadat jij de e-mail verstuurt.</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>NumberNinjaDesigns</strong><span>Digital Production · Product Support</span></div>
+    <nav aria-label="Voetnavigatie">
+      <a href="../privacy.html">Privacy</a>
+      <a href="../terms.html">Voorwaarden</a>
+      <a href="../contact.html">Contact</a>
+      <a href="mailto:support@numberninjadesigns.com">support@numberninjadesigns.com</a>
+    </nav>
+  </footer>
+
+  <div class="sr-only" id="live-region" aria-live="polite"></div>
+</body>
+</html>
