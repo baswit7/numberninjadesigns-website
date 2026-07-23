@@ -22,6 +22,11 @@ test("public support assets are valid standalone static files", () => {
   assert.match(html, /src="\.\/data\.js"/);
   assert.match(html, /src="\.\/app\.js"/);
   assert.doesNotMatch(html, /\b(?:src|href)="https?:\/\/[^"]+\.(?:js|css)"/i);
+  assert.match(html, /<html lang="en-US">/);
+  assert.match(html, /<option value="en-US" selected>English \(US\)<\/option>/);
+  assert.ok(html.indexOf('value="en-US"') < html.indexOf('value="nl-NL"'));
+  assert.match(html, /<span>Answer language<\/span>/);
+  assert.match(html, /Direct help for your digital product\./);
 });
 
 test("support page has restrictive CSP and no executable HTML sinks", () => {
@@ -59,8 +64,8 @@ test("answers are deterministic, source-bound and escalate honestly through cust
   assert.match(app, /Google Sheets-ondersteuning: nee/);
   assert.match(app, /buildSources/);
   assert.match(app, /mailto:support@numberninjadesigns\.com/);
-  assert.ok(html.includes("Een supportverzoek is pas verzonden nadat jij de e-mail verstuurt."));
-  assert.ok(html.includes("Er wordt niets automatisch verzonden."));
+  assert.ok(html.includes("A support request is sent only after you send the email."));
+  assert.ok(html.includes("Nothing is sent automatically."));
   assert.doesNotMatch(`${html}\n${app}`, /ticket is aangemaakt|ticket has been created/i);
 });
 

@@ -311,8 +311,8 @@
   function initialize() {
     if (!data || !Array.isArray(data.products) || data.products.length === 0) {
       $("availability").dataset.state = "error";
-      $("availabilityTitle").textContent = "Productkennis niet beschikbaar";
-      $("availabilityDetail").textContent = "Gebruik de contactpagina voor persoonlijke ondersteuning.";
+      $("availabilityTitle").textContent = "Product knowledge unavailable";
+      $("availabilityDetail").textContent = "Use the contact page for personal support.";
       $("submit-question").disabled = true;
       return;
     }
