@@ -1094,17 +1094,19 @@ body.commerce-page {
   }
 
   .apparel-item {
-    padding: 24px;
+    padding: 24px 12px;
     border-right: 1px solid var(--commerce-line);
   }
 
   .apparel-item:first-child {
     padding-left: 0;
+    padding-right: 24px;
   }
 
   .apparel-item:last-child {
+    padding-left: 24px;
     padding-right: 0;
-    border-right: 0;
+    border-right-color: transparent;
   }
 
   .apparel-types {

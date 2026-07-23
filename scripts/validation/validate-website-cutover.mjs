@@ -231,6 +231,13 @@ for (const cssFile of ["styles.css", "commerce.css", "seo.css"]) {
   for (const match of css.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) validateLocalReference(cssFile, match[1]);
 }
 
+const homeSource = read("index.html");
+const commerceStyles = read("commerce.css");
+assert(homeSource.includes("commerce.css?v=20260723-home-apparel-grid"), "index.html: homepage apparel grid uses the current stylesheet cache key");
+assert(/\.apparel-item\s*\{\s*padding:\s*24px 12px;/m.test(commerceStyles), "commerce.css: desktop apparel cards use equal total horizontal padding");
+assert(/\.apparel-item:first-child\s*\{[^}]*padding-left:\s*0;[^}]*padding-right:\s*24px;/s.test(commerceStyles), "commerce.css: first apparel card preserves the outer edge and equal media width");
+assert(/\.apparel-item:last-child\s*\{[^}]*padding-left:\s*24px;[^}]*padding-right:\s*0;[^}]*border-right-color:\s*transparent;/s.test(commerceStyles), "commerce.css: last apparel card preserves the outer edge, border width and equal media width");
+
 const brandFiles = allHtml.concat([
   "README.md",
   "docs/ARCHITECTURE.md",
