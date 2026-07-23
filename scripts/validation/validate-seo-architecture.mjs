@@ -257,7 +257,9 @@ for (const file of conceptFiles) {
   assert(schemaTypes.includes("BreadcrumbList"), `${relativePath}: missing BreadcrumbList entity.`);
   assert(!schemaTypes.includes("Offer"), `${relativePath}: must not publish an Offer without verified listing data.`);
   assert(!/"price"\s*:|availability\s*":/i.test(source), `${relativePath}: must not fabricate price or stock schema.`);
-  assert((source.match(/class="variant-card(?:\s|")/g) || []).length === group.length, `${relativePath}: rendered variant count does not match catalog.`);
+  assert((source.match(/class="variant-card(?:\s|")/g) || []).length === group.length + 1, `${relativePath}: expected every artwork variant plus one product mockup.`);
+  assert((source.match(/class="variant-card is-artwork"/g) || []).length === group.length, `${relativePath}: rendered artwork count does not match catalog.`);
+  assert((source.match(/class="variant-card is-mockup"/g) || []).length === 1, `${relativePath}: expected exactly one product mockup.`);
 }
 
 for (const file of collectionFiles.filter((path) => repoPath(path) !== "collections/index.html")) {
