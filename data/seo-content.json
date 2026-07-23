@@ -1,0 +1,478 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteOrigin": "https://www.numberninjadesigns.com",
+  "brand": "NumberNinjaDesigns",
+  "etsyShop": "https://www.etsy.com/shop/NumberNinjaDesigns",
+  "generatedDate": "2026-07-23",
+  "collections": {
+    "Spreadsheet Humor": {
+      "slug": "spreadsheet-humor",
+      "name": "Spreadsheet Humor",
+      "seoTitle": "Funny Excel Shirts & Spreadsheet Gifts",
+      "description": "Explore original Excel shirts and spreadsheet gifts for formula fixers, finance teams, analysts and everyone who knows that sheet happens.",
+      "h1": "Funny Excel shirts and spreadsheet gifts",
+      "intro": "Spreadsheets are where deadlines, decisions and the occasional circular reference meet. This collection turns that shared experience into original visual jokes for people who can find the one broken formula in a workbook full of green cells.",
+      "perspective": "The strongest spreadsheet gift is specific enough to feel personal without needing an inside explanation. Excel Overlord, Sheet Happens and Spreadsheet Wizard each land differently, from dry office humor to full formula-powered confidence.",
+      "audience": "Built for Excel power users, financial analysts, controllers, operations teams, project planners and the colleague who always gets asked to repair the workbook.",
+      "faq": [
+        {
+          "question": "Who are spreadsheet humor designs for?",
+          "answer": "They suit Excel users, finance and operations teams, analysts and anyone whose working day involves formulas, tabs and recurring reports."
+        },
+        {
+          "question": "Can I use a design as a team gift?",
+          "answer": "Yes. Choose a phrase the whole team recognizes, then check the NumberNinjaDesigns Etsy shop for the formats and sizes currently available."
+        },
+        {
+          "question": "Where can I check current availability?",
+          "answer": "Every concept page links to a focused Etsy shop search. Etsy is the source of truth for live products, pricing, shipping and variants."
+        }
+      ]
+    },
+    "Data & Analytics": {
+      "slug": "data-analytics",
+      "name": "Data & Analytics",
+      "seoTitle": "Data Analyst Shirts & Analytics Gifts",
+      "description": "Original data analyst shirts and analytics gifts for evidence-first thinkers, insight hunters and teams that choose data over drama.",
+      "h1": "Data analyst shirts and analytics gifts",
+      "intro": "Good analysis makes complexity understandable. This collection celebrates the people behind that work: the curious minds who question assumptions, test opinions and turn scattered numbers into decisions.",
+      "perspective": "Some concepts are direct identity statements, such as Data Driven and Data Thinker. Others, including Data Over Drama and Data Greater Than Opinions, carry a sharper point of view. That range makes it easier to match a design to the person instead of settling for generic tech merchandise.",
+      "audience": "Designed for data analysts, analytics engineers, BI teams, researchers, consultants, insight professionals and evidence-minded leaders.",
+      "faq": [
+        {
+          "question": "What makes a good gift for a data analyst?",
+          "answer": "Look for a phrase that reflects how they work: evidence-first, curious, precise or quietly competitive about clean data."
+        },
+        {
+          "question": "Are these generic stock designs?",
+          "answer": "No. The collection presents original NumberNinjaDesigns concepts and their verified source artwork and mockup variants."
+        },
+        {
+          "question": "Does this website show live prices?",
+          "answer": "No. Prices and product formats can change, so the linked Etsy shop remains the current source for commercial details."
+        }
+      ]
+    },
+    "Coding & Developer Humor": {
+      "slug": "coding-developer-humor",
+      "name": "Coding & Developer Humor",
+      "seoTitle": "SQL, Python & Developer Shirts and Gifts",
+      "description": "Shop the ideas behind original SQL shirts, Python gifts and developer humor for query writers, code reviewers and caffeine-powered teams.",
+      "h1": "SQL, Python and developer shirts",
+      "intro": "Developer humor works best when the syntax is right. This collection speaks in queries, error messages, Python references and the reliable sequence of caffeine, code and repeat.",
+      "perspective": "The concepts range from language-specific pride to jokes that survive any stack. SQL Ninja and Select Star From Life reward database people; Python Greater Than Everything and Python Is My Spirit Animal are unmistakably for Python fans; Error 404 keeps the joke universal.",
+      "audience": "Made for SQL developers, data engineers, Python programmers, software teams, database administrators, students and the colleague who reviews every pull request.",
+      "faq": [
+        {
+          "question": "Which designs work best for SQL developers?",
+          "answer": "SQL Ninja, My Brain Runs on SQL, Eat Sleep Query Repeat and Select Star From Life are the most database-specific concepts."
+        },
+        {
+          "question": "Are there Python gift ideas too?",
+          "answer": "Yes. Python Is My Spirit Animal and Python Greater Than Everything are dedicated Python concepts in this collection."
+        },
+        {
+          "question": "How do I find the live product on Etsy?",
+          "answer": "Open a concept page and use its focused Etsy search link. Availability, price and format are confirmed on Etsy."
+        }
+      ]
+    },
+    "Dashboard & BI": {
+      "slug": "dashboard-bi",
+      "name": "Dashboard & BI",
+      "seoTitle": "Power BI, KPI & Dashboard Shirts",
+      "description": "Original dashboard shirts and KPI gifts for Power BI developers, reporting teams and the people who turn metrics into decisions.",
+      "h1": "Power BI, KPI and dashboard shirts",
+      "intro": "A useful dashboard makes the important signal impossible to miss. These concepts celebrate the builders behind that clarity: KPI hunters, dashboard heroes and BI specialists who care about both the metric and the story around it.",
+      "perspective": "Dashboard culture has its own language. KPI Hunter is for the person who asks what success actually means; Dashboard Hero recognizes the teammate who makes reporting usable; Dashboard Addict leans into the habit of improving one more visual before release.",
+      "audience": "Created for Power BI developers, dashboard designers, BI consultants, reporting analysts, performance teams and data visualization specialists.",
+      "faq": [
+        {
+          "question": "Are these designs only for Power BI users?",
+          "answer": "No. They fit Power BI professionals, but the KPI and dashboard themes also work for Tableau, Looker and other BI communities."
+        },
+        {
+          "question": "Which concept suits a BI team lead?",
+          "answer": "Dashboard Hero and KPI Hunter are strong recognition gifts, while Dashboard Addict suits the hands-on builder who is always refining a report."
+        },
+        {
+          "question": "Where are sizes and formats listed?",
+          "answer": "Current sizes, formats, prices and shipping details are shown only in the NumberNinjaDesigns Etsy shop."
+        }
+      ]
+    },
+    "AI & Machine Learning": {
+      "slug": "ai-machine-learning",
+      "name": "AI & Machine Learning",
+      "seoTitle": "AI & Machine Learning Shirts and Gifts",
+      "description": "Explore original AI shirts and machine learning gifts for model builders, logical thinkers and teams working beyond the hype.",
+      "h1": "AI and machine learning shirts",
+      "intro": "Artificial intelligence is serious work surrounded by a lot of noise. This focused collection keeps the message clean: logic, evidence and thoughtful model building still matter.",
+      "perspective": "Logic Greater Than Emotion appears in three distinct visual treatments. Grouping those variants on one concept page lets visitors compare the artwork without creating duplicate search pages.",
+      "audience": "For machine learning engineers, data scientists, AI researchers, students, technical founders and anyone who prefers reasoning to hype.",
+      "faq": [
+        {
+          "question": "Why are several visual variants grouped together?",
+          "answer": "They express the same phrase with different artwork. One authoritative concept page is clearer for visitors and avoids duplicate pages in search."
+        },
+        {
+          "question": "Is the collection about a specific AI tool?",
+          "answer": "No. The current designs focus on the broader mindset of logic and reason, so they are not tied to a vendor or model."
+        },
+        {
+          "question": "How is availability confirmed?",
+          "answer": "Use the Etsy search link on the concept page. The website does not invent stock, prices or delivery promises."
+        }
+      ]
+    },
+    "Work Chaos / Office Humor": {
+      "slug": "office-humor",
+      "name": "Office Humor & Nerd Culture",
+      "seoTitle": "Office Humor & Nerd Shirts and Gifts",
+      "description": "Original office humor and nerd shirts for overthinkers, problem solvers, technical leaders and proudly curious teams.",
+      "h1": "Office humor and nerd shirts",
+      "intro": "Not every work joke needs a programming language. This collection is for the overthinkers, quiet problem solvers and proudly curious people who bring brainpower to the room.",
+      "perspective": "The range moves from self-aware humor, such as Overthinking Is My Cardio and Brain Loading, to confident titles including Chief Nerd Officer, Nerd King and Leader of the Nerds. Choose the voice that actually sounds like the recipient.",
+      "audience": "A broad fit for technical teams, engineers, analysts, students, managers, office problem solvers and anyone who treats nerd as a compliment.",
+      "faq": [
+        {
+          "question": "Which designs make good coworker gifts?",
+          "answer": "Brain Loading and Overthinking Loading are light and relatable; Chief Nerd Officer and Leader of the Nerds work well as recognition gifts."
+        },
+        {
+          "question": "Are motivational concepts included?",
+          "answer": "Yes. Discipline Today Success Tomorrow and Consistency Small Actions Big Results add a focused, less comedic option."
+        },
+        {
+          "question": "Can I verify a product before ordering?",
+          "answer": "Yes. Follow the Etsy link and verify the exact listing, product format, size, price and shipping terms before purchasing."
+        }
+      ]
+    }
+  },
+  "products": {
+    "data-driven": {
+      "hook": "A clean identity statement for people who would rather test an assumption than defend a hunch.",
+      "bestFor": "Data analysts, analytics engineers and evidence-first teams who use data as a working method, not a buzzword."
+    },
+    "powered-by-coffee-and-sql": {
+      "hook": "The unofficial database stack: a reliable query, a fresh cup and enough patience for one more join.",
+      "bestFor": "SQL developers, database administrators and analysts whose first successful query arrives after the first coffee."
+    },
+    "sheet-happens": {
+      "hook": "A short spreadsheet joke for the moment a perfect workbook meets one unexpected paste operation.",
+      "bestFor": "Excel users, finance teams and operations specialists who can laugh while repairing a broken reference."
+    },
+    "caffeine-code-repeat": {
+      "hook": "A compact loop for builders who turn focused energy into working software one iteration at a time.",
+      "bestFor": "Developers, engineering students and coding teams with a recognizable coffee-powered rhythm."
+    },
+    "data-rebel": {
+      "hook": "For the analyst willing to challenge the convenient answer when the evidence points somewhere better.",
+      "bestFor": "Independent thinkers, insight teams and consultants who question defaults without losing analytical discipline."
+    },
+    "overthinking-is-my-cardio": {
+      "hook": "Self-aware office humor for a brain that can turn one simple decision into a complete scenario model.",
+      "bestFor": "Researchers, planners, analysts and chronic overthinkers who recognize the joke immediately."
+    },
+    "my-brain-runs-on-sql": {
+      "hook": "A database-minded statement for people who instinctively organize questions into selects, joins and filters.",
+      "bestFor": "SQL specialists, data engineers and analysts who think in tables even when no editor is open."
+    },
+    "data-gt-opinions": {
+      "hook": "A direct reminder that strong opinions become stronger when they survive contact with the evidence.",
+      "bestFor": "Analytics leaders, researchers and teams building an evidence-first decision culture."
+    },
+    "python-is-my-spirit-animal": {
+      "hook": "Python pride with a playful edge for people who value readable code and an enormous ecosystem.",
+      "bestFor": "Python developers, automation engineers, data scientists and students learning their favorite language."
+    },
+    "knowledge-is-power": {
+      "hook": "A classic principle reframed for people who turn raw information into something others can act on.",
+      "bestFor": "Researchers, educators, analysts and lifelong learners who share useful knowledge."
+    },
+    "brain-loading": {
+      "hook": "The honest status message for early meetings, complex requests and thoughts that need one more moment.",
+      "bestFor": "Deep thinkers, developers and coworkers whose best answer appears just after the loading screen."
+    },
+    "kpi-hunter": {
+      "hook": "A results-focused concept for the person who keeps asking which metric proves that the work succeeded.",
+      "bestFor": "BI analysts, performance managers and dashboard builders who separate meaningful KPIs from decorative numbers."
+    },
+    "eat-sleep-query-repeat": {
+      "hook": "A familiar cycle for database people who find the answer by refining the query one clause at a time.",
+      "bestFor": "SQL learners, data engineers and reporting specialists in a query-heavy season."
+    },
+    "respect-the-brainpower": {
+      "hook": "A confident nod to careful thinking, hard-won expertise and the people doing the intellectual heavy lifting.",
+      "bestFor": "Analysts, scientists, engineers and technical mentors whose contribution deserves recognition."
+    },
+    "chief-nerd-officer": {
+      "hook": "An unofficial executive title for the person everyone calls when the problem becomes interesting.",
+      "bestFor": "Technical founders, team leads, senior specialists and proud resident experts."
+    },
+    "error-404-self-not-found": {
+      "hook": "A web-native joke for the days when the system is responding but the human endpoint is unavailable.",
+      "bestFor": "Web developers, support engineers and anyone fluent in HTTP status humor."
+    },
+    "data-slayer": {
+      "hook": "A bold title for the analyst who can tame a messy export and still deliver the answer on time.",
+      "bestFor": "Data cleaners, reporting analysts and spreadsheet troubleshooters facing difficult datasets."
+    },
+    "number-one-nerd": {
+      "hook": "A playful ranking for someone who has earned first place through curiosity, skill and unapologetic enthusiasm.",
+      "bestFor": "Top-performing students, technical teammates and the most dedicated nerd in the group."
+    },
+    "left-brain-right-brain-i-use-both": {
+      "hook": "A balanced statement for people who combine analytical structure with creative problem solving.",
+      "bestFor": "Data storytellers, designers, consultants and multidisciplinary thinkers who refuse a false choice."
+    },
+    "nerd-king": {
+      "hook": "A deliberately oversized title for the person who rules the room through knowledge and excellent references.",
+      "bestFor": "Proud experts, gaming groups, technical leads and friends who enjoy ceremonial nerd status."
+    },
+    "logic-gt-emotion": {
+      "hook": "A sharp visual equation for situations where clear reasoning needs to lead the conversation.",
+      "bestFor": "AI practitioners, logical thinkers and technical teams that value calm, testable decisions."
+    },
+    "nerd-mode-activated": {
+      "hook": "The switch has flipped: focus is high, curiosity is active and a deep dive is about to begin.",
+      "bestFor": "Students, engineers, gamers and specialists entering their most productive state."
+    },
+    "analyze-and-conquer": {
+      "hook": "A decisive motto for breaking a large problem into evidence, patterns and manageable next moves.",
+      "bestFor": "Analysts, strategists and consultants who create progress by structuring complexity."
+    },
+    "python-gt-everything": {
+      "hook": "A deliberately opinionated comparison for Python fans who already know which language wins the debate.",
+      "bestFor": "Python developers, data scientists and automation builders with strong language loyalty."
+    },
+    "release-my-inner-nerd": {
+      "hook": "An invitation to stop editing the enthusiasm out of the room and let genuine curiosity show.",
+      "bestFor": "Conference attendees, students and specialists ready to share what they really care about."
+    },
+    "excel-overlord": {
+      "hook": "A high-ranking spreadsheet title for the person with shortcuts, formulas and workbook control.",
+      "bestFor": "Excel power users, controllers and finance teammates who quietly govern every important sheet."
+    },
+    "problem-solving": {
+      "hook": "A stripped-back statement that puts the most transferable analytical skill at the center.",
+      "bestFor": "Engineers, analysts, consultants and practical thinkers known for finding a workable path."
+    },
+    "overthinking-loading": {
+      "hook": "A progress indicator for the brain that has started evaluating every branch before answering.",
+      "bestFor": "Planners, detail-oriented coworkers and lovable overthinkers still processing the options."
+    },
+    "too-smart-for-small-talk": {
+      "hook": "Dry social humor for people who would happily skip the weather and discuss the real question.",
+      "bestFor": "Introverts, specialists and deep thinkers who prefer substance over conversational warm-up."
+    },
+    "data-over-drama": {
+      "hook": "A calm operating principle for keeping the conversation grounded when the noise starts rising.",
+      "bestFor": "Team leads, analysts and evidence-minded colleagues who reduce friction with facts."
+    },
+    "spreadsheet-wizard": {
+      "hook": "A little magic for the person whose formulas solve problems everyone else thought required software.",
+      "bestFor": "Excel experts, model builders and operations heroes with an almost supernatural workbook reputation."
+    },
+    "target-the-data": {
+      "hook": "A focused reminder to aim the question at the evidence that can actually resolve it.",
+      "bestFor": "Researchers, growth analysts and measurement teams who connect goals to the right data."
+    },
+    "sql-ninja": {
+      "hook": "Quiet, precise and effective: a database identity for people who make difficult queries look effortless.",
+      "bestFor": "SQL developers, database engineers and analysts known for solving problems without unnecessary noise."
+    },
+    "select-star-from-life": {
+      "hook": "A classic SQL wildcard redirected at the biggest dataset available: everything.",
+      "bestFor": "Database professionals, SQL students and developers who enjoy syntactically accurate humor."
+    },
+    "supreme-nerd-leader": {
+      "hook": "Maximum title energy for the person who organizes the knowledge, the team and the references.",
+      "bestFor": "Technical managers, club leaders and confident experts at the center of a nerdy community."
+    },
+    "nerd-mode": {
+      "hook": "A concise status for focused work, enthusiastic research and happily going deeper than required.",
+      "bestFor": "Developers, students, makers and anyone who regularly disappears into a subject."
+    },
+    "discipline-today-success-tomorrow": {
+      "hook": "A clear reminder that the unglamorous repetition today is what makes tomorrow's result possible.",
+      "bestFor": "Builders, students, athletes and focused professionals developing a consistent practice."
+    },
+    "dashboard-addict-gt-everything": {
+      "hook": "An exaggerated equation for the BI builder who would always choose one more dashboard improvement.",
+      "bestFor": "Power BI developers, visualization specialists and reporting teams obsessed with useful views."
+    },
+    "keep-calm-and-check-the-data": {
+      "hook": "A practical response to uncertainty: lower the temperature, inspect the evidence and then decide.",
+      "bestFor": "Analysts, incident teams and calm problem solvers who verify before reacting."
+    },
+    "dashboard-hero": {
+      "hook": "Recognition for the person who turns a wall of metrics into a view the whole team can use.",
+      "bestFor": "BI developers, report owners and data storytellers whose dashboards improve decisions."
+    },
+    "dashboard-addict": {
+      "hook": "For the builder who notices one more filter, label or interaction worth improving before launch.",
+      "bestFor": "Hands-on BI professionals and dashboard designers who enjoy the craft as much as the outcome."
+    },
+    "consistency-small-actions-big-results": {
+      "hook": "A measured motivational statement about compounding progress rather than waiting for one dramatic leap.",
+      "bestFor": "Habit builders, project teams and professionals doing patient, repeatable work."
+    },
+    "leader-of-the-nerds": {
+      "hook": "A team title for the person who makes expertise welcoming and brings curious people together.",
+      "bestFor": "Technical team leads, teachers, community organizers and senior specialists."
+    },
+    "release-my-inner-brainpower": {
+      "hook": "A confident prompt to bring the full analysis, creativity and experience instead of holding back.",
+      "bestFor": "Researchers, strategists and experts stepping into a demanding problem."
+    },
+    "data-thinker": {
+      "hook": "A quiet identity for someone who naturally looks for structure, evidence and the question behind the question.",
+      "bestFor": "Analysts, researchers and curious professionals whose thinking starts with data."
+    }
+  },
+  "guides": [
+    {
+      "slug": "best-gifts-for-data-analysts",
+      "title": "Best Gifts for Data Analysts: A Practical Buying Guide",
+      "seoTitle": "Best Gifts for Data Analysts | NumberNinjaDesigns",
+      "description": "Choose a thoughtful data analyst gift by matching the message to their role, tools and personality instead of buying generic tech merchandise.",
+      "eyebrow": "Gift guide",
+      "intro": "The best gift for a data analyst proves that you understand how they think. It does not need to be expensive or overloaded with jargon. It needs one accurate signal: this person asks better questions, finds patterns and usually wants to see the evidence.",
+      "sections": [
+        {
+          "heading": "Start with their analytical personality",
+          "paragraphs": [
+            "Two people can share the same job title and enjoy completely different gifts. An evidence-first teammate may connect with Data Greater Than Opinions or Keep Calm and Check The Data. A confident problem solver may prefer Analyze and Conquer or Data Slayer. Someone with a quieter style may feel more at home with Data Thinker.",
+            "Think about the phrases they already use at work. Do they ask for the source, challenge weak metrics or fix every messy export? A design that reflects a recognizable habit feels personal without printing a name or forcing an office joke."
+          ]
+        },
+        {
+          "heading": "Match the gift to the role",
+          "paragraphs": [
+            "For a BI analyst, dashboard language is often more specific than broad data humor. KPI Hunter and Dashboard Hero acknowledge the work of defining metrics and making reporting useful. For an analytics engineer or database-heavy analyst, My Brain Runs on SQL creates a stronger connection.",
+            "Spreadsheet specialists deserve the same precision. Excel Overlord works for the established power user; Spreadsheet Wizard has a lighter tone; Sheet Happens is ideal for a team that has survived enough workbook emergencies together."
+          ]
+        },
+        {
+          "heading": "Choose recognition over random jargon",
+          "paragraphs": [
+            "Technical words alone do not make a technical gift good. Avoid a phrase just because it contains data, AI or code. Look for a message that recognizes an actual contribution. Respect The Brainpower can thank a mentor. Leader of the Nerds can celebrate a team lead. Data Over Drama can recognize the colleague who keeps difficult decisions calm.",
+            "That same rule helps when buying for a graduation, promotion or new role. A thoughtful identity statement lasts longer than a joke tied to one project or short-lived trend."
+          ]
+        },
+        {
+          "heading": "Verify the final product before buying",
+          "paragraphs": [
+            "The concept gallery helps you choose the message and compare visual variants. Etsy remains the source of truth for the products currently available, including material, format, size, color, price, dispatch and shipping terms.",
+            "Open the relevant concept page, follow its focused Etsy search and confirm the exact listing before ordering. This is especially important for group gifts, where available sizes and delivery timing can determine the best option."
+          ]
+        },
+        {
+          "heading": "Make the presentation part of the recognition",
+          "paragraphs": [
+            "A short note can turn a good design into a meaningful gift. Mention the report they rescued, the question they kept asking or the decision their analysis improved. That context connects the phrase to a real contribution and prevents the gift from feeling like generic role merchandise.",
+            "For a team moment, explain why the group chose the concept before the recipient opens it. Keep the message respectful and avoid including confidential metrics, client names or project details that should not leave the workplace."
+          ]
+        }
+      ],
+      "collectionSlugs": ["data-analytics", "dashboard-bi", "spreadsheet-humor"],
+      "featuredDesigns": ["data-thinker", "data-over-drama", "kpi-hunter", "excel-overlord"]
+    },
+    {
+      "slug": "funny-excel-shirts-and-spreadsheet-gifts",
+      "title": "Funny Excel Shirts and Spreadsheet Gifts That Actually Fit",
+      "seoTitle": "How to Choose Funny Excel Shirts & Gifts | NumberNinjaDesigns",
+      "description": "A practical guide to choosing Excel shirts and spreadsheet gifts for finance teams, analysts, controllers and formula experts.",
+      "eyebrow": "Spreadsheet guide",
+      "intro": "A spreadsheet gift lands when it reflects the recipient's real relationship with Excel. The person who builds financial models, the colleague who repairs formulas and the teammate who accidentally creates the circular reference should not all receive the same message.",
+      "sections": [
+        {
+          "heading": "For the Excel power user",
+          "paragraphs": [
+            "Excel Overlord is the clearest fit for the person with command of the workbook. They know the shortcuts, understand the model and are usually the final stop when something breaks. Spreadsheet Wizard has similar recognition with a more playful tone, making it useful for a colleague whose formulas look like magic to everyone else.",
+            "These concepts work best as appreciation gifts because they recognize expertise. They say more than 'you use Excel'; they say 'we notice that you are exceptionally good at it.'"
+          ]
+        },
+        {
+          "heading": "For a finance or operations team",
+          "paragraphs": [
+            "Shared humor is a good choice for a team gift. Sheet Happens is short, easy to understand and rooted in an experience nearly every workbook-heavy team has had. It suits close periods, planning cycles, reporting migrations and any project where one changed cell can reshape the afternoon.",
+            "When ordering for several people, choose the concept first and then verify product variants together. A consistent phrase with individual sizes is usually easier than selecting a different joke for every teammate."
+          ]
+        },
+        {
+          "heading": "Keep the joke technically believable",
+          "paragraphs": [
+            "Spreadsheet users notice when a joke feels written by someone who has never opened a workbook. Specificity matters, but excessive formula text can make a design harder to read. A strong phrase should be recognizable at a glance and accurate enough to survive the office.",
+            "That balance is why role-based ideas often outperform random function names. Overlord and Wizard communicate mastery; Sheet Happens communicates shared chaos. Each has a clear audience and does not require a paragraph of explanation."
+          ]
+        },
+        {
+          "heading": "Check format, size and delivery on Etsy",
+          "paragraphs": [
+            "NumberNinjaDesigns separates the design catalog from live marketplace facts. The website shows the original concepts and verified visual assets. The Etsy shop confirms what can actually be ordered now.",
+            "Use the availability link on a concept page and review the listing for current format, color, size, material, price and shipping. For birthdays, team events or close-week gifts, allow enough time for the delivery estimate shown by Etsy."
+          ]
+        },
+        {
+          "heading": "Plan a team order without spreadsheet chaos",
+          "paragraphs": [
+            "For several recipients, collect only the information you genuinely need: selected product, size, delivery location and deadline. Confirm the current Etsy listing before promising a format or color, because marketplace variants can change between planning and checkout.",
+            "Keep personal sizing details private and ask each recipient directly when possible. One shared concept can still feel thoughtful when the accompanying note recognizes the specific workbook, reporting cycle or team achievement behind the gift."
+          ]
+        }
+      ],
+      "collectionSlugs": ["spreadsheet-humor", "data-analytics"],
+      "featuredDesigns": ["excel-overlord", "spreadsheet-wizard", "sheet-happens", "data-driven"]
+    },
+    {
+      "slug": "sql-developer-gift-guide",
+      "title": "SQL Developer Gift Guide: Queries, Coffee and Clean Humor",
+      "seoTitle": "SQL Developer Gift Guide | NumberNinjaDesigns",
+      "description": "Find a SQL developer gift that uses accurate database humor, matches the recipient and stays useful beyond one project.",
+      "eyebrow": "Developer guide",
+      "intro": "SQL humor has one quality test: a database person should not need to forgive the syntax. The strongest developer gift takes a real part of the work—queries, joins, debugging or coffee-fueled concentration—and turns it into a clean message.",
+      "sections": [
+        {
+          "heading": "Choose the right level of SQL specificity",
+          "paragraphs": [
+            "My Brain Runs on SQL is an identity statement and works for analysts as well as developers. SQL Ninja emphasizes quiet technical skill. Select Star From Life is more specific: the wildcard query is instantly recognizable to someone who writes SQL, while remaining visually compact.",
+            "Eat Sleep Query Repeat fits a person in a query-heavy role or an intensive learning phase. Powered by Coffee and SQL adds a familiar work ritual and is easier for nontechnical teammates to understand when they give the gift."
+          ]
+        },
+        {
+          "heading": "Separate database humor from general coding humor",
+          "paragraphs": [
+            "A database developer may enjoy broad engineering jokes, but a focused reference usually feels more considered. Caffeine Code Repeat and Error 404 Self Not Found work across technical roles. SQL Ninja and Select Star From Life say that you know what this person actually does.",
+            "For someone who works across data engineering and Python, pairing the SQL collection with Python Is My Spirit Animal or Python Greater Than Everything can reflect the full stack without forcing both languages into one crowded design."
+          ]
+        },
+        {
+          "heading": "Use the occasion to set the tone",
+          "paragraphs": [
+            "For a graduation or first developer role, a confident identity concept can mark the transition. For a teammate's birthday, coffee or error humor is lighter. For recognition after a difficult migration, SQL Ninja or Respect The Brainpower puts more emphasis on skill.",
+            "If the gift comes from a whole team, avoid a joke connected to one person's mistake. Shared rituals, respected expertise and language pride age better and keep the gesture positive."
+          ]
+        },
+        {
+          "heading": "Confirm the live listing",
+          "paragraphs": [
+            "A design concept is not a promise that every product format is currently stocked. NumberNinjaDesigns links each concept to a focused search inside its Etsy shop so you can verify the commercial details at the moment you buy.",
+            "Check the listing title, preview images, material, size chart, price, dispatch estimate and destination-specific shipping. If the exact concept is not returned, browse the shop's current SQL and developer selection rather than assuming availability."
+          ]
+        },
+        {
+          "heading": "Adapt the gift for a remote developer team",
+          "paragraphs": [
+            "Remote teams need a little more coordination. Verify whether Etsy can deliver to each destination, compare the displayed arrival estimates and avoid collecting home addresses in a shared chat or spreadsheet. Let recipients provide delivery information through an appropriate private channel.",
+            "A common SQL concept can create a shared team moment without requiring identical locations or schedules. Pair it with a short message about the migration, release or difficult query the team completed together."
+          ]
+        }
+      ],
+      "collectionSlugs": ["coding-developer-humor", "data-analytics"],
+      "featuredDesigns": ["sql-ninja", "my-brain-runs-on-sql", "select-star-from-life", "powered-by-coffee-and-sql"]
+    }
+  ]
+}
