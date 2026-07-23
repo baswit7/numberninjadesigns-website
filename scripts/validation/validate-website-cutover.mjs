@@ -137,6 +137,7 @@ const publicHtml = [
   "designs.html",
   "developer.html",
   "privacy.html",
+  "support/index.html",
   "terms.html"
 ];
 const callbackHtml = ["tiktok/callback/index.html"];

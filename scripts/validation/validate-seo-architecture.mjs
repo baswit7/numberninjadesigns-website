@@ -187,8 +187,9 @@ assert(guideHubSource.includes("seo.css?v=20260723-guide-grid"), "guides/index.h
 const rootHtml = readdirSync(ROOT, { withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
   .map((entry) => resolve(ROOT, entry.name));
+const supportHtml = walk(resolve(ROOT, "support")).filter((path) => extname(path) === ".html");
 const callbackHtml = walk(resolve(ROOT, "tiktok")).filter((path) => extname(path) === ".html");
-const publicHtml = [...rootHtml, ...conceptFiles, ...collectionFiles, ...guideFiles, ...callbackHtml];
+const publicHtml = [...rootHtml, ...supportHtml, ...conceptFiles, ...collectionFiles, ...guideFiles, ...callbackHtml];
 const publicSource = publicHtml.map((file) => readFileSync(file, "utf8")).join("\n");
 for (const design of catalog.filter((item) => item.status === "quality-hold")) {
   assert(!publicSource.includes(design.thumbnail), `Quality-held thumbnail must not be published: ${design.id}.`);
