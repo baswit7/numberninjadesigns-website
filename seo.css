@@ -199,12 +199,13 @@
   display: block;
   width: 100%;
   aspect-ratio: 1;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 220ms ease;
 }
 
 .concept-card:hover img {
-  transform: scale(1.018);
+  opacity: 0.96;
 }
 
 .concept-card-copy {
@@ -220,12 +221,10 @@
 }
 
 .concept-card-copy > p:not(.eyebrow) {
-  display: -webkit-box;
-  overflow: hidden;
+  display: block;
+  overflow: visible;
   color: var(--muted);
   font-size: 0.86rem;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .concept-card-copy .text-arrow {
@@ -317,7 +316,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .variant-card.is-mockup .variant-media {
@@ -325,6 +325,7 @@
 }
 
 .variant-card.is-mockup img {
+  object-fit: cover;
   filter: brightness(1.52) contrast(0.84) saturate(1.06);
   transform: scale(1.3);
   transform-origin: center center;
@@ -427,14 +428,14 @@
   width: 100%;
   height: 100%;
   min-height: 148px;
-  object-fit: cover;
-  object-position: 50% 48%;
+  object-fit: contain;
+  object-position: center;
   transition: transform 220ms ease;
 }
 
 .collection-index-card:hover .collection-index-media img,
 .collection-index-card:focus-visible .collection-index-media img {
-  transform: scale(1.018);
+  opacity: 0.96;
 }
 
 .collection-index-card > span {
@@ -481,8 +482,11 @@
 .guide-index-card img {
   display: block;
   width: 100%;
-  max-height: 490px;
-  object-fit: cover;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  background: #000;
 }
 
 .guide-index-card > div {
@@ -610,6 +614,8 @@
 
 .gallery-list .asset-image {
   aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
 }
 
 .design-card {
@@ -657,7 +663,7 @@
 
 @media (min-width: 700px) {
   .concept-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
 
@@ -740,7 +746,7 @@
   }
 
   .concept-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -763,10 +769,6 @@
 
   .concept-card-copy {
     padding: 12px;
-  }
-
-  .concept-card-copy > p:not(.eyebrow) {
-    -webkit-line-clamp: 2;
   }
 
   .variant-gallery.has-multiple {

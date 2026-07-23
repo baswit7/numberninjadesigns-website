@@ -257,6 +257,29 @@ assert(indexText.includes("Data, Excel, SQL and BI designs"), "index.html: focus
 assert(indexText.includes("Digital Products"), "index.html: Digital Products is visible");
 assert(htmlCache.get("index.html").includes(EXPECTED_ETSY_URL), "index.html: new Etsy shop is linked");
 assert(htmlCache.get("index.html").includes('"name": "NumberNinjaDesigns"'), "index.html: structured organization name migrated");
+assert(!htmlCache.get("index.html").includes("assets/designs/mockups/"), "index.html: homepage uses full artwork instead of distant shirt mockups");
+for (const artwork of [
+  "assets/designs/29-excel-overlord.png",
+  "assets/designs/07-my-brain-runs-on-sql.png",
+  "assets/designs/13-kpi-hunter.png"
+]) {
+  assert(htmlCache.get("index.html").includes(artwork), "index.html: complete homepage artwork is visible " + artwork);
+}
+
+const storefrontCss = read("styles.css");
+const commerceCss = read("commerce.css");
+const seoCss = read("seo.css");
+assert(/\.asset-image\s*\{[^}]*object-fit:\s*contain;/s.test(storefrontCss), "styles.css: gallery artwork cannot be cropped");
+assert(/@media\s*\(max-width:\s*560px\)[\s\S]*?\.design-grid\s*\{[^}]*grid-template-columns:\s*1fr;/s.test(storefrontCss), "styles.css: mobile gallery uses one readable column");
+assert(!storefrontCss.includes("-webkit-line-clamp"), "styles.css: catalog titles are never truncated");
+assert(/\.hero-apparel-visual img\s*\{[^}]*object-fit:\s*contain;/s.test(commerceCss), "commerce.css: homepage hero artwork remains complete");
+assert(/\.apparel-item img\s*\{[^}]*object-fit:\s*contain;/s.test(commerceCss), "commerce.css: homepage collection artwork remains complete");
+assert(/\.concept-card-image img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: concept artwork cannot be cropped");
+assert(/\.collection-index-media img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: collection artwork cannot be cropped");
+assert(/\.gallery-list \.asset-image\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: catalog artwork cannot be cropped");
+assert(/\.variant-card img\s*\{[^}]*object-fit:\s*contain;/s.test(seoCss), "seo.css: detail artwork cannot be cropped");
+assert(/\.variant-card\.is-mockup img\s*\{[^}]*object-fit:\s*cover;/s.test(seoCss), "seo.css: product mockups retain their intended frame");
+assert(!seoCss.includes("-webkit-line-clamp"), "seo.css: collection copy is never truncated");
 
 const designs = parseJson("data/designs.json");
 if (designs) {

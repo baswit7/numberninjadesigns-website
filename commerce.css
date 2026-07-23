@@ -308,7 +308,7 @@ body.commerce-page {
 .hero-apparel-visual {
   margin: 0;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   border: 1px solid rgba(11, 24, 48, 0.16);
   border-radius: var(--commerce-radius);
   background:
@@ -317,15 +317,13 @@ body.commerce-page {
 }
 
 .hero-apparel-visual img {
-  width: min(100%, 520px);
+  display: block;
+  width: 100%;
   height: 100%;
   margin-inline: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
   object-position: center;
-  filter: brightness(1.52) contrast(0.84) saturate(1.06);
-  transform: scale(1.58);
-  transform-origin: 50% 48%;
 }
 
 .workbook-preview {
@@ -509,7 +507,7 @@ body.commerce-page {
 .apparel-media {
   display: block;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   border: 1px solid rgba(11, 24, 48, 0.16);
   border-radius: var(--commerce-radius);
   background:
@@ -519,12 +517,11 @@ body.commerce-page {
 }
 
 .apparel-item img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(1.52) contrast(0.84) saturate(1.06);
-  transform: scale(1.62);
-  transform-origin: 50% 48%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .apparel-name {
@@ -1413,7 +1410,7 @@ body.commerce-page {
 
   .apparel-item a:hover img,
   .apparel-item a:focus-visible img {
-    transform: scale(1.68);
+    opacity: 0.96;
   }
 }
 
