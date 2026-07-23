@@ -242,7 +242,8 @@ function productPage(group) {
     { name: collection.name, href: `${prefix}collections/${collection.slug}/`, pathname: `/collections/${collection.slug}/` },
     { name: group.title, pathname }
   ];
-  const artworkImages = group.variants.map((variant) => absolute(`/${variant.mockupImage}`));
+  const artworkImages = group.variants.map((variant) => absolute(`/${variant.image}`));
+  const primaryArtwork = registryByDesignId.get(first.id).artwork;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -273,9 +274,9 @@ function productPage(group) {
         "@type": "ImageObject",
         "@id": `${absolute(pathname)}#primaryimage`,
         contentUrl: artworkImages[0],
-        width: mockup.dimensions.width,
-        height: mockup.dimensions.height,
-        caption: `${group.title} product mockup`
+        width: primaryArtwork.dimensions.width,
+        height: primaryArtwork.dimensions.height,
+        caption: `${group.title} original artwork`
       },
       {
         ...breadcrumbSchema(crumbs),
@@ -284,17 +285,24 @@ function productPage(group) {
     ]
   };
 
-  const variants = group.variants.map((variant, index) => {
+  const artworkVariants = group.variants.map((variant, index) => {
     const assets = registryByDesignId.get(variant.id);
     const primary = index === 0;
-    const image = primary ? variant.mockupImage : variant.thumbnail;
-    const registered = primary ? assets.mockup : assets.thumbnail;
-    const label = primary ? "Product preview" : `Artwork variant ${index + 1}`;
-    return `<figure class="variant-card${primary ? "" : " is-artwork"}">
-          <img src="${prefix}${image}" width="${registered.dimensions.width}" height="${registered.dimensions.height}" alt="${escapeHtml(group.title)} ${primary ? "product mockup" : `artwork variant ${index + 1}`}" loading="${primary ? "eager" : "lazy"}"${primary ? ' fetchpriority="high"' : ""} decoding="async">
-          <figcaption>${label} · ${index + 1} of ${group.variants.length}</figcaption>
+    const label = group.variants.length === 1 ? "Original artwork" : `Artwork variant ${index + 1}`;
+    return `<figure class="variant-card is-artwork">
+          <span class="variant-media" style="--variant-ratio: ${assets.thumbnail.dimensions.width} / ${assets.thumbnail.dimensions.height}">
+            <img src="${prefix}${variant.thumbnail}" width="${assets.thumbnail.dimensions.width}" height="${assets.thumbnail.dimensions.height}" alt="${escapeHtml(group.title)} ${group.variants.length === 1 ? "original artwork" : `artwork variant ${index + 1}`}" loading="${primary ? "eager" : "lazy"}"${primary ? ' fetchpriority="high"' : ""} decoding="async">
+          </span>
+          <figcaption>${label}${group.variants.length > 1 ? ` · ${index + 1} of ${group.variants.length}` : ""}</figcaption>
         </figure>`;
   }).join("");
+  const mockupVariant = `<figure class="variant-card is-mockup">
+          <span class="variant-media">
+            <img src="${prefix}${first.mockupImage}" width="${mockup.dimensions.width}" height="${mockup.dimensions.height}" alt="${escapeHtml(group.title)} product mockup" loading="lazy" decoding="async">
+          </span>
+          <figcaption>Product mockup · zoomed for clarity</figcaption>
+        </figure>`;
+  const variants = `${artworkVariants}${mockupVariant}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -327,7 +335,7 @@ ${structuredData(schema)}
         </div>
         <p class="availability-note"><strong>Availability policy:</strong> Etsy confirms the live listing, product format, size, color, price, dispatch and shipping. This catalog never invents stock or commercial details.</p>
       </div>
-      <div class="variant-gallery ${group.variants.length > 1 ? "has-multiple" : ""}" aria-label="${escapeHtml(group.title)} visual variants">
+      <div class="variant-gallery has-multiple" aria-label="${escapeHtml(group.title)} artwork and product preview">
         ${variants}
       </div>
     </article>
@@ -757,7 +765,10 @@ ${structuredData(schema)}
     <div class="modal" data-preview-modal role="dialog" aria-modal="true" aria-hidden="true" aria-label="Design preview">
       <div class="modal-card">
         <div class="modal-head"><div><h2 data-preview-title>Design preview</h2><p class="muted" data-preview-meta></p></div><button class="close-button" type="button" data-preview-close aria-label="Close design preview">×</button></div>
-        <div class="preview-layout"><figure><img data-preview-mockup width="1200" height="1500" alt="Selected product mockup"><figcaption>Product mockup</figcaption></figure><figure><img data-preview-image width="1024" height="1024" alt="Selected original artwork"><figcaption>Original artwork</figcaption></figure></div>
+        <div class="preview-layout">
+          <figure class="preview-figure preview-figure--artwork"><img data-preview-image width="1024" height="1024" alt="Selected original artwork" decoding="async"><figcaption>Original artwork · full view</figcaption></figure>
+          <figure class="preview-figure preview-figure--mockup"><span class="preview-mockup-frame"><img data-preview-mockup width="1200" height="1500" alt="Selected product mockup" decoding="async"></span><figcaption>Product mockup · zoomed for clarity</figcaption></figure>
+        </div>
       </div>
     </div>
   </main>

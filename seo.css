@@ -303,19 +303,30 @@
   justify-self: center;
 }
 
-.variant-card img {
+.variant-media {
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--variant-ratio, 4 / 5);
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #000;
-  object-fit: cover;
   box-shadow: var(--seo-glow);
 }
 
-.variant-card.is-artwork img {
-  aspect-ratio: 1;
+.variant-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.variant-card.is-mockup .variant-media {
+  aspect-ratio: 4 / 5;
+}
+
+.variant-card.is-mockup img {
+  transform: scale(1.3);
+  transform-origin: center center;
 }
 
 .variant-card figcaption {

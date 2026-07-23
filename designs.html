@@ -889,7 +889,10 @@
     <div class="modal" data-preview-modal role="dialog" aria-modal="true" aria-hidden="true" aria-label="Design preview">
       <div class="modal-card">
         <div class="modal-head"><div><h2 data-preview-title>Design preview</h2><p class="muted" data-preview-meta></p></div><button class="close-button" type="button" data-preview-close aria-label="Close design preview">×</button></div>
-        <div class="preview-layout"><figure><img data-preview-mockup width="1200" height="1500" alt="Selected product mockup"><figcaption>Product mockup</figcaption></figure><figure><img data-preview-image width="1024" height="1024" alt="Selected original artwork"><figcaption>Original artwork</figcaption></figure></div>
+        <div class="preview-layout">
+          <figure class="preview-figure preview-figure--artwork"><img data-preview-image width="1024" height="1024" alt="Selected original artwork" decoding="async"><figcaption>Original artwork · full view</figcaption></figure>
+          <figure class="preview-figure preview-figure--mockup"><span class="preview-mockup-frame"><img data-preview-mockup width="1200" height="1500" alt="Selected product mockup" decoding="async"></span><figcaption>Product mockup · zoomed for clarity</figcaption></figure>
+        </div>
       </div>
     </div>
   </main>
