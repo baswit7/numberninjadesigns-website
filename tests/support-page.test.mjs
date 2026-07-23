@@ -17,6 +17,14 @@ test("public support assets are valid standalone static files", () => {
     assert.equal(result.status, 0, result.stderr || result.stdout);
   }
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.numberninjadesigns\.com\/support\/">/);
+  assert.match(html, /<link rel="stylesheet" href="\.\.\/styles\.css">/);
+  assert.match(html, /<link rel="stylesheet" href="\.\.\/commerce\.css">/);
+  assert.match(html, /<body class="commerce-page support-page">/);
+  assert.match(html, /<meta name="theme-color" content="#f7f8f6">/);
+  assert.match(html, /<meta name="color-scheme" content="light">/);
+  assert.match(css, /--support-bg:\s*#f7f8f6/);
+  assert.match(css, /--support-accent:\s*#12b8aa/);
+  assert.match(css, /--support-text:\s*#0b1830/);
   assert.match(html, /https:\/\/www\.etsy\.com\/shop\/NumberNinjaDesigns/);
   assert.match(html, /type="application\/ld\+json"/);
   assert.match(html, /src="\.\/data\.js"/);
