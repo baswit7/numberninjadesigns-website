@@ -6,12 +6,14 @@ import { fileURLToPath } from "node:url";
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const expectedPalette = Object.freeze({
-  "--brand-bg": "#07090c",
-  "--brand-surface": "#11151b",
-  "--brand-accent": "#00e891",
-  "--brand-secondary": "#6ee7ff",
-  "--brand-text": "#f3f5f7",
-  "--brand-muted": "#8b96a5",
+  "--brand-bg": "#f9fbfc",
+  "--brand-surface": "#ffffff",
+  "--brand-surface-2": "#e9f5f3",
+  "--brand-accent": "#13b8a7",
+  "--brand-accent-strong": "#08766d",
+  "--brand-secondary": "#2463e9",
+  "--brand-text": "#0c1426",
+  "--brand-muted": "#545a63",
 });
 
 const coreStylesheets = [
@@ -20,9 +22,10 @@ const coreStylesheets = [
   "commerce.css",
   "support/styles.css",
 ];
+const stylesheetVersion = "20260724-etsy-banner";
 
 const obsoletePalettePattern =
-  /#f7f8f6|#edf7f5|#12b8aa|#07998e|#0b1830|#5f6977|#070707|#00ff94|#edebe3/i;
+  /#07090c|#11151b|#182129|#202b35|#00e891|#00c97d|#6ee7ff|#f3f5f7|#8b96a5/i;
 
 function relativeUrlPath(filePath) {
   return path.relative(repositoryRoot, filePath).replaceAll("\\", "/");
@@ -101,13 +104,14 @@ for (const stylesheet of coreStylesheets) {
   );
   assert.match(
     content,
-    /@import url\("(?:\.\.\/)?brand\.css"\);/,
+    /@import url\("(?:\.\.\/)?brand\.css(?:\?[^"]*)?"\);/,
     `${stylesheet} must import the shared brand palette.`,
   );
 }
 
 const htmlFiles = await listHtmlFiles(repositoryRoot);
 let themeColorCount = 0;
+let sharedStylesheetCount = 0;
 
 for (const htmlFile of htmlFiles) {
   const htmlRelativePath = relativeUrlPath(htmlFile);
@@ -150,18 +154,37 @@ for (const htmlFile of htmlFiles) {
   if (colorScheme) {
     assert.equal(
       colorScheme[1].toLowerCase(),
-      "dark",
+      "light",
       `${htmlRelativePath} has the wrong browser color scheme.`,
+    );
+  }
+
+  const sharedStylesheets = [
+    ...content.matchAll(
+      /<link rel="stylesheet" href="([^"]*(?:styles|seo|commerce)\.css(?:\?[^"]*)?)">/gi,
+    ),
+  ].map((match) => match[1]);
+
+  for (const stylesheetHref of sharedStylesheets) {
+    sharedStylesheetCount += 1;
+    assert.match(
+      stylesheetHref,
+      new RegExp(`\\?v=${stylesheetVersion}$`),
+      `${htmlRelativePath} must use the current brand cache version for ${stylesheetHref}.`,
     );
   }
 }
 
 assert.ok(themeColorCount >= 40, "Expected theme-color coverage across public pages.");
+assert.ok(
+  sharedStylesheetCount >= themeColorCount,
+  "Expected versioned shared stylesheets across all themed pages.",
+);
 
 for (const foreground of [
   expectedPalette["--brand-text"],
   expectedPalette["--brand-muted"],
-  expectedPalette["--brand-accent"],
+  expectedPalette["--brand-accent-strong"],
   expectedPalette["--brand-secondary"],
 ]) {
   assert.ok(
@@ -172,12 +195,20 @@ for (const foreground of [
 
 assert.ok(
   contrastRatio(
-    expectedPalette["--brand-bg"],
+    expectedPalette["--brand-text"],
     expectedPalette["--brand-accent"],
   ) >= 4.5,
   "Primary button text must meet WCAG AA contrast.",
 );
 
+assert.ok(
+  contrastRatio(
+    expectedPalette["--brand-accent-strong"],
+    expectedPalette["--brand-surface-2"],
+  ) >= 4.5,
+  "Accessible accent text must meet WCAG AA contrast on the mint surface.",
+);
+
 console.log(
-  `Brand palette validation passed for ${coreStylesheets.length} stylesheets and ${themeColorCount} themed pages.`,
+  `Brand palette validation passed for ${coreStylesheets.length} stylesheets, ${themeColorCount} themed pages and ${sharedStylesheetCount} versioned stylesheet links.`,
 );

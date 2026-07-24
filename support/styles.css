@@ -1,11 +1,12 @@
-@import url("../brand.css");
+@import url("../brand.css?v=20260724-etsy-banner");
 
 :root {
   --support-bg: var(--brand-bg);
   --support-surface: var(--brand-surface);
   --support-surface-soft: var(--brand-surface-2);
   --support-accent: var(--brand-accent);
-  --support-accent-strong: var(--brand-secondary);
+  --support-accent-strong: var(--brand-accent-strong);
+  --support-secondary: var(--brand-secondary);
   --support-text: var(--brand-text);
   --support-muted: var(--brand-muted);
   --support-line: var(--brand-line);
@@ -14,16 +15,16 @@
   --support-warning: var(--brand-warning);
   --support-radius: 10px;
   --support-max: 1180px;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .support-page {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 82% 0%, var(--brand-accent-soft), transparent 30rem),
-    radial-gradient(circle at 92% 18%, var(--brand-secondary-soft), transparent 24rem),
-    linear-gradient(180deg, var(--brand-surface) 0, var(--support-bg) 31rem);
+    radial-gradient(circle at -5% 15%, var(--brand-accent-soft) 0 25rem, transparent 25.2rem),
+    linear-gradient(112deg, transparent 0 78%, var(--brand-accent-soft) 78% 91%, var(--brand-secondary-soft) 91% 100%),
+    var(--support-bg);
   color: var(--support-text);
   font-family: "Segoe UI", Arial, sans-serif;
 }
@@ -103,7 +104,7 @@
   padding: 22px;
   border: 1px solid var(--support-line);
   border-radius: var(--support-radius);
-  background: rgba(17, 21, 27, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 18px 50px var(--brand-shadow);
 }
 
@@ -129,13 +130,13 @@
 }
 
 .availability[data-state="ready"] {
-  border-color: rgba(0, 232, 145, 0.38);
+  border-color: rgba(19, 184, 167, 0.38);
   background: var(--support-surface-soft);
 }
 
 .availability[data-state="ready"] > span {
   background: var(--support-accent);
-  box-shadow: 0 0 0 5px rgba(0, 232, 145, 0.13);
+  box-shadow: 0 0 0 5px rgba(19, 184, 167, 0.13);
 }
 
 .availability[data-state="error"] {
@@ -165,7 +166,7 @@
 }
 
 .answer-panel[data-state="ready"] {
-  border-color: rgba(0, 232, 145, 0.5);
+  border-color: rgba(19, 184, 167, 0.5);
 }
 
 .answer-panel[data-state="escalated"] {
@@ -257,16 +258,16 @@
 
 .support-page select:focus,
 .support-page textarea:focus {
-  border-color: var(--support-accent);
+  border-color: var(--support-accent-strong);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(0, 232, 145, 0.12);
+  box-shadow: 0 0 0 4px rgba(19, 184, 167, 0.12);
 }
 
 .support-page select:focus-visible,
 .support-page textarea:focus-visible,
 .support-page button:focus-visible,
 .support-page a:focus-visible {
-  outline: 3px solid rgba(0, 232, 145, 0.32);
+  outline: 3px solid rgba(19, 184, 167, 0.32);
   outline-offset: 2px;
 }
 
@@ -280,7 +281,7 @@
 .profile-status {
   margin: -4px 0 0;
   padding: 12px 14px;
-  border: 1px solid rgba(0, 232, 145, 0.3);
+  border: 1px solid rgba(19, 184, 167, 0.3);
   border-radius: var(--support-radius);
   background: var(--support-surface-soft);
   color: var(--support-accent-strong);
@@ -322,7 +323,7 @@
 }
 
 .quick-actions button:hover {
-  border-color: var(--support-accent);
+  border-color: var(--support-accent-strong);
   background: var(--support-surface-soft);
   color: var(--support-accent-strong);
   transform: translateY(-1px);
@@ -356,9 +357,9 @@
 }
 
 .support-page .button-primary {
-  border-color: var(--support-accent);
+  border-color: var(--support-accent-strong);
   background: var(--support-accent);
-  color: var(--support-bg);
+  color: var(--support-text);
 }
 
 .support-page .button-primary:hover {
@@ -368,7 +369,7 @@
 }
 
 .support-page .button-secondary {
-  border-color: var(--support-accent);
+  border-color: var(--support-accent-strong);
   background: var(--support-surface);
   color: var(--support-accent-strong);
 }
@@ -392,7 +393,7 @@
   height: 62px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(0, 232, 145, 0.35);
+  border: 1px solid rgba(19, 184, 167, 0.35);
   border-radius: 50%;
   background: var(--support-surface-soft);
   color: var(--support-accent-strong);
@@ -412,7 +413,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid var(--support-line);
-  border-top-color: var(--support-accent);
+  border-top-color: var(--support-accent-strong);
   border-radius: 50%;
   animation: spin 700ms linear infinite;
 }
@@ -449,7 +450,7 @@
 }
 
 .sources li::marker {
-  color: var(--support-accent);
+  color: var(--support-accent-strong);
 }
 
 .escalation {

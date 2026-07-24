@@ -1,4 +1,4 @@
-@import url("brand.css");
+@import url("brand.css?v=20260724-etsy-banner");
 
 :root {
   --commerce-max: 1440px;
@@ -6,6 +6,7 @@
   --commerce-surface: var(--brand-surface);
   --commerce-surface-2: var(--brand-surface-2);
   --commerce-accent: var(--brand-accent);
+  --commerce-accent-strong: var(--brand-accent-strong);
   --commerce-secondary: var(--brand-secondary);
   --commerce-text: var(--brand-text);
   --commerce-muted: var(--brand-muted);
@@ -26,8 +27,8 @@ body.commerce-page {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 86% 0%, var(--brand-accent-soft), transparent 32rem),
-    radial-gradient(circle at 96% 18%, var(--brand-secondary-soft), transparent 24rem),
+    radial-gradient(circle at -5% 15%, var(--brand-accent-soft) 0 25rem, transparent 25.2rem),
+    linear-gradient(112deg, transparent 0 78%, var(--brand-accent-soft) 78% 91%, var(--brand-secondary-soft) 91% 100%),
     var(--commerce-bg);
   color: var(--commerce-text);
   font-family: "Segoe UI", Arial, sans-serif;
@@ -172,7 +173,7 @@ body.commerce-page {
   border: 1px solid var(--commerce-accent);
   border-radius: var(--commerce-radius);
   padding: 9px 12px;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   cursor: pointer;
   font-weight: 800;
   list-style: none;
@@ -268,15 +269,15 @@ body.commerce-page {
 }
 
 .commerce-button-primary {
-  border-color: var(--commerce-accent);
+  border-color: var(--commerce-accent-strong);
   background: var(--commerce-accent);
-  color: var(--commerce-bg);
+  color: var(--commerce-text);
 }
 
 .commerce-button-outline {
-  border-color: var(--commerce-accent);
+  border-color: var(--commerce-accent-strong);
   background: transparent;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
 }
 
 .commerce-button-quiet {
@@ -304,7 +305,7 @@ body.commerce-page {
   min-height: 44px;
   align-items: center;
   width: fit-content;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 0.88rem;
   font-weight: 800;
   text-decoration: underline;
@@ -325,7 +326,7 @@ body.commerce-page {
   border: 1px solid var(--commerce-line);
   border-radius: var(--commerce-radius);
   background:
-    radial-gradient(circle at 50% 46%, rgba(0, 232, 145, 0.11), transparent 48%),
+    radial-gradient(circle at 50% 46%, rgba(19, 184, 167, 0.11), transparent 48%),
     #050505;
 }
 
@@ -545,7 +546,7 @@ body.commerce-page {
   border: 1px solid var(--commerce-line);
   border-radius: var(--commerce-radius);
   background:
-    radial-gradient(circle at 50% 46%, rgba(0, 232, 145, 0.11), transparent 48%),
+    radial-gradient(circle at 50% 46%, rgba(19, 184, 167, 0.11), transparent 48%),
     #050505;
   transition: border-color 160ms ease;
 }
@@ -606,7 +607,7 @@ body.commerce-page {
   min-height: 140px;
   place-content: center;
   gap: 18px;
-  border: 1px dashed rgba(0, 232, 145, 0.44);
+  border: 1px dashed rgba(19, 184, 167, 0.44);
   padding: 24px;
   color: var(--commerce-muted);
   text-align: center;
@@ -628,14 +629,14 @@ body.commerce-page {
 .resources-status,
 .section-number {
   width: fit-content;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 0.84rem;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
 
 .product-story-title {
-  color: var(--commerce-accent) !important;
+  color: var(--commerce-accent-strong) !important;
   font-size: clamp(2.25rem, 10vw, 4.6rem) !important;
 }
 
@@ -686,7 +687,7 @@ body.commerce-page {
 }
 
 .bundle-index {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 0.72rem;
 }
 
@@ -747,7 +748,7 @@ body.commerce-page {
 }
 
 .commerce-footer .footer-brand strong {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-family: var(--commerce-mono);
 }
 
@@ -864,7 +865,7 @@ body.commerce-page {
 }
 
 .benefit-list h3 {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-family: var(--commerce-mono);
   font-size: 1.15rem;
   letter-spacing: -0.03em;
@@ -920,7 +921,7 @@ body.commerce-page {
 }
 
 .formula-coverage h3 {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-family: var(--commerce-mono);
   font-size: 1.1rem;
   letter-spacing: -0.02em;
@@ -944,7 +945,7 @@ body.commerce-page {
 
 .formula-coverage dd {
   margin: 0;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 1.35rem;
   font-weight: 800;
 }
@@ -978,13 +979,13 @@ body.commerce-page {
 }
 
 .workflow-steps li::before {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   content: counter(workflow, decimal-leading-zero) " —";
   font-size: 1.6rem;
 }
 
 .workflow-steps strong {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 1rem;
 }
 
@@ -1047,14 +1048,14 @@ body.commerce-page {
   position: absolute;
   top: 16px;
   right: 4px;
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   content: "+";
   font-size: 1.35rem;
   font-weight: 400;
 }
 
 .faq-list details[open] summary {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
 }
 
 .faq-list details[open] summary::after {
@@ -1446,7 +1447,7 @@ body.commerce-page {
 
   .apparel-item a:hover .apparel-media,
   .apparel-item a:focus-visible .apparel-media {
-    border-color: rgba(0, 232, 145, 0.62);
+    border-color: rgba(19, 184, 167, 0.62);
   }
 
   .apparel-item a:hover img,
@@ -1470,7 +1471,7 @@ body.commerce-page {
 .branch-label {
   width: fit-content;
   margin: 0;
-  color: var(--commerce-accent) !important;
+  color: var(--commerce-accent-strong) !important;
   font: 800 0.74rem/1.4 var(--commerce-mono) !important;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1513,7 +1514,7 @@ body.commerce-page {
 }
 
 .production-branches article > span {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
   font-size: 0.72rem;
 }
 
@@ -1589,7 +1590,7 @@ body.commerce-page {
 }
 
 .product-metrics dd {
-  color: var(--commerce-accent);
+  color: var(--commerce-accent-strong);
 }
 
 .detail-grid,
