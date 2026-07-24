@@ -2,6 +2,32 @@
   "use strict";
 
   var LOG_PREFIX = "[NumberNinjaDesigns Commerce]";
+  var REQUIRED_PRODUCTS = [
+    {
+      id: "budget-planner-basic",
+      name: "Budget Planner",
+      href: "budget-planner-basic.html",
+      tabCount: 7,
+      formulaCount: "104+",
+      summary: "Plan versus actual budgeting, savings goals, cash-flow review and model checks."
+    },
+    {
+      id: "debt-payoff-tracker",
+      name: "Debt Payoff Tracker",
+      href: "debt-payoff-tracker.html",
+      tabCount: 5,
+      formulaCount: "141+",
+      summary: "Balance and APR planning, payment logging, payoff progress and sustainability checks."
+    },
+    {
+      id: "net-worth-tracker",
+      name: "Net Worth Tracker",
+      href: "net-worth-tracker.html",
+      tabCount: 6,
+      formulaCount: "150+",
+      summary: "Assets, liabilities, monthly history, net-worth trends and integrity checks."
+    }
+  ];
 
   function log(level, message, detail) {
     if (!window.console || typeof window.console[level] !== "function") return;
@@ -14,6 +40,14 @@
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
+  }
+
+  function safeArray(value) {
+    return Array.isArray(value) ? value : [];
+  }
+
+  function slugify(value) {
+    return String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
 
   function arrowIcon() {
@@ -32,131 +66,216 @@
     return svg;
   }
 
-  function buildWorkbookPreview(product) {
+  function appendPreviewRows(panel, product, sheet) {
+    var grid = element("div", "workbook-grid workbook-grid-compact");
+    var families = safeArray(product.formulaFamilies);
+    var rows = [
+      [sheet, "Active"],
+      ["Workbook structure", "Verified"],
+      ["Formula logic", families.length ? families.slice(0, 2).join(" / ") : "Review"]
+    ];
+    rows.forEach(function addRow(row, index) {
+      grid.appendChild(element("span", "workbook-row-number", String(index + 1)));
+      grid.appendChild(element("strong", "workbook-label", row[0]));
+      grid.appendChild(element("span", "workbook-cell", row[1]));
+    });
+    panel.appendChild(grid);
+  }
+
+  function buildWorkbookPreview(product, truth) {
     var frame = element("div", "workbook-preview workbook-preview-card");
-    frame.setAttribute("aria-label", "Derived preview of the validated Budget Planner workbook structure");
+    frame.dataset.workbookPreview = "";
+    frame.setAttribute("aria-label", "Interactive preview of " + product.name + " workbook sheets");
 
     var heading = element("div", "workbook-heading");
     heading.appendChild(element("strong", "workbook-title", product.name));
     heading.appendChild(element("span", "workbook-status", product.statusLabel));
     frame.appendChild(heading);
 
-    var tabs = element("div", "workbook-tabs");
-    product.sheets.forEach(function addSheet(sheet, index) {
-      var tab = element("span", index === 0 ? "is-active" : "", sheet);
-      tabs.appendChild(tab);
-    });
-    frame.appendChild(tabs);
+    var sheets = safeArray(product.sheets);
+    if (!sheets.length) throw new Error("No workbook sheets configured for " + product.id);
 
-    var grid = element("div", "workbook-grid workbook-grid-compact");
-    ["Total Income", "Total Expenses", "Net Savings", "Savings Rate", "Categorized Expenses", "Expenses by Category"].forEach(function addRow(label, index) {
-      grid.appendChild(element("span", "workbook-row-number", String(index + 1)));
-      grid.appendChild(element("span", "workbook-label", label));
-      grid.appendChild(element("span", "workbook-cell", ""));
+    var shownSheets = sheets.slice(0, 4);
+    var tabList = element("div", "workbook-tabs");
+    tabList.setAttribute("role", "tablist");
+    tabList.setAttribute("aria-label", product.name + " preview sheets");
+    frame.appendChild(tabList);
+
+    shownSheets.forEach(function addSheet(sheet, index) {
+      var controlId = "catalog-" + slugify(product.id) + "-tab-" + index;
+      var panelId = "catalog-" + slugify(product.id) + "-panel-" + index;
+      var tab = element("button", "", sheet);
+      tab.type = "button";
+      tab.id = controlId;
+      tab.dataset.sheetTab = sheet;
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", panelId);
+      tab.setAttribute("aria-selected", index === 0 ? "true" : "false");
+      tab.tabIndex = index === 0 ? 0 : -1;
+      tabList.appendChild(tab);
+
+      var panel = element("div", "workbook-panel");
+      panel.id = panelId;
+      panel.dataset.sheetPanel = sheet;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", controlId);
+      panel.hidden = index !== 0;
+      appendPreviewRows(panel, product, sheet);
+      frame.appendChild(panel);
     });
-    frame.appendChild(grid);
-    frame.appendChild(element("p", "workbook-formulas", product.formulaFamilies.join("  ·  ")));
+
+    var status = element("p", "preview-status", "Showing " + shownSheets[0] + " sheet");
+    status.dataset.previewStatus = "";
+    status.setAttribute("aria-live", "polite");
+    frame.appendChild(status);
+
+    var facts = element("p", "workbook-formulas", truth.tabCount + " tabs  ·  " + truth.formulaCount + " formulas");
+    frame.appendChild(facts);
     return frame;
   }
 
-  function buildProductStory(product) {
-    var story = element("article", "product-story");
-    story.dataset.productId = product.id;
+  function buildProductCard(product, truth) {
+    if (!product || product.id !== truth.id) throw new Error("Invalid catalog entry: " + truth.id);
+    if (!product.name || !product.statusLabel || !product.cta) throw new Error("Incomplete catalog entry: " + truth.id);
+
+    var card = element("article", "catalog-product");
+    card.dataset.productId = product.id;
 
     var copy = element("div", "product-story-copy");
     copy.appendChild(element("p", "product-status", product.statusLabel));
     copy.appendChild(element("h3", "product-story-title", product.name));
-    copy.appendChild(element("p", "product-story-description", product.shortDescription));
+    copy.appendChild(element("p", "product-story-description", truth.summary));
+
+    var metrics = element("dl", "catalog-metrics");
+    [
+      ["Tabs", String(truth.tabCount)],
+      ["Formulas", truth.formulaCount],
+      ["Gate", "Owner approved"]
+    ].forEach(function addMetric(metric) {
+      var wrapper = element("div", "");
+      wrapper.appendChild(element("dt", "", metric[0]));
+      wrapper.appendChild(element("dd", "", metric[1]));
+      metrics.appendChild(wrapper);
+    });
+    copy.appendChild(metrics);
 
     var featureList = element("ul", "feature-list");
-    product.features.forEach(function addFeature(feature) {
+    safeArray(product.features).slice(0, 4).forEach(function addFeature(feature) {
       featureList.appendChild(element("li", "", feature));
     });
     copy.appendChild(featureList);
 
-    var link = element("a", "commerce-button commerce-button-outline", product.cta.label);
-    link.href = product.cta.href;
+    var href = product.detailHref || product.cta.href || truth.href;
+    var label = product.cta.label || "Inspect product details";
+    var link = element("a", "commerce-button commerce-button-outline", label);
+    link.href = href;
+    link.setAttribute("aria-label", label + ": " + product.name);
     link.appendChild(arrowIcon());
     copy.appendChild(link);
 
-    story.appendChild(copy);
-    story.appendChild(buildWorkbookPreview(product));
-    return story;
+    card.appendChild(copy);
+    card.appendChild(buildWorkbookPreview(product, truth));
+    return card;
   }
 
-  function renderProducts(catalog) {
-    document.querySelectorAll("[data-product-feature]").forEach(function renderMount(mount) {
-      var productId = mount.getAttribute("data-product-feature");
-      var product = catalog.products.find(function findProduct(item) {
-        return item.id === productId;
-      });
-      if (!product) throw new Error("Product configuration not found: " + productId);
-      mount.replaceChildren(buildProductStory(product));
-      mount.removeAttribute("aria-busy");
-    });
+  function buildRecoveryCard(truth, error) {
+    var card = element("article", "catalog-product catalog-recovery");
+    card.dataset.productId = truth.id;
+    card.setAttribute("role", "status");
+    card.appendChild(element("p", "product-status", "Preview recovery"));
+    card.appendChild(element("h3", "product-story-title", truth.name));
+    card.appendChild(element("p", "", "The live catalog facts are temporarily unavailable. The static product detail remains accessible."));
+    var link = element("a", "commerce-button commerce-button-outline", "Inspect product details");
+    link.href = truth.href;
+    link.setAttribute("aria-label", "Inspect product details: " + truth.name);
+    link.appendChild(arrowIcon());
+    card.appendChild(link);
+    log("error", "Recovery state activated for " + truth.id + ".", error);
+    return card;
   }
 
-  function renderBundles(catalog) {
-    document.querySelectorAll("[data-bundle-list]").forEach(function renderMount(mount) {
+  function renderCatalog(catalog) {
+    document.querySelectorAll("[data-product-catalog]").forEach(function renderMount(mount) {
       var fragment = document.createDocumentFragment();
-      catalog.bundles.forEach(function addBundle(bundle, index) {
-        var item = element("article", "bundle-item");
-        item.appendChild(element("span", "bundle-index", String(index + 1).padStart(2, "0")));
-        item.appendChild(element("h3", "", bundle.name));
-        item.appendChild(element("p", "bundle-status", bundle.statusLabel));
-        fragment.appendChild(item);
+      var products = catalog && Array.isArray(catalog.products) ? catalog.products : [];
+
+      REQUIRED_PRODUCTS.forEach(function renderProduct(truth) {
+        try {
+          var product = products.find(function findProduct(item) {
+            return item && item.id === truth.id;
+          });
+          fragment.appendChild(buildProductCard(product, truth));
+        } catch (error) {
+          fragment.appendChild(buildRecoveryCard(truth, error));
+        }
       });
+
       mount.replaceChildren(fragment);
       mount.removeAttribute("aria-busy");
     });
   }
 
-  function renderRecovery(mount, error) {
-    var message = element("div", "catalog-recovery");
-    message.setAttribute("role", "status");
-    message.appendChild(element("p", "", "Product information could not be loaded on this page."));
-    var link = element("a", "commerce-button commerce-button-outline", "Open Budget Planner preview");
-    link.href = "budget-planner-basic.html";
-    link.appendChild(arrowIcon());
-    message.appendChild(link);
-    mount.replaceChildren(message);
-    mount.removeAttribute("aria-busy");
-    log("error", "Catalog recovery state activated.", error);
+  function activateTab(preview, selectedTab, moveFocus) {
+    var tabs = Array.from(preview.querySelectorAll("[data-sheet-tab]"));
+    var selectedSheet = selectedTab.dataset.sheetTab;
+    tabs.forEach(function updateTab(tab) {
+      var active = tab === selectedTab;
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      tab.tabIndex = active ? 0 : -1;
+    });
+    preview.querySelectorAll("[data-sheet-panel]").forEach(function updatePanel(panel) {
+      panel.hidden = panel.dataset.sheetPanel !== selectedSheet;
+    });
+    var status = preview.querySelector("[data-preview-status]");
+    if (status) status.textContent = "Showing " + selectedSheet + " sheet";
+    if (moveFocus) selectedTab.focus();
+  }
+
+  function setupTabPreviews() {
+    document.querySelectorAll("[data-workbook-preview]").forEach(function setupPreview(preview) {
+      if (preview.dataset.previewReady === "true") return;
+      preview.dataset.previewReady = "true";
+
+      preview.addEventListener("click", function handlePreviewClick(event) {
+        var tab = event.target.closest("[data-sheet-tab]");
+        if (tab && preview.contains(tab)) activateTab(preview, tab, false);
+      });
+
+      preview.addEventListener("keydown", function handlePreviewKeydown(event) {
+        var currentTab = event.target.closest("[data-sheet-tab]");
+        if (!currentTab) return;
+        var tabs = Array.from(preview.querySelectorAll("[data-sheet-tab]"));
+        var index = tabs.indexOf(currentTab);
+        var nextIndex = index;
+        if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+        else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === "Home") nextIndex = 0;
+        else if (event.key === "End") nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        activateTab(preview, tabs[nextIndex], true);
+      });
+    });
   }
 
   function setupMobileMenus() {
     document.querySelectorAll("[data-mobile-menu]").forEach(function setupMenu(menu) {
-      menu.querySelectorAll("a").forEach(function closeOnNavigate(link) {
-        link.addEventListener("click", function closeMenu() {
-          menu.removeAttribute("open");
-        });
+      menu.addEventListener("click", function closeAfterNavigation(event) {
+        if (event.target.closest("a")) menu.removeAttribute("open");
       });
     });
   }
 
   function start() {
     setupMobileMenus();
-    var catalog = window.NumberNinjaDesignsCatalog;
-    var mounts = document.querySelectorAll("[data-product-feature], [data-bundle-list]");
-    if (!mounts.length) {
-      log("info", "Static commerce page ready.");
-      return;
-    }
-
-    try {
-      if (!catalog || !Array.isArray(catalog.products) || !Array.isArray(catalog.bundles)) {
-        throw new Error("Catalog configuration is unavailable or invalid.");
-      }
-      renderProducts(catalog);
-      renderBundles(catalog);
-      log("info", "Catalog rendered successfully.");
-    } catch (error) {
-      document.querySelectorAll("[data-product-feature]").forEach(function recover(mount) {
-        renderRecovery(mount, error);
-      });
-    }
+    renderCatalog(window.NumberNinjaCatalog);
+    setupTabPreviews();
+    log("info", "Commerce interface ready.");
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
-  else start();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
 })();

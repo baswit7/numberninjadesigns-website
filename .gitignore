@@ -9,6 +9,9 @@ branding/
 output/
 outputs/
 modules/*/output/
+release-candidates/
+work/
+.playwright-cli/
 
 # Local credentials and environment files
 .env
