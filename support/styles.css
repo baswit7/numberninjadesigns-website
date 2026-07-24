@@ -1,26 +1,29 @@
+@import url("../brand.css");
+
 :root {
-  --support-bg: #f7f8f6;
-  --support-surface: #ffffff;
-  --support-surface-soft: #edf7f5;
-  --support-accent: #12b8aa;
-  --support-accent-strong: #07998e;
-  --support-text: #0b1830;
-  --support-muted: #5f6977;
-  --support-line: rgba(11, 24, 48, 0.16);
-  --support-line-strong: rgba(11, 24, 48, 0.28);
-  --support-danger: #c93245;
-  --support-warning: #b66a00;
+  --support-bg: var(--brand-bg);
+  --support-surface: var(--brand-surface);
+  --support-surface-soft: var(--brand-surface-2);
+  --support-accent: var(--brand-accent);
+  --support-accent-strong: var(--brand-secondary);
+  --support-text: var(--brand-text);
+  --support-muted: var(--brand-muted);
+  --support-line: var(--brand-line);
+  --support-line-strong: var(--brand-line-strong);
+  --support-danger: var(--brand-danger);
+  --support-warning: var(--brand-warning);
   --support-radius: 10px;
   --support-max: 1180px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 .support-page {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 82% 0%, rgba(18, 184, 170, 0.13), transparent 30rem),
-    linear-gradient(180deg, #f0f9f7 0, var(--support-bg) 31rem);
+    radial-gradient(circle at 82% 0%, var(--brand-accent-soft), transparent 30rem),
+    radial-gradient(circle at 92% 18%, var(--brand-secondary-soft), transparent 24rem),
+    linear-gradient(180deg, var(--brand-surface) 0, var(--support-bg) 31rem);
   color: var(--support-text);
   font-family: "Segoe UI", Arial, sans-serif;
 }
@@ -100,8 +103,8 @@
   padding: 22px;
   border: 1px solid var(--support-line);
   border-radius: var(--support-radius);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: 0 18px 50px rgba(11, 24, 48, 0.08);
+  background: rgba(17, 21, 27, 0.86);
+  box-shadow: 0 18px 50px var(--brand-shadow);
 }
 
 .availability > span {
@@ -110,7 +113,7 @@
   margin-top: 6px;
   border-radius: 50%;
   background: var(--support-warning);
-  box-shadow: 0 0 0 5px rgba(182, 106, 0, 0.1);
+  box-shadow: 0 0 0 5px rgba(255, 184, 77, 0.1);
 }
 
 .availability strong {
@@ -126,17 +129,17 @@
 }
 
 .availability[data-state="ready"] {
-  border-color: rgba(18, 184, 170, 0.38);
+  border-color: rgba(0, 232, 145, 0.38);
   background: var(--support-surface-soft);
 }
 
 .availability[data-state="ready"] > span {
   background: var(--support-accent);
-  box-shadow: 0 0 0 5px rgba(18, 184, 170, 0.13);
+  box-shadow: 0 0 0 5px rgba(0, 232, 145, 0.13);
 }
 
 .availability[data-state="error"] {
-  border-color: rgba(201, 50, 69, 0.38);
+  border-color: rgba(255, 102, 115, 0.38);
 }
 
 .availability[data-state="error"] > span {
@@ -158,15 +161,15 @@
   border: 1px solid var(--support-line);
   border-radius: var(--support-radius);
   background: var(--support-surface);
-  box-shadow: 0 24px 70px rgba(11, 24, 48, 0.08);
+  box-shadow: 0 24px 70px var(--brand-shadow);
 }
 
 .answer-panel[data-state="ready"] {
-  border-color: rgba(18, 184, 170, 0.5);
+  border-color: rgba(0, 232, 145, 0.5);
 }
 
 .answer-panel[data-state="escalated"] {
-  border-color: rgba(182, 106, 0, 0.42);
+  border-color: rgba(255, 184, 77, 0.42);
 }
 
 .panel-heading {
@@ -229,7 +232,7 @@
   min-width: 0;
   border: 1px solid var(--support-line);
   border-radius: var(--support-radius);
-  background: #fbfdfc;
+  background: var(--support-surface-soft);
   color: var(--support-text);
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
@@ -256,14 +259,14 @@
 .support-page textarea:focus {
   border-color: var(--support-accent);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(18, 184, 170, 0.12);
+  box-shadow: 0 0 0 4px rgba(0, 232, 145, 0.12);
 }
 
 .support-page select:focus-visible,
 .support-page textarea:focus-visible,
 .support-page button:focus-visible,
 .support-page a:focus-visible {
-  outline: 3px solid rgba(18, 184, 170, 0.32);
+  outline: 3px solid rgba(0, 232, 145, 0.32);
   outline-offset: 2px;
 }
 
@@ -277,10 +280,10 @@
 .profile-status {
   margin: -4px 0 0;
   padding: 12px 14px;
-  border: 1px solid rgba(18, 184, 170, 0.3);
+  border: 1px solid rgba(0, 232, 145, 0.3);
   border-radius: var(--support-radius);
   background: var(--support-surface-soft);
-  color: #075d56;
+  color: var(--support-accent-strong);
   font-size: 0.76rem;
   font-weight: 650;
 }
@@ -355,13 +358,13 @@
 .support-page .button-primary {
   border-color: var(--support-accent);
   background: var(--support-accent);
-  color: #041f1c;
+  color: var(--support-bg);
 }
 
 .support-page .button-primary:hover {
   border-color: var(--support-accent-strong);
   background: var(--support-accent-strong);
-  color: #ffffff;
+  color: var(--support-bg);
 }
 
 .support-page .button-secondary {
@@ -389,7 +392,7 @@
   height: 62px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(18, 184, 170, 0.35);
+  border: 1px solid rgba(0, 232, 145, 0.35);
   border-radius: 50%;
   background: var(--support-surface-soft);
   color: var(--support-accent-strong);
@@ -451,9 +454,9 @@
 
 .escalation {
   padding: 20px;
-  border: 1px solid rgba(182, 106, 0, 0.3);
+  border: 1px solid rgba(255, 184, 77, 0.3);
   border-radius: var(--support-radius);
-  background: #fff8ec;
+  background: rgba(255, 184, 77, 0.08);
 }
 
 .support-page .escalation h3 {
@@ -480,7 +483,7 @@
   border: 1px solid var(--support-line);
   border-radius: var(--support-radius);
   background: var(--support-surface);
-  box-shadow: 0 16px 45px rgba(11, 24, 48, 0.05);
+  box-shadow: 0 16px 45px var(--brand-shadow);
 }
 
 .trust-strip > div {

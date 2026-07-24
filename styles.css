@@ -1,15 +1,17 @@
+@import url("brand.css");
+
 :root {
-  color-scheme: light;
-  --bg: #f7f8f6;
-  --surface: #ffffff;
-  --surface-2: #edf7f5;
-  --accent: #12b8aa;
-  --accent-strong: #07998e;
-  --text: #0b1830;
-  --muted: #5f6977;
-  --line: rgba(11, 24, 48, 0.14);
-  --danger: #c93245;
-  --warn: #b66a00;
+  color-scheme: dark;
+  --bg: var(--brand-bg);
+  --surface: var(--brand-surface);
+  --surface-2: var(--brand-surface-2);
+  --accent: var(--brand-accent);
+  --accent-strong: var(--brand-secondary);
+  --text: var(--brand-text);
+  --muted: var(--brand-muted);
+  --line: var(--brand-line);
+  --danger: var(--brand-danger);
+  --warn: var(--brand-warning);
   --radius: 10px;
   --max: 1180px;
 }
@@ -36,8 +38,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 82% 0%, rgba(18, 184, 170, 0.13), transparent 30rem),
-    linear-gradient(180deg, #f0f9f7 0, var(--bg) 31rem);
+    radial-gradient(circle at 82% 0%, var(--brand-accent-soft), transparent 30rem),
+    radial-gradient(circle at 92% 18%, var(--brand-secondary-soft), transparent 24rem),
+    linear-gradient(180deg, var(--brand-surface) 0, var(--bg) 31rem);
   color: var(--text);
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
@@ -138,7 +141,7 @@ h1 {
   position: relative;
   word-break: keep-all;
   text-wrap: balance;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 28px 70px rgba(18, 184, 170, 0.12);
+  text-shadow: 0 1px 0 rgba(243, 245, 247, 0.16), 0 28px 70px var(--brand-accent-soft);
 }
 
 .hero-title-text {
@@ -211,17 +214,17 @@ p {
 .button-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--text);
+  color: var(--bg);
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--surface);
 }
 
 .signal-panel,
 .design-card,
 .policy-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 247, 245, 0.86));
+  background: linear-gradient(180deg, rgba(24, 33, 41, 0.98), rgba(17, 21, 27, 0.94));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -230,7 +233,7 @@ p {
   padding: 28px;
   display: grid;
   gap: 18px;
-  box-shadow: 0 20px 70px rgba(11, 24, 48, 0.1);
+  box-shadow: 0 20px 70px var(--brand-shadow);
 }
 
 .status-line {
@@ -247,7 +250,7 @@ p {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 18px rgba(18, 184, 170, 0.46);
+  box-shadow: 0 0 18px rgba(0, 232, 145, 0.46);
 }
 
 .panel-title {
@@ -294,14 +297,14 @@ p {
 }
 
 .design-card:focus-within {
-  border-color: rgba(18, 184, 170, 0.72);
+  border-color: rgba(0, 232, 145, 0.72);
 }
 
 .asset-placeholder {
   min-height: 220px;
   display: grid;
   place-items: center;
-  border: 1px dashed rgba(18, 184, 170, 0.45);
+  border: 1px dashed rgba(0, 232, 145, 0.45);
   border-radius: var(--radius);
   background: #000000;
   color: var(--accent);
@@ -314,7 +317,7 @@ p {
   aspect-ratio: 2 / 3;
   object-fit: contain;
   object-position: center;
-  border: 1px solid rgba(11, 24, 48, 0.12);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #000000;
   padding: 0;
@@ -354,7 +357,7 @@ p {
 .tag,
 .status-pill {
   width: fit-content;
-  border: 1px solid rgba(18, 184, 170, 0.44);
+  border: 1px solid rgba(0, 232, 145, 0.44);
   border-radius: 999px;
   padding: 4px 10px;
   color: var(--accent);
@@ -388,7 +391,7 @@ p {
 }
 
 .collection-grid a:hover {
-  border-color: rgba(18, 184, 170, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
 }
 
 .gallery-toolbar {
@@ -446,7 +449,7 @@ p {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(18, 184, 170, 0.12);
+  background: var(--brand-accent-soft);
   color: var(--accent-strong);
   padding: 8px 10px;
   cursor: pointer;
@@ -455,14 +458,14 @@ p {
 
 .preview-button:hover,
 .buy-links a:hover {
-  border-color: rgba(18, 184, 170, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
   color: var(--accent-strong);
 }
 
 .empty-state {
   margin-top: 22px;
   padding: 22px;
-  border: 1px dashed rgba(18, 184, 170, 0.4);
+  border: 1px dashed rgba(0, 232, 145, 0.4);
   border-radius: var(--radius);
   color: var(--muted);
 }
