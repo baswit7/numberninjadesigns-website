@@ -1,0 +1,23 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-12T14:23:13.2429162Z",
+    "source":  "scripts/validation/validate-market-intelligence.ps1",
+    "status":  "connected",
+    "checks":  {
+                   "contractsExist":  true,
+                   "reportsParse":  true,
+                   "dashboardProjectionsParse":  true,
+                   "confidenceValuesValid":  true,
+                   "approvalStatusesValid":  true,
+                   "unknownPropagationWorks":  true,
+                   "noPostingCapability":  true,
+                   "noOAuthAutomation":  true,
+                   "noTikTokPublishing":  true,
+                   "noEtsyPublishing":  true,
+                   "noPinterestPublishing":  true,
+                   "noSecretsExposed":  true
+               },
+    "failures":  [
+
+                 ]
+}

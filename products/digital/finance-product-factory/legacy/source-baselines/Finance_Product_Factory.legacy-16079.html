@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Product Factory — Grootboek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  :root{
+    --paper:      #F6F7F1;
+    --stripe:     #E3EEDF;
+    --ink:        #1E2B22;
+    --ink-soft:   #4B5B50;
+    --forest:     #2C5940;
+    --forest-dk:  #1F4230;
+    --brass:      #A9832F;
+    --brass-dk:   #8A6B24;
+    --red-ink:    #9B3A2C;
+    --line:       #C9D6C4;
+    --line-soft:  #DCE5D8;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:
+      repeating-linear-gradient(
+        var(--paper),
+        var(--paper) 27px,
+        var(--stripe) 27px,
+        var(--stripe) 54px
+      );
+    background-attachment:local;
+    padding:56px 20px 80px;
+  }
+
+  a{ color:inherit; }
+
+  .sheet{
+    max-width:760px;
+    margin:0 auto;
+    position:relative;
+  }
+
+  /* Ledger binding holes down the left edge, purely decorative but grounded in the ledger-book subject */
+  .sheet::before{
+    content:"";
+    position:absolute;
+    left:-34px; top:8px; bottom:8px;
+    width:14px;
+    background-image: radial-gradient(circle, #FFFFFFCC 3px, transparent 3.2px);
+    background-size: 14px 34px;
+    background-repeat: repeat-y;
+    opacity:.9;
+    display:none;
+  }
+  @media(min-width:860px){ .sheet::before{ display:block; } }
+
+  header.masthead{
+    border-bottom:3px double var(--forest);
+    padding-bottom:18px;
+    margin-bottom:6px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .masthead h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(28px, 4.2vw, 40px);
+    letter-spacing:.01em;
+    margin:0 0 4px;
+    color:var(--forest-dk);
+  }
+
+  .masthead p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:46ch;
+  }
+
+  .ledger-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:right;
+    line-height:1.6;
+    white-space:nowrap;
+  }
+
+  .catalog{
+    margin-top:8px;
+  }
+
+  .entry{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+    display:grid;
+    grid-template-columns:44px 1fr auto;
+    gap:18px;
+    align-items:start;
+  }
+
+  .entry .no{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--brass-dk);
+    padding-top:3px;
+  }
+
+  .entry h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:21px;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+
+  .entry .desc{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0 0 10px;
+    max-width:52ch;
+  }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--forest-dk);
+  }
+  .tags span{
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:2px 7px;
+    background:#FFFFFFB0;
+  }
+
+  /* --- Generate button: rubber-stamp handle --- */
+  .stamp-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--paper);
+    background:var(--forest);
+    border:none;
+    border-radius:3px;
+    padding:12px 20px;
+    cursor:pointer;
+    box-shadow: 0 2px 0 var(--forest-dk);
+    transition: transform .08s ease, box-shadow .08s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .stamp-btn:hover{ background:var(--forest-dk); }
+  .stamp-btn:active{ transform:translateY(2px); box-shadow:0 0 0 var(--forest-dk); }
+  .stamp-btn:focus-visible{ outline:3px solid var(--brass); outline-offset:2px; }
+  .stamp-btn:disabled{ opacity:.55; cursor:progress; }
+
+  /* --- Result stub area --- */
+  .stub{
+    grid-column:1 / -1;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px dashed var(--line);
+    display:none;
+    position:relative;
+  }
+  .stub.visible{ display:block; }
+
+  .stamp-mark{
+    position:absolute;
+    top:-6px;
+    right:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.08em;
+    color:var(--red-ink);
+    border:2.5px solid var(--red-ink);
+    border-radius:6px;
+    padding:5px 12px;
+    transform: rotate(-7deg) scale(0);
+    opacity:0;
+    filter:url(#inkGrain);
+    mix-blend-mode:multiply;
+  }
+  .stamp-mark.stamped{
+    animation: stampDown .42s cubic-bezier(.2,1.6,.4,1) forwards;
+  }
+  @keyframes stampDown{
+    0%   { transform: rotate(-7deg) scale(2.6); opacity:0; }
+    60%  { transform: rotate(-7deg) scale(.92); opacity:1; }
+    100% { transform: rotate(-7deg) scale(1); opacity:1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .stamp-mark.stamped{ animation:none; transform:rotate(-7deg) scale(1); opacity:1; }
+  }
+
+  .stub-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:14px 24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .stub-grid dt{ color:var(--ink-soft); font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  .stub-grid dd{ margin:2px 0 0; color:var(--ink); font-size:15px; }
+
+  .download-tab{
+    margin-top:18px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--brass);
+    color:#FFF9EC;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.03em;
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:3px;
+    box-shadow:0 2px 0 var(--brass-dk);
+    transition:transform .08s ease, box-shadow .08s ease;
+  }
+  .download-tab:hover{ background:var(--brass-dk); }
+  .download-tab:active{ transform:translateY(2px); box-shadow:0 0 0 var(--brass-dk); }
+  .download-tab:focus-visible{ outline:3px solid var(--forest); outline-offset:2px; }
+  .download-tab svg{ width:14px; height:14px; }
+
+  .fine-print{
+    margin-top:10px;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    max-width:60ch;
+  }
+
+  footer{
+    margin-top:30px;
+    padding-top:16px;
+    border-top:3px double var(--forest);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  @media (max-width:560px){
+    .entry{ grid-template-columns:28px 1fr; }
+    .entry .no{ display:none; }
+    .stub-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hidden SVG filter: gives the ink stamp a grainy, imperfect texture -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="inkGrain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/>
+    <feColorMatrix in="noise" type="matrix"
+      values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0" result="grain"/>
+    <feComposite in="SourceGraphic" in2="grain" operator="in"/>
+  </filter>
+</svg>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div>
+      <h1>Finance Product Factory</h1>
+      <p>Genereer echte, downloadbare Excel-producten — volledig in je browser, geen server nodig.</p>
+    </div>
+    <div class="ledger-meta">
+      GROOTBOEK Nº FPF-01<br>
+      <span id="today"></span>
+    </div>
+  </header>
+
+  <div class="catalog">
+    <div class="entry" id="entry-budget-planner-basic">
+      <div class="no">001</div>
+      <div>
+        <h2>Budget Planner Basic</h2>
+        <p class="desc">Persoonlijke maandbudget-planner met inkomsten- en uitgaventracking en een overzichtsdashboard.</p>
+        <div class="tags">
+          <span>Dashboard</span><span>Income</span><span>Expenses</span><span>Categories</span>
+        </div>
+      </div>
+      <div>
+        <button class="stamp-btn" id="btn-generate" onclick="generate()">Generate</button>
+      </div>
+
+      <div class="stub" id="stub">
+        <div class="stamp-mark" id="stampMark">VERWERKT ✓</div>
+        <dl class="stub-grid">
+          <div><dt>Tabbladen</dt><dd id="stat-sheets">—</dd></div>
+          <div><dt>Live formules</dt><dd id="stat-formulas">—</dd></div>
+          <div><dt>Invoerregels</dt><dd id="stat-rows">—</dd></div>
+          <div><dt>Bestandsgrootte</dt><dd id="stat-size">—</dd></div>
+        </dl>
+        <a href="#" class="download-tab" id="downloadLink" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg>
+          <span id="downloadLabel">Download .xlsx</span>
+        </a>
+        <p class="fine-print">
+          Alle bedragen staan als levende Excel-formules (SUM, SUMIF, tabbladverwijzingen) —
+          niets is vooraf berekend en als vaste waarde weggeschreven. Celkleuren en het
+          staafdiagram uit de volledige (Python/Flask) versie zijn hier weggelaten omdat de
+          gratis in-browser Excel-schrijver dat niet ondersteunt; structuur en formules zijn
+          identiek.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Staat los van Studio OS · niets buiten dit bestand gewijzigd</span>
+    <span id="genCount">0 workbook(s) gegenereerd deze sessie</span>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('today').textContent =
+  new Date().toLocaleDateString('nl-NL', { year:'numeric', month:'long', day:'numeric' });
+
+const PRODUCT = {
+  id: "budget-planner-basic",
+  name: "Budget Planner Basic",
+  filenamePrefix: "Budget_Planner_Basic",
+  incomeEntryRows: 30,
+  expenseEntryRows: 30,
+  incomeCategories: ["Salary", "Freelance", "Investments", "Gifts", "Other Income"],
+  expenseCategories: ["Housing", "Utilities", "Groceries", "Transportation", "Insurance",
+                       "Healthcare", "Entertainment", "Subscriptions", "Savings", "Other"],
+  sheets: ["Dashboard", "Income", "Expenses", "Categories"],
+};
+
+const CURRENCY_FMT = '$#,##0.00;($#,##0.00);"-"';
+const PERCENT_FMT  = '0.0%';
+
+let sessionCount = 0;
+
+function buildCategoriesSheet(wb, p) {
+  const aoa = [["Income Categories", "Expense Categories"]];
+  const maxLen = Math.max(p.incomeCategories.length, p.expenseCategories.length);
+  for (let i = 0; i < maxLen; i++) {
+    aoa.push([p.incomeCategories[i] || "", p.expenseCategories[i] || ""]);
+  }
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws['!cols'] = [{ wch: 22 }, { wch: 22 }];
+  XLSX.utils.book_append_sheet(wb, ws, "Categories");
+}
+
+function buildEntrySheet(wb, name, numRows) {
+  const aoa = [["Date", "Description", "Category", "Amount"]];
+  for (let i = 0; i < numRows; i++) aoa.push(["", "", "", ""]);
+  aoa.push(["", "", "Total", null]); // formula filled in below
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  const firstDataRow = 2;               // 1-indexed Excel row of first data entry
+  const lastDataRow = firstDataRow + numRows - 1;
+  const totalRow = lastDataRow + 1;
+
+  for (let r = firstDataRow; r <= lastDataRow; r++) {
+    const cellRef = "D" + r;
+    if (!ws[cellRef]) ws[cellRef] = { t: 'n', v: 0 };
+    ws[cellRef].z = CURRENCY_FMT;
+    const dateRef = "A" + r;
+    if (!ws[dateRef]) ws[dateRef] = { t: 's', v: '' };
+    ws[dateRef].z = 'yyyy-mm-dd';
+  }
+
+  const totalRef = "D" + totalRow;
+  ws[totalRef] = { t: 'n', f: `SUM(D${firstDataRow}:D${lastDataRow})`, z: CURRENCY_FMT };
+
+  ws['!cols'] = [{ wch: 14 }, { wch: 28 }, { wch: 18 }, { wch: 16 }];
+  ws['!freeze'] = { xSplit: 0, ySplit: 1 };
+  ws['!views'] = [{ state: 'frozen', ySplit: 1 }];
+
+  XLSX.utils.book_append_sheet(wb, ws, name);
+  return { firstDataRow, lastDataRow, totalRow };
+}
+
+function buildDashboardSheet(wb, p, incomeTotalRow, expenseFirstRow, expenseLastRow, expenseTotalRow) {
+  const aoa = [
+    [p.name],
+    ["Persoonlijke maandbudget-planner met inkomsten- en uitgaventracking."],
+    [],
+    ["Total Income"],
+    ["Total Expenses"],
+    ["Net Savings"],
+    ["Savings Rate"],
+    [],
+    [],
+    ["Expenses by Category", "Amount"],
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+
+  ws["B4"] = { t: 'n', f: `Income!D${incomeTotalRow}`, z: CURRENCY_FMT };
+  ws["B5"] = { t: 'n', f: `Expenses!D${expenseTotalRow}`, z: CURRENCY_FMT };
+  ws["B6"] = { t: 'n', f: `B4-B5`, z: CURRENCY_FMT };
+  ws["B7"] = { t: 'n', f: `IFERROR(B6/B4,0)`, z: PERCENT_FMT };
+
+  let formulaCount = 4; // B4, B5, B6, B7
+  const startRow = 11; // 1-indexed row right after the "Expenses by Category" header (row 10)
+  p.expenseCategories.forEach((_, i) => {
+    const row = startRow + i;
+    const catRowInCategories = 2 + i;
+    const catRef = "A" + row;
+    const amtRef = "B" + row;
+    ws[catRef] = { t: 'str', f: `Categories!B${catRowInCategories}` };
+    ws[amtRef] = {
+      t: 'n',
+      f: `SUMIF(Expenses!$C$${expenseFirstRow}:$C$${expenseLastRow},A${row},Expenses!$D$${expenseFirstRow}:$D$${expenseLastRow})`,
+      z: CURRENCY_FMT,
+    };
+    formulaCount += 2;
+  });
+
+  ws['!cols'] = [{ wch: 26 }, { wch: 18 }];
+  const lastRow = startRow + p.expenseCategories.length - 1;
+  ws['!ref'] = XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: lastRow, c: 1 } });
+
+  XLSX.utils.book_append_sheet(wb, ws, "Dashboard", true);
+  return formulaCount;
+}
+
+function generateWorkbook(p) {
+  const wb = XLSX.utils.book_new();
+
+  buildCategoriesSheet(wb, p);
+  const income = buildEntrySheet(wb, "Income", p.incomeEntryRows);
+  const expenses = buildEntrySheet(wb, "Expenses", p.expenseEntryRows);
+  const dashboardFormulaCount = buildDashboardSheet(
+    wb, p, income.totalRow, expenses.firstDataRow, expenses.lastDataRow, expenses.totalRow
+  );
+
+  // Sheet order: Dashboard, Income, Expenses, Categories
+  wb.SheetNames = p.sheets.slice();
+
+  const totalFormulas =
+    dashboardFormulaCount +
+    1 /* Income total */ +
+    1 /* Expenses total */;
+
+  return { wb, totalFormulas, totalRows: p.incomeEntryRows + p.expenseEntryRows };
+}
+
+async function generate() {
+  const btn = document.getElementById('btn-generate');
+  const stub = document.getElementById('stub');
+  const stampMark = document.getElementById('stampMark');
+
+  btn.disabled = true;
+  btn.textContent = 'Stempelen…';
+  stampMark.classList.remove('stamped');
+  stub.classList.remove('visible');
+
+  // brief pause so the stamp motion reads intentionally, not instant
+  await new Promise(r => setTimeout(r, 260));
+
+  const { wb, totalFormulas, totalRows } = generateWorkbook(PRODUCT);
+
+  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+  const blob = new Blob([wbout], { type: 'application/octet-stream' });
+  const url = URL.createObjectURL(blob);
+
+  const stamp = new Date();
+  const ts = stamp.toISOString().replace(/[-:T]/g, '').slice(0, 15);
+  const filename = `${PRODUCT.filenamePrefix}_${ts}.xlsx`;
+
+  const link = document.getElementById('downloadLink');
+  link.href = url;
+  link.setAttribute('download', filename);
+  document.getElementById('downloadLabel').textContent = `Download ${filename}`;
+
+  document.getElementById('stat-sheets').textContent = PRODUCT.sheets.length;
+  document.getElementById('stat-formulas').textContent = totalFormulas;
+  document.getElementById('stat-rows').textContent = totalRows;
+  document.getElementById('stat-size').textContent = (blob.size / 1024).toFixed(1) + ' KB';
+
+  stub.classList.add('visible');
+  requestAnimationFrame(() => stampMark.classList.add('stamped'));
+
+  // trigger the actual browser download immediately
+  link.click();
+
+  sessionCount += 1;
+  document.getElementById('genCount').textContent =
+    `${sessionCount} workbook(s) gegenereerd deze sessie`;
+
+  btn.disabled = false;
+  btn.textContent = 'Generate';
+}
+</script>
+
+</body>
+</html>

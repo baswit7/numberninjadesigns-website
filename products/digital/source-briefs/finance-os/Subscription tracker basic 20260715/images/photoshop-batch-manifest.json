@@ -1,0 +1,177 @@
+{
+  "colorMappings": {
+    "accent": "#765600",
+    "background": "#F4F7F2",
+    "bandFill": "#E3EEDF",
+    "border": "#AABCAA",
+    "errorFill": "#FDE8E7",
+    "errorText": "#7A1D1D",
+    "formulaFill": "#DCEADF",
+    "formulaText": "#1E2B22",
+    "inputFill": "#FFF1C2",
+    "inputText": "#2D240F",
+    "inverseText": "#FFFFFF",
+    "muted": "#526057",
+    "primary": "#2C5940",
+    "secondary": "#41684F",
+    "successFill": "#E6F4EA",
+    "successText": "#164B2B",
+    "surface": "#FFFFFF",
+    "text": "#1E2B22",
+    "warningFill": "#FFF3CD",
+    "warningText": "#513C00"
+  },
+  "contractOnly": true,
+  "executionClaim": "MANIFEST_ONLY_NO_PSD_GENERATED",
+  "exportFormat": "png",
+  "fonts": {
+    "body": "Aptos",
+    "heading": "Aptos Display",
+    "mono": "Cascadia Mono"
+  },
+  "locale": "en-US",
+  "outputDimensions": {
+    "height": 2400,
+    "width": 3000
+  },
+  "outputNames": [
+    "subscription-tracker-01-hero-en-US.png",
+    "subscription-tracker-02-dashboard-en-US.png",
+    "subscription-tracker-03-included-files-en-US.png",
+    "subscription-tracker-04-features-en-US.png",
+    "subscription-tracker-05-how-it-works-en-US.png",
+    "subscription-tracker-06-compatibility-en-US.png",
+    "subscription-tracker-07-detail-view-en-US.png",
+    "subscription-tracker-08-target-customer-en-US.png",
+    "subscription-tracker-09-call-to-action-en-US.png",
+    "subscription-tracker-10-bundle-en-US.png"
+  ],
+  "productId": "subscription-tracker",
+  "productVersion": "1.0.0",
+  "quality": 88,
+  "replacementValues": {
+    "bundle": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "call-to-action": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "compatibility": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "dashboard": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "detail-view": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "features": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "hero": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "how-it-works": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "included-files": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    "target-customer": {
+      "altText": "Subscription Tracker",
+      "headline": "Subscription Tracker",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    }
+  },
+  "schemaVersion": "1.0.0",
+  "smartObjectTargets": [
+    "WORKBOOK_DASHBOARD",
+    "WORKBOOK_DETAIL",
+    "QUICK_START"
+  ],
+  "sourceAsset": "REQUIRED_TEMPLATE_ASSET_NOT_GENERATED",
+  "sourceAssetRequired": true,
+  "templateId": "finance-product-sage-finance-1.0.0",
+  "textLayers": [
+    "HEADLINE",
+    "SUBHEADLINE",
+    "BADGE",
+    "CTA"
+  ],
+  "validationRules": [
+    "No clipped text.",
+    "Minimum 4.5:1 text contrast.",
+    "No unsupported compatibility claims.",
+    "Locale copy must be reviewed before publication."
+  ],
+  "variant": "subscription-tracker/USD/sage-finance",
+  "workbookStyles": {
+    "dashboardCard": {
+      "accent": "#765600",
+      "fill": "#FFFFFF",
+      "text": "#1E2B22"
+    },
+    "error": {
+      "border": "#7A1D1D",
+      "fill": "#FDE8E7",
+      "text": "#7A1D1D"
+    },
+    "formula": {
+      "border": "#41684F",
+      "fill": "#DCEADF",
+      "locked": true,
+      "text": "#1E2B22"
+    },
+    "header": {
+      "bold": true,
+      "border": "#2C5940",
+      "fill": "#2C5940",
+      "text": "#FFFFFF"
+    },
+    "input": {
+      "border": "#765600",
+      "fill": "#FFF1C2",
+      "locked": false,
+      "text": "#2D240F"
+    },
+    "success": {
+      "border": "#164B2B",
+      "fill": "#E6F4EA",
+      "text": "#164B2B"
+    },
+    "tableBand": {
+      "border": "#AABCAA",
+      "fill": "#E3EEDF",
+      "text": "#1E2B22"
+    },
+    "tableHeader": {
+      "bold": true,
+      "border": "#AABCAA",
+      "fill": "#41684F",
+      "text": "#FFFFFF"
+    },
+    "warning": {
+      "border": "#513C00",
+      "fill": "#FFF3CD",
+      "text": "#513C00"
+    }
+  }
+}

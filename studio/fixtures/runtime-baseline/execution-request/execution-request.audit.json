@@ -1,0 +1,116 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-request-packaging",
+    "auditRequired":  true,
+    "entries":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "requestId":  "EXREQ-GHLX-REQUEST-001",
+                        "sourceApprovalId":  "APG-001",
+                        "approvalState":  "REQUESTED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "executionReadinessState":  "BLOCKED",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-approval-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "approval-required",
+                                             "reason":  "Human approval is required before any external executor may consider this action."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "requestId":  "EXREQ-GHSX-REQUEST-001",
+                        "sourceApprovalId":  "APG-002",
+                        "approvalState":  "PENDING_APPROVAL",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "low",
+                        "executionReadinessState":  "BLOCKED",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-approval-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "pending-review",
+                                             "reason":  "Pending approval cannot execute."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                        "sourceApprovalId":  "APG-003",
+                        "approvalState":  "UNKNOWN",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "high",
+                        "executionReadinessState":  "BLOCKED",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-approval-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "unknown-state-block",
+                                             "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "requestId":  "EXREQ-GHLX-APPROVED-001",
+                        "sourceApprovalId":  "APG-004",
+                        "approvalState":  "APPROVED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "executionReadinessState":  "READY_FOR_REVIEW",
+                        "executionDispatchAllowed":  false,
+                        "result":  "packaged-for-human-review",
+                        "blockers":  [
+
+                                     ]
+                    }
+                ],
+    "boundaries":  {
+                       "packagingOnly":  true,
+                       "performsExecution":  false,
+                       "automaticExecution":  false,
+                       "liveGitHubActionExecution":  false,
+                       "providerExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "approvalMutation":  false,
+                       "autoApproval":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "selfHealing":  false,
+                       "secretAccess":  false,
+                       "credentialAccess":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "protectedBranchWrites":  false,
+                       "mutatesBranches":  false,
+                       "mutatesFilesOutsideRuntimeReports":  false
+                   },
+    "ownership":  {
+                      "ownsExecutionRequestPackages":  true,
+                      "ownsExecutionRequestAuditTrail":  true,
+                      "ownsExecutionRequestEvidence":  true,
+                      "ownsApprovalStatus":  false,
+                      "ownsApprovalMutation":  false,
+                      "ownsExecutionTruth":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsGithubTruth":  false,
+                      "ownsRuntimeTruthOutsideExecutionRequest":  false
+                  }
+}

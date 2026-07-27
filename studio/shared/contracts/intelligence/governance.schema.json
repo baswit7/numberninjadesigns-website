@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.governance",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "governanceScore",
+    "model",
+    "checks",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "traceability": {
+    "requiresMatchedArtifacts": true,
+    "requiresHealthyArtifacts": true,
+    "requiresTrace": true
+  }
+}

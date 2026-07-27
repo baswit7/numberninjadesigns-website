@@ -1,0 +1,92 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "numberninjadesigns-001",
+    "projectId":  "numberninjadesigns",
+    "projectName":  "NumberNinjaDesigns",
+    "projectType":  "ecommerce",
+    "repository":  "baswit7/numberninjadesigns.github.io",
+    "title":  "Build Etsy listing workflow foundation",
+    "type":  "commerce",
+    "status":  "ready",
+    "problem":  "NumberNinjaDesigns product and listing work can fragment across keywords, mockups, copy, SEO, and publish checks.",
+    "expectedOutcome":  "A repeatable Etsy listing workflow with keyword inputs, title formula, description structure, mockup checklist, SEO tags, and release checklist.",
+    "businessValue":  10,
+    "urgency":  9,
+    "userImpact":  9,
+    "unblockValue":  8,
+    "effort":  4,
+    "risk":  3,
+    "confidence":  9,
+    "priorityScore":  91,
+    "roiScore":  92,
+    "sourceRoiScore":  92,
+    "rank":  1,
+    "estimatedHours":  4,
+    "expectedBusinessImpact":  10,
+    "whyThisTask":  "Blocks 1 task",
+    "releaseReadiness":  "planning-ready",
+    "dependencies":  [
+
+                     ],
+    "blockers":  [
+
+                 ],
+    "deliverables":  [
+                         "Etsy listing workflow document",
+                         "SEO keyword checklist",
+                         "mockup readiness checklist",
+                         "listing release checklist",
+                         "Codex implementation prompt"
+                     ],
+    "acceptanceCriteria":  [
+                               "Workflow covers keyword research, listing title, description, tags, images, price notes, and publish checks.",
+                               "Output uses the NumberNinjaDesigns tactical premium brand tone.",
+                               "Workflow can be reused for at least ten product ideas without redesign.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "low",
+                        "riskScore":  3,
+                        "summary":  "low risk. No active blockers."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/numberninjadesigns-001.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/numberninjadesigns-001.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/numberninjadesigns-001.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6">
+  <meta name="description" content="Centrale NumberNinjaDesigns-studio voor digitale en fysieke producten, content, onderzoek, listings, media, kanalen en API-beheer.">
+  <meta name="operational-contract" content="Read-only adapters; workbookintegriteit nooit wijzigen.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>NumberNinjaDesigns · Content &amp; Product Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="./src/content-studio.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Naar de werkruimte</a>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="NumberNinjaDesigns startpagina">NumberNinjaDesigns</a>
+    <nav class="site-nav" role="tablist" aria-label="Werkruimtes">
+      <button id="tab-studio" type="button" role="tab" aria-controls="panel-studio" aria-selected="true" data-tab="studio">Studio</button>
+      <button id="tab-products" type="button" role="tab" aria-controls="panel-products" aria-selected="false" tabindex="-1" data-tab="products">Producten</button>
+      <button id="tab-content" type="button" role="tab" aria-controls="panel-content" aria-selected="false" tabindex="-1" data-tab="content">Content</button>
+      <button id="tab-market" type="button" role="tab" aria-controls="panel-market" aria-selected="false" tabindex="-1" data-tab="market">Marktonderzoek</button>
+      <button id="tab-listings" type="button" role="tab" aria-controls="panel-listings" aria-selected="false" tabindex="-1" data-tab="listings">Listings</button>
+      <button id="tab-media" type="button" role="tab" aria-controls="panel-media" aria-selected="false" tabindex="-1" data-tab="media">Media</button>
+      <button id="tab-channels" type="button" role="tab" aria-controls="panel-channels" aria-selected="false" tabindex="-1" data-tab="channels">Kanalen</button>
+      <button id="tab-api" type="button" role="tab" aria-controls="panel-api" aria-selected="false" tabindex="-1" data-tab="api">API-beheer</button>
+    </nav>
+  </header>
+
+  <main id="workspace">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Eén merkstudio · digitaal, fysiek en content</p>
+        <h1 id="page-title">Content &amp;<br>Product Studio</h1>
+        <p>Beheer ideeën, productie, content, marktvalidatie, listings en integraties vanuit één gedeelde productcontext. Digitale en fysieke producten blijven expliciet gescheiden waar hun productie- of fulfilmentregels verschillen.</p>
+      </div>
+    </section>
+
+    <section class="context-bar" aria-labelledby="context-title">
+      <div class="context-heading">
+        <p class="eyebrow">Actieve productcontext</p>
+        <h2 id="context-name">NumberNinjaDesigns</h2>
+        <p id="context-summary">Merk &amp; studio actief · gedeelde context numberninjadesigns</p>
+      </div>
+      <div class="context-badges" aria-label="Contextstatus">
+        <span id="context-type" class="badge">Merk &amp; studio</span>
+        <span class="badge">Actief</span>
+      </div>
+      <label class="field context-field">
+        <span>Product of initiatief</span>
+        <select id="product-context" aria-describedby="context-guardrail"></select>
+      </label>
+      <button id="new-product" class="primary-button" type="button">Nieuw product</button>
+      <p id="context-guardrail" class="context-guardrail">Gebruik uitsluitend de merknaam NumberNinjaDesigns.</p>
+    </section>
+
+    <p id="app-status" class="app-status" data-tone="neutral" role="status" aria-live="polite">Studio gereed.</p>
+
+    <section id="panel-studio" class="workspace-panel" role="tabpanel" aria-labelledby="tab-studio">
+      <header class="section-heading">
+        <p class="eyebrow">Centrale werkstroom</p>
+        <h2>Van idee naar publiceerbaar resultaat</h2>
+        <p>Alle onderdelen gebruiken dezelfde actieve context, zonder publicatie of externe API-aanroep vanuit deze overzichtspagina.</p>
+      </header>
+
+      <div class="workflow-list">
+        <article class="workflow-row">
+          <span class="workflow-number">01</span>
+          <h3>Product<br>Factory</h3>
+          <p>Configureer, valideer en genereer digitale XLSX-, DOCX- en gecombineerde productpakketten. Fysieke producten volgen hun eigen productie- en fulfilmentcontract.</p>
+          <a class="row-action" href="apps/product-factory/index.html">Open generator
+            <svg viewBox="0 0 48 28" aria-hidden="true"><path d="M2 14h42M33 3l11 11-11 11"/></svg>
+          </a>
+        </article>
+        <article class="workflow-row">
+          <span class="workflow-number">02</span>
+          <h3>Content<br>Generator</h3>
+          <p>Maak kanaalspecifieke concepten voor Facebook, Instagram, X, Pinterest, Blog en TikTok vanuit dezelfde merk- en productcontext.</p>
+          <button class="row-action" type="button" data-open-tab="content">Open content
+            <svg viewBox="0 0 48 28" aria-hidden="true"><path d="M2 14h42M33 3l11 11-11 11"/></svg>
+          </button>
+        </article>
+        <article class="workflow-row">
+          <span class="workflow-number">03</span>
+          <h3>Market<br>Intelligence</h3>
+          <p>Importeer marktdata, rangschik kansen, cluster niches en ontwikkel productblueprints voor de actieve productcontext.</p>
+          <a class="row-action" href="modules/etsy-intelligence-engine/index.html">Open intelligence
+            <svg viewBox="0 0 48 28" aria-hidden="true"><path d="M2 14h42M33 3l11 11-11 11"/></svg>
+          </a>
+        </article>
+        <article class="workflow-row">
+          <span class="workflow-number">04</span>
+          <h3>Listing<br>Intelligence</h3>
+          <p>Beheer onderzoek, concepten, reviewstatus en verkoopklare listingpakketten. Publicatie blijft altijd een afzonderlijke goedkeuringsstap.</p>
+          <a class="row-action" href="modules/listing-intelligence-engine/dashboard/index.html">Open listings
+            <svg viewBox="0 0 48 28" aria-hidden="true"><path d="M2 14h42M33 3l11 11-11 11"/></svg>
+          </a>
+        </article>
+        <article class="workflow-row">
+          <span class="workflow-number">05</span>
+          <h3>API &amp;<br>Kanalen</h3>
+          <p>Inventariseer Meta, Etsy, Pinterest en geplande koppelingen. Geheimen blijven in de serveromgeving en live toegang moet apart worden geverifieerd.</p>
+          <a class="row-action" href="../../../studio/apps/api-registry-manager/index.html">Open API Manager
+            <svg viewBox="0 0 48 28" aria-hidden="true"><path d="M2 14h42M33 3l11 11-11 11"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="panel-products" class="workspace-panel" role="tabpanel" aria-labelledby="tab-products" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Producten</p>
+        <h2>Digitaal en fysiek onder één merk</h2>
+        <p>De merkcontext is gedeeld; productbestanden, kwaliteitscontroles en fulfilment blijven per producttype gescheiden.</p>
+      </header>
+
+      <div class="subtabs" role="tablist" aria-label="Producttypen">
+        <button id="product-tab-digital" role="tab" aria-controls="product-digital" aria-selected="true" data-product-type="digital">Digitale producten</button>
+        <button id="product-tab-physical" role="tab" aria-controls="product-physical" aria-selected="false" tabindex="-1" data-product-type="physical">Fysieke producten</button>
+      </div>
+
+      <section id="product-digital" class="subpanel" role="tabpanel" aria-labelledby="product-tab-digital">
+        <div class="split-feature">
+          <div>
+            <span class="badge accent">Actieve productlijn</span>
+            <h3>Finance Product Factory</h3>
+            <p>Offline-first productie van gecontroleerde spreadsheets, documenten en klantpakketten. De bestaande workbookintegriteit blijft leidend.</p>
+          </div>
+          <div class="feature-actions">
+            <a class="primary-button" href="apps/product-factory/index.html">Open digitale generator</a>
+            <button class="secondary-button" type="button" data-open-tab="content">Maak productcontent</button>
+          </div>
+        </div>
+        <div class="info-grid">
+          <article><span>01</span><h4>Bron</h4><p>Versiebeheerde productdefinities en gevalideerde invoer.</p></article>
+          <article><span>02</span><h4>Uitvoer</h4><p>XLSX, DOCX en gecontroleerde samengestelde pakketten.</p></article>
+          <article><span>03</span><h4>Publicatie</h4><p>Pas na review naar listing- en distributieworkflows.</p></article>
+        </div>
+      </section>
+
+      <section id="product-physical" class="subpanel" role="tabpanel" aria-labelledby="product-tab-physical" hidden>
+        <div class="split-feature">
+          <div>
+            <span class="badge">Aparte productielijn</span>
+            <h3>Fysieke producten</h3>
+            <p>Ontwerpen vallen onder NumberNinjaDesigns, maar maatvoering, materiaal, mock-ups, printkwaliteit, voorraad en verzending krijgen een afzonderlijke controle.</p>
+          </div>
+          <div class="feature-actions">
+            <button class="primary-button" type="button" data-open-tab="media">Open media</button>
+            <button class="secondary-button" type="button" data-open-tab="content">Maak productcontent</button>
+          </div>
+        </div>
+        <div class="checklist">
+          <h4>Productiepoort</h4>
+          <ul>
+            <li>Bronbestand, resolutie en kleurprofiel gecontroleerd</li>
+            <li>Materiaal, varianten en maatvoering bevestigd</li>
+            <li>Mock-ups gekoppeld aan de juiste variant</li>
+            <li>Productiepartner, kosten en levertijd geverifieerd</li>
+            <li>Retour- en maatwerkregels verwerkt in de listing</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <section id="panel-content" class="workspace-panel" role="tabpanel" aria-labelledby="tab-content" hidden>
+      <header class="section-heading content-heading">
+        <div>
+          <p class="eyebrow">Content generator</p>
+          <h2>Één briefing, zes kanaalformaten</h2>
+          <p>Actieve context: <strong id="content-context">NumberNinjaDesigns</strong>. De generator maakt lokale conceptteksten en doet geen externe provider- of publicatieaanroep.</p>
+        </div>
+        <span class="local-only">Lokaal concept</span>
+      </header>
+
+      <div class="channel-tabs" role="tablist" aria-label="Contentkanalen">
+        <button id="channel-tab-facebook" role="tab" aria-controls="channel-help-facebook" aria-selected="true" data-channel="facebook">Facebook</button>
+        <button id="channel-tab-instagram" role="tab" aria-controls="channel-help-instagram" aria-selected="false" tabindex="-1" data-channel="instagram">Instagram</button>
+        <button id="channel-tab-x" role="tab" aria-controls="channel-help-x" aria-selected="false" tabindex="-1" data-channel="x">X</button>
+        <button id="channel-tab-pinterest" role="tab" aria-controls="channel-help-pinterest" aria-selected="false" tabindex="-1" data-channel="pinterest">Pinterest</button>
+        <button id="channel-tab-blog" role="tab" aria-controls="channel-help-blog" aria-selected="false" tabindex="-1" data-channel="blog">Blog</button>
+        <button id="channel-tab-tiktok" role="tab" aria-controls="channel-help-tiktok" aria-selected="false" tabindex="-1" data-channel="tiktok">TikTok</button>
+      </div>
+
+      <div class="content-workbench">
+        <form id="content-form" class="generator-form">
+          <div id="channel-help-facebook" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-facebook">
+            <strong>Facebook</strong><span>Verhaal, context, call-to-action en beeldbriefing.</span>
+          </div>
+          <div id="channel-help-instagram" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-instagram" hidden>
+            <strong>Instagram</strong><span>Caption, hashtags, carrouselbriefing en alt-tekst.</span>
+          </div>
+          <div id="channel-help-x" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-x" hidden>
+            <strong>X</strong><span>Een scherpe post van maximaal 280 tekens.</span>
+          </div>
+          <div id="channel-help-pinterest" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-pinterest" hidden>
+            <strong>Pinterest</strong><span>Zoekbare titel, beschrijving, bord en verticale pinbriefing.</span>
+          </div>
+          <div id="channel-help-blog" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-blog" hidden>
+            <strong>Blog</strong><span>SEO-titel, metaomschrijving, slug en artikelopzet.</span>
+          </div>
+          <div id="channel-help-tiktok" class="channel-help" role="tabpanel" aria-labelledby="channel-tab-tiktok" hidden>
+            <strong>TikTok</strong><span>Hook, scènes, caption en productieaanwijzingen.</span>
+          </div>
+
+          <label class="field">
+            <span>Onderwerp of campagne</span>
+            <textarea id="content-topic" rows="4" maxlength="120" required placeholder="Bijvoorbeeld: in 15 minuten een helder maandbudget"></textarea>
+          </label>
+          <div class="form-row">
+            <label class="field">
+              <span>Doel</span>
+              <select id="content-objective"></select>
+            </label>
+            <label class="field">
+              <span>Taal</span>
+              <select id="content-locale">
+                <option value="nl-NL">Nederlands</option>
+                <option value="en-US">Engels</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary-button full" type="submit">Genereer concept</button>
+          <p class="form-note">Controleer feiten, rechten, prijzen en platformregels vóór publicatie.</p>
+        </form>
+
+        <section class="generator-output" aria-labelledby="result-title">
+          <div class="output-heading">
+            <div><p class="eyebrow">Conceptweergave</p><h2 id="result-title">Publicatieklaar maken</h2></div>
+            <div id="draft-actions" class="output-actions" hidden>
+              <button id="save-draft" class="text-button" type="button">Opslaan</button>
+              <button id="copy-draft" class="text-button" type="button">Kopiëren</button>
+              <button id="download-draft" class="text-button" type="button">JSON</button>
+            </div>
+          </div>
+          <div id="content-result" class="content-result">
+            <p class="empty-state">Klaar voor een Facebook-concept. Vul het onderwerp in en kies Genereren.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="draft-library" aria-labelledby="draft-library-title">
+        <div><p class="eyebrow">Lokale concepten</p><h2 id="draft-library-title">Opgeslagen in deze browser</h2></div>
+        <div id="saved-drafts"><p class="empty-state compact">Nog geen lokaal opgeslagen concepten.</p></div>
+      </section>
+    </section>
+
+    <section id="panel-market" class="workspace-panel" role="tabpanel" aria-labelledby="tab-market" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Marktonderzoek</p>
+        <h2>Bewijs vóór productie</h2>
+        <p>Onderzoek zoekgedrag, concurrentie, niches en productkansen. Actuele platformclaims en prijzen vragen altijd een bron en peildatum.</p>
+      </header>
+      <div class="split-feature">
+        <div>
+          <span class="badge accent">Lokale intelligence</span>
+          <h3>Etsy Intelligence Engine</h3>
+          <p>Orden marktsignalen, valideer ideeën en bouw productblueprints zonder ruwe marktdata met productiegegevens te vermengen.</p>
+        </div>
+        <div class="feature-actions">
+          <a class="primary-button" href="modules/etsy-intelligence-engine/index.html">Open marktonderzoek</a>
+          <button class="secondary-button" type="button" data-open-tab="products">Naar producten</button>
+        </div>
+      </div>
+      <div class="workflow-list compact-rows">
+        <article class="workflow-row"><span class="workflow-number">01</span><h3>Importeer</h3><p>Leg bron, peildatum en herkomst van marktdata vast.</p><span class="row-status">Read-only</span></article>
+        <article class="workflow-row"><span class="workflow-number">02</span><h3>Rangschik</h3><p>Vergelijk vraag, concurrentie, maakbaarheid en marge als afzonderlijke signalen.</p><span class="row-status">Lokaal</span></article>
+        <article class="workflow-row"><span class="workflow-number">03</span><h3>Valideer</h3><p>Laat alleen onderbouwde kansen door naar productontwikkeling.</p><span class="row-status">Review nodig</span></article>
+      </div>
+    </section>
+
+    <section id="panel-listings" class="workspace-panel" role="tabpanel" aria-labelledby="tab-listings" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Listings</p>
+        <h2>Van productbewijs naar verkooptekst</h2>
+        <p>Maak titels, tags, beschrijvingen en listingpakketten vanuit bevestigde product- en marktgegevens.</p>
+      </header>
+      <div class="split-feature">
+        <div>
+          <span class="badge accent">Goedkeuringsgestuurd</span>
+          <h3>Listing Intelligence Engine</h3>
+          <p>Digitale en fysieke producten gebruiken dezelfde merkstem, maar behouden aparte leverings-, retour-, maatwerk- en bestandsregels.</p>
+        </div>
+        <div class="feature-actions">
+          <a class="primary-button" href="modules/listing-intelligence-engine/dashboard/index.html">Open listingbeheer</a>
+          <button class="secondary-button" type="button" data-open-tab="content">Maak promotiecontent</button>
+        </div>
+      </div>
+      <div class="policy-band">
+        <strong>Publicatiegrens</strong>
+        <p>Concepten worden niet automatisch naar Etsy of een ander extern kanaal gepubliceerd. Menselijke review en expliciete publicatiegoedkeuring blijven verplicht.</p>
+      </div>
+    </section>
+
+    <section id="panel-media" class="workspace-panel" role="tabpanel" aria-labelledby="tab-media" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Foto &amp; video</p>
+        <h2>Media-inventaris en productkoppeling</h2>
+        <p>De bestaande beelden blijven in hun broncollecties. Deze studio legt vast wat actief, lokaal, kandidaat of legacy is; bestanden worden niet stilzwijgend verplaatst.</p>
+      </header>
+      <div class="metric-strip">
+        <article><strong>223</strong><span>actieve productafbeeldingen</span></article>
+        <article><strong>0</strong><span>actieve productvideo’s</span></article>
+        <article><strong>131</strong><span>lokale merkafbeeldingen</span></article>
+        <article><strong>3</strong><span>lokale merkvideo’s</span></article>
+      </div>
+      <div class="media-register">
+        <article><span class="badge accent">Actief</span><h3>Productassets</h3><p>223 afbeeldingen, gekoppeld aan de actuele productproductie.</p><span>Broncollectie behouden</span></article>
+        <article><span class="badge">Lokaal</span><h3>Branding</h3><p>131 afbeeldingen en 3 video’s voor merk- en studiowerk.</p><span>Niet automatisch publiceren</span></article>
+        <article><span class="badge">Kandidaat</span><h3>Release-selectie</h3><p>52 afbeeldingen en 5 video’s wachten op inhoudelijke review.</p><span>Rechtencontrole nodig</span></article>
+        <article><span class="badge">Legacy</span><h3>Printify-collectie</h3><p>280 afbeeldingen uit eerder fysiek productwerk.</p><span>Alleen migreren na selectie</span></article>
+        <article><span class="badge">Gereed</span><h3>Artlist-pipeline</h3><p>De pipeline is voorbereid; er zijn nog geen mediabestanden opgenomen.</p><span>Licentie per asset vastleggen</span></article>
+      </div>
+    </section>
+
+    <section id="panel-channels" class="workspace-panel" role="tabpanel" aria-labelledby="tab-channels" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">Social media &amp; publicatie</p>
+        <h2>Alle kanalen onder NumberNinjaDesigns</h2>
+        <p>Bestaande accounts of apps worden pas hernoemd of omgebouwd na eigendoms-, beleids- en toegangscontrole. De studio doet dat niet automatisch.</p>
+      </header>
+      <div class="channel-register">
+        <article><span class="channel-index">01</span><div><h3>Facebook</h3><p>Merkpagina, productverhalen en campagnes.</p></div><span class="status-pill warning">Toegang verifiëren</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+        <article><span class="channel-index">02</span><div><h3>Instagram</h3><p>Visuele productcontent, carrousels en Reels.</p></div><span class="status-pill warning">Toegang verifiëren</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+        <article><span class="channel-index">03</span><div><h3>X</h3><p>Korte updates, inzichten en lanceringen.</p></div><span class="status-pill neutral">Nog inrichten</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+        <article><span class="channel-index">04</span><div><h3>Pinterest</h3><p>Zoekbare pins en duurzame productontdekking.</p></div><span class="status-pill neutral">Nog inrichten</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+        <article><span class="channel-index">05</span><div><h3>Blog</h3><p>Eigen kennisbank en organische vindbaarheid.</p></div><span class="status-pill neutral">Nog bouwen</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+        <article><span class="channel-index">06</span><div><h3>TikTok</h3><p>Korte uitleg, trendanalyse en creator-inzichten.</p></div><span class="status-pill neutral">Gepland</span><button type="button" class="text-button" data-open-tab="content">Maak content</button></article>
+      </div>
+    </section>
+
+    <section id="panel-api" class="workspace-panel" role="tabpanel" aria-labelledby="tab-api" hidden>
+      <header class="section-heading">
+        <p class="eyebrow">API-beheer</p>
+        <h2>Veilige connectorinventaris</h2>
+        <p>Configuratienamen komen uit de serveromgeving. Deze pagina leest, toont of bewaart geen sleutels, tokens of productiecredentials.</p>
+      </header>
+      <div class="api-notice">
+        <span id="runtime-indicator" class="connection-dot" data-state="checking" aria-hidden="true"></span>
+        <div><strong>Lokale runtime</strong><p>Status: <span id="runtime-label">controleren…</span>. Externe providerstatus is niet getest.</p></div>
+      </div>
+      <div class="split-feature">
+        <div>
+          <span class="badge accent">Gedeelde bron</span>
+          <h3>API Registry Manager</h3>
+          <p>VS Code en de manager bewerken hetzelfde lokale <code>api-registry.json</code>-bestand. De manager bewaart geen sleutels, tokens of credentials.</p>
+        </div>
+        <div class="feature-actions">
+          <a class="primary-button" href="../../../studio/apps/api-registry-manager/index.html">Open API Manager</a>
+        </div>
+      </div>
+      <div class="api-register">
+        <article><div><h3>Meta · Facebook &amp; Instagram</h3><p>App-configuratie aanwezig in de projectomgeving; toegang en tokenstatus nog live verifiëren.</p></div><span class="status-pill warning">Ongeverifieerd</span></article>
+        <article><div><h3>Etsy</h3><p>Connectorcontract beschikbaar voor winkel- en listingworkflows; publicatie blijft uitgeschakeld.</p></div><span class="status-pill warning">Ongeverifieerd</span></article>
+        <article><div><h3>Pinterest</h3><p>Kanaal en integratie zijn gepland; geen bevestigde live verbinding.</p></div><span class="status-pill neutral">Gepland</span></article>
+        <article><div><h3>TikTok</h3><p>Creator Search Insights, trend- en engagementanalyse horen bij de geplande groeilaag.</p></div><span class="status-pill neutral">Gepland</span></article>
+        <article><div><h3>ElevenLabs</h3><p>Geplande ondersteuning voor voice-assets; geen provideroproep vanuit deze studio.</p></div><span class="status-pill neutral">Gepland</span></article>
+      </div>
+      <div class="security-band">
+        <strong>Secretbeleid</strong>
+        <p>Credentials horen uitsluitend in de genegeerde <code>.env</code> of een beheerde secret store. Nooit in HTML, clientcode, localStorage, screenshots of exports.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="runtime"><i aria-hidden="true"></i>NumberNinjaDesigns Studio OS · lokaal en approval-first</span>
+    <nav class="footer-links" aria-label="Snelle navigatie">
+      <button type="button" data-open-tab="products">Producten</button>
+      <button type="button" data-open-tab="content">Content</button>
+      <button type="button" data-open-tab="market">Markt</button>
+      <button type="button" data-open-tab="listings">Listings</button>
+      <a href="../../../studio/apps/api-registry-manager/index.html">API Manager</a>
+    </nav>
+  </footer>
+</body>
+</html>

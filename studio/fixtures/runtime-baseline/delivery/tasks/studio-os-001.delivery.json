@@ -1,0 +1,92 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "studio-os-001",
+    "projectId":  "studio-os",
+    "projectName":  "Studio OS",
+    "projectType":  "platform",
+    "repository":  "baswit7/professionele-ai-development-studio",
+    "title":  "Create project delivery system foundation",
+    "type":  "feature",
+    "status":  "ready",
+    "problem":  "Studio OS has strong governance but lacks a practical delivery layer that tells Bas what to build next.",
+    "expectedOutcome":  "A deterministic task intake, prioritization, delivery board, prompt generator, and cockpit for four supported projects.",
+    "businessValue":  8,
+    "urgency":  9,
+    "userImpact":  9,
+    "unblockValue":  10,
+    "effort":  5,
+    "risk":  4,
+    "confidence":  9,
+    "priorityScore":  88,
+    "roiScore":  76,
+    "sourceRoiScore":  86,
+    "rank":  2,
+    "estimatedHours":  6,
+    "expectedBusinessImpact":  8,
+    "whyThisTask":  "Blocks 1 task",
+    "releaseReadiness":  "planning-ready",
+    "dependencies":  [
+
+                     ],
+    "blockers":  [
+
+                 ],
+    "deliverables":  [
+                         "delivery task registry",
+                         "prioritization report",
+                         "project delivery dashboard",
+                         "project cockpit projections",
+                         "validation script"
+                     ],
+    "acceptanceCriteria":  [
+                               "Dashboard identifies the highest-priority next task per supported project.",
+                               "Every task has generated acceptance criteria, Codex prompt, review checklist, and release checklist.",
+                               "Boundary flags prove no execution, provider, GitHub, deployment, or agent capability exists.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "low",
+                        "riskScore":  4,
+                        "summary":  "low risk. No active blockers."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/studio-os-001.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/studio-os-001.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/studio-os-001.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/studio-os-001.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

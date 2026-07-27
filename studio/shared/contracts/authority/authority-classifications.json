@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-15",
+  "contractId": "studio-os-authority-classifications",
+  "purpose": "Closed classification model for Studio OS authority ownership.",
+  "sourceOfTruth": "authority-classification-model",
+  "nonExecutable": true,
+  "classifications": [
+    {
+      "id": "read-only",
+      "description": "May inspect machine-readable state or source evidence without changing it.",
+      "requiresApproval": false,
+      "defaultDecision": "ALLOW"
+    },
+    {
+      "id": "report-writing",
+      "description": "May write deterministic validation or reporting artifacts only.",
+      "requiresApproval": false,
+      "defaultDecision": "ALLOW"
+    },
+    {
+      "id": "governance-decision",
+      "description": "May define non-executing governance decisions or boundaries.",
+      "requiresApproval": false,
+      "defaultDecision": "ALLOW"
+    },
+    {
+      "id": "approval-required",
+      "description": "Requires explicit human approval before any future phase may consume it.",
+      "requiresApproval": true,
+      "defaultDecision": "REQUIRES_APPROVAL"
+    },
+    {
+      "id": "provider-risk",
+      "description": "Could interact with third-party providers in a future phase and is currently blocked.",
+      "requiresApproval": true,
+      "defaultDecision": "DENY"
+    },
+    {
+      "id": "deployment-risk",
+      "description": "Could publish or change deployed systems in a future phase and is currently blocked.",
+      "requiresApproval": true,
+      "defaultDecision": "DENY"
+    },
+    {
+      "id": "execution-risk",
+      "description": "Could trigger work, scripts or runtime mutation in a future phase and is currently blocked.",
+      "requiresApproval": true,
+      "defaultDecision": "DENY"
+    },
+    {
+      "id": "forbidden-currently",
+      "description": "Explicitly out of constitutional scope for the current Studio OS baseline.",
+      "requiresApproval": true,
+      "defaultDecision": "DENY"
+    }
+  ],
+  "boundary": {
+    "closedSet": true,
+    "implicitClassificationAllowed": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false
+  }
+}

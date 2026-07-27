@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-15",
+  "contractId": "studio-os-constitution-rules",
+  "purpose": "Machine-readable constitutional boundaries for Studio OS authority ownership and authority decisions.",
+  "sourceOfTruth": "constitution",
+  "decisionSemantics": "boundary-definition-only",
+  "nonExecutable": true,
+  "rules": [
+    {
+      "ruleId": "constitution.dashboard-runtime-truth-denied",
+      "owner": "constitution",
+      "classification": "governance-decision",
+      "scope": "dashboard-runtime-boundary",
+      "subject": "apps/studio-dashboard",
+      "prohibitedOwnership": [
+        "runtime.truth",
+        "authority.ownership",
+        "execution.permission"
+      ],
+      "decision": "DENY",
+      "reason": "Dashboard projections are derived read models and cannot own runtime truth or authority."
+    },
+    {
+      "ruleId": "constitution.projections-runtime-mutation-denied",
+      "owner": "constitution",
+      "classification": "governance-decision",
+      "scope": "projection-boundary",
+      "subject": "shared/contracts/projections",
+      "prohibitedOwnership": [
+        "runtime.mutation",
+        "authority.creation",
+        "execution.permission"
+      ],
+      "decision": "DENY",
+      "reason": "Projections may describe display contracts only and cannot mutate runtime."
+    },
+    {
+      "ruleId": "constitution.governance-execution-denied",
+      "owner": "constitution",
+      "classification": "governance-decision",
+      "scope": "governance-boundary",
+      "subject": "services/governance",
+      "prohibitedOwnership": [
+        "execution.run",
+        "provider.invoke",
+        "deployment.start"
+      ],
+      "decision": "DENY",
+      "reason": "Governance may score, report and document decisions, but cannot execute."
+    },
+    {
+      "ruleId": "constitution.readiness-approval-denied",
+      "owner": "constitution",
+      "classification": "approval-required",
+      "scope": "readiness-boundary",
+      "subject": "services/execution-readiness",
+      "prohibitedOwnership": [
+        "execution.approval",
+        "execution.run",
+        "deployment.start"
+      ],
+      "decision": "DENY",
+      "reason": "Readiness may report evidence only and cannot approve execution."
+    },
+    {
+      "ruleId": "constitution.coordination-execution-denied",
+      "owner": "constitution",
+      "classification": "execution-risk",
+      "scope": "coordination-boundary",
+      "subject": "services/coordination",
+      "prohibitedOwnership": [
+        "execution.run",
+        "provider.invoke",
+        "deployment.start"
+      ],
+      "decision": "DENY",
+      "reason": "Coordination may model routing and dependencies only; it cannot execute work."
+    },
+    {
+      "ruleId": "constitution.providers-authority-required",
+      "owner": "constitution",
+      "classification": "provider-risk",
+      "scope": "provider-boundary",
+      "subject": "services/provider-manager",
+      "prohibitedOwnership": [
+        "provider.invoke"
+      ],
+      "decision": "REQUIRES_APPROVAL",
+      "reason": "Provider interaction is blocked unless a future approved phase creates explicit authority."
+    },
+    {
+      "ruleId": "constitution.validators-authority-creation-denied",
+      "owner": "constitution",
+      "classification": "governance-decision",
+      "scope": "validator-boundary",
+      "subject": "scripts/validation",
+      "prohibitedOwnership": [
+        "authority.creation",
+        "authority.ownership",
+        "execution.permission"
+      ],
+      "decision": "DENY",
+      "reason": "Validators may detect violations and write validation reports only; they cannot create authority."
+    }
+  ],
+  "boundary": {
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretMutationAllowed": false,
+    "githubWriteAllowed": false,
+    "runtimeMutationAllowed": false,
+    "dashboardCommandAuthorityAllowed": false,
+    "browserStorageAuthorityAllowed": false
+  }
+}

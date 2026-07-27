@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.compliance",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "complianceStatus",
+    "findings",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedStatuses": [
+    "PASS",
+    "WARNING",
+    "FAIL"
+  ],
+  "traceability": {
+    "requiresRule": true,
+    "requiresEvidence": true,
+    "requiresRemediation": true
+  }
+}

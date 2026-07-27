@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "phase-9-execution-policies",
+  "executionAllowed": false,
+  "policies": [
+    {
+      "schemaVersion": "1.0.0",
+      "policyId": "policy-deployment-review-blocked",
+      "requestId": "execution-request-deployment-review",
+      "decision": "blocked",
+      "reason": "Approval is missing, risk is blocked, rollback readiness is partial and Phase 9 cannot execute deployments.",
+      "approvalRequired": true,
+      "riskAccepted": false,
+      "rollbackRequired": true,
+      "idempotencyRequired": true,
+      "executionAllowed": false,
+      "nonExecutableMetadata": {
+        "phase": "phase-9",
+        "owner": "studio-os",
+        "safetyClass": "policy-governance-only"
+      }
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "execution-policy-registry"
+  }
+}

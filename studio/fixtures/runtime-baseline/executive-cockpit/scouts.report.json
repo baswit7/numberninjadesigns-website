@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "ok",
+  "sectionId": "scouts",
+  "cards": [
+    {
+      "id": "scout.chatgpt-architect",
+      "title": "ChatGPT Architect",
+      "status": "ok",
+      "description": "Owns architecture reasoning, scope framing, compatibility review and safety-boundary interpretation for coordination plans.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May coordinate architecture reasoning only. It cannot execute tools, call providers, deploy, mutate runtime state, schedule work or act as an autonomous agent.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.codex-builder",
+      "title": "Codex Builder",
+      "status": "ok",
+      "description": "Receives reviewed implementation handoff context for future human-approved code work while Phase 8 remains planning-only.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 3
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May appear as a future handoff target in a graph only. Phase 8 never invokes Codex, generates source code through Codex or runs implementation steps.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.qa-agent",
+      "title": "QA Agent",
+      "status": "ok",
+      "description": "Coordinates future quality review expectations, validation coverage and acceptance criteria without running tests.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May define quality expectations only. It cannot execute tests, modify files, trigger pipelines or approve releases.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.review-agent",
+      "title": "Review Agent",
+      "status": "ok",
+      "description": "Coordinates future review checkpoints, architectural scrutiny and safety signoff requirements.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May coordinate review requirements only. It cannot merge, approve, deploy, execute commands or mutate any system.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.documentation-agent",
+      "title": "Documentation Agent",
+      "status": "ok",
+      "description": "Coordinates documentation impact, required docs and traceability expectations for future work.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May coordinate documentation expectations only. It cannot write docs, generate content into other files or update documentation automatically.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.governance-agent",
+      "title": "Governance Agent",
+      "status": "ok",
+      "description": "Coordinates governance readiness, safety gates, compliance evidence and release-control dependencies.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May coordinate advisory governance checks only. It cannot recalculate governance outputs, override release gates or approve execution.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    },
+    {
+      "id": "scout.deployment-planning-agent",
+      "title": "Deployment Planning Agent",
+      "status": "ok",
+      "description": "Coordinates future deployment-readiness planning without deploying, provisioning or communicating with providers.",
+      "facts": [
+        {
+          "label": "Execution allowed",
+          "value": "unknown"
+        },
+        {
+          "label": "Inputs",
+          "value": 4
+        },
+        {
+          "label": "Outputs",
+          "value": 3
+        },
+        {
+          "label": "Forbidden capabilities",
+          "value": 14
+        }
+      ],
+      "actionHint": "May coordinate deployment planning metadata only. It cannot deploy, call provider APIs, inspect secrets or trigger release workflows.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "shared/contracts/coordination/agent-registry.schema.json",
+        "sourceService": "scripts/validation/validate-agent-registry.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "services/coordination/agent-registry.json"
+    ],
+    "sourceContracts": [
+      "shared/contracts/coordination/agent-registry.schema.json"
+    ],
+    "sourceServices": [
+      "scripts/validation/validate-agent-registry.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

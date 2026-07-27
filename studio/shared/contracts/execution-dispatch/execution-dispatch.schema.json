@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/contracts/execution-dispatch.schema.json",
+  "title": "Studio OS Execution Dispatch Registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "capability",
+    "sourceFile",
+    "reviewRecordsInput",
+    "allowedDispatchStates",
+    "entries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "capability": {
+      "const": "execution-dispatch-registry"
+    },
+    "sourceFile": {
+      "type": "string"
+    },
+    "reviewRecordsInput": {
+      "type": "string"
+    },
+    "allowedDispatchStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "UNKNOWN",
+          "BLOCKED",
+          "DISPATCH_ELIGIBLE",
+          "DISPATCH_DENIED",
+          "EXPIRED"
+        ]
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "dispatchId",
+          "reviewId",
+          "requestId",
+          "sourceApprovalId",
+          "reviewState",
+          "dispatchState",
+          "requestedAction",
+          "targetSystem",
+          "riskClassification",
+          "dispatchEligible",
+          "executionTriggered",
+          "providerActionTriggered",
+          "githubActionTriggered",
+          "result",
+          "blockers"
+        ]
+      }
+    }
+  }
+}

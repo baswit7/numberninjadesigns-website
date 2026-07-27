@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:ColumnDefinition:1.0.0",
+  "title": "ColumnDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "labelKey", "type", "width", "role", "format", "validationId"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "labelKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "type": { "enum": ["string", "integer", "number", "currency", "percentage", "date", "boolean", "formula"] },
+    "width": { "type": "number", "minimum": 4, "maximum": 80 },
+    "role": { "enum": ["input", "calculated", "label", "identifier", "metadata", "display"] },
+    "format": { "type": ["string", "null"], "maxLength": 120 },
+    "validationId": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" }
+      ]
+    },
+    "required": { "type": "boolean" },
+    "hidden": { "type": "boolean" },
+    "locked": { "type": "boolean" },
+    "styleRole": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,175 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-12T14:23:06.8183765Z",
+    "source":  "services/market-intelligence/generate-market-intelligence.ps1",
+    "status":  "connected",
+    "opportunities":  [
+                          {
+                              "opportunityId":  "opp.pivot-table-operator",
+                              "kind":  "product",
+                              "title":  "Pivot Table Operator",
+                              "audience":  "Excel Users, Data Analysts, Spreadsheet Nerds",
+                              "status":  "connected",
+                              "classification":  "A",
+                              "confidence":  0.92,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.product-master",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                                   "summary":  "Matched local evidence terms: Pivot Table Operator, Excel users, data analysts, Commercial strength: high."
+                                               },
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                                   "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                               },
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                                   "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          },
+                          {
+                              "opportunityId":  "opp.query-before-coffee",
+                              "kind":  "product",
+                              "title":  "Query Before Coffee",
+                              "audience":  "SQL Developers, Programmers, Software Engineers",
+                              "status":  "connected",
+                              "classification":  "B",
+                              "confidence":  0.86,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                                   "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          },
+                          {
+                              "opportunityId":  "opp.model-is-overfitting",
+                              "kind":  "product",
+                              "title":  "Model Is Overfitting",
+                              "audience":  "Machine Learning Engineers, AI Engineers, Data Scientists",
+                              "status":  "connected",
+                              "classification":  "B",
+                              "confidence":  0.85,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                                   "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          },
+                          {
+                              "opportunityId":  "opp.pivot-table-content-system",
+                              "kind":  "content",
+                              "title":  "Pivot Table Operator content angles",
+                              "audience":  "Excel Users, Data Analysts, Business Analysts",
+                              "status":  "connected",
+                              "classification":  "B",
+                              "confidence":  0.79,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.social-content",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md",
+                                                   "summary":  "Matched local evidence terms: TikTok Ideas, Pinterest Pin Ideas, Hashtag Pool."
+                                               },
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.product-master",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                                   "summary":  "Matched local evidence terms: Pivot Table Operator, Excel users, data analysts, Commercial strength: high."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          },
+                          {
+                              "opportunityId":  "opp.pivot-table-seo-cluster",
+                              "kind":  "seo",
+                              "title":  "Pivot Table Operator SEO cluster",
+                              "audience":  "Etsy buyers searching Excel and analyst gifts",
+                              "status":  "connected",
+                              "classification":  "B",
+                              "confidence":  0.84,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                                   "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          },
+                          {
+                              "opportunityId":  "opp.manual-platform-mix",
+                              "kind":  "platform",
+                              "title":  "Manual Etsy, TikTok and Pinterest visibility mix",
+                              "audience":  "Manual content operations",
+                              "status":  "connected",
+                              "classification":  "C",
+                              "confidence":  0.62,
+                              "evidence":  [
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.social-content",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md",
+                                                   "summary":  "Matched local evidence terms: TikTok Ideas, Pinterest Pin Ideas, Hashtag Pool."
+                                               },
+                                               {
+                                                   "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                                   "status":  "connected",
+                                                   "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                                   "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                               }
+                                           ],
+                              "sourceLineage":  [
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                                    "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+                                                ],
+                              "nextAction":  "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass."
+                          }
+                      ],
+    "boundaries":  {
+                       "readOnly":  true,
+                       "usesPublicSignalsOnly":  true,
+                       "usesLoginAutomation":  false,
+                       "usesOAuthAutomation":  false,
+                       "usesPrivateScraping":  false,
+                       "publishesContent":  false,
+                       "executesPosting":  false,
+                       "executesApprovalActions":  false,
+                       "mutatesExternalSystems":  false,
+                       "exposesSecrets":  false,
+                       "storesSecrets":  false
+                   }
+}

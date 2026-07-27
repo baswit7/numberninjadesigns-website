@@ -1,0 +1,39 @@
+{
+  "classificationId": "phase7.command-classification.generated-example-001",
+  "createdAt": "2026-06-04T10:00:00Z",
+  "commandCategory": "documentation",
+  "riskLevel": "low",
+  "provesLowRiskDocumentationOrSchemaOnly": true,
+  "providerSensitivity": "none",
+  "runtimeSensitivity": "none",
+  "allowedActions": [
+    "prepare reviewable command classification JSON",
+    "summarize documentation and schema context",
+    "record approval-safe boundaries"
+  ],
+  "forbiddenActions": [
+    "command execution",
+    "shell execution",
+    "provider calls",
+    "runtime mutation",
+    "deployment actions",
+    "Git destructive actions",
+    "history pruning"
+  ],
+  "blockedStates": [
+    "unknown_scope",
+    "unsafe_execution_request"
+  ],
+  "safetyNotes": [
+    "This generated classification is advisory only.",
+    "Provider, runtime, deployment and Git mutation requests require explicit human review."
+  ],
+  "nonExecutableMetadata": {
+    "recordType": "generator_input_example",
+    "preparedFor": "phase_7_command_classification_generator",
+    "traceId": "fake-trace-phase7-classification-001"
+  },
+  "source": "safe example input",
+  "userIntentSummary": "Classify documentation and schema-only preparation work.",
+  "reviewStatus": "draft"
+}

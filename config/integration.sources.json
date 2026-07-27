@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-07-27",
+  "target": "C:/AI/Active/numberninjadesigns-os-integration-worktree",
+  "sources": [
+    {
+      "id": "canonical-website",
+      "path": "C:/AI/Active/numberninjadesigns-website",
+      "role": "canonical storefront and repository history",
+      "integration": "base",
+      "status": "integrated"
+    },
+    {
+      "id": "legacy-website-worktree",
+      "path": "C:/AI/Active/numberninjatees.github.io",
+      "role": "uncommitted branding, Etsy media, release assets and newer local modules",
+      "integration": "selective-source-and-local-artifact-copy",
+      "status": "integrated-with-legacy-source-preserved"
+    },
+    {
+      "id": "studio-os",
+      "path": "C:/AI/Active/Professionele AI Development Studio",
+      "role": "internal governance, dashboards, API catalog, projects, plans and automation",
+      "integration": "studio",
+      "status": "integrated-with-sanitized-runtime-baseline"
+    },
+    {
+      "id": "finance-product-factory",
+      "path": "C:/AI/Active/Finance Product Factory",
+      "role": "digital product generation, validation and commercial packaging",
+      "integration": "products/digital/finance-product-factory",
+      "status": "integrated-with-generated-output-excluded"
+    },
+    {
+      "id": "finance-os-briefs",
+      "path": "C:/Users/baswi/Documents/Finance OS",
+      "role": "monthly budget and subscription tracker source briefs and manifests",
+      "integration": "products/digital/source-briefs/finance-os",
+      "status": "integrated-as-provenance"
+    },
+    {
+      "id": "physical-printify-assets",
+      "path": "C:/AI/Active/NumberNinjaTees Printify Mockups",
+      "role": "historical Printify mockups and download manifests",
+      "integration": "artifacts/legacy/physical/printify-mockups",
+      "status": "preserved-as-legacy-artifact"
+    },
+    {
+      "id": "legacy-marketing-os",
+      "path": "C:/AI/Active/Codex/2026-05-24/dit-is-de-nieuwe-productiechat-voor",
+      "role": "marketing, Pinterest and owned-channel master plan",
+      "integration": "studio/docs/strategy",
+      "status": "integrated-and-rebranded"
+    },
+    {
+      "id": "legacy-artlist-manager",
+      "path": "C:/AI/Active/Codex/2026-05-25/je-werkt-aan-het-project-numberninjatees",
+      "role": "Artlist asset workflow and Pinterest review material",
+      "integration": "studio/apps/asset-manager and studio/docs/integrations",
+      "status": "integrated-and-rebranded"
+    },
+    {
+      "id": "leersystemen-verkoop",
+      "path": "C:/AI/Active/Operationele systemen sales/projects/LeersystemenVerkoop",
+      "role": "sales-operations and knowledge-product initiative scaffold",
+      "integration": "studio/projects/NumberNinjaDesigns/initiatives/LeersystemenVerkoop",
+      "status": "integrated-as-numberninjadesigns-initiative"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "field-flow-ai",
+      "reason": "Separate product and repository boundary; explicitly excluded from Studio OS and NumberNinjaDesigns consolidation."
+    },
+    {
+      "id": "dependencies-and-runtime",
+      "reason": "node_modules, caches, generated output and transient runtime projections remain reproducible or local-only; required sanitized Studio runtime seeds are versioned separately."
+    },
+    {
+      "id": "source-git-metadata",
+      "reason": "Source .git directories and source worktree metadata are not nested into the canonical repository."
+    }
+  ]
+}

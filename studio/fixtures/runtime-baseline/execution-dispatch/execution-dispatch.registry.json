@@ -1,0 +1,196 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-dispatch-registry",
+    "sourceFile":  "shared/contracts/execution-dispatch/execution-dispatch.contract.json",
+    "reviewRecordsInput":  "runtime/execution-review/execution-review.records.json",
+    "reviewReportInput":  "runtime/execution-review/execution-review.report.json",
+    "allowedDispatchStates":  [
+                                  "UNKNOWN",
+                                  "BLOCKED",
+                                  "DISPATCH_ELIGIBLE",
+                                  "DISPATCH_DENIED",
+                                  "EXPIRED"
+                              ],
+    "entries":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "dispatchId":  "DSP-REV-PFG-EXREQ-GHLX-REQUEST-001",
+                        "reviewId":  "REV-PFG-EXREQ-GHLX-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-GHLX-REQUEST-001",
+                        "requestId":  "EXREQ-GHLX-REQUEST-001",
+                        "sourceApprovalId":  "APG-001",
+                        "reviewState":  "BLOCKED",
+                        "dispatchState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "dispatchEligible":  false,
+                        "executionTriggered":  false,
+                        "providerActionTriggered":  false,
+                        "githubActionTriggered":  false,
+                        "deploymentActionTriggered":  false,
+                        "result":  "blocked-by-review",
+                        "evidence":  [
+                                         "Dispatch registry consumed runtime/execution-review/execution-review.records.json.",
+                                         "Dispatch registry records eligibility only and does not execute or dispatch.",
+                                         "Review state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "approval-required",
+                                             "reason":  "Human approval is required before any external executor may consider this action."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         },
+                                         {
+                                             "role":  "DispatchRegistry",
+                                             "status":  "review-blocked",
+                                             "reason":  "BLOCKED review records remain BLOCKED in the dispatch registry."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "dispatchId":  "DSP-REV-PFG-EXREQ-GHSX-REQUEST-001",
+                        "reviewId":  "REV-PFG-EXREQ-GHSX-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-GHSX-REQUEST-001",
+                        "requestId":  "EXREQ-GHSX-REQUEST-001",
+                        "sourceApprovalId":  "APG-002",
+                        "reviewState":  "BLOCKED",
+                        "dispatchState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "low",
+                        "dispatchEligible":  false,
+                        "executionTriggered":  false,
+                        "providerActionTriggered":  false,
+                        "githubActionTriggered":  false,
+                        "deploymentActionTriggered":  false,
+                        "result":  "blocked-by-review",
+                        "evidence":  [
+                                         "Dispatch registry consumed runtime/execution-review/execution-review.records.json.",
+                                         "Dispatch registry records eligibility only and does not execute or dispatch.",
+                                         "Review state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "pending-review",
+                                             "reason":  "Pending approval cannot execute."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         },
+                                         {
+                                             "role":  "DispatchRegistry",
+                                             "status":  "review-blocked",
+                                             "reason":  "BLOCKED review records remain BLOCKED in the dispatch registry."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "dispatchId":  "DSP-REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "reviewId":  "REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                        "sourceApprovalId":  "APG-003",
+                        "reviewState":  "BLOCKED",
+                        "dispatchState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "high",
+                        "dispatchEligible":  false,
+                        "executionTriggered":  false,
+                        "providerActionTriggered":  false,
+                        "githubActionTriggered":  false,
+                        "deploymentActionTriggered":  false,
+                        "result":  "blocked-by-review",
+                        "evidence":  [
+                                         "Dispatch registry consumed runtime/execution-review/execution-review.records.json.",
+                                         "Dispatch registry records eligibility only and does not execute or dispatch.",
+                                         "Review state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "unknown-state-block",
+                                             "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "unknown-approval-block",
+                                             "reason":  "UNKNOWN approval state never passes automatically."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         },
+                                         {
+                                             "role":  "DispatchRegistry",
+                                             "status":  "review-blocked",
+                                             "reason":  "BLOCKED review records remain BLOCKED in the dispatch registry."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "dispatchId":  "DSP-REV-PFG-EXREQ-GHLX-APPROVED-001",
+                        "reviewId":  "REV-PFG-EXREQ-GHLX-APPROVED-001",
+                        "preflightId":  "PFG-EXREQ-GHLX-APPROVED-001",
+                        "requestId":  "EXREQ-GHLX-APPROVED-001",
+                        "sourceApprovalId":  "APG-004",
+                        "reviewState":  "PENDING_REVIEW",
+                        "dispatchState":  "DISPATCH_DENIED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "dispatchEligible":  false,
+                        "executionTriggered":  false,
+                        "providerActionTriggered":  false,
+                        "githubActionTriggered":  false,
+                        "deploymentActionTriggered":  false,
+                        "result":  "denied-pending-review",
+                        "evidence":  [
+                                         "Dispatch registry consumed runtime/execution-review/execution-review.records.json.",
+                                         "Dispatch registry records eligibility only and does not execute or dispatch.",
+                                         "Review state was PENDING_REVIEW."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "manual-review-required",
+                                             "reason":  "Explicit manual review evidence is required before APPROVED_FOR_DISPATCH can exist."
+                                         },
+                                         {
+                                             "role":  "DispatchRegistry",
+                                             "status":  "pending-review-not-dispatchable",
+                                             "reason":  "PENDING_REVIEW never becomes DISPATCH_ELIGIBLE."
+                                         }
+                                     ]
+                    }
+                ]
+}

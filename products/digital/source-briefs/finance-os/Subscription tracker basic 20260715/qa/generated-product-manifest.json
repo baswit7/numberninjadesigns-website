@@ -1,0 +1,465 @@
+{
+  "assumptions": [
+    "Commercial listing copy and image production briefs require human review before publication.",
+    "The target spreadsheet application must recalculate formulas after opening the workbook."
+  ],
+  "checksums": {
+    "customer/LICENSE.txt": "f4e9c6f4c62dce14b342d015ef29337a5bcc0168d08ee8835a6836e0b03c530c",
+    "customer/QUICK_START.html": "fae2fdf152f77c3edff49817ce5af6d5e5a10812fdee132a945ff69d8c14db25",
+    "customer/README.html": "1fb102883d4bc9125d7936149f5615ddfeb4d0f0ddd1432b546b458358755c33",
+    "images/copy-overlay-plan.json": "8f4b979d02b741240c27a6c2d8e1d3cf39ac6708a6a7ab8deb49d7b59593b910",
+    "images/image-production-manifest.json": "70e9409c50c43e90f55a7908169707c0cd938444674455907f1fedb7e9d1bea9",
+    "images/mockup-shot-list.json": "52a99014f10d1a0e9e7919169054954b4798a3f6d77e165c50e1f0d7f29e75ba",
+    "images/photoshop-batch-manifest.json": "8661b7e05677772768ee68d45be50df07fb9ebb42d4ed4119258a0cad2bcdaff",
+    "listing/alt-texts.txt": "542911776328fba1fbffc287cd4780c3c78b53682e4cd1b4cc193ec5576016c9",
+    "listing/description.txt": "ba80350a3f55328365ff938a1e4f4872cde0bb9b0d7fc5831f7afe07b41d66db",
+    "listing/faq.txt": "38a503a5615eda49382be69aa3611faddd2d6b341566ceb3dcbf6893a42b7605",
+    "listing/features.txt": "450ba571f7b41bd574cc2cbac71dcc4fe4baaab3ff777887999d760af4caf80d",
+    "listing/listing-metadata.json": "7318d7d4567686da59e53338f638281649b7aa88dc6faed7dc5577e7af498bf9",
+    "listing/tags.txt": "a1ddf8e09507f718b7e8c06ce23e5b1c2fcf4fb329376316b09865ff9ae5f4f7",
+    "listing/title.txt": "2fea551fec183c7da7131c826620b4ee1f65e2eef747117afd241966aeecb4a4",
+    "product/subscription-tracker.xlsx": "deb717d9848908e48a5083eb92a146f98a4f0987bdaa78a6145f23f9095187e8",
+    "qa/compatibility-report.json": "dc3568551e3d83d0c1d45de37b5b967cef7b46f4f4d7e5d6ce21c1fcb61ecb36",
+    "qa/quality-report.json": "a2313db073c76418467c39875ef26e8bbd73bde78bc9d4540853536a0a98cf56",
+    "qa/validation-report.json": "5c2def0943c51730992c0fbf05bdcb751a855351a2b49edb71b86a08240d647d"
+  },
+  "compatibilityReport": {
+    "extensions": {
+      "currency": "USD",
+      "locale": "en-US"
+    },
+    "generatedAt": "2026-07-15T17:46:35.411Z",
+    "productId": "subscription-tracker",
+    "productVersion": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "status": "PARTIAL",
+    "targets": [
+      {
+        "checks": [
+          "ExcelJS re-read and OOXML structural checks passed."
+        ],
+        "limitations": [
+          "Native application open/save was not supplied as evidence.",
+          "Excel desktop 2019 or later is the verified release target.",
+          "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling."
+        ],
+        "status": "PARTIAL",
+        "target": "excel-desktop",
+        "verified": true,
+        "version": "2019"
+      }
+    ]
+  },
+  "compatibilityStatus": "PARTIAL",
+  "configuration": {
+    "branding": {
+      "enabled": false
+    },
+    "categoryOverrides": [
+      "100"
+    ],
+    "currency": "USD",
+    "featureFlags": {
+      "renewalAlerts": true,
+      "savingsAnalysis": true
+    },
+    "filename": "subscription-tracker.xlsx",
+    "inputCapacity": 100,
+    "locale": "en-US",
+    "market": "US",
+    "outputOptions": {
+      "customerDocs": true,
+      "imageManifests": true,
+      "listing": true,
+      "package": true,
+      "workbook": true
+    },
+    "productId": "subscription-tracker",
+    "productVersion": "1.0.0",
+    "sampleDataEnabled": true,
+    "schemaVersion": "1.0.0",
+    "themeId": "sage-finance",
+    "title": "Subscription Tracker",
+    "year": 2026
+  },
+  "configurationHash": "da634aa06aabd95e9e681082820fa5d7316414b12168852b61e15a75cf4dd03c",
+  "extensions": {
+    "commercialStatus": {
+      "images": "MANIFEST_ONLY_REVIEW_REQUIRED",
+      "listing": "GENERATED_DRAFT"
+    },
+    "packagePolicy": {
+      "deterministicTimestamp": "2026-07-15T17:46:35.411Z",
+      "excludedManifestEntries": [
+        "qa/generated-product-manifest.json",
+        "qa/release-manifest.json"
+      ],
+      "manifestCoverage": "PAYLOAD_FILES_ONLY",
+      "offline": true
+    }
+  },
+  "factoryVersion": "1.0.0",
+  "files": [
+    {
+      "bytes": 20711,
+      "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "path": "product/subscription-tracker.xlsx",
+      "role": "workbook",
+      "sha256": "deb717d9848908e48a5083eb92a146f98a4f0987bdaa78a6145f23f9095187e8"
+    },
+    {
+      "bytes": 1457,
+      "mediaType": "text/html",
+      "path": "customer/README.html",
+      "role": "readme",
+      "sha256": "1fb102883d4bc9125d7936149f5615ddfeb4d0f0ddd1432b546b458358755c33"
+    },
+    {
+      "bytes": 1456,
+      "mediaType": "text/html",
+      "path": "customer/QUICK_START.html",
+      "role": "readme",
+      "sha256": "fae2fdf152f77c3edff49817ce5af6d5e5a10812fdee132a945ff69d8c14db25"
+    },
+    {
+      "bytes": 308,
+      "mediaType": "text/plain",
+      "path": "customer/LICENSE.txt",
+      "role": "license",
+      "sha256": "f4e9c6f4c62dce14b342d015ef29337a5bcc0168d08ee8835a6836e0b03c530c"
+    },
+    {
+      "bytes": 3903,
+      "mediaType": "application/json",
+      "path": "listing/listing-metadata.json",
+      "role": "listing",
+      "sha256": "7318d7d4567686da59e53338f638281649b7aa88dc6faed7dc5577e7af498bf9"
+    },
+    {
+      "bytes": 21,
+      "mediaType": "text/plain",
+      "path": "listing/title.txt",
+      "role": "listing",
+      "sha256": "2fea551fec183c7da7131c826620b4ee1f65e2eef747117afd241966aeecb4a4"
+    },
+    {
+      "bytes": 280,
+      "mediaType": "text/plain",
+      "path": "listing/description.txt",
+      "role": "listing",
+      "sha256": "ba80350a3f55328365ff938a1e4f4872cde0bb9b0d7fc5831f7afe07b41d66db"
+    },
+    {
+      "bytes": 40,
+      "mediaType": "text/plain",
+      "path": "listing/tags.txt",
+      "role": "listing",
+      "sha256": "a1ddf8e09507f718b7e8c06ce23e5b1c2fcf4fb329376316b09865ff9ae5f4f7"
+    },
+    {
+      "bytes": 43,
+      "mediaType": "text/plain",
+      "path": "listing/features.txt",
+      "role": "listing",
+      "sha256": "450ba571f7b41bd574cc2cbac71dcc4fe4baaab3ff777887999d760af4caf80d"
+    },
+    {
+      "bytes": 534,
+      "mediaType": "text/plain",
+      "path": "listing/faq.txt",
+      "role": "listing",
+      "sha256": "38a503a5615eda49382be69aa3611faddd2d6b341566ceb3dcbf6893a42b7605"
+    },
+    {
+      "bytes": 210,
+      "mediaType": "text/plain",
+      "path": "listing/alt-texts.txt",
+      "role": "listing",
+      "sha256": "542911776328fba1fbffc287cd4780c3c78b53682e4cd1b4cc193ec5576016c9"
+    },
+    {
+      "bytes": 12955,
+      "mediaType": "application/json",
+      "path": "images/image-production-manifest.json",
+      "role": "manifest",
+      "sha256": "70e9409c50c43e90f55a7908169707c0cd938444674455907f1fedb7e9d1bea9"
+    },
+    {
+      "bytes": 5101,
+      "mediaType": "application/json",
+      "path": "images/photoshop-batch-manifest.json",
+      "role": "source",
+      "sha256": "8661b7e05677772768ee68d45be50df07fb9ebb42d4ed4119258a0cad2bcdaff"
+    },
+    {
+      "bytes": 4731,
+      "mediaType": "application/json",
+      "path": "images/copy-overlay-plan.json",
+      "role": "source",
+      "sha256": "8f4b979d02b741240c27a6c2d8e1d3cf39ac6708a6a7ab8deb49d7b59593b910"
+    },
+    {
+      "bytes": 2282,
+      "mediaType": "application/json",
+      "path": "images/mockup-shot-list.json",
+      "role": "source",
+      "sha256": "52a99014f10d1a0e9e7919169054954b4798a3f6d77e165c50e1f0d7f29e75ba"
+    },
+    {
+      "bytes": 2138,
+      "mediaType": "application/json",
+      "path": "qa/validation-report.json",
+      "role": "report",
+      "sha256": "5c2def0943c51730992c0fbf05bdcb751a855351a2b49edb71b86a08240d647d"
+    },
+    {
+      "bytes": 2156,
+      "mediaType": "application/json",
+      "path": "qa/quality-report.json",
+      "role": "report",
+      "sha256": "a2313db073c76418467c39875ef26e8bbd73bde78bc9d4540853536a0a98cf56"
+    },
+    {
+      "bytes": 785,
+      "mediaType": "application/json",
+      "path": "qa/compatibility-report.json",
+      "role": "report",
+      "sha256": "dc3568551e3d83d0c1d45de37b5b967cef7b46f4f4d7e5d6ce21c1fcb61ecb36"
+    }
+  ],
+  "generatedAt": "2026-07-15T17:46:35.411Z",
+  "manifestId": "subscription-tracker-generated-da634aa06aab",
+  "productId": "subscription-tracker",
+  "productVersion": "1.0.0",
+  "qualityReport": {
+    "components": [
+      {
+        "evidence": [
+          "Workbook validation status: PASS."
+        ],
+        "id": "technical-integrity",
+        "score": 100,
+        "weight": 0.25
+      },
+      {
+        "evidence": [
+          "203 live formulas structurally inspected."
+        ],
+        "id": "formula-quality",
+        "score": 100,
+        "weight": 0.15
+      },
+      {
+        "evidence": [
+          "640 validations, 2 filters and 3 frozen panes."
+        ],
+        "id": "usability",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "visualQuality evidence score: 100."
+        ],
+        "id": "visual-quality",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "localization evidence score: 100."
+        ],
+        "id": "localization",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "commercialCompleteness evidence score: 100."
+        ],
+        "id": "commercial-completeness",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "instructions evidence score: 100."
+        ],
+        "id": "instructions",
+        "score": 100,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "Compatibility status: PARTIAL."
+        ],
+        "id": "compatibility",
+        "score": 60,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "accessibility evidence score: 100."
+        ],
+        "id": "accessibility",
+        "score": 100,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "exportCompleteness evidence score: 100."
+        ],
+        "id": "export-completeness",
+        "score": 100,
+        "weight": 0.05
+      }
+    ],
+    "extensions": {
+      "hardFailure": false,
+      "visualChecks": {
+        "contrast": true,
+        "formulaRecognition": true,
+        "inputRecognition": true,
+        "printProfile": true
+      },
+      "workbookWarnings": []
+    },
+    "generatedAt": "2026-07-15T17:46:35.411Z",
+    "productId": "subscription-tracker",
+    "productVersion": "1.0.0",
+    "recommendations": [
+      "Supply passing native compatibility evidence before release approval."
+    ],
+    "schemaVersion": "1.0.0",
+    "score": 98,
+    "status": "PASS",
+    "threshold": 90
+  },
+  "qualityScore": 98,
+  "releaseStatus": "DRAFT",
+  "schemaVersion": "1.0.0",
+  "sourceDefinitions": [
+    {
+      "id": "subscription-tracker",
+      "sha256": "8f4ea3338b388395cf6d611d8e03746becd0940afb4347a2abc2d5664c60c0b1",
+      "type": "product-definition",
+      "version": "1.0.0"
+    },
+    {
+      "id": "subscription-tracker",
+      "sha256": "da634aa06aabd95e9e681082820fa5d7316414b12168852b61e15a75cf4dd03c",
+      "type": "product-configuration",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sage-finance",
+      "sha256": "6f04a53ffb61b97f0093d95e9c1d460fb55284460e4ac1c2920d902fcdcf880f",
+      "type": "theme-definition",
+      "version": "1.0.0"
+    },
+    {
+      "id": "subscription-tracker",
+      "sha256": "26505991e8c27fe900973a8e6e8f0058cd4a0b63c9aeee308e5269ff41352ff7",
+      "type": "commercial-metadata",
+      "version": "1.0.0"
+    }
+  ],
+  "validationReport": {
+    "contract": "FinanceProductWorkbook",
+    "extensions": {
+      "details": {
+        "configuration": {
+          "currency": "USD",
+          "inputCapacity": 100,
+          "locale": "en-US",
+          "themeId": "sage-finance"
+        },
+        "sheets": [
+          {
+            "autoFilter": false,
+            "columnCount": 2,
+            "currencyFormatCells": 10,
+            "dataValidationCount": 0,
+            "formulaCount": 3,
+            "frozenPane": false,
+            "name": "Dashboard",
+            "rowCount": 7
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 9,
+            "currencyFormatCells": 235,
+            "dataValidationCount": 600,
+            "formulaCount": 200,
+            "frozenPane": true,
+            "name": "Subscriptions",
+            "rowCount": 104
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 3,
+            "currencyFormatCells": 21,
+            "dataValidationCount": 40,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Categories",
+            "rowCount": 44
+          },
+          {
+            "autoFilter": false,
+            "columnCount": 3,
+            "currencyFormatCells": 0,
+            "dataValidationCount": 0,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Instructions",
+            "rowCount": 4
+          }
+        ],
+        "zip": {
+          "entries": 17,
+          "missingParts": [],
+          "missingRelationshipTargets": [],
+          "rawFeatures": {
+            "filters": 2,
+            "formulas": 203,
+            "panes": 3,
+            "validations": 14
+          },
+          "worksheetParts": 4
+        }
+      },
+      "metrics": {
+        "bytes": 20711,
+        "filters": 2,
+        "formattedCurrencyCells": 266,
+        "formulas": 203,
+        "panes": 3,
+        "sheets": 4,
+        "validations": 640
+      },
+      "overrides": [],
+      "productId": "subscription-tracker",
+      "stage": "WORKBOOK",
+      "warningCount": 0,
+      "warnings": []
+    },
+    "generatedAt": "2026-07-15T17:46:35.411Z",
+    "issues": [],
+    "schemaVersion": "1.0.0",
+    "status": "PASS",
+    "summary": {
+      "blockerCount": 0,
+      "errorCount": 0
+    },
+    "valid": true
+  },
+  "validationStatus": "PASS",
+  "warnings": [
+    "Supply passing native compatibility evidence before release approval.",
+    "Native application open/save was not supplied as evidence.",
+    "Excel desktop 2019 or later is the verified release target.",
+    "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling.",
+    "Google Sheets compatibility is not supported for this product."
+  ]
+}

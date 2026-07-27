@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-15T01:57:00+02:00",
+  "overallStatus": "PASS_WITH_WARNINGS",
+  "integrityStatus": "PASS",
+  "requestedConfigurationStatus": "NOT_MET_BY_EXISTING_RUNTIME",
+  "workbook": {
+    "path": "output/validation/Budget_Planner_Basic_baseline.xlsx",
+    "size": 32321,
+    "sha256": "6bd57c8949624bef7063c45db7cd360e6484e5ab04c0adf3b8facb8fc9ced887",
+    "zipEntries": 13,
+    "xmlEntries": 11,
+    "xmlErrors": 0,
+    "externalWorkbookLinks": 0
+  },
+  "sheets": [
+    { "name": "Dashboard", "dimension": "A1:B21", "formulas": 25, "dataValidations": 0, "autoFilters": 0, "frozenPanes": 0 },
+    { "name": "Income", "dimension": "A1:D32", "formulas": 1, "dataValidations": 0, "autoFilters": 0, "frozenPanes": 0 },
+    { "name": "Expenses", "dimension": "A1:D32", "formulas": 1, "dataValidations": 0, "autoFilters": 0, "frozenPanes": 0 },
+    { "name": "Categories", "dimension": "A1:B11", "formulas": 0, "dataValidations": 0, "autoFilters": 0, "frozenPanes": 0 }
+  ],
+  "formulas": {
+    "total": 27,
+    "SUM": 2,
+    "SUMIF": 10,
+    "SUMIFS": 1,
+    "cellReferences": 108,
+    "formulaErrorMatches": 0
+  },
+  "requestedConfiguration": {
+    "locale": { "requested": "nl-NL", "observed": "Dutch app shell with English workbook labels", "status": "PARTIAL" },
+    "currency": { "requested": "EUR", "observed": "$#,##0.00;($#,##0.00);\"-\"", "status": "NOT_MET" },
+    "theme": { "requested": "standard", "observed": "No explicit workbook theme metadata exposed by the Basic runtime", "status": "NOT_VERIFIABLE" },
+    "sampleData": { "requested": true, "observed": false, "status": "NOT_MET" },
+    "inputRows": { "requested": 100, "observed": 60, "status": "NOT_MET" }
+  },
+  "featureChecks": {
+    "requiredSheets": "PASS",
+    "formulaFamilies": "PASS",
+    "cellReferences": "PASS",
+    "dataValidations": "NOT_PRESENT",
+    "filters": "NOT_PRESENT",
+    "frozenPanes": "NOT_PRESENT_IN_EXPORTED_OOXML",
+    "zipAndXmlIntegrity": "PASS",
+    "automaticExcelRepairWarningCheck": "NOT_AUTOMATABLE_IN_CURRENT_ENVIRONMENT"
+  },
+  "artifactTool": {
+    "import": "PASS",
+    "inspection": "PASS",
+    "renderOutput": "PASS",
+    "sheetsRendered": 4,
+    "renderProcessExit": -1073740791,
+    "formulaErrorMatches": 0,
+    "renderHashes": {
+      "Dashboard": "3cca567db963ee037edd8e4614e69c0edf57421019105337919eb29660db7a4e",
+      "Income": "76ec18b7c47c0ad45da8faffbd099ccd621ab4e83fbca8f2c950de702ed8aedf",
+      "Expenses": "76ec18b7c47c0ad45da8faffbd099ccd621ab4e83fbca8f2c950de702ed8aedf",
+      "Categories": "57e223e4c7194761dfc92655e77a16814ccee8ebe1b100948c3b26fe30f209ff"
+    },
+    "environmentNote": "All awaited render operations completed and evidence was written, but the bundled Windows process reproducibly terminates with native exit -1073740791 during teardown. Import/inspection is rerun separately without rendering."
+  },
+  "warnings": [
+    "The existing runtime exports 60 blank input rows rather than the requested 100 sample-data rows.",
+    "The exported workbook uses a USD number format rather than EUR.",
+    "Data validation, autofilters and frozen panes are absent from the exported OOXML.",
+    "The bundled spreadsheet renderer writes valid previews but exits nonzero during Windows native teardown.",
+    "These are pre-existing runtime limitations; functional expansion is outside this repair task."
+  ]
+}

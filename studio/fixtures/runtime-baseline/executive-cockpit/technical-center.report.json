@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "error",
+  "sectionId": "technical-center",
+  "cards": [
+    {
+      "id": "technical.runtime.dashboard.dashboard-summary.json",
+      "title": "runtime/dashboard/dashboard-summary.json",
+      "status": "error",
+      "description": "Dashboard summary combines existing runtime reports, configs, contracts and local runtime logs into read-only dashboard view models.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 13
+        },
+        {
+          "label": "Warnings",
+          "value": 2
+        },
+        {
+          "label": "Errors",
+          "value": 1
+        }
+      ],
+      "actionHint": "Use the Runtime Console as the source of truth; regenerate dashboard views after source reports change.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/dashboard-summary.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.health.view.json",
+      "title": "runtime/dashboard/health.view.json",
+      "status": "ok",
+      "description": "Health view mirrors existing runtime reports only.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 6
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Run existing health or status console commands to refresh source reports.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/health.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.providers.view.json",
+      "title": "runtime/dashboard/providers.view.json",
+      "status": "warning",
+      "description": "8 provider cards prepared without exposing credential values.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 8
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Use existing provider health scripts for status refresh; do not call providers from the adapter.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/providers.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.telemetry.view.json",
+      "title": "runtime/dashboard/telemetry.view.json",
+      "status": "warning",
+      "description": "telemetry view prepared from existing runtime report and local runtime log.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 1
+        },
+        {
+          "label": "Warnings",
+          "value": 1
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Refresh telemetry through existing console/script commands when newer source data is needed.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/telemetry.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.contracts.view.json",
+      "title": "runtime/dashboard/contracts.view.json",
+      "status": "warning",
+      "description": "102 contract and schema files listed from shared/contracts and shared/schemas.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 102
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Treat this as file/status inventory; validation rules remain owned by existing runtime checks.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/contracts.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.events.view.json",
+      "title": "runtime/dashboard/events.view.json",
+      "status": "warning",
+      "description": "events view prepared from existing runtime report and local runtime log.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 1
+        },
+        {
+          "label": "Warnings",
+          "value": 1
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Refresh events through existing console/script commands when newer source data is needed.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/events.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.deployments.view.json",
+      "title": "runtime/dashboard/deployments.view.json",
+      "status": "warning",
+      "description": "3 deployment profiles prepared without deployment actions.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 3
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Keep deployment profiles declarative and execute deployments only through approved future workflows.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/deployments.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.documentation.view.json",
+      "title": "runtime/dashboard/documentation.view.json",
+      "status": "error",
+      "description": "55 of 56 documentation artifacts are available.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 56
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": 1
+        }
+      ],
+      "actionHint": "Restore missing documentation before expanding dashboard UI.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/documentation.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.execution-readiness.view.json",
+      "title": "runtime/dashboard/execution-readiness.view.json",
+      "status": "warning",
+      "description": "Execution governance and readiness visibility prepared from existing Phase 9 and Phase 10 JSON outputs only.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 6
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Treat this view as read-only evidence; readiness never grants execution permission.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/execution-readiness.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.authority.view.json",
+      "title": "runtime/dashboard/authority.view.json",
+      "status": "error",
+      "description": "Authority intelligence projected from Phase 16 runtime reports for passive dashboard visibility only.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 12
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Treat authority dashboard data as read-only derived visibility; Phase 15 and Phase 16 source reports remain authoritative.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/authority.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.authority-projection-monitoring.view.json",
+      "title": "runtime/dashboard/authority-projection-monitoring.view.json",
+      "status": "warning",
+      "description": "Authority projection monitoring displays Phase 18 drift, freshness, lineage and completeness evidence only.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 3
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Use monitoring findings as read-only evidence; correction remains outside Phase 18.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/authority-projection-monitoring.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    },
+    {
+      "id": "technical.runtime.dashboard.authority-monitoring-evidence.view.json",
+      "title": "runtime/dashboard/authority-monitoring-evidence.view.json",
+      "status": "error",
+      "description": "Authority Monitoring Evidence Center explains Phase 18 evidence with source, projection, lineage, verdict, freshness, completeness, mismatch, safety and unknown states.",
+      "facts": [
+        {
+          "label": "Cards",
+          "value": 31
+        },
+        {
+          "label": "Warnings",
+          "value": "unknown"
+        },
+        {
+          "label": "Errors",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Use evidence for audit review only; operational authority remains unchanged.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/authority-monitoring-evidence.view.json",
+        "sourceContract": "shared/contracts/projections/dashboard-projection.schema.json",
+        "sourceService": "apps/studio-dashboard/dashboard-adapter.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/dashboard/authority-monitoring-evidence.view.json",
+      "runtime/dashboard/authority-projection-monitoring.view.json",
+      "runtime/dashboard/authority.view.json",
+      "runtime/dashboard/contracts.view.json",
+      "runtime/dashboard/dashboard-summary.json",
+      "runtime/dashboard/deployments.view.json",
+      "runtime/dashboard/documentation.view.json",
+      "runtime/dashboard/events.view.json",
+      "runtime/dashboard/execution-readiness.view.json",
+      "runtime/dashboard/health.view.json",
+      "runtime/dashboard/providers.view.json",
+      "runtime/dashboard/telemetry.view.json"
+    ],
+    "sourceContracts": [
+      "shared/contracts/projections/dashboard-projection.schema.json"
+    ],
+    "sourceServices": [
+      "apps/studio-dashboard/dashboard-adapter.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

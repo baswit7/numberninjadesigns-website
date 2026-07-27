@@ -1,0 +1,102 @@
+# Architecture
+
+## System boundary
+
+Finance Product Factory is an offline-first local Digital Product Factory with integrated XLSX and DOCX capabilities plus a separate Windows native-release path for Excel evidence. The browser application is served without a build step from `apps/product-factory/index.html`; ExcelJS and JSZip are versioned local assets.
+
+```text
+catalogs + strict contracts
+          │
+          ▼
+ProductRegistry → configuration → preflight → output dispatcher
+                                              │
+                         ┌────────────────────┴────────────────────┐
+                         │                                         │
+                  workbook engine                           document engine
+               XLSX + structural reread                  DOCX + OOXML reread
+                         │                                         │
+                         └────────────────────┬────────────────────┘
+                                              │
+                         ┌────────────────────┴────────────────────┐
+                         │                                         │
+                browser/matrix flow                       native release CLI
+                no native probe                           Excel COM probe
+                         │                                         │
+               compatibility PARTIAL                    compatibility PASS
+                         │                                only if all gates pass
+                         └────────────────────┬────────────────────┘
+                                              ▼
+                              quality + commercial package
+                                              │
+                                  DRAFT or READY_FOR_REVIEW
+```
+
+No path calls a remote service. The local server accepts bounded, typed output bytes and writes them below `output/generated-products`; the browser falls back to a normal download only when that local storage endpoint is unavailable. `scripts/generate-native-release.mjs` launches local Microsoft Excel COM, writes managed output and evidence inside the repository, and performs no external publication.
+
+## Runtime components
+
+| Component | Responsibility | Boundary |
+| --- | --- | --- |
+| `src/contracts/` | Sixteen strict schema v1 contracts and semantic validation. | Contract validity does not prove content truth, financial correctness, or native compatibility. |
+| `src/registry/` | Immutable, version-aware product resolution. | Non-active statuses require explicit allow flags. |
+| `src/products/` | Seven active, six release-candidate, seven workbook-beta, and three Career-beta declarative products. | Product status and compatibility evidence remain independent. |
+| Locale/currency/theme catalogs | Independent production dimensions. | Locale does not imply market, currency, or theme. |
+| Configuration/preview/persistence/batch engines | Closed-key configuration, preview, local draft state, bounded sequential batches. | Browser state remains local and unencrypted. |
+| `src/engines/workbook-engine.js` | XLSX structure, formulas, validation, styles, protection, print settings. | Writes formulas but cannot calculate them. |
+| `src/engines/document-engine.js` | Deterministic DOCX generation plus OOXML, marker, placeholder, relationship, and path validation. | Business-document layouts only; no native PDF conversion. |
+| `src/engines/validation-engine.js` | Configuration checks, ExcelJS/OOXML reread, compatibility reports. | Structural success without native evidence is `PARTIAL`. |
+| `src/engines/quality-engine.js` | Fixed-dimension quality report. | A quality pass alone cannot release a product. |
+| `src/commercial/listing-image-engine.js` | Renders and validates the exact ten 2400×1600 PNG listing assets. | Deterministic local raster output; no Photoshop dependency. |
+| `src/commercial/package-engine.js` | Single integrated package entrypoint for XLSX products and DOCX/combined products. | Listing remains generated draft content; Photoshop automation is optional. |
+| `src/server/output-storage.mjs` | Validates XLSX/DOCX/ZIP/PNG containers and stores output below the managed project root. | Rejects unknown metadata, unsafe paths, symlinks, malformed containers, and oversized bodies. |
+| `scripts/generate-native-release.mjs` | Exact-byte Excel probe, package/image verification, staged project output and evidence. | Produces technical evidence only; never human approval or external publication. |
+
+## Canonical runtime flow
+
+`FinanceProductFactoryRuntime.generate()`:
+
+1. resolves exact product/catalog versions;
+2. validates definition, configuration, semantics, localization, theme, and currency profile;
+3. dispatches declared outputs to the workbook and/or document engine and structurally rereads every artifact;
+4. either evaluates supplied compatibility evidence or awaits `compatibilityProbe` on a defensive copy of the exact generated bytes;
+5. builds the compatibility report;
+6. computes quality;
+7. packages the original generated XLSX and/or DOCX bytes when package output is enabled.
+
+The document contract, validation rules, supported layout subset, and export decisions are documented in [DOCUMENT_PIPELINE.md](DOCUMENT_PIPELINE.md).
+
+Preflight and structural failures throw before packaging. Compatibility `PARTIAL` produces a `DRAFT`; compatibility `FAIL` blocks the generated manifest; only validation/quality/compatibility all `PASS` can produce `READY_FOR_REVIEW`.
+
+## Browser path
+
+The browser injects local ExcelJS/JSZip but no native probe. Its generated workbooks can be saved into the managed project directory and structurally verified, yet compatibility remains `PARTIAL` and release manifests remain `DRAFT`. Individual PNGs and the image-only ZIP are derived from the same validated image bundle as the sales ZIP. Local decision state has no release or publication side effect.
+
+## Native release path
+
+`npm run release:native` is the certified review-candidate path for Excel Desktop 2019+:
+
+1. generate and structurally reread each active canonical workbook;
+2. hash and pass the exact bytes to Excel COM;
+3. perform full recalculation and reject links, circular references, formula errors, or formula-count mismatch;
+4. write/reopen `SaveCopyAs` and structurally reread that saved copy;
+5. package the original tested bytes and verify file-map/ZIP hashes;
+6. validate all seven required tier/locale/appearance scenarios and the five-workbook master sales set before promotion into managed output;
+7. use backups/rollback for replacement failures and clean staging.
+
+Excel for the web, LibreOffice, and Google Sheets are not release-certified. The native CLI's `READY_FOR_REVIEW` result remains subject to human financial, accessibility, legal, listing, pricing, and image review.
+
+## Commercial boundary
+
+The full package contains customer documents, expanded listing metadata/text/FAQ/alt text, exactly ten validated PNG listing assets, QA reports, generated/release manifests, and image/optional-Photoshop/overlay/mockup manifests. It contains no PSD and does not execute Photoshop. Listing status remains `GENERATED_DRAFT` even when workbook evidence reaches `READY_FOR_REVIEW`.
+
+## Trust boundaries
+
+- Formula execution is code-defined and allowlisted.
+- Text, filenames, JSON, HTML, and ZIP paths are normalized and bounded.
+- Workbook protection prevents accidental editing; it is not encryption.
+- Direct compatibility evidence objects are an API capability, not the certified release process.
+- Human approval and publication are never inferred from technical gates or local decision state.
+
+## Preserved modules and provenance
+
+The Etsy and Listing Intelligence modules remain independently testable. Read-only adapters are not wired into workbook integrity or publication. `incoming/`, `legacy/source-baselines/`, and historical `release-evidence/` preserve commit `b811fac`; old four-sheet evidence cannot certify the current catalog.

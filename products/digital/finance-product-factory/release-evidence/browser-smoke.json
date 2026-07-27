@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-15T01:55:10+02:00",
+  "overallStatus": "PASS",
+  "server": {
+    "command": "npm start",
+    "url": "http://127.0.0.1:4173/",
+    "httpStatus": 200
+  },
+  "desktopShell": {
+    "viewport": [1440, 900],
+    "title": "Finance Product Factory",
+    "headingVisible": true,
+    "coreNavigationVisible": true,
+    "horizontalOverflow": false,
+    "consoleErrors": 0,
+    "screenshot": "release-evidence/screenshots/desktop-shell-1440x900.png"
+  },
+  "desktopProductFactory": {
+    "viewport": [1440, 900],
+    "title": "Finance Product Factory — Grootboek",
+    "headingVisible": true,
+    "generateButtonVisible": true,
+    "sheetLabelsVisible": 4,
+    "horizontalOverflow": false,
+    "consoleErrors": 0,
+    "requiredNetworkFailures": 0,
+    "externalDependenciesLoaded": 5,
+    "screenshot": "release-evidence/screenshots/desktop-generated-1440x900.png"
+  },
+  "mobileProductFactory": {
+    "viewport": [390, 844],
+    "headingVisible": true,
+    "generateButtonVisible": true,
+    "generateButtonWithinViewport": true,
+    "resultVisible": true,
+    "horizontalOverflow": false,
+    "consoleErrors": 0,
+    "screenshot": "release-evidence/screenshots/mobile-product-factory-390x844.png"
+  },
+  "generation": {
+    "status": "PASS",
+    "downloadObserved": true,
+    "uiSheetCount": 4,
+    "uiFormulaCount": 27,
+    "uiInputRows": 60,
+    "targetPath": "output/validation/Budget_Planner_Basic_baseline.xlsx",
+    "size": 32321,
+    "sha256": "6bd57c8949624bef7063c45db7cd360e6484e5ab04c0adf3b8facb8fc9ced887"
+  },
+  "screenshots": [
+    {
+      "path": "release-evidence/screenshots/desktop-shell-1440x900.png",
+      "size": 133532,
+      "sha256": "7f5eaa78b6365a24a12cab6a19401278383f9ad2d743269db5d380f2d62dd61d"
+    },
+    {
+      "path": "release-evidence/screenshots/desktop-product-factory-1440x900.png",
+      "size": 46131,
+      "sha256": "32eb952c84ac363e237e0c996ae099cc0bc923cdcf30a3267fa1eebc18777a81"
+    },
+    {
+      "path": "release-evidence/screenshots/desktop-generated-1440x900.png",
+      "size": 83598,
+      "sha256": "2a061bd611e4b352064f81f33485aa2d330e58bb6ec6d1e3791c9eac69fc9fbd"
+    },
+    {
+      "path": "release-evidence/screenshots/mobile-product-factory-390x844.png",
+      "size": 71367,
+      "sha256": "4f4c943070611c6f4509002bfad22596e410ca97b963a47e6029b7ec622919c7"
+    }
+  ]
+}

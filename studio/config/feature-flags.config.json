@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "flags": {
+    "runtime.eventBus.enabled": true,
+    "runtime.telemetry.enabled": true,
+    "runtime.providerHealth.enabled": true,
+    "runtime.documentationSync.enabled": true,
+    "runtime.externalProviderWrites.enabled": false,
+    "agents.autonomousExecution.enabled": false,
+    "deployments.productionWrites.enabled": false
+  }
+}

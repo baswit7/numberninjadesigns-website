@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-21",
+  "manifestId": "authority-evidence-observability-manifest",
+  "purpose": "Declare the read-only Authority/Evidence Observability Center.",
+  "sourceContracts": [
+    "shared/contracts/authority/constitution.rules.json",
+    "shared/contracts/authority/authority-registry.json",
+    "shared/contracts/authority/read-model/authority-read-model.schema.json",
+    "shared/contracts/authority/monitoring/authority-projection-monitoring.schema.json",
+    "shared/contracts/authority/evidence/authority-monitoring-evidence.schema.json",
+    "shared/contracts/authority/history/authority-evidence-history.schema.json",
+    "shared/contracts/authority/observability/authority-observability.schema.json"
+  ],
+  "consumedRuntimeReports": [
+    "runtime/authority/authority-read-model.report.json",
+    "runtime/authority/authority-read-model-validation.report.json",
+    "runtime/dashboard/authority.view.json",
+    "runtime/dashboard/authority-dashboard-validation.report.json",
+    "runtime/authority/authority-projection-monitoring.report.json",
+    "runtime/authority/authority-monitoring-evidence.report.json",
+    "runtime/authority/authority-evidence-history.report.json"
+  ],
+  "runtimeReports": [
+    "runtime/authority/authority-observability.report.json",
+    "runtime/authority/authority-observability-validation.report.json"
+  ],
+  "nonExecutable": true,
+  "boundary": {
+    "observabilityOnly": true,
+    "visibilityOnly": true,
+    "readOnly": true,
+    "derivedOnly": true,
+    "reportWritingOnly": true,
+    "ownsAuthorityTruth": false,
+    "ownsEvidenceTruth": false,
+    "ownsMonitoringTruth": false,
+    "ownsProjectionTruth": false,
+    "ownsHistoryTruth": false,
+    "ownsRetentionTruth": false,
+    "createsDecisions": false,
+    "createsApprovals": false,
+    "repairsProjection": false,
+    "synchronizesProjection": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretAccessAllowed": false,
+    "runtimeTruthMutationAllowed": false,
+    "dashboardMutationAllowed": false,
+    "approvalMutationAllowed": false,
+    "workflowExecutionAllowed": false,
+    "workerAllowed": false,
+    "schedulerAllowed": false,
+    "queueAllowed": false,
+    "automationAllowed": false,
+    "selfHealingAllowed": false,
+    "browserAuthorityStorageAllowed": false
+  }
+}

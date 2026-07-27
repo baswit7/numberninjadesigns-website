@@ -1,0 +1,382 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-audit-trail",
+    "sourceFile":  "shared/contracts/execution-audit/execution-audit.contract.json",
+    "entries":  [
+                    {
+                        "auditId":  "AUD-DSP-REV-PFG-EXREQ-GHLX-REQUEST-001",
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "sourceLayer":  "execution-dispatch-registry",
+                        "decisionLayer":  "execution-audit-trail",
+                        "decisionOutcome":  "UNKNOWN",
+                        "evidencePresent":  true,
+                        "authoritySource":  "runtime/approval/execution-approval.records.json",
+                        "reviewSource":  "runtime/execution-review/execution-review.records.json",
+                        "reviewOutcome":  "BLOCKED",
+                        "dispatchEligible":  false,
+                        "unknownState":  true,
+                        "notes":  [
+                                      "Approval state: REQUESTED",
+                                      "Request readiness: BLOCKED",
+                                      "Preflight state: BLOCKED",
+                                      "Review state: BLOCKED",
+                                      "Dispatch state: BLOCKED",
+                                      "Audit layer owns no execution, provider, GitHub, deployment, approval, review, request, preflight, or dispatch truth.",
+                                      "Manual evidence is missing; decision outcome remains UNKNOWN and dispatch is not eligible.",
+                                      "UNKNOWN propagation is active; UNKNOWN never becomes PASS or DISPATCH_ELIGIBLE."
+                                  ],
+                        "manualEvidenceRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "manualEvidenceVerified":  false,
+                        "evidenceReferences":  [
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-request",
+                                                       "path":  "runtime/execution-request/execution-request.packages.json",
+                                                       "id":  "EXREQ-GHLX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-approval",
+                                                       "path":  "runtime/approval/execution-approval.records.json",
+                                                       "id":  "APG-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-preflight",
+                                                       "path":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                                                       "id":  "PFG-EXREQ-GHLX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-review",
+                                                       "path":  "runtime/execution-review/execution-review.records.json",
+                                                       "id":  "REV-PFG-EXREQ-GHLX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-dispatch",
+                                                       "path":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+                                                       "id":  "DSP-REV-PFG-EXREQ-GHLX-REQUEST-001",
+                                                       "present":  true
+                                                   }
+                                               ],
+                        "authorityReference":  {
+                                                   "type":  "AUTHORITY_REFERENCE",
+                                                   "source":  "runtime/approval/execution-approval.records.json",
+                                                   "approvalId":  "APG-001",
+                                                   "approvedByRole":  "",
+                                                   "automaticApproval":  false
+                                               },
+                        "decisionTrace":  {
+                                              "type":  "DECISION_TRACE",
+                                              "requestId":  "EXREQ-GHLX-REQUEST-001",
+                                              "sourceApprovalId":  "APG-001",
+                                              "preflightId":  "PFG-EXREQ-GHLX-REQUEST-001",
+                                              "reviewId":  "REV-PFG-EXREQ-GHLX-REQUEST-001",
+                                              "dispatchId":  "DSP-REV-PFG-EXREQ-GHLX-REQUEST-001",
+                                              "dispatchState":  "BLOCKED",
+                                              "dispatchEligible":  false,
+                                              "manualEvidenceRequired":  true,
+                                              "manualEvidencePresent":  false,
+                                              "manualEvidenceVerified":  false
+                                          }
+                    },
+                    {
+                        "auditId":  "AUD-DSP-REV-PFG-EXREQ-GHSX-REQUEST-001",
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "sourceLayer":  "execution-dispatch-registry",
+                        "decisionLayer":  "execution-audit-trail",
+                        "decisionOutcome":  "UNKNOWN",
+                        "evidencePresent":  true,
+                        "authoritySource":  "runtime/approval/execution-approval.records.json",
+                        "reviewSource":  "runtime/execution-review/execution-review.records.json",
+                        "reviewOutcome":  "BLOCKED",
+                        "dispatchEligible":  false,
+                        "unknownState":  true,
+                        "notes":  [
+                                      "Approval state: PENDING_APPROVAL",
+                                      "Request readiness: BLOCKED",
+                                      "Preflight state: BLOCKED",
+                                      "Review state: BLOCKED",
+                                      "Dispatch state: BLOCKED",
+                                      "Audit layer owns no execution, provider, GitHub, deployment, approval, review, request, preflight, or dispatch truth.",
+                                      "Manual evidence is missing; decision outcome remains UNKNOWN and dispatch is not eligible.",
+                                      "UNKNOWN propagation is active; UNKNOWN never becomes PASS or DISPATCH_ELIGIBLE."
+                                  ],
+                        "manualEvidenceRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "manualEvidenceVerified":  false,
+                        "evidenceReferences":  [
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-request",
+                                                       "path":  "runtime/execution-request/execution-request.packages.json",
+                                                       "id":  "EXREQ-GHSX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-approval",
+                                                       "path":  "runtime/approval/execution-approval.records.json",
+                                                       "id":  "APG-002",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-preflight",
+                                                       "path":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                                                       "id":  "PFG-EXREQ-GHSX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-review",
+                                                       "path":  "runtime/execution-review/execution-review.records.json",
+                                                       "id":  "REV-PFG-EXREQ-GHSX-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-dispatch",
+                                                       "path":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+                                                       "id":  "DSP-REV-PFG-EXREQ-GHSX-REQUEST-001",
+                                                       "present":  true
+                                                   }
+                                               ],
+                        "authorityReference":  {
+                                                   "type":  "AUTHORITY_REFERENCE",
+                                                   "source":  "runtime/approval/execution-approval.records.json",
+                                                   "approvalId":  "APG-002",
+                                                   "approvedByRole":  "",
+                                                   "automaticApproval":  false
+                                               },
+                        "decisionTrace":  {
+                                              "type":  "DECISION_TRACE",
+                                              "requestId":  "EXREQ-GHSX-REQUEST-001",
+                                              "sourceApprovalId":  "APG-002",
+                                              "preflightId":  "PFG-EXREQ-GHSX-REQUEST-001",
+                                              "reviewId":  "REV-PFG-EXREQ-GHSX-REQUEST-001",
+                                              "dispatchId":  "DSP-REV-PFG-EXREQ-GHSX-REQUEST-001",
+                                              "dispatchState":  "BLOCKED",
+                                              "dispatchEligible":  false,
+                                              "manualEvidenceRequired":  true,
+                                              "manualEvidencePresent":  false,
+                                              "manualEvidenceVerified":  false
+                                          }
+                    },
+                    {
+                        "auditId":  "AUD-DSP-REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "sourceLayer":  "execution-dispatch-registry",
+                        "decisionLayer":  "execution-audit-trail",
+                        "decisionOutcome":  "UNKNOWN",
+                        "evidencePresent":  true,
+                        "authoritySource":  "runtime/approval/execution-approval.records.json",
+                        "reviewSource":  "runtime/execution-review/execution-review.records.json",
+                        "reviewOutcome":  "BLOCKED",
+                        "dispatchEligible":  false,
+                        "unknownState":  true,
+                        "notes":  [
+                                      "Approval state: UNKNOWN",
+                                      "Request readiness: BLOCKED",
+                                      "Preflight state: BLOCKED",
+                                      "Review state: BLOCKED",
+                                      "Dispatch state: BLOCKED",
+                                      "Audit layer owns no execution, provider, GitHub, deployment, approval, review, request, preflight, or dispatch truth.",
+                                      "Manual evidence is missing; decision outcome remains UNKNOWN and dispatch is not eligible.",
+                                      "UNKNOWN propagation is active; UNKNOWN never becomes PASS or DISPATCH_ELIGIBLE."
+                                  ],
+                        "manualEvidenceRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "manualEvidenceVerified":  false,
+                        "evidenceReferences":  [
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-request",
+                                                       "path":  "runtime/execution-request/execution-request.packages.json",
+                                                       "id":  "EXREQ-UNKNOWN-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-approval",
+                                                       "path":  "runtime/approval/execution-approval.records.json",
+                                                       "id":  "APG-003",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-preflight",
+                                                       "path":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                                                       "id":  "PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-review",
+                                                       "path":  "runtime/execution-review/execution-review.records.json",
+                                                       "id":  "REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-dispatch",
+                                                       "path":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+                                                       "id":  "DSP-REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                                       "present":  true
+                                                   }
+                                               ],
+                        "authorityReference":  {
+                                                   "type":  "AUTHORITY_REFERENCE",
+                                                   "source":  "runtime/approval/execution-approval.records.json",
+                                                   "approvalId":  "APG-003",
+                                                   "approvedByRole":  "",
+                                                   "automaticApproval":  false
+                                               },
+                        "decisionTrace":  {
+                                              "type":  "DECISION_TRACE",
+                                              "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                                              "sourceApprovalId":  "APG-003",
+                                              "preflightId":  "PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                              "reviewId":  "REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                              "dispatchId":  "DSP-REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                                              "dispatchState":  "BLOCKED",
+                                              "dispatchEligible":  false,
+                                              "manualEvidenceRequired":  true,
+                                              "manualEvidencePresent":  false,
+                                              "manualEvidenceVerified":  false
+                                          }
+                    },
+                    {
+                        "auditId":  "AUD-DSP-REV-PFG-EXREQ-GHLX-APPROVED-001",
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "sourceLayer":  "execution-dispatch-registry",
+                        "decisionLayer":  "execution-audit-trail",
+                        "decisionOutcome":  "UNKNOWN",
+                        "evidencePresent":  true,
+                        "authoritySource":  "runtime/approval/execution-approval.records.json",
+                        "reviewSource":  "runtime/execution-review/execution-review.records.json",
+                        "reviewOutcome":  "PENDING_REVIEW",
+                        "dispatchEligible":  false,
+                        "unknownState":  true,
+                        "notes":  [
+                                      "Approval state: APPROVED",
+                                      "Request readiness: READY_FOR_REVIEW",
+                                      "Preflight state: READY_FOR_MANUAL_REVIEW",
+                                      "Review state: PENDING_REVIEW",
+                                      "Dispatch state: DISPATCH_DENIED",
+                                      "Audit layer owns no execution, provider, GitHub, deployment, approval, review, request, preflight, or dispatch truth.",
+                                      "Manual evidence is missing; decision outcome remains UNKNOWN and dispatch is not eligible.",
+                                      "UNKNOWN propagation is active; UNKNOWN never becomes PASS or DISPATCH_ELIGIBLE."
+                                  ],
+                        "manualEvidenceRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "manualEvidenceVerified":  false,
+                        "evidenceReferences":  [
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-request",
+                                                       "path":  "runtime/execution-request/execution-request.packages.json",
+                                                       "id":  "EXREQ-GHLX-APPROVED-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-approval",
+                                                       "path":  "runtime/approval/execution-approval.records.json",
+                                                       "id":  "APG-004",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-preflight",
+                                                       "path":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                                                       "id":  "PFG-EXREQ-GHLX-APPROVED-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-review",
+                                                       "path":  "runtime/execution-review/execution-review.records.json",
+                                                       "id":  "REV-PFG-EXREQ-GHLX-APPROVED-001",
+                                                       "present":  true
+                                                   },
+                                                   {
+                                                       "type":  "EVIDENCE_REFERENCE",
+                                                       "layer":  "execution-dispatch",
+                                                       "path":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+                                                       "id":  "DSP-REV-PFG-EXREQ-GHLX-APPROVED-001",
+                                                       "present":  true
+                                                   }
+                                               ],
+                        "authorityReference":  {
+                                                   "type":  "AUTHORITY_REFERENCE",
+                                                   "source":  "runtime/approval/execution-approval.records.json",
+                                                   "approvalId":  "APG-004",
+                                                   "approvedByRole":  "Human",
+                                                   "automaticApproval":  false
+                                               },
+                        "decisionTrace":  {
+                                              "type":  "DECISION_TRACE",
+                                              "requestId":  "EXREQ-GHLX-APPROVED-001",
+                                              "sourceApprovalId":  "APG-004",
+                                              "preflightId":  "PFG-EXREQ-GHLX-APPROVED-001",
+                                              "reviewId":  "REV-PFG-EXREQ-GHLX-APPROVED-001",
+                                              "dispatchId":  "DSP-REV-PFG-EXREQ-GHLX-APPROVED-001",
+                                              "dispatchState":  "DISPATCH_DENIED",
+                                              "dispatchEligible":  false,
+                                              "manualEvidenceRequired":  true,
+                                              "manualEvidencePresent":  false,
+                                              "manualEvidenceVerified":  false
+                                          }
+                    }
+                ],
+    "summary":  {
+                    "schemaVersion":  "1.0.0",
+                    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+                    "capability":  "execution-audit-trail",
+                    "totalAuditEntries":  4,
+                    "passCount":  0,
+                    "unknownCount":  4,
+                    "dispatchEligibleCount":  0,
+                    "manualEvidenceRequiredCount":  4,
+                    "manualEvidencePresentCount":  0,
+                    "manualEvidenceVerifiedCount":  0,
+                    "eligibleWithoutVerifiedManualEvidence":  0,
+                    "unknownPassCount":  0,
+                    "unknownDispatchEligibleCount":  0,
+                    "automaticApprovalCount":  0,
+                    "executionPerformed":  false,
+                    "dispatchPerformed":  false,
+                    "externalCallsMade":  false
+                },
+    "boundaries":  {
+                       "readOnly":  true,
+                       "nonExecuting":  true,
+                       "nonDispatching":  true,
+                       "performsExecution":  false,
+                       "executionEngine":  false,
+                       "dispatchEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false,
+                       "queues":  false,
+                       "workers":  false,
+                       "schedulers":  false,
+                       "backgroundJobs":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "branchWrites":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false
+                   }
+}

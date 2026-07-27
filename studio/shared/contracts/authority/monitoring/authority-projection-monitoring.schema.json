@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/monitoring/authority-projection-monitoring.schema.json",
+  "title": "Phase 18 Authority Projection Monitoring Report",
+  "description": "Read-only drift, freshness, completeness and lineage monitoring over authority projections.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "reportId",
+    "generatedBy",
+    "generatedAt",
+    "sourceOfTruth",
+    "consumedSources",
+    "monitoredProjection",
+    "status",
+    "summary",
+    "freshness",
+    "lineage",
+    "completeness",
+    "structuralChecks",
+    "findings",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "phase": { "type": "string", "const": "phase-18" },
+    "reportId": { "type": "string", "const": "authority-projection-monitoring" },
+    "generatedBy": {
+      "type": "string",
+      "const": "services/authority-monitoring/generate-authority-projection-monitoring.ps1"
+    },
+    "generatedAt": { "type": "string", "minLength": 20 },
+    "sourceOfTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constitution", "authorityRegistry", "readModel"],
+      "properties": {
+        "constitution": { "type": "string", "const": "shared/contracts/authority/constitution.rules.json" },
+        "authorityRegistry": { "type": "string", "const": "shared/contracts/authority/authority-registry.json" },
+        "readModel": { "type": "string", "const": "runtime/authority/authority-read-model.report.json" }
+      }
+    },
+    "consumedSources": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/sourceRef" }
+    },
+    "monitoredProjection": { "$ref": "#/$defs/sourceRef" },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "warning", "error"]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityCount",
+        "expectedProjectionCount",
+        "missingProjectionCount",
+        "staleProjectionCount",
+        "structuralMismatchCount",
+        "lineageIssueCount",
+        "completenessIssueCount",
+        "findingCount"
+      ],
+      "properties": {
+        "authorityCount": { "type": "integer", "minimum": 0 },
+        "expectedProjectionCount": { "type": "integer", "minimum": 0 },
+        "missingProjectionCount": { "type": "integer", "minimum": 0 },
+        "staleProjectionCount": { "type": "integer", "minimum": 0 },
+        "structuralMismatchCount": { "type": "integer", "minimum": 0 },
+        "lineageIssueCount": { "type": "integer", "minimum": 0 },
+        "completenessIssueCount": { "type": "integer", "minimum": 0 },
+        "findingCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "sourceLastModified", "projectionLastModified", "projectionOlderThanSource"],
+      "properties": {
+        "status": { "type": "string", "enum": ["ok", "warning", "error"] },
+        "sourceLastModified": { "type": ["string", "null"] },
+        "projectionLastModified": { "type": ["string", "null"] },
+        "projectionOlderThanSource": { "type": "boolean" }
+      }
+    },
+    "lineage": { "$ref": "#/$defs/checkGroup" },
+    "completeness": { "$ref": "#/$defs/checkGroup" },
+    "structuralChecks": { "$ref": "#/$defs/checkGroup" },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "boundary": { "$ref": "#/$defs/boundary" }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "exists", "validJson", "lastModified"],
+      "properties": {
+        "path": { "type": "string", "minLength": 3 },
+        "exists": { "type": "boolean" },
+        "validJson": { "type": "boolean" },
+        "lastModified": { "type": ["string", "null"] }
+      }
+    },
+    "checkGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "checks"],
+      "properties": {
+        "status": { "type": "string", "enum": ["ok", "warning", "error"] },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "status", "summary"],
+            "properties": {
+              "id": { "type": "string", "minLength": 3 },
+              "status": { "type": "string", "enum": ["ok", "warning", "error"] },
+              "summary": { "type": "string", "minLength": 3 }
+            }
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "severity", "source", "projection", "summary"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "type": {
+          "type": "string",
+          "enum": ["missing-projection", "stale-projection", "structural-mismatch", "lineage-issue", "completeness-issue"]
+        },
+        "severity": { "type": "string", "enum": ["warning", "error"] },
+        "source": { "type": "string", "minLength": 3 },
+        "projection": { "type": "string", "minLength": 3 },
+        "summary": { "type": "string", "minLength": 3 }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "monitoringOnly",
+        "derivedOnly",
+        "ownsAuthority",
+        "repairsProjection",
+        "synchronizesProjection",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeMutationAllowed",
+        "reportWritingOnly",
+        "dashboardActionAllowed",
+        "approvalAutomationAllowed"
+      ],
+      "properties": {
+        "monitoringOnly": { "type": "boolean", "const": true },
+        "derivedOnly": { "type": "boolean", "const": true },
+        "ownsAuthority": { "type": "boolean", "const": false },
+        "repairsProjection": { "type": "boolean", "const": false },
+        "synchronizesProjection": { "type": "boolean", "const": false },
+        "executionAllowed": { "type": "boolean", "const": false },
+        "providerInvocationAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "credentialAccessAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false },
+        "runtimeMutationAllowed": { "type": "boolean", "const": false },
+        "reportWritingOnly": { "type": "boolean", "const": true },
+        "dashboardActionAllowed": { "type": "boolean", "const": false },
+        "approvalAutomationAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

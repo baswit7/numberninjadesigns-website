@@ -1,0 +1,115 @@
+{
+  "alternativeTitle": "Monatsbudgetplaner — de-DE — EUR",
+  "bundleSuggestions": [
+    "Nur mit passenden Finanzplanern bündeln, wenn jede enthaltene Arbeitsmappe klar aufgeführt ist."
+  ],
+  "category": "budgeting",
+  "compatibility": {
+    "googleSheetsSupported": false,
+    "limitations": [
+      "Excel desktop 2019 or later is the verified release target.",
+      "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling."
+    ],
+    "minimumExcelVersion": "2019",
+    "requiresFormulaRecalculation": true,
+    "targets": [
+      "excel-desktop"
+    ]
+  },
+  "currency": "EUR",
+  "descriptionKey": "products.monthlyBudgetPlanner.description",
+  "digitalDownloadNotice": "Digital download only. No physical item will be shipped.",
+  "disclaimerKeys": [
+    "commercial.noFinancialAdvice"
+  ],
+  "disclaimers": [
+    "Nur ein Planungswerkzeug; keine Finanzberatung."
+  ],
+  "faq": [
+    {
+      "answer": "Nein. Dies ist ausschließlich ein digitaler Download; es wird kein physischer Artikel versandt.",
+      "id": "digital",
+      "question": "Ist dies ein physisches Produkt?"
+    },
+    {
+      "answer": "In Microsoft Excel Desktop 2019 oder neuer verifiziert. Kompatibilität mit anderen Anwendungen wird nicht garantiert.",
+      "id": "compatibility",
+      "question": "Welche Tabellenprogramme werden unterstützt?"
+    },
+    {
+      "answer": "Ihre Finanzdaten bleiben lokal in der Arbeitsmappe; das Produkt benötigt weder Konto noch Cloud-Dienst oder Netzwerkverbindung.",
+      "id": "privacy",
+      "question": "Wo werden meine Finanzdaten gespeichert?"
+    },
+    {
+      "answer": "Die Erstattungsberechtigung richtet sich nach der Richtlinie des Marktplatzes für digitale Produkte und den für den Kauf geltenden Verkäufer-/Plattformbedingungen.",
+      "id": "refunds",
+      "question": "Kann ich eine Rückerstattung erhalten?"
+    }
+  ],
+  "features": [
+    "Fixed Variable Costs",
+    "Carry Over",
+    "Month Status"
+  ],
+  "first160Characters": "Feste und variable Kosten, Sparen und Restbudget monatlich planen. Designed for: Monthly Budgeters, Households • Fixed Variable Costs • Carry Over • Month Statu",
+  "fullDescription": "Feste und variable Kosten, Sparen und Restbudget monatlich planen.\n\nDesigned for: Monthly Budgeters, Households\n\n• Fixed Variable Costs\n• Carry Over\n• Month Status\n\nDigital download only. No physical item will be shipped.\n\n• Nur ein Planungswerkzeug; keine Finanzberatung.",
+  "includedFiles": [
+    "monthly-budget-planner.xlsx",
+    "README.html",
+    "QUICK_START.html",
+    "LICENSE.txt"
+  ],
+  "keywords": [
+    "monthly-budget",
+    "carry-over",
+    "savings"
+  ],
+  "license": "Lizenz für private Nutzung und ein Unternehmen.",
+  "licenseKey": "commercial.personalLicense",
+  "listingAttributes": {
+    "draftOnly": true,
+    "includesWorkbook": true,
+    "productType": "digital-download"
+  },
+  "locale": "de-DE",
+  "localeVariant": "de-DE",
+  "market": "DE",
+  "marketVariant": "DE",
+  "marketplaces": [
+    "etsy",
+    "direct"
+  ],
+  "pricePositioning": {
+    "currency": "EUR",
+    "rationale": "Premium-Tabellenvorlage mit transparentem Einmalpreis für den digitalen Download.",
+    "status": "REVIEW_REQUIRED",
+    "suggestedAmount": null,
+    "tier": "PREMIUM_VALUE"
+  },
+  "primaryTitle": "Monatsbudgetplaner",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "reviewRequired": true,
+  "schemaVersion": "1.0.0",
+  "shortDescription": "Feste und variable Kosten, Sparen und Restbudget monatlich planen.",
+  "status": "GENERATED_DRAFT",
+  "tags": [
+    "monthly-budget",
+    "carry-over",
+    "savings"
+  ],
+  "targetAudience": [
+    "Monthly Budgeters",
+    "Households"
+  ],
+  "titleKey": "products.monthlyBudgetPlanner.name",
+  "upsellSuggestions": [
+    "Ein separates erweitertes Paket anbieten; keine nicht enthaltenen Funktionen versprechen."
+  ],
+  "useCases": [
+    "Fixed Variable Costs",
+    "Carry Over",
+    "Month Status"
+  ]
+}

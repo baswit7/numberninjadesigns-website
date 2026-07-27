@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/coordination/agent-registry.schema.json",
+  "title": "Phase 8 Agent Registry",
+  "description": "Validates the declarative Studio OS coordination agent registry. Agents are planning identities only and cannot execute commands, call providers, deploy, schedule work or mutate runtime state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registryId",
+    "executionAllowed",
+    "agents",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "registryId": {
+      "type": "string",
+      "const": "studio-os.phase-8.agent-registry"
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "agents": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "displayName",
+          "role",
+          "allowedInputs",
+          "allowedOutputs",
+          "forbiddenCapabilities",
+          "safetyBoundary",
+          "executionAllowed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "chatgpt-architect",
+              "codex-builder",
+              "qa-agent",
+              "review-agent",
+              "documentation-agent",
+              "governance-agent",
+              "deployment-planning-agent"
+            ]
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120
+          },
+          "role": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 500
+          },
+          "allowedInputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 160
+            },
+            "uniqueItems": true
+          },
+          "allowedOutputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 160
+            },
+            "uniqueItems": true
+          },
+          "forbiddenCapabilities": {
+            "$ref": "#/$defs/forbiddenCapabilities"
+          },
+          "safetyBoundary": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 800
+          },
+          "executionAllowed": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      }
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "forbiddenCapabilities": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "string",
+        "enum": [
+          "provider_execution",
+          "api_calls",
+          "deployments",
+          "runtime_mutation",
+          "shell_execution",
+          "command_execution",
+          "code_generation_execution",
+          "agent_execution",
+          "task_runners",
+          "schedulers",
+          "background_services",
+          "business_features",
+          "executable_hooks",
+          "provider_credentials"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass",
+        "dashboardMode"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-8"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "coordination-only"
+        },
+        "dashboardMode": {
+          "type": "string",
+          "const": "read-only"
+        }
+      }
+    }
+  }
+}

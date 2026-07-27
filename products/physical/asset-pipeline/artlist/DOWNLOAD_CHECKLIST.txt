@@ -1,0 +1,29 @@
+NUMBERNINJADESIGNS - ARTLIST DOWNLOAD CHECKLIST
+=============================================
+
+Download files manually from Artlist under your valid license, then place them
+in the matching local category folder. Do not store login details or API keys.
+
+MUSIC
+[ ] Cyberpunk track       -> MUSIC\TIKTOK
+[ ] Synthwave track       -> MUSIC\TIKTOK or MUSIC\INSTAGRAM
+[ ] Future Bass track     -> MUSIC\INSTAGRAM
+[ ] Dark Tech track       -> MUSIC\PINTEREST or MUSIC\ETSY
+
+SFX
+[ ] Keyboard typing       -> SFX\KEYBOARD
+[ ] Glitch transition     -> SFX\GLITCH
+[ ] Digital click         -> SFX\UI
+[ ] Terminal sound        -> SFX\TERMINAL
+
+VIDEO
+[ ] Coding background     -> VIDEO\CODING
+[ ] Data animation        -> VIDEO\DATA
+[ ] Dark office setup     -> VIDEO\DARK_OFFICE
+[ ] AI abstract loop      -> VIDEO\AI
+
+AFTER EVERY DOWNLOAD SESSION
+[ ] Place the files in their selected folders.
+[ ] Double-click scan-assets.bat.
+[ ] Confirm asset-index.json lists the new media correctly.
+[ ] Keep license documentation according to your Artlist account requirements.

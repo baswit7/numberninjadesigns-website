@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/contracts/execution-review.schema.json",
+  "title": "Studio OS Manual Execution Review Records",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "capability",
+    "sourceFile",
+    "preflightDecisionInput",
+    "allowedReviewStates",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "capability": {
+      "const": "manual-execution-review-gate"
+    },
+    "sourceFile": {
+      "type": "string"
+    },
+    "preflightDecisionInput": {
+      "type": "string"
+    },
+    "allowedReviewStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "UNKNOWN",
+          "BLOCKED",
+          "PENDING_REVIEW",
+          "APPROVED_FOR_DISPATCH",
+          "REJECTED",
+          "EXPIRED"
+        ]
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "reviewId",
+          "preflightId",
+          "requestId",
+          "sourceApprovalId",
+          "preflightState",
+          "reviewState",
+          "requestedAction",
+          "targetSystem",
+          "riskClassification",
+          "manualReviewRequired",
+          "manualEvidencePresent",
+          "executionDispatchAllowed",
+          "result",
+          "blockers"
+        ]
+      }
+    }
+  }
+}

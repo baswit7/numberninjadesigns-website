@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-15",
+  "registryId": "studio-os-authority-registry",
+  "purpose": "Single source of truth for Studio OS authority ownership.",
+  "sourceOfTruth": "authority-registry",
+  "nonExecutable": true,
+  "authorities": [
+    {
+      "authorityId": "constitution.read",
+      "owner": "shared/contracts/authority/constitution.rules.json",
+      "classification": "read-only",
+      "allowedConsumers": [
+        "scripts/validation/validate-authority-control-plane.ps1",
+        "docs/governance"
+      ],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/deployment-controller",
+        "services/runtime-orchestrator"
+      ],
+      "approvalRequired": false,
+      "scope": "Read constitutional boundary rules as machine-readable metadata only.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "constitution.decide-boundary",
+      "owner": "shared/contracts/authority/constitution.rules.json",
+      "classification": "governance-decision",
+      "allowedConsumers": [
+        "scripts/validation/validate-authority-control-plane.ps1"
+      ],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/execution-readiness",
+        "services/coordination",
+        "services/provider-manager",
+        "services/deployment-controller"
+      ],
+      "approvalRequired": false,
+      "scope": "Define whether a boundary is allowed, denied, approval-gated or out of scope.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "authority.registry.read",
+      "owner": "shared/contracts/authority/authority-registry.json",
+      "classification": "read-only",
+      "allowedConsumers": [
+        "scripts/validation/validate-authority-control-plane.ps1",
+        "docs/governance"
+      ],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/deployment-controller"
+      ],
+      "approvalRequired": false,
+      "scope": "Read registered authority ownership, consumers and scopes.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "authority.validation.report",
+      "owner": "scripts/validation/validate-authority-control-plane.ps1",
+      "classification": "report-writing",
+      "allowedConsumers": [
+        "shared/contracts/authority/validation-reports",
+        "docs/governance"
+      ],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/deployment-controller",
+        "services/runtime-orchestrator"
+      ],
+      "approvalRequired": false,
+      "scope": "Write deterministic machine-readable validation reports for authority contract integrity only.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "dashboard.view",
+      "owner": "apps/studio-dashboard",
+      "classification": "read-only",
+      "allowedConsumers": [
+        "apps/studio-dashboard"
+      ],
+      "forbiddenConsumers": [
+        "services/runtime-orchestrator",
+        "services/provider-manager",
+        "services/deployment-controller"
+      ],
+      "approvalRequired": false,
+      "scope": "Render derived runtime and governance projections without owning truth or commands.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "projection.read",
+      "owner": "shared/contracts/projections",
+      "classification": "read-only",
+      "allowedConsumers": [
+        "apps/studio-dashboard",
+        "scripts/validation"
+      ],
+      "forbiddenConsumers": [
+        "services/runtime-orchestrator",
+        "services/provider-manager",
+        "services/deployment-controller"
+      ],
+      "approvalRequired": false,
+      "scope": "Read projection contract metadata and fixtures without mutating runtime truth.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "governance.report",
+      "owner": "services/governance",
+      "classification": "report-writing",
+      "allowedConsumers": [
+        "docs/governance",
+        "runtime"
+      ],
+      "forbiddenConsumers": [
+        "services/provider-manager",
+        "services/deployment-controller",
+        "services/runtime-orchestrator"
+      ],
+      "approvalRequired": false,
+      "scope": "Write governance reports and scores without execution authority.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "readiness.report",
+      "owner": "services/execution-readiness",
+      "classification": "report-writing",
+      "allowedConsumers": [
+        "runtime/readiness",
+        "docs/governance"
+      ],
+      "forbiddenConsumers": [
+        "services/provider-manager",
+        "services/deployment-controller",
+        "services/runtime-orchestrator"
+      ],
+      "approvalRequired": false,
+      "scope": "Write readiness evidence only; never approve execution.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "coordination.plan",
+      "owner": "services/coordination",
+      "classification": "governance-decision",
+      "allowedConsumers": [
+        "services/coordination",
+        "scripts/validation"
+      ],
+      "forbiddenConsumers": [
+        "services/runtime-orchestrator",
+        "services/provider-manager",
+        "services/deployment-controller"
+      ],
+      "approvalRequired": false,
+      "scope": "Model coordination relationships and graph evidence without executing tasks.",
+      "decision": "ALLOW"
+    },
+    {
+      "authorityId": "provider.invoke",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/runtime-orchestrator",
+        "scripts/validation",
+        "services/coordination"
+      ],
+      "approvalRequired": true,
+      "scope": "Provider invocation is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    },
+    {
+      "authorityId": "deployment.start",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/deployment-controller",
+        "services/runtime-orchestrator",
+        "scripts/validation",
+        "services/coordination"
+      ],
+      "approvalRequired": true,
+      "scope": "Deployment start authority is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    },
+    {
+      "authorityId": "execution.run",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/runtime-orchestrator",
+        "services/execution-readiness",
+        "services/coordination",
+        "scripts/validation"
+      ],
+      "approvalRequired": true,
+      "scope": "Runtime execution authority is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    },
+    {
+      "authorityId": "credential.read",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/runtime-orchestrator",
+        "services/deployment-controller",
+        "scripts/validation"
+      ],
+      "approvalRequired": true,
+      "scope": "Credential read authority is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    },
+    {
+      "authorityId": "secret.write",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/provider-manager",
+        "services/runtime-orchestrator",
+        "services/deployment-controller",
+        "scripts/validation"
+      ],
+      "approvalRequired": true,
+      "scope": "Secret write authority is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    },
+    {
+      "authorityId": "github.repo.write",
+      "owner": "constitution",
+      "classification": "forbidden-currently",
+      "allowedConsumers": [],
+      "forbiddenConsumers": [
+        "apps/studio-dashboard",
+        "services/runtime-orchestrator",
+        "scripts/validation",
+        "services/coordination"
+      ],
+      "approvalRequired": true,
+      "scope": "GitHub repository write authority is explicitly blocked in Phase 15.",
+      "decision": "DENY"
+    }
+  ],
+  "boundary": {
+    "implicitAuthorityAllowed": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretMutationAllowed": false,
+    "githubWriteAllowed": false,
+    "runtimeMutationAllowed": false
+  }
+}

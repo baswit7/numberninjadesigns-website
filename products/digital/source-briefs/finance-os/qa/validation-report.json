@@ -1,0 +1,110 @@
+{
+  "contract": "FinanceProductWorkbook",
+  "extensions": {
+    "details": {
+      "configuration": {
+        "currency": "EUR",
+        "inputCapacity": 100,
+        "locale": "de-DE",
+        "themeId": "soft-pastel"
+      },
+      "sheets": [
+        {
+          "autoFilter": false,
+          "columnCount": 2,
+          "currencyFormatCells": 10,
+          "dataValidationCount": 0,
+          "formulaCount": 3,
+          "frozenPane": false,
+          "name": "Übersicht",
+          "rowCount": 7
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 6,
+          "currencyFormatCells": 208,
+          "dataValidationCount": 300,
+          "formulaCount": 300,
+          "frozenPane": true,
+          "name": "Monatsbudget",
+          "rowCount": 104
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 4,
+          "currencyFormatCells": 16,
+          "dataValidationCount": 300,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Einnahmen",
+          "rowCount": 104
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 4,
+          "currencyFormatCells": 18,
+          "dataValidationCount": 300,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Ausgaben",
+          "rowCount": 104
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 3,
+          "currencyFormatCells": 21,
+          "dataValidationCount": 40,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Kategorien",
+          "rowCount": 44
+        },
+        {
+          "autoFilter": false,
+          "columnCount": 3,
+          "currencyFormatCells": 0,
+          "dataValidationCount": 0,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Anleitung",
+          "rowCount": 4
+        }
+      ],
+      "zip": {
+        "entries": 23,
+        "missingParts": [],
+        "missingRelationshipTargets": [],
+        "rawFeatures": {
+          "filters": 4,
+          "formulas": 303,
+          "panes": 5,
+          "validations": 20
+        },
+        "worksheetParts": 6
+      }
+    },
+    "metrics": {
+      "bytes": 27200,
+      "filters": 4,
+      "formattedCurrencyCells": 273,
+      "formulas": 303,
+      "panes": 5,
+      "sheets": 6,
+      "validations": 940
+    },
+    "overrides": [],
+    "productId": "monthly-budget-planner",
+    "stage": "WORKBOOK",
+    "warningCount": 0,
+    "warnings": []
+  },
+  "generatedAt": "2026-07-15T18:06:52.229Z",
+  "issues": [],
+  "schemaVersion": "1.0.0",
+  "status": "PASS",
+  "summary": {
+    "blockerCount": 0,
+    "errorCount": 0
+  },
+  "valid": true
+}

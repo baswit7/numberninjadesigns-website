@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-18",
+  "manifestId": "authority-projection-monitoring-manifest",
+  "purpose": "Declare read-only authority projection monitoring contracts and report outputs.",
+  "sourceContracts": [
+    "shared/contracts/authority/constitution.rules.json",
+    "shared/contracts/authority/authority-registry.json",
+    "shared/contracts/authority/read-model/authority-read-model.schema.json",
+    "shared/contracts/authority/monitoring/authority-projection-monitoring.schema.json"
+  ],
+  "consumedRuntimeReports": [
+    "runtime/authority/authority-read-model.report.json",
+    "runtime/authority/authority-query-responses.report.json",
+    "runtime/dashboard/authority.view.json"
+  ],
+  "runtimeReports": [
+    "runtime/authority/authority-projection-monitoring.report.json",
+    "runtime/authority/authority-projection-monitoring-validation.report.json"
+  ],
+  "nonExecutable": true,
+  "boundary": {
+    "monitoringOnly": true,
+    "derivedOnly": true,
+    "ownsAuthority": false,
+    "repairsProjection": false,
+    "synchronizesProjection": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretAccessAllowed": false,
+    "runtimeMutationAllowed": false,
+    "reportWritingOnly": true,
+    "dashboardActionAllowed": false,
+    "approvalAutomationAllowed": false
+  }
+}

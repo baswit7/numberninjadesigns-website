@@ -1,0 +1,65 @@
+{
+  "planId": "phase7.action-plan.generated-example-001",
+  "createdAt": "2026-06-04T09:30:00Z",
+  "intent": "Prepare a documentation and schema-only Phase 7 action plan for review.",
+  "riskLevel": "low",
+  "provesLowRiskDocumentationOrSchemaOnly": true,
+  "steps": [
+    {
+      "stepId": "review.docs-scope",
+      "order": 1,
+      "title": "Review documentation scope",
+      "description": "Confirm that the requested work is limited to documentation and schema preparation.",
+      "actionType": "review",
+      "allowed": true,
+      "requiresApproval": false,
+      "expectedResult": "The action plan remains review-only and non-executing."
+    },
+    {
+      "stepId": "validate.contract-shape",
+      "order": 2,
+      "title": "Validate contract shape",
+      "description": "Check that the prepared artifact contains the required action-plan fields.",
+      "actionType": "validation",
+      "allowed": true,
+      "requiresApproval": false,
+      "expectedResult": "Required action-plan fields are present for human review."
+    }
+  ],
+  "safetyGates": [
+    {
+      "gateId": "gate.non-execution",
+      "title": "Non-execution boundary confirmed",
+      "required": true,
+      "status": "passed",
+      "blocksProgress": false
+    }
+  ],
+  "blockedStates": [
+    "unknown_scope",
+    "unsafe_execution_request"
+  ],
+  "expectedOutputs": [
+    {
+      "outputId": "output.action-plan-json",
+      "description": "A reviewable action-plan JSON artifact with no execution side effects.",
+      "required": true
+    }
+  ],
+  "forbiddenActions": [
+    "command execution",
+    "shell execution",
+    "provider calls",
+    "runtime changes",
+    "dashboard changes",
+    "deployment actions",
+    "Git push merge or delete actions",
+    "destructive file operations",
+    "history pruning"
+  ],
+  "nonExecutableMetadata": {
+    "recordType": "generator_input_example",
+    "preparedFor": "phase_7_action_plan_generator",
+    "traceId": "fake-trace-phase7-action-plan-001"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-14",
+  "reportId": "phase14:stale-dashboard-projection-validation",
+  "fixtureId": "phase14:stale-dashboard-projection",
+  "projectionPath": "shared/contracts/projections/fixtures/stale-dashboard-projection.fixture.json",
+  "contractPath": "shared/contracts/projections/dashboard-projection.schema.json",
+  "evaluatedStaleness": "stale",
+  "result": "passed",
+  "boundary": {
+    "readOnly": true,
+    "writesAllowed": false,
+    "runtimeMutationAllowed": false,
+    "dashboardMutationAllowed": false,
+    "executionAllowed": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "browserStorageAuthorityAllowed": false
+  },
+  "checks": [
+    {
+      "name": "schema-contract",
+      "status": "passed",
+      "message": "Projection fixture matches the Phase 13 dashboard projection contract."
+    },
+    {
+      "name": "staleness",
+      "status": "passed",
+      "message": "Projection generatedAt is older than sourceEvidenceObservedAt and is correctly marked stale."
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-14",
+    "owner": "studio-os",
+    "safetyClass": "read-only-projection-validation-report"
+  }
+}

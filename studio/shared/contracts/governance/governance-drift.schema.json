@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.drift",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "sampleSize",
+    "drift",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedSeverity": [
+    "NONE",
+    "LOW",
+    "MEDIUM",
+    "HIGH"
+  ],
+  "traceability": {
+    "requiresTrend": true,
+    "requiresRootCause": true,
+    "requiresRecommendedAction": true
+  }
+}

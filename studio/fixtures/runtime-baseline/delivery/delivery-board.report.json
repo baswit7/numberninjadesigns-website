@@ -1,0 +1,150 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:delivery-board",
+    "sourceFile":  "config/delivery.tasks.json",
+    "readOnly":  true,
+    "visualizationOnly":  true,
+    "columns":  [
+                    {
+                        "status":  "intake",
+                        "count":  2,
+                        "tasks":  [
+                                      {
+                                          "taskId":  "numberninjadesigns-002",
+                                          "projectId":  "numberninjadesigns",
+                                          "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+                                          "priorityScore":  76,
+                                          "roiScore":  78,
+                                          "whyThisTask":  "High business impact",
+                                          "releaseReadiness":  "planning-ready",
+                                          "blockers":  [
+
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-002.codex-prompt.md"
+                                      },
+                                      {
+                                          "taskId":  "studio-os-002",
+                                          "projectId":  "studio-os",
+                                          "title":  "Link project cockpit output to daily operating routine",
+                                          "priorityScore":  72,
+                                          "roiScore":  73,
+                                          "whyThisTask":  "Best current priority score",
+                                          "releaseReadiness":  "planning-ready",
+                                          "blockers":  [
+
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/studio-os-002.codex-prompt.md"
+                                      }
+                                  ]
+                    },
+                    {
+                        "status":  "ready",
+                        "count":  4,
+                        "tasks":  [
+                                      {
+                                          "taskId":  "numberninjadesigns-001",
+                                          "projectId":  "numberninjadesigns",
+                                          "title":  "Build Etsy listing workflow foundation",
+                                          "priorityScore":  91,
+                                          "roiScore":  92,
+                                          "whyThisTask":  "Blocks 1 task",
+                                          "releaseReadiness":  "planning-ready",
+                                          "blockers":  [
+
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                                      },
+                                      {
+                                          "taskId":  "studio-os-001",
+                                          "projectId":  "studio-os",
+                                          "title":  "Create project delivery system foundation",
+                                          "priorityScore":  88,
+                                          "roiScore":  76,
+                                          "whyThisTask":  "Blocks 1 task",
+                                          "releaseReadiness":  "planning-ready",
+                                          "blockers":  [
+
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/studio-os-001.codex-prompt.md"
+                                      },
+                                      {
+                                          "taskId":  "boodschappenvergelijker-001",
+                                          "projectId":  "boodschappenvergelijker",
+                                          "title":  "Define first grocery comparison workflow",
+                                          "priorityScore":  80,
+                                          "roiScore":  74,
+                                          "whyThisTask":  "Highest ROI",
+                                          "releaseReadiness":  "blocked",
+                                          "blockers":  [
+                                                           "Data source strategy is not selected."
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md"
+                                      },
+                                      {
+                                          "taskId":  "tok-hub-001",
+                                          "projectId":  "tok-hub",
+                                          "title":  "Define content production pipeline",
+                                          "priorityScore":  78,
+                                          "roiScore":  76,
+                                          "whyThisTask":  "Highest ROI",
+                                          "releaseReadiness":  "planning-ready",
+                                          "blockers":  [
+
+                                                       ],
+                                          "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md"
+                                      }
+                                  ]
+                    },
+                    {
+                        "status":  "in_progress",
+                        "count":  0,
+                        "tasks":  [
+
+                                  ]
+                    },
+                    {
+                        "status":  "review",
+                        "count":  0,
+                        "tasks":  [
+
+                                  ]
+                    },
+                    {
+                        "status":  "blocked",
+                        "count":  0,
+                        "tasks":  [
+
+                                  ]
+                    },
+                    {
+                        "status":  "release_ready",
+                        "count":  0,
+                        "tasks":  [
+
+                                  ]
+                    },
+                    {
+                        "status":  "done",
+                        "count":  0,
+                        "tasks":  [
+
+                                  ]
+                    }
+                ],
+    "boundaries":  {
+                       "readOnlyBoard":  true,
+                       "dragDropMutation":  false,
+                       "statusMutation":  false,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

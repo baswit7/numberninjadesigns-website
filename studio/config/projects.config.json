@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "projects": [
+    {
+      "projectId": "StudioOS",
+      "displayName": "Studio OS",
+      "repository": "local",
+      "localPath": ".",
+      "status": "active",
+      "type": "runtime-platform",
+      "deploymentTarget": "local",
+      "documentationStatus": "active",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Internal operating-system capability in the canonical NumberNinjaDesigns repository."
+    },
+    {
+      "projectId": "NumberNinjaDesigns",
+      "displayName": "NumberNinjaDesigns",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns",
+      "status": "active",
+      "type": "master-brand",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Canonical master project for commerce, Studio OS, growth channels and non-catalog initiatives."
+    },
+    {
+      "projectId": "NumberNinjaDesigns-TOKHub",
+      "displayName": "NumberNinjaDesigns / TOK Hub",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns/initiatives/TOKHub",
+      "status": "portfolio",
+      "type": "brand-initiative",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "unknown",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Content-system initiative governed by the NumberNinjaDesigns master project."
+    },
+    {
+      "projectId": "NumberNinjaDesigns-BoodschappenVergelijker",
+      "displayName": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns/initiatives/BoodschappenVergelijker",
+      "status": "portfolio",
+      "type": "brand-initiative",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "unknown",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Comparison-system initiative governed by the NumberNinjaDesigns master project."
+    },
+    {
+      "projectId": "NumberNinjaDesigns-AIDaytraden",
+      "displayName": "NumberNinjaDesigns / AI Daytraden",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns/initiatives/AIDaytraden",
+      "status": "portfolio",
+      "type": "brand-initiative",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "unknown",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Market-research initiative governed by the NumberNinjaDesigns master project; no trading execution is active."
+    },
+    {
+      "projectId": "NumberNinjaDesigns-NiveauVerhogenPaul",
+      "displayName": "NumberNinjaDesigns / Niveau Verhogen Paul",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns/initiatives/NiveauVerhogenPaul",
+      "status": "portfolio",
+      "type": "brand-initiative",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "unknown",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Personal-development initiative governed by the NumberNinjaDesigns master project."
+    },
+    {
+      "projectId": "NumberNinjaDesigns-LeersystemenVerkoop",
+      "displayName": "NumberNinjaDesigns / Leersystemen Verkoop",
+      "repository": "local",
+      "localPath": "projects/NumberNinjaDesigns/initiatives/LeersystemenVerkoop",
+      "status": "portfolio",
+      "type": "brand-initiative",
+      "deploymentTarget": "not-configured",
+      "documentationStatus": "baseline",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "owner": "NumberNinjaDesigns",
+      "notes": "Sales-operations and knowledge-product initiative; customer data remains prohibited until privacy and access design are approved."
+    }
+  ]
+}

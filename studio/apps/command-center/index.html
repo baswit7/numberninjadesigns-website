@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Studio OS Command Center: dagelijks werkdashboard voor Bas.">
+  <meta name="color-scheme" content="dark">
+  <title>Studio OS Command Center</title>
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #0f1115;
+      --panel-2: #151821;
+      --line: rgba(237, 235, 227, 0.12);
+      --text: #edebe3;
+      --muted: #9c9a92;
+      --accent: #00ff94;
+      --accent-2: #f5c451;
+      --danger: #ff6b6b;
+      --info: #7db7ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(0, 255, 148, 0.12), transparent 34rem), var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 7, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 12rem;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+      border: 1px solid rgba(0, 255, 148, 0.45);
+      background: rgba(0, 255, 148, 0.08);
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .brand strong,
+    h1,
+    h2,
+    h3 {
+      letter-spacing: 0;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.35rem;
+    }
+
+    .nav a {
+      border: 1px solid transparent;
+      padding: 0.55rem 0.72rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav a:hover {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .nav a.is-active {
+      border-color: rgba(0, 255, 148, 0.42);
+      color: var(--accent);
+      background: rgba(0, 255, 148, 0.08);
+    }
+
+    main {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      padding: clamp(1rem, 4vw, 3rem);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
+      gap: 1rem;
+      align-items: stretch;
+      min-height: 28rem;
+      padding: clamp(1.25rem, 4vw, 3rem) 0;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      border: 1px solid rgba(0, 255, 148, 0.35);
+      padding: 0.35rem 0.65rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 7.2rem);
+      line-height: 0.9;
+    }
+
+    .hero-copy p {
+      max-width: 42rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+    }
+
+    .focus-card,
+    .card,
+    .lane,
+    .table-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .focus-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      padding: 1.25rem;
+      background-color: var(--panel);
+    }
+
+    .focus-card span,
+    .section-kicker,
+    .meta-label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .focus-card strong {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: 1.5rem;
+    }
+
+    .focus-card p {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 0 0 2.5rem;
+    }
+
+    .status-card {
+      cursor: pointer;
+      color: inherit;
+      text-align: left;
+      min-height: 7.5rem;
+      border: 1px solid var(--line);
+      padding: 1rem;
+      background: rgba(15, 17, 21, 0.76);
+    }
+
+    .status-card:hover,
+    .status-card:focus-visible,
+    .card.is-open,
+    .queue-item.is-open,
+    .lane .task:hover,
+    .interactive-row:hover {
+      border-color: rgba(0, 255, 148, 0.42);
+      outline: none;
+      background: rgba(0, 255, 148, 0.055);
+    }
+
+    .status-card strong {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .status-card span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .section {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin: 0.25rem 0 0;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1;
+    }
+
+    .section-note {
+      max-width: 35rem;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .queue {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .queue-item {
+      display: grid;
+      grid-template-columns: minmax(13rem, 1.5fr) repeat(4, minmax(7rem, 0.7fr)) minmax(13rem, 1.2fr);
+      gap: 0.75rem;
+      align-items: center;
+      border: 1px solid var(--line);
+      padding: 0.9rem;
+      background: rgba(15, 17, 21, 0.78);
+    }
+
+    .queue-item h3,
+    .card h3,
+    .lane h3,
+    .table-card h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .meta {
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .meta strong,
+    .meta span:last-child {
+      overflow-wrap: anywhere;
+    }
+
+    .pill {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      border: 1px solid var(--line);
+      padding: 0.32rem 0.55rem;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .pill.hot {
+      border-color: rgba(0, 255, 148, 0.42);
+      color: var(--accent);
+    }
+
+    .pill.warn {
+      border-color: rgba(245, 196, 81, 0.42);
+      color: var(--accent-2);
+    }
+
+    .pill.blocked {
+      border-color: rgba(255, 107, 107, 0.45);
+      color: var(--danger);
+    }
+
+    .pill.wait {
+      border-color: rgba(125, 183, 255, 0.45);
+      color: var(--info);
+    }
+
+    .pill.codex {
+      border-color: rgba(0, 255, 148, 0.55);
+      background: rgba(0, 255, 148, 0.1);
+      color: var(--accent);
+    }
+
+    .filter-bar,
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 1rem 0;
+    }
+
+    .filter-button,
+    .copy-button,
+    .reset-button {
+      min-height: 2.75rem;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      padding: 0.62rem 0.82rem;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.035);
+      font-weight: 700;
+    }
+
+    .filter-button:hover,
+    .copy-button:hover,
+    .reset-button:hover,
+    .filter-button:focus-visible,
+    .copy-button:focus-visible,
+    .reset-button:focus-visible {
+      border-color: rgba(0, 255, 148, 0.48);
+      color: var(--accent);
+      outline: none;
+    }
+
+    .filter-button.is-active,
+    .reset-button.is-active {
+      border-color: rgba(0, 255, 148, 0.55);
+      background: rgba(0, 255, 148, 0.12);
+      color: var(--accent);
+    }
+
+    .filter-status,
+    .copy-feedback {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .detail-panel {
+      display: none;
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--line);
+      padding-top: 0.85rem;
+      color: var(--muted);
+    }
+
+    .is-open > .detail-panel {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    .toggle-hint {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .interactive-row {
+      cursor: pointer;
+    }
+
+    .detail-row td {
+      background: rgba(0, 255, 148, 0.04);
+      color: var(--muted);
+    }
+
+    .manual-copy {
+      display: none;
+      width: 100%;
+      min-height: 10rem;
+      border: 1px solid var(--line);
+      padding: 0.75rem;
+      color: var(--text);
+      background: rgba(7, 7, 7, 0.55);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+    }
+
+    .manual-copy.is-visible {
+      display: block;
+    }
+
+    .priority-guide {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .priority-card {
+      border: 1px solid var(--line);
+      padding: 0.85rem;
+      background: rgba(15, 17, 21, 0.74);
+    }
+
+    .priority-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .priority-card span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .card,
+    .lane,
+    .table-card {
+      padding: 1rem;
+      background-color: var(--panel);
+    }
+
+    .card {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .card p,
+    .lane p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .info-list {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: grid;
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      gap: 0.5rem;
+      border-top: 1px solid var(--line);
+      padding-top: 0.55rem;
+    }
+
+    .lanes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(12rem, 1fr));
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .lane {
+      min-width: 12rem;
+      background: var(--panel-2);
+    }
+
+    .task {
+      margin-top: 0.65rem;
+      border: 1px solid var(--line);
+      padding: 0.7rem;
+      background: rgba(7, 7, 7, 0.34);
+    }
+
+    .task strong {
+      display: block;
+    }
+
+    .task span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .business-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 48rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.85rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    td small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .codex-card {
+      display: grid;
+      gap: 0.7rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .codex-card code {
+      display: block;
+      overflow-wrap: anywhere;
+      color: var(--muted);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+      white-space: normal;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem clamp(1rem, 4vw, 3rem);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .status-grid,
+      .priority-guide,
+      .grid-4,
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .queue-item {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .status-grid,
+      .priority-guide,
+      .grid-4,
+      .grid-3,
+      .queue-item {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 9ch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#vandaag" aria-label="Studio OS Command Center">
+        <span class="brand-mark" aria-hidden="true">SO</span>
+        <span>
+          <strong>Studio OS Command Center</strong>
+          <small>Dagelijkse productie voor Bas</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="#vandaag">Vandaag</a>
+        <a href="#projecten">Projecten</a>
+        <a href="#taken">Taken</a>
+        <a href="#blokkades">Blokkades</a>
+        <a href="#kansen">Kansen</a>
+        <a href="#verkoopkanalen">Verkoopkanalen</a>
+        <a href="#goedkeuringen">Goedkeuringen</a>
+        <a href="#naar-codex">Naar Codex</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow">Productie</span>
+          <h1 id="hero-title">Studio OS Command Center</h1>
+          <p>Wat moet Bas vandaag doen?</p>
+        </div>
+        <aside class="focus-card" aria-label="Belangrijkste focus">
+          <div>
+            <span>Focus vandaag</span>
+            <strong>Beslis wat vandaag echt verder moet.</strong>
+            <p>Bewaar focus: bewaak de productgrenzen, rond de beste verkooproute af en parkeer blokkades zonder directe opbrengst.</p>
+          </div>
+          <span class="pill hot">P0 vandaag</span>
+        </aside>
+      </section>
+
+      <section aria-label="Status vandaag">
+        <div class="status-grid">
+          <button class="status-card" type="button" data-scroll-target="vandaag"><span>Acties vandaag</span><strong>5</strong></button>
+          <button class="status-card" type="button" data-scroll-target="blokkades"><span>Open blokkades</span><strong>6</strong></button>
+          <button class="status-card" type="button" data-scroll-target="goedkeuringen"><span>Klaar voor review</span><strong>2</strong></button>
+          <button class="status-card" type="button" data-scroll-target="taken"><span>Wacht op Bas</span><strong>4</strong></button>
+          <button class="status-card" type="button" data-scroll-target="blokkades"><span>Wacht op extern</span><strong>3</strong></button>
+          <button class="status-card" type="button" data-scroll-target="naar-codex"><span>Klaar voor Codex</span><strong>3</strong></button>
+        </div>
+        <div class="priority-guide" aria-label="Prioriteitslogica">
+          <article class="priority-card"><strong><span class="pill blocked">P0</span></strong><span>Vandaag blokkade of direct besluit nodig.</span></article>
+          <article class="priority-card"><strong><span class="pill hot">P1</span></strong><span>Deze week belangrijk voor voortgang of omzet.</span></article>
+          <article class="priority-card"><strong><span class="pill">P2</span></strong><span>Kans of optimalisatie met duidelijke waarde.</span></article>
+          <article class="priority-card"><strong><span class="pill wait">WACHT</span></strong><span>Niet verder zonder Bas of externe actie.</span></article>
+          <article class="priority-card"><strong><span class="pill codex">CODEX-KLAAR</span></strong><span>Opdracht is afgebakend en kan naar Codex.</span></article>
+        </div>
+        <div class="filter-bar" aria-label="Prioriteitsfilter">
+          <button class="filter-button is-active" type="button" data-priority-filter="all">Toon alles</button>
+          <button class="filter-button" type="button" data-priority-filter="P0">P0</button>
+          <button class="filter-button" type="button" data-priority-filter="P1">P1</button>
+          <button class="filter-button" type="button" data-priority-filter="P2">P2</button>
+          <button class="filter-button" type="button" data-priority-filter="WACHT">WACHT</button>
+          <button class="filter-button" type="button" data-priority-filter="CODEX-KLAAR">CODEX-KLAAR</button>
+          <button class="reset-button" type="button" data-reset-view>Toon alles</button>
+        </div>
+        <p class="filter-status" id="filter-status" aria-live="polite">Alle prioriteiten zichtbaar.</p>
+      </section>
+
+      <section class="section" id="vandaag" aria-labelledby="vandaag-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Vandaag</span>
+            <h2 id="vandaag-title">Top-5 actiequeue</h2>
+          </div>
+          <p class="section-note">Top-5 op basis van blokkade, geldwaarde en besluitdruk.</p>
+        </div>
+        <div class="queue">
+          <article class="queue-item" data-priority="P0" tabindex="0" role="button" aria-expanded="false">
+            <div class="meta"><span class="meta-label">Actie</span><strong>PR / dashboardgrenzen bewaken</strong></div>
+            <div class="meta"><span class="meta-label">Prioriteit</span><span class="pill blocked">P0</span></div>
+            <div class="meta"><span class="meta-label">Project</span><span>Studio OS</span></div>
+            <div class="meta"><span class="meta-label">Eigenaar</span><span>Bas</span></div>
+            <div class="meta"><span class="meta-label">Reden</span><span>Voorkomt dat productie en technische schermen opnieuw mengen.</span></div>
+            <div class="meta"><span class="meta-label">Volgende stap</span><span>Controleer PR-scope en merge alleen na duidelijke productgrenscheck.</span></div>
+            <div class="meta"><span class="meta-label">Status</span><span class="pill hot">Review vandaag</span></div>
+            <div class="detail-panel">
+              <span class="toggle-hint">Open/dicht</span>
+              <span>Waarom belangrijk: productgrenzen bepalen of Bas in het juiste dashboard werkt.</span>
+              <span>Eerstvolgende stap: PR-scope, gewijzigde bestanden en mergeadvies controleren.</span>
+              <span>Eigenaar: Bas. Besluit nodig: ja. Risico als niets gebeurt: technische en zakelijke schermen mengen opnieuw.</span>
+            </div>
+          </article>
+          <article class="queue-item" data-priority="P1 CODEX-KLAAR" tabindex="0" role="button" aria-expanded="false">
+            <div class="meta"><span class="meta-label">Actie</span><strong>Command Center verder professionaliseren</strong></div>
+            <div class="meta"><span class="meta-label">Prioriteit</span><span class="pill hot">P1</span></div>
+            <div class="meta"><span class="meta-label">Project</span><span>Studio OS</span></div>
+            <div class="meta"><span class="meta-label">Eigenaar</span><span>Codex</span></div>
+            <div class="meta"><span class="meta-label">Reden</span><span>Bas moet sneller zien wat vandaag telt.</span></div>
+            <div class="meta"><span class="meta-label">Volgende stap</span><span>Prioriteitslabels, blokkades en verkoopadvies aanscherpen.</span></div>
+            <div class="meta"><span class="meta-label">Status</span><span class="pill codex">CODEX-KLAAR</span></div>
+            <div class="detail-panel">
+              <span class="toggle-hint">Open/dicht</span>
+              <span>Waarom belangrijk: het Command Center wordt een dagelijks bruikbaar besluitenscherm.</span>
+              <span>Eerstvolgende stap: veilige klikinteractie toevoegen zonder opslag of koppelingen.</span>
+              <span>Eigenaar: Codex. Besluit nodig: nee. Risico als niets gebeurt: het scherm blijft te statisch.</span>
+            </div>
+          </article>
+          <article class="queue-item" data-priority="P1 WACHT" tabindex="0" role="button" aria-expanded="false">
+            <div class="meta"><span class="meta-label">Actie</span><strong>TeePublic profiel afronden</strong></div>
+            <div class="meta"><span class="meta-label">Prioriteit</span><span class="pill hot">P1</span></div>
+            <div class="meta"><span class="meta-label">Project</span><span>NumberNinjaDesigns</span></div>
+            <div class="meta"><span class="meta-label">Eigenaar</span><span>Bas</span></div>
+            <div class="meta"><span class="meta-label">Reden</span><span>Laagste effort voor extra verkoopkanaal.</span></div>
+            <div class="meta"><span class="meta-label">Volgende stap</span><span>Profielvelden en uploadpad afronden.</span></div>
+            <div class="meta"><span class="meta-label">Status</span><span class="pill wait">WACHT op Bas</span></div>
+            <div class="detail-panel">
+              <span class="toggle-hint">Open/dicht</span>
+              <span>Waarom belangrijk: TeePublic kan snel extra zichtbaarheid geven met lage inspanning.</span>
+              <span>Eerstvolgende stap: accountvelden en eerste uploadroute nalopen.</span>
+              <span>Eigenaar: Bas. Besluit nodig: ja. Risico als niets gebeurt: omzetroute blijft onnodig liggen.</span>
+            </div>
+          </article>
+          <article class="queue-item" data-priority="P0 WACHT" tabindex="0" role="button" aria-expanded="false">
+            <div class="meta"><span class="meta-label">Actie</span><strong>Etsy API 403 parkeren of bewijsactie bepalen</strong></div>
+            <div class="meta"><span class="meta-label">Prioriteit</span><span class="pill blocked">P0</span></div>
+            <div class="meta"><span class="meta-label">Project</span><span>NumberNinjaDesigns</span></div>
+            <div class="meta"><span class="meta-label">Eigenaar</span><span>Bas</span></div>
+            <div class="meta"><span class="meta-label">Reden</span><span>Blokkade vertraagt Etsy, maar mag andere kanalen niet stoppen.</span></div>
+            <div class="meta"><span class="meta-label">Volgende stap</span><span>Kies: bewijs vastleggen en parkeren, of accountrechten opnieuw controleren.</span></div>
+            <div class="meta"><span class="meta-label">Status</span><span class="pill warn">Besluit nodig</span></div>
+            <div class="detail-panel">
+              <span class="toggle-hint">Open/dicht</span>
+              <span>Waarom belangrijk: Etsy is waardevol, maar mag andere verkooproutes niet blokkeren.</span>
+              <span>Eerstvolgende stap: foutbewijs vastleggen en maximaal een korte herstelpoging plannen.</span>
+              <span>Eigenaar: Bas. Besluit nodig: ja. Risico als niets gebeurt: focus blijft hangen op een geblokkeerd kanaal.</span>
+            </div>
+          </article>
+          <article class="queue-item" data-priority="P1" tabindex="0" role="button" aria-expanded="false">
+            <div class="meta"><span class="meta-label">Actie</span><strong>NumberNinjaDesigns verkoopkanalen prioriteren</strong></div>
+            <div class="meta"><span class="meta-label">Prioriteit</span><span class="pill hot">P1</span></div>
+            <div class="meta"><span class="meta-label">Project</span><span>NumberNinjaDesigns</span></div>
+            <div class="meta"><span class="meta-label">Eigenaar</span><span>Bas</span></div>
+            <div class="meta"><span class="meta-label">Reden</span><span>Voorkomt verspreide energie over te veel kanalen.</span></div>
+            <div class="meta"><span class="meta-label">Volgende stap</span><span>Kies top-3: TeePublic, Etsy, Printify of alternatief.</span></div>
+            <div class="meta"><span class="meta-label">Status</span><span class="pill hot">Vandaag kiezen</span></div>
+            <div class="detail-panel">
+              <span class="toggle-hint">Open/dicht</span>
+              <span>Waarom belangrijk: kanaalkeuze bepaalt waar productie-energie heen gaat.</span>
+              <span>Eerstvolgende stap: kies top-3 verkoopkanalen op waarde en haalbaarheid.</span>
+              <span>Eigenaar: Bas. Besluit nodig: ja. Risico als niets gebeurt: energie versnipperd over te veel kanalen.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projecten" aria-labelledby="projecten-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Projecten</span>
+            <h2 id="projecten-title">Portfolio-overzicht</h2>
+          </div>
+          <p class="section-note">Projecten zijn geordend op waarde, blokkade en eerstvolgende actie.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card" data-priority="P0 P1" tabindex="0" role="button" aria-expanded="false">
+            <h3>NumberNinjaDesigns</h3>
+            <span class="pill blocked">P0 / P1</span>
+            <ul class="info-list">
+              <li><span>Fase</span><strong>Verkoopkanaal kiezen en afronden</strong></li>
+              <li><span>Doel</span><strong>Eerste verkooproute live krijgen</strong></li>
+              <li><span>Actie</span><strong>TeePublic afronden en Etsy-besluit nemen</strong></li>
+              <li><span>Blokkade</span><strong>Etsy 403 en Redbubble betaalgegevens</strong></li>
+              <li><span>Waarde</span><strong>Directe omzet en validatie</strong></li>
+              <li><span>Eigenaar</span><strong>Bas</strong></li>
+              <li><span>Status</span><strong>Besluit vandaag</strong></li>
+            </ul>
+            <div class="detail-panel">
+              <span>Doel: eerste verkooproute live krijgen.</span>
+              <span>Huidige fase: verkoopkanalen prioriteren en blokkades parkeren.</span>
+              <span>Beslissing voor Bas: TeePublic/Printify doorzetten en Etsy kort controleren of parkeren.</span>
+            </div>
+          </article>
+          <article class="card" data-priority="WACHT" tabindex="0" role="button" aria-expanded="false">
+            <h3>TOK Hub</h3>
+            <span class="pill wait">WACHT</span>
+            <ul class="info-list">
+              <li><span>Fase</span><strong>Account en contentrichting voorbereiden</strong></li>
+              <li><span>Doel</span><strong>Consistent publiceerbaar kanaal</strong></li>
+              <li><span>Actie</span><strong>YouTube verificatie en drie onderwerpen kiezen</strong></li>
+              <li><span>Blokkade</span><strong>Accountactie en claimgrenzen</strong></li>
+              <li><span>Waarde</span><strong>Publieksopbouw en autoriteit</strong></li>
+              <li><span>Eigenaar</span><strong>Bas</strong></li>
+              <li><span>Status</span><strong>Niet forceren zonder accountstap</strong></li>
+            </ul>
+            <div class="detail-panel">
+              <span>Doel: een publiceerbaar kanaal met duidelijke contentplanning.</span>
+              <span>Huidige fase: accountactie en onderwerpkeuze.</span>
+              <span>Beslissing voor Bas: eerst verificatie afronden of kanaal tijdelijk parkeren.</span>
+            </div>
+          </article>
+          <article class="card" data-priority="CODEX-KLAAR P1" tabindex="0" role="button" aria-expanded="false">
+            <h3>Boodschappen Vergelijker</h3>
+            <span class="pill codex">CODEX-KLAAR</span>
+            <ul class="info-list">
+              <li><span>Fase</span><strong>Prototype-scope afbakenen</strong></li>
+              <li><span>Doel</span><strong>Kleine testbare prijsvergelijker</strong></li>
+              <li><span>Actie</span><strong>Drie kernschermen en productmatching kiezen</strong></li>
+              <li><span>Blokkade</span><strong>Dataverschillen per winkel</strong></li>
+              <li><span>Waarde</span><strong>Persoonlijke besparing aantonen</strong></li>
+              <li><span>Eigenaar</span><strong>Bas + Codex</strong></li>
+              <li><span>Status</span><strong>Opdracht kan worden voorbereid</strong></li>
+            </ul>
+            <div class="detail-panel">
+              <span>Doel: kleine testbare prijsvergelijker opleveren.</span>
+              <span>Huidige fase: prototype-scope en productmatching vastzetten.</span>
+              <span>Beslissing voor Bas: drie kernschermen kiezen voordat Codex bouwt.</span>
+            </div>
+          </article>
+          <article class="card" data-priority="P1 CODEX-KLAAR" tabindex="0" role="button" aria-expanded="false">
+            <h3>Studio OS</h3>
+            <span class="pill hot">P1</span>
+            <ul class="info-list">
+              <li><span>Fase</span><strong>Dagelijkse productieinterface versterken</strong></li>
+              <li><span>Doel</span><strong>Bas ziet binnen 30 seconden wat telt</strong></li>
+              <li><span>Actie</span><strong>Prioriteiten en blokkades concreter maken</strong></li>
+              <li><span>Blokkade</span><strong>Historisch gemengde schermtaal</strong></li>
+              <li><span>Waarde</span><strong>Snellere keuzes en minder herstelwerk</strong></li>
+              <li><span>Eigenaar</span><strong>Bas + Codex</strong></li>
+              <li><span>Status</span><strong>Inhoudelijk aanscherpen</strong></li>
+            </ul>
+            <div class="detail-panel">
+              <span>Doel: Bas ziet binnen 30 seconden wat vandaag telt.</span>
+              <span>Huidige fase: productie-interface verfijnen.</span>
+              <span>Beslissing voor Bas: alleen businessgerichte interacties toestaan.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="taken" aria-labelledby="taken-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Taken</span>
+            <h2 id="taken-title">Zakelijke taaklijst</h2>
+          </div>
+          <p class="section-note">Geen technische lijsten; alleen werk dat tot een beslissing, verkoop of deliverable leidt.</p>
+        </div>
+        <div class="lanes">
+          <article class="lane">
+            <h3>Vandaag</h3>
+            <div class="task" data-priority="P0"><strong>PR / dashboardgrenzen bewaken</strong><span>P0 - Studio OS</span></div>
+            <div class="task" data-priority="P1"><strong>Verkoopkanalen prioriteren</strong><span>P1 - NumberNinjaDesigns</span></div>
+          </article>
+          <article class="lane">
+            <h3>Deze week</h3>
+            <div class="task" data-priority="P1"><strong>Drie TOK Hub onderwerpen kiezen</strong><span>P1 - TOK Hub</span></div>
+            <div class="task" data-priority="P1 CODEX-KLAAR"><strong>Prototype-scope vastzetten</strong><span>P1 - Boodschappen Vergelijker</span></div>
+          </article>
+          <article class="lane">
+            <h3>Wacht op Bas</h3>
+            <div class="task" data-priority="WACHT"><strong>Redbubble betaalgegevens beoordelen</strong><span>WACHT - NumberNinjaDesigns</span></div>
+            <div class="task" data-priority="WACHT"><strong>YouTube accountactie uitvoeren</strong><span>WACHT - TOK Hub</span></div>
+          </article>
+          <article class="lane">
+            <h3>Wacht op Codex</h3>
+            <div class="task" data-priority="CODEX-KLAAR"><strong>Command Center volgende verbetering</strong><span>CODEX-KLAAR - Studio OS</span></div>
+            <div class="task" data-priority="CODEX-KLAAR"><strong>Prototype-opdracht voorbereiden</strong><span>CODEX-KLAAR - Boodschappen Vergelijker</span></div>
+          </article>
+          <article class="lane">
+            <h3>Wacht op extern</h3>
+            <div class="task" data-priority="WACHT P0"><strong>Etsy toegang herstellen of parkeren</strong><span>WACHT - NumberNinjaDesigns</span></div>
+            <div class="task" data-priority="P1"><strong>Printify productkeuze bevestigen</strong><span>P1 - NumberNinjaDesigns</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="blokkades" aria-labelledby="blokkades-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Blokkades</span>
+            <h2 id="blokkades-title">Blokkadecentrum</h2>
+          </div>
+          <p class="section-note">Elke blokkade heeft een eigenaar en een bewijsactie waarmee Bas verder kan.</p>
+        </div>
+        <div class="table-card table-wrap">
+          <table class="business-table">
+            <thead>
+              <tr class="interactive-row" data-priority="P0" data-detail="Waarom opnieuw proberen: alleen als repo-pad, remote en branch expliciet kloppen; anders direct stoppen.">
+                <th>Prioriteit</th>
+                <th>Blokkade</th>
+                <th>Project</th>
+                <th>Impact</th>
+                <th>Eigenaar</th>
+                <th>Bewijs</th>
+                <th>Volgende beslissing</th>
+                <th>Opnieuw proberen?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="interactive-row" data-priority="WACHT" data-detail="Waarom niet opnieuw proberen: werken in een vervuilde worktree kan bestaande lokale wijzigingen overschrijven.">
+                <td><span class="pill blocked">P0</span></td>
+                <td>Codex verkeerde workspace / repo-verwarring</td>
+                <td>Studio OS</td>
+                <td>Werk kan in de verkeerde repo belanden</td>
+                <td>Bas + Codex</td>
+                <td>Repo-pad, remote en branch boven elke opdracht</td>
+                <td>Alle opdrachten starten met harde repo-controle</td>
+                <td>Ja, alleen met pad/remote-check vooraf</td>
+              </tr>
+              <tr class="interactive-row" data-priority="P0 WACHT" data-detail="Waarom beperkt opnieuw proberen: Etsy is waardevol, maar niet belangrijk genoeg om TeePublic en Printify stil te zetten.">
+                <td><span class="pill wait">WACHT</span></td>
+                <td>Oorspronkelijke worktree vervuild</td>
+                <td>Studio OS</td>
+                <td>Nieuwe taken mogen lokale wijzigingen niet overschrijven</td>
+                <td>Codex</td>
+                <td>`git status --short` toont ongerelateerde wijzigingen</td>
+                <td>Gebruik aparte schone worktree vanaf actuele main</td>
+                <td>Nee, niet in vervuilde worktree werken</td>
+              </tr>
+              <tr class="interactive-row" data-priority="WACHT" data-detail="Waarom parkeren: zonder betaal- en belastinggegevens is dit kanaal geen korte omzetroute.">
+                <td><span class="pill blocked">P0</span></td>
+                <td>Etsy API 403</td>
+                <td>NumberNinjaDesigns</td>
+                <td>Etsy als primaire kooproute vertraagt</td>
+                <td>Bas</td>
+                <td>Exacte foutmelding en accountstatus vastleggen</td>
+                <td>Parkeren of accountrechten opnieuw controleren</td>
+                <td>Eenmalig opnieuw proberen, daarna parkeren</td>
+              </tr>
+              <tr class="interactive-row" data-priority="WACHT" data-detail="Waarom opnieuw proberen: pas zinvol na handmatige accountverificatie door Bas.">
+                <td><span class="pill wait">WACHT</span></td>
+                <td>Redbubble PayPal/VAT</td>
+                <td>NumberNinjaDesigns</td>
+                <td>Kanaal niet publiceerbaar</td>
+                <td>Bas</td>
+                <td>Ontbrekende betaal- en belastingvelden</td>
+                <td>Wel of niet energie steken in Redbubble nu</td>
+                <td>Nee, pas na betaalgegevens</td>
+              </tr>
+              <tr class="interactive-row" data-priority="P1" data-detail="Waarom opnieuw proberen: productiescherm, technische omgeving en publieke site moeten apart worden opgeschoond.">
+                <td><span class="pill wait">WACHT</span></td>
+                <td>YouTube account/verificatie</td>
+                <td>TOK Hub</td>
+                <td>Content kan niet live</td>
+                <td>Bas</td>
+                <td>Verificatiestatus of accountmelding</td>
+                <td>Accountactie afronden of kanaal tijdelijk parkeren</td>
+                <td>Ja, na handmatige verificatie</td>
+              </tr>
+              <tr>
+                <td><span class="pill warn">P1</span></td>
+                <td>Dashboardgrenzen historisch vervuild</td>
+                <td>Studio OS</td>
+                <td>Langzamere besluitvorming</td>
+                <td>Bas + Codex</td>
+                <td>Oude schermtaal en gemengde modulebenamingen</td>
+                <td>Productiescherm blijft businessgericht; andere scopes later apart</td>
+                <td>Ja, per product apart opschonen</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="kansen" aria-labelledby="kansen-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Kansen</span>
+            <h2 id="kansen-title">Kansenlijst</h2>
+          </div>
+          <p class="section-note">Kansen worden gekozen op waarde, effort en hoe snel ze verkoop of bereik kunnen opleveren.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card" data-priority="P2" tabindex="0" role="button" aria-expanded="false">
+            <h3>TeePublic kanaal afronden</h3>
+            <p>Project: NumberNinjaDesigns</p>
+            <ul class="info-list">
+              <li><span>Waarde</span><strong>Extra verkoopkanaal</strong></li>
+              <li><span>Effort</span><strong>Laag</strong></li>
+              <li><span>Prioriteit</span><strong>Hoog</strong></li>
+              <li><span>Actie</span><strong>Account en eerste uploadpad afronden</strong></li>
+            </ul>
+            <div class="detail-panel"><span>Beslissing: vandaag doorgaan als accountafronding kort blijft.</span></div>
+          </article>
+          <article class="card" data-priority="P2" tabindex="0" role="button" aria-expanded="false">
+            <h3>Listings uitbreiden</h3>
+            <p>Project: NumberNinjaDesigns</p>
+            <ul class="info-list">
+              <li><span>Waarde</span><strong>Meer zoekkansen</strong></li>
+              <li><span>Effort</span><strong>Middel</strong></li>
+              <li><span>Prioriteit</span><strong>Hoog</strong></li>
+              <li><span>Actie</span><strong>Vijf varianten kiezen rond datahumor</strong></li>
+            </ul>
+            <div class="detail-panel"><span>Beslissing: pas opschalen na keuze van primaire verkoopkanalen.</span></div>
+          </article>
+          <article class="card" data-priority="P2 WACHT" tabindex="0" role="button" aria-expanded="false">
+            <h3>TOK Hub contentplanning</h3>
+            <p>Project: TOK Hub</p>
+            <ul class="info-list">
+              <li><span>Waarde</span><strong>Consistent bereik</strong></li>
+              <li><span>Effort</span><strong>Middel</strong></li>
+              <li><span>Prioriteit</span><strong>Middel</strong></li>
+              <li><span>Actie</span><strong>Weekplanning met drie onderwerpen maken</strong></li>
+            </ul>
+            <div class="detail-panel"><span>Beslissing: alleen starten na accountcheck en duidelijke claimgrenzen.</span></div>
+          </article>
+          <article class="card" data-priority="P2 CODEX-KLAAR" tabindex="0" role="button" aria-expanded="false">
+            <h3>Prototype verbeteren</h3>
+            <p>Project: Boodschappen Vergelijker</p>
+            <ul class="info-list">
+              <li><span>Waarde</span><strong>Snelle gebruikstest</strong></li>
+              <li><span>Effort</span><strong>Middel</strong></li>
+              <li><span>Prioriteit</span><strong>Middel</strong></li>
+              <li><span>Actie</span><strong>Drie kernschermen kiezen</strong></li>
+            </ul>
+            <div class="detail-panel"><span>Beslissing: Codex kan pas starten na keuze van minimale schermscope.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="verkoopkanalen" aria-labelledby="verkoopkanalen-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Verkoopkanalen</span>
+            <h2 id="verkoopkanalen-title">Mensentaalstatus</h2>
+          </div>
+          <p class="section-note">Geen technische details; alleen of het kanaal bruikbaar is, wat blokkeert en wat het kan opleveren.</p>
+        </div>
+        <div class="filter-bar" aria-label="Verkoopkanaaladvies filter">
+          <button class="filter-button is-active" type="button" data-channel-filter="all">Alles</button>
+          <button class="filter-button" type="button" data-channel-filter="DOORGAAN">DOORGAAN</button>
+          <button class="filter-button" type="button" data-channel-filter="PARKEREN">PARKEREN</button>
+          <button class="filter-button" type="button" data-channel-filter="LATER">LATER</button>
+          <button class="filter-button" type="button" data-channel-filter="CHECK NODIG">CHECK NODIG</button>
+        </div>
+        <p class="filter-status" id="channel-filter-status" aria-live="polite">Alle verkoopkanalen zichtbaar.</p>
+        <div class="table-card table-wrap">
+          <table class="business-table">
+            <thead>
+              <tr>
+                <th>Kanaal</th>
+                <th>Status</th>
+                <th>Blokkade</th>
+                <th>Volgende actie</th>
+                <th>Waarde</th>
+                <th>Advies</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="interactive-row" data-channel-advice="CHECK NODIG" data-detail="Reden advies: Etsy is waardevol, maar de blokkade moet eerst kort en feitelijk worden beoordeeld."><td>Etsy</td><td><span class="pill warn">Aandacht</span></td><td>Toegangsfout</td><td>Bewijs vastleggen en besluit nemen</td><td>Hoog: primaire koopintentie</td><td><span class="pill warn">CHECK NODIG</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="DOORGAAN" data-detail="Reden advies: Printify is nodig om productkeuze en productiepad te stabiliseren."><td>Printify</td><td><span class="pill hot">Voorbereiden</span></td><td>Productkeuze</td><td>Basisproduct vastzetten</td><td>Hoog: productiepartner</td><td><span class="pill hot">DOORGAAN</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="DOORGAAN" data-detail="Reden advies: TeePublic lijkt de snelste extra publicatieroute met lage inspanning."><td>TeePublic</td><td><span class="pill hot">Kansrijk</span></td><td>Accountafronding</td><td>Profiel en uploadpad afronden</td><td>Middel: snel extra kanaal</td><td><span class="pill hot">DOORGAAN</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="PARKEREN" data-detail="Reden advies: Redbubble vraagt betaal- en belastingwerk voordat het zakelijk bruikbaar is."><td>Redbubble</td><td><span class="pill blocked">Geblokkeerd</span></td><td>PayPal/VAT</td><td>Betaalgegevens alleen afronden als dit weinig tijd kost</td><td>Middel: extra zichtbaarheid</td><td><span class="pill wait">PARKEREN</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="LATER" data-detail="Reden advies: Amazon heeft waarde, maar is te zwaar voordat een eerste verkooproute werkt."><td>Amazon</td><td><span class="pill">Later</span></td><td>Complexer publicatiepad</td><td>Pas beoordelen na eerste werkende verkooproute</td><td>Hoog maar later</td><td><span class="pill">LATER</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="LATER" data-detail="Reden advies: Pinterest werkt beter zodra listingmateriaal en mockups klaar zijn."><td>Pinterest</td><td><span class="pill">Voorbereiden</span></td><td>Contentset ontbreekt</td><td>Pin-format kiezen na listingmateriaal</td><td>Middel: visuele ontdekking</td><td><span class="pill">LATER</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="LATER" data-detail="Reden advies: TikTok kan bereik geven, maar vraagt eerst scherpe hooks en visuals."><td>TikTok</td><td><span class="pill">Handmatig</span></td><td>Geen automatische plaatsing</td><td>Hook en videohoek kiezen</td><td>Middel: bereik</td><td><span class="pill">LATER</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="LATER" data-detail="Reden advies: Instagram volgt pas nadat mockups en visuele formats gekozen zijn."><td>Instagram</td><td><span class="pill">Voorbereiden</span></td><td>Visuele set nodig</td><td>Reel/post-format kiezen na mockups</td><td>Middel: merkopbouw</td><td><span class="pill">LATER</span></td></tr>
+              <tr class="interactive-row" data-channel-advice="CHECK NODIG" data-detail="Reden advies: YouTube is belangrijk voor TOK Hub, maar wacht op accountverificatie."><td>YouTube</td><td><span class="pill warn">Wacht op Bas</span></td><td>Account/verificatie</td><td>Accountactie uitvoeren</td><td>Hoog voor TOK Hub</td><td><span class="pill warn">CHECK NODIG</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="goedkeuringen" aria-labelledby="goedkeuringen-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Goedkeuringen</span>
+            <h2 id="goedkeuringen-title">Review en besluitvorming</h2>
+          </div>
+          <p class="section-note">Alles wat wacht op een ja, nee, keuze of handmatige accountactie.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card" data-priority="P0" tabindex="0" role="button" aria-expanded="false"><h3>PR klaar voor review</h3><p>Studio OS productgrenzen staan op main. Volgende stap: beoordelen welke schermtaal eerst wordt opgeschoond.</p><span class="pill hot">Review</span><div class="detail-panel"><span>Goedkeuren: scope en mergeadvies. Waarom: voorkomt productgrensvervuiling. Risico: verkeerde schermtaal komt terug. Stap: PR-bestanden nalopen. Advies: goedkeuren als scope schoon is.</span></div></article>
+          <article class="card" data-priority="CODEX-KLAAR" tabindex="0" role="button" aria-expanded="false"><h3>Prompt klaar voor Codex</h3><p>Boodschappen Vergelijker prototype-scope kan naar Codex zodra Bas de minimale schermen kiest.</p><span class="pill codex">Klaar</span><div class="detail-panel"><span>Goedkeuren: minimale schermscope. Waarom: beperkt bouwrisico. Risico: te breed prototype. Stap: drie schermen kiezen. Advies: eerst klein starten.</span></div></article>
+          <article class="card" data-priority="WACHT" tabindex="0" role="button" aria-expanded="false"><h3>Merge wacht op Bas</h3><p>Nieuwe productieaanpassingen mogen pas na review en akkoord worden gemerged.</p><span class="pill warn">Wacht op Bas</span><div class="detail-panel"><span>Goedkeuren: merge na smoke. Waarom: main blijft betrouwbaar. Risico: ongeteste UI op main. Stap: reviewrapport lezen. Advies: merge alleen bij PASS.</span></div></article>
+          <article class="card" data-priority="WACHT" tabindex="0" role="button" aria-expanded="false"><h3>Accountactie wacht op Bas</h3><p>YouTube en Redbubble vragen handmatige controle buiten Studio OS.</p><span class="pill warn">Wacht op Bas</span><div class="detail-panel"><span>Goedkeuren: accountcontrole. Waarom: externe blokkades verdwijnen niet vanzelf. Risico: kanalen blijven stil. Stap: accountmeldingen controleren. Advies: alleen korte controle doen.</span></div></article>
+          <article class="card" data-priority="P1" tabindex="0" role="button" aria-expanded="false"><h3>Content/listing wacht op Bas</h3><p>NumberNinjaDesigns listingteksten en mockuprichting vragen een definitieve keuze.</p><span class="pill hot">Vandaag</span><div class="detail-panel"><span>Goedkeuren: listingrichting. Waarom: verkooproute heeft content nodig. Risico: geen publiceerbaar product. Stap: titel, tags en mockup kiezen. Advies: vandaag afronden.</span></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="naar-codex" aria-labelledby="naar-codex-title">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Naar Codex</span>
+            <h2 id="naar-codex-title">Opdrachtvoorbereiding</h2>
+          </div>
+          <p class="section-note">Alleen tekstuele voorbereiding. Geen automatische uitvoering vanuit dit scherm.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card codex-card" data-priority="CODEX-KLAAR">
+            <h3>PRODUCTIE: Command Center volgende verbetering</h3>
+            <code>Scope: PRODUCTIE</code>
+            <code>Onderdeel: Studio OS Command Center</code>
+            <code>Doel-interface: apps/command-center/index.html</code>
+            <code>Verboden interfaces: technisch dashboard, public website, runtime console</code>
+            <code>Niet aanraken: apps/studio-dashboard/*, apps/public-site/*, apps/runtime-console/*, runtime/*, scripts/*, services/*, shared/contracts/*, docs/governance/*</code>
+            <p>Maak de dagelijkse actiequeue later dynamischer met betere sortering, zonder dataopslag of externe koppelingen.</p>
+            <button class="copy-button" type="button">Prompt kopiëren</button>
+            <span class="copy-feedback" aria-live="polite"></span>
+            <textarea class="manual-copy" readonly></textarea>
+          </article>
+          <article class="card codex-card" data-priority="CODEX-KLAAR">
+            <h3>TECHNISCH: Technical Dashboard later opschonen</h3>
+            <code>Scope: TECHNISCH</code>
+            <code>Onderdeel: Studio OS Technical Dashboard</code>
+            <code>Doel-interface: apps/studio-dashboard/index.html</code>
+            <code>Verboden interfaces: Command Center, public website, runtime console</code>
+            <code>Niet aanraken: apps/command-center/*, apps/public-site/*, runtime/*, scripts/*, services/*, shared/contracts/*</code>
+            <p>Bereid een aparte latere opdracht voor om technische schermtaal los te houden van dagelijkse productie.</p>
+            <button class="copy-button" type="button">Prompt kopiëren</button>
+            <span class="copy-feedback" aria-live="polite"></span>
+            <textarea class="manual-copy" readonly></textarea>
+          </article>
+          <article class="card codex-card" data-priority="CODEX-KLAAR">
+            <h3>WEBSITE: Public site later vervangen</h3>
+            <code>Scope: WEBSITE</code>
+            <code>Onderdeel: Studio OS Website</code>
+            <code>Doel-interface: apps/public-site/index.html</code>
+            <code>Verboden interfaces: Command Center, technisch dashboard, runtime console</code>
+            <code>Niet aanraken: apps/command-center/*, apps/studio-dashboard/*, apps/runtime-console/*, runtime/*, scripts/*, services/*</code>
+            <p>Bereid een aparte latere opdracht voor om de publieke site Studio OS te laten uitleggen aan bezoekers.</p>
+            <button class="copy-button" type="button">Prompt kopiëren</button>
+            <span class="copy-feedback" aria-live="polite"></span>
+            <textarea class="manual-copy" readonly></textarea>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Studio OS Command Center - businessgericht overzicht voor dagelijkse productie.
+    </footer>
+  </div>
+  <script>
+    (() => {
+      const navLinks = Array.from(document.querySelectorAll(".nav a[href^='#']"));
+      const priorityButtons = Array.from(document.querySelectorAll("[data-priority-filter]"));
+      const channelButtons = Array.from(document.querySelectorAll("[data-channel-filter]"));
+      const priorityStatus = document.getElementById("filter-status");
+      const channelStatus = document.getElementById("channel-filter-status");
+      const priorityItems = Array.from(document.querySelectorAll("[data-priority]"));
+      const channelRows = Array.from(document.querySelectorAll("[data-channel-advice]"));
+
+      function setActiveSection(id) {
+        navLinks.forEach((link) => {
+          link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+
+      function scrollToSection(id) {
+        const target = document.getElementById(id);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setActiveSection(id);
+      }
+
+      function setButtonState(buttons, activeButton) {
+        buttons.forEach((button) => {
+          button.classList.toggle("is-active", button === activeButton);
+        });
+      }
+
+      function closeAllDetails() {
+        document.querySelectorAll(".is-open").forEach((item) => {
+          item.classList.remove("is-open");
+          item.setAttribute("aria-expanded", "false");
+        });
+        document.querySelectorAll(".detail-row").forEach((row) => row.remove());
+      }
+
+      function matchesToken(value, token) {
+        return String(value || "").split(/\s+/).includes(token);
+      }
+
+      function applyPriorityFilter(filter) {
+        priorityItems.forEach((item) => {
+          item.classList.toggle("is-hidden", filter !== "all" && !matchesToken(item.dataset.priority, filter));
+        });
+        priorityStatus.textContent = filter === "all" ? "Alle prioriteiten zichtbaar." : `Filter actief: ${filter}.`;
+        closeAllDetails();
+      }
+
+      function applyChannelFilter(filter) {
+        channelRows.forEach((row) => {
+          row.classList.toggle("is-hidden", filter !== "all" && row.dataset.channelAdvice !== filter);
+        });
+        channelStatus.textContent = filter === "all" ? "Alle verkoopkanalen zichtbaar." : `Verkoopkanaalfilter actief: ${filter}.`;
+        closeAllDetails();
+      }
+
+      function toggleCard(card) {
+        const isOpen = card.classList.toggle("is-open");
+        card.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      function toggleDetailRow(row) {
+        const next = row.nextElementSibling;
+        if (next && next.classList.contains("detail-row")) {
+          next.remove();
+          return;
+        }
+        document.querySelectorAll(".detail-row").forEach((item) => item.remove());
+        const detail = document.createElement("tr");
+        detail.className = "detail-row";
+        const cell = document.createElement("td");
+        cell.colSpan = row.children.length;
+        cell.textContent = row.dataset.detail || "Geen extra detail beschikbaar.";
+        detail.appendChild(cell);
+        row.insertAdjacentElement("afterend", detail);
+      }
+
+      function buildPrompt(card) {
+        const title = card.querySelector("h3")?.textContent.trim() || "Codex opdracht";
+        const lines = Array.from(card.querySelectorAll("code")).map((item) => item.textContent.trim());
+        const opdracht = card.querySelector("p")?.textContent.trim() || "";
+        return `${title}\n\n${lines.join("\n")}\nOPDRACHT: ${opdracht}`;
+      }
+
+      async function copyPrompt(card) {
+        const prompt = buildPrompt(card);
+        const feedback = card.querySelector(".copy-feedback");
+        const manual = card.querySelector(".manual-copy");
+        try {
+          await navigator.clipboard.writeText(prompt);
+          feedback.textContent = "Gekopieerd";
+          manual.classList.remove("is-visible");
+        } catch (error) {
+          manual.value = prompt;
+          manual.classList.add("is-visible");
+          feedback.textContent = "Kopieer handmatig";
+        }
+      }
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          scrollToSection(link.getAttribute("href").slice(1));
+        });
+      });
+
+      document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+        button.addEventListener("click", () => scrollToSection(button.dataset.scrollTarget));
+      });
+
+      priorityButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setButtonState(priorityButtons, button);
+          applyPriorityFilter(button.dataset.priorityFilter);
+        });
+      });
+
+      channelButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setButtonState(channelButtons, button);
+          applyChannelFilter(button.dataset.channelFilter);
+        });
+      });
+
+      document.querySelector("[data-reset-view]")?.addEventListener("click", () => {
+        const priorityAll = priorityButtons.find((button) => button.dataset.priorityFilter === "all");
+        const channelAll = channelButtons.find((button) => button.dataset.channelFilter === "all");
+        if (priorityAll) setButtonState(priorityButtons, priorityAll);
+        if (channelAll) setButtonState(channelButtons, channelAll);
+        applyPriorityFilter("all");
+        applyChannelFilter("all");
+      });
+
+      document.querySelectorAll(".queue-item, .card[role='button']").forEach((card) => {
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("button, textarea")) return;
+          toggleCard(card);
+        });
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleCard(card);
+          }
+        });
+      });
+
+      document.querySelectorAll(".interactive-row").forEach((row) => {
+        row.tabIndex = 0;
+        row.addEventListener("click", () => toggleDetailRow(row));
+        row.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleDetailRow(row);
+          }
+        });
+      });
+
+      document.querySelectorAll(".copy-button").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          copyPrompt(button.closest(".codex-card"));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

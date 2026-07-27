@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-15T21:01:00.4200702+02:00",
+  "files": [
+    {
+      "sourcePath": "C:/AI/Active/Finance Producs Factory MVP/Finance_Product_Factory.html",
+      "targetPath": "incoming/Finance_Product_Factory.html",
+      "role": "authoritative-html",
+      "size": 106716,
+      "sha256": "fdf375f084bfb6521de4dc412426e88b1936d1bbb533c7ddc2e753d9cfd00c48",
+      "copiedAt": "2026-07-15T01:46:21.9701512+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": true,
+      "selectionReason": "Most complete proven Finance Product Factory source with Basic/Pro configuration and an embedded Pro OOXML template."
+    },
+    {
+      "sourcePath": "incoming/Finance_Product_Factory.html@pre-import",
+      "targetPath": "legacy/source-baselines/Finance_Product_Factory.legacy-16079.html",
+      "role": "legacy-html",
+      "size": 16079,
+      "sha256": "967482956468f78988b3362756a816197ad3982bef30fbffc599b69ab0701d97",
+      "copiedAt": "2026-07-15T01:46:21.9701512+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": false,
+      "selectionReason": "Superseded limited source, preserved byte-for-byte before the authoritative import."
+    },
+    {
+      "sourcePath": "C:/AI/Active/Finance Producs Factory MVP/Finance_Product_Factory.html",
+      "targetPath": "legacy/source-baselines/Finance_Product_Factory.authoritative-106716.html",
+      "role": "authoritative-html-archive",
+      "size": 106716,
+      "sha256": "fdf375f084bfb6521de4dc412426e88b1936d1bbb533c7ddc2e753d9cfd00c48",
+      "copiedAt": "2026-07-15T01:46:21.9701512+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": true,
+      "selectionReason": "Immutable repository-local reference copy of the selected source."
+    },
+    {
+      "sourcePath": "incoming/Finance_Product_Factory_Overdracht_Claude_Code.docx",
+      "targetPath": "docs/Finance_Product_Factory_Overdracht_Claude_Code.docx",
+      "role": "handover-document",
+      "size": 37857,
+      "sha256": "f69bfa427d22fa72de9d6baff687024c7ab42a268fa19f846c4924915604e562",
+      "copiedAt": "2026-07-15T01:46:21.9701512+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": true,
+      "selectionReason": "Only valid handover candidate; all required OOXML parts are readable."
+    },
+    {
+      "sourcePath": "incoming/Projectinstellingen en Bronnen.txt",
+      "targetPath": "docs/Projectinstellingen en Bronnen.txt",
+      "role": "project-settings",
+      "size": 2425,
+      "sha256": "684265ab6f60b4f4929204077dcc23d755f44bc49913be27bedfd533f2c48b9b",
+      "copiedAt": "2026-07-15T01:46:21.9701512+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": true,
+      "selectionReason": "User-supplied project source defining documentation precedence and tool usage."
+    },
+    {
+      "sourcePath": "incoming/listings_export_2026-07-15.csv",
+      "targetPath": "incoming/listings_export_2026-07-15.csv",
+      "role": "market-benchmark-csv",
+      "size": 15632,
+      "sha256": "00eb0355753faa9622d26f0e9646658b956860b344191f0a895a063f8a977b46",
+      "copiedAt": "2026-07-15T19:55:01.8304764+02:00",
+      "modifiedAfterCopy": false,
+      "selectedAsAuthoritative": false,
+      "selectionReason": "User-supplied static 50-record marketplace benchmark retained as market evidence only; it is not live market truth, official marketplace data, or product-architecture authority."
+    }
+  ]
+}

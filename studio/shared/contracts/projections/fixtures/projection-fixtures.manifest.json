@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-14",
+  "manifestId": "phase14:projection-fixture-validation",
+  "purpose": "Declare deterministic projection fixture staleness inputs without reading or mutating runtime.",
+  "boundary": {
+    "readOnly": true,
+    "writesAllowed": false,
+    "runtimeMutationAllowed": false,
+    "dashboardMutationAllowed": false,
+    "executionAllowed": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "browserStorageAuthorityAllowed": false
+  },
+  "fixtures": [
+    {
+      "fixtureId": "phase14:fresh-dashboard-projection",
+      "projectionPath": "shared/contracts/projections/fixtures/fresh-dashboard-projection.fixture.json",
+      "contractPath": "shared/contracts/projections/dashboard-projection.schema.json",
+      "sourceEvidenceObservedAt": "2026-06-07T10:09:00Z",
+      "expectedStaleness": "fresh",
+      "validationReportPath": "shared/contracts/projections/validation-reports/fresh-dashboard-projection.validation-report.json"
+    },
+    {
+      "fixtureId": "phase14:stale-dashboard-projection",
+      "projectionPath": "shared/contracts/projections/fixtures/stale-dashboard-projection.fixture.json",
+      "contractPath": "shared/contracts/projections/dashboard-projection.schema.json",
+      "sourceEvidenceObservedAt": "2026-06-07T10:12:00Z",
+      "expectedStaleness": "stale",
+      "validationReportPath": "shared/contracts/projections/validation-reports/stale-dashboard-projection.validation-report.json"
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-14",
+    "owner": "studio-os",
+    "safetyClass": "read-only-projection-fixture-validation"
+  }
+}

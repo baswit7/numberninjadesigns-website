@@ -1,0 +1,145 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-preflight-gate",
+    "auditRequired":  true,
+    "entries":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "preflightId":  "PFG-EXREQ-GHLX-REQUEST-001",
+                        "requestId":  "EXREQ-GHLX-REQUEST-001",
+                        "sourceApprovalId":  "APG-001",
+                        "approvalState":  "REQUESTED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "packageReadinessState":  "BLOCKED",
+                        "preflightState":  "BLOCKED",
+                        "riskClassification":  "medium",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-package-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "approval-required",
+                                             "reason":  "Human approval is required before any external executor may consider this action."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "preflightId":  "PFG-EXREQ-GHSX-REQUEST-001",
+                        "requestId":  "EXREQ-GHSX-REQUEST-001",
+                        "sourceApprovalId":  "APG-002",
+                        "approvalState":  "PENDING_APPROVAL",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "packageReadinessState":  "BLOCKED",
+                        "preflightState":  "BLOCKED",
+                        "riskClassification":  "low",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-package-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "pending-review",
+                                             "reason":  "Pending approval cannot execute."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "preflightId":  "PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                        "sourceApprovalId":  "APG-003",
+                        "approvalState":  "UNKNOWN",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "packageReadinessState":  "BLOCKED",
+                        "preflightState":  "BLOCKED",
+                        "riskClassification":  "high",
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-package-state",
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "unknown-state-block",
+                                             "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "unknown-approval-block",
+                                             "reason":  "UNKNOWN approval state never passes automatically."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "preflightId":  "PFG-EXREQ-GHLX-APPROVED-001",
+                        "requestId":  "EXREQ-GHLX-APPROVED-001",
+                        "sourceApprovalId":  "APG-004",
+                        "approvalState":  "APPROVED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "packageReadinessState":  "READY_FOR_REVIEW",
+                        "preflightState":  "READY_FOR_MANUAL_REVIEW",
+                        "riskClassification":  "medium",
+                        "executionDispatchAllowed":  false,
+                        "result":  "passed-preflight-ready-for-manual-review",
+                        "blockers":  [
+
+                                     ]
+                    }
+                ],
+    "boundaries":  {
+                       "preflightOnly":  true,
+                       "performsExecution":  false,
+                       "automaticExecution":  false,
+                       "dispatchExecution":  false,
+                       "liveGitHubActionExecution":  false,
+                       "providerExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "approvalMutation":  false,
+                       "requestPackageMutation":  false,
+                       "autoApproval":  false,
+                       "autoMerge":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "secretAccess":  false,
+                       "credentialAccess":  false,
+                       "protectedBranchWrites":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "deploymentMutation":  false,
+                       "mutatesFilesOutsideRuntimeReports":  false
+                   },
+    "ownership":  {
+                      "ownsPreflightDecisions":  true,
+                      "ownsPreflightAuditTrail":  true,
+                      "ownsPreflightEvidence":  true,
+                      "ownsExecutionRequestPackages":  false,
+                      "ownsApprovalStatus":  false,
+                      "ownsExecutionTruth":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsGithubTruth":  false
+                  }
+}

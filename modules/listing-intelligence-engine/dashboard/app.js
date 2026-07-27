@@ -1,12 +1,35 @@
-const STORAGE_KEY = 'numberninjadesigns.listing-intelligence.dashboard.v1';
+const PRODUCTIONS = Object.freeze({
+  digital: {
+    id: 'digital',
+    label: 'Digital Production',
+    description: 'Templates, workbooks and downloadable listing packages',
+    catalog: '../../../index.html#digital-products',
+    stages: ['NO LISTING', 'DRAFT', 'BLOCKED', 'REVIEW', 'READY']
+  },
+  physical: {
+    id: 'physical',
+    label: 'Physical Production',
+    description: 'Apparel, source artwork, mockups and physical listing packages',
+    catalog: '../../../designs.html',
+    stages: ['SOURCE ART', 'MOCKUP', 'PRODUCT', 'REVIEW', 'READY']
+  }
+});
+const requestedProduction = new URLSearchParams(location.search).get('production');
+const production = PRODUCTIONS[requestedProduction] || PRODUCTIONS.digital;
+const STORAGE_KEY = `numberninjadesigns.listing-intelligence.${production.id}.v1`;
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const elements = {
   cards: document.querySelector('#cards'),
+  branchDescription: document.querySelector('#branchDescription'),
+  branchName: document.querySelector('#branchName'),
+  catalogLink: document.querySelector('#catalogLink'),
   drop: document.querySelector('#drop'),
   files: document.querySelector('#files'),
   imports: document.querySelector('#imports'),
   pipeline: document.querySelector('#pipeline'),
-  status: document.querySelector('#status')
+  selection: document.querySelector('#selection'),
+  status: document.querySelector('#status'),
+  productionLabel: document.querySelector('#productionLabel')
 };
 
 function loadState() {
@@ -43,6 +66,42 @@ function escapeHtml(value) {
 function setStatus(message, mode = 'ready') {
   elements.status.textContent = message;
   elements.status.dataset.mode = mode;
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function renderSelection(items) {
+  if (!items.length) {
+    elements.selection.hidden = true;
+    elements.selection.innerHTML = '';
+    return;
+  }
+
+  const hasErrors = items.some(item => item.status === 'ERROR' || item.status === 'REVIEW');
+  const isProcessing = items.some(item => item.status === 'PROCESSING');
+  elements.selection.hidden = false;
+  elements.selection.dataset.mode = hasErrors ? 'warning' : isProcessing ? 'loading' : 'ready';
+  elements.selection.innerHTML = `
+    <div class="selection-heading">
+      <small>${items.length === 1 ? 'SELECTED CSV' : 'SELECTED CSV FILES'}</small>
+      <span>${items.length} ${items.length === 1 ? 'file' : 'files'}</span>
+    </div>
+    <ul>
+      ${items.map(item => `
+        <li>
+          <div>
+            <b>${escapeHtml(item.name)}</b>
+            <span>${escapeHtml(formatFileSize(item.size))} · ${escapeHtml(item.detail)}</span>
+          </div>
+          <strong data-state="${escapeHtml(item.status)}">${escapeHtml(item.status)}</strong>
+        </li>
+      `).join('')}
+    </ul>
+  `;
 }
 
 function parseCsv(text) {
@@ -99,14 +158,14 @@ function renderCards() {
     ? new Date(state.imports[0].importedAt).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' })
     : '—';
   const cards = [
+    ['Production', production.label],
     ['Research files', state.imports.length],
     ['Imported rows', totalRows],
     ['Recognized datasets', known],
     ['Unknown schemas', unknown],
     ['Latest import', latest],
     ['Storage', 'LOCAL'],
-    ['API', 'NOT CONFIGURED'],
-    ['MCP', 'NOT CONFIGURED']
+    ['Review gate', 'HUMAN']
   ];
 
   elements.cards.innerHTML = cards.map(([label, value]) => (
@@ -115,9 +174,8 @@ function renderCards() {
 }
 
 function renderPipeline() {
-  const stages = ['NO LISTING', 'DRAFT', 'BLOCKED', 'REVIEW', 'READY'];
-  elements.pipeline.innerHTML = stages.map(stage => (
-    `<div class="stage"><small>${stage}</small><strong>—</strong><span>NO PACKAGE SOURCE</span></div>`
+  elements.pipeline.innerHTML = production.stages.map(stage => (
+    `<div class="stage"><small>${stage}</small><strong>—</strong><span>${production.id === 'physical' ? 'AWAITING PRODUCT EVIDENCE' : 'NO PACKAGE SOURCE'}</span></div>`
   )).join('');
 }
 
@@ -130,6 +188,16 @@ function renderImports() {
 }
 
 function render() {
+  document.title = `Listing Intelligence · ${production.label} | NumberNinjaDesigns`;
+  elements.productionLabel.textContent = `NUMBERNINJADESIGNS / ${production.label.toUpperCase()}`;
+  elements.branchName.textContent = production.label;
+  elements.branchDescription.textContent = production.description;
+  elements.catalogLink.href = production.catalog;
+  document.querySelectorAll('[data-production-link]').forEach(link => {
+    const active = link.dataset.productionLink === production.id;
+    link.classList.toggle('active', active);
+    link.setAttribute('aria-current', active ? 'page' : 'false');
+  });
   renderCards();
   renderPipeline();
   renderImports();
@@ -139,10 +207,17 @@ async function processFiles(files) {
   const candidates = Array.from(files);
   if (!candidates.length) return;
 
+  const selection = candidates.map(file => ({
+    name: file.name,
+    size: file.size,
+    status: 'PROCESSING',
+    detail: 'Reading locally…'
+  }));
+  renderSelection(selection);
   setStatus('PROCESSING', 'loading');
   let blocked = 0;
 
-  for (const file of candidates) {
+  for (const [index, file] of candidates.entries()) {
     try {
       if (!file.name.toLowerCase().endsWith('.csv')) throw new Error('Only CSV files are supported.');
       if (file.size > MAX_FILE_BYTES) throw new Error('CSV exceeds the 5 MB local limit.');
@@ -152,8 +227,11 @@ async function processFiles(files) {
 
       const type = detectExport(rows[0]);
       if (type === 'UNKNOWN') blocked += 1;
+      selection[index].status = type === 'UNKNOWN' ? 'REVIEW' : 'IMPORTED';
+      selection[index].detail = `${type} · ${Math.max(0, rows.length - 1)} rows`;
       state.imports.unshift({
         name: file.name,
+        production: production.id,
         type,
         fields: rows[0].length,
         rows: Math.max(0, rows.length - 1),
@@ -162,10 +240,13 @@ async function processFiles(files) {
       });
     } catch (error) {
       blocked += 1;
+      selection[index].status = 'ERROR';
+      selection[index].detail = error.message;
       console.error(`[NumberNinjaDesigns Listing Intelligence] ${file.name} was not imported.`, error);
     }
   }
 
+  renderSelection(selection);
   saveState();
   render();
   elements.files.value = '';

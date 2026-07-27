@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07090c">
+  <meta name="description" content="Lokale NumberNinjaDesigns API Registry Manager voor veilige tweerichtingssync met api-registry.json.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>NumberNinjaDesigns · API Registry Manager</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#manager">Naar API-beheer</a>
+
+  <header class="topbar">
+    <a class="brand" href="../../../products/digital/finance-product-factory/index.html#api">NumberNinjaDesigns</a>
+    <span class="mode-badge">Lokale broneditor</span>
+  </header>
+
+  <main id="manager">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Studio OS · API Governance</p>
+        <h1>API Registry<br>Manager</h1>
+        <p class="intro">Bewerk dezelfde registry die je in VS Code ziet. De manager detecteert externe bestandswijzigingen en blokkeert overschrijven bij conflicten.</p>
+      </div>
+      <div class="connection-card">
+        <span id="connection-dot" class="connection-dot" data-state="disconnected" aria-hidden="true"></span>
+        <div>
+          <strong id="connection-label">Geen bron gekoppeld</strong>
+          <span id="source-name">Selecteer api-registry.json</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="control-panel" aria-labelledby="source-title">
+      <div>
+        <p class="eyebrow">Gedeelde source of truth</p>
+        <h2 id="source-title">Bronbestand koppelen</h2>
+        <p class="source-path">Verwacht: <code>studio/shared/contracts/api-governance/api-registry.json</code></p>
+      </div>
+      <div class="toolbar">
+        <button id="connect-source" class="primary-button" type="button">Bronbestand koppelen</button>
+        <button id="reload-source" class="secondary-button" type="button" disabled>Herladen</button>
+        <button id="save-source" class="secondary-button accent" type="button" disabled>Opslaan naar bron</button>
+        <button id="export-source" class="text-button" type="button" disabled>Backup JSON</button>
+      </div>
+      <input id="fallback-file" type="file" accept="application/json,.json" hidden>
+    </section>
+
+    <p id="manager-status" class="status-line" data-tone="neutral" role="status" aria-live="polite">Koppel het registrybestand om te beginnen.</p>
+
+    <section class="workspace" aria-label="API Registry werkruimte">
+      <aside class="registry-list-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Connectors</p>
+            <h2>API-register</h2>
+          </div>
+          <span id="api-count" class="count-badge">0</span>
+        </div>
+        <label class="search-field">
+          <span class="sr-only">Zoek connector</span>
+          <input id="api-search" type="search" placeholder="Zoek API of provider…" autocomplete="off" disabled>
+        </label>
+        <div id="api-list" class="api-list">
+          <p class="empty-state">Nog geen registry geladen.</p>
+        </div>
+      </aside>
+
+      <section class="editor-panel" aria-labelledby="editor-title">
+        <div id="editor-empty" class="editor-empty">
+          <span>01</span>
+          <h2 id="editor-title">Kies een connector</h2>
+          <p>Alleen governance-metadata wordt bewerkt. Secrets, tokens en credentialwaarden horen nooit in dit bestand.</p>
+        </div>
+
+        <form id="api-editor" hidden>
+          <div class="editor-heading">
+            <div>
+              <p class="eyebrow">Connectorconfiguratie</p>
+              <h2 id="selected-api-name">API</h2>
+            </div>
+            <span id="selected-api-status" class="status-pill">unknown</span>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>ID</span>
+              <input id="field-id" name="id" type="text" readonly>
+            </label>
+            <label class="field">
+              <span>Naam</span>
+              <input id="field-name" name="name" type="text" maxlength="80" required>
+            </label>
+            <label class="field">
+              <span>Provider</span>
+              <input id="field-provider" name="provider" type="text" maxlength="80" required>
+            </label>
+            <label class="field">
+              <span>Owner</span>
+              <input id="field-owner" name="owner" type="text" maxlength="100" required>
+            </label>
+            <label class="field">
+              <span>Status</span>
+              <select id="field-status" name="status" required></select>
+            </label>
+            <label class="field">
+              <span>Criticaliteit</span>
+              <select id="field-criticality" name="criticality" required>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
+                <option value="critical">critical</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Laatste validatie</span>
+              <input id="field-last-validation" name="lastValidation" type="text" placeholder="2026-07-27T10:00:00.000Z" required>
+            </label>
+            <label class="field span-2">
+              <span>Projecten <small>kommagescheiden</small></span>
+              <input id="field-projects" name="projectsUsing" type="text">
+            </label>
+            <label class="field span-2">
+              <span>Vereiste environmentvariabelen <small>alleen namen, nooit waarden</small></span>
+              <input id="field-env-vars" name="requiredEnvVars" type="text" autocomplete="off">
+            </label>
+            <label class="field">
+              <span>Vereiste scopes <small>kommagescheiden</small></span>
+              <textarea id="field-required-scopes" name="requiredScopes" rows="3"></textarea>
+            </label>
+            <label class="field">
+              <span>Toegekende scopes <small>kommagescheiden</small></span>
+              <textarea id="field-granted-scopes" name="grantedScopes" rows="3"></textarea>
+            </label>
+            <label class="field">
+              <span>Vereiste permissies <small>kommagescheiden</small></span>
+              <textarea id="field-required-permissions" name="requiredPermissions" rows="3"></textarea>
+            </label>
+            <label class="field">
+              <span>Toegekende permissies <small>kommagescheiden</small></span>
+              <textarea id="field-granted-permissions" name="grantedPermissions" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="editor-actions">
+            <button id="reset-api" class="text-button" type="button">Selectie herstellen</button>
+            <p>Wijzigingen blijven lokaal in concept tot je <strong>Opslaan naar bron</strong> kiest.</p>
+          </div>
+        </form>
+      </section>
+    </section>
+
+    <section class="security-note">
+      <strong>Securitygrens</strong>
+      <p>Deze manager doet geen providercalls en accepteert geen secretvelden. Opslaan vereist expliciete browsertoestemming en gebruikt conflictcontrole op de laatste bestandstijd.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>NumberNinjaDesigns Studio OS · local-first</span>
+    <span>Geen providercalls · geen secrets</span>
+  </footer>
+</body>
+</html>

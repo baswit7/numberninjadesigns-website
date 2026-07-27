@@ -1,0 +1,182 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-12T14:23:06.8183765Z",
+    "source":  "services/market-intelligence/generate-market-intelligence.ps1",
+    "status":  "connected",
+    "signalSources":  {
+                          "currentStudioKnowledge":  "connected",
+                          "numberNinjaDesignsCatalog":  "connected",
+                          "publicSignals":  "unknown"
+                      },
+    "providerHealth":  [
+                           {
+                               "providerName":  "Notion",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:53.5117990Z"
+                           },
+                           {
+                               "providerName":  "OpenAI",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:54.4003269Z"
+                           },
+                           {
+                               "providerName":  "GitHub",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:54.8080651Z"
+                           },
+                           {
+                               "providerName":  "Meta User Token",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:55.3613785Z"
+                           },
+                           {
+                               "providerName":  "Meta Facebook Page",
+                               "status":  "failed",
+                               "checkedAt":  "2026-06-12T14:20:55.5883787Z"
+                           },
+                           {
+                               "providerName":  "Meta Instagram Business",
+                               "status":  "failed",
+                               "checkedAt":  "2026-06-12T14:20:55.7476597Z"
+                           },
+                           {
+                               "providerName":  "Etsy",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:56.1016408Z"
+                           },
+                           {
+                               "providerName":  "Printify",
+                               "status":  "connected",
+                               "checkedAt":  "2026-06-12T14:20:56.8093659Z"
+                           }
+                       ],
+    "signals":  [
+                    {
+                        "signalId":  "signal.local.product-catalog.pivot-table-operator",
+                        "sourceType":  "current-studio-knowledge",
+                        "status":  "connected",
+                        "classification":  "A",
+                        "confidence":  0.92,
+                        "summary":  "Local product master identifies a ready Pivot Table Operator product concept.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "numberninjadesigns.pivot-table-operator.product-master",
+                                             "status":  "connected",
+                                             "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                             "summary":  "Matched local evidence terms: Pivot Table Operator, Excel users, data analysts, Commercial strength: high."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md"
+                                          ]
+                    },
+                    {
+                        "signalId":  "signal.local.seo-keywords.pivot-table-operator",
+                        "sourceType":  "current-studio-knowledge",
+                        "status":  "connected",
+                        "classification":  "B",
+                        "confidence":  0.84,
+                        "summary":  "Local SEO keyword file contains high-intent buyer and product phrases.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                             "status":  "connected",
+                                             "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                             "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+                                          ]
+                    },
+                    {
+                        "signalId":  "signal.local.product-backlog.top-five",
+                        "sourceType":  "current-studio-knowledge",
+                        "status":  "connected",
+                        "classification":  "A",
+                        "confidence":  0.9,
+                        "summary":  "Local backlog ranks first-batch product ideas with explicit confidence and readiness notes.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                             "status":  "connected",
+                                             "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                             "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+                                          ]
+                    },
+                    {
+                        "signalId":  "signal.public.tiktok-creator-search-insights",
+                        "sourceType":  "public-signal",
+                        "status":  "unknown",
+                        "classification":  "UNKNOWN",
+                        "confidence":  0,
+                        "summary":  "TikTok Creator Search Insights was not queried in this read-only phase; no fabricated trend data is allowed.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "public.tiktok-csi.not-collected",
+                                             "status":  "UNKNOWN",
+                                             "source":  "not-collected",
+                                             "summary":  "Unavailable source remains UNKNOWN."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "not-collected"
+                                          ]
+                    },
+                    {
+                        "signalId":  "signal.public.etsy-marketplace-manual-research",
+                        "sourceType":  "public-signal",
+                        "status":  "unknown",
+                        "classification":  "UNKNOWN",
+                        "confidence":  0,
+                        "summary":  "Etsy marketplace research was not performed by automation; manual checklist remains the only source.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "public.etsy-manual-research.not-collected",
+                                             "status":  "UNKNOWN",
+                                             "source":  "not-collected",
+                                             "summary":  "Unavailable source remains UNKNOWN."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "not-collected"
+                                          ]
+                    },
+                    {
+                        "signalId":  "signal.public.pinterest-trends",
+                        "sourceType":  "public-signal",
+                        "status":  "unknown",
+                        "classification":  "UNKNOWN",
+                        "confidence":  0,
+                        "summary":  "Pinterest trend evidence is not available in this phase; recommendations must not infer demand.",
+                        "evidence":  [
+                                         {
+                                             "evidenceId":  "public.pinterest-trends.not-collected",
+                                             "status":  "UNKNOWN",
+                                             "source":  "not-collected",
+                                             "summary":  "Unavailable source remains UNKNOWN."
+                                         }
+                                     ],
+                        "sourceLineage":  [
+                                              "not-collected"
+                                          ]
+                    }
+                ],
+    "boundaries":  {
+                       "readOnly":  true,
+                       "usesPublicSignalsOnly":  true,
+                       "usesLoginAutomation":  false,
+                       "usesOAuthAutomation":  false,
+                       "usesPrivateScraping":  false,
+                       "publishesContent":  false,
+                       "executesPosting":  false,
+                       "executesApprovalActions":  false,
+                       "mutatesExternalSystems":  false,
+                       "exposesSecrets":  false,
+                       "storesSecrets":  false
+                   }
+}

@@ -1,0 +1,370 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-22",
+    "reportId":  "execution-governance-simulation",
+    "generatedBy":  "services/execution-simulation/generate-execution-simulation.ps1",
+    "generatedAt":  "2026-06-08T09:19:28.5034441Z",
+    "simulationQuestion":  "If the sample execution plan were attempted, what governance consequences would occur?",
+    "sourceOfTruth":  {
+                          "governance":  "shared/contracts/execution",
+                          "authority":  "shared/contracts/authority + runtime/authority/authority-read-model.report.json",
+                          "observability":  "runtime/authority/authority-observability.report.json",
+                          "readiness":  "runtime/readiness/execution-plan.sample.json + runtime/readiness/readiness-report.sample.json"
+                      },
+    "consumedReports":  [
+                            {
+                                "path":  "runtime/readiness/execution-plan.sample.json",
+                                "role":  "Phase 10 sample execution plan",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-05T20:03:56.7259012Z",
+                                "isStale":  true,
+                                "isComplete":  true,
+                                "verdict":  "unknown",
+                                "reason":  "Phase 10 sample execution plan is stale; simulation result is unknown."
+                            },
+                            {
+                                "path":  "runtime/readiness/readiness-report.sample.json",
+                                "role":  "Phase 10 readiness report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-05T20:03:56.7259012Z",
+                                "isStale":  true,
+                                "isComplete":  true,
+                                "verdict":  "unknown",
+                                "reason":  "Phase 10 readiness report is stale; simulation result is unknown."
+                            },
+                            {
+                                "path":  "runtime/execution/execution-contract-validation.json",
+                                "role":  "Phase 9 execution contract validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:18:32.6745417Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 9 execution contract validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/execution/approval-registry-validation.json",
+                                "role":  "Phase 9 approval registry validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:18:32.7070092Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 9 approval registry validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/execution/rollback-plan-validation.json",
+                                "role":  "Phase 9 rollback plan validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:18:32.7252362Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 9 rollback plan validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/execution/idempotency-record-validation.json",
+                                "role":  "Phase 9 idempotency validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:18:32.7682930Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 9 idempotency validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-read-model.report.json",
+                                "role":  "Phase 16 authority read model",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:19:01.5839371Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 16 authority read model is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                "role":  "Phase 18 projection monitoring",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:19:21.9674623Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 18 projection monitoring is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                "role":  "Phase 19 evidence center",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:19:21.9644154Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 19 evidence center is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-evidence-history.report.json",
+                                "role":  "Phase 20 evidence history",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:19:21.9644154Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 20 evidence history is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-observability.report.json",
+                                "role":  "Phase 21 observability center",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T09:19:21.9644154Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 21 observability center is present, readable, complete and fresh."
+                            }
+                        ],
+    "status":  "unknown",
+    "summary":  {
+                    "knownInputCount":  9,
+                    "unknownInputCount":  2,
+                    "staleInputCount":  2,
+                    "warningCount":  9,
+                    "unknownCount":  10,
+                    "simulationReadinessScore":  57.58,
+                    "governanceCompletenessScore":  81.82,
+                    "approvalReadinessScore":  33.33
+                },
+    "readinessSimulation":  {
+                                "status":  "warning",
+                                "items":  [
+                                              {
+                                                  "id":  "readiness.plan-permission",
+                                                  "status":  "warning",
+                                                  "summary":  "Hypothetical plan has executionAllowed=False; readinessOnly=True.",
+                                                  "source":  "runtime/readiness/execution-plan.sample.json",
+                                                  "safe":  false
+                                              },
+                                              {
+                                                  "id":  "readiness.plan-steps",
+                                                  "status":  "warning",
+                                                  "summary":  "Plan steps=2; non-ready steps=2.",
+                                                  "source":  "runtime/readiness/execution-plan.sample.json",
+                                                  "safe":  false
+                                              },
+                                              {
+                                                  "id":  "readiness.report-checks",
+                                                  "status":  "warning",
+                                                  "summary":  "Readiness decision=partial; non-ready checks=2.",
+                                                  "source":  "runtime/readiness/readiness-report.sample.json",
+                                                  "safe":  false
+                                              }
+                                          ]
+                            },
+    "governanceImpact":  {
+                             "status":  "unknown",
+                             "items":  [
+                                           {
+                                               "id":  "impact.execution-contracts",
+                                               "status":  "pass",
+                                               "summary":  "Execution contract validation status is passed.",
+                                               "source":  "runtime/execution/execution-contract-validation.json",
+                                               "safe":  true
+                                           },
+                                           {
+                                               "id":  "impact.authority-domains",
+                                               "status":  "warning",
+                                               "summary":  "Hypothetical action intersects authority model with deniedAuthorityCount=6.",
+                                               "source":  "runtime/authority/authority-read-model.report.json",
+                                               "safe":  false
+                                           },
+                                           {
+                                               "id":  "impact.evidence-chain",
+                                               "status":  "unknown",
+                                               "summary":  "Evidence unknownCount=1.",
+                                               "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                               "safe":  false
+                                           },
+                                           {
+                                               "id":  "impact.observability-chain",
+                                               "status":  "unknown",
+                                               "summary":  "Observability status is unknown.",
+                                               "source":  "runtime/authority/authority-observability.report.json",
+                                               "safe":  false
+                                           }
+                                       ]
+                         },
+    "riskSimulation":  {
+                           "status":  "unknown",
+                           "items":  [
+                                         {
+                                             "id":  "risk.approval-readiness",
+                                             "status":  "warning",
+                                             "summary":  "Approval validation status=passed; missing readiness checks=2.",
+                                             "source":  "runtime/execution/approval-registry-validation.json + runtime/readiness/readiness-report.sample.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "risk.rollback-readiness",
+                                             "status":  "pass",
+                                             "summary":  "Rollback validation status is passed.",
+                                             "source":  "runtime/execution/rollback-plan-validation.json",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "risk.idempotency-readiness",
+                                             "status":  "pass",
+                                             "summary":  "Idempotency validation status is passed.",
+                                             "source":  "runtime/execution/idempotency-record-validation.json",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "risk.monitoring-findings",
+                                             "status":  "warning",
+                                             "summary":  "Monitoring findingCount=1.",
+                                             "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "risk.history-unknowns",
+                                             "status":  "unknown",
+                                             "summary":  "History status=unknown; unknownInputCount=0.",
+                                             "source":  "runtime/authority/authority-evidence-history.report.json",
+                                             "safe":  false
+                                         }
+                                     ]
+                       },
+    "readinessScoring":  {
+                             "status":  "unknown",
+                             "items":  [
+                                           {
+                                               "id":  "score.simulation-readiness",
+                                               "status":  "unknown",
+                                               "summary":  "simulationReadinessScore=57.58.",
+                                               "source":  "runtime/simulation/execution-simulation.report.json",
+                                               "safe":  false
+                                           },
+                                           {
+                                               "id":  "score.governance-completeness",
+                                               "status":  "unknown",
+                                               "summary":  "governanceCompletenessScore=81.82.",
+                                               "source":  "runtime/simulation/execution-simulation.report.json",
+                                               "safe":  false
+                                           },
+                                           {
+                                               "id":  "score.approval-readiness",
+                                               "status":  "warning",
+                                               "summary":  "approvalReadinessScore=33.33.",
+                                               "source":  "runtime/readiness/readiness-report.sample.json",
+                                               "safe":  false
+                                           }
+                                       ]
+                         },
+    "explainability":  {
+                           "status":  "unknown",
+                           "items":  [
+                                         {
+                                             "id":  "explain.simulation-scope",
+                                             "status":  "warning",
+                                             "summary":  "This report answers hypothetical governance consequences only; it does not perform the requested action.",
+                                             "source":  "shared/contracts/execution-simulation/simulation.manifest.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "explain.non-executable-source",
+                                             "status":  "warning",
+                                             "summary":  "Upstream readiness sample keeps execution disabled, so the simulated outcome cannot be pass.",
+                                             "source":  "runtime/readiness/execution-plan.sample.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "explain.unknown-propagation",
+                                             "status":  "unknown",
+                                             "summary":  "Upstream unknowns are preserved: observabilityUnknownCount=4; evidenceUnknownCount=1.",
+                                             "source":  "runtime/authority/authority-observability.report.json + runtime/authority/authority-monitoring-evidence.report.json",
+                                             "safe":  false
+                                         }
+                                     ]
+                       },
+    "unknowns":  {
+                     "status":  "unknown",
+                     "items":  [
+                                   {
+                                       "id":  "unknown.runtime.readiness.execution-plan.sample.json",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 10 sample execution plan is stale; simulation result is unknown.",
+                                       "source":  "runtime/readiness/execution-plan.sample.json",
+                                       "safe":  false
+                                   },
+                                   {
+                                       "id":  "unknown.runtime.readiness.readiness-report.sample.json",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 10 readiness report is stale; simulation result is unknown.",
+                                       "source":  "runtime/readiness/readiness-report.sample.json",
+                                       "safe":  false
+                                   },
+                                   {
+                                       "id":  "unknown.upstream-observability",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 21 reports unknownCount=4; simulation preserves that unknown state.",
+                                       "source":  "runtime/authority/authority-observability.report.json",
+                                       "safe":  false
+                                   },
+                                   {
+                                       "id":  "unknown.upstream-evidence",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 19 reports unknownCount=1; simulation preserves that unknown state.",
+                                       "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                       "safe":  false
+                                   }
+                               ]
+                 },
+    "boundary":  {
+                     "simulationOnly":  true,
+                     "hypotheticalOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsSimulationReports":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsGovernanceTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsObservabilityTruth":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "commandExecutionAllowed":  false,
+                     "orchestrationAllowed":  false,
+                     "automationAllowed":  false,
+                     "repairAllowed":  false,
+                     "synchronizationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "authorityMutationAllowed":  false,
+                     "evidenceMutationAllowed":  false,
+                     "contractMutationAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "queueAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "backgroundJobAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "retryAllowed":  false,
+                     "providerAdapterAllowed":  false
+                 }
+}

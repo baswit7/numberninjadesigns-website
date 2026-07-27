@@ -1,0 +1,324 @@
+{
+    "generatedAt":  "2026-06-07T21:46:28.2585162Z",
+    "source":  "studio-dashboard:authority",
+    "status":  "error",
+    "summary":  "Authority intelligence projected from Phase 16 runtime reports for passive dashboard visibility only.",
+    "cards":  [
+                  {
+                      "id":  "authority.classification.forbidden-currently",
+                      "title":  "Classification: forbidden-currently",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "6 authority item(s) classified as forbidden-currently.",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Classification visibility only; classification truth remains in Phase 15 contracts.",
+                      "details":  {
+                                      "classification":  "forbidden-currently",
+                                      "count":  6,
+                                      "authorities":  [
+                                                          "credential.read",
+                                                          "deployment.start",
+                                                          "execution.run",
+                                                          "github.repo.write",
+                                                          "provider.invoke",
+                                                          "secret.write"
+                                                      ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.classification.governance-decision",
+                      "title":  "Classification: governance-decision",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "2 authority item(s) classified as governance-decision.",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Classification visibility only; classification truth remains in Phase 15 contracts.",
+                      "details":  {
+                                      "classification":  "governance-decision",
+                                      "count":  2,
+                                      "authorities":  [
+                                                          "constitution.decide-boundary",
+                                                          "coordination.plan"
+                                                      ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.classification.read-only",
+                      "title":  "Classification: read-only",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "4 authority item(s) classified as read-only.",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Classification visibility only; classification truth remains in Phase 15 contracts.",
+                      "details":  {
+                                      "classification":  "read-only",
+                                      "count":  4,
+                                      "authorities":  [
+                                                          "authority.registry.read",
+                                                          "constitution.read",
+                                                          "dashboard.view",
+                                                          "projection.read"
+                                                      ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.classification.report-writing",
+                      "title":  "Classification: report-writing",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "3 authority item(s) classified as report-writing.",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Classification visibility only; classification truth remains in Phase 15 contracts.",
+                      "details":  {
+                                      "classification":  "report-writing",
+                                      "count":  3,
+                                      "authorities":  [
+                                                          "authority.validation.report",
+                                                          "governance.report",
+                                                          "readiness.report"
+                                                      ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.credential.read",
+                      "title":  "Denied: credential.read",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "credential.read",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/provider-manager",
+                                                                 "services/runtime-orchestrator",
+                                                                 "services/deployment-controller",
+                                                                 "scripts/validation"
+                                                             ],
+                                      "governingRules":  [
+
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.deployment.start",
+                      "title":  "Denied: deployment.start",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "deployment.start",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/deployment-controller",
+                                                                 "services/runtime-orchestrator",
+                                                                 "scripts/validation",
+                                                                 "services/coordination"
+                                                             ],
+                                      "governingRules":  [
+                                                             "constitution.coordination-execution-denied",
+                                                             "constitution.governance-execution-denied",
+                                                             "constitution.readiness-approval-denied"
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.execution.run",
+                      "title":  "Denied: execution.run",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "execution.run",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/runtime-orchestrator",
+                                                                 "services/execution-readiness",
+                                                                 "services/coordination",
+                                                                 "scripts/validation"
+                                                             ],
+                                      "governingRules":  [
+                                                             "constitution.coordination-execution-denied",
+                                                             "constitution.governance-execution-denied",
+                                                             "constitution.readiness-approval-denied"
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.github.repo.write",
+                      "title":  "Denied: github.repo.write",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "github.repo.write",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/runtime-orchestrator",
+                                                                 "scripts/validation",
+                                                                 "services/coordination"
+                                                             ],
+                                      "governingRules":  [
+
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.provider.invoke",
+                      "title":  "Denied: provider.invoke",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "provider.invoke",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/provider-manager",
+                                                                 "services/runtime-orchestrator",
+                                                                 "scripts/validation",
+                                                                 "services/coordination"
+                                                             ],
+                                      "governingRules":  [
+                                                             "constitution.coordination-execution-denied",
+                                                             "constitution.governance-execution-denied",
+                                                             "constitution.providers-authority-required"
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.denied.secret.write",
+                      "title":  "Denied: secret.write",
+                      "status":  "error",
+                      "severity":  "error",
+                      "description":  "owner=constitution; classification=forbidden-currently; approvalRequired=True",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Denied authority remains non-consumable; dashboard cannot approve or edit it.",
+                      "details":  {
+                                      "authorityId":  "secret.write",
+                                      "owner":  "constitution",
+                                      "decision":  "DENY",
+                                      "classification":  "forbidden-currently",
+                                      "approvalRequired":  true,
+                                      "forbiddenConsumers":  [
+                                                                 "apps/studio-dashboard",
+                                                                 "services/provider-manager",
+                                                                 "services/runtime-orchestrator",
+                                                                 "services/deployment-controller",
+                                                                 "scripts/validation"
+                                                             ],
+                                      "governingRules":  [
+
+                                                         ],
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority.summary",
+                      "title":  "Authority Intelligence Summary",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "authorities=15; denied=6; relationships=135; queries=6",
+                      "sourceFile":  "runtime/authority/authority-read-model.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.6989939Z",
+                      "actionHint":  "Use as read-only visibility. Phase 15 remains authority source of truth.",
+                      "details":  {
+                                      "authorityCount":  15,
+                                      "deniedAuthorityCount":  6,
+                                      "relationshipCount":  135,
+                                      "queryResponseCount":  6,
+                                      "ownsAuthority":  false,
+                                      "canExecute":  false,
+                                      "canMutate":  false,
+                                      "sourceContracts":  {
+                                                              "constitution":  "shared/contracts/authority/constitution.rules.json",
+                                                              "authorityRegistry":  "shared/contracts/authority/authority-registry.json",
+                                                              "classifications":  "shared/contracts/authority/authority-classifications.json",
+                                                              "decisions":  "shared/contracts/authority/authority-decisions.json"
+                                                          }
+                                  }
+                  },
+                  {
+                      "id":  "authority.validation",
+                      "title":  "Authority Read Model Validation",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "Authority read model passed deterministic read-only boundary checks.",
+                      "sourceFile":  "runtime/authority/authority-read-model-validation.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:19.8300792Z",
+                      "actionHint":  "Validation report is display-only; rerun validation outside dashboard when source contracts change.",
+                      "details":  {
+                                      "checks":  4,
+                                      "failures":  0,
+                                      "readOnly":  true,
+                                      "derivedOnly":  true,
+                                      "canExecute":  false,
+                                      "canMutate":  false
+                                  }
+                  }
+              ],
+    "warnings":  [
+
+                 ],
+    "errors":  [
+
+               ],
+    "nextRecommendedAction":  "Treat authority dashboard data as read-only derived visibility; Phase 15 and Phase 16 source reports remain authoritative."
+}

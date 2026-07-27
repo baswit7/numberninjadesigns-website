@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/command/action-plan.schema.json",
+  "title": "Phase 7 Action Plan",
+  "description": "Validates a non-executing structured action plan for Phase 7 command-layer work. This schema describes a plan only; it does not execute commands, call providers, mutate runtime state, trigger deployments or replace human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "planId",
+    "createdAt",
+    "intent",
+    "riskLevel",
+    "executionClass",
+    "requiresHumanApproval",
+    "steps",
+    "safetyGates",
+    "blockedStates",
+    "expectedOutputs",
+    "forbiddenActions",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "description": "Semantic version of this action plan schema contract.",
+      "const": "1.0.0",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "planId": {
+      "type": "string",
+      "description": "Deterministic, id-safe identifier for this non-executing action plan.",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "UTC timestamp for when the action plan was created.",
+      "format": "date-time"
+    },
+    "intent": {
+      "type": "string",
+      "description": "Concise description of the command intent this plan prepares for review.",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "riskLevel": {
+      "type": "string",
+      "description": "Risk level assigned before any downstream action is considered.",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "executionClass": {
+      "type": "string",
+      "description": "Non-executing classification of the plan boundary.",
+      "enum": [
+        "non_executing",
+        "review_only",
+        "prepares_execution",
+        "requires_approval",
+        "blocked"
+      ]
+    },
+    "requiresHumanApproval": {
+      "type": "boolean",
+      "description": "Whether explicit human approval is required before any downstream action may proceed."
+    },
+    "steps": {
+      "type": "array",
+      "description": "Ordered, non-executing plan steps prepared for review.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stepId",
+          "order",
+          "title",
+          "description",
+          "actionType",
+          "allowed",
+          "requiresApproval",
+          "expectedResult"
+        ],
+        "properties": {
+          "stepId": {
+            "type": "string",
+            "description": "Stable, id-safe identifier for the plan step.",
+            "minLength": 3,
+            "maxLength": 120,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+          },
+          "order": {
+            "type": "integer",
+            "description": "Deterministic execution-review order for the step.",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Short title for the step.",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "description": {
+            "type": "string",
+            "description": "Reviewable description of the step. It must not contain executable shell commands, secrets, tokens or local machine paths.",
+            "minLength": 1,
+            "maxLength": 700
+          },
+          "actionType": {
+            "type": "string",
+            "description": "Category of the planned action.",
+            "enum": [
+              "documentation",
+              "schema",
+              "code",
+              "review",
+              "validation",
+              "git",
+              "provider",
+              "runtime",
+              "dashboard",
+              "deployment",
+              "unknown"
+            ]
+          },
+          "allowed": {
+            "type": "boolean",
+            "description": "Whether the step is allowed inside the documented safety boundary."
+          },
+          "requiresApproval": {
+            "type": "boolean",
+            "description": "Whether the step requires explicit human approval before any downstream action."
+          },
+          "expectedResult": {
+            "type": "string",
+            "description": "Expected non-executing review outcome for the step.",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "safetyGates": {
+      "type": "array",
+      "description": "Safety gates that must be reviewed before the plan can advance.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gateId",
+          "title",
+          "required",
+          "status",
+          "blocksProgress"
+        ],
+        "properties": {
+          "gateId": {
+            "type": "string",
+            "description": "Stable, id-safe identifier for the safety gate.",
+            "minLength": 3,
+            "maxLength": 120,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+          },
+          "title": {
+            "type": "string",
+            "description": "Short title for the safety gate.",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether the gate is required for the plan to advance."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current review status of the safety gate.",
+            "enum": [
+              "pending",
+              "passed",
+              "failed",
+              "waived",
+              "blocked"
+            ]
+          },
+          "blocksProgress": {
+            "type": "boolean",
+            "description": "Whether this gate currently blocks plan progress."
+          }
+        }
+      }
+    },
+    "blockedStates": {
+      "type": "array",
+      "description": "States that block the plan from advancing without execution.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[a-z][a-z0-9_]*$"
+      },
+      "uniqueItems": true
+    },
+    "expectedOutputs": {
+      "type": "array",
+      "description": "Structured outputs expected from the non-executing plan.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "outputId",
+          "description",
+          "required"
+        ],
+        "properties": {
+          "outputId": {
+            "type": "string",
+            "description": "Stable, id-safe identifier for the expected output.",
+            "minLength": 3,
+            "maxLength": 120,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the expected non-executing output.",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether this output is required for plan review."
+          }
+        }
+      }
+    },
+    "forbiddenActions": {
+      "type": "array",
+      "description": "Explicit actions forbidden for this plan, including execution, provider calls, runtime mutation and deployment triggers where relevant.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "uniqueItems": true
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "description": "Review and traceability metadata only. This object must not contain executable instructions, provider credentials, secrets, tokens, deployment actions or local machine paths.",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "riskLevel": {
+            "enum": [
+              "high",
+              "critical"
+            ]
+          }
+        },
+        "required": [
+          "riskLevel"
+        ]
+      },
+      "then": {
+        "properties": {
+          "requiresHumanApproval": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "executionClass": {
+            "const": "requires_approval"
+          }
+        },
+        "required": [
+          "executionClass"
+        ]
+      },
+      "then": {
+        "properties": {
+          "requiresHumanApproval": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

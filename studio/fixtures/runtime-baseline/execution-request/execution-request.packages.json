@@ -1,0 +1,240 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-request-packaging",
+    "sourceFile":  "shared/contracts/execution-request/execution-request.contract.json",
+    "approvalRecordsSource":  "runtime/approval/execution-approval.records.json",
+    "allowedReadinessStates":  [
+                                   "UNKNOWN",
+                                   "BLOCKED",
+                                   "PACKAGED",
+                                   "READY_FOR_REVIEW",
+                                   "REJECTED"
+                               ],
+    "packages":  [
+                     {
+                         "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                         "requestId":  "EXREQ-GHLX-REQUEST-001",
+                         "sourceApprovalId":  "APG-001",
+                         "sourceRequestId":  "GHLX-REQUEST-001",
+                         "approvalState":  "REQUESTED",
+                         "requestedAction":  "BRANCH_CREATE",
+                         "targetSystem":  "GitHub",
+                         "targetReference":  "feature/studio-os-v2-live-github-execution",
+                         "allowedActionType":  "BRANCH_CREATE",
+                         "deniedActionTypes":  [
+                                                   "MERGE",
+                                                   "BRANCH_DELETE",
+                                                   "FORCE_PUSH",
+                                                   "REBASE",
+                                                   "PROTECTED_BRANCH_WRITE",
+                                                   "REPOSITORY_SETTINGS_MUTATION",
+                                                   "COLLABORATOR_MUTATION",
+                                                   "SECRET_READ",
+                                                   "SECRET_WRITE",
+                                                   "DEPLOYMENT_EXECUTE",
+                                                   "PROVIDER_EXECUTE",
+                                                   "AUTO_APPROVAL",
+                                                   "AUTONOMOUS_EXECUTION"
+                                               ],
+                         "requiredEvidence":  [
+                                                  "source approval id",
+                                                  "approval state",
+                                                  "requested action",
+                                                  "target system",
+                                                  "risk classification",
+                                                  "execution readiness state",
+                                                  "boundary confirmation"
+                                              ],
+                         "requiredValidators":  [
+                                                    "scripts/validation/validate-execution-approval.ps1",
+                                                    "scripts/validation/validate-execution-request.ps1"
+                                                ],
+                         "riskClassification":  "medium",
+                         "executionReadinessState":  "BLOCKED",
+                         "executionDispatchAllowed":  false,
+                         "packagedOnly":  true,
+                         "result":  "blocked-by-approval-state",
+                         "evidence":  [
+                                          "Execution intent was received and classified.",
+                                          "Gateway has not granted execution.",
+                                          "Execution request package was generated from approval evidence.",
+                                          "Package is non-executing and requires review before any future executor may use it."
+                                      ],
+                         "blockers":  [
+                                          {
+                                              "role":  "Human",
+                                              "status":  "approval-required",
+                                              "reason":  "Human approval is required before any external executor may consider this action."
+                                          }
+                                      ]
+                     },
+                     {
+                         "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                         "requestId":  "EXREQ-GHSX-REQUEST-001",
+                         "sourceApprovalId":  "APG-002",
+                         "sourceRequestId":  "GHSX-REQUEST-001",
+                         "approvalState":  "PENDING_APPROVAL",
+                         "requestedAction":  "BRANCH_CREATE",
+                         "targetSystem":  "GitHub",
+                         "targetReference":  "sandbox/studio-os-v2-github-sandbox-execution",
+                         "allowedActionType":  "BRANCH_CREATE",
+                         "deniedActionTypes":  [
+                                                   "MERGE",
+                                                   "BRANCH_DELETE",
+                                                   "FORCE_PUSH",
+                                                   "REBASE",
+                                                   "PROTECTED_BRANCH_WRITE",
+                                                   "REPOSITORY_SETTINGS_MUTATION",
+                                                   "COLLABORATOR_MUTATION",
+                                                   "SECRET_READ",
+                                                   "SECRET_WRITE",
+                                                   "DEPLOYMENT_EXECUTE",
+                                                   "PROVIDER_EXECUTE",
+                                                   "AUTO_APPROVAL",
+                                                   "AUTONOMOUS_EXECUTION"
+                                               ],
+                         "requiredEvidence":  [
+                                                  "source approval id",
+                                                  "approval state",
+                                                  "requested action",
+                                                  "target system",
+                                                  "risk classification",
+                                                  "execution readiness state",
+                                                  "boundary confirmation"
+                                              ],
+                         "requiredValidators":  [
+                                                    "scripts/validation/validate-execution-approval.ps1",
+                                                    "scripts/validation/validate-execution-request.ps1"
+                                                ],
+                         "riskClassification":  "low",
+                         "executionReadinessState":  "BLOCKED",
+                         "executionDispatchAllowed":  false,
+                         "packagedOnly":  true,
+                         "result":  "blocked-by-approval-state",
+                         "evidence":  [
+                                          "Sandbox execution intent is pending human approval.",
+                                          "Gateway records approval status only and does not execute.",
+                                          "Execution request package was generated from approval evidence.",
+                                          "Package is non-executing and requires review before any future executor may use it."
+                                      ],
+                         "blockers":  [
+                                          {
+                                              "role":  "Human",
+                                              "status":  "pending-review",
+                                              "reason":  "Pending approval cannot execute."
+                                          }
+                                      ]
+                     },
+                     {
+                         "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                         "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                         "sourceApprovalId":  "APG-003",
+                         "sourceRequestId":  "UNKNOWN-REQUEST-001",
+                         "approvalState":  "UNKNOWN",
+                         "requestedAction":  "BRANCH_CREATE",
+                         "targetSystem":  "GitHub",
+                         "targetReference":  "unknown",
+                         "allowedActionType":  "BRANCH_CREATE",
+                         "deniedActionTypes":  [
+                                                   "MERGE",
+                                                   "BRANCH_DELETE",
+                                                   "FORCE_PUSH",
+                                                   "REBASE",
+                                                   "PROTECTED_BRANCH_WRITE",
+                                                   "REPOSITORY_SETTINGS_MUTATION",
+                                                   "COLLABORATOR_MUTATION",
+                                                   "SECRET_READ",
+                                                   "SECRET_WRITE",
+                                                   "DEPLOYMENT_EXECUTE",
+                                                   "PROVIDER_EXECUTE",
+                                                   "AUTO_APPROVAL",
+                                                   "AUTONOMOUS_EXECUTION"
+                                               ],
+                         "requiredEvidence":  [
+                                                  "source approval id",
+                                                  "approval state",
+                                                  "requested action",
+                                                  "target system",
+                                                  "risk classification",
+                                                  "execution readiness state",
+                                                  "boundary confirmation"
+                                              ],
+                         "requiredValidators":  [
+                                                    "scripts/validation/validate-execution-approval.ps1",
+                                                    "scripts/validation/validate-execution-request.ps1"
+                                                ],
+                         "riskClassification":  "high",
+                         "executionReadinessState":  "BLOCKED",
+                         "executionDispatchAllowed":  false,
+                         "packagedOnly":  true,
+                         "result":  "blocked-by-approval-state",
+                         "evidence":  [
+                                          "UNKNOWN approval state is never promoted automatically.",
+                                          "Execution remains refused.",
+                                          "Execution request package was generated from approval evidence.",
+                                          "Package is non-executing and requires review before any future executor may use it."
+                                      ],
+                         "blockers":  [
+                                          {
+                                              "role":  "Security",
+                                              "status":  "unknown-state-block",
+                                              "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                          }
+                                      ]
+                     },
+                     {
+                         "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                         "requestId":  "EXREQ-GHLX-APPROVED-001",
+                         "sourceApprovalId":  "APG-004",
+                         "sourceRequestId":  "GHLX-APPROVED-001",
+                         "approvalState":  "APPROVED",
+                         "requestedAction":  "BRANCH_CREATE",
+                         "targetSystem":  "GitHub",
+                         "targetReference":  "feature/studio-os-v2-live-github-execution",
+                         "allowedActionType":  "BRANCH_CREATE",
+                         "deniedActionTypes":  [
+                                                   "MERGE",
+                                                   "BRANCH_DELETE",
+                                                   "FORCE_PUSH",
+                                                   "REBASE",
+                                                   "PROTECTED_BRANCH_WRITE",
+                                                   "REPOSITORY_SETTINGS_MUTATION",
+                                                   "COLLABORATOR_MUTATION",
+                                                   "SECRET_READ",
+                                                   "SECRET_WRITE",
+                                                   "DEPLOYMENT_EXECUTE",
+                                                   "PROVIDER_EXECUTE",
+                                                   "AUTO_APPROVAL",
+                                                   "AUTONOMOUS_EXECUTION"
+                                               ],
+                         "requiredEvidence":  [
+                                                  "source approval id",
+                                                  "approval state",
+                                                  "requested action",
+                                                  "target system",
+                                                  "risk classification",
+                                                  "execution readiness state",
+                                                  "boundary confirmation"
+                                              ],
+                         "requiredValidators":  [
+                                                    "scripts/validation/validate-execution-approval.ps1",
+                                                    "scripts/validation/validate-execution-request.ps1"
+                                                ],
+                         "riskClassification":  "medium",
+                         "executionReadinessState":  "READY_FOR_REVIEW",
+                         "executionDispatchAllowed":  false,
+                         "packagedOnly":  true,
+                         "result":  "packaged-for-human-review",
+                         "evidence":  [
+                                          "Human approval exists.",
+                                          "Approval Gateway does not dispatch execution.",
+                                          "Execution request package was generated from approval evidence.",
+                                          "Package is non-executing and requires review before any future executor may use it."
+                                      ],
+                         "blockers":  [
+
+                                      ]
+                     }
+                 ]
+}

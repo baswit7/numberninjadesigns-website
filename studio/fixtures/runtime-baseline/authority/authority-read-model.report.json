@@ -1,0 +1,1310 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-16",
+    "projectionId":  "studio-os-authority-read-model",
+    "sourceContracts":  {
+                            "constitution":  "shared/contracts/authority/constitution.rules.json",
+                            "authorityRegistry":  "shared/contracts/authority/authority-registry.json",
+                            "classifications":  "shared/contracts/authority/authority-classifications.json",
+                            "decisions":  "shared/contracts/authority/authority-decisions.json"
+                        },
+    "generatedBy":  "services/authority-read-model/generate-authority-read-model.ps1",
+    "generatedAt":  "2026-06-07T00:00:00.0000000Z",
+    "summary":  {
+                    "authorityCount":  15,
+                    "deniedAuthorityCount":  6,
+                    "constitutionalRuleCount":  7,
+                    "relationshipCount":  135
+                },
+    "authorities":  [
+                        {
+                            "authorityId":  "authority.registry.read",
+                            "owner":  "shared/contracts/authority/authority-registry.json",
+                            "classification":  "read-only",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Read registered authority ownership, consumers and scopes.",
+                            "allowedConsumers":  [
+                                                     "scripts/validation/validate-authority-control-plane.ps1",
+                                                     "docs/governance"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "authority.validation.report",
+                            "owner":  "scripts/validation/validate-authority-control-plane.ps1",
+                            "classification":  "report-writing",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Write deterministic machine-readable validation reports for authority contract integrity only.",
+                            "allowedConsumers":  [
+                                                     "shared/contracts/authority/validation-reports",
+                                                     "docs/governance"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller",
+                                                       "services/runtime-orchestrator"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "constitution.decide-boundary",
+                            "owner":  "shared/contracts/authority/constitution.rules.json",
+                            "classification":  "governance-decision",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Define whether a boundary is allowed, denied, approval-gated or out of scope.",
+                            "allowedConsumers":  [
+                                                     "scripts/validation/validate-authority-control-plane.ps1"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/execution-readiness",
+                                                       "services/coordination",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "constitution.read",
+                            "owner":  "shared/contracts/authority/constitution.rules.json",
+                            "classification":  "read-only",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Read constitutional boundary rules as machine-readable metadata only.",
+                            "allowedConsumers":  [
+                                                     "scripts/validation/validate-authority-control-plane.ps1",
+                                                     "docs/governance"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller",
+                                                       "services/runtime-orchestrator"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "coordination.plan",
+                            "owner":  "services/coordination",
+                            "classification":  "governance-decision",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Model coordination relationships and graph evidence without executing tasks.",
+                            "allowedConsumers":  [
+                                                     "services/coordination",
+                                                     "scripts/validation"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "services/runtime-orchestrator",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.coordination-execution-denied"
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "credential.read",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "Credential read authority is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/runtime-orchestrator",
+                                                       "services/deployment-controller",
+                                                       "scripts/validation"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  true
+                        },
+                        {
+                            "authorityId":  "dashboard.view",
+                            "owner":  "apps/studio-dashboard",
+                            "classification":  "read-only",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Render derived runtime and governance projections without owning truth or commands.",
+                            "allowedConsumers":  [
+                                                     "apps/studio-dashboard"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "services/runtime-orchestrator",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.dashboard-runtime-truth-denied"
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "deployment.start",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "Deployment start authority is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/deployment-controller",
+                                                       "services/runtime-orchestrator",
+                                                       "scripts/validation",
+                                                       "services/coordination"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.coordination-execution-denied",
+                                                   "constitution.governance-execution-denied",
+                                                   "constitution.readiness-approval-denied"
+                                               ],
+                            "isDenied":  true
+                        },
+                        {
+                            "authorityId":  "execution.run",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "Runtime execution authority is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/runtime-orchestrator",
+                                                       "services/execution-readiness",
+                                                       "services/coordination",
+                                                       "scripts/validation"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.coordination-execution-denied",
+                                                   "constitution.governance-execution-denied",
+                                                   "constitution.readiness-approval-denied"
+                                               ],
+                            "isDenied":  true
+                        },
+                        {
+                            "authorityId":  "github.repo.write",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "GitHub repository write authority is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/runtime-orchestrator",
+                                                       "scripts/validation",
+                                                       "services/coordination"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  true
+                        },
+                        {
+                            "authorityId":  "governance.report",
+                            "owner":  "services/governance",
+                            "classification":  "report-writing",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Write governance reports and scores without execution authority.",
+                            "allowedConsumers":  [
+                                                     "docs/governance",
+                                                     "runtime"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller",
+                                                       "services/runtime-orchestrator"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.governance-execution-denied"
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "projection.read",
+                            "owner":  "shared/contracts/projections",
+                            "classification":  "read-only",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Read projection contract metadata and fixtures without mutating runtime truth.",
+                            "allowedConsumers":  [
+                                                     "apps/studio-dashboard",
+                                                     "scripts/validation"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "services/runtime-orchestrator",
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.projections-runtime-mutation-denied"
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "provider.invoke",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "Provider invocation is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/runtime-orchestrator",
+                                                       "scripts/validation",
+                                                       "services/coordination"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.coordination-execution-denied",
+                                                   "constitution.governance-execution-denied",
+                                                   "constitution.providers-authority-required"
+                                               ],
+                            "isDenied":  true
+                        },
+                        {
+                            "authorityId":  "readiness.report",
+                            "owner":  "services/execution-readiness",
+                            "classification":  "report-writing",
+                            "decision":  "ALLOW",
+                            "approvalRequired":  false,
+                            "scope":  "Write readiness evidence only; never approve execution.",
+                            "allowedConsumers":  [
+                                                     "runtime/readiness",
+                                                     "docs/governance"
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "services/provider-manager",
+                                                       "services/deployment-controller",
+                                                       "services/runtime-orchestrator"
+                                                   ],
+                            "governingRules":  [
+                                                   "constitution.readiness-approval-denied"
+                                               ],
+                            "isDenied":  false
+                        },
+                        {
+                            "authorityId":  "secret.write",
+                            "owner":  "constitution",
+                            "classification":  "forbidden-currently",
+                            "decision":  "DENY",
+                            "approvalRequired":  true,
+                            "scope":  "Secret write authority is explicitly blocked in Phase 15.",
+                            "allowedConsumers":  [
+
+                                                 ],
+                            "forbiddenConsumers":  [
+                                                       "apps/studio-dashboard",
+                                                       "services/provider-manager",
+                                                       "services/runtime-orchestrator",
+                                                       "services/deployment-controller",
+                                                       "scripts/validation"
+                                                   ],
+                            "governingRules":  [
+
+                                               ],
+                            "isDenied":  true
+                        }
+                    ],
+    "relationships":  [
+                          {
+                              "relationshipId":  "authority.registry.read::owned-by::shared/contracts/authority/authority-registry.json",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "owned-by",
+                              "target":  "shared/contracts/authority/authority-registry.json",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::classified-as::read-only",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "classified-as",
+                              "target":  "read-only",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::decides-as::allow",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::allowed-consumer::docs/governance",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "docs/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::allowed-consumer::scripts/validation/validate-authority-control-plane.ps1",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "scripts/validation/validate-authority-control-plane.ps1",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.registry.read::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "authority.registry.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::owned-by::scripts/validation/validate-authority-control-plane.ps1",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "owned-by",
+                              "target":  "scripts/validation/validate-authority-control-plane.ps1",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::classified-as::report-writing",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "classified-as",
+                              "target":  "report-writing",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::decides-as::allow",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::allowed-consumer::docs/governance",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "docs/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::allowed-consumer::shared/contracts/authority/validation-reports",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "shared/contracts/authority/validation-reports",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "authority.validation.report::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "authority.validation.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::owned-by::shared/contracts/authority/constitution.rules.json",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "owned-by",
+                              "target":  "shared/contracts/authority/constitution.rules.json",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::classified-as::governance-decision",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "classified-as",
+                              "target":  "governance-decision",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::decides-as::allow",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::allowed-consumer::scripts/validation/validate-authority-control-plane.ps1",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "scripts/validation/validate-authority-control-plane.ps1",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::forbidden-consumer::services/coordination",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::forbidden-consumer::services/execution-readiness",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/execution-readiness",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.decide-boundary::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "constitution.decide-boundary",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::owned-by::shared/contracts/authority/constitution.rules.json",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "owned-by",
+                              "target":  "shared/contracts/authority/constitution.rules.json",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::classified-as::read-only",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "classified-as",
+                              "target":  "read-only",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::decides-as::allow",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::allowed-consumer::docs/governance",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "docs/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::allowed-consumer::scripts/validation/validate-authority-control-plane.ps1",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "scripts/validation/validate-authority-control-plane.ps1",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "constitution.read::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "constitution.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::owned-by::services/coordination",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "owned-by",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::classified-as::governance-decision",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "classified-as",
+                              "target":  "governance-decision",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::decides-as::allow",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::allowed-consumer::scripts/validation",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::allowed-consumer::services/coordination",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "coordination.plan::governed-by-rule::constitution.coordination-execution-denied",
+                              "authorityId":  "coordination.plan",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.coordination-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::owned-by::constitution",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::classified-as::forbidden-currently",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::decides-as::deny",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::forbidden-consumer::scripts/validation",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "credential.read::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "credential.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::owned-by::apps/studio-dashboard",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "owned-by",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::classified-as::read-only",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "classified-as",
+                              "target":  "read-only",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::decides-as::allow",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::allowed-consumer::apps/studio-dashboard",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "dashboard.view::governed-by-rule::constitution.dashboard-runtime-truth-denied",
+                              "authorityId":  "dashboard.view",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.dashboard-runtime-truth-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::owned-by::constitution",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::classified-as::forbidden-currently",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::decides-as::deny",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::forbidden-consumer::scripts/validation",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::forbidden-consumer::services/coordination",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::governed-by-rule::constitution.coordination-execution-denied",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.coordination-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::governed-by-rule::constitution.governance-execution-denied",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.governance-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "deployment.start::governed-by-rule::constitution.readiness-approval-denied",
+                              "authorityId":  "deployment.start",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.readiness-approval-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::owned-by::constitution",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::classified-as::forbidden-currently",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::decides-as::deny",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::forbidden-consumer::scripts/validation",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::forbidden-consumer::services/coordination",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::forbidden-consumer::services/execution-readiness",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/execution-readiness",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::governed-by-rule::constitution.coordination-execution-denied",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.coordination-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::governed-by-rule::constitution.governance-execution-denied",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.governance-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "execution.run::governed-by-rule::constitution.readiness-approval-denied",
+                              "authorityId":  "execution.run",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.readiness-approval-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::owned-by::constitution",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::classified-as::forbidden-currently",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::decides-as::deny",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::forbidden-consumer::scripts/validation",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::forbidden-consumer::services/coordination",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "github.repo.write::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "github.repo.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::owned-by::services/governance",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "owned-by",
+                              "target":  "services/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::classified-as::report-writing",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "classified-as",
+                              "target":  "report-writing",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::decides-as::allow",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::allowed-consumer::docs/governance",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "docs/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::allowed-consumer::runtime",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "runtime",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "governance.report::governed-by-rule::constitution.governance-execution-denied",
+                              "authorityId":  "governance.report",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.governance-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::owned-by::shared/contracts/projections",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "owned-by",
+                              "target":  "shared/contracts/projections",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::classified-as::read-only",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "classified-as",
+                              "target":  "read-only",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::decides-as::allow",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::allowed-consumer::apps/studio-dashboard",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::allowed-consumer::scripts/validation",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "projection.read::governed-by-rule::constitution.projections-runtime-mutation-denied",
+                              "authorityId":  "projection.read",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.projections-runtime-mutation-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::owned-by::constitution",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::classified-as::forbidden-currently",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::decides-as::deny",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::forbidden-consumer::scripts/validation",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::forbidden-consumer::services/coordination",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/coordination",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::governed-by-rule::constitution.coordination-execution-denied",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.coordination-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::governed-by-rule::constitution.governance-execution-denied",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.governance-execution-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "provider.invoke::governed-by-rule::constitution.providers-authority-required",
+                              "authorityId":  "provider.invoke",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.providers-authority-required",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::owned-by::services/execution-readiness",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "owned-by",
+                              "target":  "services/execution-readiness",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::classified-as::report-writing",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "classified-as",
+                              "target":  "report-writing",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::decides-as::allow",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "decides-as",
+                              "target":  "ALLOW",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::allowed-consumer::docs/governance",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "docs/governance",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::allowed-consumer::runtime/readiness",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "allowed-consumer",
+                              "target":  "runtime/readiness",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "readiness.report::governed-by-rule::constitution.readiness-approval-denied",
+                              "authorityId":  "readiness.report",
+                              "relationshipType":  "governed-by-rule",
+                              "target":  "constitution.readiness-approval-denied",
+                              "source":  "shared/contracts/authority/constitution.rules.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::owned-by::constitution",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "owned-by",
+                              "target":  "constitution",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::classified-as::forbidden-currently",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "classified-as",
+                              "target":  "forbidden-currently",
+                              "source":  "shared/contracts/authority/authority-classifications.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::decides-as::deny",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "decides-as",
+                              "target":  "DENY",
+                              "source":  "shared/contracts/authority/authority-decisions.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::forbidden-consumer::apps/studio-dashboard",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "apps/studio-dashboard",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::forbidden-consumer::scripts/validation",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "scripts/validation",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::forbidden-consumer::services/deployment-controller",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/deployment-controller",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::forbidden-consumer::services/provider-manager",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/provider-manager",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          },
+                          {
+                              "relationshipId":  "secret.write::forbidden-consumer::services/runtime-orchestrator",
+                              "authorityId":  "secret.write",
+                              "relationshipType":  "forbidden-consumer",
+                              "target":  "services/runtime-orchestrator",
+                              "source":  "shared/contracts/authority/authority-registry.json"
+                          }
+                      ],
+    "boundary":  {
+                     "derivedOnly":  true,
+                     "ownsAuthority":  false,
+                     "writesAuthorityDecisions":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "approvalAutomationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

@@ -1,0 +1,186 @@
+{
+  "images": [
+    {
+      "badge": "USD",
+      "bullets": [
+        "Thumbnail"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "hero",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "thumbnail",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "dashboard",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Contents"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "included-files",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "contents",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "features",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Workflow"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "how-it-works",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "workflow",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Compatibility"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "compatibility",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "compatibility",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Detail"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "detail-view",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "detail",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Trust"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "target-customer",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "trust",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "call-to-action",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Bundle"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Subscription Tracker",
+      "id": "bundle",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "bundle",
+      "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+    }
+  ],
+  "locale": "en-US",
+  "schemaVersion": "1.0.0"
+}

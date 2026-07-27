@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "studioId": "studio-os",
+  "name": "Studio OS",
+  "sourceOfTruth": "github",
+  "operatingMemory": "notion",
+  "deploymentProvider": "vercel",
+  "defaultEnvironment": "local",
+  "runtime": {
+    "eventStorePath": "runtime/events/events.ndjson",
+    "telemetryStorePath": "runtime/telemetry/telemetry.ndjson",
+    "healthReportPath": "runtime/reports/health-report.json",
+    "correlationPrefix": "studio"
+  },
+  "governance": {
+    "requiredBranchPrefixes": [
+      "feature/",
+      "fix/",
+      "docs/",
+      "refactor/",
+      "automation/"
+    ],
+    "protectedBranches": [
+      "main",
+      "master"
+    ],
+    "requiredDocs": [
+      "README.md",
+      "CHANGELOG.md",
+      "docs/ARCHITECTURE.md",
+      "docs/PROJECT_GOVERNANCE.md",
+      "docs/runtime/RUNTIME_CONSOLE.md",
+      "docs/governance/PHASE_9_EXECUTION_GOVERNANCE.md",
+      "docs/governance/EXECUTION_BOUNDARY.md",
+      "docs/governance/PHASE_10_EXECUTION_READINESS.md",
+      "docs/governance/EXECUTION_READINESS_BOUNDARY.md",
+      "docs/governance/PHASE_11_READINESS_DASHBOARD_CENTER.md"
+    ]
+  }
+}

@@ -1,0 +1,175 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-12T14:23:06.8183765Z",
+    "source":  "services/market-intelligence/generate-market-intelligence.ps1",
+    "status":  "connected",
+    "items":  [
+                  {
+                      "approvalId":  "approval.opp.pivot-table-operator",
+                      "opportunityId":  "opp.pivot-table-operator",
+                      "title":  "Pivot Table Operator",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.92,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.product-master",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                           "summary":  "Matched local evidence terms: Pivot Table Operator, Excel users, data analysts, Commercial strength: high."
+                                       },
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                           "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                       },
+                                       {
+                                           "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                           "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  },
+                  {
+                      "approvalId":  "approval.opp.query-before-coffee",
+                      "opportunityId":  "opp.query-before-coffee",
+                      "title":  "Query Before Coffee",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.86,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                           "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  },
+                  {
+                      "approvalId":  "approval.opp.model-is-overfitting",
+                      "opportunityId":  "opp.model-is-overfitting",
+                      "title":  "Model Is Overfitting",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.85,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.product-idea-backlog",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+                                           "summary":  "Matched local evidence terms: Pivot Table Operator, Query Before Coffee, Model Is Overfitting, I Survived VLOOKUP."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  },
+                  {
+                      "approvalId":  "approval.opp.pivot-table-content-system",
+                      "opportunityId":  "opp.pivot-table-content-system",
+                      "title":  "Pivot Table Operator content angles",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.79,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.social-content",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md",
+                                           "summary":  "Matched local evidence terms: TikTok Ideas, Pinterest Pin Ideas, Hashtag Pool."
+                                       },
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.product-master",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                           "summary":  "Matched local evidence terms: Pivot Table Operator, Excel users, data analysts, Commercial strength: high."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  },
+                  {
+                      "approvalId":  "approval.opp.pivot-table-seo-cluster",
+                      "opportunityId":  "opp.pivot-table-seo-cluster",
+                      "title":  "Pivot Table Operator SEO cluster",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.84,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                           "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  },
+                  {
+                      "approvalId":  "approval.opp.manual-platform-mix",
+                      "opportunityId":  "opp.manual-platform-mix",
+                      "title":  "Manual Etsy, TikTok and Pinterest visibility mix",
+                      "status":  "PENDING_REVIEW",
+                      "confidence":  0.62,
+                      "evidence":  [
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.social-content",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md",
+                                           "summary":  "Matched local evidence terms: TikTok Ideas, Pinterest Pin Ideas, Hashtag Pool."
+                                       },
+                                       {
+                                           "evidenceId":  "numberninjadesigns.pivot-table-operator.seo-keywords",
+                                           "status":  "connected",
+                                           "source":  "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                           "summary":  "Matched local evidence terms: pivot table shirt, excel humor shirt, data analyst shirt, spreadsheet gift."
+                                       }
+                                   ],
+                      "sourceLineage":  [
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+                                            "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+                                        ],
+                      "readOnly":  true,
+                      "canPublish":  false,
+                      "canExecute":  false
+                  }
+              ],
+    "boundaries":  {
+                       "readOnly":  true,
+                       "usesPublicSignalsOnly":  true,
+                       "usesLoginAutomation":  false,
+                       "usesOAuthAutomation":  false,
+                       "usesPrivateScraping":  false,
+                       "publishesContent":  false,
+                       "executesPosting":  false,
+                       "executesApprovalActions":  false,
+                       "mutatesExternalSystems":  false,
+                       "exposesSecrets":  false,
+                       "storesSecrets":  false
+                   }
+}

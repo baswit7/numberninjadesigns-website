@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-15",
+  "contractId": "studio-os-authority-decisions",
+  "purpose": "Closed authority decision model for non-executing authority evaluation.",
+  "sourceOfTruth": "authority-decision-model",
+  "nonExecutable": true,
+  "decisions": [
+    {
+      "id": "ALLOW",
+      "meaning": "The authority is defined, owned, in scope and consumable by the named consumer as metadata only."
+    },
+    {
+      "id": "DENY",
+      "meaning": "The authority is defined but blocked by classification, scope, consumer boundary or constitutional rule."
+    },
+    {
+      "id": "REQUIRES_APPROVAL",
+      "meaning": "The authority cannot be consumed without explicit future approval and remains non-executing in Phase 15."
+    },
+    {
+      "id": "OUT_OF_SCOPE",
+      "meaning": "The requested authority is not defined in the registry and therefore cannot be assumed."
+    }
+  ],
+  "boundary": {
+    "closedSet": true,
+    "implicitDecisionAllowed": false,
+    "decisionExecutionAllowed": false,
+    "decisionMutationAllowed": false
+  }
+}

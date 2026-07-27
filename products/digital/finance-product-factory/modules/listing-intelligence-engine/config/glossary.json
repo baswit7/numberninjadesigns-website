@@ -1,0 +1,6 @@
+{
+  "en":{"budget":"budget","expenses":"expenses","income":"income","savings":"savings","dashboard":"dashboard","spreadsheet":"spreadsheet","workbook":"workbook","monthly overview":"monthly overview"},
+  "nl":{"budget":"budget","expenses":"uitgaven","income":"inkomsten","savings":"spaargeld","dashboard":"dashboard","spreadsheet":"spreadsheet","workbook":"werkmap","monthly overview":"maandoverzicht"},
+  "de":{"budget":"Budget","expenses":"Ausgaben","income":"Einnahmen","savings":"Ersparnisse","dashboard":"Dashboard","spreadsheet":"Tabelle","workbook":"Arbeitsmappe","monthly overview":"Monatsübersicht"},
+  "fr":{"budget":"budget","expenses":"dépenses","income":"revenus","savings":"épargne","dashboard":"tableau de bord","spreadsheet":"feuille de calcul","workbook":"classeur","monthly overview":"vue mensuelle"}
+}

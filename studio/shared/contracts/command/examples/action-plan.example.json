@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "planId": "phase7.action-plan.docs-example-001",
+  "createdAt": "2026-06-03T18:31:00Z",
+  "intent": "Prepare a non-executing design review plan for Phase 7 command artifacts.",
+  "riskLevel": "low",
+  "executionClass": "review_only",
+  "requiresHumanApproval": false,
+  "steps": [
+    {
+      "stepId": "review.scope",
+      "order": 1,
+      "title": "Review requested scope",
+      "description": "Confirm that the request is documentation and contract example preparation only.",
+      "actionType": "review",
+      "allowed": true,
+      "requiresApproval": false,
+      "expectedResult": "Scope is documented as non-executing and review-only."
+    },
+    {
+      "stepId": "review.safety-boundary",
+      "order": 2,
+      "title": "Check safety boundary",
+      "description": "Confirm that provider calls, runtime mutation, dashboard mutation and deployment actions remain out of scope.",
+      "actionType": "validation",
+      "allowed": true,
+      "requiresApproval": false,
+      "expectedResult": "Unsafe actions are recorded as forbidden and not prepared for execution."
+    }
+  ],
+  "safetyGates": [
+    {
+      "gateId": "gate.non-execution",
+      "title": "Non-execution boundary",
+      "required": true,
+      "status": "passed",
+      "blocksProgress": false
+    },
+    {
+      "gateId": "gate.human-approval",
+      "title": "Approval boundary",
+      "required": true,
+      "status": "pending",
+      "blocksProgress": false
+    }
+  ],
+  "blockedStates": [
+    "unknown_scope",
+    "unsafe_execution_request"
+  ],
+  "expectedOutputs": [
+    {
+      "outputId": "output.review-plan",
+      "description": "A structured, reviewable plan record with no execution side effects.",
+      "required": true
+    }
+  ],
+  "forbiddenActions": [
+    "execute shell commands",
+    "call providers",
+    "write runtime state",
+    "create dashboard mutation",
+    "trigger deployment"
+  ],
+  "nonExecutableMetadata": {
+    "recordType": "example",
+    "preparedFor": "phase_7_schema_examples",
+    "traceId": "fake-trace-phase7-002"
+  }
+}

@@ -2,6 +2,8 @@
 
 Isolated, dependency-free Node.js module that converts a validated `NumberNinjaDesigns` Digital Production manifest plus optional Etsy Intelligence market evidence into a reproducible Etsy listing package. It never creates products, changes opportunity calculations, publishes to Etsy, scrapes ListingView.io, or calls undocumented endpoints.
 
+The browser dashboard supports separate Digital Production and Physical Production research workspaces. Physical research, pipeline review and human-gate preparation are available without implying that the current CLI generator accepts physical manifests.
+
 ## Run
 
 Requires Node.js 22 or later.

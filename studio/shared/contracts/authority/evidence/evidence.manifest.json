@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-19",
+  "manifestId": "authority-monitoring-evidence-manifest",
+  "purpose": "Declare the read-only Authority Monitoring Evidence Center contract and generated reports.",
+  "sourceContracts": [
+    "shared/contracts/authority/constitution.rules.json",
+    "shared/contracts/authority/authority-registry.json",
+    "shared/contracts/authority/monitoring/authority-projection-monitoring.schema.json",
+    "shared/contracts/authority/evidence/authority-monitoring-evidence.schema.json"
+  ],
+  "consumedRuntimeReports": [
+    "runtime/authority/authority-projection-monitoring.report.json",
+    "runtime/authority/authority-read-model.report.json",
+    "runtime/authority/authority-query-responses.report.json",
+    "runtime/dashboard/authority.view.json"
+  ],
+  "runtimeReports": [
+    "runtime/authority/authority-monitoring-evidence.report.json",
+    "runtime/authority/authority-monitoring-evidence-validation.report.json"
+  ],
+  "dashboardViews": [
+    "runtime/dashboard/authority-monitoring-evidence.view.json"
+  ],
+  "nonExecutable": true,
+  "boundary": {
+    "evidenceOnly": true,
+    "readOnly": true,
+    "derivedOnly": true,
+    "reportWritingOnly": true,
+    "ownsAuthority": false,
+    "ownsTruth": false,
+    "createsDecisions": false,
+    "createsApprovals": false,
+    "repairsProjection": false,
+    "synchronizesProjection": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretAccessAllowed": false,
+    "runtimeMutationAllowed": false,
+    "dashboardActionAllowed": false,
+    "approvalAutomationAllowed": false,
+    "workflowExecutionAllowed": false,
+    "browserAuthorityStorageAllowed": false
+  }
+}

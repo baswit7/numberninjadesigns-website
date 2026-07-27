@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/coordination/workflow-registry.schema.json",
+  "title": "Phase 8 Workflow Registry",
+  "description": "Validates declarative coordination workflow templates. Workflows describe planning order only and cannot execute work.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registryId",
+    "executionAllowed",
+    "workflows",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "registryId": {
+      "type": "string",
+      "const": "studio-os.phase-8.workflow-registry"
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "displayName",
+          "purpose",
+          "orderedStages",
+          "requiredAgents",
+          "dependencies",
+          "gates",
+          "forbiddenCapabilities",
+          "executionAllowed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "feature-development",
+              "bug-resolution",
+              "documentation-update",
+              "release-preparation",
+              "architecture-review"
+            ]
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 800
+          },
+          "orderedStages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/stage"
+            }
+          },
+          "requiredAgents": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/agentId"
+            },
+            "uniqueItems": true
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/dependency"
+            }
+          },
+          "gates": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/gate"
+            }
+          },
+          "forbiddenCapabilities": {
+            "$ref": "#/$defs/forbiddenCapabilities"
+          },
+          "executionAllowed": {
+            "type": "boolean",
+            "const": false
+          }
+        }
+      }
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "agentId": {
+      "type": "string",
+      "enum": [
+        "chatgpt-architect",
+        "codex-builder",
+        "qa-agent",
+        "review-agent",
+        "documentation-agent",
+        "governance-agent",
+        "deployment-planning-agent"
+      ]
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "displayName",
+        "agentId",
+        "purpose",
+        "inputRefs",
+        "outputRefs",
+        "executionAllowed"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "agentId": {
+          "$ref": "#/$defs/agentId"
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "inputRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 160
+          }
+        },
+        "outputRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 160
+          }
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromStage",
+        "toStage",
+        "type"
+      ],
+      "properties": {
+        "fromStage": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "toStage": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "blocks_until_reviewed",
+            "provides_context",
+            "requires_evidence"
+          ]
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "displayName",
+        "type",
+        "blocksExecution",
+        "executionAllowed"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "human_review",
+            "governance_readiness",
+            "contract_check",
+            "documentation_check",
+            "release_safety"
+          ]
+        },
+        "blocksExecution": {
+          "type": "boolean",
+          "const": true
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "forbiddenCapabilities": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "string",
+        "enum": [
+          "provider_execution",
+          "api_calls",
+          "deployments",
+          "runtime_mutation",
+          "shell_execution",
+          "command_execution",
+          "code_generation_execution",
+          "agent_execution",
+          "task_runners",
+          "schedulers",
+          "background_services",
+          "business_features",
+          "executable_hooks",
+          "provider_credentials"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass",
+        "dashboardMode"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-8"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "coordination-only"
+        },
+        "dashboardMode": {
+          "type": "string",
+          "const": "read-only"
+        }
+      }
+    }
+  }
+}

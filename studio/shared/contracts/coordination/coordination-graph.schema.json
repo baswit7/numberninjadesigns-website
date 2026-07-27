@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/coordination/coordination-graph.schema.json",
+  "title": "Phase 8 Coordination Graph",
+  "description": "Validates generated read-only coordination graphs. A graph is a planning artifact and contains no executable actions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "graphId",
+    "generatedAt",
+    "requestId",
+    "workflowId",
+    "status",
+    "executionAllowed",
+    "nodes",
+    "edges",
+    "gates",
+    "forbiddenCapabilities",
+    "safetyBoundary",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "graphId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "workflowId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ready_for_review",
+        "blocked"
+      ]
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gate"
+      }
+    },
+    "forbiddenCapabilities": {
+      "$ref": "#/$defs/forbiddenCapabilities"
+    },
+    "safetyBoundary": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 800
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "stageId",
+        "displayName",
+        "agentId",
+        "agentRole",
+        "inputRefs",
+        "outputRefs",
+        "executionAllowed",
+        "forbiddenCapabilities"
+      ],
+      "properties": {
+        "nodeId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "stageId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "agentRole": {
+          "type": "string"
+        },
+        "inputRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outputRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "forbiddenCapabilities": {
+          "$ref": "#/$defs/forbiddenCapabilities"
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromNode",
+        "toNode",
+        "type",
+        "executionAllowed"
+      ],
+      "properties": {
+        "fromNode": {
+          "type": "string"
+        },
+        "toNode": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "blocks_until_reviewed",
+            "provides_context",
+            "requires_evidence"
+          ]
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gateId",
+        "displayName",
+        "type",
+        "status",
+        "blocksExecution",
+        "executionAllowed"
+      ],
+      "properties": {
+        "gateId": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending_human_review",
+            "passed_static_check"
+          ]
+        },
+        "blocksExecution": {
+          "type": "boolean",
+          "const": true
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "forbiddenCapabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "source",
+        "dashboardMode"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-8"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "source": {
+          "type": "string",
+          "const": "services/coordination/generate-coordination-graph.ps1"
+        },
+        "dashboardMode": {
+          "type": "string",
+          "const": "read-only"
+        }
+      }
+    }
+  }
+}

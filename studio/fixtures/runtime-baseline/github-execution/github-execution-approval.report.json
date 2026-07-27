@@ -1,0 +1,121 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "github-execution-plan",
+    "sourceFile":  "runtime/github-execution/github-execution.plan.json",
+    "status":  "READY_FOR_APPROVAL",
+    "humanFinalAuthority":  true,
+    "noAutomaticApproval":  true,
+    "noSelfApproval":  true,
+    "noRoleMayApproveOwnRequest":  true,
+    "summary":  {
+                    "totalActions":  6,
+                    "requiresHumanApproval":  4,
+                    "readOnlyPlanningActions":  2,
+                    "blockedActions":  1
+                },
+    "approvals":  [
+                      {
+                          "requestId":  "GHX-001",
+                          "actionType":  "BRANCH_CREATE",
+                          "requesterRole":  "Orchestrator",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "GHX-002",
+                          "actionType":  "COMMIT_CREATE",
+                          "requesterRole":  "Developer",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "GHX-003",
+                          "actionType":  "PULL_REQUEST_CREATE",
+                          "requesterRole":  "Developer",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "GHX-004",
+                          "actionType":  "DIFF_INSPECT",
+                          "requesterRole":  "QA",
+                          "approvalState":  "APPROVED",
+                          "executionState":  "PLANNED",
+                          "approverRole":  "QA",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  false,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "GHX-005",
+                          "actionType":  "REVIEW_GENERATE",
+                          "requesterRole":  "Architect",
+                          "approvalState":  "APPROVED",
+                          "executionState":  "PLANNED",
+                          "approverRole":  "Architect",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  false,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "GHX-006",
+                          "actionType":  "MERGE_RECOMMENDATION",
+                          "requesterRole":  "Orchestrator",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "QA",
+                                               "status":  "pending-review",
+                                               "reason":  "Final validation evidence must be checked before merge recommendation execution."
+                                           }
+                                       ]
+                      }
+                  ],
+    "boundaries":  {
+                       "offlinePlanningOnly":  true,
+                       "githubOnly":  true,
+                       "performsGitHubApiCalls":  false,
+                       "performsProviderCalls":  false,
+                       "performsDeployments":  false,
+                       "storesCredentials":  false,
+                       "storesSecrets":  false,
+                       "readsSecretValues":  false,
+                       "createsBackgroundJobs":  false,
+                       "createsWorkers":  false,
+                       "createsQueues":  false,
+                       "createsSchedulers":  false,
+                       "autonomousExecution":  false,
+                       "automaticMerging":  false,
+                       "automaticRebasing":  false,
+                       "directProtectedBranchWrites":  false,
+                       "aiWorkforceRuntimeExecution":  false,
+                       "softwareFactory":  false
+                   }
+}

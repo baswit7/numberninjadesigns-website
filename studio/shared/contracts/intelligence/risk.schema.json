@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.risk",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "riskScore",
+    "riskLevel",
+    "model",
+    "factors",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "allowedRiskLevels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "traceability": {
+    "requiresEvidence": true,
+    "requiresFactorPoints": true,
+    "requiresCalculationPath": true
+  }
+}

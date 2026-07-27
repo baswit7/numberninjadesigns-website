@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-07-27",
+  "brand": {
+    "id": "numberninjadesigns",
+    "name": "NumberNinjaDesigns",
+    "role": "single-master-brand",
+    "repository": "numberninjadesigns.github.io",
+    "legacyBrands": [
+      {
+        "name": "NumberNinjaTees",
+        "status": "retirement-planned",
+        "allowedUse": "migration evidence and redirects only"
+      },
+      {
+        "name": "NinjaNumberTees",
+        "status": "retired-alias",
+        "allowedUse": "migration evidence and redirects only"
+      }
+    ]
+  },
+  "domains": [
+    {
+      "id": "commerce",
+      "name": "Physical and digital commerce",
+      "owner": "NumberNinjaDesigns",
+      "items": [
+        {
+          "id": "physical-products",
+          "name": "Physical products",
+          "status": "integrated",
+          "path": "products/physical",
+          "includes": ["print-on-demand apparel", "mockups", "licensed media asset pipeline"]
+        },
+        {
+          "id": "digital-products",
+          "name": "Digital products",
+          "status": "integrated",
+          "path": "products/digital",
+          "includes": ["finance templates", "product factory", "source briefs", "release evidence"]
+        },
+        {
+          "id": "etsy-commerce",
+          "name": "Etsy commerce integration",
+          "status": "source-integrated-live-access-unverified",
+          "path": "services/etsy-open-api",
+          "includes": ["OAuth", "listing intelligence", "read-only shop intelligence", "approval-gated publishing"]
+        }
+      ]
+    },
+    {
+      "id": "studio-os",
+      "name": "Studio OS and automation",
+      "owner": "NumberNinjaDesigns",
+      "items": [
+        {
+          "id": "studio-runtime",
+          "name": "NumberNinjaDesigns Studio OS",
+          "status": "integrated",
+          "path": "studio",
+          "includes": ["command center", "API center", "governance", "portfolio views", "asset manager"]
+        },
+        {
+          "id": "intelligence",
+          "name": "Commerce intelligence",
+          "status": "integrated",
+          "path": "modules",
+          "includes": ["Etsy intelligence", "listing intelligence", "market intelligence", "AI workforce control"]
+        },
+        {
+          "id": "meta-social",
+          "name": "Facebook and Instagram data connector",
+          "status": "connector-ready-live-access-unverified",
+          "path": "studio/services/meta-social",
+          "includes": ["read-only Page data", "read-only Instagram Business data", "bounded retries", "local cache fallback"]
+        }
+      ]
+    },
+    {
+      "id": "growth",
+      "name": "Social media, content and owned audience",
+      "owner": "NumberNinjaDesigns",
+      "items": [
+        {
+          "id": "facebook",
+          "name": "Facebook",
+          "status": "account-not-confirmed",
+          "migrationCandidate": "existing NinjaNumberTees asset",
+          "nextGate": "verify ownership and rename eligibility manually"
+        },
+        {
+          "id": "instagram",
+          "name": "Instagram",
+          "status": "account-not-confirmed",
+          "migrationCandidate": "existing NinjaNumberTees asset",
+          "nextGate": "verify ownership, Business linkage and rename eligibility manually"
+        },
+        {
+          "id": "x-twitter",
+          "name": "X / Twitter",
+          "status": "planned",
+          "nextGate": "claim a NumberNinjaDesigns handle or document an approved fallback"
+        },
+        {
+          "id": "pinterest",
+          "name": "Pinterest",
+          "status": "integration-source-ready-account-unverified",
+          "path": "pinterest",
+          "nextGate": "complete account and OAuth ownership verification"
+        },
+        {
+          "id": "blog",
+          "name": "NumberNinjaDesigns blog",
+          "status": "planned",
+          "nextGate": "approve information architecture and first three article themes"
+        },
+        {
+          "id": "tiktok",
+          "name": "TikTok",
+          "status": "integration-source-ready-account-unverified",
+          "path": "tiktok",
+          "nextGate": "verify account ownership and approved API products"
+        }
+      ]
+    },
+    {
+      "id": "initiatives",
+      "name": "Ideas outside the current physical and digital catalog",
+      "owner": "NumberNinjaDesigns",
+      "path": "studio/projects/NumberNinjaDesigns/initiatives",
+      "items": [
+        {
+          "id": "tok-hub",
+          "name": "TOK Hub",
+          "status": "planned",
+          "path": "studio/projects/NumberNinjaDesigns/initiatives/TOKHub",
+          "type": "content-system"
+        },
+        {
+          "id": "boodschappenvergelijker",
+          "name": "BoodschappenVergelijker",
+          "status": "planned",
+          "path": "studio/projects/NumberNinjaDesigns/initiatives/BoodschappenVergelijker",
+          "type": "comparison-system"
+        },
+        {
+          "id": "ai-daytraden",
+          "name": "AI Daytraden",
+          "status": "research-only",
+          "path": "studio/projects/NumberNinjaDesigns/initiatives/AIDaytraden",
+          "type": "market-research-system",
+          "hardBoundary": "no broker connection or trade execution"
+        },
+        {
+          "id": "niveau-verhogen-paul",
+          "name": "Niveau Verhogen Paul",
+          "status": "planned",
+          "path": "studio/projects/NumberNinjaDesigns/initiatives/NiveauVerhogenPaul",
+          "type": "personal-development-system"
+        },
+        {
+          "id": "leersystemen-verkoop",
+          "name": "Leersystemen Verkoop",
+          "status": "planned",
+          "path": "studio/projects/NumberNinjaDesigns/initiatives/LeersystemenVerkoop",
+          "type": "sales-operations-system",
+          "hardBoundary": "no customer data until privacy and access design are approved"
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "field-flow-ai",
+      "reason": "Existing project instructions require it to remain an independent product and repository."
+    }
+  ],
+  "boundaries": {
+    "singleMasterBrand": true,
+    "singleRepository": true,
+    "singleRootEnvironmentFile": true,
+    "externalAccountChangesRequireManualApproval": true,
+    "providerCallsRequireExplicitExecution": true,
+    "secretsStoredInSource": false
+  }
+}

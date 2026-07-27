@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-21T20:30:00.0000000Z",
+  "source": "shared/contracts/api-governance/api-registry.json",
+  "reportId": "api-dependency-map",
+  "dependencies": [
+    {
+      "project": "Studio OS",
+      "apis": [
+        "openai",
+        "github",
+        "notion",
+        "vercel",
+        "google-analytics",
+        "google-search-console",
+        "exa",
+        "postman",
+        "elevenlabs"
+      ]
+    },
+    {
+      "project": "NumberNinjaDesigns",
+      "apis": [
+        "github",
+        "vercel",
+        "etsy",
+        "printify",
+        "meta",
+        "instagram",
+        "tiktok",
+        "pinterest",
+        "reddit",
+        "google-analytics",
+        "google-search-console"
+      ]
+    },
+    {
+      "project": "NumberNinjaDesigns / TOK Hub",
+      "apis": [
+        "meta",
+        "instagram",
+        "tiktok",
+        "pinterest",
+        "reddit",
+        "elevenlabs"
+      ]
+    },
+    {
+      "project": "Future Client Projects",
+      "apis": [
+        "openai",
+        "github",
+        "notion",
+        "vercel",
+        "google-analytics",
+        "google-search-console",
+        "exa",
+        "elevenlabs"
+      ]
+    }
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "contractFirst": true,
+    "validatorFirst": true,
+    "storesSecrets": false,
+    "exposesTokens": false,
+    "readsSecretValues": false,
+    "performsApiCalls": false,
+    "callsProviders": false,
+    "executesDeployments": false,
+    "dashboardWritesAllowed": false,
+    "runtimeMutationScope": "runtime/api-governance"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventFamilies": [
+    {
+      "prefix": "runtime.",
+      "owner": "services/runtime-orchestrator",
+      "purpose": "Execution state, routing, retries and control-plane diagnostics."
+    },
+    {
+      "prefix": "provider.",
+      "owner": "services/provider-manager",
+      "purpose": "Provider lifecycle, credentials, permission checks, rate limit and reconnect state."
+    },
+    {
+      "prefix": "deployment.",
+      "owner": "services/deployment-controller",
+      "purpose": "Release readiness, deployment status, rollback state and environment gating."
+    },
+    {
+      "prefix": "agent.",
+      "owner": "agents",
+      "purpose": "Agent task lifecycle, handoffs, validation and blocked states."
+    },
+    {
+      "prefix": "documentation.",
+      "owner": "services/documentation-engine",
+      "purpose": "Architecture docs, changelog and reference synchronization."
+    },
+    {
+      "prefix": "telemetry.",
+      "owner": "services/telemetry-core",
+      "purpose": "Machine-readable metrics, traces and low-noise diagnostics."
+    },
+    {
+      "prefix": "health.",
+      "owner": "services/health-monitor",
+      "purpose": "Repository, provider, config, docs and runtime integrity checks."
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/projections/dashboard-projection.schema.json",
+  "title": "Phase 13 Dashboard Projection Contract",
+  "description": "Defines read-only dashboard projection JSON derived from runtime truth and produced by the dashboard adapter.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "projectionId",
+    "generatedAt",
+    "source",
+    "runtimeTruth",
+    "producer",
+    "consumer",
+    "sources",
+    "sections",
+    "boundary",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "projectionId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "const": "dashboard-adapter-projection"
+    },
+    "runtimeTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "authoritative",
+        "sourcePaths"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "const": "runtime"
+        },
+        "authoritative": {
+          "type": "boolean",
+          "const": true
+        },
+        "sourcePaths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/repositoryPath"
+          }
+        }
+      }
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "role",
+        "onlyProducer"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "const": "apps/studio-dashboard/dashboard-adapter.ps1"
+        },
+        "role": {
+          "type": "string",
+          "const": "projection-producer"
+        },
+        "onlyProducer": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "role",
+        "passive"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "const": "apps/studio-dashboard"
+        },
+        "role": {
+          "type": "string",
+          "const": "passive-visual-consumer"
+        },
+        "passive": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceId",
+          "sourcePath",
+          "sourceKind",
+          "status"
+        ],
+        "properties": {
+          "sourceId": {
+            "$ref": "#/$defs/identifier"
+          },
+          "sourcePath": {
+            "$ref": "#/$defs/repositoryPath"
+          },
+          "sourceKind": {
+            "type": "string",
+            "enum": [
+              "runtime-report",
+              "dashboard-view-model",
+              "governance-document",
+              "validation-result",
+              "health-result"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "warning",
+              "error",
+              "unknown",
+              "not-configured"
+            ]
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sectionId",
+          "title",
+          "status",
+          "sourceIds",
+          "summary"
+        ],
+        "properties": {
+          "sectionId": {
+            "$ref": "#/$defs/identifier"
+          },
+          "title": {
+            "$ref": "#/$defs/displayText"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "warning",
+              "error",
+              "unknown",
+              "not-configured"
+            ]
+          },
+          "sourceIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/identifier"
+            }
+          },
+          "summary": {
+            "$ref": "#/$defs/displayText"
+          }
+        }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readOnly",
+        "runtimeMutationAllowed",
+        "dashboardWriteAllowed",
+        "executionAllowed",
+        "providerCallAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "browserStorageAuthorityAllowed"
+      ],
+      "properties": {
+        "readOnly": {
+          "type": "boolean",
+          "const": true
+        },
+        "runtimeMutationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "dashboardWriteAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "providerCallAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "deploymentAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "credentialAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "browserStorageAuthorityAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 140,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 240,
+      "pattern": "^[a-zA-Z0-9._/-]+$"
+    },
+    "displayText": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 800
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-13"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "read-only-projection-contract"
+        }
+      }
+    }
+  }
+}

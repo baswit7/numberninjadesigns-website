@@ -1,0 +1,81 @@
+{
+  "locale": "en-US",
+  "productId": "subscription-tracker",
+  "productVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "shots": [
+    {
+      "assetId": "hero",
+      "filename": "subscription-tracker-01-hero-en-US.png",
+      "id": "laptop",
+      "purpose": "thumbnail",
+      "required": true,
+      "shotType": "laptop",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "dashboard",
+      "filename": "subscription-tracker-02-dashboard-en-US.png",
+      "id": "desktop",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "desktop",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "how-it-works",
+      "filename": "subscription-tracker-05-how-it-works-en-US.png",
+      "id": "tablet",
+      "purpose": "workflow",
+      "required": true,
+      "shotType": "tablet",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "dashboard",
+      "filename": "subscription-tracker-02-dashboard-en-US.png",
+      "id": "dashboard-close-up",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "dashboard-close-up",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "detail-view",
+      "filename": "subscription-tracker-07-detail-view-en-US.png",
+      "id": "data-sheet-close-up",
+      "purpose": "detail",
+      "required": true,
+      "shotType": "data-sheet-close-up",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "features",
+      "filename": "subscription-tracker-04-features-en-US.png",
+      "id": "workbook-tabs",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "workbook-tabs",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "included-files",
+      "filename": "subscription-tracker-03-included-files-en-US.png",
+      "id": "quick-start-guide",
+      "purpose": "contents",
+      "required": true,
+      "shotType": "quick-start-guide",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "bundle",
+      "filename": "subscription-tracker-10-bundle-en-US.png",
+      "id": "product-bundle",
+      "purpose": "bundle",
+      "required": true,
+      "shotType": "product-bundle",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    }
+  ],
+  "status": "PRODUCTION_BRIEF_ONLY"
+}

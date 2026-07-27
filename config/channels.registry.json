@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-07-27",
+  "owner": "NumberNinjaDesigns",
+  "channels": [
+    {
+      "id": "facebook",
+      "displayName": "Facebook",
+      "status": "account-not-confirmed",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": "existing NinjaNumberTees Facebook asset",
+      "connector": "studio/services/meta-social",
+      "dataAccess": "read-only-source-ready-live-unverified",
+      "nextGate": "Verify ownership, rename eligibility, Page ID, scopes and Business portfolio linkage manually."
+    },
+    {
+      "id": "instagram",
+      "displayName": "Instagram",
+      "status": "account-not-confirmed",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": "existing NinjaNumberTees Instagram asset",
+      "connector": "studio/services/meta-social",
+      "dataAccess": "read-only-source-ready-live-unverified",
+      "nextGate": "Verify ownership, rename eligibility, Business Account ID and Facebook Page linkage manually."
+    },
+    {
+      "id": "x-twitter",
+      "displayName": "X / Twitter",
+      "status": "planned",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": null,
+      "connector": null,
+      "dataAccess": "not-configured",
+      "nextGate": "Choose and claim the NumberNinjaDesigns handle before adding links or API credentials."
+    },
+    {
+      "id": "pinterest",
+      "displayName": "Pinterest",
+      "status": "account-unverified",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": null,
+      "connector": "pinterest-api.html and pinterest/callback",
+      "dataAccess": "oauth-source-ready-live-unverified",
+      "nextGate": "Verify the Pinterest business account and complete approved OAuth scopes."
+    },
+    {
+      "id": "blog",
+      "displayName": "NumberNinjaDesigns Blog",
+      "status": "planned",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": null,
+      "connector": null,
+      "dataAccess": "not-applicable",
+      "nextGate": "Approve the on-site blog information architecture and first three article themes."
+    },
+    {
+      "id": "tiktok",
+      "displayName": "TikTok",
+      "status": "account-unverified",
+      "handle": null,
+      "publicUrl": null,
+      "migrationCandidate": null,
+      "connector": "tiktok verification and Studio API catalog",
+      "dataAccess": "source-ready-live-unverified",
+      "nextGate": "Verify ownership and approved TikTok developer products before any provider execution."
+    }
+  ],
+  "publicationBoundary": {
+    "automaticPublishingEnabled": false,
+    "externalAccountMutationEnabled": false,
+    "approvalRequired": true,
+    "secretsInBrowser": false,
+    "credentialsSource": ".env"
+  }
+}

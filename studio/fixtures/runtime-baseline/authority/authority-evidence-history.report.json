@@ -1,0 +1,197 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-20",
+    "reportId":  "authority-evidence-history",
+    "generatedBy":  "services/authority-history/generate-authority-evidence-history.ps1",
+    "generatedAt":  "2026-06-07T22:33:34.2820961Z",
+    "sourceOfTruth":  {
+                          "constitution":  "shared/contracts/authority/constitution.rules.json",
+                          "authorityRegistry":  "shared/contracts/authority/authority-registry.json",
+                          "monitoring":  "runtime/authority/authority-projection-monitoring.report.json",
+                          "evidence":  "runtime/authority/authority-monitoring-evidence.report.json"
+                      },
+    "consumedReports":  [
+                            {
+                                "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                "role":  "Phase 18 monitoring report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T22:32:33.3948321Z",
+                                "verdict":  "known",
+                                "reason":  "Phase 18 monitoring report is present and readable."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                "role":  "Phase 19 evidence report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T22:32:33.3948321Z",
+                                "verdict":  "known",
+                                "reason":  "Phase 19 evidence report is present and readable."
+                            },
+                            {
+                                "path":  "runtime/dashboard/authority.view.json",
+                                "role":  "Authority dashboard projection",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T22:17:45.6423451Z",
+                                "verdict":  "known",
+                                "reason":  "Authority dashboard projection is present and readable."
+                            },
+                            {
+                                "path":  "runtime/dashboard/authority-monitoring-evidence.view.json",
+                                "role":  "Authority monitoring evidence dashboard view",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T22:17:45.6396460Z",
+                                "verdict":  "known",
+                                "reason":  "Authority monitoring evidence dashboard view is present and readable."
+                            }
+                        ],
+    "status":  "unknown",
+    "summary":  {
+                    "snapshotCount":  1,
+                    "knownInputCount":  4,
+                    "unknownInputCount":  0,
+                    "warningCount":  3,
+                    "regressionCount":  1
+                },
+    "history":  {
+                    "mode":  "derived-current-snapshot",
+                    "snapshots":  [
+                                      {
+                                          "snapshotId":  "authority-evidence-history.current",
+                                          "generatedAt":  "2026-06-07T22:33:34.2820961Z",
+                                          "monitoringStatus":  "warning",
+                                          "evidenceStatus":  "unknown",
+                                          "findingCount":  1,
+                                          "unknownCount":  1,
+                                          "source":  "runtime/authority/authority-projection-monitoring.report.json + runtime/authority/authority-monitoring-evidence.report.json"
+                                      }
+                                  ]
+                },
+    "trend":  {
+                  "status":  "unknown",
+                  "items":  [
+                                {
+                                    "id":  "history-baseline-size",
+                                    "status":  "unknown",
+                                    "summary":  "Only the current bounded snapshot is retained; multi-snapshot trend direction is not yet available.",
+                                    "source":  "runtime/authority/authority-evidence-history.report.json",
+                                    "safe":  false
+                                },
+                                {
+                                    "id":  "monitoring-status-current",
+                                    "status":  "warning",
+                                    "summary":  "Current Phase 18 monitoring status is warning.",
+                                    "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                    "safe":  false
+                                },
+                                {
+                                    "id":  "evidence-status-current",
+                                    "status":  "unknown",
+                                    "summary":  "Current Phase 19 evidence status is unknown.",
+                                    "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                    "safe":  false
+                                }
+                            ]
+              },
+    "retention":  {
+                      "policyId":  "authority-evidence-history-retention",
+                      "retainedSnapshotCount":  1,
+                      "pruningAllowed":  false,
+                      "repairAllowed":  false,
+                      "synchronizationAllowed":  false,
+                      "reason":  "Phase 20 keeps a bounded generated report snapshot for visibility only; pruning or repair requires a separate reviewed phase."
+                  },
+    "lineage":  {
+                    "status":  "pass",
+                    "items":  [
+                                  {
+                                      "id":  "lineage-monitoring-source",
+                                      "status":  "pass",
+                                      "summary":  "History consumes Phase 18 monitoring as upstream monitoring source.",
+                                      "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                      "safe":  true
+                                  },
+                                  {
+                                      "id":  "lineage-evidence-source",
+                                      "status":  "pass",
+                                      "summary":  "History consumes Phase 19 evidence as upstream evidence source.",
+                                      "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                      "safe":  true
+                                  }
+                              ]
+                },
+    "freshness":  {
+                      "status":  "warning",
+                      "items":  [
+                                    {
+                                        "id":  "freshness-current-authority-evidence",
+                                        "status":  "warning",
+                                        "summary":  "staleProjectionCount=1; monitoringGeneratedAt=2026-06-07T21:46:19.9748694Z; evidenceGeneratedAt=2026-06-07T21:46:20.1804027Z.",
+                                        "source":  "runtime/authority/authority-projection-monitoring.report.json + runtime/authority/authority-monitoring-evidence.report.json",
+                                        "safe":  false
+                                    }
+                                ]
+                  },
+    "regressions":  {
+                        "status":  "unknown",
+                        "items":  [
+                                      {
+                                          "id":  "regression-history-depth",
+                                          "status":  "unknown",
+                                          "summary":  "No prior retained snapshot exists, so regression direction is unknown rather than pass.",
+                                          "source":  "runtime/authority/authority-evidence-history.report.json",
+                                          "safe":  false
+                                      },
+                                      {
+                                          "id":  "regression-current-findings",
+                                          "status":  "warning",
+                                          "summary":  "Current monitoring finding count is 1.",
+                                          "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                          "safe":  false
+                                      }
+                                  ]
+                    },
+    "unknowns":  {
+                     "status":  "unknown",
+                     "items":  [
+                                   {
+                                       "id":  "unknown-prior-history",
+                                       "status":  "unknown",
+                                       "summary":  "Prior history is absent by bounded retention policy; trend direction remains unknown, not pass.",
+                                       "source":  "runtime/authority/authority-evidence-history.report.json",
+                                       "safe":  false
+                                   }
+                               ]
+                 },
+    "boundary":  {
+                     "historyOnly":  true,
+                     "trendOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeTruthMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "queueAllowed":  false,
+                     "automationAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-13",
+  "contractFamily": "studio-os-dashboard-projections",
+  "purpose": "Define read-only dashboard projection contracts and no-write structural validation boundaries.",
+  "runtimeTruthOwner": "runtime",
+  "projectionProducer": "apps/studio-dashboard/dashboard-adapter.ps1",
+  "dashboardConsumer": "apps/studio-dashboard",
+  "dashboardRole": "passive-visual-consumer",
+  "contracts": [
+    {
+      "contractId": "dashboard-projection",
+      "path": "shared/contracts/projections/dashboard-projection.schema.json",
+      "kind": "read-only-derived-dashboard-view"
+    },
+    {
+      "contractId": "no-write-validator-interface",
+      "path": "shared/contracts/projections/no-write-validator-interface.schema.json",
+      "kind": "structural-validation-interface"
+    }
+  ],
+  "boundary": {
+    "readOnly": true,
+    "writesAllowed": false,
+    "runtimeMutationAllowed": false,
+    "dashboardMutationAllowed": false,
+    "executionAllowed": false,
+    "providerCallsAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "browserStorageAuthorityAllowed": false
+  },
+  "allowedContent": [
+    "source identities",
+    "source paths",
+    "status summaries",
+    "boundary summaries",
+    "staleness indicators",
+    "display labels",
+    "source evidence references"
+  ],
+  "prohibitedContent": [
+    "commands",
+    "script paths",
+    "network endpoints",
+    "provider invocation details",
+    "deployment payloads",
+    "approval write payloads",
+    "runtime mutation payloads",
+    "browser storage authority",
+    "credential material",
+    "queue configuration",
+    "worker configuration",
+    "scheduler configuration",
+    "executor configuration"
+  ]
+}

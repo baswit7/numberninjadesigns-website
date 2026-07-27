@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "warning",
+  "sectionId": "intelligence",
+  "cards": [
+    {
+      "id": "intelligence.signal.signal.local.product-catalog.pivot-table-operator",
+      "title": "signal.local.product-catalog.pivot-table-operator",
+      "status": "ok",
+      "description": "Local product master identifies a ready Pivot Table Operator product concept.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "A"
+        },
+        {
+          "label": "Confidence",
+          "value": 92.0
+        },
+        {
+          "label": "Source type",
+          "value": "current-studio-knowledge"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "intelligence.signal.signal.local.seo-keywords.pivot-table-operator",
+      "title": "signal.local.seo-keywords.pivot-table-operator",
+      "status": "ok",
+      "description": "Local SEO keyword file contains high-intent buyer and product phrases.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "B"
+        },
+        {
+          "label": "Confidence",
+          "value": 84.0
+        },
+        {
+          "label": "Source type",
+          "value": "current-studio-knowledge"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "intelligence.signal.signal.local.product-backlog.top-five",
+      "title": "signal.local.product-backlog.top-five",
+      "status": "ok",
+      "description": "Local backlog ranks first-batch product ideas with explicit confidence and readiness notes.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "A"
+        },
+        {
+          "label": "Confidence",
+          "value": 90.0
+        },
+        {
+          "label": "Source type",
+          "value": "current-studio-knowledge"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "intelligence.signal.signal.public.tiktok-creator-search-insights",
+      "title": "signal.public.tiktok-creator-search-insights",
+      "status": "warning",
+      "description": "TikTok Creator Search Insights was not queried in this read-only phase; no fabricated trend data is allowed.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "UNKNOWN"
+        },
+        {
+          "label": "Confidence",
+          "value": "unknown"
+        },
+        {
+          "label": "Source type",
+          "value": "public-signal"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "intelligence.signal.signal.public.etsy-marketplace-manual-research",
+      "title": "signal.public.etsy-marketplace-manual-research",
+      "status": "warning",
+      "description": "Etsy marketplace research was not performed by automation; manual checklist remains the only source.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "UNKNOWN"
+        },
+        {
+          "label": "Confidence",
+          "value": "unknown"
+        },
+        {
+          "label": "Source type",
+          "value": "public-signal"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "intelligence.signal.signal.public.pinterest-trends",
+      "title": "signal.public.pinterest-trends",
+      "status": "warning",
+      "description": "Pinterest trend evidence is not available in this phase; recommendations must not infer demand.",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "UNKNOWN"
+        },
+        {
+          "label": "Confidence",
+          "value": "unknown"
+        },
+        {
+          "label": "Source type",
+          "value": "public-signal"
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Unavailable signals remain UNKNOWN until source evidence exists.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/market-signals.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/market-signals.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/market-intelligence/market-signals.report.json"
+    ],
+    "sourceContracts": [
+      "shared/contracts/market-intelligence/market-signals.contract.json"
+    ],
+    "sourceServices": [
+      "services/market-intelligence/generate-market-intelligence.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

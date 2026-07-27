@@ -1,8 +1,8 @@
-const KEY = 'nnt.etsy-intelligence.v1';
+const keyFor = scope => `numberninjadesigns.etsy-intelligence.${scope === 'physical' ? 'physical' : 'digital'}.v1`;
 export const emptyState = () => ({ dataOrigin: 'none', imports: [], rows: [], learning: { keywords: {}, colors: {}, bundles: {}, layouts: {}, prices: [] }, settings: { locale: 'en-US' } });
-export function loadState() { try { return { ...emptyState(), ...JSON.parse(localStorage.getItem(KEY) || '{}') }; } catch { return emptyState(); } }
-export function saveState(state) { try { localStorage.setItem(KEY, JSON.stringify(state)); return true; } catch (error) { console.error('[EIE] Persistence failed', error); return false; } }
-export function clearState() { try { localStorage.removeItem(KEY); return true; } catch (error) { console.error('[EIE] Reset failed', error); return false; } }
+export function loadState(scope = 'digital') { try { return { ...emptyState(), ...JSON.parse(localStorage.getItem(keyFor(scope)) || '{}') }; } catch { return emptyState(); } }
+export function saveState(state, scope = 'digital') { try { localStorage.setItem(keyFor(scope), JSON.stringify(state)); return true; } catch (error) { console.error('[EIE] Persistence failed', error); return false; } }
+export function clearState(scope = 'digital') { try { localStorage.removeItem(keyFor(scope)); return true; } catch (error) { console.error('[EIE] Reset failed', error); return false; } }
 export function learn(state, analysis) {
   analysis.opportunities.slice(0, 20).forEach(x => state.learning.keywords[x.keyword] = { score: x.opportunityScore, seen: (state.learning.keywords[x.keyword]?.seen || 0) + 1 });
   analysis.patterns.colors.forEach(([x, count]) => state.learning.colors[x] = (state.learning.colors[x] || 0) + count);

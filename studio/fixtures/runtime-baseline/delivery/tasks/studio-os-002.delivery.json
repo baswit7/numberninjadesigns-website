@@ -1,0 +1,89 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "studio-os-002",
+    "projectId":  "studio-os",
+    "projectName":  "Studio OS",
+    "projectType":  "platform",
+    "repository":  "baswit7/professionele-ai-development-studio",
+    "title":  "Link project cockpit output to daily operating routine",
+    "type":  "process",
+    "status":  "intake",
+    "problem":  "Generated delivery views only create value if Bas uses them as a daily project selection routine.",
+    "expectedOutcome":  "A short operating routine for reviewing next tasks, blockers, Codex prompts, and release readiness.",
+    "businessValue":  7,
+    "urgency":  6,
+    "userImpact":  8,
+    "unblockValue":  7,
+    "effort":  2,
+    "risk":  2,
+    "confidence":  8,
+    "priorityScore":  72,
+    "roiScore":  73,
+    "sourceRoiScore":  88,
+    "rank":  6,
+    "estimatedHours":  2,
+    "expectedBusinessImpact":  7,
+    "whyThisTask":  "Best current priority score",
+    "releaseReadiness":  "planning-ready",
+    "dependencies":  [
+                         "studio-os-001"
+                     ],
+    "blockers":  [
+
+                 ],
+    "deliverables":  [
+                         "daily project cockpit routine",
+                         "manual update checklist"
+                     ],
+    "acceptanceCriteria":  [
+                               "Routine takes less than ten minutes.",
+                               "Routine starts from project-delivery.view.json.",
+                               "Routine ends with one selected task and one Codex prompt.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "low",
+                        "riskScore":  2,
+                        "summary":  "low risk. No active blockers."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/studio-os-002.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/studio-os-002.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/studio-os-002.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/studio-os-002.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

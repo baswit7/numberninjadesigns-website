@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/execution/execution-request.schema.json",
+  "title": "Phase 9 Execution Request",
+  "description": "Validates a non-executing governance request for future execution review. This contract never enables provider calls, deployments, credentials, secret access, agents, workers, schedulers or executors.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "createdAt",
+    "requestedAction",
+    "requestedBy",
+    "target",
+    "approvalRequirement",
+    "forbiddenCapabilities",
+    "executionAllowed",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "workflow-execution-review",
+        "agent-execution-review",
+        "provider-call-review",
+        "deployment-review",
+        "runtime-mutation-review",
+        "configuration-change-review",
+        "documentation-change-review"
+      ]
+    },
+    "requestedBy": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetType",
+        "targetId",
+        "summary"
+      ],
+      "properties": {
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "workflow",
+            "agent",
+            "provider",
+            "deployment",
+            "runtime",
+            "configuration",
+            "documentation"
+          ]
+        },
+        "targetId": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 800
+        }
+      }
+    },
+    "approvalRequirement": {
+      "type": "string",
+      "enum": [
+        "none",
+        "single-human",
+        "owner-only",
+        "two-person"
+      ]
+    },
+    "forbiddenCapabilities": {
+      "$ref": "#/$defs/forbiddenCapabilities"
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "forbiddenCapabilities": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "workflow_execution",
+          "agent_execution",
+          "provider_execution",
+          "openai_calls",
+          "anthropic_calls",
+          "github_api_calls",
+          "deployments",
+          "runtime_mutation",
+          "secret_access",
+          "credential_access",
+          "queues",
+          "schedulers",
+          "workers",
+          "executors",
+          "business_features"
+        ]
+      }
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-9"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "execution-governance-only"
+        }
+      }
+    }
+  }
+}

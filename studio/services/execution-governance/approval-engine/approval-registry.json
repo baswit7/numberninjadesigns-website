@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "phase-9-approval-registry",
+  "generatedFor": "phase-9-execution-governance",
+  "executionAllowed": false,
+  "approvals": [
+    {
+      "schemaVersion": "1.0.0",
+      "approvalId": "approval-deployment-review-missing",
+      "requestId": "execution-request-deployment-review",
+      "approvalState": "missing",
+      "reviewedBy": "studio-os-governance",
+      "reviewedAt": "2026-06-05T00:00:00Z",
+      "reason": "Human approval is missing, and Phase 9 cannot execute deployments.",
+      "constraints": [
+        "deployment execution remains prohibited",
+        "provider calls remain prohibited",
+        "approval is governance metadata only"
+      ],
+      "executionAllowed": false,
+      "nonExecutableMetadata": {
+        "phase": "phase-9",
+        "owner": "studio-os",
+        "safetyClass": "approval-governance-only"
+      }
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "approval-registry"
+  }
+}

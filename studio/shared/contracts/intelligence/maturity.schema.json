@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.maturity",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "maturityLevel",
+    "maturityStatus",
+    "model",
+    "projects",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "levelRange": {
+    "minimum": 1,
+    "maximum": 6
+  },
+  "allowedMaturityStatuses": [
+    "Prototype",
+    "Structured",
+    "Controlled",
+    "Observable",
+    "Operational",
+    "Autonomous Ready"
+  ],
+  "traceability": {
+    "requiresCriteria": true,
+    "requiresTrace": true
+  }
+}

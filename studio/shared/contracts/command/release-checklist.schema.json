@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/command/release-checklist.schema.json",
+  "title": "Phase 7 Release Checklist",
+  "description": "Validates non-executing release readiness checks for Phase 7 command-layer work. This schema validates readiness evidence only; it does not execute commands, call providers, mutate runtime state, trigger deployments, approve automatically or bypass human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "checklistId",
+    "createdAt",
+    "releaseScope",
+    "docsCompleteness",
+    "schemaValidation",
+    "safetyReview",
+    "rollbackNotes",
+    "testExpectations",
+    "approvalState",
+    "blockingIssues",
+    "releaseVerdict",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "description": "Semantic version of this release checklist schema contract.",
+      "const": "1.0.0",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "checklistId": {
+      "type": "string",
+      "description": "Deterministic, id-safe identifier for this release checklist.",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "UTC timestamp for when the release checklist was created.",
+      "format": "date-time"
+    },
+    "releaseScope": {
+      "type": "string",
+      "description": "Concise scope of the release readiness check.",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "docsCompleteness": {
+      "description": "Structured check for documentation completeness.",
+      "$ref": "#/$defs/releaseCheck"
+    },
+    "schemaValidation": {
+      "description": "Structured check for schema validation readiness.",
+      "$ref": "#/$defs/releaseCheck"
+    },
+    "safetyReview": {
+      "description": "Structured check for safety review completion.",
+      "$ref": "#/$defs/releaseCheck"
+    },
+    "rollbackNotes": {
+      "description": "Structured check for rollback note completeness.",
+      "$ref": "#/$defs/releaseCheck"
+    },
+    "testExpectations": {
+      "description": "Structured check for test expectation coverage.",
+      "$ref": "#/$defs/releaseCheck"
+    },
+    "approvalState": {
+      "type": "string",
+      "description": "Human review approval state for the release checklist.",
+      "enum": [
+        "draft",
+        "pending_review",
+        "approved",
+        "rejected",
+        "blocked"
+      ]
+    },
+    "blockingIssues": {
+      "type": "array",
+      "description": "Issues that may block release readiness.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "issueId",
+          "severity",
+          "description",
+          "blocksRelease"
+        ],
+        "properties": {
+          "issueId": {
+            "type": "string",
+            "description": "Stable, id-safe identifier for the blocking issue.",
+            "minLength": 3,
+            "maxLength": 120,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+          },
+          "severity": {
+            "type": "string",
+            "description": "Severity of the blocking issue.",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "Reviewable issue description. It must not contain secrets, tokens, provider credentials, executable instructions or local machine paths.",
+            "minLength": 1,
+            "maxLength": 700
+          },
+          "blocksRelease": {
+            "type": "boolean",
+            "description": "Whether this issue blocks release readiness."
+          }
+        }
+      }
+    },
+    "releaseVerdict": {
+      "type": "string",
+      "description": "Final non-executing release readiness verdict.",
+      "enum": [
+        "go",
+        "hold",
+        "stop"
+      ]
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "description": "Review and traceability metadata only. This object must not contain executable instructions, provider credentials, secrets, tokens, deployment actions or local machine paths.",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "releaseCheck": {
+      "type": "object",
+      "description": "Structured release readiness check with status and notes.",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status of this release readiness check.",
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "not_applicable"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Review notes for this check. Notes must not contain secrets, tokens, provider credentials, executable instructions or local machine paths.",
+          "minLength": 1,
+          "maxLength": 700
+        }
+      }
+    }
+  }
+}

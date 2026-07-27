@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-execution-dispatch-registry",
+  "capability": "execution-dispatch-registry",
+  "mode": "non-executing-dispatch-eligibility-registry-only",
+  "sourceOfTruth": "shared/contracts/execution-dispatch/execution-dispatch.contract.json",
+  "schema": "shared/contracts/execution-dispatch/execution-dispatch.schema.json",
+  "reviewRecordsInput": "runtime/execution-review/execution-review.records.json",
+  "reviewReportInput": "runtime/execution-review/execution-review.report.json",
+  "generatedRegistry": "runtime/execution-dispatch/execution-dispatch.registry.json",
+  "generatedAudit": "runtime/execution-dispatch/execution-dispatch.audit.json",
+  "generatedReport": "runtime/execution-dispatch/execution-dispatch.report.json",
+  "allowedDispatchStates": [
+    "UNKNOWN",
+    "BLOCKED",
+    "DISPATCH_ELIGIBLE",
+    "DISPATCH_DENIED",
+    "EXPIRED"
+  ],
+  "dispatchRules": {
+    "unknownNeverDispatchEligible": true,
+    "pendingReviewNeverDispatchEligible": true,
+    "blockedRemainsBlocked": true,
+    "approvedForDispatchMayBecomeDispatchEligible": true,
+    "noStateCausesExecution": true,
+    "noStateTriggersExecution": true,
+    "noStateTriggersProviderActions": true,
+    "noStateTriggersGitHubActions": true
+  },
+  "ownership": {
+    "ownsDispatchEligibility": true,
+    "ownsDispatchEvidence": true,
+    "ownsDispatchAuditTrail": true,
+    "ownsExecution": false,
+    "ownsProviderTruth": false,
+    "ownsGithubTruth": false,
+    "ownsDeploymentTruth": false,
+    "ownsRuntimeTruth": false
+  },
+  "boundaries": {
+    "registryOnly": true,
+    "performsExecution": false,
+    "dispatchEngine": false,
+    "providerExecution": false,
+    "githubExecution": false,
+    "deploymentExecution": false,
+    "mergeExecution": false,
+    "automaticExecution": false,
+    "automaticDispatch": false,
+    "backgroundWorkers": false,
+    "schedulers": false,
+    "queues": false,
+    "autonomousRunner": false,
+    "softwareFactory": false,
+    "secretAccess": false,
+    "credentialAccess": false,
+    "protectedBranchWrites": false,
+    "repositorySettingsMutation": false,
+    "collaboratorMutation": false,
+    "mutatesFilesOutsideRuntimeReports": false
+  }
+}

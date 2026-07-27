@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "error",
+  "sectionId": "project-control",
+  "cards": [
+    {
+      "id": "project.boodschappenvergelijker",
+      "title": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "status": "error",
+      "description": "Define first grocery comparison workflow",
+      "facts": [
+        {
+          "label": "Readiness",
+          "value": "blocked"
+        },
+        {
+          "label": "Priority",
+          "value": 80
+        },
+        {
+          "label": "ROI",
+          "value": 74
+        },
+        {
+          "label": "Blockers",
+          "value": 1
+        }
+      ],
+      "actionHint": "Highest ROI",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "project.numberninjadesigns",
+      "title": "NumberNinjaDesigns",
+      "status": "ok",
+      "description": "Build Etsy listing workflow foundation",
+      "facts": [
+        {
+          "label": "Readiness",
+          "value": "planning-ready"
+        },
+        {
+          "label": "Priority",
+          "value": 91
+        },
+        {
+          "label": "ROI",
+          "value": 92
+        },
+        {
+          "label": "Blockers",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Blocks 1 task",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "project.studio-os",
+      "title": "Studio OS",
+      "status": "ok",
+      "description": "Create project delivery system foundation",
+      "facts": [
+        {
+          "label": "Readiness",
+          "value": "planning-ready"
+        },
+        {
+          "label": "Priority",
+          "value": 88
+        },
+        {
+          "label": "ROI",
+          "value": 76
+        },
+        {
+          "label": "Blockers",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Blocks 1 task",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "project.tok-hub",
+      "title": "NumberNinjaDesigns / TOK Hub",
+      "status": "ok",
+      "description": "Define content production pipeline",
+      "facts": [
+        {
+          "label": "Readiness",
+          "value": "planning-ready"
+        },
+        {
+          "label": "Priority",
+          "value": 78
+        },
+        {
+          "label": "ROI",
+          "value": 76
+        },
+        {
+          "label": "Blockers",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Highest ROI",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/dashboard/project-delivery.view.json"
+    ],
+    "sourceContracts": [
+      "config/delivery.tasks.json"
+    ],
+    "sourceServices": [
+      "services/project-delivery/generate-project-delivery.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

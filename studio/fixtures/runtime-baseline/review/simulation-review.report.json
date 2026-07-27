@@ -1,0 +1,309 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-23",
+    "reportId":  "simulation-evidence-review",
+    "generatedBy":  "services/simulation-review/generate-simulation-review.ps1",
+    "generatedAt":  "2026-06-08T13:39:17.2783211Z",
+    "reviewQuestion":  "Why did the Phase 22 simulation produce PASS, WARNING or UNKNOWN?",
+    "sourceOfTruth":  {
+                          "simulation":  "runtime/simulation/execution-simulation.report.json",
+                          "validation":  "runtime/simulation/execution-simulation-validation.report.json",
+                          "evidence":  "runtime/authority/authority-monitoring-evidence.report.json",
+                          "history":  "runtime/authority/authority-evidence-history.report.json",
+                          "observability":  "runtime/authority/authority-observability.report.json"
+                      },
+    "consumedReports":  [
+                            {
+                                "path":  "runtime/simulation/execution-simulation.report.json",
+                                "role":  "Phase 22 execution governance simulation report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:39:16.4763550Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 22 execution governance simulation report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/simulation/execution-simulation-validation.report.json",
+                                "role":  "Phase 22 execution governance simulation validation report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:38:38.3067474Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 22 execution governance simulation validation report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                "role":  "Phase 18 projection monitoring report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:39:16.4743260Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 18 projection monitoring report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                "role":  "Phase 19 evidence center report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:39:16.4702956Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 19 evidence center report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-evidence-history.report.json",
+                                "role":  "Phase 20 evidence history report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:39:16.4662718Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 20 evidence history report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-observability.report.json",
+                                "role":  "Phase 21 observability report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T13:39:16.4723103Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 21 observability report is present, readable, complete and fresh."
+                            }
+                        ],
+    "status":  "unknown",
+    "summary":  {
+                    "knownInputCount":  6,
+                    "unknownInputCount":  0,
+                    "staleInputCount":  0,
+                    "warningCount":  4,
+                    "unknownCount":  13,
+                    "attributedEvidenceCount":  5,
+                    "rootCauseCount":  4,
+                    "reviewConfidenceScore":  80,
+                    "sourceSimulationStatus":  "unknown"
+                },
+    "outcomeReview":  {
+                          "status":  "unknown",
+                          "items":  [
+                                        {
+                                            "id":  "outcome.simulation-status",
+                                            "status":  "unknown",
+                                            "summary":  "Phase 22 simulation status is unknown; review explains the result without changing it.",
+                                            "source":  "runtime/simulation/execution-simulation.report.json",
+                                            "safe":  false
+                                        },
+                                        {
+                                            "id":  "outcome.validation-status",
+                                            "status":  "pass",
+                                            "summary":  "Phase 22 validation status is passed; validation failures=0.",
+                                            "source":  "runtime/simulation/execution-simulation-validation.report.json",
+                                            "safe":  true
+                                        },
+                                        {
+                                            "id":  "outcome.unknown-propagation",
+                                            "status":  "unknown",
+                                            "summary":  "Simulation unknownInputCount=2; simulation unknownCount=10; review unknownInputCount=0.",
+                                            "source":  "runtime/simulation/execution-simulation.report.json + runtime/simulation/execution-simulation-validation.report.json",
+                                            "safe":  false
+                                        }
+                                    ]
+                      },
+    "rootCauseClassification":  {
+                                    "status":  "unknown",
+                                    "items":  [
+                                                  {
+                                                      "id":  "cause.stale-simulation-inputs",
+                                                      "status":  "unknown",
+                                                      "summary":  "Stale inputs explain uncertainty: simulationStaleInputCount=2; reviewStaleInputCount=0.",
+                                                      "source":  "runtime/simulation/execution-simulation.report.json",
+                                                      "safe":  false
+                                                  },
+                                                  {
+                                                      "id":  "cause.upstream-unknowns",
+                                                      "status":  "unknown",
+                                                      "summary":  "Upstream unknowns: observability=4; evidence=1; historyInputs=0.",
+                                                      "source":  "runtime/authority/authority-observability.report.json + runtime/authority/authority-monitoring-evidence.report.json + runtime/authority/authority-evidence-history.report.json",
+                                                      "safe":  false
+                                                  },
+                                                  {
+                                                      "id":  "cause.readiness-denial",
+                                                      "status":  "warning",
+                                                      "summary":  "Approval readiness score is 33.33; this explains warning outcomes but does not approve or deny anything.",
+                                                      "source":  "runtime/simulation/execution-simulation.report.json",
+                                                      "safe":  false
+                                                  },
+                                                  {
+                                                      "id":  "cause.monitoring-findings",
+                                                      "status":  "warning",
+                                                      "summary":  "Projection monitoring findingCount=1.",
+                                                      "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                                      "safe":  false
+                                                  }
+                                              ]
+                                },
+    "evidenceAttribution":  {
+                                "status":  "unknown",
+                                "items":  [
+                                              {
+                                                  "id":  "evidence.simulation-report",
+                                                  "status":  "unknown",
+                                                  "summary":  "Primary evidence is the generated Phase 22 simulation report with readiness score 57.58.",
+                                                  "source":  "runtime/simulation/execution-simulation.report.json",
+                                                  "safe":  false
+                                              },
+                                              {
+                                                  "id":  "evidence.validation-report",
+                                                  "status":  "pass",
+                                                  "summary":  "Validation evidence has 0 failure(s).",
+                                                  "source":  "runtime/simulation/execution-simulation-validation.report.json",
+                                                  "safe":  true
+                                              },
+                                              {
+                                                  "id":  "evidence.evidence-center",
+                                                  "status":  "unknown",
+                                                  "summary":  "Evidence Center unknownCount=1.",
+                                                  "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                                  "safe":  false
+                                              },
+                                              {
+                                                  "id":  "evidence.history",
+                                                  "status":  "unknown",
+                                                  "summary":  "History status is unknown; unknownInputCount=0.",
+                                                  "source":  "runtime/authority/authority-evidence-history.report.json",
+                                                  "safe":  false
+                                              },
+                                              {
+                                                  "id":  "evidence.observability",
+                                                  "status":  "unknown",
+                                                  "summary":  "Observability status is unknown; unknownCount=4.",
+                                                  "source":  "runtime/authority/authority-observability.report.json",
+                                                  "safe":  false
+                                              }
+                                          ]
+                            },
+    "reviewConfidence":  {
+                             "status":  "unknown",
+                             "items":  [
+                                           {
+                                               "id":  "confidence.input-completeness",
+                                               "status":  "pass",
+                                               "summary":  "Known review inputs=6 of 6.",
+                                               "source":  "shared/contracts/simulation-review/review.manifest.json",
+                                               "safe":  true
+                                           },
+                                           {
+                                               "id":  "confidence.source-unknowns",
+                                               "status":  "unknown",
+                                               "summary":  "Source simulation unknownInputCount=2; unknownCount=10.",
+                                               "source":  "runtime/simulation/execution-simulation.report.json",
+                                               "safe":  false
+                                           },
+                                           {
+                                               "id":  "confidence.score",
+                                               "status":  "unknown",
+                                               "summary":  "reviewConfidenceScore=80.",
+                                               "source":  "runtime/review/simulation-review.report.json",
+                                               "safe":  false
+                                           }
+                                       ]
+                         },
+    "explainability":  {
+                           "status":  "unknown",
+                           "items":  [
+                                         {
+                                             "id":  "explain.scope",
+                                             "status":  "warning",
+                                             "summary":  "Phase 23 explains why the simulation produced its status; it does not decide, approve, repair or execute.",
+                                             "source":  "shared/contracts/simulation-review/review.manifest.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "explain.unknown-before-pass",
+                                             "status":  "unknown",
+                                             "summary":  "Any missing, unreadable, stale or incomplete review evidence keeps the review unknown and prevents pass.",
+                                             "source":  "runtime/simulation/execution-simulation.report.json + shared/contracts/simulation-review/simulation-review.schema.json",
+                                             "safe":  false
+                                         },
+                                         {
+                                             "id":  "explain.no-state-change",
+                                             "status":  "warning",
+                                             "summary":  "The review report may contain explanatory findings only; it contains no state-changing recommendation.",
+                                             "source":  "docs/governance/PHASE_23_BOUNDARY_AUDIT.md",
+                                             "safe":  false
+                                         }
+                                     ]
+                       },
+    "unknowns":  {
+                     "status":  "unknown",
+                     "items":  [
+                                   {
+                                       "id":  "unknown.source-simulation-inputs",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 22 simulation has unknownInputCount=2; review must remain unknown.",
+                                       "source":  "runtime/simulation/execution-simulation.report.json",
+                                       "safe":  false
+                                   },
+                                   {
+                                       "id":  "unknown.source-simulation-items",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 22 simulation has unknownCount=10; review explains rather than resolves it.",
+                                       "source":  "runtime/simulation/execution-simulation.report.json",
+                                       "safe":  false
+                                   }
+                               ]
+                 },
+    "boundary":  {
+                     "reviewOnly":  true,
+                     "explanationOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsReviewReports":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsGovernanceTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsObservabilityTruth":  false,
+                     "ownsSimulationTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "commandExecutionAllowed":  false,
+                     "orchestrationAllowed":  false,
+                     "automationAllowed":  false,
+                     "repairAllowed":  false,
+                     "synchronizationAllowed":  false,
+                     "approvalWorkflowAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "authorityMutationAllowed":  false,
+                     "evidenceMutationAllowed":  false,
+                     "simulationMutationAllowed":  false,
+                     "contractMutationAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "queueAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "backgroundJobAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "retryAllowed":  false,
+                     "providerAdapterAllowed":  false,
+                     "stateChangingRecommendationAllowed":  false
+                 }
+}

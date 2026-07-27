@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.exceptions",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "exceptions",
+    "activeExceptions",
+    "expiredExceptions",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedExceptionStatuses": [
+    "approved",
+    "expired",
+    "rejected",
+    "none"
+  ],
+  "traceability": {
+    "requiresApprover": true,
+    "requiresExpirationDate": true,
+    "requiresScope": true
+  }
+}

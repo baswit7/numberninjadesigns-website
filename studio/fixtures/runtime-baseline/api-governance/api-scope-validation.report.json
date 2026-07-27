@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-21T20:30:00.0000000Z",
+  "source": "shared/contracts/api-governance/api-scope-contract.json",
+  "reportId": "api-scope-validation",
+  "summary": {
+    "totalApis": 16,
+    "missingScopes": 8,
+    "passed": 8
+  },
+  "apis": [
+    {
+      "apiId": "openai",
+      "name": "OpenAI",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "github",
+      "name": "GitHub",
+      "requiredScopes": [
+        "repo",
+        "workflow"
+      ],
+      "grantedScopes": [
+        "repo",
+        "workflow"
+      ],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "notion",
+      "name": "Notion",
+      "requiredScopes": [
+        "read_content"
+      ],
+      "grantedScopes": [
+        "read_content"
+      ],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "vercel",
+      "name": "Vercel",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "etsy",
+      "name": "Etsy",
+      "requiredScopes": [
+        "shops_r",
+        "listings_r"
+      ],
+      "grantedScopes": [],
+      "missingScopes": [
+        "shops_r",
+        "listings_r"
+      ],
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "printify",
+      "name": "Printify",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "meta",
+      "name": "Meta",
+      "requiredScopes": [
+        "pages_read_engagement",
+        "pages_show_list",
+        "read_insights"
+      ],
+      "grantedScopes": [
+        "pages_show_list"
+      ],
+      "missingScopes": [
+        "pages_read_engagement",
+        "read_insights"
+      ],
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "instagram",
+      "name": "Instagram",
+      "requiredScopes": [
+        "instagram_basic",
+        "instagram_manage_insights"
+      ],
+      "grantedScopes": [
+        "instagram_basic"
+      ],
+      "missingScopes": "instagram_manage_insights",
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "tiktok",
+      "name": "TikTok",
+      "requiredScopes": [
+        "user.info.basic",
+        "video.list"
+      ],
+      "grantedScopes": [
+        "user.info.basic"
+      ],
+      "missingScopes": "video.list",
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "pinterest",
+      "name": "Pinterest",
+      "requiredScopes": [
+        "pins:read",
+        "boards:read"
+      ],
+      "grantedScopes": [],
+      "missingScopes": [
+        "pins:read",
+        "boards:read"
+      ],
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "reddit",
+      "name": "Reddit",
+      "requiredScopes": [
+        "read"
+      ],
+      "grantedScopes": [],
+      "missingScopes": "read",
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "google-analytics",
+      "name": "Google Analytics",
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/analytics.readonly"
+      ],
+      "grantedScopes": [],
+      "missingScopes": "https://www.googleapis.com/auth/analytics.readonly",
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "google-search-console",
+      "name": "Google Search Console",
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/webmasters.readonly"
+      ],
+      "grantedScopes": [],
+      "missingScopes": "https://www.googleapis.com/auth/webmasters.readonly",
+      "status": "missing scopes"
+    },
+    {
+      "apiId": "elevenlabs",
+      "name": "ElevenLabs",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "exa",
+      "name": "Exa",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "postman",
+      "name": "Postman",
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "missingScopes": null,
+      "status": "pass"
+    }
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "contractFirst": true,
+    "validatorFirst": true,
+    "storesSecrets": false,
+    "exposesTokens": false,
+    "readsSecretValues": false,
+    "performsApiCalls": false,
+    "callsProviders": false,
+    "executesDeployments": false,
+    "dashboardWritesAllowed": false,
+    "runtimeMutationScope": "runtime/api-governance"
+  }
+}

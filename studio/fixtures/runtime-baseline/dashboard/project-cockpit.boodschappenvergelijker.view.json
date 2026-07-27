@@ -1,0 +1,65 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:project-cockpit",
+    "sourceFile":  "config/delivery.tasks.json",
+    "readOnly":  true,
+    "projectId":  "boodschappenvergelijker",
+    "projectName":  "NumberNinjaDesigns / BoodschappenVergelijker",
+    "projectType":  "product",
+    "projectStatus":  "blocked",
+    "nextTask":  {
+                     "taskId":  "boodschappenvergelijker-001",
+                     "title":  "Define first grocery comparison workflow",
+                     "whyThisTask":  "Highest ROI",
+                     "priorityScore":  80,
+                     "roiScore":  74,
+                     "releaseReadiness":  "blocked",
+                     "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md"
+                 },
+    "blockers":  [
+                     "Data source strategy is not selected."
+                 ],
+    "releaseReadiness":  "blocked",
+    "highestRiskTask":  {
+                            "taskId":  "boodschappenvergelijker-001",
+                            "title":  "Define first grocery comparison workflow",
+                            "risk":  6,
+                            "riskSummary":  "medium risk. Blockers present: Data source strategy is not selected."
+                        },
+    "reviewNeededCount":  0,
+    "taskCountsByStatus":  {
+                               "intake":  0,
+                               "ready":  1,
+                               "in_progress":  0,
+                               "review":  0,
+                               "blocked":  0,
+                               "release_ready":  0,
+                               "done":  0
+                           },
+    "tasks":  [
+                  {
+                      "taskId":  "boodschappenvergelijker-001",
+                      "title":  "Define first grocery comparison workflow",
+                      "status":  "ready",
+                      "priorityScore":  80,
+                      "roiScore":  74,
+                      "whyThisTask":  "Highest ROI",
+                      "releaseReadiness":  "blocked",
+                      "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md"
+                  }
+              ],
+    "boundaries":  {
+                       "readOnlyDashboard":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

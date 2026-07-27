@@ -1,0 +1,54 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/healthz",
+      "destination": "/api/health"
+    },
+    {
+      "source": "/api/etsy/status",
+      "destination": "/api/status"
+    },
+    {
+      "source": "/api/etsy/test-connection",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/api/etsy/connect",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/api/etsy/disconnect",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/etsy/oauth/callback",
+      "destination": "/api/oauth-callback"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
+      ]
+    }
+  ]
+}

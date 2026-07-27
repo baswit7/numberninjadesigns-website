@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/command/command-classification.schema.json",
+  "title": "Phase 7 Command Classification",
+  "description": "Validates a non-executing Phase 7 command classification record. This schema classifies command intent before execution; it does not execute commands, call providers, mutate runtime state, trigger deployments or replace human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "classificationId",
+    "createdAt",
+    "commandCategory",
+    "riskLevel",
+    "executionClass",
+    "requiresHumanApproval",
+    "providerSensitivity",
+    "runtimeSensitivity",
+    "allowedActions",
+    "forbiddenActions",
+    "blockedStates",
+    "safetyNotes",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "description": "Semantic version of this command classification schema contract.",
+      "const": "1.0.0",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "classificationId": {
+      "type": "string",
+      "description": "Deterministic, id-safe identifier for this classification record. The value must not contain local machine paths, secrets or provider identifiers.",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "UTC timestamp for when the classification record was created.",
+      "format": "date-time"
+    },
+    "commandCategory": {
+      "type": "string",
+      "description": "High-level category of the requested command intent.",
+      "enum": [
+        "documentation",
+        "schema",
+        "code",
+        "runtime",
+        "dashboard",
+        "provider",
+        "deployment",
+        "automation",
+        "governance",
+        "unknown"
+      ]
+    },
+    "riskLevel": {
+      "type": "string",
+      "description": "Risk level assigned before any command execution is considered.",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "executionClass": {
+      "type": "string",
+      "description": "Non-executing classification of the command boundary.",
+      "enum": [
+        "non_executing",
+        "review_only",
+        "prepares_execution",
+        "requires_approval",
+        "blocked"
+      ]
+    },
+    "requiresHumanApproval": {
+      "type": "boolean",
+      "description": "Whether explicit human approval is required before any downstream action may proceed."
+    },
+    "providerSensitivity": {
+      "type": "string",
+      "description": "Provider interaction sensitivity for the classified command intent.",
+      "enum": [
+        "none",
+        "reads_provider_metadata",
+        "calls_provider",
+        "modifies_provider_state",
+        "unknown"
+      ]
+    },
+    "runtimeSensitivity": {
+      "type": "string",
+      "description": "Runtime interaction sensitivity for the classified command intent.",
+      "enum": [
+        "none",
+        "reads_runtime_state",
+        "writes_runtime_state",
+        "mutates_runtime_control",
+        "unknown"
+      ]
+    },
+    "allowedActions": {
+      "type": "array",
+      "description": "Explicit non-executing actions allowed within this classification boundary.",
+      "default": [],
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "uniqueItems": true
+    },
+    "forbiddenActions": {
+      "type": "array",
+      "description": "Explicit actions that are forbidden for this classification, including execution, provider, deployment, runtime mutation or unsafe Git operations where relevant.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "uniqueItems": true
+    },
+    "blockedStates": {
+      "type": "array",
+      "description": "States that block the command from advancing without execution.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[a-z][a-z0-9_]*$",
+        "examples": [
+          "missing_approval",
+          "unsafe_scope",
+          "unknown_provider_effect",
+          "deployment_risk"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "safetyNotes": {
+      "type": "array",
+      "description": "Human-readable safety notes for review. Notes must not include secrets, tokens, provider credentials or executable instructions.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      }
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "description": "Review and traceability metadata only. This object must not contain executable instructions, shell commands, provider calls, deployment actions, secrets, tokens, real provider IDs or local machine paths.",
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Optional source context for the classification record.",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "userIntentSummary": {
+      "type": "string",
+      "description": "Optional concise summary of the user intent being classified.",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "approvalReason": {
+      "type": "string",
+      "description": "Optional reason human approval is required.",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "reviewStatus": {
+      "type": "string",
+      "description": "Optional lifecycle status for human review of the classification.",
+      "enum": [
+        "draft",
+        "reviewed",
+        "approved",
+        "blocked",
+        "deprecated"
+      ]
+    },
+    "reviewedBy": {
+      "type": "string",
+      "description": "Optional reviewer identifier. This must not contain secrets, tokens or local machine paths.",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "reviewedAt": {
+      "type": "string",
+      "description": "Optional UTC timestamp for when the classification was reviewed.",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "riskLevel": {
+            "enum": [
+              "high",
+              "critical"
+            ]
+          }
+        },
+        "required": [
+          "riskLevel"
+        ]
+      },
+      "then": {
+        "properties": {
+          "requiresHumanApproval": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "executionClass": {
+            "const": "requires_approval"
+          }
+        },
+        "required": [
+          "executionClass"
+        ]
+      },
+      "then": {
+        "properties": {
+          "requiresHumanApproval": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

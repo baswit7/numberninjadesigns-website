@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-execution-preflight-gate",
+  "capability": "execution-preflight-gate",
+  "mode": "non-executing-request-package-preflight-only",
+  "sourceOfTruth": "shared/contracts/execution-preflight/execution-preflight.contract.json",
+  "schema": "shared/contracts/execution-preflight/execution-preflight.schema.json",
+  "packageInput": "runtime/execution-request/execution-request.packages.json",
+  "packageReportInput": "runtime/execution-request/execution-request.report.json",
+  "generatedDecisions": "runtime/execution-preflight/execution-preflight.decisions.json",
+  "generatedAudit": "runtime/execution-preflight/execution-preflight.audit.json",
+  "generatedReport": "runtime/execution-preflight/execution-preflight.report.json",
+  "allowedPreflightStates": [
+    "UNKNOWN",
+    "BLOCKED",
+    "FAILED",
+    "PASSED",
+    "READY_FOR_MANUAL_REVIEW"
+  ],
+  "requiredPackageEvidence": [
+    "source approval id",
+    "approval state",
+    "requested action",
+    "target system",
+    "risk classification",
+    "execution readiness state",
+    "boundary confirmation"
+  ],
+  "requiredPackageValidators": [
+    "scripts/validation/validate-execution-approval.ps1",
+    "scripts/validation/validate-execution-request.ps1"
+  ],
+  "preflightRules": {
+    "unknownNeverPassesAutomatically": true,
+    "blockedPackagesRemainBlocked": true,
+    "dispatchAllowedMustFail": true,
+    "missingRequiredValidatorsMustFail": true,
+    "missingRequiredEvidenceMustFail": true,
+    "deniedActionTypesMustFail": true,
+    "onlyReadyForReviewMayBecomeReadyForManualReview": true,
+    "passedDoesNotMeanExecuted": true,
+    "readyForManualReviewDoesNotMeanExecuted": true,
+    "preflightDoesNotExecute": true
+  },
+  "ownership": {
+    "ownsPreflightDecisions": true,
+    "ownsPreflightAuditTrail": true,
+    "ownsPreflightEvidence": true,
+    "ownsExecutionRequestPackages": false,
+    "ownsApprovalStatus": false,
+    "ownsExecutionTruth": false,
+    "ownsProviderTruth": false,
+    "ownsDeploymentTruth": false,
+    "ownsGithubTruth": false
+  },
+  "boundaries": {
+    "preflightOnly": true,
+    "performsExecution": false,
+    "automaticExecution": false,
+    "dispatchExecution": false,
+    "liveGitHubActionExecution": false,
+    "providerExecution": false,
+    "deploymentExecution": false,
+    "mergeExecution": false,
+    "approvalMutation": false,
+    "requestPackageMutation": false,
+    "autoApproval": false,
+    "autoMerge": false,
+    "backgroundWorkers": false,
+    "schedulers": false,
+    "queues": false,
+    "autonomousRunner": false,
+    "softwareFactory": false,
+    "secretAccess": false,
+    "credentialAccess": false,
+    "protectedBranchWrites": false,
+    "repositorySettingsMutation": false,
+    "collaboratorMutation": false,
+    "deploymentMutation": false,
+    "mutatesFilesOutsideRuntimeReports": false
+  }
+}

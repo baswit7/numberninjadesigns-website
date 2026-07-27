@@ -1,0 +1,351 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-19",
+    "reportId":  "authority-monitoring-evidence",
+    "generatedBy":  "services/authority-evidence/generate-authority-monitoring-evidence.ps1",
+    "generatedAt":  "2026-06-07T21:46:20.1804027Z",
+    "sourceOfTruth":  {
+                          "constitution":  "shared/contracts/authority/constitution.rules.json",
+                          "authorityRegistry":  "shared/contracts/authority/authority-registry.json",
+                          "monitoring":  "runtime/authority/authority-projection-monitoring.report.json"
+                      },
+    "monitoringSource":  {
+                             "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                             "kind":  "monitoring-report",
+                             "role":  "Phase 18 monitoring source",
+                             "exists":  true,
+                             "validJson":  true,
+                             "lastModified":  "2026-06-07T21:46:20.0572095Z",
+                             "verdict":  "pass",
+                             "reason":  "Phase 18 monitoring source is present and readable."
+                         },
+    "status":  "unknown",
+    "summary":  {
+                    "passCount":  19,
+                    "failCount":  3,
+                    "unknownCount":  1,
+                    "sourceFileCount":  5,
+                    "projectionFileCount":  2,
+                    "findingCount":  1
+                },
+    "sourceFileEvidence":  [
+                               {
+                                   "path":  "shared/contracts/authority/constitution.rules.json",
+                                   "kind":  "source",
+                                   "role":  "Constitution source of truth",
+                                   "exists":  true,
+                                   "validJson":  true,
+                                   "lastModified":  "2026-06-07T16:31:38.7402950Z",
+                                   "verdict":  "pass",
+                                   "reason":  "Constitution source of truth is present and readable."
+                               },
+                               {
+                                   "path":  "shared/contracts/authority/authority-registry.json",
+                                   "kind":  "source",
+                                   "role":  "Authority ownership source",
+                                   "exists":  true,
+                                   "validJson":  true,
+                                   "lastModified":  "2026-06-07T16:31:38.7371866Z",
+                                   "verdict":  "pass",
+                                   "reason":  "Authority ownership source is present and readable."
+                               },
+                               {
+                                   "path":  "runtime/authority/authority-read-model.report.json",
+                                   "kind":  "source",
+                                   "role":  "Authority read model projection",
+                                   "exists":  true,
+                                   "validJson":  true,
+                                   "lastModified":  "2026-06-07T21:46:19.6989939Z",
+                                   "verdict":  "pass",
+                                   "reason":  "Authority read model projection is present and readable."
+                               },
+                               {
+                                   "path":  "runtime/authority/authority-query-responses.report.json",
+                                   "kind":  "source",
+                                   "role":  "Authority query response projection",
+                                   "exists":  true,
+                                   "validJson":  true,
+                                   "lastModified":  "2026-06-07T21:46:19.7073199Z",
+                                   "verdict":  "pass",
+                                   "reason":  "Authority query response projection is present and readable."
+                               },
+                               {
+                                   "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                   "kind":  "monitoring-report",
+                                   "role":  "Phase 18 monitoring source",
+                                   "exists":  true,
+                                   "validJson":  true,
+                                   "lastModified":  "2026-06-07T21:46:20.0572095Z",
+                                   "verdict":  "pass",
+                                   "reason":  "Phase 18 monitoring source is present and readable."
+                               }
+                           ],
+    "projectionFileEvidence":  [
+                                   {
+                                       "path":  "runtime/dashboard/authority.view.json",
+                                       "kind":  "projection",
+                                       "role":  "Authority dashboard projection",
+                                       "exists":  true,
+                                       "validJson":  true,
+                                       "lastModified":  "2026-06-07T21:43:48.8313350Z",
+                                       "verdict":  "pass",
+                                       "reason":  "Authority dashboard projection is present and readable."
+                                   },
+                                   {
+                                       "path":  "runtime/dashboard/authority-projection-monitoring.view.json",
+                                       "kind":  "dashboard-view",
+                                       "role":  "Phase 18 dashboard monitoring view",
+                                       "exists":  true,
+                                       "validJson":  true,
+                                       "lastModified":  "2026-06-07T21:43:48.8359593Z",
+                                       "verdict":  "pass",
+                                       "reason":  "Phase 18 dashboard monitoring view is present and readable."
+                                   }
+                               ],
+    "lineageEvidence":  {
+                            "status":  "pass",
+                            "items":  [
+                                          {
+                                              "id":  "dashboard-source-marker",
+                                              "verdict":  "pass",
+                                              "source":  "runtime/authority/authority-read-model.report.json",
+                                              "projection":  "runtime/dashboard/authority.view.json",
+                                              "summary":  "Dashboard source marker is studio-dashboard:authority.",
+                                              "safe":  true
+                                          },
+                                          {
+                                              "id":  "summary-source-contracts",
+                                              "verdict":  "pass",
+                                              "source":  "runtime/authority/authority-read-model.report.json",
+                                              "projection":  "runtime/dashboard/authority.view.json",
+                                              "summary":  "Authority summary lineage matches read model sourceContracts.",
+                                              "safe":  true
+                                          }
+                                      ]
+                        },
+    "verdictEvidence":  {
+                            "status":  "fail",
+                            "items":  [
+                                          {
+                                              "id":  "monitoring-verdict",
+                                              "verdict":  "fail",
+                                              "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                              "projection":  "runtime/dashboard/authority.view.json",
+                                              "summary":  "Phase 18 status=warning; findings=1.",
+                                              "safe":  false
+                                          },
+                                          {
+                                              "id":  "authority-projection.stale-projection.authority-dashboard-projection-is-older-than-the-authority-read-model.",
+                                              "verdict":  "fail",
+                                              "source":  "runtime/authority/authority-read-model.report.json",
+                                              "projection":  "runtime/dashboard/authority.view.json",
+                                              "summary":  "Authority dashboard projection is older than the authority read model.",
+                                              "safe":  false
+                                          }
+                                      ]
+                        },
+    "freshnessEvidence":  {
+                              "status":  "fail",
+                              "items":  [
+                                            {
+                                                "id":  "freshness-marker-comparison",
+                                                "verdict":  "fail",
+                                                "source":  "runtime/authority/authority-read-model.report.json",
+                                                "projection":  "runtime/dashboard/authority.view.json",
+                                                "summary":  "sourceLastModified=2026-06-07T21:46:19.6989939Z; projectionLastModified=2026-06-07T21:43:48.8313350Z; projectionOlderThanSource=True.",
+                                                "safe":  false
+                                            }
+                                        ]
+                          },
+    "completenessEvidence":  {
+                                 "status":  "pass",
+                                 "items":  [
+                                               {
+                                                   "id":  "expected-authority-cards",
+                                                   "verdict":  "pass",
+                                                   "source":  "runtime/authority/authority-read-model.report.json",
+                                                   "projection":  "runtime/dashboard/authority.view.json",
+                                                   "summary":  "11 expected authority dashboard cards are present.",
+                                                   "safe":  true
+                                               }
+                                           ]
+                             },
+    "mismatchEvidence":  {
+                             "status":  "pass",
+                             "items":  [
+                                           {
+                                               "id":  "summary-counts",
+                                               "verdict":  "pass",
+                                               "source":  "runtime/authority/authority-read-model.report.json",
+                                               "projection":  "runtime/dashboard/authority.view.json",
+                                               "summary":  "Authority summary counts match the authority read model.",
+                                               "safe":  true
+                                           },
+                                           {
+                                               "id":  "authority-field-parity",
+                                               "verdict":  "pass",
+                                               "source":  "runtime/authority/authority-read-model.report.json",
+                                               "projection":  "runtime/dashboard/authority.view.json",
+                                               "summary":  "Projected authority fields match read model values.",
+                                               "safe":  true
+                                           }
+                                       ]
+                         },
+    "safetyEvidence":  {
+                           "status":  "pass",
+                           "items":  [
+                                         {
+                                             "id":  "safety.repairsProjection",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "repairsProjection=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.synchronizesProjection",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "synchronizesProjection=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.executionAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "executionAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.providerInvocationAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "providerInvocationAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.deploymentAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "deploymentAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.credentialAccessAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "credentialAccessAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.secretAccessAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "secretAccessAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.runtimeMutationAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "runtimeMutationAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.dashboardActionAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "dashboardActionAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.approvalAutomationAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "approvalAutomationAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.workflowExecutionAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "workflowExecutionAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.browserAuthorityStorageAllowed",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "browserAuthorityStorageAllowed=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.ownsAuthority",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "ownsAuthority=False.",
+                                             "safe":  true
+                                         },
+                                         {
+                                             "id":  "safety.ownsTruth",
+                                             "verdict":  "pass",
+                                             "source":  "shared/contracts/authority/evidence/evidence.manifest.json",
+                                             "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                             "summary":  "ownsTruth=False.",
+                                             "safe":  true
+                                         }
+                                     ]
+                       },
+    "unknownEvidence":  {
+                            "status":  "unknown",
+                            "items":  [
+                                          {
+                                              "id":  "unknown-state-proof",
+                                              "verdict":  "unknown",
+                                              "source":  "simulated-missing-input",
+                                              "projection":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                              "summary":  "If an input is missing or unreadable, Evidence Center classifies it as unknown, never pass.",
+                                              "safe":  false
+                                          }
+                                      ]
+                        },
+    "unknownStateProof":  {
+                              "simulatedMissingInput":  "runtime/authority/missing-phase-19-input.fixture.json",
+                              "verdict":  "unknown",
+                              "reason":  "Missing evidence is classified as unknown and cannot produce a pass verdict."
+                          },
+    "boundary":  {
+                     "evidenceOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthority":  false,
+                     "ownsTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardActionAllowed":  false,
+                     "approvalAutomationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

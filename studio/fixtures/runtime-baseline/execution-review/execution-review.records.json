@@ -1,0 +1,205 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "manual-execution-review-gate",
+    "sourceFile":  "shared/contracts/execution-review/execution-review.contract.json",
+    "preflightDecisionInput":  "runtime/execution-preflight/execution-preflight.decisions.json",
+    "preflightReportInput":  "runtime/execution-preflight/execution-preflight.report.json",
+    "allowedReviewStates":  [
+                                "UNKNOWN",
+                                "BLOCKED",
+                                "PENDING_REVIEW",
+                                "APPROVED_FOR_DISPATCH",
+                                "REJECTED",
+                                "EXPIRED"
+                            ],
+    "records":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "reviewId":  "REV-PFG-EXREQ-GHLX-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-GHLX-REQUEST-001",
+                        "requestId":  "EXREQ-GHLX-REQUEST-001",
+                        "sourceApprovalId":  "APG-001",
+                        "preflightState":  "BLOCKED",
+                        "reviewState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "manualReviewRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "requiredManualEvidence":  [
+                                                       "human reviewer identity",
+                                                       "review timestamp",
+                                                       "scope confirmation",
+                                                       "risk acceptance",
+                                                       "dispatch boundary acknowledgement"
+                                                   ],
+                        "manualEvidence":  [
+
+                                           ],
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-preflight",
+                        "evidence":  [
+                                         "Review gate consumed runtime/execution-preflight/execution-preflight.decisions.json.",
+                                         "Review gate did not execute, dispatch, mutate approvals, mutate packages, or mutate preflight decisions.",
+                                         "Preflight state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "approval-required",
+                                             "reason":  "Human approval is required before any external executor may consider this action."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "reviewId":  "REV-PFG-EXREQ-GHSX-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-GHSX-REQUEST-001",
+                        "requestId":  "EXREQ-GHSX-REQUEST-001",
+                        "sourceApprovalId":  "APG-002",
+                        "preflightState":  "BLOCKED",
+                        "reviewState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "low",
+                        "manualReviewRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "requiredManualEvidence":  [
+                                                       "human reviewer identity",
+                                                       "review timestamp",
+                                                       "scope confirmation",
+                                                       "risk acceptance",
+                                                       "dispatch boundary acknowledgement"
+                                                   ],
+                        "manualEvidence":  [
+
+                                           ],
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-preflight",
+                        "evidence":  [
+                                         "Review gate consumed runtime/execution-preflight/execution-preflight.decisions.json.",
+                                         "Review gate did not execute, dispatch, mutate approvals, mutate packages, or mutate preflight decisions.",
+                                         "Preflight state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "pending-review",
+                                             "reason":  "Pending approval cannot execute."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "reviewId":  "REV-PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "preflightId":  "PFG-EXREQ-UNKNOWN-REQUEST-001",
+                        "requestId":  "EXREQ-UNKNOWN-REQUEST-001",
+                        "sourceApprovalId":  "APG-003",
+                        "preflightState":  "BLOCKED",
+                        "reviewState":  "BLOCKED",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "high",
+                        "manualReviewRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "requiredManualEvidence":  [
+                                                       "human reviewer identity",
+                                                       "review timestamp",
+                                                       "scope confirmation",
+                                                       "risk acceptance",
+                                                       "dispatch boundary acknowledgement"
+                                                   ],
+                        "manualEvidence":  [
+
+                                           ],
+                        "executionDispatchAllowed":  false,
+                        "result":  "blocked-by-preflight",
+                        "evidence":  [
+                                         "Review gate consumed runtime/execution-preflight/execution-preflight.decisions.json.",
+                                         "Review gate did not execute, dispatch, mutate approvals, mutate packages, or mutate preflight decisions.",
+                                         "Preflight state was BLOCKED."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "unknown-state-block",
+                                             "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "unknown-approval-block",
+                                             "reason":  "UNKNOWN approval state never passes automatically."
+                                         },
+                                         {
+                                             "role":  "Preflight",
+                                             "status":  "package-blocked",
+                                             "reason":  "BLOCKED request packages remain BLOCKED at preflight."
+                                         },
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "preflight-blocked",
+                                             "reason":  "BLOCKED preflight decisions remain BLOCKED at manual review."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "reviewId":  "REV-PFG-EXREQ-GHLX-APPROVED-001",
+                        "preflightId":  "PFG-EXREQ-GHLX-APPROVED-001",
+                        "requestId":  "EXREQ-GHLX-APPROVED-001",
+                        "sourceApprovalId":  "APG-004",
+                        "preflightState":  "READY_FOR_MANUAL_REVIEW",
+                        "reviewState":  "PENDING_REVIEW",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "targetSystem":  "GitHub",
+                        "riskClassification":  "medium",
+                        "manualReviewRequired":  true,
+                        "manualEvidencePresent":  false,
+                        "requiredManualEvidence":  [
+                                                       "human reviewer identity",
+                                                       "review timestamp",
+                                                       "scope confirmation",
+                                                       "risk acceptance",
+                                                       "dispatch boundary acknowledgement"
+                                                   ],
+                        "manualEvidence":  [
+
+                                           ],
+                        "executionDispatchAllowed":  false,
+                        "result":  "pending-human-review",
+                        "evidence":  [
+                                         "Review gate consumed runtime/execution-preflight/execution-preflight.decisions.json.",
+                                         "Review gate did not execute, dispatch, mutate approvals, mutate packages, or mutate preflight decisions.",
+                                         "Preflight state was READY_FOR_MANUAL_REVIEW."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "ManualReview",
+                                             "status":  "manual-review-required",
+                                             "reason":  "Explicit manual review evidence is required before APPROVED_FOR_DISPATCH can exist."
+                                         }
+                                     ]
+                    }
+                ]
+}

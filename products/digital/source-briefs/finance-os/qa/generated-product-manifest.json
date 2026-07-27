@@ -1,0 +1,485 @@
+{
+  "assumptions": [
+    "Commercial listing copy and image production briefs require human review before publication.",
+    "The target spreadsheet application must recalculate formulas after opening the workbook."
+  ],
+  "checksums": {
+    "customer/LICENSE.txt": "dc3aacd07f7312309f869b621ba5eb4ed9ac67c8522066177243a8e29da82424",
+    "customer/QUICK_START.html": "3cad7eb755cbc99bc13be91e7a304faae129518c0809053cb02be14cb2ef7e8f",
+    "customer/README.html": "d8cfcf435bc9c5da0f75c9cbaf4cb0ef5b592534c79a973d225286dcbf6e181c",
+    "images/copy-overlay-plan.json": "c11d841efc394c7f0741160c0aec3786c24d317448a8bf31a4a08a8119ab57cb",
+    "images/image-production-manifest.json": "51988ad9e444c608d2995aae4826799f64d3630c25534836142dd01a6a3babb2",
+    "images/mockup-shot-list.json": "7a7632d25721195d6677d48e6bb4a292f3a8bd7ddcf40081fd62d0c4fd083db3",
+    "images/photoshop-batch-manifest.json": "3b8a2065831d7644f442e44814389caae053d97db2f341446e4d3d574e26e8cb",
+    "listing/alt-texts.txt": "a3769d803c0b1fe60bf10cca0af6c5619321536a30c2fe25a27caf4a1ab7ada6",
+    "listing/description.txt": "ba151ea1e585bd220b87c3e238a33ed2c7c633707e451a9890e989f2f0e1fe6e",
+    "listing/faq.txt": "79f9ec683ed6c726a483ff634c0864b2ff50a5ba0b9b6949a65c4034f7818766",
+    "listing/features.txt": "21b395a6a66830ec363604b776baeb15adea2b4bd40d008bf0e760d0cc34fe45",
+    "listing/listing-metadata.json": "ef63b3fc3f65b71093177c477f858913cbe2866ff378bbcfa2663c73017c461e",
+    "listing/tags.txt": "4ffc23ebe30a6566b3e9ce1395064641dae5499a3ac61ef16e3a8a1a031b3395",
+    "listing/title.txt": "179c3f21a59693b3fb214598692b7ca5a13bea937cffd50105767d6aaad338f4",
+    "product/monthly-budget-planner.xlsx": "726bc56aad08d55675ee99584582a09548b34daa5ab6101889bfbdd3811b62a1",
+    "qa/compatibility-report.json": "6b5963bbd09344c3af2fcbb54ccd87ff230baba058feb636de0f6a63fad3c15d",
+    "qa/quality-report.json": "978ac461b09d2fc97f99c0ce3cb51edfa0ca4bdf208bd2744eb45101ebebc529",
+    "qa/validation-report.json": "7e17e7da0d9014d048742ac8469bde2037b28546508da7125c05205b227fb082"
+  },
+  "compatibilityReport": {
+    "extensions": {
+      "currency": "EUR",
+      "locale": "de-DE"
+    },
+    "generatedAt": "2026-07-15T18:06:52.229Z",
+    "productId": "monthly-budget-planner",
+    "productVersion": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "status": "PARTIAL",
+    "targets": [
+      {
+        "checks": [
+          "ExcelJS re-read and OOXML structural checks passed."
+        ],
+        "limitations": [
+          "Native application open/save was not supplied as evidence.",
+          "Excel desktop 2019 or later is the verified release target.",
+          "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling."
+        ],
+        "status": "PARTIAL",
+        "target": "excel-desktop",
+        "verified": true,
+        "version": "2019"
+      }
+    ]
+  },
+  "compatibilityStatus": "PARTIAL",
+  "configuration": {
+    "branding": {
+      "enabled": false
+    },
+    "categoryOverrides": [
+      "100"
+    ],
+    "currency": "EUR",
+    "featureFlags": {
+      "carryOver": false,
+      "monthlyStatus": true
+    },
+    "filename": "monthly-budget-planner.xlsx",
+    "inputCapacity": 100,
+    "locale": "de-DE",
+    "market": "DE",
+    "outputOptions": {
+      "customerDocs": true,
+      "imageManifests": true,
+      "listing": true,
+      "package": true,
+      "workbook": true
+    },
+    "productId": "monthly-budget-planner",
+    "productVersion": "1.0.0",
+    "sampleDataEnabled": true,
+    "schemaVersion": "1.0.0",
+    "themeId": "soft-pastel",
+    "title": "Monthly Budget Planner",
+    "year": 2026
+  },
+  "configurationHash": "26b0197b13000b9e45bb8c917f6f4f668e04171e030612d31a317704f89c6a42",
+  "extensions": {
+    "commercialStatus": {
+      "images": "MANIFEST_ONLY_REVIEW_REQUIRED",
+      "listing": "GENERATED_DRAFT"
+    },
+    "packagePolicy": {
+      "deterministicTimestamp": "2026-07-15T18:06:52.229Z",
+      "excludedManifestEntries": [
+        "qa/generated-product-manifest.json",
+        "qa/release-manifest.json"
+      ],
+      "manifestCoverage": "PAYLOAD_FILES_ONLY",
+      "offline": true
+    }
+  },
+  "factoryVersion": "1.0.0",
+  "files": [
+    {
+      "bytes": 27200,
+      "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "path": "product/monthly-budget-planner.xlsx",
+      "role": "workbook",
+      "sha256": "726bc56aad08d55675ee99584582a09548b34daa5ab6101889bfbdd3811b62a1"
+    },
+    {
+      "bytes": 1453,
+      "mediaType": "text/html",
+      "path": "customer/README.html",
+      "role": "readme",
+      "sha256": "d8cfcf435bc9c5da0f75c9cbaf4cb0ef5b592534c79a973d225286dcbf6e181c"
+    },
+    {
+      "bytes": 1452,
+      "mediaType": "text/html",
+      "path": "customer/QUICK_START.html",
+      "role": "readme",
+      "sha256": "3cad7eb755cbc99bc13be91e7a304faae129518c0809053cb02be14cb2ef7e8f"
+    },
+    {
+      "bytes": 308,
+      "mediaType": "text/plain",
+      "path": "customer/LICENSE.txt",
+      "role": "license",
+      "sha256": "dc3aacd07f7312309f869b621ba5eb4ed9ac67c8522066177243a8e29da82424"
+    },
+    {
+      "bytes": 4061,
+      "mediaType": "application/json",
+      "path": "listing/listing-metadata.json",
+      "role": "listing",
+      "sha256": "ef63b3fc3f65b71093177c477f858913cbe2866ff378bbcfa2663c73017c461e"
+    },
+    {
+      "bytes": 19,
+      "mediaType": "text/plain",
+      "path": "listing/title.txt",
+      "role": "listing",
+      "sha256": "179c3f21a59693b3fb214598692b7ca5a13bea937cffd50105767d6aaad338f4"
+    },
+    {
+      "bytes": 281,
+      "mediaType": "text/plain",
+      "path": "listing/description.txt",
+      "role": "listing",
+      "sha256": "ba151ea1e585bd220b87c3e238a33ed2c7c633707e451a9890e989f2f0e1fe6e"
+    },
+    {
+      "bytes": 36,
+      "mediaType": "text/plain",
+      "path": "listing/tags.txt",
+      "role": "listing",
+      "sha256": "4ffc23ebe30a6566b3e9ce1395064641dae5499a3ac61ef16e3a8a1a031b3395"
+    },
+    {
+      "bytes": 45,
+      "mediaType": "text/plain",
+      "path": "listing/features.txt",
+      "role": "listing",
+      "sha256": "21b395a6a66830ec363604b776baeb15adea2b4bd40d008bf0e760d0cc34fe45"
+    },
+    {
+      "bytes": 675,
+      "mediaType": "text/plain",
+      "path": "listing/faq.txt",
+      "role": "listing",
+      "sha256": "79f9ec683ed6c726a483ff634c0864b2ff50a5ba0b9b6949a65c4034f7818766"
+    },
+    {
+      "bytes": 190,
+      "mediaType": "text/plain",
+      "path": "listing/alt-texts.txt",
+      "role": "listing",
+      "sha256": "a3769d803c0b1fe60bf10cca0af6c5619321536a30c2fe25a27caf4a1ab7ada6"
+    },
+    {
+      "bytes": 13026,
+      "mediaType": "application/json",
+      "path": "images/image-production-manifest.json",
+      "role": "manifest",
+      "sha256": "51988ad9e444c608d2995aae4826799f64d3630c25534836142dd01a6a3babb2"
+    },
+    {
+      "bytes": 5133,
+      "mediaType": "application/json",
+      "path": "images/photoshop-batch-manifest.json",
+      "role": "source",
+      "sha256": "3b8a2065831d7644f442e44814389caae053d97db2f341446e4d3d574e26e8cb"
+    },
+    {
+      "bytes": 4761,
+      "mediaType": "application/json",
+      "path": "images/copy-overlay-plan.json",
+      "role": "source",
+      "sha256": "c11d841efc394c7f0741160c0aec3786c24d317448a8bf31a4a08a8119ab57cb"
+    },
+    {
+      "bytes": 2300,
+      "mediaType": "application/json",
+      "path": "images/mockup-shot-list.json",
+      "role": "source",
+      "sha256": "7a7632d25721195d6677d48e6bb4a292f3a8bd7ddcf40081fd62d0c4fd083db3"
+    },
+    {
+      "bytes": 2675,
+      "mediaType": "application/json",
+      "path": "qa/validation-report.json",
+      "role": "report",
+      "sha256": "7e17e7da0d9014d048742ac8469bde2037b28546508da7125c05205b227fb082"
+    },
+    {
+      "bytes": 2158,
+      "mediaType": "application/json",
+      "path": "qa/quality-report.json",
+      "role": "report",
+      "sha256": "978ac461b09d2fc97f99c0ce3cb51edfa0ca4bdf208bd2744eb45101ebebc529"
+    },
+    {
+      "bytes": 787,
+      "mediaType": "application/json",
+      "path": "qa/compatibility-report.json",
+      "role": "report",
+      "sha256": "6b5963bbd09344c3af2fcbb54ccd87ff230baba058feb636de0f6a63fad3c15d"
+    }
+  ],
+  "generatedAt": "2026-07-15T18:06:52.229Z",
+  "manifestId": "monthly-budget-planner-generated-26b0197b1300",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "qualityReport": {
+    "components": [
+      {
+        "evidence": [
+          "Workbook validation status: PASS."
+        ],
+        "id": "technical-integrity",
+        "score": 100,
+        "weight": 0.25
+      },
+      {
+        "evidence": [
+          "303 live formulas structurally inspected."
+        ],
+        "id": "formula-quality",
+        "score": 100,
+        "weight": 0.15
+      },
+      {
+        "evidence": [
+          "940 validations, 4 filters and 5 frozen panes."
+        ],
+        "id": "usability",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "visualQuality evidence score: 100."
+        ],
+        "id": "visual-quality",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "localization evidence score: 100."
+        ],
+        "id": "localization",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "commercialCompleteness evidence score: 100."
+        ],
+        "id": "commercial-completeness",
+        "score": 100,
+        "weight": 0.1
+      },
+      {
+        "evidence": [
+          "instructions evidence score: 100."
+        ],
+        "id": "instructions",
+        "score": 100,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "Compatibility status: PARTIAL."
+        ],
+        "id": "compatibility",
+        "score": 60,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "accessibility evidence score: 100."
+        ],
+        "id": "accessibility",
+        "score": 100,
+        "weight": 0.05
+      },
+      {
+        "evidence": [
+          "exportCompleteness evidence score: 100."
+        ],
+        "id": "export-completeness",
+        "score": 100,
+        "weight": 0.05
+      }
+    ],
+    "extensions": {
+      "hardFailure": false,
+      "visualChecks": {
+        "contrast": true,
+        "formulaRecognition": true,
+        "inputRecognition": true,
+        "printProfile": true
+      },
+      "workbookWarnings": []
+    },
+    "generatedAt": "2026-07-15T18:06:52.229Z",
+    "productId": "monthly-budget-planner",
+    "productVersion": "1.0.0",
+    "recommendations": [
+      "Supply passing native compatibility evidence before release approval."
+    ],
+    "schemaVersion": "1.0.0",
+    "score": 98,
+    "status": "PASS",
+    "threshold": 90
+  },
+  "qualityScore": 98,
+  "releaseStatus": "DRAFT",
+  "schemaVersion": "1.0.0",
+  "sourceDefinitions": [
+    {
+      "id": "monthly-budget-planner",
+      "sha256": "b561d75e061114a6ceee2653f1dd6d4947c57b22fe60e56ca4fc2066be22eab9",
+      "type": "product-definition",
+      "version": "1.0.0"
+    },
+    {
+      "id": "monthly-budget-planner",
+      "sha256": "26b0197b13000b9e45bb8c917f6f4f668e04171e030612d31a317704f89c6a42",
+      "type": "product-configuration",
+      "version": "1.0.0"
+    },
+    {
+      "id": "soft-pastel",
+      "sha256": "a633de0967c49f463de519525541ca65932f28a071b60f8a1f7486940f953bc1",
+      "type": "theme-definition",
+      "version": "1.0.0"
+    },
+    {
+      "id": "monthly-budget-planner",
+      "sha256": "a57eeff553f79d21493de1b189197db1cfed8c3a9f6da05c1a8acc4158bc2c0f",
+      "type": "commercial-metadata",
+      "version": "1.0.0"
+    }
+  ],
+  "validationReport": {
+    "contract": "FinanceProductWorkbook",
+    "extensions": {
+      "details": {
+        "configuration": {
+          "currency": "EUR",
+          "inputCapacity": 100,
+          "locale": "de-DE",
+          "themeId": "soft-pastel"
+        },
+        "sheets": [
+          {
+            "autoFilter": false,
+            "columnCount": 2,
+            "currencyFormatCells": 10,
+            "dataValidationCount": 0,
+            "formulaCount": 3,
+            "frozenPane": false,
+            "name": "Übersicht",
+            "rowCount": 7
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 6,
+            "currencyFormatCells": 208,
+            "dataValidationCount": 300,
+            "formulaCount": 300,
+            "frozenPane": true,
+            "name": "Monatsbudget",
+            "rowCount": 104
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 4,
+            "currencyFormatCells": 16,
+            "dataValidationCount": 300,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Einnahmen",
+            "rowCount": 104
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 4,
+            "currencyFormatCells": 18,
+            "dataValidationCount": 300,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Ausgaben",
+            "rowCount": 104
+          },
+          {
+            "autoFilter": true,
+            "columnCount": 3,
+            "currencyFormatCells": 21,
+            "dataValidationCount": 40,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Kategorien",
+            "rowCount": 44
+          },
+          {
+            "autoFilter": false,
+            "columnCount": 3,
+            "currencyFormatCells": 0,
+            "dataValidationCount": 0,
+            "formulaCount": 0,
+            "frozenPane": true,
+            "name": "Anleitung",
+            "rowCount": 4
+          }
+        ],
+        "zip": {
+          "entries": 23,
+          "missingParts": [],
+          "missingRelationshipTargets": [],
+          "rawFeatures": {
+            "filters": 4,
+            "formulas": 303,
+            "panes": 5,
+            "validations": 20
+          },
+          "worksheetParts": 6
+        }
+      },
+      "metrics": {
+        "bytes": 27200,
+        "filters": 4,
+        "formattedCurrencyCells": 273,
+        "formulas": 303,
+        "panes": 5,
+        "sheets": 6,
+        "validations": 940
+      },
+      "overrides": [],
+      "productId": "monthly-budget-planner",
+      "stage": "WORKBOOK",
+      "warningCount": 0,
+      "warnings": []
+    },
+    "generatedAt": "2026-07-15T18:06:52.229Z",
+    "issues": [],
+    "schemaVersion": "1.0.0",
+    "status": "PASS",
+    "summary": {
+      "blockerCount": 0,
+      "errorCount": 0
+    },
+    "valid": true
+  },
+  "validationStatus": "PASS",
+  "warnings": [
+    "Supply passing native compatibility evidence before release approval.",
+    "Native application open/save was not supplied as evidence.",
+    "Excel desktop 2019 or later is the verified release target.",
+    "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling.",
+    "Google Sheets compatibility is not supported for this product."
+  ]
+}

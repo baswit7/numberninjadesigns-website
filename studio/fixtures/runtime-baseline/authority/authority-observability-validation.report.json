@@ -1,0 +1,61 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-21",
+    "reportId":  "authority-observability-validation",
+    "status":  "passed",
+    "summary":  "Authority observability passed deterministic read-only visibility checks.",
+    "checks":  [
+                   {
+                       "id":  "observability-manifest",
+                       "status":  "checked",
+                       "consumedReports":  7
+                   },
+                   {
+                       "id":  "observability-report",
+                       "status":  "checked",
+                       "statusValue":  "unknown",
+                       "coveragePercent":  100
+                   },
+                   {
+                       "id":  "phase-21-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "observabilityOnly":  true,
+                     "visibilityOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsProjectionTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsRetentionTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeTruthMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "queueAllowed":  false,
+                     "automationAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

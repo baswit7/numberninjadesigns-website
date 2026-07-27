@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "executive-cockpit",
+  "reports": [
+    "runtime/executive-cockpit/executive-command.report.json",
+    "runtime/executive-cockpit/today.report.json",
+    "runtime/executive-cockpit/project-control.report.json",
+    "runtime/executive-cockpit/opportunities.report.json",
+    "runtime/executive-cockpit/bottlenecks.report.json",
+    "runtime/executive-cockpit/scouts.report.json",
+    "runtime/executive-cockpit/intelligence.report.json",
+    "runtime/executive-cockpit/technical-center.report.json",
+    "runtime/executive-cockpit/boundary-audit.report.json"
+  ],
+  "sourceOfTruth": "Existing runtime reports only",
+  "dashboardAuthority": "load-render-format",
+  "forbiddenDashboardResponsibilities": [
+    "business scoring",
+    "prioritization",
+    "consensus calculation",
+    "ROI calculation",
+    "bottleneck logic",
+    "hardcoded scouts",
+    "hardcoded opportunities"
+  ]
+}

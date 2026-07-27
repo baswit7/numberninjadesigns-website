@@ -1,0 +1,136 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "deployment-plan",
+    "sourceFile":  "runtime/deployment/deployment.plan.json",
+    "status":  "READY_FOR_APPROVAL",
+    "humanFinalAuthority":  true,
+    "noAutomaticApproval":  true,
+    "noApprovalBypass":  true,
+    "noSelfApproval":  true,
+    "noRoleMayApproveOwnRequest":  true,
+    "qaMayBlock":  true,
+    "securityMayBlock":  true,
+    "summary":  {
+                    "totalDeployments":  5,
+                    "requiresHumanApproval":  3,
+                    "blockedDeployments":  4,
+                    "deploymentExecutionAllowed":  false,
+                    "rollbackExecutionAllowed":  false
+                },
+    "approvals":  [
+                      {
+                          "deploymentId":  "DPLY-001",
+                          "deploymentType":  "PREVIEW_DEPLOYMENT",
+                          "requesterRole":  "Developer",
+                          "approvalState":  "PLANNED",
+                          "executionState":  "PLANNED",
+                          "approverRole":  "QA",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  false,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "deploymentId":  "DPLY-002",
+                          "deploymentType":  "STAGING_DEPLOYMENT",
+                          "requesterRole":  "Release Manager",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "QA",
+                                               "status":  "validation-evidence-required",
+                                               "reason":  "Staging deployment requires validation evidence before future execution can be considered."
+                                           }
+                                       ]
+                      },
+                      {
+                          "deploymentId":  "DPLY-003",
+                          "deploymentType":  "PRODUCTION_DEPLOYMENT",
+                          "requesterRole":  "Release Manager",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "Security",
+                                               "status":  "production-boundary-review-required",
+                                               "reason":  "Production deployment must verify secrets, target platform and mutation boundaries before execution exists."
+                                           },
+                                           {
+                                               "role":  "QA",
+                                               "status":  "release-review-required",
+                                               "reason":  "Production deployment requires release review and rollback evidence."
+                                           }
+                                       ]
+                      },
+                      {
+                          "deploymentId":  "DPLY-004",
+                          "deploymentType":  "RELEASE_REVIEW",
+                          "requesterRole":  "Architect",
+                          "approvalState":  "PLANNED",
+                          "executionState":  "PLANNED",
+                          "approverRole":  "QA",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  false,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "QA",
+                                               "status":  "target-platform-unknown",
+                                               "reason":  "Future Custom Hosting requires target definition before deployment planning can become executable."
+                                           }
+                                       ]
+                      },
+                      {
+                          "deploymentId":  "DPLY-005",
+                          "deploymentType":  "ROLLBACK_RECOMMENDATION",
+                          "requesterRole":  "Security",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "Human",
+                                               "status":  "final-approval-required",
+                                               "reason":  "Rollback recommendation cannot automatically execute rollback."
+                                           }
+                                       ]
+                      }
+                  ],
+    "boundaries":  {
+                       "offlinePlanningOnly":  true,
+                       "planningApprovalAuditOnly":  true,
+                       "performsDeployments":  false,
+                       "performsVercelDeployment":  false,
+                       "performsGitHubPagesDeployment":  false,
+                       "performsGitHubActionsExecution":  false,
+                       "performsBuildExecution":  false,
+                       "performsHostingExecution":  false,
+                       "publishesContent":  false,
+                       "storesCredentials":  false,
+                       "storesSecrets":  false,
+                       "readsSecretValues":  false,
+                       "createsBackgroundJobs":  false,
+                       "createsWorkers":  false,
+                       "createsQueues":  false,
+                       "createsSchedulers":  false,
+                       "autonomousDeployment":  false,
+                       "automaticRollback":  false,
+                       "aiWorkforceRuntimeExecution":  false,
+                       "softwareFactory":  false
+                   }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:ThemeDefinition:1.0.0",
+  "title": "ThemeDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "version", "status", "nameKey", "colors", "fonts", "workbookStyles"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "version": { "type": "string", "format": "semver" },
+    "status": { "enum": ["draft", "beta", "active", "deprecated", "retired"] },
+    "nameKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "colors": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+    },
+    "fonts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heading", "body", "mono"],
+      "properties": {
+        "heading": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "body": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "mono": { "type": "string", "minLength": 1, "maxLength": 80 }
+      }
+    },
+    "workbookStyles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+      }
+    },
+    "preview": { "type": "object", "additionalProperties": true },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

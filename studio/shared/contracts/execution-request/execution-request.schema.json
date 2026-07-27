@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/contracts/execution-request.schema.json",
+  "title": "Studio OS Execution Request Package",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "capability",
+    "sourceFile",
+    "approvalRecordsSource",
+    "allowedReadinessStates",
+    "packages"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "capability": {
+      "const": "execution-request-packaging"
+    },
+    "sourceFile": {
+      "type": "string"
+    },
+    "approvalRecordsSource": {
+      "type": "string"
+    },
+    "allowedReadinessStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "UNKNOWN",
+          "BLOCKED",
+          "PACKAGED",
+          "READY_FOR_REVIEW",
+          "REJECTED"
+        ]
+      }
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "requestId",
+          "sourceApprovalId",
+          "approvalState",
+          "requestedAction",
+          "targetSystem",
+          "allowedActionType",
+          "deniedActionTypes",
+          "requiredEvidence",
+          "requiredValidators",
+          "riskClassification",
+          "executionReadinessState",
+          "result",
+          "blockers"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "sourceApprovalId": {
+            "type": "string"
+          },
+          "approvalState": {
+            "type": "string"
+          },
+          "requestedAction": {
+            "type": "string"
+          },
+          "targetSystem": {
+            "type": "string"
+          },
+          "allowedActionType": {
+            "type": "string"
+          },
+          "deniedActionTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredValidators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "riskClassification": {
+            "type": "string"
+          },
+          "executionReadinessState": {
+            "enum": [
+              "UNKNOWN",
+              "BLOCKED",
+              "PACKAGED",
+              "READY_FOR_REVIEW",
+              "REJECTED"
+            ]
+          },
+          "result": {
+            "type": "string"
+          },
+          "blockers": {
+            "type": "array"
+          }
+        }
+      }
+    }
+  }
+}

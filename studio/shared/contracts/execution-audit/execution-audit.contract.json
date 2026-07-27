@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-dispatch-audit-trail-manual-evidence-gate",
+  "capability": "execution-audit-trail",
+  "mode": "read-only-derived-audit-evidence-reports-only",
+  "sourceOfTruth": "derived-from-governance-runtime-reports",
+  "schema": "shared/contracts/execution-audit/execution-audit.schema.json",
+  "inputs": {
+    "executionRequest": "runtime/execution-request/execution-request.packages.json",
+    "executionApproval": "runtime/approval/execution-approval.records.json",
+    "executionPreflight": "runtime/execution-preflight/execution-preflight.decisions.json",
+    "executionReview": "runtime/execution-review/execution-review.records.json",
+    "executionDispatch": "runtime/execution-dispatch/execution-dispatch.registry.json"
+  },
+  "outputs": {
+    "auditReport": "runtime/execution-audit/audit.report.json",
+    "auditSummary": "runtime/execution-audit/audit.summary.json",
+    "auditBoundary": "runtime/execution-audit/audit.boundary.json"
+  },
+  "artifactTypes": [
+    "AUDIT_ENTRY",
+    "EVIDENCE_REFERENCE",
+    "AUTHORITY_REFERENCE",
+    "DECISION_TRACE"
+  ],
+  "requiredAuditFields": [
+    "auditId",
+    "timestamp",
+    "sourceLayer",
+    "decisionLayer",
+    "decisionOutcome",
+    "evidencePresent",
+    "authoritySource",
+    "reviewSource",
+    "reviewOutcome",
+    "dispatchEligible",
+    "unknownState",
+    "notes",
+    "manualEvidenceRequired",
+    "manualEvidencePresent",
+    "manualEvidenceVerified"
+  ],
+  "decisionOutcomes": [
+    "UNKNOWN",
+    "PASS",
+    "DENY",
+    "BLOCK"
+  ],
+  "manualEvidenceGate": {
+    "dispatchEligibilityRequiresEvidence": true,
+    "manualEvidenceRequired": true,
+    "missingEvidenceNotEligible": true,
+    "unknownEvidenceProducesUnknown": true,
+    "automaticApprovalForbidden": true,
+    "unknownNeverPass": true,
+    "unknownNeverDispatchEligible": true
+  },
+  "derivationRules": {
+    "ownsTruth": false,
+    "ownsExecution": false,
+    "ownsDispatch": false,
+    "ownsAuditReports": true,
+    "readsExecutionRequest": true,
+    "readsExecutionApproval": true,
+    "readsExecutionPreflight": true,
+    "readsExecutionReview": true,
+    "readsExecutionDispatch": true,
+    "writesOnlyExecutionAuditRuntime": true
+  },
+  "boundaries": {
+    "readOnly": true,
+    "nonExecuting": true,
+    "nonDispatching": true,
+    "performsExecution": false,
+    "executionEngine": false,
+    "dispatchEngine": false,
+    "providerExecution": false,
+    "githubExecution": false,
+    "deploymentExecution": false,
+    "automaticApproval": false,
+    "automaticDispatch": false,
+    "queues": false,
+    "workers": false,
+    "schedulers": false,
+    "backgroundJobs": false,
+    "agentExecution": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "branchWrites": false,
+    "repositorySettingsMutation": false,
+    "collaboratorMutation": false
+  }
+}

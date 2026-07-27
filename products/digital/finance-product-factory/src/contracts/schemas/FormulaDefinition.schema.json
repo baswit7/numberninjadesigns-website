@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:FormulaDefinition:1.0.0",
+  "title": "FormulaDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "sheetId", "target", "operation"],
+  "oneOf": [
+    { "required": ["parameters"] },
+    { "required": ["args"] }
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "sheetId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "target": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "operation": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+    "args": {
+      "type": "array",
+      "items": { "type": ["string", "number", "boolean", "null"] },
+      "maxItems": 32
+    },
+    "parameters": { "type": "object", "additionalProperties": true },
+    "fillDirection": { "enum": ["none", "down", "right"] },
+    "inputRowsBound": { "type": "boolean" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

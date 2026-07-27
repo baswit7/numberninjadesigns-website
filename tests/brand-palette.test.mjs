@@ -23,6 +23,20 @@ const coreStylesheets = [
   "support/styles.css",
 ];
 const stylesheetVersion = "20260724-etsy-banner";
+const nonPublicRootDirectories = new Set([
+  ".git",
+  ".studio-os",
+  "artifacts",
+  "branding",
+  "modules",
+  "products",
+  "release-candidates",
+  "runtime",
+  "services",
+  "shared",
+  "studio",
+  "tools",
+]);
 
 const obsoletePalettePattern =
   /#07090c|#11151b|#182129|#202b35|#00e891|#00c97d|#6ee7ff|#f3f5f7|#8b96a5/i;
@@ -70,6 +84,9 @@ async function listHtmlFiles(directory) {
 
   for (const entry of entries) {
     if (entry.name.startsWith(".") || entry.name === "node_modules") {
+      continue;
+    }
+    if (directory === repositoryRoot && nonPublicRootDirectories.has(entry.name)) {
       continue;
     }
 

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "studio-os-sprint-1-project-delivery-tasks",
+  "description": "Source of truth for project delivery tasks. Generated delivery reports and dashboards must never become task truth.",
+  "sourceOfTruth": "config/delivery.tasks.json",
+  "supportedProjects": [
+    {
+      "projectId": "studio-os",
+      "projectName": "Studio OS",
+      "projectType": "platform"
+    },
+    {
+      "projectId": "numberninjadesigns",
+      "projectName": "NumberNinjaDesigns",
+      "projectType": "ecommerce"
+    },
+    {
+      "projectId": "tok-hub",
+      "projectName": "NumberNinjaDesigns / TOK Hub",
+      "projectType": "brand-initiative"
+    },
+    {
+      "projectId": "boodschappenvergelijker",
+      "projectName": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "projectType": "brand-initiative"
+    }
+  ],
+  "allowedStatuses": [
+    "intake",
+    "ready",
+    "in_progress",
+    "review",
+    "blocked",
+    "release_ready",
+    "done"
+  ],
+  "tasks": [
+    {
+      "taskId": "studio-os-001",
+      "projectId": "studio-os",
+      "projectType": "platform",
+      "title": "Create project delivery system foundation",
+      "type": "feature",
+      "status": "ready",
+      "problem": "Studio OS has strong governance but lacks a practical delivery layer that tells Bas what to build next.",
+      "expectedOutcome": "A deterministic task intake, prioritization, delivery board, prompt generator, and cockpit for four supported projects.",
+      "businessValue": 8,
+      "urgency": 9,
+      "userImpact": 9,
+      "effort": 5,
+      "risk": 4,
+      "confidence": 9,
+      "unblockValue": 10,
+      "roiScore": 86,
+      "estimatedHours": 6,
+      "expectedBusinessImpact": 8,
+      "dependencies": [],
+      "blockers": [],
+      "deliverables": [
+        "delivery task registry",
+        "prioritization report",
+        "project delivery dashboard",
+        "project cockpit projections",
+        "validation script"
+      ],
+      "acceptanceCriteria": [
+        "Dashboard identifies the highest-priority next task per supported project.",
+        "Every task has generated acceptance criteria, Codex prompt, review checklist, and release checklist.",
+        "Boundary flags prove no execution, provider, GitHub, deployment, or agent capability exists."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    },
+    {
+      "taskId": "numberninjadesigns-001",
+      "projectId": "numberninjadesigns",
+      "projectType": "ecommerce",
+      "title": "Build Etsy listing workflow foundation",
+      "type": "commerce",
+      "status": "ready",
+      "problem": "NumberNinjaDesigns product and listing work can fragment across keywords, mockups, copy, SEO, and publish checks.",
+      "expectedOutcome": "A repeatable Etsy listing workflow with keyword inputs, title formula, description structure, mockup checklist, SEO tags, and release checklist.",
+      "businessValue": 10,
+      "urgency": 9,
+      "userImpact": 9,
+      "effort": 4,
+      "risk": 3,
+      "confidence": 9,
+      "unblockValue": 8,
+      "roiScore": 92,
+      "estimatedHours": 4,
+      "expectedBusinessImpact": 10,
+      "dependencies": [],
+      "blockers": [],
+      "deliverables": [
+        "Etsy listing workflow document",
+        "SEO keyword checklist",
+        "mockup readiness checklist",
+        "listing release checklist",
+        "Codex implementation prompt"
+      ],
+      "acceptanceCriteria": [
+        "Workflow covers keyword research, listing title, description, tags, images, price notes, and publish checks.",
+        "Output uses the NumberNinjaDesigns tactical premium brand tone.",
+        "Workflow can be reused for at least ten product ideas without redesign."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    },
+    {
+      "taskId": "numberninjadesigns-002",
+      "projectId": "numberninjadesigns",
+      "projectType": "ecommerce",
+      "title": "Create product idea backlog for data and spreadsheet humor shirts",
+      "type": "content",
+      "status": "intake",
+      "problem": "The brand needs a structured backlog of product concepts before design and listing work can scale.",
+      "expectedOutcome": "A prioritized product idea backlog with target persona, joke angle, SEO angle, and listing readiness notes.",
+      "businessValue": 8,
+      "urgency": 7,
+      "userImpact": 8,
+      "effort": 3,
+      "risk": 3,
+      "confidence": 8,
+      "unblockValue": 6,
+      "roiScore": 84,
+      "estimatedHours": 3,
+      "expectedBusinessImpact": 8,
+      "dependencies": [
+        "numberninjadesigns-001"
+      ],
+      "blockers": [],
+      "deliverables": [
+        "product idea backlog",
+        "persona notes",
+        "SEO angle notes"
+      ],
+      "acceptanceCriteria": [
+        "Backlog contains at least 25 product ideas.",
+        "Each idea has audience, joke, keyword angle, and confidence score.",
+        "Top five ideas are ready for listing workflow execution."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    },
+    {
+      "taskId": "tok-hub-001",
+      "projectId": "tok-hub",
+      "projectType": "content",
+      "title": "Define content production pipeline",
+      "type": "content",
+      "status": "ready",
+      "problem": "TOK Hub can expand into automation before the repeatable content workflow is defined.",
+      "expectedOutcome": "A documented idea-to-publish content pipeline with intake, script, asset, review, publish, and metrics states.",
+      "businessValue": 8,
+      "urgency": 8,
+      "userImpact": 8,
+      "effort": 5,
+      "risk": 4,
+      "confidence": 8,
+      "unblockValue": 8,
+      "roiScore": 80,
+      "estimatedHours": 5,
+      "expectedBusinessImpact": 8,
+      "dependencies": [],
+      "blockers": [],
+      "deliverables": [
+        "content pipeline document",
+        "content task states",
+        "review checklist",
+        "release checklist"
+      ],
+      "acceptanceCriteria": [
+        "Pipeline defines each state from idea to metrics review.",
+        "Pipeline identifies manual steps that should not be automated yet.",
+        "Pipeline can support at least three content channels later."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    },
+    {
+      "taskId": "boodschappenvergelijker-001",
+      "projectId": "boodschappenvergelijker",
+      "projectType": "product",
+      "title": "Define first grocery comparison workflow",
+      "type": "product",
+      "status": "ready",
+      "problem": "The project needs a concrete first comparison workflow before data source or UI implementation choices make sense.",
+      "expectedOutcome": "A first workflow definition for comparing grocery prices with source assumptions, user flow, risk notes, and MVP output.",
+      "businessValue": 8,
+      "urgency": 7,
+      "userImpact": 9,
+      "effort": 5,
+      "risk": 6,
+      "confidence": 7,
+      "unblockValue": 9,
+      "roiScore": 78,
+      "estimatedHours": 5,
+      "expectedBusinessImpact": 8,
+      "dependencies": [],
+      "blockers": [
+        "Data source strategy is not selected."
+      ],
+      "deliverables": [
+        "comparison workflow definition",
+        "data source assumption list",
+        "MVP user flow",
+        "risk register"
+      ],
+      "acceptanceCriteria": [
+        "Workflow identifies input product, store/source, comparison result, and user decision point.",
+        "Data source risks are explicitly listed.",
+        "MVP can be implemented without committing to full automation."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    },
+    {
+      "taskId": "studio-os-002",
+      "projectId": "studio-os",
+      "projectType": "platform",
+      "title": "Link project cockpit output to daily operating routine",
+      "type": "process",
+      "status": "intake",
+      "problem": "Generated delivery views only create value if Bas uses them as a daily project selection routine.",
+      "expectedOutcome": "A short operating routine for reviewing next tasks, blockers, Codex prompts, and release readiness.",
+      "businessValue": 7,
+      "urgency": 6,
+      "userImpact": 8,
+      "effort": 2,
+      "risk": 2,
+      "confidence": 8,
+      "unblockValue": 7,
+      "roiScore": 88,
+      "estimatedHours": 2,
+      "expectedBusinessImpact": 7,
+      "dependencies": [
+        "studio-os-001"
+      ],
+      "blockers": [],
+      "deliverables": [
+        "daily project cockpit routine",
+        "manual update checklist"
+      ],
+      "acceptanceCriteria": [
+        "Routine takes less than ten minutes.",
+        "Routine starts from project-delivery.view.json.",
+        "Routine ends with one selected task and one Codex prompt."
+      ],
+      "createdBy": "Bas",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-10"
+    }
+  ],
+  "boundaries": {
+    "sourceOfTruth": "config/delivery.tasks.json",
+    "generatedFilesAreTaskTruth": false,
+    "executionEngine": false,
+    "providerExecution": false,
+    "githubExecution": false,
+    "deploymentExecution": false,
+    "agentExecution": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "automaticApproval": false,
+    "automaticDispatch": false
+  }
+}

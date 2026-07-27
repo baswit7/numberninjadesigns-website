@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0.0",
+  "logging": {
+    "level": "info",
+    "redactKeys": [
+      "token",
+      "secret",
+      "password",
+      "apiKey",
+      "authorization"
+    ],
+    "format": "json-lines"
+  },
+  "tracing": {
+    "correlationRequired": true,
+    "defaultSampleRate": 1.0
+  },
+  "metrics": [
+    "provider.health",
+    "config.validity",
+    "event.accepted",
+    "workflow.state",
+    "documentation.consistency",
+    "repository.integrity"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-execution-request-packager",
+  "capability": "execution-request-packaging",
+  "mode": "non-executing-approval-to-request-packaging-only",
+  "sourceOfTruth": "shared/contracts/execution-request/execution-request.contract.json",
+  "schema": "shared/contracts/execution-request/execution-request.schema.json",
+  "approvalRecordsSource": "runtime/approval/execution-approval.records.json",
+  "generatedPackages": "runtime/execution-request/execution-request.packages.json",
+  "generatedAudit": "runtime/execution-request/execution-request.audit.json",
+  "generatedReport": "runtime/execution-request/execution-request.report.json",
+  "allowedReadinessStates": [
+    "UNKNOWN",
+    "BLOCKED",
+    "PACKAGED",
+    "READY_FOR_REVIEW",
+    "REJECTED"
+  ],
+  "allowedTargetSystems": [
+    "GitHub",
+    "API Provider",
+    "Deployment",
+    "Studio OS"
+  ],
+  "allowedActionTypes": [
+    "BRANCH_CREATE",
+    "PULL_REQUEST_CREATE",
+    "COMMIT_CREATE",
+    "API_REQUEST_PLAN",
+    "DEPLOYMENT_PLAN",
+    "APPROVAL_REVIEW"
+  ],
+  "deniedActionTypes": [
+    "MERGE",
+    "BRANCH_DELETE",
+    "FORCE_PUSH",
+    "REBASE",
+    "PROTECTED_BRANCH_WRITE",
+    "REPOSITORY_SETTINGS_MUTATION",
+    "COLLABORATOR_MUTATION",
+    "SECRET_READ",
+    "SECRET_WRITE",
+    "DEPLOYMENT_EXECUTE",
+    "PROVIDER_EXECUTE",
+    "AUTO_APPROVAL",
+    "AUTONOMOUS_EXECUTION"
+  ],
+  "requiredEvidence": [
+    "source approval id",
+    "approval state",
+    "requested action",
+    "target system",
+    "risk classification",
+    "execution readiness state",
+    "boundary confirmation"
+  ],
+  "requiredValidators": [
+    "scripts/validation/validate-execution-approval.ps1",
+    "scripts/validation/validate-execution-request.ps1"
+  ],
+  "readinessRules": {
+    "unknownNeverReadyForReview": true,
+    "unapprovedActionsBlocked": true,
+    "rejectedActionsRejected": true,
+    "approvedActionsReadyForReview": true,
+    "packagedDoesNotExecute": true,
+    "noApprovalMutation": true,
+    "noProviderCalls": true,
+    "noDeploymentCalls": true,
+    "noGitHubCalls": true
+  },
+  "ownership": {
+    "ownsExecutionRequestPackages": true,
+    "ownsExecutionRequestAuditTrail": true,
+    "ownsExecutionRequestEvidence": true,
+    "ownsApprovalStatus": false,
+    "ownsApprovalMutation": false,
+    "ownsExecutionTruth": false,
+    "ownsProviderTruth": false,
+    "ownsDeploymentTruth": false,
+    "ownsGithubTruth": false,
+    "ownsRuntimeTruthOutsideExecutionRequest": false
+  },
+  "boundaries": {
+    "packagingOnly": true,
+    "performsExecution": false,
+    "automaticExecution": false,
+    "liveGitHubActionExecution": false,
+    "providerExecution": false,
+    "deploymentExecution": false,
+    "mergeExecution": false,
+    "approvalMutation": false,
+    "autoApproval": false,
+    "backgroundWorkers": false,
+    "schedulers": false,
+    "queues": false,
+    "autonomousRunner": false,
+    "softwareFactory": false,
+    "selfHealing": false,
+    "secretAccess": false,
+    "credentialAccess": false,
+    "repositorySettingsMutation": false,
+    "collaboratorMutation": false,
+    "protectedBranchWrites": false,
+    "mutatesBranches": false,
+    "mutatesFilesOutsideRuntimeReports": false
+  }
+}

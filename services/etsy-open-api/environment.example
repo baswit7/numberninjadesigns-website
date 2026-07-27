@@ -1,0 +1,15 @@
+# Copy these names into a server-side secret manager. Never serve this file.
+# Leave ETSY_EXECUTION_ENABLED=false until Etsy approval and the go-live gate pass.
+ETSY_EXECUTION_ENABLED=false
+ETSY_API_KEYSTRING=
+ETSY_SHARED_SECRET=
+ETSY_REDIRECT_URI=https://YOUR-API-HOST.example/etsy/oauth/callback
+ETSY_SCOPES=listings_r listings_w shops_r
+ETSY_SHOP_ID=
+ETSY_LISTING_CATALOG_PATH=C:\secure-data\numberninjadesigns\etsy-listings.json
+ETSY_TOKEN_STORE_PATH=C:\secure-data\numberninjadesigns\etsy-vault.json
+ETSY_TOKEN_ENCRYPTION_KEY_BASE64=
+ETSY_ADMIN_TOKEN=
+ETSY_PUBLIC_ORIGIN=https://YOUR-API-HOST.example
+ETSY_BIND_HOST=127.0.0.1
+ETSY_PORT=8787

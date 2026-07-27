@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/evidence/authority-monitoring-evidence.schema.json",
+  "title": "Phase 19 Authority Monitoring Evidence Center Report",
+  "description": "Read-only evidence report explaining Phase 18 authority projection monitoring results.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "reportId",
+    "generatedBy",
+    "generatedAt",
+    "sourceOfTruth",
+    "monitoringSource",
+    "status",
+    "summary",
+    "sourceFileEvidence",
+    "projectionFileEvidence",
+    "lineageEvidence",
+    "verdictEvidence",
+    "freshnessEvidence",
+    "completenessEvidence",
+    "mismatchEvidence",
+    "safetyEvidence",
+    "unknownEvidence",
+    "unknownStateProof",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "phase": { "type": "string", "const": "phase-19" },
+    "reportId": { "type": "string", "const": "authority-monitoring-evidence" },
+    "generatedBy": {
+      "type": "string",
+      "const": "services/authority-evidence/generate-authority-monitoring-evidence.ps1"
+    },
+    "generatedAt": { "type": "string", "minLength": 20 },
+    "sourceOfTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constitution", "authorityRegistry", "monitoring"],
+      "properties": {
+        "constitution": { "type": "string", "const": "shared/contracts/authority/constitution.rules.json" },
+        "authorityRegistry": { "type": "string", "const": "shared/contracts/authority/authority-registry.json" },
+        "monitoring": { "type": "string", "const": "runtime/authority/authority-projection-monitoring.report.json" }
+      }
+    },
+    "monitoringSource": { "$ref": "#/$defs/fileEvidence" },
+    "status": { "type": "string", "enum": ["pass", "fail", "unknown"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passCount", "failCount", "unknownCount", "sourceFileCount", "projectionFileCount", "findingCount"],
+      "properties": {
+        "passCount": { "type": "integer", "minimum": 0 },
+        "failCount": { "type": "integer", "minimum": 0 },
+        "unknownCount": { "type": "integer", "minimum": 0 },
+        "sourceFileCount": { "type": "integer", "minimum": 0 },
+        "projectionFileCount": { "type": "integer", "minimum": 0 },
+        "findingCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "sourceFileEvidence": { "type": "array", "items": { "$ref": "#/$defs/fileEvidence" } },
+    "projectionFileEvidence": { "type": "array", "items": { "$ref": "#/$defs/fileEvidence" } },
+    "lineageEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "verdictEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "freshnessEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "completenessEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "mismatchEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "safetyEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "unknownEvidence": { "$ref": "#/$defs/evidenceGroup" },
+    "unknownStateProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["simulatedMissingInput", "verdict", "reason"],
+      "properties": {
+        "simulatedMissingInput": { "type": "string", "minLength": 3 },
+        "verdict": { "type": "string", "const": "unknown" },
+        "reason": { "type": "string", "minLength": 3 }
+      }
+    },
+    "boundary": { "$ref": "#/$defs/boundary" }
+  },
+  "$defs": {
+    "fileEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "role", "exists", "validJson", "lastModified", "verdict", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 3 },
+        "kind": { "type": "string", "enum": ["source", "projection", "monitoring-report", "dashboard-view"] },
+        "role": { "type": "string", "minLength": 3 },
+        "exists": { "type": "boolean" },
+        "validJson": { "type": "boolean" },
+        "lastModified": { "type": ["string", "null"] },
+        "verdict": { "type": "string", "enum": ["pass", "fail", "unknown"] },
+        "reason": { "type": "string", "minLength": 3 }
+      }
+    },
+    "evidenceGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "items"],
+      "properties": {
+        "status": { "type": "string", "enum": ["pass", "fail", "unknown"] },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidenceItem" }
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "verdict", "source", "projection", "summary", "safe"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "verdict": { "type": "string", "enum": ["pass", "fail", "unknown"] },
+        "source": { "type": "string", "minLength": 3 },
+        "projection": { "type": "string", "minLength": 3 },
+        "summary": { "type": "string", "minLength": 3 },
+        "safe": { "type": "boolean" }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceOnly",
+        "readOnly",
+        "derivedOnly",
+        "reportWritingOnly",
+        "ownsAuthority",
+        "ownsTruth",
+        "createsDecisions",
+        "createsApprovals",
+        "repairsProjection",
+        "synchronizesProjection",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeMutationAllowed",
+        "dashboardActionAllowed",
+        "approvalAutomationAllowed",
+        "workflowExecutionAllowed",
+        "browserAuthorityStorageAllowed"
+      ],
+      "properties": {
+        "evidenceOnly": { "type": "boolean", "const": true },
+        "readOnly": { "type": "boolean", "const": true },
+        "derivedOnly": { "type": "boolean", "const": true },
+        "reportWritingOnly": { "type": "boolean", "const": true },
+        "ownsAuthority": { "type": "boolean", "const": false },
+        "ownsTruth": { "type": "boolean", "const": false },
+        "createsDecisions": { "type": "boolean", "const": false },
+        "createsApprovals": { "type": "boolean", "const": false },
+        "repairsProjection": { "type": "boolean", "const": false },
+        "synchronizesProjection": { "type": "boolean", "const": false },
+        "executionAllowed": { "type": "boolean", "const": false },
+        "providerInvocationAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "credentialAccessAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false },
+        "runtimeMutationAllowed": { "type": "boolean", "const": false },
+        "dashboardActionAllowed": { "type": "boolean", "const": false },
+        "approvalAutomationAllowed": { "type": "boolean", "const": false },
+        "workflowExecutionAllowed": { "type": "boolean", "const": false },
+        "browserAuthorityStorageAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,345 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-21",
+    "reportId":  "authority-evidence-observability",
+    "generatedBy":  "services/authority-observability/generate-authority-observability.ps1",
+    "generatedAt":  "2026-06-08T08:42:05.4886165Z",
+    "sourceOfTruth":  {
+                          "authority":  "shared/contracts/authority/constitution.rules.json + shared/contracts/authority/authority-registry.json",
+                          "readModel":  "runtime/authority/authority-read-model.report.json",
+                          "projection":  "runtime/dashboard/authority.view.json",
+                          "monitoring":  "runtime/authority/authority-projection-monitoring.report.json",
+                          "evidence":  "runtime/authority/authority-monitoring-evidence.report.json",
+                          "history":  "runtime/authority/authority-evidence-history.report.json"
+                      },
+    "consumedReports":  [
+                            {
+                                "path":  "runtime/authority/authority-read-model.report.json",
+                                "role":  "Phase 16 authority read model",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:07.1541625Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 16 authority read model is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-read-model-validation.report.json",
+                                "role":  "Phase 16 read model validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:07.6327808Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 16 read model validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/dashboard/authority.view.json",
+                                "role":  "Phase 17 dashboard projection",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T22:17:45.6423451Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 17 dashboard projection is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/dashboard/authority-dashboard-validation.report.json",
+                                "role":  "Phase 17 dashboard projection validation",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:08.1224973Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 17 dashboard projection validation is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                "role":  "Phase 18 projection monitoring",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:49.0651200Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 18 projection monitoring is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                "role":  "Phase 19 evidence center",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:49.0631107Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 19 evidence center is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-evidence-history.report.json",
+                                "role":  "Phase 20 evidence history",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T08:41:49.0608991Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 20 evidence history is present, readable, complete and fresh."
+                            }
+                        ],
+    "status":  "unknown",
+    "summary":  {
+                    "knownInputCount":  7,
+                    "unknownInputCount":  0,
+                    "staleInputCount":  0,
+                    "coveragePercent":  100,
+                    "warningCount":  2,
+                    "unknownCount":  4
+                },
+    "freshness":  {
+                      "status":  "pass",
+                      "items":  [
+                                    {
+                                        "id":  "freshness.runtime.authority.authority-read-model.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 16 authority read model is present, readable, complete and fresh.",
+                                        "source":  "runtime/authority/authority-read-model.report.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.authority.authority-read-model-validation.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 16 read model validation is present, readable, complete and fresh.",
+                                        "source":  "runtime/authority/authority-read-model-validation.report.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.dashboard.authority.view.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 17 dashboard projection is present, readable, complete and fresh.",
+                                        "source":  "runtime/dashboard/authority.view.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.dashboard.authority-dashboard-validation.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 17 dashboard projection validation is present, readable, complete and fresh.",
+                                        "source":  "runtime/dashboard/authority-dashboard-validation.report.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.authority.authority-projection-monitoring.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 18 projection monitoring is present, readable, complete and fresh.",
+                                        "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.authority.authority-monitoring-evidence.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 19 evidence center is present, readable, complete and fresh.",
+                                        "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                        "safe":  true
+                                    },
+                                    {
+                                        "id":  "freshness.runtime.authority.authority-evidence-history.report.json",
+                                        "status":  "pass",
+                                        "summary":  "Phase 20 evidence history is present, readable, complete and fresh.",
+                                        "source":  "runtime/authority/authority-evidence-history.report.json",
+                                        "safe":  true
+                                    }
+                                ]
+                  },
+    "lineage":  {
+                    "status":  "pass",
+                    "items":  [
+                                  {
+                                      "id":  "lineage.authority-to-read-model",
+                                      "status":  "pass",
+                                      "summary":  "Authority Control Plane contracts feed the Phase 16 read model.",
+                                      "source":  "runtime/authority/authority-read-model.report.json",
+                                      "safe":  true
+                                  },
+                                  {
+                                      "id":  "lineage.read-model-to-dashboard-projection",
+                                      "status":  "pass",
+                                      "summary":  "Read model output feeds passive dashboard projection visibility.",
+                                      "source":  "runtime/authority/authority-read-model.report.json + runtime/dashboard/authority.view.json",
+                                      "safe":  true
+                                  },
+                                  {
+                                      "id":  "lineage.projection-to-monitoring",
+                                      "status":  "pass",
+                                      "summary":  "Dashboard projection output feeds Phase 18 monitoring visibility.",
+                                      "source":  "runtime/dashboard/authority.view.json + runtime/authority/authority-projection-monitoring.report.json",
+                                      "safe":  true
+                                  },
+                                  {
+                                      "id":  "lineage.monitoring-to-evidence",
+                                      "status":  "pass",
+                                      "summary":  "Monitoring output feeds Phase 19 evidence visibility.",
+                                      "source":  "runtime/authority/authority-projection-monitoring.report.json + runtime/authority/authority-monitoring-evidence.report.json",
+                                      "safe":  true
+                                  },
+                                  {
+                                      "id":  "lineage.evidence-to-history",
+                                      "status":  "pass",
+                                      "summary":  "Evidence output feeds Phase 20 history visibility.",
+                                      "source":  "runtime/authority/authority-monitoring-evidence.report.json + runtime/authority/authority-evidence-history.report.json",
+                                      "safe":  true
+                                  }
+                              ]
+                },
+    "coverage":  {
+                     "status":  "pass",
+                     "items":  [
+                                   {
+                                       "id":  "coverage.authority-read-model",
+                                       "status":  "pass",
+                                       "summary":  "Authority read model exposes 15 authority record(s).",
+                                       "source":  "runtime/authority/authority-read-model.report.json",
+                                       "safe":  true
+                                   },
+                                   {
+                                       "id":  "coverage.dashboard-projection",
+                                       "status":  "pass",
+                                       "summary":  "Dashboard projection exposes 12 passive card(s).",
+                                       "source":  "runtime/dashboard/authority.view.json",
+                                       "safe":  true
+                                   },
+                                   {
+                                       "id":  "coverage.monitoring",
+                                       "status":  "pass",
+                                       "summary":  "Projection monitoring checked 11 projection item(s).",
+                                       "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                       "safe":  true
+                                   },
+                                   {
+                                       "id":  "coverage.evidence",
+                                       "status":  "pass",
+                                       "summary":  "Evidence Center references 5 source file(s).",
+                                       "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                       "safe":  true
+                                   },
+                                   {
+                                       "id":  "coverage.input-set",
+                                       "status":  "pass",
+                                       "summary":  "Known observability inputs: 7 of 7; coveragePercent=100.",
+                                       "source":  "runtime/authority/authority-observability.report.json",
+                                       "safe":  true
+                                   }
+                               ]
+                 },
+    "trend":  {
+                  "status":  "unknown",
+                  "items":  [
+                                {
+                                    "id":  "trend.monitoring-status",
+                                    "status":  "warning",
+                                    "summary":  "Projection monitoring status is warning.",
+                                    "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                    "safe":  false
+                                },
+                                {
+                                    "id":  "trend.evidence-status",
+                                    "status":  "unknown",
+                                    "summary":  "Evidence Center status is unknown.",
+                                    "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                    "safe":  false
+                                },
+                                {
+                                    "id":  "trend.history-status",
+                                    "status":  "unknown",
+                                    "summary":  "History and retention status is unknown.",
+                                    "source":  "runtime/authority/authority-evidence-history.report.json",
+                                    "safe":  false
+                                }
+                            ]
+              },
+    "retention":  {
+                      "status":  "pass",
+                      "items":  [
+                                    {
+                                        "id":  "retention.history-policy",
+                                        "status":  "pass",
+                                        "summary":  "History retention policy is authority-evidence-history-retention; retainedSnapshotCount=1.",
+                                        "source":  "runtime/authority/authority-evidence-history.report.json",
+                                        "safe":  true
+                                    }
+                                ]
+                  },
+    "health":  {
+                   "status":  "unknown",
+                   "items":  [
+                                 {
+                                     "id":  "health.inputs",
+                                     "status":  "pass",
+                                     "summary":  "unknownInputCount=0; staleInputCount=0.",
+                                     "source":  "runtime/authority/authority-observability.report.json",
+                                     "safe":  true
+                                 },
+                                 {
+                                     "id":  "health.monitoring-findings",
+                                     "status":  "warning",
+                                     "summary":  "monitoringFindingCount=1.",
+                                     "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                     "safe":  false
+                                 },
+                                 {
+                                     "id":  "health.evidence-unknowns",
+                                     "status":  "unknown",
+                                     "summary":  "evidenceUnknownCount=1.",
+                                     "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                     "safe":  false
+                                 }
+                             ]
+               },
+    "unknowns":  {
+                     "status":  "unknown",
+                     "items":  [
+                                   {
+                                       "id":  "unknown.history-trend-depth",
+                                       "status":  "unknown",
+                                       "summary":  "Phase 20 reports unknown trend depth by bounded retention; Observability Center preserves that unknown state.",
+                                       "source":  "runtime/authority/authority-evidence-history.report.json",
+                                       "safe":  false
+                                   }
+                               ]
+                 },
+    "boundary":  {
+                     "observabilityOnly":  true,
+                     "visibilityOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsProjectionTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsRetentionTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeTruthMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "queueAllowed":  false,
+                     "automationAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

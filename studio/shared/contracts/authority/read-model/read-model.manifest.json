@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "phase-16",
+  "manifestId": "studio-os-authority-read-model-manifest",
+  "purpose": "Declare read-only authority read-model contracts derived from Phase 15 authority contracts.",
+  "sourceOfTruth": "derived-read-model-manifest",
+  "nonExecutable": true,
+  "sourceContracts": [
+    "shared/contracts/authority/constitution.rules.json",
+    "shared/contracts/authority/authority-registry.json",
+    "shared/contracts/authority/authority-classifications.json",
+    "shared/contracts/authority/authority-decisions.json"
+  ],
+  "contracts": [
+    {
+      "contractId": "authority-read-model",
+      "path": "shared/contracts/authority/read-model/authority-read-model.schema.json",
+      "kind": "derived-authority-projection"
+    },
+    {
+      "contractId": "authority-query-response",
+      "path": "shared/contracts/authority/read-model/authority-query-response.schema.json",
+      "kind": "derived-authority-query-response"
+    }
+  ],
+  "runtimeReports": [
+    "runtime/authority/authority-read-model.report.json",
+    "runtime/authority/authority-query-responses.report.json"
+  ],
+  "boundary": {
+    "derivedOnly": true,
+    "ownsAuthority": false,
+    "writesAuthorityDecisions": false,
+    "executionAllowed": false,
+    "providerInvocationAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "secretAccessAllowed": false,
+    "runtimeMutationAllowed": false,
+    "approvalAutomationAllowed": false,
+    "workflowExecutionAllowed": false,
+    "browserAuthorityStorageAllowed": false
+  }
+}

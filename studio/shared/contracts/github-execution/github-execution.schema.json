@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/schemas/github-execution.schema.json",
+  "title": "Studio OS GitHub Execution Planning Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "capability",
+    "mode",
+    "sourceOfTruth",
+    "schema",
+    "generatedPlan",
+    "generatedAudit",
+    "generatedApprovalReport",
+    "allowedActionTypes",
+    "allowedExecutionStates",
+    "allowedRequestingRoles",
+    "allowedBlockingRoles",
+    "humanApprovalRequiredActionTypes",
+    "readOnlyPlanningActionTypes",
+    "protectedBranches",
+    "auditRequiredFields",
+    "approvalRules",
+    "boundaries",
+    "requests"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "contractId": { "type": "string" },
+    "capability": { "const": "github-execution-planning" },
+    "mode": { "const": "offline-planning-only" },
+    "sourceOfTruth": { "type": "string" },
+    "schema": { "type": "string" },
+    "generatedPlan": { "type": "string" },
+    "generatedAudit": { "type": "string" },
+    "generatedApprovalReport": { "type": "string" },
+    "allowedActionTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "BRANCH_CREATE",
+          "COMMIT_CREATE",
+          "PULL_REQUEST_CREATE",
+          "DIFF_INSPECT",
+          "REVIEW_GENERATE",
+          "MERGE_RECOMMENDATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedExecutionStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PLANNED",
+          "READY_FOR_APPROVAL",
+          "APPROVED",
+          "REJECTED",
+          "EXECUTED",
+          "FAILED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedRequestingRoles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Orchestrator",
+          "Architect",
+          "Developer",
+          "QA"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedBlockingRoles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "QA",
+          "Security",
+          "Human"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "humanApprovalRequiredActionTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "BRANCH_CREATE",
+          "COMMIT_CREATE",
+          "PULL_REQUEST_CREATE",
+          "MERGE_RECOMMENDATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "readOnlyPlanningActionTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "DIFF_INSPECT",
+          "REVIEW_GENERATE"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "protectedBranches": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "auditRequiredFields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "approvalRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mandatoryHumanApproval",
+        "noAutomaticApproval",
+        "noSelfApproval",
+        "noRoleMayApproveOwnRequest",
+        "qaMayBlock",
+        "securityMayBlock",
+        "humanFinalAuthority"
+      ],
+      "properties": {
+        "mandatoryHumanApproval": { "const": true },
+        "noAutomaticApproval": { "const": true },
+        "noSelfApproval": { "const": true },
+        "noRoleMayApproveOwnRequest": { "const": true },
+        "qaMayBlock": { "const": true },
+        "securityMayBlock": { "const": true },
+        "humanFinalAuthority": { "const": true }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "requester",
+          "requesterRole",
+          "actionType",
+          "targetRepository",
+          "targetBranch",
+          "sourceBranch",
+          "approvalState",
+          "executionState",
+          "result",
+          "blockers",
+          "riskLevel",
+          "humanApprovalRequired",
+          "writesTargetBranch",
+          "directProtectedBranchWrite",
+          "preparedByRole",
+          "approverRole",
+          "approvedByRequester",
+          "evidence"
+        ],
+        "properties": {
+          "requestId": { "type": "string" },
+          "requester": { "type": "string" },
+          "requesterRole": {
+            "enum": [
+              "Orchestrator",
+              "Architect",
+              "Developer",
+              "QA"
+            ]
+          },
+          "actionType": {
+            "enum": [
+              "BRANCH_CREATE",
+              "COMMIT_CREATE",
+              "PULL_REQUEST_CREATE",
+              "DIFF_INSPECT",
+              "REVIEW_GENERATE",
+              "MERGE_RECOMMENDATION"
+            ]
+          },
+          "targetRepository": { "type": "string" },
+          "targetBranch": { "type": "string" },
+          "sourceBranch": { "type": "string" },
+          "approvalState": {
+            "enum": [
+              "PLANNED",
+              "READY_FOR_APPROVAL",
+              "APPROVED",
+              "REJECTED",
+              "EXECUTED",
+              "FAILED"
+            ]
+          },
+          "executionState": {
+            "enum": [
+              "PLANNED",
+              "READY_FOR_APPROVAL",
+              "APPROVED",
+              "REJECTED",
+              "EXECUTED",
+              "FAILED"
+            ]
+          },
+          "result": { "type": "string" },
+          "blockers": { "type": "array" },
+          "riskLevel": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "humanApprovalRequired": { "type": "boolean" },
+          "writesTargetBranch": { "type": "boolean" },
+          "directProtectedBranchWrite": { "type": "boolean" },
+          "preparedByRole": { "type": "string" },
+          "approverRole": { "type": "string" },
+          "approvedByRequester": { "type": "boolean" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

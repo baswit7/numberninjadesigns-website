@@ -1,0 +1,162 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-08T18:44:01.9949480Z",
+    "source":  "portfolio-dashboard:config/portfolio.projects.json",
+    "sourceFile":  "config/portfolio.projects.json",
+    "status":  "warning",
+    "readOnly":  true,
+    "summary":  {
+                    "projectCount":  4,
+                    "p0Count":  1,
+                    "p1Count":  1,
+                    "warningCount":  3,
+                    "errorCount":  0,
+                    "totalOpenRiskCount":  4,
+                    "priorities":  [
+                                       {
+                                           "priority":  "P0",
+                                           "count":  1
+                                       },
+                                       {
+                                           "priority":  "P1",
+                                           "count":  1
+                                       },
+                                       {
+                                           "priority":  "P2",
+                                           "count":  2
+                                       },
+                                       {
+                                           "priority":  "P3",
+                                           "count":  0
+                                       }
+                                   ]
+                },
+    "cards":  [
+                  {
+                      "id":  "portfolio.studio-os",
+                      "title":  "Studio OS",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "type=development-operating-system; priority=P0; health=green; risks=1",
+                      "sourceFile":  "config/portfolio.projects.json",
+                      "lastUpdated":  "2026-06-08",
+                      "actionHint":  "Merge V1.2 Portfolio Dashboard after validation.",
+                      "details":  {
+                                      "projectId":  "studio-os",
+                                      "projectName":  "Studio OS",
+                                      "projectType":  "development-operating-system",
+                                      "status":  "active",
+                                      "priority":  "P0",
+                                      "health":  "green",
+                                      "lastActivity":  "2026-06-08",
+                                      "nextAction":  "Merge V1.2 Portfolio Dashboard after validation.",
+                                      "repoReference":  "baswit7/professionele-ai-development-studio",
+                                      "activeBranch":  "feature/studio-os-v1-portfolio-dashboard",
+                                      "openRisks":  [
+                                                        "Runtime validation scripts regenerate report timestamps and must be restored before commits."
+                                                    ],
+                                      "openRiskCount":  1,
+                                      "readinessSummary":  "Phase 24 and V1.1 are merged; V1 is now focused on practical daily delivery capabilities."
+                                  }
+                  },
+                  {
+                      "id":  "portfolio.numberninjadesigns",
+                      "title":  "NumberNinjaDesigns",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "type=commerce-brand; priority=P1; health=yellow; risks=1",
+                      "sourceFile":  "config/portfolio.projects.json",
+                      "lastUpdated":  "2026-06-08",
+                      "actionHint":  "Use project templates for the next content or storefront delivery track.",
+                      "details":  {
+                                      "projectId":  "numberninjadesigns",
+                                      "projectName":  "NumberNinjaDesigns",
+                                      "projectType":  "commerce-brand",
+                                      "status":  "active",
+                                      "priority":  "P1",
+                                      "health":  "yellow",
+                                      "lastActivity":  "2026-06-08",
+                                      "nextAction":  "Use project templates for the next content or storefront delivery track.",
+                                      "repoReference":  "baswit7/numberninjadesigns.github.io",
+                                      "activeBranch":  "unknown",
+                                      "openRisks":  [
+                                                        "Brand and content work can fragment without a single project master document."
+                                                    ],
+                                      "openRiskCount":  1,
+                                      "readinessSummary":  "Ready to benefit from V1.1 project templates; portfolio metadata should be kept current."
+                                  }
+                  },
+                  {
+                      "id":  "portfolio.boodschappenvergelijker",
+                      "title":  "NumberNinjaDesigns / BoodschappenVergelijker",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "type=comparison-system; priority=P2; health=yellow; risks=1",
+                      "sourceFile":  "config/portfolio.projects.json",
+                      "lastUpdated":  "2026-06-08",
+                      "actionHint":  "Create a web-app or dashboard project foundation and define first comparison workflow.",
+                      "details":  {
+                                      "projectId":  "boodschappenvergelijker",
+                                      "projectName":  "NumberNinjaDesigns / BoodschappenVergelijker",
+                                      "projectType":  "comparison-system",
+                                      "status":  "planned",
+                                      "priority":  "P2",
+                                      "health":  "yellow",
+                                      "lastActivity":  "2026-06-08",
+                                      "nextAction":  "Create a web-app or dashboard project foundation and define first comparison workflow.",
+                                      "repoReference":  "local/projects/BoodschappenVergelijker",
+                                      "activeBranch":  "unknown",
+                                      "openRisks":  [
+                                                        "Data source strategy is not visible in the current portfolio metadata."
+                                                    ],
+                                      "openRiskCount":  1,
+                                      "readinessSummary":  "Needs first workflow definition, source data notes, and template-based project documents."
+                                  }
+                  },
+                  {
+                      "id":  "portfolio.tok-hub",
+                      "title":  "NumberNinjaDesigns / TOK Hub",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "type=content-system; priority=P2; health=yellow; risks=1",
+                      "sourceFile":  "config/portfolio.projects.json",
+                      "lastUpdated":  "2026-06-08",
+                      "actionHint":  "Create a content-project foundation before expanding channel workflows.",
+                      "details":  {
+                                      "projectId":  "tok-hub",
+                                      "projectName":  "NumberNinjaDesigns / TOK Hub",
+                                      "projectType":  "content-system",
+                                      "status":  "planned",
+                                      "priority":  "P2",
+                                      "health":  "yellow",
+                                      "lastActivity":  "2026-06-08",
+                                      "nextAction":  "Create a content-project foundation before expanding channel workflows.",
+                                      "repoReference":  "local/projects/TOKHub",
+                                      "activeBranch":  "unknown",
+                                      "openRisks":  [
+                                                        "Scope can expand into automation before the content workflow is documented."
+                                                    ],
+                                      "openRiskCount":  1,
+                                      "readinessSummary":  "Needs project foundation and first delivery slice before build expansion."
+                                  }
+                  }
+              ],
+    "warnings":  [
+
+                 ],
+    "errors":  [
+
+               ],
+    "nextRecommendedAction":  "Use the highest-priority next action from the portfolio view; update config/portfolio.projects.json when project metadata changes.",
+    "boundaries":  {
+                       "readOnlyDashboard":  true,
+                       "sourceOfTruth":  "config/portfolio.projects.json",
+                       "storesSecrets":  false,
+                       "performsApiCalls":  false,
+                       "validatesCredentials":  false,
+                       "executesDeployments":  false,
+                       "createsApprovals":  false,
+                       "createsAgents":  false,
+                       "createsWorkersQueuesOrSchedulers":  false
+                   }
+}

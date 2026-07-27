@@ -1,0 +1,72 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-request-packaging",
+    "status":  "ok",
+    "summary":  {
+                    "totalPackages":  4,
+                    "readyForReviewPackages":  1,
+                    "blockedPackages":  3,
+                    "rejectedPackages":  0,
+                    "unknownAutoReadyForReview":  false,
+                    "executionDispatched":  false,
+                    "approvalsMutated":  false,
+                    "externalCallsMade":  false
+                },
+    "readinessStates":  [
+                            "UNKNOWN",
+                            "BLOCKED",
+                            "PACKAGED",
+                            "READY_FOR_REVIEW",
+                            "REJECTED"
+                        ],
+    "readinessRules":  {
+                           "unknownNeverReadyForReview":  true,
+                           "unapprovedActionsBlocked":  true,
+                           "rejectedActionsRejected":  true,
+                           "approvedActionsReadyForReview":  true,
+                           "packagedDoesNotExecute":  true,
+                           "noApprovalMutation":  true,
+                           "noProviderCalls":  true,
+                           "noDeploymentCalls":  true,
+                           "noGitHubCalls":  true
+                       },
+    "boundaries":  {
+                       "packagingOnly":  true,
+                       "performsExecution":  false,
+                       "automaticExecution":  false,
+                       "liveGitHubActionExecution":  false,
+                       "providerExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "approvalMutation":  false,
+                       "autoApproval":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "selfHealing":  false,
+                       "secretAccess":  false,
+                       "credentialAccess":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "protectedBranchWrites":  false,
+                       "mutatesBranches":  false,
+                       "mutatesFilesOutsideRuntimeReports":  false
+                   },
+    "ownership":  {
+                      "ownsExecutionRequestPackages":  true,
+                      "ownsExecutionRequestAuditTrail":  true,
+                      "ownsExecutionRequestEvidence":  true,
+                      "ownsApprovalStatus":  false,
+                      "ownsApprovalMutation":  false,
+                      "ownsExecutionTruth":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsGithubTruth":  false,
+                      "ownsRuntimeTruthOutsideExecutionRequest":  false
+                  },
+    "packagesFile":  "runtime/execution-request/execution-request.packages.json",
+    "auditFile":  "runtime/execution-request/execution-request.audit.json"
+}

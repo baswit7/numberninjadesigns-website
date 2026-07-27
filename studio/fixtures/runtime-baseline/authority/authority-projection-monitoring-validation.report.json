@@ -1,0 +1,45 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-18",
+    "reportId":  "authority-projection-monitoring-validation",
+    "status":  "passed",
+    "summary":  "Authority projection monitoring passed deterministic read-only drift and boundary checks.",
+    "checks":  [
+                   {
+                       "id":  "monitoring-manifest",
+                       "status":  "checked",
+                       "consumedReports":  3
+                   },
+                   {
+                       "id":  "monitoring-report",
+                       "status":  "checked",
+                       "findings":  1,
+                       "statusValue":  "warning"
+                   },
+                   {
+                       "id":  "phase-18-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "monitoringOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthority":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardActionAllowed":  false,
+                     "approvalAutomationAllowed":  false
+                 }
+}

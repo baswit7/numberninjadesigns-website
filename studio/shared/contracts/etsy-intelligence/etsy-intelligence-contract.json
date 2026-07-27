@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "etsy-intelligence-contract",
+  "description": "Contract-first, read-only Etsy Intelligence projection for Studio OS.",
+  "sourceOfTruth": [
+    "Etsy Open API v3 read endpoints",
+    "repo-root .env credentials"
+  ],
+  "generatedReports": [
+    "runtime/etsy-intelligence/shop-overview.report.json",
+    "runtime/etsy-intelligence/listing-performance.report.json",
+    "runtime/etsy-intelligence/seo-opportunities.report.json",
+    "runtime/etsy-intelligence/conversion-health.report.json",
+    "runtime/etsy-intelligence/top-products.report.json"
+  ],
+  "dashboardProjection": "runtime/dashboard/etsy-intelligence.view.json",
+  "requiredFields": [
+    "schemaVersion",
+    "generatedAt",
+    "source",
+    "status",
+    "summary",
+    "boundaries"
+  ],
+  "allowedStatuses": ["connected", "degraded", "missing", "failed", "unknown"],
+  "readOnlyScopes": ["profile_r", "shops_r", "listings_r", "transactions_r"],
+  "forbiddenScopes": ["listings_w", "listings_d", "shops_w", "transactions_w", "address_w", "cart_w", "favorites_w", "profile_w", "recommend_w"],
+  "boundaries": {
+    "ownsTruth": false,
+    "createsListings": false,
+    "updatesListings": false,
+    "publishesListings": false,
+    "updatesInventory": false,
+    "updatesOrders": false,
+    "respondsToReviews": false,
+    "providerExecution": false,
+    "automationExecution": false
+  }
+}

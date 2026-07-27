@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:DocumentTemplate:1.0.0",
+  "title": "DocumentTemplate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "title",
+    "language",
+    "filename",
+    "sections",
+    "placeholders",
+    "page",
+    "styles",
+    "packaging"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "language": { "type": "string", "pattern": "^[a-z]{2}$" },
+    "filename": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 160,
+      "pattern": "^(?!.*[\\\\/:*?\"<>|])(?!\\.)(?!.*\\.$).+\\.docx$"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subject": { "type": "string", "maxLength": 240 },
+        "description": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 80 },
+        "keywords": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 48 }, "uniqueItems": true }
+      }
+    },
+    "header": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "maxLength": 240 },
+        "showOnFirstPage": { "type": "boolean" }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "maxLength": 240 },
+        "includePageNumber": { "type": "boolean" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "blocks"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "pageBreakBefore": { "type": "boolean" },
+          "blocks": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 200,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type"],
+              "properties": {
+                "type": { "enum": ["paragraph", "heading", "list", "table", "page-break"] },
+                "text": { "type": "string", "maxLength": 5000 },
+                "level": { "type": "integer", "minimum": 1, "maximum": 3 },
+                "style": { "enum": ["normal", "lead", "note", "muted"] },
+                "ordered": { "type": "boolean" },
+                "items": { "type": "array", "minItems": 1, "maxItems": 100, "items": { "type": "string", "minLength": 1, "maxLength": 2000 } },
+                "columns": { "type": "array", "minItems": 1, "maxItems": 8, "items": { "type": "string", "minLength": 1, "maxLength": 160 }, "uniqueItems": true },
+                "rows": {
+                  "type": "array",
+                  "maxItems": 500,
+                  "items": {
+                    "type": "array",
+                    "items": { "type": "string", "maxLength": 2000 }
+                  }
+                },
+                "columnWidths": { "type": "array", "minItems": 1, "maxItems": 8, "items": { "type": "integer", "minimum": 400, "maximum": 9360 } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "placeholders": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "token", "label", "required", "instructions"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "token": { "type": "string", "pattern": "^\\{\\{[a-z][a-z0-9_]{1,62}\\}\\}$" },
+          "label": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "required": { "type": "boolean" },
+          "instructions": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "example": { "type": "string", "maxLength": 500 }
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["size", "orientation", "margins"],
+      "properties": {
+        "size": { "enum": ["A4", "Letter"] },
+        "orientation": { "enum": ["portrait", "landscape"] },
+        "margins": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["top", "right", "bottom", "left"],
+          "properties": {
+            "top": { "type": "number", "minimum": 0.5, "maximum": 2.5 },
+            "right": { "type": "number", "minimum": 0.5, "maximum": 2.5 },
+            "bottom": { "type": "number", "minimum": 0.5, "maximum": 2.5 },
+            "left": { "type": "number", "minimum": 0.5, "maximum": 2.5 }
+          }
+        }
+      }
+    },
+    "styles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preset", "baseFont", "bodySize", "titleSize", "headingColor", "accentColor", "lineSpacing"],
+      "properties": {
+        "preset": { "enum": ["standard-business-brief", "compact-reference-guide", "ats-minimal"] },
+        "baseFont": { "enum": ["Arial", "Calibri", "Aptos", "Times New Roman"] },
+        "bodySize": { "type": "number", "minimum": 9, "maximum": 14 },
+        "titleSize": { "type": "number", "minimum": 18, "maximum": 32 },
+        "headingColor": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "accentColor": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "lineSpacing": { "type": "number", "minimum": 1, "maximum": 1.5 }
+      }
+    },
+    "packaging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relativePath", "role"],
+      "properties": {
+        "relativePath": { "type": "string", "pattern": "^(?![\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$))[A-Za-z0-9._ -]+(?:[\\\\/][A-Za-z0-9._ -]+)*$", "maxLength": 180 },
+        "role": { "enum": ["template", "guide", "reference", "worksheet", "message"] }
+      }
+    },
+    "requiredText": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 240 }, "uniqueItems": true },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

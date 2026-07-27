@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:CompatibilityReport:1.0.0",
+  "title": "CompatibilityReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productId", "productVersion", "status", "targets", "generatedAt"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "productId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "productVersion": { "type": "string", "format": "semver" },
+    "status": { "enum": ["PASS", "PARTIAL", "FAIL", "NOT_TESTED"] },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target", "status", "verified", "checks", "limitations"],
+        "properties": {
+          "target": { "enum": ["excel-desktop", "excel-web", "google-sheets", "libreoffice", "docx-ooxml"] },
+          "version": { "type": ["string", "null"] },
+          "status": { "enum": ["PASS", "PARTIAL", "FAIL", "NOT_TESTED"] },
+          "verified": { "type": "boolean" },
+          "checks": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

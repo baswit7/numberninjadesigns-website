@@ -1,0 +1,91 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "tok-hub-001",
+    "projectId":  "tok-hub",
+    "projectName":  "NumberNinjaDesigns / TOK Hub",
+    "projectType":  "content",
+    "repository":  "local/projects/TOKHub",
+    "title":  "Define content production pipeline",
+    "type":  "content",
+    "status":  "ready",
+    "problem":  "TOK Hub can expand into automation before the repeatable content workflow is defined.",
+    "expectedOutcome":  "A documented idea-to-publish content pipeline with intake, script, asset, review, publish, and metrics states.",
+    "businessValue":  8,
+    "urgency":  8,
+    "userImpact":  8,
+    "unblockValue":  8,
+    "effort":  5,
+    "risk":  4,
+    "confidence":  8,
+    "priorityScore":  78,
+    "roiScore":  76,
+    "sourceRoiScore":  80,
+    "rank":  4,
+    "estimatedHours":  5,
+    "expectedBusinessImpact":  8,
+    "whyThisTask":  "Highest ROI",
+    "releaseReadiness":  "planning-ready",
+    "dependencies":  [
+
+                     ],
+    "blockers":  [
+
+                 ],
+    "deliverables":  [
+                         "content pipeline document",
+                         "content task states",
+                         "review checklist",
+                         "release checklist"
+                     ],
+    "acceptanceCriteria":  [
+                               "Pipeline defines each state from idea to metrics review.",
+                               "Pipeline identifies manual steps that should not be automated yet.",
+                               "Pipeline can support at least three content channels later.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "low",
+                        "riskScore":  4,
+                        "summary":  "low risk. No active blockers."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/tok-hub-001.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/tok-hub-001.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/tok-hub-001.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

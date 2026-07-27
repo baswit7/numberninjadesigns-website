@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-github-execution-layer",
+  "capability": "github-execution-planning",
+  "mode": "offline-planning-only",
+  "sourceOfTruth": "shared/contracts/github-execution/github-execution.contract.json",
+  "schema": "shared/contracts/github-execution/github-execution.schema.json",
+  "generatedPlan": "runtime/github-execution/github-execution.plan.json",
+  "generatedAudit": "runtime/github-execution/github-execution.audit.json",
+  "generatedApprovalReport": "runtime/github-execution/github-execution-approval.report.json",
+  "allowedActionTypes": [
+    "BRANCH_CREATE",
+    "COMMIT_CREATE",
+    "PULL_REQUEST_CREATE",
+    "DIFF_INSPECT",
+    "REVIEW_GENERATE",
+    "MERGE_RECOMMENDATION"
+  ],
+  "allowedExecutionStates": [
+    "PLANNED",
+    "READY_FOR_APPROVAL",
+    "APPROVED",
+    "REJECTED",
+    "EXECUTED",
+    "FAILED"
+  ],
+  "allowedRequestingRoles": [
+    "Orchestrator",
+    "Architect",
+    "Developer",
+    "QA"
+  ],
+  "allowedBlockingRoles": [
+    "QA",
+    "Security",
+    "Human"
+  ],
+  "humanApprovalRequiredActionTypes": [
+    "BRANCH_CREATE",
+    "COMMIT_CREATE",
+    "PULL_REQUEST_CREATE",
+    "MERGE_RECOMMENDATION"
+  ],
+  "readOnlyPlanningActionTypes": [
+    "DIFF_INSPECT",
+    "REVIEW_GENERATE"
+  ],
+  "protectedBranches": [
+    "main",
+    "master",
+    "production",
+    "release"
+  ],
+  "auditRequiredFields": [
+    "timestamp",
+    "requestId",
+    "requesterRole",
+    "actionType",
+    "targetRepository",
+    "targetBranch",
+    "sourceBranch",
+    "approvalState",
+    "executionState",
+    "result",
+    "blockers",
+    "riskLevel",
+    "humanApprovalRequired"
+  ],
+  "approvalRules": {
+    "mandatoryHumanApproval": true,
+    "noAutomaticApproval": true,
+    "noSelfApproval": true,
+    "noRoleMayApproveOwnRequest": true,
+    "qaMayBlock": true,
+    "securityMayBlock": true,
+    "humanFinalAuthority": true
+  },
+  "boundaries": {
+    "offlinePlanningOnly": true,
+    "githubOnly": true,
+    "performsGitHubApiCalls": false,
+    "performsProviderCalls": false,
+    "performsDeployments": false,
+    "storesCredentials": false,
+    "storesSecrets": false,
+    "readsSecretValues": false,
+    "createsBackgroundJobs": false,
+    "createsWorkers": false,
+    "createsQueues": false,
+    "createsSchedulers": false,
+    "autonomousExecution": false,
+    "automaticMerging": false,
+    "automaticRebasing": false,
+    "directProtectedBranchWrites": false,
+    "aiWorkforceRuntimeExecution": false,
+    "softwareFactory": false
+  },
+  "requests": [
+    {
+      "requestId": "GHX-001",
+      "requester": "Studio OS",
+      "requesterRole": "Orchestrator",
+      "actionType": "BRANCH_CREATE",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "feature/studio-os-v2-github-execution-layer",
+      "sourceBranch": "main",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "result": "planned-offline",
+      "blockers": [],
+      "riskLevel": "medium",
+      "humanApprovalRequired": true,
+      "writesTargetBranch": true,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "Developer",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "evidence": [
+        "V2.2 requires an isolated feature branch before GitHub execution artifacts are committed."
+      ]
+    },
+    {
+      "requestId": "GHX-002",
+      "requester": "Studio OS",
+      "requesterRole": "Developer",
+      "actionType": "COMMIT_CREATE",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "feature/studio-os-v2-github-execution-layer",
+      "sourceBranch": "feature/studio-os-v2-github-execution-layer",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "result": "planned-offline",
+      "blockers": [],
+      "riskLevel": "medium",
+      "humanApprovalRequired": true,
+      "writesTargetBranch": true,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "Developer",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "evidence": [
+        "Commit creation changes repository history and must be human-approved."
+      ]
+    },
+    {
+      "requestId": "GHX-003",
+      "requester": "Studio OS",
+      "requesterRole": "Developer",
+      "actionType": "PULL_REQUEST_CREATE",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "main",
+      "sourceBranch": "feature/studio-os-v2-github-execution-layer",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "result": "planned-offline",
+      "blockers": [],
+      "riskLevel": "medium",
+      "humanApprovalRequired": true,
+      "writesTargetBranch": false,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "Developer",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "evidence": [
+        "Pull request creation targets main for review but does not directly write to main."
+      ]
+    },
+    {
+      "requestId": "GHX-004",
+      "requester": "Studio OS",
+      "requesterRole": "QA",
+      "actionType": "DIFF_INSPECT",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "main",
+      "sourceBranch": "feature/studio-os-v2-github-execution-layer",
+      "approvalState": "APPROVED",
+      "executionState": "PLANNED",
+      "result": "read-only-planning-output",
+      "blockers": [],
+      "riskLevel": "low",
+      "humanApprovalRequired": false,
+      "writesTargetBranch": false,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "QA",
+      "approverRole": "QA",
+      "approvedByRequester": false,
+      "evidence": [
+        "Diff inspection is read-only planning and does not mutate GitHub."
+      ]
+    },
+    {
+      "requestId": "GHX-005",
+      "requester": "Studio OS",
+      "requesterRole": "Architect",
+      "actionType": "REVIEW_GENERATE",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "main",
+      "sourceBranch": "feature/studio-os-v2-github-execution-layer",
+      "approvalState": "APPROVED",
+      "executionState": "PLANNED",
+      "result": "read-only-planning-output",
+      "blockers": [],
+      "riskLevel": "low",
+      "humanApprovalRequired": false,
+      "writesTargetBranch": false,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "Architect",
+      "approverRole": "Architect",
+      "approvedByRequester": false,
+      "evidence": [
+        "Review generation is a local planning artifact and cannot publish comments in V2.2."
+      ]
+    },
+    {
+      "requestId": "GHX-006",
+      "requester": "Studio OS",
+      "requesterRole": "Orchestrator",
+      "actionType": "MERGE_RECOMMENDATION",
+      "targetRepository": "baswit7/professionele-ai-development-studio",
+      "targetBranch": "main",
+      "sourceBranch": "feature/studio-os-v2-github-execution-layer",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "result": "planned-offline",
+      "blockers": [
+        {
+          "role": "QA",
+          "status": "pending-review",
+          "reason": "Final validation evidence must be checked before merge recommendation execution."
+        }
+      ],
+      "riskLevel": "high",
+      "humanApprovalRequired": true,
+      "writesTargetBranch": false,
+      "directProtectedBranchWrite": false,
+      "preparedByRole": "Orchestrator",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "evidence": [
+        "Merge recommendation is advisory only and never performs automatic merge."
+      ]
+    }
+  ]
+}

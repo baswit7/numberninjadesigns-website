@@ -1,0 +1,90 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "numberninjadesigns-002",
+    "projectId":  "numberninjadesigns",
+    "projectName":  "NumberNinjaDesigns",
+    "projectType":  "ecommerce",
+    "repository":  "baswit7/numberninjadesigns.github.io",
+    "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+    "type":  "content",
+    "status":  "intake",
+    "problem":  "The brand needs a structured backlog of product concepts before design and listing work can scale.",
+    "expectedOutcome":  "A prioritized product idea backlog with target persona, joke angle, SEO angle, and listing readiness notes.",
+    "businessValue":  8,
+    "urgency":  7,
+    "userImpact":  8,
+    "unblockValue":  6,
+    "effort":  3,
+    "risk":  3,
+    "confidence":  8,
+    "priorityScore":  76,
+    "roiScore":  78,
+    "sourceRoiScore":  84,
+    "rank":  5,
+    "estimatedHours":  3,
+    "expectedBusinessImpact":  8,
+    "whyThisTask":  "High business impact",
+    "releaseReadiness":  "planning-ready",
+    "dependencies":  [
+                         "numberninjadesigns-001"
+                     ],
+    "blockers":  [
+
+                 ],
+    "deliverables":  [
+                         "product idea backlog",
+                         "persona notes",
+                         "SEO angle notes"
+                     ],
+    "acceptanceCriteria":  [
+                               "Backlog contains at least 25 product ideas.",
+                               "Each idea has audience, joke, keyword angle, and confidence score.",
+                               "Top five ideas are ready for listing workflow execution.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "low",
+                        "riskScore":  3,
+                        "summary":  "low risk. No active blockers."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/numberninjadesigns-002.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-002.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/numberninjadesigns-002.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/numberninjadesigns-002.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

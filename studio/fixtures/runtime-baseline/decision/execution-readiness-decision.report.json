@@ -1,0 +1,283 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-24",
+    "reportId":  "execution-readiness-decision",
+    "generatedBy":  "services/execution-decision/generate-execution-decision.ps1",
+    "generatedAt":  "2026-06-08T14:21:10.8177730Z",
+    "decisionQuestion":  "Would execution theoretically be allowed if execution existed?",
+    "decision":  "UNKNOWN",
+    "sourceOfTruth":  {
+                          "authority":  "runtime/authority/authority-read-model.report.json",
+                          "monitoring":  "runtime/authority/authority-projection-monitoring.report.json",
+                          "evidence":  "runtime/authority/authority-monitoring-evidence.report.json",
+                          "history":  "runtime/authority/authority-evidence-history.report.json",
+                          "observability":  "runtime/authority/authority-observability.report.json",
+                          "simulation":  "runtime/simulation/execution-simulation.report.json",
+                          "review":  "runtime/review/simulation-review.report.json"
+                      },
+    "consumedReports":  [
+                            {
+                                "path":  "runtime/authority/authority-read-model.report.json",
+                                "role":  "Phase 16 authority read model",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:25.4889453Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 16 authority read model is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-projection-monitoring.report.json",
+                                "role":  "Phase 18 projection monitoring report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1009346Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 18 projection monitoring report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                "role":  "Phase 19 evidence center report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1009346Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 19 evidence center report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-evidence-history.report.json",
+                                "role":  "Phase 20 evidence history report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1002472Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 20 evidence history report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/authority/authority-observability.report.json",
+                                "role":  "Phase 21 observability report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1009346Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 21 observability report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/simulation/execution-simulation.report.json",
+                                "role":  "Phase 22 execution governance simulation report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1009346Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 22 execution governance simulation report is present, readable, complete and fresh."
+                            },
+                            {
+                                "path":  "runtime/review/simulation-review.report.json",
+                                "role":  "Phase 23 simulation evidence review report",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-08T14:20:51.1009346Z",
+                                "isStale":  false,
+                                "isComplete":  true,
+                                "verdict":  "known",
+                                "reason":  "Phase 23 simulation evidence review report is present, readable, complete and fresh."
+                            }
+                        ],
+    "summary":  {
+                    "knownInputCount":  7,
+                    "unknownInputCount":  0,
+                    "staleInputCount":  0,
+                    "reasonCount":  3,
+                    "blockingConditionCount":  4,
+                    "missingInputCount":  0,
+                    "requiredEvidenceCount":  7,
+                    "sourceSimulationStatus":  "unknown",
+                    "sourceReviewStatus":  "unknown"
+                },
+    "reasons":  [
+                    {
+                        "id":  "reason.decision-scope",
+                        "state":  "UNKNOWN",
+                        "summary":  "Decision is derived from existing reports only and does not create execution, approval or override authority.",
+                        "source":  "shared/contracts/decision/decision.contract.json",
+                        "authoritative":  false
+                    },
+                    {
+                        "id":  "reason.unknown-precedence",
+                        "state":  "UNKNOWN",
+                        "summary":  "UNKNOWN input or upstream UNKNOWN has precedence over PASS.",
+                        "source":  "runtime/simulation/execution-simulation.report.json + runtime/review/simulation-review.report.json",
+                        "authoritative":  false
+                    },
+                    {
+                        "id":  "reason.blocking-precedence",
+                        "state":  "BLOCKED",
+                        "summary":  "Derived blocking conditions prevent PASS when no UNKNOWN is present.",
+                        "source":  "runtime/authority/authority-read-model.report.json + runtime/simulation/execution-simulation.report.json",
+                        "authoritative":  false
+                    }
+                ],
+    "blockingConditions":  [
+                               {
+                                   "id":  "block.authority-denials",
+                                   "state":  "BLOCKED",
+                                   "summary":  "Authority read model reports deniedAuthorityCount=6.",
+                                   "source":  "runtime/authority/authority-read-model.report.json",
+                                   "authoritative":  false
+                               },
+                               {
+                                   "id":  "block.monitoring-findings",
+                                   "state":  "BLOCKED",
+                                   "summary":  "Projection monitoring reports findingCount=1.",
+                                   "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                   "authoritative":  false
+                               },
+                               {
+                                   "id":  "block.readiness-score",
+                                   "state":  "BLOCKED",
+                                   "summary":  "Approval readiness score is 33.33; decision layer cannot treat this as theoretically allowed.",
+                                   "source":  "runtime/simulation/execution-simulation.report.json",
+                                   "authoritative":  false
+                               },
+                               {
+                                   "id":  "block.simulation-readiness",
+                                   "state":  "BLOCKED",
+                                   "summary":  "Simulation readiness score is 57.58.",
+                                   "source":  "runtime/simulation/execution-simulation.report.json",
+                                   "authoritative":  false
+                               }
+                           ],
+    "requiredEvidence":  [
+                             {
+                                 "id":  "required.authority-read-model",
+                                 "state":  "PASS",
+                                 "summary":  "Authority read model is required as upstream evidence.",
+                                 "source":  "runtime/authority/authority-read-model.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.monitoring",
+                                 "state":  "PASS",
+                                 "summary":  "Projection monitoring report is required as upstream evidence.",
+                                 "source":  "runtime/authority/authority-projection-monitoring.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.evidence-center",
+                                 "state":  "PASS",
+                                 "summary":  "Evidence Center report is required as upstream evidence.",
+                                 "source":  "runtime/authority/authority-monitoring-evidence.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.history",
+                                 "state":  "PASS",
+                                 "summary":  "Evidence history report is required as upstream evidence.",
+                                 "source":  "runtime/authority/authority-evidence-history.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.observability",
+                                 "state":  "PASS",
+                                 "summary":  "Observability report is required as upstream evidence.",
+                                 "source":  "runtime/authority/authority-observability.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.simulation",
+                                 "state":  "PASS",
+                                 "summary":  "Execution governance simulation report is required as upstream evidence.",
+                                 "source":  "runtime/simulation/execution-simulation.report.json",
+                                 "authoritative":  false
+                             },
+                             {
+                                 "id":  "required.review",
+                                 "state":  "PASS",
+                                 "summary":  "Simulation evidence review report is required as upstream evidence.",
+                                 "source":  "runtime/review/simulation-review.report.json",
+                                 "authoritative":  false
+                             }
+                         ],
+    "missingInputs":  [
+                          {
+                              "id":  "missing.none-detected",
+                              "state":  "PASS",
+                              "summary":  "No missing, unreadable, stale or incomplete decision inputs were detected.",
+                              "source":  "runtime/decision/execution-readiness-decision.report.json",
+                              "authoritative":  false
+                          }
+                      ],
+    "unknownPropagation":  {
+                               "status":  "UNKNOWN",
+                               "items":  [
+                                             {
+                                                 "id":  "unknown.simulation",
+                                                 "state":  "UNKNOWN",
+                                                 "summary":  "Simulation status=unknown; unknownInputCount=2; unknownCount=10.",
+                                                 "source":  "runtime/simulation/execution-simulation.report.json",
+                                                 "authoritative":  false
+                                             },
+                                             {
+                                                 "id":  "unknown.review",
+                                                 "state":  "UNKNOWN",
+                                                 "summary":  "Review status=unknown; unknownCount=13.",
+                                                 "source":  "runtime/review/simulation-review.report.json",
+                                                 "authoritative":  false
+                                             },
+                                             {
+                                                 "id":  "unknown.upstream-evidence",
+                                                 "state":  "UNKNOWN",
+                                                 "summary":  "Evidence unknown=1; observability unknown=4; history unknownInput=0.",
+                                                 "source":  "runtime/authority/authority-monitoring-evidence.report.json + runtime/authority/authority-observability.report.json + runtime/authority/authority-evidence-history.report.json",
+                                                 "authoritative":  false
+                                             }
+                                         ]
+                           },
+    "boundary":  {
+                     "decisionOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsDecisionReports":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsObservabilityTruth":  false,
+                     "ownsSimulationTruth":  false,
+                     "ownsReviewTruth":  false,
+                     "ownsDashboardTruth":  false,
+                     "ownsRuntimeTruth":  false,
+                     "createsApprovals":  false,
+                     "approvalWorkflowAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "commandExecutionAllowed":  false,
+                     "queueAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "repairAllowed":  false,
+                     "autoRemediationAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "localStorageAuthorityAllowed":  false,
+                     "sessionStorageAuthorityAllowed":  false,
+                     "backgroundExecutionAllowed":  false
+                 }
+}

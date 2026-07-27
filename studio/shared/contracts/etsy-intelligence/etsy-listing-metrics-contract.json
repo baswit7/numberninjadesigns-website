@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "etsy-listing-metrics-contract",
+  "description": "Read-only listing metric projection contract for Etsy Intelligence.",
+  "requiredFields": [
+    "listingId",
+    "title",
+    "state",
+    "views",
+    "favorites",
+    "orders",
+    "conversionRate",
+    "url"
+  ],
+  "numericFields": [
+    "views",
+    "favorites",
+    "orders",
+    "conversionRate"
+  ],
+  "sourceEndpoints": [
+    "GET /v3/application/users/me",
+    "GET /v3/application/users/{user_id}/shops",
+    "GET /v3/application/shops/{shop_id}/listings/active",
+    "GET /v3/application/shops/{shop_id}/receipts"
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "ownsTruth": false,
+    "createsListings": false,
+    "updatesListings": false,
+    "publishesListings": false,
+    "updatesInventory": false,
+    "updatesOrders": false,
+    "respondsToReviews": false,
+    "providerExecution": false,
+    "automationExecution": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-api-permission-contract",
+  "sourceRegistry": "shared/contracts/api-governance/api-registry.json",
+  "runtimeReport": "runtime/api-governance/api-permission-validation.report.json",
+  "requiredFields": ["apiId", "requiredPermissions", "grantedPermissions", "missingPermissions", "status"],
+  "permissionMatching": "case-sensitive exact label match",
+  "emptyRequiredPermissionsPolicy": "pass",
+  "boundaries": {
+    "readOnly": true,
+    "providerExecutionAllowed": false,
+    "dashboardMutationAllowed": false,
+    "credentialDisplayAllowed": false
+  }
+}

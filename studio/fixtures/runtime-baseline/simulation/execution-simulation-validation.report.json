@@ -1,0 +1,67 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-22",
+    "reportId":  "execution-simulation-validation",
+    "status":  "passed",
+    "summary":  "Execution governance simulation passed deterministic non-execution checks.",
+    "checks":  [
+                   {
+                       "id":  "simulation-manifest",
+                       "status":  "checked",
+                       "consumedReports":  11
+                   },
+                   {
+                       "id":  "simulation-report",
+                       "status":  "checked",
+                       "statusValue":  "unknown",
+                       "simulationReadinessScore":  57.58
+                   },
+                   {
+                       "id":  "phase-22-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "simulationOnly":  true,
+                     "hypotheticalOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsSimulationReports":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsGovernanceTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsObservabilityTruth":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "commandExecutionAllowed":  false,
+                     "orchestrationAllowed":  false,
+                     "automationAllowed":  false,
+                     "repairAllowed":  false,
+                     "synchronizationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "authorityMutationAllowed":  false,
+                     "evidenceMutationAllowed":  false,
+                     "contractMutationAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "queueAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "backgroundJobAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "retryAllowed":  false,
+                     "providerAdapterAllowed":  false
+                 }
+}

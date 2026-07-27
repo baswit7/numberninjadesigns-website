@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "phase-9-rollback-plans",
+  "executionAllowed": false,
+  "rollbackPlans": [
+    {
+      "schemaVersion": "1.0.0",
+      "rollbackPlanId": "rollback-deployment-review-partial",
+      "requestId": "execution-request-deployment-review",
+      "readiness": "partial",
+      "reversible": true,
+      "preconditions": [
+        "future execution layer must provide immutable release identifiers",
+        "future execution layer must provide verified previous release reference"
+      ],
+      "rollbackSteps": [
+        "identify previous approved release",
+        "request human review for rollback",
+        "validate post-rollback health through existing health reports"
+      ],
+      "validationChecks": [
+        "preconditions are documented",
+        "rollback steps are documented",
+        "rollback remains non-executing in Phase 9"
+      ],
+      "executionAllowed": false,
+      "nonExecutableMetadata": {
+        "phase": "phase-9",
+        "owner": "studio-os",
+        "safetyClass": "rollback-governance-only"
+      }
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "rollback-registry"
+  }
+}

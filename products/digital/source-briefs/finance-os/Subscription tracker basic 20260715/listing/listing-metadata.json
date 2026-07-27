@@ -1,0 +1,115 @@
+{
+  "alternativeTitle": "Subscription Tracker — en-US — USD",
+  "bundleSuggestions": [
+    "Bundle with related finance planners only when every included workbook is listed clearly."
+  ],
+  "category": "expense-management",
+  "compatibility": {
+    "googleSheetsSupported": false,
+    "limitations": [
+      "Excel desktop 2019 or later is the verified release target.",
+      "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling."
+    ],
+    "minimumExcelVersion": "2019",
+    "requiresFormulaRecalculation": true,
+    "targets": [
+      "excel-desktop"
+    ]
+  },
+  "currency": "USD",
+  "descriptionKey": "products.subscriptionTracker.description",
+  "digitalDownloadNotice": "Digital download only. No physical item will be shipped.",
+  "disclaimerKeys": [
+    "commercial.noFinancialAdvice"
+  ],
+  "disclaimers": [
+    "Planning tool only; no financial advice is provided."
+  ],
+  "faq": [
+    {
+      "answer": "No. This is a digital-only download; no physical item is shipped.",
+      "id": "digital",
+      "question": "Is this a physical product?"
+    },
+    {
+      "answer": "Verified in Microsoft Excel desktop 2019 or newer. Compatibility with other apps is not guaranteed.",
+      "id": "compatibility",
+      "question": "Which spreadsheet apps are supported?"
+    },
+    {
+      "answer": "Your financial data stays local in the workbook; the product requires no account, cloud service or network connection.",
+      "id": "privacy",
+      "question": "Where is my financial data stored?"
+    },
+    {
+      "answer": "Refund eligibility follows the marketplace digital-product policy and the seller/platform terms that apply to your purchase.",
+      "id": "refunds",
+      "question": "Can I get a refund?"
+    }
+  ],
+  "features": [
+    "Renewal Dates",
+    "Annual Cost",
+    "Savings Analysis"
+  ],
+  "first160Characters": "Monitor recurring costs, renewal dates and potential savings. Designed for: Subscription Users, Households • Renewal Dates • Annual Cost • Savings Analysis Digi",
+  "fullDescription": "Monitor recurring costs, renewal dates and potential savings.\n\nDesigned for: Subscription Users, Households\n\n• Renewal Dates\n• Annual Cost\n• Savings Analysis\n\nDigital download only. No physical item will be shipped.\n\n• Planning tool only; no financial advice is provided.",
+  "includedFiles": [
+    "subscription-tracker.xlsx",
+    "README.html",
+    "QUICK_START.html",
+    "LICENSE.txt"
+  ],
+  "keywords": [
+    "subscriptions",
+    "recurring-costs",
+    "savings"
+  ],
+  "license": "Personal and single-business use license.",
+  "licenseKey": "commercial.personalLicense",
+  "listingAttributes": {
+    "draftOnly": true,
+    "includesWorkbook": true,
+    "productType": "digital-download"
+  },
+  "locale": "en-US",
+  "localeVariant": "en-US",
+  "market": "US",
+  "marketVariant": "US",
+  "marketplaces": [
+    "etsy",
+    "direct"
+  ],
+  "pricePositioning": {
+    "currency": "USD",
+    "rationale": "Premium spreadsheet template with transparent one-time digital-download pricing.",
+    "status": "REVIEW_REQUIRED",
+    "suggestedAmount": null,
+    "tier": "PREMIUM_VALUE"
+  },
+  "primaryTitle": "Subscription Tracker",
+  "productId": "subscription-tracker",
+  "productVersion": "1.0.0",
+  "reviewRequired": true,
+  "schemaVersion": "1.0.0",
+  "shortDescription": "Monitor recurring costs, renewal dates and potential savings.",
+  "status": "GENERATED_DRAFT",
+  "tags": [
+    "subscriptions",
+    "recurring-costs",
+    "savings"
+  ],
+  "targetAudience": [
+    "Subscription Users",
+    "Households"
+  ],
+  "titleKey": "products.subscriptionTracker.name",
+  "upsellSuggestions": [
+    "Offer a separate advanced bundle; do not imply features that are not included."
+  ],
+  "useCases": [
+    "Renewal Dates",
+    "Annual Cost",
+    "Savings Analysis"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "requiredFields": [
+    "eventId",
+    "timestamp",
+    "type",
+    "source",
+    "severity",
+    "correlationId",
+    "payload"
+  ],
+  "allowedSeverities": [
+    "debug",
+    "info",
+    "warn",
+    "error",
+    "critical"
+  ],
+  "allowedTypePrefixes": [
+    "runtime.",
+    "provider.",
+    "deployment.",
+    "branch.",
+    "agent.",
+    "telemetry.",
+    "documentation.",
+    "workflow.",
+    "health."
+  ]
+}

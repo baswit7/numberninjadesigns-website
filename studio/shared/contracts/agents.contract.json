@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "agents": [
+    {
+      "id": "codex-agent",
+      "role": "Implementation engine for repository changes and local validation.",
+      "authority": "implementer",
+      "inputs": [
+        "architecture-decision",
+        "work-item",
+        "repository-state"
+      ],
+      "outputs": [
+        "code-change",
+        "validation-report",
+        "documentation-update"
+      ],
+      "events": [
+        "agent.task.started",
+        "agent.task.completed",
+        "agent.task.blocked"
+      ],
+      "validationHooks": [
+        "scripts/validation/validate-studio-os.ps1"
+      ]
+    },
+    {
+      "id": "chatgpt-agent",
+      "role": "Architecture and review authority for platform direction.",
+      "authority": "architect",
+      "inputs": [
+        "strategic-objective",
+        "runtime-report",
+        "change-summary"
+      ],
+      "outputs": [
+        "architecture-decision",
+        "risk-review",
+        "acceptance-criteria"
+      ],
+      "events": [
+        "agent.review.requested",
+        "agent.review.completed"
+      ],
+      "validationHooks": [
+        "scripts/validation/validate-architecture.ps1"
+      ]
+    },
+    {
+      "id": "review-agent",
+      "role": "Change quality, regression and governance reviewer.",
+      "authority": "reviewer",
+      "inputs": [
+        "diff",
+        "test-output",
+        "docs-impact"
+      ],
+      "outputs": [
+        "review-findings",
+        "approval-state"
+      ],
+      "events": [
+        "agent.review.started",
+        "agent.review.completed"
+      ],
+      "validationHooks": [
+        "scripts/check-structure.ps1"
+      ]
+    },
+    {
+      "id": "qa-agent",
+      "role": "Runtime validation and regression evidence producer.",
+      "authority": "validator",
+      "inputs": [
+        "acceptance-criteria",
+        "runtime-contract",
+        "health-report"
+      ],
+      "outputs": [
+        "qa-report",
+        "failure-reproduction"
+      ],
+      "events": [
+        "agent.qa.started",
+        "agent.qa.completed"
+      ],
+      "validationHooks": [
+        "scripts/health/studio-health.ps1"
+      ]
+    },
+    {
+      "id": "documentation-agent",
+      "role": "Documentation consistency and architecture reference maintainer.",
+      "authority": "documenter",
+      "inputs": [
+        "architecture-change",
+        "runtime-contract",
+        "changelog-note"
+      ],
+      "outputs": [
+        "docs-update",
+        "dependency-map-update"
+      ],
+      "events": [
+        "documentation.sync.requested",
+        "documentation.sync.completed"
+      ],
+      "validationHooks": [
+        "scripts/documentation/sync-runtime-docs.ps1"
+      ]
+    },
+    {
+      "id": "deployment-agent",
+      "role": "Deployment readiness, release gates and rollback evidence coordinator.",
+      "authority": "deployer",
+      "inputs": [
+        "deployment-profile",
+        "health-report",
+        "approval-state"
+      ],
+      "outputs": [
+        "deployment-readiness",
+        "rollback-checklist"
+      ],
+      "events": [
+        "deployment.readiness.checked",
+        "deployment.release.blocked",
+        "deployment.release.approved"
+      ],
+      "validationHooks": [
+        "scripts/health/studio-health.ps1"
+      ]
+    }
+  ]
+}

@@ -6,6 +6,7 @@ tmp/
 
 # Generated product and branding deliverables
 branding/
+artifacts/
 output/
 outputs/
 modules/*/output/
@@ -16,9 +17,26 @@ work/
 # Local credentials and environment files
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 credentials*.json
+
+# Unified Studio OS runtime and product-factory output
+studio/runtime/
+studio/.tmp/
+runtime/market-intelligence/
+tools/market-intelligence/js/market-data.js
+products/digital/finance-product-factory/generated/
+products/digital/finance-product-factory/output/
+products/digital/finance-product-factory/release-evidence/*
+!products/digital/finance-product-factory/release-evidence/source-checksums.json
+!products/digital/finance-product-factory/release-evidence/baseline-validation.json
+!products/digital/finance-product-factory/release-evidence/browser-smoke.json
+!products/digital/finance-product-factory/release-evidence/xlsx-validation.json
+!products/digital/finance-product-factory/release-evidence/baseline-selection-report.md
+!products/digital/finance-product-factory/release-evidence/baseline-gap-analysis.md
+!products/digital/finance-product-factory/release-evidence/repository-preservation-report.md
 
 # Runtime/editor noise
 *.log

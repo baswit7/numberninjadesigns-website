@@ -1,0 +1,44 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-16",
+    "reportId":  "authority-read-model-validation",
+    "status":  "passed",
+    "summary":  "Authority read model passed deterministic read-only boundary checks.",
+    "checks":  [
+                   {
+                       "id":  "read-model-manifest",
+                       "status":  "checked",
+                       "sources":  4
+                   },
+                   {
+                       "id":  "authority-read-model-report",
+                       "status":  "checked",
+                       "authorities":  15,
+                       "relationships":  135
+                   },
+                   {
+                       "id":  "authority-query-responses",
+                       "status":  "checked",
+                       "responses":  6
+                   },
+                   {
+                       "id":  "phase-16-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  11
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false
+                 }
+}

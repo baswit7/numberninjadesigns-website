@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/schemas/api-execution.schema.json",
+  "title": "Studio OS API Execution Planning Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "capability",
+    "mode",
+    "sourceOfTruth",
+    "providerCatalogSource",
+    "schema",
+    "generatedPlan",
+    "generatedAudit",
+    "generatedApprovalReport",
+    "allowedProviders",
+    "allowedActionTypes",
+    "allowedExecutionStates",
+    "allowedRequestingRoles",
+    "allowedBlockingRoles",
+    "humanApprovalRequiredActionTypes",
+    "auditRequiredFields",
+    "approvalRules",
+    "boundaries",
+    "requests"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "contractId": { "type": "string" },
+    "capability": { "const": "api-execution-planning" },
+    "mode": { "const": "offline-planning-approval-audit-only" },
+    "sourceOfTruth": { "type": "string" },
+    "providerCatalogSource": { "const": "config/api-center.config.json" },
+    "schema": { "type": "string" },
+    "generatedPlan": { "type": "string" },
+    "generatedAudit": { "type": "string" },
+    "generatedApprovalReport": { "type": "string" },
+    "allowedProviders": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "OpenAI",
+          "GitHub",
+          "Telegram",
+          "Notion",
+          "Etsy",
+          "TikTok",
+          "Pinterest",
+          "Instagram",
+          "Facebook",
+          "Vercel"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedActionTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "API_REQUEST_PLAN",
+          "API_AUTH_REQUIREMENT_REVIEW",
+          "API_SCOPE_REVIEW",
+          "API_COST_RISK_REVIEW",
+          "API_RATE_LIMIT_REVIEW",
+          "API_RESPONSE_SHAPE_REVIEW",
+          "API_EXECUTION_RECOMMENDATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedExecutionStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PLANNED",
+          "READY_FOR_APPROVAL",
+          "APPROVED",
+          "REJECTED",
+          "EXECUTED",
+          "FAILED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedRequestingRoles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Orchestrator",
+          "Architect",
+          "Developer",
+          "QA",
+          "Security"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedBlockingRoles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "QA",
+          "Security",
+          "Human"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "humanApprovalRequiredActionTypes": {
+      "type": "array",
+      "items": { "const": "API_EXECUTION_RECOMMENDATION" },
+      "uniqueItems": true
+    },
+    "auditRequiredFields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "approvalRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mandatoryHumanApproval",
+        "noAutomaticApproval",
+        "noSelfApproval",
+        "noRoleMayApproveOwnRequest",
+        "securityMayBlock",
+        "qaMayBlock",
+        "humanFinalAuthority"
+      ],
+      "properties": {
+        "mandatoryHumanApproval": { "const": true },
+        "noAutomaticApproval": { "const": true },
+        "noSelfApproval": { "const": true },
+        "noRoleMayApproveOwnRequest": { "const": true },
+        "securityMayBlock": { "const": true },
+        "qaMayBlock": { "const": true },
+        "humanFinalAuthority": { "const": true }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "providerName",
+          "requester",
+          "requesterRole",
+          "usedByProject",
+          "actionType",
+          "approvalState",
+          "executionState",
+          "riskLevel",
+          "costRisk",
+          "rateLimitRisk",
+          "dataAccessRisk",
+          "externalMutationRisk",
+          "humanApprovalRequired",
+          "dryRunOnly",
+          "preparedByRole",
+          "approverRole",
+          "approvedByRequester",
+          "result",
+          "blockers",
+          "evidence"
+        ],
+        "properties": {
+          "requestId": { "type": "string" },
+          "providerName": { "type": "string" },
+          "requester": { "type": "string" },
+          "requesterRole": { "type": "string" },
+          "usedByProject": { "type": "string" },
+          "actionType": { "type": "string" },
+          "approvalState": { "type": "string" },
+          "executionState": { "type": "string" },
+          "riskLevel": { "enum": ["low", "medium", "high"] },
+          "costRisk": { "enum": ["low", "medium", "high"] },
+          "rateLimitRisk": { "enum": ["low", "medium", "high"] },
+          "dataAccessRisk": { "enum": ["low", "medium", "high"] },
+          "externalMutationRisk": { "enum": ["low", "medium", "high"] },
+          "humanApprovalRequired": { "type": "boolean" },
+          "dryRunOnly": { "type": "boolean" },
+          "preparedByRole": { "type": "string" },
+          "approverRole": { "type": "string" },
+          "approvedByRequester": { "type": "boolean" },
+          "result": { "type": "string" },
+          "blockers": { "type": "array" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

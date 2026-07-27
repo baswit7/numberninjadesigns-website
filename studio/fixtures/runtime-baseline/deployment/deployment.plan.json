@@ -1,0 +1,251 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "deployment-contract",
+    "sourceFile":  "shared/contracts/deployment/deployment.contract.json",
+    "mode":  "offline-deployment-planning-approval-audit-only",
+    "status":  "READY_FOR_APPROVAL",
+    "consumedInputs":  {
+                           "projectTemplates":  {
+                                                    "path":  "config/project-templates.config.json",
+                                                    "exists":  true
+                                                },
+                           "portfolioDashboard":  {
+                                                      "path":  "config/portfolio.projects.json",
+                                                      "exists":  true
+                                                  },
+                           "githubExecutionLayer":  {
+                                                        "path":  "runtime/github-execution/github-execution.plan.json",
+                                                        "exists":  true
+                                                    },
+                           "apiExecutionLayer":  {
+                                                     "path":  "runtime/api-execution/api-execution.plan.json",
+                                                     "exists":  true
+                                                 }
+                       },
+    "summary":  {
+                    "totalDeployments":  5,
+                    "approvalRequiredDeployments":  3,
+                    "blockedDeployments":  4,
+                    "highRiskDeployments":  2,
+                    "realDeploymentCapability":  false,
+                    "buildExecutionCapability":  false,
+                    "publishingCapability":  false,
+                    "secretValuesRead":  false
+                },
+    "deployments":  [
+                        {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "deploymentId":  "DPLY-001",
+                            "project":  "Studio OS",
+                            "requester":  "Studio OS",
+                            "requesterRole":  "Developer",
+                            "deploymentType":  "PREVIEW_DEPLOYMENT",
+                            "targetEnvironment":  "preview",
+                            "targetPlatform":  "Static Hosting",
+                            "approvalState":  "PLANNED",
+                            "executionState":  "PLANNED",
+                            "rollbackAvailable":  true,
+                            "rollbackStrategy":  "discard-preview-artifact-and-keep-current-main",
+                            "riskLevel":  "low",
+                            "humanApprovalRequired":  false,
+                            "dryRunOnly":  true,
+                            "preparedByRole":  "Developer",
+                            "approverRole":  "QA",
+                            "approvedByRequester":  false,
+                            "result":  "planned-offline",
+                            "blockers":  [
+
+                                         ],
+                            "evidence":  [
+                                             "Preview deployment is planning-only and validates target, environment and rollback readiness."
+                                         ],
+                            "preDeploymentChecks":  {
+                                                        "deploymentTargetValidated":  true,
+                                                        "environmentValidated":  true,
+                                                        "rollbackStrategyValidated":  true,
+                                                        "approvalStatusValidated":  true,
+                                                        "realDeploymentCapability":  false
+                                                    }
+                        },
+                        {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "deploymentId":  "DPLY-002",
+                            "project":  "Studio OS",
+                            "requester":  "Studio OS",
+                            "requesterRole":  "Release Manager",
+                            "deploymentType":  "STAGING_DEPLOYMENT",
+                            "targetEnvironment":  "staging",
+                            "targetPlatform":  "Vercel",
+                            "approvalState":  "READY_FOR_APPROVAL",
+                            "executionState":  "READY_FOR_APPROVAL",
+                            "rollbackAvailable":  true,
+                            "rollbackStrategy":  "promote-previous-approved-staging-artifact",
+                            "riskLevel":  "medium",
+                            "humanApprovalRequired":  true,
+                            "dryRunOnly":  true,
+                            "preparedByRole":  "Release Manager",
+                            "approverRole":  "Human",
+                            "approvedByRequester":  false,
+                            "result":  "planned-offline",
+                            "blockers":  [
+                                             {
+                                                 "role":  "QA",
+                                                 "status":  "validation-evidence-required",
+                                                 "reason":  "Staging deployment requires validation evidence before future execution can be considered."
+                                             }
+                                         ],
+                            "evidence":  [
+                                             "Staging deployment can affect shared validation environments and requires human approval."
+                                         ],
+                            "preDeploymentChecks":  {
+                                                        "deploymentTargetValidated":  true,
+                                                        "environmentValidated":  true,
+                                                        "rollbackStrategyValidated":  true,
+                                                        "approvalStatusValidated":  true,
+                                                        "realDeploymentCapability":  false
+                                                    }
+                        },
+                        {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "deploymentId":  "DPLY-003",
+                            "project":  "NumberNinjaDesigns",
+                            "requester":  "Studio OS",
+                            "requesterRole":  "Release Manager",
+                            "deploymentType":  "PRODUCTION_DEPLOYMENT",
+                            "targetEnvironment":  "production",
+                            "targetPlatform":  "GitHub Pages",
+                            "approvalState":  "READY_FOR_APPROVAL",
+                            "executionState":  "READY_FOR_APPROVAL",
+                            "rollbackAvailable":  true,
+                            "rollbackStrategy":  "restore-last-known-good-production-reference",
+                            "riskLevel":  "high",
+                            "humanApprovalRequired":  true,
+                            "dryRunOnly":  true,
+                            "preparedByRole":  "Release Manager",
+                            "approverRole":  "Human",
+                            "approvedByRequester":  false,
+                            "result":  "planned-offline",
+                            "blockers":  [
+                                             {
+                                                 "role":  "Security",
+                                                 "status":  "production-boundary-review-required",
+                                                 "reason":  "Production deployment must verify secrets, target platform and mutation boundaries before execution exists."
+                                             },
+                                             {
+                                                 "role":  "QA",
+                                                 "status":  "release-review-required",
+                                                 "reason":  "Production deployment requires release review and rollback evidence."
+                                             }
+                                         ],
+                            "evidence":  [
+                                             "Production deployment is high risk and remains approval-gated and dry-run-only in V2.4."
+                                         ],
+                            "preDeploymentChecks":  {
+                                                        "deploymentTargetValidated":  true,
+                                                        "environmentValidated":  true,
+                                                        "rollbackStrategyValidated":  true,
+                                                        "approvalStatusValidated":  true,
+                                                        "realDeploymentCapability":  false
+                                                    }
+                        },
+                        {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "deploymentId":  "DPLY-004",
+                            "project":  "NumberNinjaDesigns / TOK Hub",
+                            "requester":  "Studio OS",
+                            "requesterRole":  "Architect",
+                            "deploymentType":  "RELEASE_REVIEW",
+                            "targetEnvironment":  "staging",
+                            "targetPlatform":  "Future Custom Hosting",
+                            "approvalState":  "PLANNED",
+                            "executionState":  "PLANNED",
+                            "rollbackAvailable":  true,
+                            "rollbackStrategy":  "no-release-until-target-platform-is-approved",
+                            "riskLevel":  "medium",
+                            "humanApprovalRequired":  false,
+                            "dryRunOnly":  true,
+                            "preparedByRole":  "Architect",
+                            "approverRole":  "QA",
+                            "approvedByRequester":  false,
+                            "result":  "planned-offline",
+                            "blockers":  [
+                                             {
+                                                 "role":  "QA",
+                                                 "status":  "target-platform-unknown",
+                                                 "reason":  "Future Custom Hosting requires target definition before deployment planning can become executable."
+                                             }
+                                         ],
+                            "evidence":  [
+                                             "Release review is advisory and cannot deploy or publish content."
+                                         ],
+                            "preDeploymentChecks":  {
+                                                        "deploymentTargetValidated":  true,
+                                                        "environmentValidated":  true,
+                                                        "rollbackStrategyValidated":  true,
+                                                        "approvalStatusValidated":  true,
+                                                        "realDeploymentCapability":  false
+                                                    }
+                        },
+                        {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "deploymentId":  "DPLY-005",
+                            "project":  "Studio OS",
+                            "requester":  "Studio OS",
+                            "requesterRole":  "Security",
+                            "deploymentType":  "ROLLBACK_RECOMMENDATION",
+                            "targetEnvironment":  "production",
+                            "targetPlatform":  "Static Hosting",
+                            "approvalState":  "READY_FOR_APPROVAL",
+                            "executionState":  "READY_FOR_APPROVAL",
+                            "rollbackAvailable":  true,
+                            "rollbackStrategy":  "recommend-restore-previous-approved-release-only",
+                            "riskLevel":  "high",
+                            "humanApprovalRequired":  true,
+                            "dryRunOnly":  true,
+                            "preparedByRole":  "Security",
+                            "approverRole":  "Human",
+                            "approvedByRequester":  false,
+                            "result":  "planned-offline",
+                            "blockers":  [
+                                             {
+                                                 "role":  "Human",
+                                                 "status":  "final-approval-required",
+                                                 "reason":  "Rollback recommendation cannot automatically execute rollback."
+                                             }
+                                         ],
+                            "evidence":  [
+                                             "Rollback is recommendation-only in V2.4 and cannot execute automatically."
+                                         ],
+                            "preDeploymentChecks":  {
+                                                        "deploymentTargetValidated":  true,
+                                                        "environmentValidated":  true,
+                                                        "rollbackStrategyValidated":  true,
+                                                        "approvalStatusValidated":  true,
+                                                        "realDeploymentCapability":  false
+                                                    }
+                        }
+                    ],
+    "boundaries":  {
+                       "offlinePlanningOnly":  true,
+                       "planningApprovalAuditOnly":  true,
+                       "performsDeployments":  false,
+                       "performsVercelDeployment":  false,
+                       "performsGitHubPagesDeployment":  false,
+                       "performsGitHubActionsExecution":  false,
+                       "performsBuildExecution":  false,
+                       "performsHostingExecution":  false,
+                       "publishesContent":  false,
+                       "storesCredentials":  false,
+                       "storesSecrets":  false,
+                       "readsSecretValues":  false,
+                       "createsBackgroundJobs":  false,
+                       "createsWorkers":  false,
+                       "createsQueues":  false,
+                       "createsSchedulers":  false,
+                       "autonomousDeployment":  false,
+                       "automaticRollback":  false,
+                       "aiWorkforceRuntimeExecution":  false,
+                       "softwareFactory":  false
+                   }
+}

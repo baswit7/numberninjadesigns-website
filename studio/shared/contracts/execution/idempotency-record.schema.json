@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/execution/idempotency-record.schema.json",
+  "title": "Phase 9 Idempotency Record",
+  "description": "Models replay safety for a future execution request without queues, locks, workers or execution caches.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "idempotencyId",
+    "requestId",
+    "idempotencyKey",
+    "strategy",
+    "replaySafe",
+    "dedupeWindowMinutes",
+    "conflictPolicy",
+    "executionAllowed",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "idempotencyId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 160,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "strategy": {
+      "type": "string",
+      "enum": [
+        "request-hash",
+        "business-key",
+        "manual-review"
+      ]
+    },
+    "replaySafe": {
+      "type": "boolean"
+    },
+    "dedupeWindowMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10080
+    },
+    "conflictPolicy": {
+      "type": "string",
+      "enum": [
+        "deny-conflict",
+        "require-review",
+        "allow-identical-only"
+      ]
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-9"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "idempotency-governance-only"
+        }
+      }
+    }
+  }
+}

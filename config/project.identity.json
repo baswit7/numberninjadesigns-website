@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "numberninjadesigns",
+  "brand": "NumberNinjaDesigns",
+  "canonicalRepository": "baswit7/numberninjadesigns-website",
+  "canonicalDomain": "https://www.numberninjadesigns.com",
+  "organizationModel": {
+    "masterIdentity": "NumberNinjaDesigns",
+    "divisions": [
+      {
+        "id": "digital-production",
+        "name": "Digital Production",
+        "path": "products/digital"
+      },
+      {
+        "id": "physical-production",
+        "name": "Physical Production",
+        "path": "products/physical"
+      },
+      {
+        "id": "studio-os",
+        "name": "Studio OS",
+        "path": "studio",
+        "publicBrand": false
+      },
+      {
+        "id": "growth-channels",
+        "name": "Growth Channels",
+        "path": "config/channels.registry.json",
+        "publicBrand": false
+      },
+      {
+        "id": "initiatives",
+        "name": "Initiatives",
+        "path": "studio/projects/NumberNinjaDesigns/initiatives",
+        "publicBrand": false
+      }
+    ]
+  },
+  "environment": {
+    "source": ".env",
+    "template": ".env.example",
+    "serverOnly": true,
+    "tracked": false,
+    "browserAccess": false
+  },
+  "legacy": {
+    "retiredIdentifiers": [
+      "NumberNinjaTees",
+      "NinjaNumberTees",
+      "numberninjatees"
+    ],
+    "allowedUses": [
+      "docs/migration",
+      "docs/consolidation and root retirement governance",
+      "redirect compatibility",
+      "artifacts/legacy",
+      "legacy-name validation tests"
+    ]
+  }
+}
