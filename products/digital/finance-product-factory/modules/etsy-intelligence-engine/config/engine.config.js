@@ -1,0 +1,28 @@
+export const ENGINE_CONFIG = Object.freeze({
+  version: 1,
+  scoreWeights: { demand: .24, competition: .18, revenue: .14, conversion: .12, freshness: .08, buildEase: .08, rankEase: .06, upsell: .04, evergreen: .04, confidence: .02 },
+  niches: {
+    Budget: ['budget', 'cash envelope', 'savings', 'finance planner'],
+    Debt: ['debt', 'snowball', 'avalanche', 'payoff'],
+    Investing: ['investment', 'net worth', 'dividend', 'fire'],
+    Business: ['income', 'expense', 'profit', 'loss', 'business'],
+    Family: ['family', 'household', 'kids', 'wedding'],
+  },
+  variants: ['Minimal', 'Pastel', 'Dark', 'Professional', 'Student', 'Family', 'ADHD', 'Business', 'Wedding', 'Travel', 'Christmas', 'Kids', 'Teen', 'Luxury', 'Neutral', 'Modern'],
+  locales: {
+    'en-US': { language: 'English', currency: 'USD', date: 'MM/DD/YYYY', decimal: '.', thousands: ',', tax: 0 },
+    'en-GB': { language: 'English', currency: 'GBP', date: 'DD/MM/YYYY', decimal: '.', thousands: ',', tax: 20 },
+    'nl-NL': { language: 'Dutch', currency: 'EUR', date: 'DD-MM-YYYY', decimal: ',', thousands: '.', tax: 21 },
+    'de-DE': { language: 'German', currency: 'EUR', date: 'DD.MM.YYYY', decimal: ',', thousands: '.', tax: 19 },
+    'fr-FR': { language: 'French', currency: 'EUR', date: 'DD/MM/YYYY', decimal: ',', thousands: ' ', tax: 20 },
+    'es-ES': { language: 'Spanish', currency: 'EUR', date: 'DD/MM/YYYY', decimal: ',', thousands: '.', tax: 21 },
+    'it-IT': { language: 'Italian', currency: 'EUR', date: 'DD/MM/YYYY', decimal: ',', thousands: '.', tax: 22 },
+    'pt-PT': { language: 'Portuguese', currency: 'EUR', date: 'DD/MM/YYYY', decimal: ',', thousands: ' ', tax: 23 },
+    'pl-PL': { language: 'Polish', currency: 'PLN', date: 'DD.MM.YYYY', decimal: ',', thousands: ' ', tax: 23 },
+    'sv-SE': { language: 'Swedish', currency: 'SEK', date: 'YYYY-MM-DD', decimal: ',', thousands: ' ', tax: 25 },
+    'nb-NO': { language: 'Norwegian', currency: 'NOK', date: 'DD.MM.YYYY', decimal: ',', thousands: ' ', tax: 25 },
+    'da-DK': { language: 'Danish', currency: 'DKK', date: 'DD-MM-YYYY', decimal: ',', thousands: '.', tax: 25 },
+    'fi-FI': { language: 'Finnish', currency: 'EUR', date: 'D.M.YYYY', decimal: ',', thousands: ' ', tax: 25.5 },
+  },
+  defaults: { hourlyCost: 35, marketplaceFeeRate: .095, buildHours: 8, maxVariants: 24 },
+});

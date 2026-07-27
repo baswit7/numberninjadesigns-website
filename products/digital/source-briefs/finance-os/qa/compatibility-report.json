@@ -1,0 +1,27 @@
+{
+  "extensions": {
+    "currency": "EUR",
+    "locale": "de-DE"
+  },
+  "generatedAt": "2026-07-15T18:06:52.229Z",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "status": "PARTIAL",
+  "targets": [
+    {
+      "checks": [
+        "ExcelJS re-read and OOXML structural checks passed."
+      ],
+      "limitations": [
+        "Native application open/save was not supplied as evidence.",
+        "Excel desktop 2019 or later is the verified release target.",
+        "Excel for web, LibreOffice and Google Sheets are not release-certified; importing may recalculate formulas and simplify workbook styling."
+      ],
+      "status": "PARTIAL",
+      "target": "excel-desktop",
+      "verified": true,
+      "version": "2019"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "contract": "FinanceProductWorkbook",
+  "extensions": {
+    "details": {
+      "configuration": {
+        "currency": "USD",
+        "inputCapacity": 100,
+        "locale": "en-US",
+        "themeId": "sage-finance"
+      },
+      "sheets": [
+        {
+          "autoFilter": false,
+          "columnCount": 2,
+          "currencyFormatCells": 10,
+          "dataValidationCount": 0,
+          "formulaCount": 3,
+          "frozenPane": false,
+          "name": "Dashboard",
+          "rowCount": 7
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 9,
+          "currencyFormatCells": 235,
+          "dataValidationCount": 600,
+          "formulaCount": 200,
+          "frozenPane": true,
+          "name": "Subscriptions",
+          "rowCount": 104
+        },
+        {
+          "autoFilter": true,
+          "columnCount": 3,
+          "currencyFormatCells": 21,
+          "dataValidationCount": 40,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Categories",
+          "rowCount": 44
+        },
+        {
+          "autoFilter": false,
+          "columnCount": 3,
+          "currencyFormatCells": 0,
+          "dataValidationCount": 0,
+          "formulaCount": 0,
+          "frozenPane": true,
+          "name": "Instructions",
+          "rowCount": 4
+        }
+      ],
+      "zip": {
+        "entries": 17,
+        "missingParts": [],
+        "missingRelationshipTargets": [],
+        "rawFeatures": {
+          "filters": 2,
+          "formulas": 203,
+          "panes": 3,
+          "validations": 14
+        },
+        "worksheetParts": 4
+      }
+    },
+    "metrics": {
+      "bytes": 20711,
+      "filters": 2,
+      "formattedCurrencyCells": 266,
+      "formulas": 203,
+      "panes": 3,
+      "sheets": 4,
+      "validations": 640
+    },
+    "overrides": [],
+    "productId": "subscription-tracker",
+    "stage": "WORKBOOK",
+    "warningCount": 0,
+    "warnings": []
+  },
+  "generatedAt": "2026-07-15T17:46:35.411Z",
+  "issues": [],
+  "schemaVersion": "1.0.0",
+  "status": "PASS",
+  "summary": {
+    "blockerCount": 0,
+    "errorCount": 0
+  },
+  "valid": true
+}

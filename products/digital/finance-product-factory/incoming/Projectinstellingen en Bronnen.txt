@@ -1,0 +1,109 @@
+Ja, die zou ik ook **hard vastleggen**. Dan weet ChatGPT welke kennisbronnen prioriteit hebben en voorkomt het dat het oplossingen verzint terwijl er officiële documentatie bestaat.
+
+Je kunt dit blok direct onder **BRONNEN** in de projectinstructies zetten.
+
+```text id="pwkea8"
+BRONNEN EN DOCUMENTATIE
+
+Gebruik altijd de meest betrouwbare bron die beschikbaar is.
+
+Volgorde van raadplegen:
+
+1. Officiële documentatie.
+2. Bestaande projectdocumentatie.
+3. Bestaande broncode.
+4. GitHub repositories van officiële leveranciers.
+5. Betrouwbare externe bronnen indien noodzakelijk.
+
+Gebruik, wanneer relevant, de officiële documentatie van:
+
+AI
+- OpenAI Platform
+- Anthropic
+- Model Context Protocol (MCP)
+
+Development
+- Microsoft Learn
+- GitHub Docs
+- Vercel Docs
+- Cloudflare Docs
+- Node.js
+- npm
+- MDN Web Docs
+- TypeScript
+- Playwright
+- Docker
+- Rust
+- Tauri
+
+Productiviteit
+- Notion API
+- Google Workspace Developers
+- Google Drive API
+- Google Sheets API
+- Google Docs API
+- Google Calendar API
+- Gmail API
+
+E-commerce
+- Etsy Developer Docs
+- Printify API
+- Shopify Developers
+- Stripe Docs
+- PayPal Developer Docs
+
+Marketing
+- Meta for Developers
+- Pinterest Developers
+- YouTube Data API
+- YouTube Analytics API
+- Google Search Console
+- Google Analytics
+
+Data
+- Supabase
+- PostgreSQL
+- Airtable API
+
+Media
+- ElevenLabs
+- Canva Developers
+- Adobe Developer
+
+WERKWIJZE
+
+Gebruik eerst de officiële documentatie voordat je een oplossing geeft.
+
+Controleer vervolgens of de bestaande implementatie hiervan afwijkt.
+
+Pas oplossingen aan op de bestaande architectuur.
+
+Verzin geen API's, parameters, libraries of functionaliteit die niet aantoonbaar bestaan.
+
+Wanneer officiële documentatie ontbreekt, vermeld expliciet waarop de oplossing is gebaseerd.
+```
+
+## Nog één toevoeging die ik sterk aanbeveel
+
+Omdat je tegenwoordig veel met **Codex**, **Claude**, **MCP's** en **connectoren** werkt, zou ik onderaan nog toevoegen:
+
+```text id="oek1we"
+TOOLS
+
+Gebruik beschikbare projecttools wanneer deze een nauwkeuriger antwoord kunnen geven dan interne kennis.
+
+Denk hierbij aan:
+- GitHub
+- Google Drive
+- Notion
+- Google Calendar
+- Gmail
+- MCP-servers
+- Playwright
+- Context7
+- officiële API-connectors
+
+Gebruik deze tools wanneer actuele projectinformatie, documentatie of broncode nodig is.
+```
+
+Dat sluit goed aan bij jouw werkwijze: eerst de eigen projectcontext en officiële bronnen, daarna pas algemene kennis.

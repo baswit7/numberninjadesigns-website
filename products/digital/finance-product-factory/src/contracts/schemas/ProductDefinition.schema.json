@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:ProductDefinition:1.0.0",
+  "title": "ProductDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "status",
+    "productFamily",
+    "category",
+    "nameKey",
+    "descriptionKey",
+    "saleType",
+    "difficulty",
+    "tags",
+    "recommended",
+    "features",
+    "supportedLocales",
+    "supportedCurrencies",
+    "supportedThemes",
+    "defaultConfiguration",
+    "configurableFields",
+    "qualityRules",
+    "commercialMetadata",
+    "imageSpecifications",
+    "compatibility",
+    "exportProfile"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "version": { "type": "string", "format": "semver" },
+    "status": { "enum": ["draft", "beta", "active", "deprecated", "retired"] },
+    "productFamily": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "category": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "nameKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "descriptionKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "saleType": { "enum": ["digital-download", "spreadsheet", "template", "bundle"] },
+    "difficulty": { "enum": ["beginner", "intermediate", "advanced"] },
+    "tags": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 48 }, "uniqueItems": true },
+    "recommended": { "type": "boolean" },
+    "features": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+      "uniqueItems": true
+    },
+    "outputTypes": {
+      "type": "array",
+      "items": { "enum": ["xlsx", "docx", "zip"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "documentTemplates": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:DocumentTemplate:1.0.0" },
+      "minItems": 1
+    },
+    "supportedLocales": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}|[0-9]{3}))?$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supportedCurrencies": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[A-Z]{3}$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supportedThemes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "defaultConfiguration": { "$ref": "urn:finance-product-factory:contracts:ProductConfiguration:1.0.0" },
+    "configurableFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "labelKey", "configurationPath"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "type": { "enum": ["string", "integer", "number", "boolean", "enum", "object"] },
+          "labelKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+          "configurationPath": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:\\.[a-z][A-Za-z0-9]*)*$" },
+          "defaultValue": {},
+          "minimum": { "type": "number" },
+          "maximum": { "type": "number" },
+          "choices": { "type": "array", "items": { "type": ["string", "number", "boolean"] }, "uniqueItems": true },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "sheets": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:SheetDefinition:1.0.0" },
+      "minItems": 0
+    },
+    "formulas": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:FormulaDefinition:1.0.0" }
+    },
+    "validations": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:ValidationRule:1.0.0" }
+    },
+    "qualityRules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "metric", "weight", "threshold", "severity"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "metric": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "weight": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+          "threshold": { "type": "number", "minimum": 0, "maximum": 100 },
+          "severity": { "enum": ["info", "warning", "error", "blocker"] }
+        }
+      }
+    },
+    "commercialMetadata": { "$ref": "urn:finance-product-factory:contracts:CommercialMetadata:1.0.0" },
+    "imageSpecifications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "purpose", "width", "height", "format", "required"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+          "purpose": { "enum": ["thumbnail", "feature", "workflow", "contents", "compatibility", "instructions", "comparison", "trust", "bundle", "detail", "other"] },
+          "width": { "type": "integer", "minimum": 300, "maximum": 10000 },
+          "height": { "type": "integer", "minimum": 300, "maximum": 10000 },
+          "format": { "enum": ["png", "webp", "jpg"] },
+          "required": { "type": "boolean" },
+          "altTextKey": { "type": "string" }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targets", "requiresFormulaRecalculation", "googleSheetsSupported"],
+      "properties": {
+        "targets": {
+          "type": "array",
+          "items": { "enum": ["excel-desktop", "excel-web", "google-sheets", "libreoffice", "docx-ooxml"] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "minimumExcelVersion": { "type": ["string", "null"] },
+        "requiresFormulaRecalculation": { "type": "boolean" },
+        "googleSheetsSupported": { "type": "boolean" },
+        "limitations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exportProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["packageFilenameTemplate", "include"],
+      "properties": {
+        "workbookFilenameTemplate": { "type": "string", "minLength": 6, "maxLength": 160 },
+        "packageFilenameTemplate": { "type": "string", "minLength": 5, "maxLength": 160 },
+        "include": {
+          "type": "array",
+          "items": { "enum": ["workbook", "documents", "readme", "license", "manifest", "listing", "images", "reports", "source-manifests"] },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "generatorId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "assets": [
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-01-hero-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "hero",
+      "order": 1,
+      "purpose": "thumbnail",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-02-dashboard-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "dashboard",
+      "order": 2,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-03-included-files-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "included-files",
+      "order": 3,
+      "purpose": "contents",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-04-features-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "features",
+      "order": 4,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-05-how-it-works-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "how-it-works",
+      "order": 5,
+      "purpose": "workflow",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-06-compatibility-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "compatibility",
+      "order": 6,
+      "purpose": "compatibility",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-07-detail-view-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "detail-view",
+      "order": 7,
+      "purpose": "detail",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-08-target-customer-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "target-customer",
+      "order": 8,
+      "purpose": "trust",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-09-call-to-action-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "call-to-action",
+      "order": 9,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.subscriptionTracker.name",
+      "filename": "subscription-tracker-10-bundle-en-US.png",
+      "format": "png",
+      "height": 2400,
+      "id": "bundle",
+      "order": 10,
+      "purpose": "bundle",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    }
+  ],
+  "extensions": {
+    "backgrounds": [
+      "theme-background",
+      "theme-surface"
+    ],
+    "briefs": {
+      "bundle": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "call-to-action": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "compatibility": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "dashboard": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "detail-view": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "features": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "hero": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "how-it-works": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "included-files": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "target-customer": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      }
+    },
+    "compressionTargets": {
+      "jpg": 90,
+      "png": "lossless-or-reviewed-high-quality",
+      "webp": 88
+    },
+    "dimensions": {
+      "bundle": {
+        "height": 2400,
+        "width": 3000
+      },
+      "call-to-action": {
+        "height": 2400,
+        "width": 3000
+      },
+      "compatibility": {
+        "height": 2400,
+        "width": 3000
+      },
+      "dashboard": {
+        "height": 2400,
+        "width": 3000
+      },
+      "detail-view": {
+        "height": 2400,
+        "width": 3000
+      },
+      "features": {
+        "height": 2400,
+        "width": 3000
+      },
+      "hero": {
+        "height": 2400,
+        "width": 3000
+      },
+      "how-it-works": {
+        "height": 2400,
+        "width": 3000
+      },
+      "included-files": {
+        "height": 2400,
+        "width": 3000
+      },
+      "target-customer": {
+        "height": 2400,
+        "width": 3000
+      }
+    },
+    "exportFormats": [
+      "png"
+    ],
+    "filenames": [
+      "subscription-tracker-01-hero-en-US.png",
+      "subscription-tracker-02-dashboard-en-US.png",
+      "subscription-tracker-03-included-files-en-US.png",
+      "subscription-tracker-04-features-en-US.png",
+      "subscription-tracker-05-how-it-works-en-US.png",
+      "subscription-tracker-06-compatibility-en-US.png",
+      "subscription-tracker-07-detail-view-en-US.png",
+      "subscription-tracker-08-target-customer-en-US.png",
+      "subscription-tracker-09-call-to-action-en-US.png",
+      "subscription-tracker-10-bundle-en-US.png"
+    ],
+    "fonts": {
+      "body": "Aptos",
+      "heading": "Aptos Display",
+      "mono": "Cascadia Mono"
+    },
+    "mockupTypes": [
+      "laptop",
+      "desktop",
+      "tablet",
+      "dashboard-close-up",
+      "data-sheet-close-up",
+      "workbook-tabs",
+      "quick-start-guide",
+      "product-bundle"
+    ],
+    "palette": {
+      "accent": "#765600",
+      "background": "#F4F7F2",
+      "bandFill": "#E3EEDF",
+      "border": "#AABCAA",
+      "errorFill": "#FDE8E7",
+      "errorText": "#7A1D1D",
+      "formulaFill": "#DCEADF",
+      "formulaText": "#1E2B22",
+      "inputFill": "#FFF1C2",
+      "inputText": "#2D240F",
+      "inverseText": "#FFFFFF",
+      "muted": "#526057",
+      "primary": "#2C5940",
+      "secondary": "#41684F",
+      "successFill": "#E6F4EA",
+      "successText": "#164B2B",
+      "surface": "#FFFFFF",
+      "text": "#1E2B22",
+      "warningFill": "#FFF3CD",
+      "warningText": "#513C00"
+    },
+    "productionPolicy": {
+      "executionClaim": "MANIFEST_ONLY_NO_IMAGE_ASSETS_GENERATED",
+      "reviewRequired": true
+    },
+    "qualityRules": [
+      "No clipped text or controls.",
+      "Normal text contrast must be at least 4.5:1.",
+      "Locale copy and workbook imagery require human review.",
+      "Do not claim compatibility beyond the verified release target."
+    ],
+    "requiredImages": [
+      "hero",
+      "dashboard",
+      "included-files",
+      "features",
+      "how-it-works",
+      "compatibility",
+      "detail-view",
+      "target-customer",
+      "call-to-action",
+      "bundle"
+    ],
+    "safeZones": {
+      "default": {
+        "horizontalPercent": 7,
+        "verticalPercent": 8
+      }
+    },
+    "textOverlays": {
+      "bundle": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "call-to-action": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "compatibility": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "dashboard": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "detail-view": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "features": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "hero": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "how-it-works": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "included-files": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      },
+      "target-customer": {
+        "altText": "Subscription Tracker",
+        "headline": "Subscription Tracker",
+        "subheadline": "Monitor recurring costs, renewal dates and potential savings."
+      }
+    },
+    "themeDefinition": {
+      "colors": {
+        "accent": "#765600",
+        "background": "#F4F7F2",
+        "bandFill": "#E3EEDF",
+        "border": "#AABCAA",
+        "errorFill": "#FDE8E7",
+        "errorText": "#7A1D1D",
+        "formulaFill": "#DCEADF",
+        "formulaText": "#1E2B22",
+        "inputFill": "#FFF1C2",
+        "inputText": "#2D240F",
+        "inverseText": "#FFFFFF",
+        "muted": "#526057",
+        "primary": "#2C5940",
+        "secondary": "#41684F",
+        "successFill": "#E6F4EA",
+        "successText": "#164B2B",
+        "surface": "#FFFFFF",
+        "text": "#1E2B22",
+        "warningFill": "#FFF3CD",
+        "warningText": "#513C00"
+      },
+      "fonts": {
+        "body": "Aptos",
+        "heading": "Aptos Display",
+        "mono": "Cascadia Mono"
+      },
+      "workbookStyles": {
+        "dashboardCard": {
+          "accent": "#765600",
+          "fill": "#FFFFFF",
+          "text": "#1E2B22"
+        },
+        "error": {
+          "border": "#7A1D1D",
+          "fill": "#FDE8E7",
+          "text": "#7A1D1D"
+        },
+        "formula": {
+          "border": "#41684F",
+          "fill": "#DCEADF",
+          "locked": true,
+          "text": "#1E2B22"
+        },
+        "header": {
+          "bold": true,
+          "border": "#2C5940",
+          "fill": "#2C5940",
+          "text": "#FFFFFF"
+        },
+        "input": {
+          "border": "#765600",
+          "fill": "#FFF1C2",
+          "locked": false,
+          "text": "#2D240F"
+        },
+        "success": {
+          "border": "#164B2B",
+          "fill": "#E6F4EA",
+          "text": "#164B2B"
+        },
+        "tableBand": {
+          "border": "#AABCAA",
+          "fill": "#E3EEDF",
+          "text": "#1E2B22"
+        },
+        "tableHeader": {
+          "bold": true,
+          "border": "#AABCAA",
+          "fill": "#41684F",
+          "text": "#FFFFFF"
+        },
+        "warning": {
+          "border": "#513C00",
+          "fill": "#FFF3CD",
+          "text": "#513C00"
+        }
+      }
+    }
+  },
+  "generatedAt": "2026-07-15T17:46:35.411Z",
+  "locale": "en-US",
+  "productId": "subscription-tracker",
+  "productVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "theme": "sage-finance"
+}

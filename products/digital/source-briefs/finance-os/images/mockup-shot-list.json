@@ -1,0 +1,81 @@
+{
+  "locale": "de-DE",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "shots": [
+    {
+      "assetId": "hero",
+      "filename": "monthly-budget-planner-01-hero-de-DE.png",
+      "id": "laptop",
+      "purpose": "thumbnail",
+      "required": true,
+      "shotType": "laptop",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "dashboard",
+      "filename": "monthly-budget-planner-02-dashboard-de-DE.png",
+      "id": "desktop",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "desktop",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "how-it-works",
+      "filename": "monthly-budget-planner-05-how-it-works-de-DE.png",
+      "id": "tablet",
+      "purpose": "workflow",
+      "required": true,
+      "shotType": "tablet",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "dashboard",
+      "filename": "monthly-budget-planner-02-dashboard-de-DE.png",
+      "id": "dashboard-close-up",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "dashboard-close-up",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "detail-view",
+      "filename": "monthly-budget-planner-07-detail-view-de-DE.png",
+      "id": "data-sheet-close-up",
+      "purpose": "detail",
+      "required": true,
+      "shotType": "data-sheet-close-up",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "features",
+      "filename": "monthly-budget-planner-04-features-de-DE.png",
+      "id": "workbook-tabs",
+      "purpose": "feature",
+      "required": true,
+      "shotType": "workbook-tabs",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "included-files",
+      "filename": "monthly-budget-planner-03-included-files-de-DE.png",
+      "id": "quick-start-guide",
+      "purpose": "contents",
+      "required": true,
+      "shotType": "quick-start-guide",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    },
+    {
+      "assetId": "bundle",
+      "filename": "monthly-budget-planner-10-bundle-de-DE.png",
+      "id": "product-bundle",
+      "purpose": "bundle",
+      "required": true,
+      "shotType": "product-bundle",
+      "status": "PRODUCTION_BRIEF_ONLY"
+    }
+  ],
+  "status": "PRODUCTION_BRIEF_ONLY"
+}

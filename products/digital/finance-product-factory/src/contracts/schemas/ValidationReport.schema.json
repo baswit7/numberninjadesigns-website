@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:ValidationReport:1.0.0",
+  "title": "ValidationReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contract", "status", "valid", "issues", "summary"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "contract": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "status": { "enum": ["PASS", "FAIL"] },
+    "valid": { "type": "boolean" },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "path", "message"],
+        "properties": {
+          "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+          "severity": { "enum": ["error", "blocker"] },
+          "path": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "expected": {},
+          "actual": {}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["errorCount", "blockerCount"],
+      "properties": {
+        "errorCount": { "type": "integer", "minimum": 0 },
+        "blockerCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "generatedAt": { "type": ["string", "null"], "format": "date-time" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

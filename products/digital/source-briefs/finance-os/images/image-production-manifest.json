@@ -1,0 +1,447 @@
+{
+  "assets": [
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-01-hero-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "hero",
+      "order": 1,
+      "purpose": "thumbnail",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-02-dashboard-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "dashboard",
+      "order": 2,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-03-included-files-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "included-files",
+      "order": 3,
+      "purpose": "contents",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-04-features-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "features",
+      "order": 4,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-05-how-it-works-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "how-it-works",
+      "order": 5,
+      "purpose": "workflow",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-06-compatibility-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "compatibility",
+      "order": 6,
+      "purpose": "compatibility",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-07-detail-view-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "detail-view",
+      "order": 7,
+      "purpose": "detail",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-08-target-customer-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "target-customer",
+      "order": 8,
+      "purpose": "trust",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-09-call-to-action-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "call-to-action",
+      "order": 9,
+      "purpose": "feature",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    },
+    {
+      "altTextKey": "products.monthlyBudgetPlanner.name",
+      "filename": "monthly-budget-planner-10-bundle-de-DE.png",
+      "format": "png",
+      "height": 2400,
+      "id": "bundle",
+      "order": 10,
+      "purpose": "bundle",
+      "sha256": null,
+      "status": "required",
+      "width": 3000
+    }
+  ],
+  "extensions": {
+    "backgrounds": [
+      "theme-background",
+      "theme-surface"
+    ],
+    "briefs": {
+      "bundle": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "call-to-action": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "compatibility": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "dashboard": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "detail-view": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "features": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "hero": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "how-it-works": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "included-files": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "target-customer": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      }
+    },
+    "compressionTargets": {
+      "jpg": 90,
+      "png": "lossless-or-reviewed-high-quality",
+      "webp": 88
+    },
+    "dimensions": {
+      "bundle": {
+        "height": 2400,
+        "width": 3000
+      },
+      "call-to-action": {
+        "height": 2400,
+        "width": 3000
+      },
+      "compatibility": {
+        "height": 2400,
+        "width": 3000
+      },
+      "dashboard": {
+        "height": 2400,
+        "width": 3000
+      },
+      "detail-view": {
+        "height": 2400,
+        "width": 3000
+      },
+      "features": {
+        "height": 2400,
+        "width": 3000
+      },
+      "hero": {
+        "height": 2400,
+        "width": 3000
+      },
+      "how-it-works": {
+        "height": 2400,
+        "width": 3000
+      },
+      "included-files": {
+        "height": 2400,
+        "width": 3000
+      },
+      "target-customer": {
+        "height": 2400,
+        "width": 3000
+      }
+    },
+    "exportFormats": [
+      "png"
+    ],
+    "filenames": [
+      "monthly-budget-planner-01-hero-de-DE.png",
+      "monthly-budget-planner-02-dashboard-de-DE.png",
+      "monthly-budget-planner-03-included-files-de-DE.png",
+      "monthly-budget-planner-04-features-de-DE.png",
+      "monthly-budget-planner-05-how-it-works-de-DE.png",
+      "monthly-budget-planner-06-compatibility-de-DE.png",
+      "monthly-budget-planner-07-detail-view-de-DE.png",
+      "monthly-budget-planner-08-target-customer-de-DE.png",
+      "monthly-budget-planner-09-call-to-action-de-DE.png",
+      "monthly-budget-planner-10-bundle-de-DE.png"
+    ],
+    "fonts": {
+      "body": "Aptos",
+      "heading": "Aptos Display",
+      "mono": "Cascadia Mono"
+    },
+    "mockupTypes": [
+      "laptop",
+      "desktop",
+      "tablet",
+      "dashboard-close-up",
+      "data-sheet-close-up",
+      "workbook-tabs",
+      "quick-start-guide",
+      "product-bundle"
+    ],
+    "palette": {
+      "accent": "#17645B",
+      "background": "#FFF9FC",
+      "bandFill": "#F5EAF2",
+      "border": "#C7B0C1",
+      "errorFill": "#FDE8E7",
+      "errorText": "#7A1D1D",
+      "formulaFill": "#EDE3EB",
+      "formulaText": "#2E2530",
+      "inputFill": "#FFF0C7",
+      "inputText": "#302A25",
+      "inverseText": "#FFFFFF",
+      "muted": "#665B68",
+      "primary": "#66435E",
+      "secondary": "#76526F",
+      "successFill": "#E6F4EA",
+      "successText": "#164B2B",
+      "surface": "#FFFFFF",
+      "text": "#2E2530",
+      "warningFill": "#FFF3CD",
+      "warningText": "#513C00"
+    },
+    "productionPolicy": {
+      "executionClaim": "MANIFEST_ONLY_NO_IMAGE_ASSETS_GENERATED",
+      "reviewRequired": true
+    },
+    "qualityRules": [
+      "No clipped text or controls.",
+      "Normal text contrast must be at least 4.5:1.",
+      "Locale copy and workbook imagery require human review.",
+      "Do not claim compatibility beyond the verified release target."
+    ],
+    "requiredImages": [
+      "hero",
+      "dashboard",
+      "included-files",
+      "features",
+      "how-it-works",
+      "compatibility",
+      "detail-view",
+      "target-customer",
+      "call-to-action",
+      "bundle"
+    ],
+    "safeZones": {
+      "default": {
+        "horizontalPercent": 7,
+        "verticalPercent": 8
+      }
+    },
+    "textOverlays": {
+      "bundle": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "call-to-action": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "compatibility": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "dashboard": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "detail-view": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "features": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "hero": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "how-it-works": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "included-files": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      },
+      "target-customer": {
+        "altText": "Monatsbudgetplaner",
+        "headline": "Monatsbudgetplaner",
+        "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+      }
+    },
+    "themeDefinition": {
+      "colors": {
+        "accent": "#17645B",
+        "background": "#FFF9FC",
+        "bandFill": "#F5EAF2",
+        "border": "#C7B0C1",
+        "errorFill": "#FDE8E7",
+        "errorText": "#7A1D1D",
+        "formulaFill": "#EDE3EB",
+        "formulaText": "#2E2530",
+        "inputFill": "#FFF0C7",
+        "inputText": "#302A25",
+        "inverseText": "#FFFFFF",
+        "muted": "#665B68",
+        "primary": "#66435E",
+        "secondary": "#76526F",
+        "successFill": "#E6F4EA",
+        "successText": "#164B2B",
+        "surface": "#FFFFFF",
+        "text": "#2E2530",
+        "warningFill": "#FFF3CD",
+        "warningText": "#513C00"
+      },
+      "fonts": {
+        "body": "Aptos",
+        "heading": "Aptos Display",
+        "mono": "Cascadia Mono"
+      },
+      "workbookStyles": {
+        "dashboardCard": {
+          "accent": "#17645B",
+          "fill": "#FFFFFF",
+          "text": "#2E2530"
+        },
+        "error": {
+          "border": "#7A1D1D",
+          "fill": "#FDE8E7",
+          "text": "#7A1D1D"
+        },
+        "formula": {
+          "border": "#76526F",
+          "fill": "#EDE3EB",
+          "locked": true,
+          "text": "#2E2530"
+        },
+        "header": {
+          "bold": true,
+          "border": "#66435E",
+          "fill": "#66435E",
+          "text": "#FFFFFF"
+        },
+        "input": {
+          "border": "#17645B",
+          "fill": "#FFF0C7",
+          "locked": false,
+          "text": "#302A25"
+        },
+        "success": {
+          "border": "#164B2B",
+          "fill": "#E6F4EA",
+          "text": "#164B2B"
+        },
+        "tableBand": {
+          "border": "#C7B0C1",
+          "fill": "#F5EAF2",
+          "text": "#2E2530"
+        },
+        "tableHeader": {
+          "bold": true,
+          "border": "#C7B0C1",
+          "fill": "#76526F",
+          "text": "#FFFFFF"
+        },
+        "warning": {
+          "border": "#513C00",
+          "fill": "#FFF3CD",
+          "text": "#513C00"
+        }
+      }
+    }
+  },
+  "generatedAt": "2026-07-15T18:06:52.229Z",
+  "locale": "de-DE",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "theme": "soft-pastel"
+}

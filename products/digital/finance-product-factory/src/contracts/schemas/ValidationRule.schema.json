@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:ValidationRule:1.0.0",
+  "title": "ValidationRule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "sheetId", "columnId", "type", "required"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "sheetId": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "columnId": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" }
+      ]
+    },
+    "type": { "enum": ["required", "list", "date", "decimal", "whole", "textLength", "range", "custom"] },
+    "source": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "values": {
+      "type": "array",
+      "items": { "type": ["string", "number", "boolean"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required": { "type": "boolean" },
+    "operator": { "enum": ["between", "notBetween", "equal", "notEqual", "greaterThan", "lessThan", "greaterThanOrEqual", "lessThanOrEqual"] },
+    "minimum": { "type": "number" },
+    "maximum": { "type": "number" },
+    "messageKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "severity": { "enum": ["info", "warning", "error", "blocker"] },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "images": [
+    {
+      "badge": "EUR",
+      "bullets": [
+        "Thumbnail"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "hero",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "thumbnail",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "dashboard",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Contents"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "included-files",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "contents",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "features",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Workflow"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "how-it-works",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "workflow",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Compatibility"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "compatibility",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "compatibility",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Detail"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "detail-view",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "detail",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Trust"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "target-customer",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "trust",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Feature"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "call-to-action",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "feature",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    },
+    {
+      "badge": "",
+      "bullets": [
+        "Bundle"
+      ],
+      "contrastRequirement": "WCAG AA 4.5:1 for normal text",
+      "cta": "",
+      "headline": "Monatsbudgetplaner",
+      "id": "bundle",
+      "maximumLengths": {
+        "badge": 24,
+        "cta": 35,
+        "headline": 70,
+        "subheadline": 110
+      },
+      "purpose": "bundle",
+      "subheadline": "Feste und variable Kosten, Sparen und Restbudget monatlich planen."
+    }
+  ],
+  "locale": "de-DE",
+  "schemaVersion": "1.0.0"
+}

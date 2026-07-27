@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:CommercialMetadata:1.0.0",
+  "title": "CommercialMetadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "titleKey",
+    "descriptionKey",
+    "category",
+    "targetAudience",
+    "keywords",
+    "marketplaces",
+    "licenseKey",
+    "disclaimerKeys"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "titleKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "descriptionKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "category": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "targetAudience": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "uniqueItems": true },
+    "keywords": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 80 }, "minItems": 1, "uniqueItems": true },
+    "marketplaces": {
+      "type": "array",
+      "items": { "enum": ["etsy", "shopify", "gumroad", "creative-market", "direct"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "licenseKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "disclaimerKeys": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "listingAttributes": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "number", "boolean", "null"] }
+    },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

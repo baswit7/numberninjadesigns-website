@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6">
+  <title>Listing Intelligence</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../../index.html">NumberNinjaDesigns</a>
+    <nav class="site-nav" aria-label="Factory-navigatie">
+      <a href="../../../index.html">Studio</a>
+      <a href="../../../apps/product-factory/index.html">Producten maken</a>
+      <a href="../../etsy-intelligence-engine/index.html">Marktonderzoek</a>
+      <a href="./index.html" aria-current="page">Listings maken</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head">
+      <div><h1>Listing Intelligence</h1><p>Van gevalideerde productdata naar verkoopklare Etsy-content.</p></div>
+      <span id="status" class="status">CSV ONLY</span>
+    </section>
+    <section class="cards" id="cards"></section>
+    <section class="panel">
+      <div class="heading"><div><small>LISTINGVIEW.IO CONNECTION</small><h2>Research import</h2></div><label class="button">Select CSV<input id="files" type="file" accept=".csv,text/csv" multiple></label></div>
+      <div id="drop">Drop ListingView.io CSV exports here</div><div id="imports" class="table"></div>
+    </section>
+    <section class="panel"><small>WORKFLOW</small><h2>Listing pipeline</h2><div class="pipeline" id="pipeline"></div></section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

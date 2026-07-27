@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:finance-product-factory:contracts:SheetDefinition:1.0.0",
+  "title": "SheetDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "nameKey",
+    "type",
+    "order",
+    "hidden",
+    "columns",
+    "inputRows",
+    "freeze",
+    "autoFilter",
+    "print",
+    "formulas",
+    "validations"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "nameKey": { "type": "string", "pattern": "^[a-z][A-Za-z0-9]*(?:[._-][A-Za-z0-9]+)+$" },
+    "type": { "enum": ["dashboard", "input", "lookup", "summary", "report", "data", "settings"] },
+    "order": { "type": "integer", "minimum": 0, "maximum": 999 },
+    "hidden": { "type": "boolean" },
+    "columns": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:ColumnDefinition:1.0.0" },
+      "uniqueItems": true
+    },
+    "inputRows": { "type": "integer", "minimum": 0, "maximum": 10000 },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rows", "columns"],
+      "properties": {
+        "rows": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "columns": { "type": "integer", "minimum": 0, "maximum": 50 }
+      }
+    },
+    "autoFilter": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "string", "minLength": 2, "maxLength": 80 }
+      ]
+    },
+    "print": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["orientation", "paperSize", "fitToWidth", "fitToHeight"],
+      "properties": {
+        "orientation": { "enum": ["portrait", "landscape"] },
+        "paperSize": { "enum": ["A4", "Letter", "Legal"] },
+        "fitToWidth": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "fitToHeight": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "formulas": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:FormulaDefinition:1.0.0" }
+    },
+    "validations": {
+      "type": "array",
+      "items": { "$ref": "urn:finance-product-factory:contracts:ValidationRule:1.0.0" }
+    },
+    "sampleRows": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "styleRole": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

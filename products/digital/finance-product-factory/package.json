@@ -1,0 +1,47 @@
+{
+  "name": "@numberninjadesigns/finance-product-factory",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline-first production factory for validated financial workbook products and commercial packages.",
+  "scripts": {
+    "start": "node --env-file=\"../../../.env\" scripts/serve.mjs",
+    "check": "node tests/baseline.test.mjs",
+    "validate": "node scripts/validate-baseline.mjs",
+    "test": "node --test",
+    "test:production": "node --test tests/production-integration-matrix.test.mjs",
+    "test:e2e": "node scripts/run-production-e2e.cjs --localization-ready",
+    "validate:production": "node scripts/validate-production-matrix.mjs",
+    "analyze:market": "node scripts/analyze-listingview-market.mjs",
+    "generate:expansion-release": "node scripts/generate-expansion-release.mjs",
+    "audit:expansion-release": "node scripts/audit-expansion-release.mjs",
+    "verify:security": "node scripts/verify-production-security.mjs",
+    "verify:secrets": "node scripts/verify-secret-exposure.mjs",
+    "measure:performance": "node --expose-gc scripts/measure-production-performance.mjs",
+    "render:premium-probe": "node scripts/render-premium-probe.mjs",
+    "build:photoshop-images": "node scripts/build-photoshop-images.mjs",
+    "build:tutorial-plan": "node scripts/build-tutorial-video.mjs --plan-only",
+    "build:tutorial-video": "node scripts/build-tutorial-video.mjs",
+    "build:etsy-videos": "node scripts/build-etsy-listing-videos.mjs",
+    "build:etsy-dominance": "node scripts/generate-etsy-dominance-release.mjs",
+    "build:tutorial-release": "node scripts/build-multilingual-tutorial-release.mjs",
+    "build:customer-package": "node scripts/build-customer-package.mjs",
+    "inspect:physical-release": "node scripts/inspect-final-physical-release.mjs",
+    "release:gate": "node scripts/clean-state-release-gate.mjs",
+    "release:native": "node scripts/generate-native-release.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "exceljs": "4.4.0",
+    "jszip": "3.10.1"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "playwright": "^1.59.0"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "components": [
+    {
+      "evidence": [
+        "Workbook validation status: PASS."
+      ],
+      "id": "technical-integrity",
+      "score": 100,
+      "weight": 0.25
+    },
+    {
+      "evidence": [
+        "303 live formulas structurally inspected."
+      ],
+      "id": "formula-quality",
+      "score": 100,
+      "weight": 0.15
+    },
+    {
+      "evidence": [
+        "940 validations, 4 filters and 5 frozen panes."
+      ],
+      "id": "usability",
+      "score": 100,
+      "weight": 0.1
+    },
+    {
+      "evidence": [
+        "visualQuality evidence score: 100."
+      ],
+      "id": "visual-quality",
+      "score": 100,
+      "weight": 0.1
+    },
+    {
+      "evidence": [
+        "localization evidence score: 100."
+      ],
+      "id": "localization",
+      "score": 100,
+      "weight": 0.1
+    },
+    {
+      "evidence": [
+        "commercialCompleteness evidence score: 100."
+      ],
+      "id": "commercial-completeness",
+      "score": 100,
+      "weight": 0.1
+    },
+    {
+      "evidence": [
+        "instructions evidence score: 100."
+      ],
+      "id": "instructions",
+      "score": 100,
+      "weight": 0.05
+    },
+    {
+      "evidence": [
+        "Compatibility status: PARTIAL."
+      ],
+      "id": "compatibility",
+      "score": 60,
+      "weight": 0.05
+    },
+    {
+      "evidence": [
+        "accessibility evidence score: 100."
+      ],
+      "id": "accessibility",
+      "score": 100,
+      "weight": 0.05
+    },
+    {
+      "evidence": [
+        "exportCompleteness evidence score: 100."
+      ],
+      "id": "export-completeness",
+      "score": 100,
+      "weight": 0.05
+    }
+  ],
+  "extensions": {
+    "hardFailure": false,
+    "visualChecks": {
+      "contrast": true,
+      "formulaRecognition": true,
+      "inputRecognition": true,
+      "printProfile": true
+    },
+    "workbookWarnings": []
+  },
+  "generatedAt": "2026-07-15T18:06:52.229Z",
+  "productId": "monthly-budget-planner",
+  "productVersion": "1.0.0",
+  "recommendations": [
+    "Supply passing native compatibility evidence before release approval."
+  ],
+  "schemaVersion": "1.0.0",
+  "score": 98,
+  "status": "PASS",
+  "threshold": 90
+}

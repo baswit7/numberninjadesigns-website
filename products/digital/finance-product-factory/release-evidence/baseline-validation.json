@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-21T16:42:10.958Z",
+  "repositoryRoot": "C:\\AI\\Active\\Finance Product Factory",
+  "branch": "main",
+  "head": "d8bf7a66d9be927755edf1c396508697c0f7d1c6",
+  "baseCommit": "b811fac",
+  "overallStatus": "PASS",
+  "checks": [
+    {
+      "id": "repository.root",
+      "critical": true,
+      "status": "PASS",
+      "details": "c:/ai/active/finance product factory"
+    },
+    {
+      "id": "repository.history",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "head": "d8bf7a66d9be927755edf1c396508697c0f7d1c6",
+        "base": "b811fac",
+        "remoteCount": 0
+      }
+    },
+    {
+      "id": "source.integrity",
+      "critical": true,
+      "status": "PASS",
+      "details": [
+        {
+          "relativePath": "incoming/Finance_Product_Factory.html",
+          "size": 106716,
+          "sha256": "fdf375f084bfb6521de4dc412426e88b1936d1bbb533c7ddc2e753d9cfd00c48"
+        },
+        {
+          "relativePath": "legacy/source-baselines/Finance_Product_Factory.legacy-16079.html",
+          "size": 16079,
+          "sha256": "967482956468f78988b3362756a816197ad3982bef30fbffc599b69ab0701d97"
+        },
+        {
+          "relativePath": "legacy/source-baselines/Finance_Product_Factory.authoritative-106716.html",
+          "size": 106716,
+          "sha256": "fdf375f084bfb6521de4dc412426e88b1936d1bbb533c7ddc2e753d9cfd00c48"
+        },
+        {
+          "relativePath": "incoming/Finance_Product_Factory_Overdracht_Claude_Code.docx",
+          "size": 37857,
+          "sha256": "f69bfa427d22fa72de9d6baff687024c7ab42a268fa19f846c4924915604e562"
+        },
+        {
+          "relativePath": "docs/Finance_Product_Factory_Overdracht_Claude_Code.docx",
+          "size": 37857,
+          "sha256": "f69bfa427d22fa72de9d6baff687024c7ab42a268fa19f846c4924915604e562"
+        },
+        {
+          "relativePath": "incoming/Projectinstellingen en Bronnen.txt",
+          "size": 2425,
+          "sha256": "684265ab6f60b4f4929204077dcc23d755f44bc49913be27bedfd533f2c48b9b"
+        },
+        {
+          "relativePath": "docs/Projectinstellingen en Bronnen.txt",
+          "size": 2425,
+          "sha256": "684265ab6f60b4f4929204077dcc23d755f44bc49913be27bedfd533f2c48b9b"
+        }
+      ]
+    },
+    {
+      "id": "source.external-authoritative",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "path": "C:/AI/Active/Finance Producs Factory MVP/Finance_Product_Factory.html",
+        "size": 106716,
+        "sha256": "fdf375f084bfb6521de4dc412426e88b1936d1bbb533c7ddc2e753d9cfd00c48"
+      }
+    },
+    {
+      "id": "html.structure-and-syntax",
+      "critical": true,
+      "status": "PASS",
+      "details": [
+        {
+          "relativePath": "incoming/Finance_Product_Factory.html",
+          "inlineScripts": 1
+        },
+        {
+          "relativePath": "legacy/source-baselines/Finance_Product_Factory.legacy-16079.html",
+          "inlineScripts": 1
+        },
+        {
+          "relativePath": "apps/product-factory/index.html",
+          "inlineScripts": 0
+        },
+        {
+          "relativePath": "index.html",
+          "inlineScripts": 0
+        }
+      ]
+    },
+    {
+      "id": "html.local-assets",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "checked": [
+          "apps/product-factory/index.html",
+          "modules/etsy-intelligence-engine/index.html",
+          "modules/listing-intelligence-engine/dashboard/index.html",
+          "./styles.css",
+          "../../vendor/exceljs/4.4.0/exceljs.min.js",
+          "../../vendor/jszip/3.10.1/jszip.min.js",
+          "./app.js",
+          "../../index.html"
+        ]
+      }
+    },
+    {
+      "id": "modules.preserved",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "etsy": {
+          "files": 17,
+          "bytes": 1517361,
+          "sha256": "c5609af6d2232e3cbb0824a74c19ccb75f6a09d8aa01325d3adf7fae81aa39d2"
+        },
+        "listing": {
+          "files": 28,
+          "bytes": 52528,
+          "sha256": "c63b9044b05c26814af31a602b29d775a4d8e8dc672f9f8369e42213b8b988b2"
+        }
+      }
+    },
+    {
+      "id": "provenance.machine-readable",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "entries": 6,
+        "markdownReports": 3
+      }
+    },
+    {
+      "id": "runtime.browser-smoke",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "screenshots": 4,
+        "generatedWorkbook": "output/validation/Budget_Planner_Basic_baseline.xlsx"
+      }
+    },
+    {
+      "id": "workbook.generated-integrity",
+      "critical": true,
+      "status": "PASS",
+      "details": {
+        "overallStatus": "PASS_WITH_WARNINGS",
+        "requestedConfigurationStatus": "NOT_MET_BY_EXISTING_RUNTIME",
+        "workbook": {
+          "relativePath": "output/validation/Budget_Planner_Basic_baseline.xlsx",
+          "size": 32321,
+          "sha256": "6bd57c8949624bef7063c45db7cd360e6484e5ab04c0adf3b8facb8fc9ced887"
+        }
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "id": "html.embedded-exceljs",
+      "status": "NOT_PRESENT",
+      "details": "The authoritative HTML uses SheetJS and JSZip, not embedded ExcelJS."
+    },
+    {
+      "id": "html.offline",
+      "status": "NETWORK_DEPENDENT",
+      "details": "Workbook generation and/or fonts still depend on CDN resources; no full offline claim is made."
+    },
+    {
+      "id": "workbook.baseline-limitation.1",
+      "status": "KNOWN_LIMITATION",
+      "details": "The existing runtime exports 60 blank input rows rather than the requested 100 sample-data rows."
+    },
+    {
+      "id": "workbook.baseline-limitation.2",
+      "status": "KNOWN_LIMITATION",
+      "details": "The exported workbook uses a USD number format rather than EUR."
+    },
+    {
+      "id": "workbook.baseline-limitation.3",
+      "status": "KNOWN_LIMITATION",
+      "details": "Data validation, autofilters and frozen panes are absent from the exported OOXML."
+    },
+    {
+      "id": "workbook.baseline-limitation.4",
+      "status": "KNOWN_LIMITATION",
+      "details": "The bundled spreadsheet renderer writes valid previews but exits nonzero during Windows native teardown."
+    },
+    {
+      "id": "workbook.baseline-limitation.5",
+      "status": "KNOWN_LIMITATION",
+      "details": "These are pre-existing runtime limitations; functional expansion is outside this repair task."
+    }
+  ]
+}

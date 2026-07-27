@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="nl-NL" data-generator-appearance="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f8f6">
+  <title>Digital Product Factory</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="../../vendor/exceljs/4.4.0/exceljs.min.js" defer></script>
+  <script src="../../vendor/jszip/3.10.1/jszip.min.js" defer></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace" data-i18n="ui.a11y.skipToMain">Naar hoofdinhoud</a>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="../../index.html" aria-label="Terug naar Digital Product Factory-navigatie" data-i18n-aria-label="ui.a11y.backToNavigation">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span><strong>NumberNinjaDesigns</strong><small>Digital Product Factory</small></span>
+      </a>
+      <nav class="factory-page-nav" aria-label="Factory-navigatie">
+        <a href="../../index.html">Studio</a>
+        <a href="./index.html" aria-current="page">Producten maken</a>
+        <a href="../../modules/etsy-intelligence-engine/index.html">Marktonderzoek</a>
+        <a href="../../modules/listing-intelligence-engine/dashboard/index.html">Listings maken</a>
+      </nav>
+      <div class="top-actions">
+        <div class="connection" id="connectionStatus" data-state="busy" role="status">
+          <span class="status-dot" aria-hidden="true"></span><span id="connectionText" data-i18n="ui.shell.runtimeLoading">Lokale runtime laden…</span>
+        </div>
+        <div class="header-appearance" aria-label="Dashboardweergave">
+          <span>Weergave</span>
+          <button type="button" data-generator-appearance-value="light" aria-pressed="true">Licht</button>
+          <button type="button" data-generator-appearance-value="dark" aria-pressed="false">Donker</button>
+        </div>
+        <button class="button button-quiet" type="button" id="openManual">Handleiding</button>
+        <button class="button button-quiet" type="button" id="openBatch" data-i18n="ui.shell.batchMode">Batchmodus</button>
+        <button class="button button-quiet" type="button" id="openSettings" aria-expanded="false" aria-controls="settingsPanel" data-i18n="ui.shell.management">Beheer</button>
+      </div>
+    </header>
+
+    <aside class="step-rail" aria-label="Productiestappen" data-i18n-aria-label="ui.a11y.productionSteps">
+      <div class="rail-heading"><span data-i18n="ui.shell.run">Run</span><strong id="runId">DRAFT</strong></div>
+      <nav id="stepNavigation"></nav>
+      <div class="rail-footer">
+        <div><span data-i18n="ui.shell.draft">Concept</span><strong id="draftState" data-i18n="ui.status.saved">Opgeslagen</strong></div>
+        <div><span data-i18n="ui.shell.gate">Gate</span><strong id="gateState" data-i18n="ui.status.notStarted">Niet gestart</strong></div>
+      </div>
+    </aside>
+
+    <main id="workspace" class="workspace" tabindex="-1" aria-labelledby="stepTitle">
+      <div class="workspace-head">
+        <div>
+          <p class="eyebrow" id="stepEyebrow">Stap 1 van 12</p>
+          <h1 id="stepTitle">Product</h1>
+          <p id="stepDescription">Selecteer een bewezen productdefinitie uit de productiecatalogus.</p>
+        </div>
+        <div class="quality-orb" id="qualityOrb" role="status" aria-live="polite" aria-label="Kwaliteitsscore nog niet berekend" data-i18n-aria-label="ui.a11y.qualityNotCalculated">
+          <span id="qualityScore">—</span><small>/100</small>
+        </div>
+      </div>
+
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      <div class="global-alert" id="globalAlert" role="alert" hidden></div>
+
+      <form id="factoryForm" novalidate>
+        <section class="step-panel" data-step="1" aria-labelledby="panel-product-title">
+          <div class="panel-heading"><div><span class="panel-number">01</span><h2 id="panel-product-title" data-i18n="ui.panel.productCatalog">Productcatalogus</h2></div><span class="catalog-count" id="catalogCount" aria-live="polite"></span></div>
+          <div class="filterbar">
+            <label class="search-field"><span data-i18n="ui.filter.search">Zoeken</span><input id="productSearch" type="search" autocomplete="off" placeholder="Zoek op product of familie" data-i18n-placeholder="ui.filter.searchPlaceholder"></label>
+            <label><span data-i18n="ui.filter.family">Familie</span><select id="familyFilter"><option value="" data-i18n="ui.filter.allFamilies">Alle families</option></select></label>
+            <label><span data-i18n="ui.filter.sort">Sorteren</span><select id="productSort"><option value="recommended" data-i18n="ui.filter.recommended">Aanbevolen</option><option value="name" data-i18n="ui.filter.name">Naam</option><option value="family" data-i18n="ui.filter.family">Familie</option></select></label>
+          </div>
+          <div class="product-grid" id="productCatalog" role="radiogroup" aria-label="Producten" data-i18n-aria-label="ui.a11y.products"></div>
+        </section>
+
+        <section class="step-panel" data-step="2" aria-labelledby="panel-market-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">02</span><h2 id="panel-market-title" data-i18n="ui.step.market">Markt en doelgroep</h2></div><span class="step-chip" data-i18n="ui.badge.commercialContext">Commerciële context</span></div>
+          <div class="form-grid two-columns">
+            <label><span data-i18n="ui.label.market">Markt</span><select id="market" required><option value="NL">Nederland</option><option value="US">Verenigde Staten</option><option value="GB">Verenigd Koninkrijk</option><option value="DE">Duitsland</option><option value="FR">Frankrijk</option><option value="CA">Canada</option><option value="AU">Australië</option><option value="CH">Zwitserland</option></select></label>
+            <label><span data-i18n="ui.label.audience">Doelgroep</span><input id="audience" type="text" maxlength="120" required value="Mensen die grip willen op hun persoonlijke financiën"></label>
+          </div>
+          <div class="context-note"><strong data-i18n="ui.contract.title">Contractgrens</strong><p data-i18n="ui.contract.body">Marktintelligentie adviseert alleen prioriteit en listingcopy; zij wijzigt nooit workbookformules of financiële integriteit.</p></div>
+        </section>
+
+        <section class="step-panel" data-step="3" aria-labelledby="panel-locale-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">03</span><h2 id="panel-locale-title" data-i18n="ui.step.locale">Producttaal en valuta</h2></div><span class="step-chip" data-i18n="ui.badge.independent">Onafhankelijk configureerbaar</span></div>
+          <div class="form-grid two-columns">
+            <label><span data-i18n="ui.label.productLanguage">Producttaal</span><select id="locale" required></select></label>
+            <label><span data-i18n="ui.label.currency">Valuta</span><select id="currency" required></select></label>
+            <label><span>Platformprofiel</span><select id="platformProfile" required><option value="excel">Excel · gevalideerde release-output</option><option value="google-sheets-compatible">Google Sheets · importprofiel</option><option value="word-google-docs-import">Word · Google Docs-import</option></select></label>
+          </div>
+          <div class="context-note"><strong>Platformclaim fail-closed</strong><p>Google Sheets levert een importeerbare XLSX en verificatiechecklist, maar wordt niet als compatibel verkocht totdat echte importvalidatie met bewijs is uitgevoerd.</p></div>
+          <div class="context-note locale-boundary"><strong data-i18n="ui.productLanguage.boundaryTitle">Generator blijft Nederlands</strong><p data-i18n="ui.productLanguage.boundaryBody">Deze taalkeuze verandert alleen de productpreview en gegenereerde bestanden. De generatorinterface blijft Nederlands.</p></div>
+          <div class="format-preview" id="regionalPreview" aria-live="polite"></div>
+        </section>
+
+        <section class="step-panel" data-step="4" aria-labelledby="panel-config-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">04</span><h2 id="panel-config-title" data-i18n="ui.step.configuration">Productconfiguratie</h2></div><span class="step-chip" data-i18n="ui.badge.validatedContract">Gevalideerd contract</span></div>
+          <div class="form-grid two-columns">
+            <label><span data-i18n="ui.label.title">Producttitel</span><input id="productTitle" type="text" maxlength="120" required></label>
+            <label><span data-i18n="ui.label.filename">Bestandsnaam</span><div class="input-suffix"><input id="filename" type="text" maxlength="120" required><span id="filenameExtension">.xlsx</span></div></label>
+            <label><span data-i18n="ui.label.year">Jaar</span><input id="year" type="number" min="2000" max="2100" required></label>
+            <label><span>Startmaand</span><select id="startMonth" required><option value="1">Januari</option><option value="2">Februari</option><option value="3">Maart</option><option value="4">April</option><option value="5">Mei</option><option value="6">Juni</option><option value="7">Juli</option><option value="8">Augustus</option><option value="9">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">December</option></select></label>
+            <label><span data-i18n="ui.label.inputCapacity">Invoercapaciteit</span><select id="inputCapacity" required><option value="50">50 regels</option><option value="100" selected>100 regels</option><option value="250">250 regels</option><option value="500">500 regels</option><option value="1000">1.000 regels</option></select></label>
+            <label><span>Uitvoermap</span><select id="outputProfile" required><option value="repository-release">Beheerde projectmap</option><option value="browser-download">Browserdownloadmap</option></select></label>
+          </div>
+          <div class="toggle-row">
+            <label class="toggle"><input id="sampleDataEnabled" type="checkbox" checked><span data-i18n="ui.label.sampleData">Voorbeelddata opnemen</span></label>
+            <label class="toggle"><input id="carryOver" type="checkbox"><span data-i18n="ui.label.carryOver">Carry-over activeren waar ondersteund</span></label>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step="5" aria-labelledby="panel-categories-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">05</span><h2 id="panel-categories-title" data-i18n="ui.step.categories">Categorieën</h2></div><span class="step-chip" id="categoryCount" aria-live="polite">Categorieën · 0</span></div>
+          <label class="textarea-field" id="workbookCategoriesEditor"><span data-i18n="ui.label.categoryLines">Eén categorie per regel</span><textarea id="categories" rows="12" maxlength="2500" spellcheck="false"></textarea><small data-i18n="ui.label.categoryHelp">Minimaal 10 unieke, relevante categorieën; maximaal 100. Werkmappen gebruiken deze waarden waar categorie-dropdowns beschikbaar zijn.</small></label>
+          <section class="document-content" id="documentContent" aria-labelledby="documentContentTitle" hidden>
+            <div class="document-content-head"><div><p class="eyebrow">Documentproduct</p><h3 id="documentContentTitle">Documenten in deze generatie</h3></div><span class="step-chip" id="documentTemplateCount">0 DOCX</span></div>
+            <p>De factory genereert alleen de documenten voor de gekozen producttaal. Alle bestanden worden structureel herlezen voordat het ZIP-pakket beschikbaar komt.</p>
+            <div class="document-template-list" id="documentTemplateList"></div>
+          </section>
+        </section>
+
+        <section class="step-panel" data-step="6" aria-labelledby="panel-theme-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">06</span><h2 id="panel-theme-title" data-i18n="ui.step.theme">Productthema</h2></div><span class="step-chip" data-i18n="ui.badge.semanticTokens">Semantische tokens</span></div>
+          <div class="theme-grid" id="themeGrid" role="radiogroup" aria-label="Workbookthema’s" data-i18n-aria-label="ui.a11y.themes"></div>
+          <fieldset class="product-appearance-picker" id="productAppearance"><legend data-i18n="ui.label.productAppearance">Werkmapweergave</legend><p data-i18n="ui.productAppearance.help">Bepaalt de echte cel-, dashboard- en grafiekweergave van het product; staat los van de generatorweergave.</p><div><label class="appearance-option"><input id="productAppearanceLight" type="radio" name="productAppearance" value="light" checked><span><strong data-i18n="ui.productAppearance.light">Lichte werkmap</strong><small data-i18n="ui.productAppearance.lightHelp">Helder, printvriendelijk en rustig</small></span></label><label class="appearance-option"><input id="productAppearanceDark" type="radio" name="productAppearance" value="dark"><span><strong data-i18n="ui.productAppearance.dark">Donkere werkmap</strong><small data-i18n="ui.productAppearance.darkHelp">Donkere werkbladen en dashboards met hoog contrast</small></span></label></div></fieldset>
+        </section>
+
+        <section class="step-panel" data-step="7" aria-labelledby="panel-preview-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">07</span><h2 id="panel-preview-title" data-i18n="ui.step.preview">Preview</h2></div><button class="button button-quiet" type="button" id="refreshPreview" data-i18n="ui.action.refreshPreview">Preview vernieuwen</button></div>
+          <div class="preview-layout">
+            <div class="workbook-preview" id="workbookPreview"></div>
+            <aside class="preview-spec" id="previewSpec"></aside>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step="8" aria-labelledby="panel-validation-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">08</span><h2 id="panel-validation-title" data-i18n="ui.step.validation">Validatie</h2></div><button class="button button-accent" type="button" id="runValidation" data-i18n="ui.action.runValidation">Voer validatie uit</button></div>
+          <div class="gate-summary" id="validationSummary"><p>Validatie is nog niet uitgevoerd.</p></div>
+          <div class="report-table" id="validationReport"></div>
+        </section>
+
+        <section class="step-panel" data-step="9" aria-labelledby="panel-generation-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">09</span><h2 id="panel-generation-title" data-i18n="ui.step.generation">Generatie</h2></div><span class="step-chip" data-i18n="ui.badge.localRestartable">Lokaal · herstartbaar</span></div>
+          <div class="generation-card">
+            <div><p class="eyebrow" data-i18n="ui.label.selectedVariant">Geselecteerde variant</p><h3 id="generationVariant">—</h3><p id="generationEstimate">Nog niet gemeten</p></div>
+            <button class="button button-accent button-large" type="button" id="generateProduct">Genereer en valideer bestanden</button>
+          </div>
+          <div class="generation-progress" id="generationProgress" role="progressbar" aria-label="Workbook genereren" data-i18n-aria-label="ui.a11y.generationProgress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="generationProgressBar"></span><p id="generationStatus" role="status"></p></div>
+        </section>
+
+        <section class="step-panel" data-step="10" aria-labelledby="panel-quality-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">10</span><h2 id="panel-quality-title" data-i18n="ui.step.quality">Kwaliteitsrapport</h2></div><span class="step-chip" id="qualityStatus">Niet berekend</span></div>
+          <div class="score-layout"><div class="score-card"><strong id="qualityScoreLarge">—</strong><span>/ 100</span><p id="qualityVerdict">Genereer eerst het workbook.</p></div><div class="dimension-list" id="qualityDimensions"></div></div>
+        </section>
+
+        <section class="step-panel" data-step="11" aria-labelledby="panel-export-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">11</span><h2 id="panel-export-title" data-i18n="ui.step.export">Exportpackage</h2></div><span class="step-chip" data-i18n="ui.badge.fullyLocal">Volledig lokaal</span></div>
+          <div class="output-grid" id="packageTree">
+            <article class="output-card" id="workbookOutputCard" data-state="idle">
+              <div class="output-icon" aria-hidden="true">X</div>
+              <div class="output-copy"><span class="output-type">XLSX · <span id="workbookOutputStatus" data-i18n="ui.output.notGenerated">Nog niet gegenereerd</span></span><h3 id="workbookOutputName">—</h3><p data-i18n="ui.output.workbookDescription">De gebruiksklare Excel-werkmap voor de gekozen productvariant.</p><dl><div><dt data-i18n="ui.output.fileSize">Grootte</dt><dd id="workbookOutputSize">—</dd></div></dl><p class="output-location" id="workbookOutputLocation" hidden></p></div>
+              <button class="button button-quiet" type="button" id="downloadWorkbook" disabled data-i18n="ui.action.downloadWorkbook">XLSX downloaden naar projectmap</button>
+            </article>
+            <article class="output-card" id="packageOutputCard" data-state="idle">
+              <div class="output-icon" aria-hidden="true">ZIP</div>
+              <div class="output-copy"><span class="output-type">ZIP · <span id="packageOutputStatus" data-i18n="ui.output.notGenerated">Nog niet gegenereerd</span></span><h3 id="packageOutputName">—</h3><p data-i18n="ui.output.packageDescription">Het complete verkooppakket met product, klantdocumentatie en QA-bestanden.</p><dl><div><dt data-i18n="ui.output.fileSize">Grootte</dt><dd id="packageOutputSize">—</dd></div></dl><p class="output-location" id="packageOutputLocation" hidden></p></div>
+              <button class="button button-accent" type="button" id="downloadPackage" disabled data-i18n="ui.action.downloadPackage">Verkooppakket als ZIP downloaden naar projectmap</button>
+            </article>
+          </div>
+          <section class="document-outputs" id="documentOutputs" aria-labelledby="documentOutputsTitle" hidden>
+            <div class="document-content-head"><div><p class="eyebrow">Gevalideerde documenten</p><h3 id="documentOutputsTitle">DOCX-bestanden</h3></div><span class="step-chip" id="documentOutputCount">0 bestanden</span></div>
+            <div class="document-output-list" id="documentOutputList"></div>
+          </section>
+          <section class="listing-images" id="listingImages" aria-labelledby="listingImagesTitle" hidden>
+            <div class="listing-images-head"><div><p class="eyebrow" data-i18n="ui.images.eyebrow">Verkoopklare output</p><h3 id="listingImagesTitle" data-i18n="ui.images.title">Etsy-afbeeldingen</h3></div><span class="step-chip" id="listingImageCount">0 afbeeldingen</span></div>
+            <p data-i18n="ui.images.description">Deze beelden zijn uit dezelfde productdefinitie, taal, werkmapweergave en productvariant opgebouwd als het verkooppakket.</p>
+            <div class="listing-image-grid" id="listingImageGrid"></div>
+            <div class="listing-images-actions"><button class="button button-quiet" type="button" id="downloadImages" disabled data-i18n="ui.images.downloadArchive">Etsy-afbeeldingen als ZIP downloaden naar projectmap</button><p class="output-location" id="imagesOutputLocation" hidden></p></div>
+          </section>
+          <details class="package-details" id="packageContents" hidden><summary data-i18n="ui.output.packageContents">Technische pakketinhoud</summary><ul id="packageFileList"></ul></details>
+          <section class="tutorial-production" aria-labelledby="tutorialProductionTitle">
+            <div class="panel-heading"><div><p class="eyebrow">Automatische tutorial</p><h3 id="tutorialProductionTitle">Instructievideo maken</h3></div><span class="connection-status" id="tutorialConnectionStatus" data-state="idle">Niet getest</span></div>
+            <p>De voice-overtaal volgt automatisch de producttaal. Credentials worden alleen server-side uit de lokale .env of Windows DPAPI geladen en komen nooit in browseropslag, output of logs terecht.</p>
+            <div class="form-grid two-columns">
+              <label><span>Nieuwe ElevenLabs API-key</span><input id="elevenlabsApiKey" type="password" autocomplete="new-password" spellcheck="false" placeholder="Alleen invullen om veilig op te slaan"></label>
+              <label><span>Multilingual voice-ID</span><input id="elevenlabsVoiceId" type="password" autocomplete="new-password" spellcheck="false" placeholder="Alleen invullen om veilig op te slaan"></label>
+            </div>
+            <div class="tutorial-actions"><button class="button button-quiet" type="button" id="saveElevenLabs">Veilig opslaan</button><button class="button button-quiet" type="button" id="testElevenLabs">Test verbinding</button><button class="button button-accent" type="button" id="createTutorialVideo">Instructievideo maken</button></div>
+            <p class="output-location" id="tutorialOutputLocation" hidden></p>
+          </section>
+        </section>
+
+        <section class="step-panel" data-step="12" aria-labelledby="panel-approval-title" hidden>
+          <div class="panel-heading"><div><span class="panel-number">12</span><h2 id="panel-approval-title" data-i18n="ui.step.approval">Goedkeuren of afkeuren</h2></div><span class="step-chip" data-i18n="ui.badge.humanDecision">Menselijke releasebeslissing</span></div>
+          <fieldset class="decision-grid"><legend data-i18n="ui.label.releaseDecision">Releasebesluit</legend><label><input type="radio" name="decision" value="APPROVED"><span><strong data-i18n="ui.approval.approve">Goedkeuren</strong><small data-i18n="ui.approval.approveHelp">Package is gereed voor handmatige publicatiereview.</small></span></label><label><input type="radio" name="decision" value="REJECTED"><span><strong data-i18n="ui.approval.reject">Afkeuren</strong><small data-i18n="ui.approval.rejectHelp">Variant blijft lokaal en krijgt een herstelreden.</small></span></label></fieldset>
+          <label class="textarea-field"><span data-i18n="ui.label.reason">Motivatie</span><textarea id="decisionReason" rows="5" maxlength="1000" placeholder="Verplicht bij afkeuren; aanbevolen bij goedkeuren." data-i18n-placeholder="ui.approval.reasonPlaceholder"></textarea></label>
+          <button class="button button-accent" type="button" id="saveDecision" data-i18n="ui.action.saveDecision">Besluit vastleggen</button>
+          <div class="decision-receipt" id="decisionReceipt" hidden></div>
+        </section>
+
+        <div class="step-actions">
+          <button class="button button-quiet" type="button" id="previousStep" data-i18n="ui.common.previous">Vorige</button>
+          <span id="stepHint">Selecteer een product om door te gaan.</span>
+          <button class="button button-accent" type="button" id="nextStep">Volgende</button>
+        </div>
+      </form>
+    </main>
+
+    <aside class="run-summary" aria-label="Actieve configuratie" data-i18n-aria-label="ui.a11y.activeConfiguration">
+      <div class="summary-head"><span data-i18n="ui.summary.variant">Variant</span><strong id="summaryProduct">Geen selectie</strong></div>
+      <dl id="runSummary">
+        <div><dt>Producttaal</dt><dd>nl-NL</dd></div><div><dt>Valuta</dt><dd>EUR</dd></div><div><dt>Productthema</dt><dd>—</dd></div><div><dt>Capaciteit</dt><dd>100</dd></div>
+      </dl>
+      <div class="summary-divider"></div>
+      <div class="checks-mini" id="checksMini"><span><i data-state="idle"></i><span data-i18n="ui.summary.definition">Definitie</span></span><span><i data-state="idle"></i><span data-i18n="ui.summary.workbook">Workbook</span></span><span><i data-state="idle"></i><span data-i18n="ui.summary.package">Package</span></span></div>
+      <p class="privacy-note" data-i18n="ui.summary.privacy">Financiële data blijft lokaal. Geen account of cloudservice vereist.</p>
+    </aside>
+  </div>
+
+  <aside class="settings-panel" id="settingsPanel" aria-labelledby="settingsTitle" hidden>
+    <div class="drawer-head"><div><p class="eyebrow" data-i18n="ui.settings.eyebrow">Beheer</p><h2 id="settingsTitle" data-i18n="ui.settings.title">Concept en herstel</h2></div><button class="icon-button" type="button" id="closeSettings" aria-label="Sluiten" data-i18n-aria-label="ui.a11y.close">×</button></div>
+    <fieldset class="appearance-picker" id="generatorAppearance"><legend data-i18n="ui.settings.appearance">Generatorweergave</legend><p data-i18n="ui.settings.appearanceHelp">Deze instelling staat los van producttaal en productthema.</p><div><label class="appearance-option"><input id="generatorAppearanceLight" type="radio" name="generatorAppearance" value="light" checked><span><strong data-i18n="ui.settings.appearanceLight">Licht</strong><small data-i18n="ui.settings.appearanceLightHelp">Rustige lichte productstudio</small></span></label><label class="appearance-option"><input id="generatorAppearanceDark" type="radio" name="generatorAppearance" value="dark"><span><strong data-i18n="ui.settings.appearanceDark">Donker</strong><small data-i18n="ui.settings.appearanceDarkHelp">Gedempt donker, zonder neon</small></span></label></div></fieldset>
+    <button class="button button-quiet" type="button" id="duplicateDraft" data-i18n="ui.settings.duplicate">Configuratie dupliceren</button>
+    <button class="button button-quiet" type="button" id="exportDraft" data-i18n="ui.settings.export">Back-up exporteren</button>
+    <label class="button button-quiet file-button"><span data-i18n="ui.settings.import">Back-up importeren</span><input id="importDraft" type="file" accept="application/json,.json"></label>
+    <button class="button button-danger" type="button" id="resetDraft" data-i18n="ui.settings.reset">Reset met bevestiging</button>
+    <details><summary data-i18n="ui.settings.debug">Debugstatus</summary><pre id="debugLog">Runtime initialiseren…</pre></details>
+  </aside>
+
+  <dialog id="batchDialog" aria-labelledby="batchTitle">
+    <form method="dialog" class="dialog-shell">
+      <div class="drawer-head"><div><p class="eyebrow" data-i18n="ui.batch.eyebrow">Veilige batchproductie</p><h2 id="batchTitle" data-i18n="ui.batch.title">Varianten plannen</h2></div><button class="icon-button" type="submit" value="cancel" aria-label="Sluiten" data-i18n-aria-label="ui.a11y.close">×</button></div>
+      <div class="batch-grid">
+        <fieldset><legend data-i18n="ui.batch.products">Producten</legend><div id="batchProducts" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.languages">Talen</legend><div id="batchLocales" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.currencies">Valuta</legend><div id="batchCurrencies" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.themes">Thema’s</legend><div id="batchThemes" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.appearances">Werkmapweergaven</legend><div id="batchAppearances" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.capacity">Invoercapaciteit</legend><div id="batchCapacities" class="check-list"></div></fieldset>
+        <fieldset><legend data-i18n="ui.batch.outputs">Outputs</legend><div id="batchOutputs" class="check-list"></div></fieldset>
+      </div>
+      <label class="toggle"><input id="batchSampleData" type="checkbox" checked><span data-i18n="ui.batch.includeSampleData">Voorbeelddata opnemen</span></label>
+      <div class="batch-summary" id="batchSummary" role="status">Selecteer dimensies om de workload te berekenen.</div>
+      <div class="dialog-actions"><button class="button button-quiet" type="submit" value="cancel" data-i18n="ui.common.cancel">Annuleren</button><button class="button button-accent" type="button" id="runBatch" disabled data-i18n="ui.batch.start">Start batch</button></div>
+      <div class="batch-results" id="batchResults" role="status" hidden></div>
+    </form>
+  </dialog>
+
+  <dialog id="confirmDialog" aria-labelledby="confirmTitle">
+    <form method="dialog" class="confirm-shell"><h2 id="confirmTitle" data-i18n="ui.confirm.title">Bevestigen</h2><p id="confirmMessage"></p><div class="dialog-actions"><button class="button button-quiet" type="submit" value="cancel" data-i18n="ui.common.cancel">Annuleren</button><button class="button button-danger" type="submit" id="confirmAction" value="confirm" data-i18n="ui.common.continue">Doorgaan</button></div></form>
+  </dialog>
+
+  <dialog id="manualDialog" class="manual-dialog" aria-labelledby="manualTitle">
+    <form method="dialog" class="dialog-shell manual-shell">
+      <div class="drawer-head"><div><p class="eyebrow">Digital Product Factory</p><h2 id="manualTitle">Complete bedieningshandleiding</h2></div><button class="icon-button" type="submit" value="close" aria-label="Handleiding sluiten">×</button></div>
+      <p class="manual-intro">Gebruik de stappen van boven naar beneden. Iedere generatie blijft lokaal, wordt eerst gevalideerd en publiceert nooit automatisch naar een marketplace.</p>
+      <nav class="manual-index" aria-label="Handleidingonderdelen">
+        <a href="#manual-header">Hoofdbediening</a><a href="#manual-steps">12 stappen</a><a href="#manual-files">Bestanden</a><a href="#manual-recovery">Herstel</a>
+      </nav>
+
+      <section class="manual-section" id="manual-header">
+        <h3>Hoofdbediening</h3>
+        <dl class="manual-actions">
+          <div><dt>Runtime-indicator</dt><dd>Groen betekent dat de lokale generator en veilige opslagservice bereikbaar zijn. Oranje betekent bezig of opnieuw verbinden. Rood blokkeert generatie totdat de lokale service hersteld is.</dd></div>
+          <div><dt>Weergave · Licht / Donker</dt><dd>Wijzigt alleen deze creator-interface. De keuze wordt lokaal onthouden en verandert geen productbestanden.</dd></div>
+          <div><dt>Handleiding</dt><dd>Opent dit overzicht zonder de huidige configuratie te verliezen.</dd></div>
+          <div><dt>Batchmodus</dt><dd>Plant meerdere producten, talen, valuta, thema’s en lichte/donkere productvarianten. De run is begrensd en hervatbaar.</dd></div>
+          <div><dt>Beheer</dt><dd>Bevat interfacevoorkeuren, concept dupliceren, back-up exporteren/importeren, reset en het technische logboek.</dd></div>
+        </dl>
+      </section>
+
+      <section class="manual-section" id="manual-steps">
+        <h3>De 12 productiestappen</h3>
+        <ol class="manual-steps">
+          <li><strong>Product</strong><span>Zoek of filter de catalogus en selecteer één productkaart. De kaart toont de echte formaten en het aantal documenten of sheets.</span></li>
+          <li><strong>Markt en doelgroep</strong><span>Bepaalt commerciële context en listingtaal. Dit wijzigt nooit formules of documentintegriteit.</span></li>
+          <li><strong>Producttaal en valuta</strong><span>Kies taal, valuta en platformprofiel. Excel/Google Sheets hoort bij XLSX; Word/Google Docs-import hoort bij DOCX.</span></li>
+          <li><strong>Productconfiguratie</strong><span>Stel titel, veilige bestandsnaam, jaar, capaciteit en uitvoermap in. De extensie wordt automatisch XLSX of DOCX.</span></li>
+          <li><strong>Inhoud</strong><span>Bij workbooks beheer je dropdowncategorieën. Bij documentproducten controleer je de exacte DOCX-set die voor de gekozen taal wordt gemaakt.</span></li>
+          <li><strong>Productthema</strong><span>Kies het visuele productthema en, waar ondersteund, een lichte of donkere productvariant. Dit staat los van de dashboardweergave.</span></li>
+          <li><strong>Preview</strong><span>Vernieuwt een sheetpreview of documentinventaris rechtstreeks vanuit dezelfde productdefinitie als de export.</span></li>
+          <li><strong>Validatie</strong><span>Controleert contracten, configuratie, taal, thema en valuta. Blokkerende bevindingen stoppen generatie.</span></li>
+          <li><strong>Generatie</strong><span>Maakt de echte XLSX- en/of DOCX-bestanden, herleest OOXML, berekent kwaliteit en bouwt daarna het ZIP-pakket.</span></li>
+          <li><strong>Kwaliteit</strong><span>Toont technische integriteit, inhoud, bruikbaarheid, lokalisatie, toegankelijkheid en exportcompleetheid.</span></li>
+          <li><strong>Bestanden</strong><span>Sla losse XLSX/DOCX-bestanden, het complete ZIP-pakket, listingbeelden en eventueel de instructievideo op.</span></li>
+          <li><strong>Goedkeuring</strong><span>Legt een menselijke goed- of afkeuring vast. Dit is bewijs voor review; het voert geen externe publicatie uit.</span></li>
+        </ol>
+      </section>
+
+      <section class="manual-section" id="manual-files">
+        <h3>Knoppen bij bestanden</h3>
+        <dl class="manual-actions">
+          <div><dt>Genereer … + ZIP</dt><dd>Start de formatbewuste pipeline. De knop noemt vooraf exact hoeveel DOCX-bestanden, workbooks en packages worden gemaakt.</dd></div>
+          <div><dt>XLSX downloaden</dt><dd>Slaat de gevalideerde werkmap op in de beheerde projectmap of biedt een browserdownload aan wanneer die uitvoermodus is gekozen.</dd></div>
+          <div><dt>DOCX opslaan</dt><dd>Slaat één structureel gevalideerd Word-document op. Een geblokkeerd document kan niet worden opgeslagen.</dd></div>
+          <div><dt>Verkooppakket als ZIP</dt><dd>Slaat het complete pakket met producten, handleidingen, licentie, manifests, listingcopy en QA-rapporten op.</dd></div>
+          <div><dt>Etsy-afbeeldingen als ZIP</dt><dd>Bundelt uitsluitend de listingbeelden die bij dezelfde productvariant en configuratie horen.</dd></div>
+          <div><dt>Instructievideo maken</dt><dd>Start de lokale videojob. De taal volgt het product; beveiligde voice-instellingen blijven buiten browseropslag en output.</dd></div>
+          <div><dt>Besluit vastleggen</dt><dd>Bewaart APPROVED of REJECTED met datum en motivatie. Afkeuren vereist een herstelreden.</dd></div>
+        </dl>
+      </section>
+
+      <section class="manual-section" id="manual-recovery">
+        <h3>Opslag, herstel en veiligheid</h3>
+        <ul>
+          <li>Concepten worden automatisch lokaal opgeslagen; “Opgeslagen” in de linkerrail bevestigt dit.</li>
+          <li>Exporteer regelmatig een conceptback-up via Beheer. Importeren valideert het bestand voordat het actief wordt.</li>
+          <li>Reset verwijdert alleen lokale conceptstatus na bevestiging; gegenereerde bestanden in de projectmap blijven bestaan.</li>
+          <li>Bij een rode runtime-status: sluit het dashboard, start <code>Open Finance Product Factory.cmd</code> opnieuw en controleer daarna de groene indicator.</li>
+          <li>API-keys en tokens komen nooit in localStorage, broncode, downloads of debuglogs.</li>
+        </ul>
+      </section>
+      <div class="dialog-actions"><button class="button button-accent" type="submit" value="close">Handleiding sluiten</button></div>
+    </form>
+  </dialog>
+
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+</body>
+</html>
