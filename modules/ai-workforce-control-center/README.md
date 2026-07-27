@@ -2,7 +2,7 @@
 
 Production-ready Studio OS cockpitmodule voor agentregistratie, workflowdefinities, taakplanning, approvals, audit en monitoringprojectie.
 
-De cockpit valt onder de enige hoofdidentiteit `NumberNinjaDesigns`. Het organisatiepaneel routeert naar `Digital Production` en `Physical Production`; Studio OS ondersteunt beide producttakken als gedeelde governance- en automatiseringslaag.
+De cockpit valt onder de enige hoofdidentiteit `NumberNinjaDesigns`. De Unified Production Hub geeft `Digital Production` en `Physical Production` dezelfde lokale beheeropties voor catalogus, productontwikkeling, market intelligence, listing intelligence, quality review en channel planning. Studio OS ondersteunt beide producttakken als gedeelde governance- en automatiseringslaag.
 
 ## Starten
 
@@ -24,6 +24,7 @@ De boundary is fail-closed. Een toekomstige runtime moet de contracten onder `sh
 
 - App shell: navigatie, command bar, statusbar en responsive layout.
 - Command Center: KPI-projecties, SVG-agenttopologie, inspector, queues en eventstream.
+- Unified Production Hub: productietakselectie en gedeelde beheeracties voor digitale en fysieke producten.
 - Agent Registry: agentdefinities, capabilities, tools en providerbinding.
 - Workflow Engine: drag/drop-nodecanvas en versieerbare workflowdefinities.
 - Task/Approval/Audit: lokale planning en beslisregistratie.

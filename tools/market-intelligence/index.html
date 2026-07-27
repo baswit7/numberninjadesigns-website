@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="NumberNinjaDesigns automated market intelligence dashboard for ranked public-market recommendations.">
+  <title>Market Intelligence | NumberNinjaDesigns</title>
+  <link rel="stylesheet" href="css/market-intelligence.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">NumberNinjaDesigns</p>
+        <h1>Market Intelligence</h1>
+      </div>
+      <div class="status-strip" id="statusStrip" aria-live="polite">
+        <span class="dot pending"></span>
+        <span>Loading runtime reports</span>
+      </div>
+    </header>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="layout">
+      <aside class="panel">
+        <div class="panel-head">
+          <h2>Source Health</h2>
+        </div>
+        <div id="sourceHealth" class="source-list"></div>
+      </aside>
+
+      <section class="workspace">
+        <div class="tabs" role="tablist" aria-label="Market intelligence views">
+          <button class="tab active" type="button" data-view="opportunities">Opportunities</button>
+          <button class="tab" type="button" data-view="recommendations">Recommendations</button>
+        </div>
+
+        <section id="opportunitiesView" class="view active" aria-label="Ranked opportunities">
+          <div class="toolbar">
+            <h2>Ranked Opportunities</h2>
+            <div class="legend">
+              <span><b class="grade a">A</b> high priority</span>
+              <span><b class="grade b">B</b> useful</span>
+              <span><b class="grade c">C</b> weak</span>
+            </div>
+          </div>
+          <div id="opportunities" class="opportunity-grid"></div>
+        </section>
+
+        <section id="recommendationsView" class="view" aria-label="Recommendation cards">
+          <div class="toolbar">
+            <h2>Recommendation Cards</h2>
+            <p>Copy-ready content for manual publishing.</p>
+          </div>
+          <div id="recommendations" class="recommendation-grid"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/market-data.js"></script>
+  <script src="js/scoring-engine.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

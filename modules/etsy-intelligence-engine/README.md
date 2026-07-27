@@ -1,6 +1,6 @@
 # Etsy Intelligence Engine
 
-Local-first intelligence layer for the `NumberNinjaDesigns` Digital Production division. It imports marketplace CSV files, normalizes heterogeneous signals and turns them into ranked product decisions, blueprints, variant plans and revenue forecasts.
+Local-first intelligence layer for the `NumberNinjaDesigns` Digital Production and Physical Production divisions. It keeps browser state isolated per productietak, imports marketplace CSV files, normalizes heterogeneous signals and turns them into ranked product decisions, blueprints, variant plans and revenue forecasts.
 
 ## Start
 
