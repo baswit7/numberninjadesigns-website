@@ -1,0 +1,106 @@
+{
+  "$schema": "https://www.numberninjadesigns.com/data/product-channel-manifest.schema.json",
+  "schemaVersion": "1.0.0",
+  "canonicalHost": "https://www.numberninjadesigns.com",
+  "products": [
+    {
+      "productId": "numberninja-budget-planner-v1",
+      "productVersion": "1.0.1",
+      "locale": "en-US",
+      "market": "US",
+      "site": {
+        "canonicalUrl": "https://www.numberninjadesigns.com/budget-planner-basic.html",
+        "title": "Excel Budget Planner Preview | NumberNinjaDesigns",
+        "description": "Inspect the NumberNinjaDesigns Budget Planner: 7 Excel tabs, 104+ formulas, plan-versus-actual budgeting, savings goals and dashboard checks.",
+        "indexable": true,
+        "sitemapIncluded": true
+      },
+      "release": {
+        "status": "OWNER_APPROVED_PREVIEW",
+        "ownerApproved": true,
+        "indexingApproved": true,
+        "providerPublicationAllowed": false,
+        "contentHash": "cdb4ce7c49fbc234a667cf51e6ff5a58723880938465d84421df4001d9ca8a76"
+      },
+      "etsy": {
+        "publicationEnabled": false,
+        "listingId": null,
+        "listingUrl": null
+      },
+      "pinterest": {
+        "publicationEnabled": false,
+        "locale": "en-US",
+        "market": "US",
+        "boardId": null,
+        "pinId": null,
+        "pinUrl": null
+      }
+    },
+    {
+      "productId": "numberninja-debt-payoff-tracker-v1",
+      "productVersion": "1.0.1",
+      "locale": "en-US",
+      "market": "US",
+      "site": {
+        "canonicalUrl": "https://www.numberninjadesigns.com/debt-payoff-tracker.html",
+        "title": "Excel Debt Payoff Tracker Preview | NumberNinjaDesigns",
+        "description": "Inspect the NumberNinjaDesigns Debt Payoff Tracker: 5 Excel tabs, 141+ formulas, balance and APR planning, payment logs and payoff progress checks.",
+        "indexable": true,
+        "sitemapIncluded": true
+      },
+      "release": {
+        "status": "OWNER_APPROVED_PREVIEW",
+        "ownerApproved": true,
+        "indexingApproved": true,
+        "providerPublicationAllowed": false,
+        "contentHash": "7cccaa0ce80a793ba98eb002787e295ac6f6c4aa43da4cc67f59eab045df57cd"
+      },
+      "etsy": {
+        "publicationEnabled": false,
+        "listingId": null,
+        "listingUrl": null
+      },
+      "pinterest": {
+        "publicationEnabled": false,
+        "locale": "en-US",
+        "market": "US",
+        "boardId": null,
+        "pinId": null,
+        "pinUrl": null
+      }
+    },
+    {
+      "productId": "numberninja-net-worth-tracker-v1",
+      "productVersion": "1.0.1",
+      "locale": "en-US",
+      "market": "US",
+      "site": {
+        "canonicalUrl": "https://www.numberninjadesigns.com/net-worth-tracker.html",
+        "title": "Excel Net Worth Tracker Preview | NumberNinjaDesigns",
+        "description": "Inspect the NumberNinjaDesigns Net Worth Tracker: 6 Excel tabs, 150+ formulas, assets, liabilities, monthly history and integrity checks.",
+        "indexable": true,
+        "sitemapIncluded": true
+      },
+      "release": {
+        "status": "OWNER_APPROVED_PREVIEW",
+        "ownerApproved": true,
+        "indexingApproved": true,
+        "providerPublicationAllowed": false,
+        "contentHash": "f91077ad6fb958535b5bc231e6f3aa004faff933758e48fa55dd233143efa694"
+      },
+      "etsy": {
+        "publicationEnabled": false,
+        "listingId": null,
+        "listingUrl": null
+      },
+      "pinterest": {
+        "publicationEnabled": false,
+        "locale": "en-US",
+        "market": "US",
+        "boardId": null,
+        "pinId": null,
+        "pinUrl": null
+      }
+    }
+  ]
+}
