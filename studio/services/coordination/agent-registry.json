@@ -1,0 +1,250 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "studio-os.phase-8.agent-registry",
+  "executionAllowed": false,
+  "agents": [
+    {
+      "id": "chatgpt-architect",
+      "displayName": "ChatGPT Architect",
+      "role": "Owns architecture reasoning, scope framing, compatibility review and safety-boundary interpretation for coordination plans.",
+      "allowedInputs": [
+        "approved command metadata",
+        "architecture documents",
+        "governance reports",
+        "contract summaries"
+      ],
+      "allowedOutputs": [
+        "architecture coordination notes",
+        "compatibility questions",
+        "non-executing design recommendations"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May coordinate architecture reasoning only. It cannot execute tools, call providers, deploy, mutate runtime state, schedule work or act as an autonomous agent.",
+      "executionAllowed": false
+    },
+    {
+      "id": "codex-builder",
+      "displayName": "Codex Builder",
+      "role": "Receives reviewed implementation handoff context for future human-approved code work while Phase 8 remains planning-only.",
+      "allowedInputs": [
+        "reviewed architecture notes",
+        "approved non-executing action plan metadata",
+        "contract references"
+      ],
+      "allowedOutputs": [
+        "implementation readiness notes",
+        "risk questions",
+        "validation plan metadata"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May appear as a future handoff target in a graph only. Phase 8 never invokes Codex, generates source code through Codex or runs implementation steps.",
+      "executionAllowed": false
+    },
+    {
+      "id": "qa-agent",
+      "displayName": "QA Agent",
+      "role": "Coordinates future quality review expectations, validation coverage and acceptance criteria without running tests.",
+      "allowedInputs": [
+        "coordination graph",
+        "expected outputs",
+        "validation requirements",
+        "risk notes"
+      ],
+      "allowedOutputs": [
+        "qa readiness metadata",
+        "acceptance criteria notes",
+        "test coverage questions"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May define quality expectations only. It cannot execute tests, modify files, trigger pipelines or approve releases.",
+      "executionAllowed": false
+    },
+    {
+      "id": "review-agent",
+      "displayName": "Review Agent",
+      "role": "Coordinates future review checkpoints, architectural scrutiny and safety signoff requirements.",
+      "allowedInputs": [
+        "coordination graph",
+        "architecture notes",
+        "governance evidence",
+        "risk classifications"
+      ],
+      "allowedOutputs": [
+        "review checkpoint metadata",
+        "open questions",
+        "approval dependency notes"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May coordinate review requirements only. It cannot merge, approve, deploy, execute commands or mutate any system.",
+      "executionAllowed": false
+    },
+    {
+      "id": "documentation-agent",
+      "displayName": "Documentation Agent",
+      "role": "Coordinates documentation impact, required docs and traceability expectations for future work.",
+      "allowedInputs": [
+        "architecture decisions",
+        "contract references",
+        "implementation scope metadata",
+        "governance notes"
+      ],
+      "allowedOutputs": [
+        "documentation plan metadata",
+        "doc impact notes",
+        "traceability requirements"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May coordinate documentation expectations only. It cannot write docs, generate content into other files or update documentation automatically.",
+      "executionAllowed": false
+    },
+    {
+      "id": "governance-agent",
+      "displayName": "Governance Agent",
+      "role": "Coordinates governance readiness, safety gates, compliance evidence and release-control dependencies.",
+      "allowedInputs": [
+        "governance reports",
+        "quality gate metadata",
+        "phase readiness evidence",
+        "safety boundary notes"
+      ],
+      "allowedOutputs": [
+        "governance readiness metadata",
+        "blocking gate notes",
+        "human approval requirements"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May coordinate advisory governance checks only. It cannot recalculate governance outputs, override release gates or approve execution.",
+      "executionAllowed": false
+    },
+    {
+      "id": "deployment-planning-agent",
+      "displayName": "Deployment Planning Agent",
+      "role": "Coordinates future deployment-readiness planning without deploying, provisioning or communicating with providers.",
+      "allowedInputs": [
+        "release readiness metadata",
+        "deployment profile references",
+        "rollback planning notes",
+        "manual approval requirements"
+      ],
+      "allowedOutputs": [
+        "deployment planning metadata",
+        "manual approval dependency notes",
+        "release safety questions"
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "safetyBoundary": "May coordinate deployment planning metadata only. It cannot deploy, call provider APIs, inspect secrets or trigger release workflows.",
+      "executionAllowed": false
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-8",
+    "owner": "studio-os",
+    "safetyClass": "coordination-only",
+    "dashboardMode": "read-only"
+  }
+}

@@ -1,0 +1,19 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-audit-trail",
+    "totalAuditEntries":  4,
+    "passCount":  0,
+    "unknownCount":  4,
+    "dispatchEligibleCount":  0,
+    "manualEvidenceRequiredCount":  4,
+    "manualEvidencePresentCount":  0,
+    "manualEvidenceVerifiedCount":  0,
+    "eligibleWithoutVerifiedManualEvidence":  0,
+    "unknownPassCount":  0,
+    "unknownDispatchEligibleCount":  0,
+    "automaticApprovalCount":  0,
+    "executionPerformed":  false,
+    "dispatchPerformed":  false,
+    "externalCallsMade":  false
+}

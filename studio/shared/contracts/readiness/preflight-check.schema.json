@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/readiness/preflight-check.schema.json",
+  "title": "Phase 10 Preflight Check",
+  "description": "Models local preflight readiness checks without executing target work.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "preflightCheckId", "planId", "checkType", "severity", "readinessStatus", "expectedEvidence", "executionAllowed", "readinessOnly", "nonExecutableMetadata"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "executionAllowed": { "type": "boolean", "const": false },
+    "readinessOnly": { "type": "boolean", "const": true },
+    "nonExecutableMetadata": { "$ref": "#/$defs/nonExecutableMetadata" },
+    "preflightCheckId": { "$ref": "#/$defs/identifier" },
+    "planId": { "$ref": "#/$defs/identifier" },
+    "checkType": { "type": "string", "enum": ["contract", "boundary", "dependency", "approval-chain", "rollback", "idempotency", "documentation"] },
+    "severity": { "$ref": "#/$defs/severity" },
+    "readinessStatus": { "$ref": "#/$defs/readinessStatus" },
+    "expectedEvidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }
+  },
+  "$defs": {
+    "forbiddenCapabilities": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["workflow_execution", "agent_execution", "provider_execution", "model_api_calls", "github_api_calls", "deployments", "runtime_mutation", "secret_access", "credential_access", "queues", "schedulers", "workers", "executors", "business_features"] }
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase", "owner", "safetyClass"],
+      "properties": {
+        "phase": { "type": "string", "const": "phase-10" },
+        "owner": { "type": "string", "const": "studio-os" },
+        "safetyClass": { "type": "string", "enum": ["execution-readiness-only", "readiness-sample", "readiness-validation"] }
+      }
+    },
+    "identifier": { "type": "string", "minLength": 3, "maxLength": 140, "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$" },
+    "nonEmptyString": { "type": "string", "minLength": 2, "maxLength": 800 },
+    "readinessStatus": { "type": "string", "enum": ["ready", "partial", "blocked", "missing", "not-applicable"] },
+    "severity": { "type": "string", "enum": ["info", "warning", "blocking"] }
+  }
+}

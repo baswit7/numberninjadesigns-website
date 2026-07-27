@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "states": [
+    "intake",
+    "architecture",
+    "branch",
+    "implementation",
+    "validation",
+    "documentation",
+    "review",
+    "deployment-readiness",
+    "release",
+    "observe",
+    "learn"
+  ],
+  "terminalStates": [
+    "released",
+    "blocked",
+    "cancelled"
+  ],
+  "retryPolicy": {
+    "maxAttempts": 3,
+    "backoff": "exponential",
+    "requiresDiagnosticEvent": true
+  },
+  "requiredEvidence": [
+    "scope",
+    "architecture-impact",
+    "validation-output",
+    "documentation-impact",
+    "risk-review"
+  ]
+}

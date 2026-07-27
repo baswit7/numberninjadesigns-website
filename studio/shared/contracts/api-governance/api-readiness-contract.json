@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-api-readiness-contract",
+  "sourceRegistry": "shared/contracts/api-governance/api-registry.json",
+  "runtimeReport": "runtime/api-governance/api-readiness.report.json",
+  "requiredFields": ["apiId", "status", "configured", "connected", "missingEnvVars", "missingScopes", "missingPermissions", "readinessScore"],
+  "statusWeights": {
+    "connected": 100,
+    "configured": 75,
+    "partially configured": 50,
+    "missing scopes": 35,
+    "missing permissions": 35,
+    "expired": 20,
+    "invalid": 0,
+    "disconnected": 0,
+    "unknown": 0
+  },
+  "statusRules": [
+    "connected means existing sanitized validation reports confirmed provider reachability or declared read capability.",
+    "configured means required env var names are present but no live validation is recorded.",
+    "partially configured means env, scope, permission, or OAuth readiness is incomplete.",
+    "unknown means no reliable readiness evidence exists."
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "providerExecutionAllowed": false,
+    "secretValueInspectionAllowed": false,
+    "dashboardMutationAllowed": false
+  }
+}

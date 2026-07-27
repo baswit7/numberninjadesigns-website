@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "etsy-seo-opportunity-contract",
+  "description": "Read-only SEO opportunity contract derived from existing listing metadata only.",
+  "requiredFields": [
+    "opportunityId",
+    "listingId",
+    "title",
+    "severity",
+    "reason",
+    "recommendation"
+  ],
+  "allowedSeverities": [
+    "high",
+    "medium",
+    "low"
+  ],
+  "forbiddenActions": [
+    "updateListing",
+    "publishListing",
+    "createDraft",
+    "modifyTags",
+    "modifyTitle",
+    "modifyDescription"
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "ownsTruth": false,
+    "createsListings": false,
+    "updatesListings": false,
+    "publishesListings": false,
+    "updatesInventory": false,
+    "updatesOrders": false,
+    "respondsToReviews": false,
+    "providerExecution": false,
+    "automationExecution": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.release-readiness",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "releaseReadiness",
+    "classification",
+    "inputs",
+    "calculation",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "allowedClassifications": [
+    "Not Ready",
+    "Needs Attention",
+    "Ready",
+    "Production Ready"
+  ],
+  "traceability": {
+    "requiresInputs": true,
+    "requiresCalculation": true
+  }
+}

@@ -1,0 +1,322 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:dashboard",
+    "sourceFile":  "config/delivery.tasks.json",
+    "readOnly":  true,
+    "status":  "warning",
+    "summary":  {
+                    "taskCount":  6,
+                    "projectCount":  4,
+                    "highestPriorityTask":  [
+                                                {
+                                                    "taskId":  "numberninjadesigns-001",
+                                                    "projectId":  "numberninjadesigns",
+                                                    "title":  "Build Etsy listing workflow foundation",
+                                                    "priorityScore":  91,
+                                                    "roiScore":  92,
+                                                    "whyThisTask":  "Blocks 1 task",
+                                                    "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                                                }
+                                            ],
+                    "reviewNeededCount":  0,
+                    "blockedTaskCount":  1,
+                    "releaseReadyCount":  0,
+                    "taskCountsByStatus":  {
+                                               "intake":  2,
+                                               "ready":  4,
+                                               "in_progress":  0,
+                                               "review":  0,
+                                               "blocked":  0,
+                                               "release_ready":  0,
+                                               "done":  0
+                                           }
+                },
+    "projectCockpits":  [
+                            {
+                                "projectId":  "boodschappenvergelijker",
+                                "projectName":  "NumberNinjaDesigns / BoodschappenVergelijker",
+                                "projectStatus":  "blocked",
+                                "nextTask":  {
+                                                 "taskId":  "boodschappenvergelijker-001",
+                                                 "title":  "Define first grocery comparison workflow",
+                                                 "whyThisTask":  "Highest ROI",
+                                                 "priorityScore":  80,
+                                                 "roiScore":  74,
+                                                 "releaseReadiness":  "blocked",
+                                                 "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md"
+                                             },
+                                "blockers":  [
+                                                 "Data source strategy is not selected."
+                                             ],
+                                "releaseReadiness":  "blocked",
+                                "highestRiskTask":  {
+                                                        "taskId":  "boodschappenvergelijker-001",
+                                                        "title":  "Define first grocery comparison workflow",
+                                                        "risk":  6,
+                                                        "riskSummary":  "medium risk. Blockers present: Data source strategy is not selected."
+                                                    },
+                                "reviewNeededCount":  0,
+                                "taskCountsByStatus":  {
+                                                           "intake":  0,
+                                                           "ready":  1,
+                                                           "in_progress":  0,
+                                                           "review":  0,
+                                                           "blocked":  0,
+                                                           "release_ready":  0,
+                                                           "done":  0
+                                                       },
+                                "cockpitPath":  "runtime/dashboard/project-cockpit.boodschappenvergelijker.view.json"
+                            },
+                            {
+                                "projectId":  "numberninjadesigns",
+                                "projectName":  "NumberNinjaDesigns",
+                                "projectStatus":  "active",
+                                "nextTask":  {
+                                                 "taskId":  "numberninjadesigns-001",
+                                                 "title":  "Build Etsy listing workflow foundation",
+                                                 "whyThisTask":  "Blocks 1 task",
+                                                 "priorityScore":  91,
+                                                 "roiScore":  92,
+                                                 "releaseReadiness":  "planning-ready",
+                                                 "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                                             },
+                                "blockers":  [
+
+                                             ],
+                                "releaseReadiness":  "planning-ready",
+                                "highestRiskTask":  {
+                                                        "taskId":  "numberninjadesigns-001",
+                                                        "title":  "Build Etsy listing workflow foundation",
+                                                        "risk":  3,
+                                                        "riskSummary":  "low risk. No active blockers."
+                                                    },
+                                "reviewNeededCount":  0,
+                                "taskCountsByStatus":  {
+                                                           "intake":  1,
+                                                           "ready":  1,
+                                                           "in_progress":  0,
+                                                           "review":  0,
+                                                           "blocked":  0,
+                                                           "release_ready":  0,
+                                                           "done":  0
+                                                       },
+                                "cockpitPath":  "runtime/dashboard/project-cockpit.numberninjadesigns.view.json"
+                            },
+                            {
+                                "projectId":  "studio-os",
+                                "projectName":  "Studio OS",
+                                "projectStatus":  "active",
+                                "nextTask":  {
+                                                 "taskId":  "studio-os-001",
+                                                 "title":  "Create project delivery system foundation",
+                                                 "whyThisTask":  "Blocks 1 task",
+                                                 "priorityScore":  88,
+                                                 "roiScore":  76,
+                                                 "releaseReadiness":  "planning-ready",
+                                                 "codexPrompt":  "runtime/delivery/prompts/studio-os-001.codex-prompt.md"
+                                             },
+                                "blockers":  [
+
+                                             ],
+                                "releaseReadiness":  "planning-ready",
+                                "highestRiskTask":  {
+                                                        "taskId":  "studio-os-001",
+                                                        "title":  "Create project delivery system foundation",
+                                                        "risk":  4,
+                                                        "riskSummary":  "low risk. No active blockers."
+                                                    },
+                                "reviewNeededCount":  0,
+                                "taskCountsByStatus":  {
+                                                           "intake":  1,
+                                                           "ready":  1,
+                                                           "in_progress":  0,
+                                                           "review":  0,
+                                                           "blocked":  0,
+                                                           "release_ready":  0,
+                                                           "done":  0
+                                                       },
+                                "cockpitPath":  "runtime/dashboard/project-cockpit.studio-os.view.json"
+                            },
+                            {
+                                "projectId":  "tok-hub",
+                                "projectName":  "NumberNinjaDesigns / TOK Hub",
+                                "projectStatus":  "active",
+                                "nextTask":  {
+                                                 "taskId":  "tok-hub-001",
+                                                 "title":  "Define content production pipeline",
+                                                 "whyThisTask":  "Highest ROI",
+                                                 "priorityScore":  78,
+                                                 "roiScore":  76,
+                                                 "releaseReadiness":  "planning-ready",
+                                                 "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md"
+                                             },
+                                "blockers":  [
+
+                                             ],
+                                "releaseReadiness":  "planning-ready",
+                                "highestRiskTask":  {
+                                                        "taskId":  "tok-hub-001",
+                                                        "title":  "Define content production pipeline",
+                                                        "risk":  4,
+                                                        "riskSummary":  "low risk. No active blockers."
+                                                    },
+                                "reviewNeededCount":  0,
+                                "taskCountsByStatus":  {
+                                                           "intake":  0,
+                                                           "ready":  1,
+                                                           "in_progress":  0,
+                                                           "review":  0,
+                                                           "blocked":  0,
+                                                           "release_ready":  0,
+                                                           "done":  0
+                                                       },
+                                "cockpitPath":  "runtime/dashboard/project-cockpit.tok-hub.view.json"
+                            }
+                        ],
+    "deliveryBoard":  {
+                          "path":  "runtime/delivery/delivery-board.report.json",
+                          "columns":  [
+                                          {
+                                              "status":  "intake",
+                                              "count":  2,
+                                              "tasks":  [
+                                                            {
+                                                                "taskId":  "numberninjadesigns-002",
+                                                                "projectId":  "numberninjadesigns",
+                                                                "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+                                                                "priorityScore":  76,
+                                                                "roiScore":  78,
+                                                                "whyThisTask":  "High business impact",
+                                                                "releaseReadiness":  "planning-ready",
+                                                                "blockers":  [
+
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-002.codex-prompt.md"
+                                                            },
+                                                            {
+                                                                "taskId":  "studio-os-002",
+                                                                "projectId":  "studio-os",
+                                                                "title":  "Link project cockpit output to daily operating routine",
+                                                                "priorityScore":  72,
+                                                                "roiScore":  73,
+                                                                "whyThisTask":  "Best current priority score",
+                                                                "releaseReadiness":  "planning-ready",
+                                                                "blockers":  [
+
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/studio-os-002.codex-prompt.md"
+                                                            }
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "ready",
+                                              "count":  4,
+                                              "tasks":  [
+                                                            {
+                                                                "taskId":  "numberninjadesigns-001",
+                                                                "projectId":  "numberninjadesigns",
+                                                                "title":  "Build Etsy listing workflow foundation",
+                                                                "priorityScore":  91,
+                                                                "roiScore":  92,
+                                                                "whyThisTask":  "Blocks 1 task",
+                                                                "releaseReadiness":  "planning-ready",
+                                                                "blockers":  [
+
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                                                            },
+                                                            {
+                                                                "taskId":  "studio-os-001",
+                                                                "projectId":  "studio-os",
+                                                                "title":  "Create project delivery system foundation",
+                                                                "priorityScore":  88,
+                                                                "roiScore":  76,
+                                                                "whyThisTask":  "Blocks 1 task",
+                                                                "releaseReadiness":  "planning-ready",
+                                                                "blockers":  [
+
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/studio-os-001.codex-prompt.md"
+                                                            },
+                                                            {
+                                                                "taskId":  "boodschappenvergelijker-001",
+                                                                "projectId":  "boodschappenvergelijker",
+                                                                "title":  "Define first grocery comparison workflow",
+                                                                "priorityScore":  80,
+                                                                "roiScore":  74,
+                                                                "whyThisTask":  "Highest ROI",
+                                                                "releaseReadiness":  "blocked",
+                                                                "blockers":  [
+                                                                                 "Data source strategy is not selected."
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md"
+                                                            },
+                                                            {
+                                                                "taskId":  "tok-hub-001",
+                                                                "projectId":  "tok-hub",
+                                                                "title":  "Define content production pipeline",
+                                                                "priorityScore":  78,
+                                                                "roiScore":  76,
+                                                                "whyThisTask":  "Highest ROI",
+                                                                "releaseReadiness":  "planning-ready",
+                                                                "blockers":  [
+
+                                                                             ],
+                                                                "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md"
+                                                            }
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "in_progress",
+                                              "count":  0,
+                                              "tasks":  [
+
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "review",
+                                              "count":  0,
+                                              "tasks":  [
+
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "blocked",
+                                              "count":  0,
+                                              "tasks":  [
+
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "release_ready",
+                                              "count":  0,
+                                              "tasks":  [
+
+                                                        ]
+                                          },
+                                          {
+                                              "status":  "done",
+                                              "count":  0,
+                                              "tasks":  [
+
+                                                        ]
+                                          }
+                                      ]
+                      },
+    "nextRecommendedAction":  "Open the highest-priority task Codex prompt and use it as the next practical delivery input.",
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

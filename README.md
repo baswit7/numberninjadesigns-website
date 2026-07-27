@@ -16,11 +16,23 @@ flowchart TD
     P -. governed by .-> S
 ```
 
-- `Digital Production`: [Etsy Intelligence](modules/etsy-intelligence-engine/), [Listing Intelligence](modules/listing-intelligence-engine/) and digital-product workflows.
-- `Physical Production`: storefront, apparel designs, artwork and product previews.
-- `Studio OS`: [Control Center](modules/ai-workforce-control-center/) and non-executing governance shared by both production divisions. It is not a separate brand.
+- `Digital Production`: the full [Finance Product Factory](products/digital/finance-product-factory/), [Etsy Intelligence](modules/etsy-intelligence-engine/), [Listing Intelligence](modules/listing-intelligence-engine/) and retained source briefs.
+- `Physical Production`: storefront, apparel designs, artwork, product previews and the licensed-media pipeline under [products/physical](products/physical/).
+- `Studio OS`: the imported internal operating system under [studio](studio/), the [Control Center](modules/ai-workforce-control-center/) and repository governance under `.studio-os/`. It is not a separate brand.
 
 Legacy identifiers occur only in migration records, redirect compatibility and cutover validators. They are not active product or organization names.
+
+## Canonical environment
+
+The ignored root `.env` is the only local credential source for Studio OS, product tooling and trusted backend connectors. Copy variable names from `.env.example`; never put secret values in HTML, browser JavaScript, source control, logs or generated reports.
+
+The consolidation architecture and audited source map are documented in:
+
+- [Unified architecture](docs/consolidation/UNIFIED_ARCHITECTURE.md)
+- [Source audit](docs/consolidation/SOURCE_AUDIT_2026-07-27.md)
+- [Legacy retirement plan](docs/consolidation/LEGACY_RETIREMENT_PLAN.md)
+- [Media and channel inventory](docs/consolidation/MEDIA_AND_CHANNELS.md)
+- [Channel registry](config/channels.registry.json)
 
 ## Studio OS Phase 9
 
@@ -37,6 +49,7 @@ Phase 12 defines the dashboard/runtime boundary. The local Control Center is a r
 Run validation locally with PowerShell 7:
 
 ```powershell
+pwsh -File .\scripts\validation\validate-numberninjadesigns-unification.ps1
 pwsh -File .\scripts\validation\validate-studio-os.ps1
 pwsh -File .\scripts\validation\validate-architecture.ps1
 pwsh -File .\scripts\validation\validate-execution-contracts.ps1

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/execution/risk-assessment.schema.json",
+  "title": "Phase 9 Risk Assessment",
+  "description": "Classifies future execution risk without executing, probing providers, reading secrets or mutating runtime state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assessmentId",
+    "requestId",
+    "assessedAt",
+    "riskLevel",
+    "riskScore",
+    "riskFactors",
+    "blockingConditions",
+    "executionAllowed",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "assessmentId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "blocked"
+      ]
+    },
+    "riskScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "riskFactors": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "factor",
+          "impact",
+          "likelihood"
+        ],
+        "properties": {
+          "factor": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 160
+          },
+          "impact": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "likelihood": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    },
+    "blockingConditions": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 200
+      }
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-9"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "risk-governance-only"
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const ORIGIN = "https://www.numberninjadesigns.com";
-const GENERATED_DATE = "2026-07-23";
+const MAX_LASTMOD_DATE = "2026-07-27";
+const STYLESHEET_VERSION = "20260724-etsy-banner";
 const failures = [];
 let assertions = 0;
 
@@ -182,7 +183,7 @@ for (const slug of guideSlugs) assert(existsSync(resolve(ROOT, "guides", slug, "
 
 const guideHubSource = read("guides/index.html");
 assert((guideHubSource.match(/class="guide-index-card"/g) || []).length === guideSlugs.length, "guides/index.html: every guide is rendered exactly once.");
-assert(guideHubSource.includes("seo.css?v=20260723-guide-grid"), "guides/index.html: guide hub is missing the balanced-grid stylesheet cache key.");
+assert(guideHubSource.includes(`seo.css?v=${STYLESHEET_VERSION}`), "guides/index.html: guide hub is missing the current stylesheet cache key.");
 
 const rootHtml = readdirSync(ROOT, { withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
@@ -283,7 +284,7 @@ for (const file of conceptFiles) {
   assert((source.match(/class="variant-card is-mockup"/g) || []).length === 1, `${relativePath}: expected exactly one product mockup.`);
   assert(source.includes(`variant-count-${group.length + 1}`), `${relativePath}: gallery is missing its deterministic variant-count layout class.`);
   assert(source.includes("Product mockup · enhanced for clarity"), `${relativePath}: product mockup is missing the approved clarity label.`);
-  assert(source.includes("seo.css?v=20260723-product-stage"), `${relativePath}: detail page is missing the product-stage stylesheet cache key.`);
+  assert(source.includes(`seo.css?v=${STYLESHEET_VERSION}`), `${relativePath}: detail page is missing the current stylesheet cache key.`);
 }
 
 for (const file of collectionFiles.filter((path) => repoPath(path) !== "collections/index.html")) {
@@ -307,7 +308,7 @@ for (const file of guideFiles.filter((path) => repoPath(path) !== "guides/index.
   assert(source.includes("Marketplace availability") || source.includes("Etsy is the current source"), `${relativePath}: missing marketplace disclosure.`);
 }
 
-const noindexFiles = ["privacy.html", "terms.html", "data-deletion.html", "developer.html", "budget-planner-basic.html", "404.html", "tiktok/callback/index.html"];
+const noindexFiles = ["privacy.html", "terms.html", "data-deletion.html", "developer.html", "pinterest-api.html", "pinterest/callback/index.html", "404.html", "tiktok/callback/index.html"];
 for (const relativePath of noindexFiles) {
   const source = read(relativePath);
   assert(metaContent(source, "robots").toLowerCase().includes("noindex"), `${relativePath}: expected noindex directive.`);
@@ -319,7 +320,10 @@ const sitemapLastmods = [...sitemapSource.matchAll(/<lastmod>(.*?)<\/lastmod>/g)
 assert(sitemapLocs.length === indexableCanonicals.size, `Sitemap must contain all ${indexableCanonicals.size} indexable URLs; found ${sitemapLocs.length}.`);
 assert(new Set(sitemapLocs).size === sitemapLocs.length, "Sitemap contains duplicate URLs.");
 assert(sitemapLastmods.length === sitemapLocs.length, "Every sitemap URL needs a lastmod.");
-assert(sitemapLastmods.every((value) => value === GENERATED_DATE), `Every sitemap lastmod must be ${GENERATED_DATE}.`);
+assert(
+  sitemapLastmods.every((value) => /^\d{4}-\d{2}-\d{2}$/.test(value) && value <= MAX_LASTMOD_DATE),
+  `Every sitemap lastmod must be an ISO date no later than ${MAX_LASTMOD_DATE}.`,
+);
 assert(sitemapLocs.every((value) => value.startsWith(`${ORIGIN}/`)), "Sitemap contains a foreign or non-canonical origin.");
 assert(sitemapLocs.length === indexableCanonicals.size, `Sitemap/indexable canonical count mismatch: ${sitemapLocs.length} vs ${indexableCanonicals.size}.`);
 for (const canonical of indexableCanonicals.keys()) assert(sitemapLocs.includes(canonical), `Sitemap is missing indexable canonical ${canonical}.`);

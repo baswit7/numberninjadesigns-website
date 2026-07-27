@@ -1,0 +1,936 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "warning",
+  "sectionId": "boundary-audit",
+  "cards": [
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.generatedPlanningOnly",
+      "title": "generatedPlanningOnly",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.sourceOfTruth",
+      "title": "sourceOfTruth",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "config/delivery.tasks.json"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.generatedFilesAreTaskTruth",
+      "title": "generatedFilesAreTaskTruth",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.executionEngine",
+      "title": "executionEngine",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.providerExecution",
+      "title": "providerExecution",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.githubExecution",
+      "title": "githubExecution",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.deploymentExecution",
+      "title": "deploymentExecution",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.agentExecution",
+      "title": "agentExecution",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.credentialAccess",
+      "title": "credentialAccess",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.secretAccess",
+      "title": "secretAccess",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.automaticApproval",
+      "title": "automaticApproval",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.project-delivery.view.json.automaticDispatch",
+      "title": "automaticDispatch",
+      "status": "ok",
+      "description": "runtime/dashboard/project-delivery.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.readOnly",
+      "title": "readOnly",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.usesPublicSignalsOnly",
+      "title": "usesPublicSignalsOnly",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.usesLoginAutomation",
+      "title": "usesLoginAutomation",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.usesOAuthAutomation",
+      "title": "usesOAuthAutomation",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.usesPrivateScraping",
+      "title": "usesPrivateScraping",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.publishesContent",
+      "title": "publishesContent",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.executesPosting",
+      "title": "executesPosting",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.executesApprovalActions",
+      "title": "executesApprovalActions",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.mutatesExternalSystems",
+      "title": "mutatesExternalSystems",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.exposesSecrets",
+      "title": "exposesSecrets",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.opportunities.report.json.storesSecrets",
+      "title": "storesSecrets",
+      "status": "ok",
+      "description": "runtime/market-intelligence/opportunities.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.readOnly",
+      "title": "readOnly",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.usesPublicSignalsOnly",
+      "title": "usesPublicSignalsOnly",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.usesLoginAutomation",
+      "title": "usesLoginAutomation",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.usesOAuthAutomation",
+      "title": "usesOAuthAutomation",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.usesPrivateScraping",
+      "title": "usesPrivateScraping",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.publishesContent",
+      "title": "publishesContent",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.executesPosting",
+      "title": "executesPosting",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.executesApprovalActions",
+      "title": "executesApprovalActions",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.mutatesExternalSystems",
+      "title": "mutatesExternalSystems",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.exposesSecrets",
+      "title": "exposesSecrets",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.market-intelligence.approval-queue.report.json.storesSecrets",
+      "title": "storesSecrets",
+      "status": "ok",
+      "description": "runtime/market-intelligence/approval-queue.report.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.readsCredentialsFromEnvFileOnly",
+      "title": "readsCredentialsFromEnvFileOnly",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.readsShellEnvironmentVariables",
+      "title": "readsShellEnvironmentVariables",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.storesSecrets",
+      "title": "storesSecrets",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.exposesSecrets",
+      "title": "exposesSecrets",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.writesSecretValues",
+      "title": "writesSecretValues",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.writesProviderResponseBodies",
+      "title": "writesProviderResponseBodies",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.printsSecrets",
+      "title": "printsSecrets",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.logsSecrets",
+      "title": "logsSecrets",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.usesBrowserStorageForSecrets",
+      "title": "usesBrowserStorageForSecrets",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.startsAutomation",
+      "title": "startsAutomation",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.sendsMessages",
+      "title": "sendsMessages",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.publishesContent",
+      "title": "publishesContent",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.deploysSystems",
+      "title": "deploysSystems",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.executesProviderWorkflows",
+      "title": "executesProviderWorkflows",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.runtime.dashboard.api-connections.view.json.validatesReachabilityOnly",
+      "title": "validatesReachabilityOnly",
+      "status": "ok",
+      "description": "runtime/dashboard/api-connections.view.json",
+      "facts": [
+        {
+          "label": "Value",
+          "value": true
+        }
+      ],
+      "actionHint": "Boundary value mirrors the source report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    },
+    {
+      "id": "boundary.missing.services.coordination.agent-registry.json",
+      "title": "services/coordination/agent-registry.json",
+      "status": "warning",
+      "description": "Source report has no boundaries object.",
+      "facts": [
+        {
+          "label": "Boundary object",
+          "value": "missing"
+        }
+      ],
+      "actionHint": "Add boundary metadata to the source report before relying on this card.",
+      "lineage": {
+        "sourceReport": "services/coordination/agent-registry.json",
+        "sourceContract": "source report contract",
+        "sourceService": "source service"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/dashboard/api-connections.view.json",
+      "runtime/dashboard/project-delivery.view.json",
+      "runtime/market-intelligence/approval-queue.report.json",
+      "runtime/market-intelligence/opportunities.report.json",
+      "services/coordination/agent-registry.json"
+    ],
+    "sourceContracts": [
+      "source report contracts"
+    ],
+    "sourceServices": [
+      "source services"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

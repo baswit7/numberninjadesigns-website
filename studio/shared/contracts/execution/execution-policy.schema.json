@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/execution/execution-policy.schema.json",
+  "title": "Phase 9 Execution Policy",
+  "description": "Combines approval, risk, rollback and idempotency governance into a non-executing policy decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "policyId",
+    "requestId",
+    "decision",
+    "reason",
+    "approvalRequired",
+    "riskAccepted",
+    "rollbackRequired",
+    "idempotencyRequired",
+    "executionAllowed",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "policyId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "eligible_for_future_execution_review",
+        "requires_human_approval",
+        "denied",
+        "blocked"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 800
+    },
+    "approvalRequired": {
+      "type": "boolean"
+    },
+    "riskAccepted": {
+      "type": "boolean"
+    },
+    "rollbackRequired": {
+      "type": "boolean"
+    },
+    "idempotencyRequired": {
+      "type": "boolean"
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-9"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "policy-governance-only"
+        }
+      }
+    }
+  }
+}

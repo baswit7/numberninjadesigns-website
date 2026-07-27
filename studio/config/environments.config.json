@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "environments": [
+    {
+      "id": "local",
+      "purpose": "Local deterministic development without remote side effects.",
+      "deploymentTarget": "none",
+      "allowWritesToExternalProviders": false,
+      "requiresApprovalForAutomation": true,
+      "secretScope": "local-environment"
+    },
+    {
+      "id": "preview",
+      "purpose": "Review deployments and provider smoke checks with isolated secrets.",
+      "deploymentTarget": "vercel-preview",
+      "allowWritesToExternalProviders": false,
+      "requiresApprovalForAutomation": true,
+      "secretScope": "preview-environment"
+    },
+    {
+      "id": "production",
+      "purpose": "Approved production runtime with branch protection and rollback requirements.",
+      "deploymentTarget": "vercel-production",
+      "allowWritesToExternalProviders": true,
+      "requiresApprovalForAutomation": true,
+      "secretScope": "production-environment"
+    }
+  ]
+}

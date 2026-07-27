@@ -1,0 +1,71 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-dispatch-registry",
+    "status":  "ok",
+    "summary":  {
+                    "totalEntries":  4,
+                    "dispatchEligible":  0,
+                    "blocked":  3,
+                    "dispatchDenied":  1,
+                    "unknownDispatchEligible":  0,
+                    "pendingReviewDispatchEligible":  0,
+                    "triggeredActions":  0,
+                    "executionPerformed":  false,
+                    "automaticDispatch":  false,
+                    "externalCallsMade":  false,
+                    "sourceReviewExecutionPerformed":  false,
+                    "sourceReviewDispatchAllowed":  0
+                },
+    "dispatchStates":  [
+                           "UNKNOWN",
+                           "BLOCKED",
+                           "DISPATCH_ELIGIBLE",
+                           "DISPATCH_DENIED",
+                           "EXPIRED"
+                       ],
+    "dispatchRules":  {
+                          "unknownNeverDispatchEligible":  true,
+                          "pendingReviewNeverDispatchEligible":  true,
+                          "blockedRemainsBlocked":  true,
+                          "approvedForDispatchMayBecomeDispatchEligible":  true,
+                          "noStateCausesExecution":  true,
+                          "noStateTriggersExecution":  true,
+                          "noStateTriggersProviderActions":  true,
+                          "noStateTriggersGitHubActions":  true
+                      },
+    "boundaries":  {
+                       "registryOnly":  true,
+                       "performsExecution":  false,
+                       "dispatchEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "automaticExecution":  false,
+                       "automaticDispatch":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "secretAccess":  false,
+                       "credentialAccess":  false,
+                       "protectedBranchWrites":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "mutatesFilesOutsideRuntimeReports":  false
+                   },
+    "ownership":  {
+                      "ownsDispatchEligibility":  true,
+                      "ownsDispatchEvidence":  true,
+                      "ownsDispatchAuditTrail":  true,
+                      "ownsExecution":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsGithubTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsRuntimeTruth":  false
+                  },
+    "registryFile":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+    "auditFile":  "runtime/execution-dispatch/execution-dispatch.audit.json"
+}

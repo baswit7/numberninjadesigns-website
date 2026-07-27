@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-execution-approval-gateway",
+  "capability": "execution-approval-gateway",
+  "mode": "non-autonomous-approval-gateway-only",
+  "sourceOfTruth": "shared/contracts/approval/execution-approval.contract.json",
+  "schema": "shared/contracts/approval/execution-approval.schema.json",
+  "generatedReport": "runtime/approval/execution-approval.report.json",
+  "generatedAudit": "runtime/approval/execution-approval.audit.json",
+  "generatedRecords": "runtime/approval/execution-approval.records.json",
+  "allowedApprovalStates": [
+    "UNKNOWN",
+    "REQUESTED",
+    "PENDING_APPROVAL",
+    "APPROVED",
+    "REJECTED",
+    "EXPIRED",
+    "EXECUTED"
+  ],
+  "allowedIntentTypes": [
+    "GITHUB_BRANCH_CREATE",
+    "GITHUB_SANDBOX_BRANCH_CREATE",
+    "GITHUB_LIVE_BRANCH_CREATE",
+    "API_EXECUTION_RECOMMENDATION",
+    "DEPLOYMENT_RECOMMENDATION"
+  ],
+  "ownership": {
+    "ownsApprovalStatus": true,
+    "ownsApprovalEvidence": true,
+    "ownsApprovalAuditTrail": true,
+    "ownsExecutionTruth": false,
+    "ownsProviderTruth": false,
+    "ownsDeploymentTruth": false,
+    "ownsGithubTruth": false,
+    "ownsRuntimeTruth": false,
+    "ownsDashboardTruth": false
+  },
+  "approvalRules": {
+    "humanApprovalRequired": true,
+    "noAutomaticApproval": true,
+    "noApprovalBypass": true,
+    "noSelfApproval": true,
+    "unknownNeverAutoApproves": true,
+    "approvedDoesNotExecute": true,
+    "executionRequiresExternalExecutor": true
+  },
+  "boundaries": {
+    "approvalGatewayOnly": true,
+    "performsExecution": false,
+    "automaticExecution": false,
+    "backgroundWorkers": false,
+    "schedulers": false,
+    "queues": false,
+    "autonomousRunner": false,
+    "softwareFactory": false,
+    "providerExecution": false,
+    "deploymentExecution": false,
+    "mergeExecution": false,
+    "autoApproval": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "repositorySettingsMutation": false,
+    "collaboratorMutation": false,
+    "protectedBranchWrites": false,
+    "agentAutonomy": false,
+    "selfHealingSystems": false,
+    "selfModifyingSystems": false,
+    "approvalBypass": false
+  },
+  "approvalRequests": [
+    {
+      "approvalId": "APG-001",
+      "requestId": "GHLX-REQUEST-001",
+      "intentType": "GITHUB_LIVE_BRANCH_CREATE",
+      "requestedAction": "BRANCH_CREATE",
+      "requestedByRole": "Release Manager",
+      "approvalState": "REQUESTED",
+      "targetSystem": "GitHub",
+      "targetReference": "feature/studio-os-v2-live-github-execution",
+      "riskLevel": "medium",
+      "humanApprovalRequired": true,
+      "requestedAt": "2026-06-09T00:00:00.0000000Z",
+      "expiresAt": "2026-06-16T00:00:00.0000000Z",
+      "approvedByRole": "",
+      "approvedAt": "",
+      "approvedByRequester": false,
+      "executionRefusedUntilApproved": true,
+      "executionDispatchAllowed": false,
+      "evidence": [
+        "Execution intent was received and classified.",
+        "Gateway has not granted execution."
+      ],
+      "blockers": [
+        {
+          "role": "Human",
+          "status": "approval-required",
+          "reason": "Human approval is required before any external executor may consider this action."
+        }
+      ]
+    },
+    {
+      "approvalId": "APG-002",
+      "requestId": "GHSX-REQUEST-001",
+      "intentType": "GITHUB_SANDBOX_BRANCH_CREATE",
+      "requestedAction": "BRANCH_CREATE",
+      "requestedByRole": "Developer",
+      "approvalState": "PENDING_APPROVAL",
+      "targetSystem": "GitHub",
+      "targetReference": "sandbox/studio-os-v2-github-sandbox-execution",
+      "riskLevel": "low",
+      "humanApprovalRequired": true,
+      "requestedAt": "2026-06-09T00:00:00.0000000Z",
+      "expiresAt": "2026-06-16T00:00:00.0000000Z",
+      "approvedByRole": "",
+      "approvedAt": "",
+      "approvedByRequester": false,
+      "executionRefusedUntilApproved": true,
+      "executionDispatchAllowed": false,
+      "evidence": [
+        "Sandbox execution intent is pending human approval.",
+        "Gateway records approval status only and does not execute."
+      ],
+      "blockers": [
+        {
+          "role": "Human",
+          "status": "pending-review",
+          "reason": "Pending approval cannot execute."
+        }
+      ]
+    },
+    {
+      "approvalId": "APG-003",
+      "requestId": "UNKNOWN-REQUEST-001",
+      "intentType": "GITHUB_BRANCH_CREATE",
+      "requestedAction": "BRANCH_CREATE",
+      "requestedByRole": "Orchestrator",
+      "approvalState": "UNKNOWN",
+      "targetSystem": "GitHub",
+      "targetReference": "unknown",
+      "riskLevel": "high",
+      "humanApprovalRequired": true,
+      "requestedAt": "2026-06-09T00:00:00.0000000Z",
+      "expiresAt": "2026-06-10T00:00:00.0000000Z",
+      "approvedByRole": "",
+      "approvedAt": "",
+      "approvedByRequester": false,
+      "executionRefusedUntilApproved": true,
+      "executionDispatchAllowed": false,
+      "evidence": [
+        "UNKNOWN approval state is never promoted automatically.",
+        "Execution remains refused."
+      ],
+      "blockers": [
+        {
+          "role": "Security",
+          "status": "unknown-state-block",
+          "reason": "Unknown approval state must stay blocked until a human decision is recorded."
+        }
+      ]
+    },
+    {
+      "approvalId": "APG-004",
+      "requestId": "GHLX-APPROVED-001",
+      "intentType": "GITHUB_LIVE_BRANCH_CREATE",
+      "requestedAction": "BRANCH_CREATE",
+      "requestedByRole": "Release Manager",
+      "approvalState": "APPROVED",
+      "targetSystem": "GitHub",
+      "targetReference": "feature/studio-os-v2-live-github-execution",
+      "riskLevel": "medium",
+      "humanApprovalRequired": true,
+      "requestedAt": "2026-06-09T00:00:00.0000000Z",
+      "expiresAt": "2026-06-16T00:00:00.0000000Z",
+      "approvedByRole": "Human",
+      "approvedAt": "2026-06-09T00:00:00.0000000Z",
+      "approvedByRequester": false,
+      "executionRefusedUntilApproved": false,
+      "executionDispatchAllowed": false,
+      "evidence": [
+        "Human approval exists.",
+        "Approval Gateway does not dispatch execution."
+      ],
+      "blockers": []
+    }
+  ]
+}

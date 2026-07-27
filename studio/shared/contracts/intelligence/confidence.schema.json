@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.confidence",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "confidenceModel",
+    "items",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedConfidenceLevels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "VERY HIGH"
+  ],
+  "traceability": {
+    "requiresSnapshotCount": true,
+    "requiresReason": true,
+    "requiresRule": true
+  }
+}

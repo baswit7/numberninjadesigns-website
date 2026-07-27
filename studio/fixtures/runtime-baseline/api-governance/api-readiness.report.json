@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-21T20:30:00.0000000Z",
+  "source": "shared/contracts/api-governance/api-registry.json",
+  "reportId": "api-readiness",
+  "summary": {
+    "totalApis": 16,
+    "configured": 12,
+    "connected": 7,
+    "partiallyConfigured": 8,
+    "invalid": 0,
+    "expired": 0,
+    "missingScopes": 8,
+    "missingPermissions": 9,
+    "unknown": 0,
+    "readinessPercentage": 0.0
+  },
+  "apis": [
+    {
+      "apiId": "openai",
+      "name": "OpenAI",
+      "provider": "OpenAI",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "critical",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:48.7185004Z"
+    },
+    {
+      "apiId": "github",
+      "name": "GitHub",
+      "provider": "GitHub",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "critical",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:49.6298525Z"
+    },
+    {
+      "apiId": "notion",
+      "name": "Notion",
+      "provider": "Notion",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:49.9798959Z"
+    },
+    {
+      "apiId": "vercel",
+      "name": "Vercel",
+      "provider": "Vercel",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:50.8607613Z"
+    },
+    {
+      "apiId": "etsy",
+      "name": "Etsy",
+      "provider": "Etsy",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": [
+        "shops_r",
+        "listings_r"
+      ],
+      "missingPermissions": [
+        "shop-read",
+        "listing-read"
+      ],
+      "readinessScore": 50,
+      "criticality": "critical",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "2026-06-21T20:11:50.3380506Z"
+    },
+    {
+      "apiId": "printify",
+      "name": "Printify",
+      "provider": "Printify",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "critical",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "2026-06-21T20:11:50.3380506Z"
+    },
+    {
+      "apiId": "meta",
+      "name": "Meta",
+      "provider": "Meta",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": "pages_read_engagement",
+      "missingPermissions": "insights-read",
+      "readinessScore": 50,
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "instagram",
+      "name": "Instagram",
+      "provider": "Meta",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": "instagram_manage_insights",
+      "missingPermissions": "insights-read",
+      "readinessScore": 50,
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "tiktok",
+      "name": "TikTok",
+      "provider": "TikTok",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": "video.list",
+      "missingPermissions": [
+        "creator-insights-read",
+        "video-read"
+      ],
+      "readinessScore": 50,
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "2026-06-21T20:11:53.3447503Z"
+    },
+    {
+      "apiId": "pinterest",
+      "name": "Pinterest",
+      "provider": "Pinterest",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": [
+        "pins:read",
+        "boards:read"
+      ],
+      "missingPermissions": [
+        "pin-read",
+        "board-read"
+      ],
+      "readinessScore": 50,
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "2026-06-21T20:11:53.2980517Z"
+    },
+    {
+      "apiId": "reddit",
+      "name": "Reddit",
+      "provider": "Reddit",
+      "status": "partially configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "REDDIT_CLIENT_ID",
+        "REDDIT_CLIENT_SECRET"
+      ],
+      "missingScopes": "read",
+      "missingPermissions": [
+        "subreddit-read",
+        "trend-read"
+      ],
+      "readinessScore": 40,
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "google-analytics",
+      "name": "Google Analytics",
+      "provider": "Google",
+      "status": "partially configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "GOOGLE_ANALYTICS_ID",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "missingScopes": "https://www.googleapis.com/auth/analytics.readonly",
+      "missingPermissions": [
+        "property-read",
+        "report-read"
+      ],
+      "readinessScore": 40,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "google-search-console",
+      "name": "Google Search Console",
+      "provider": "Google",
+      "status": "partially configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "GOOGLE_SEARCH_CONSOLE_SITE_URL",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "missingScopes": "https://www.googleapis.com/auth/webmasters.readonly",
+      "missingPermissions": [
+        "site-read",
+        "search-performance-read"
+      ],
+      "readinessScore": 40,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "elevenlabs",
+      "name": "ElevenLabs",
+      "provider": "ElevenLabs",
+      "status": "configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "ELEVENLABS_API_KEY"
+      ],
+      "missingScopes": null,
+      "missingPermissions": "text-to-speech-access",
+      "readinessScore": 75,
+      "criticality": "medium",
+      "owner": "Studio OS",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "exa",
+      "name": "Exa",
+      "provider": "Exa",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "medium",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:52.0537902Z"
+    },
+    {
+      "apiId": "postman",
+      "name": "Postman",
+      "provider": "Postman",
+      "status": "connected",
+      "configured": true,
+      "connected": true,
+      "missingEnvVars": [],
+      "missingScopes": null,
+      "missingPermissions": null,
+      "readinessScore": 100,
+      "criticality": "medium",
+      "owner": "Studio OS",
+      "lastValidation": "2026-06-21T20:11:51.4550461Z"
+    }
+  ],
+  "topCriticalFailures": [
+    {
+      "apiId": "etsy",
+      "name": "Etsy",
+      "provider": "Etsy",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": [
+        "shops_r",
+        "listings_r"
+      ],
+      "missingPermissions": [
+        "shop-read",
+        "listing-read"
+      ],
+      "readinessScore": 50,
+      "criticality": "critical",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "2026-06-21T20:11:50.3380506Z"
+    },
+    {
+      "apiId": "meta",
+      "name": "Meta",
+      "provider": "Meta",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": "pages_read_engagement",
+      "missingPermissions": "insights-read",
+      "readinessScore": 50,
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "instagram",
+      "name": "Instagram",
+      "provider": "Meta",
+      "status": "partially configured",
+      "configured": true,
+      "connected": false,
+      "missingEnvVars": [],
+      "missingScopes": "instagram_manage_insights",
+      "missingPermissions": "insights-read",
+      "readinessScore": 50,
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "google-analytics",
+      "name": "Google Analytics",
+      "provider": "Google",
+      "status": "partially configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "GOOGLE_ANALYTICS_ID",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "missingScopes": "https://www.googleapis.com/auth/analytics.readonly",
+      "missingPermissions": [
+        "property-read",
+        "report-read"
+      ],
+      "readinessScore": 40,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "unknown"
+    },
+    {
+      "apiId": "google-search-console",
+      "name": "Google Search Console",
+      "provider": "Google",
+      "status": "partially configured",
+      "configured": false,
+      "connected": false,
+      "missingEnvVars": [
+        "GOOGLE_SEARCH_CONSOLE_SITE_URL",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "missingScopes": "https://www.googleapis.com/auth/webmasters.readonly",
+      "missingPermissions": [
+        "site-read",
+        "search-performance-read"
+      ],
+      "readinessScore": 40,
+      "criticality": "high",
+      "owner": "Studio OS",
+      "lastValidation": "unknown"
+    }
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "contractFirst": true,
+    "validatorFirst": true,
+    "storesSecrets": false,
+    "exposesTokens": false,
+    "readsSecretValues": false,
+    "performsApiCalls": false,
+    "callsProviders": false,
+    "executesDeployments": false,
+    "dashboardWritesAllowed": false,
+    "runtimeMutationScope": "runtime/api-governance"
+  }
+}

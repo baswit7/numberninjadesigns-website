@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "studio-os-v1-project-templates",
+  "description": "Read-only registry for Studio OS V1 project templates.",
+  "templateRoot": "templates/projects",
+  "requiredFiles": [
+    "README.md",
+    "CHANGELOG.md",
+    "PROJECT_MASTER.md",
+    "ARCHITECTURE.md",
+    "CODEX.md"
+  ],
+  "metadataFields": [
+    "projectName",
+    "projectType",
+    "repository",
+    "status",
+    "owner",
+    "roadmap",
+    "dependencies"
+  ],
+  "templates": [
+    {
+      "type": "web-app",
+      "displayName": "Web App",
+      "path": "templates/projects/web-app",
+      "purpose": "Create a browser-based product or website with clear delivery metadata."
+    },
+    {
+      "type": "dashboard",
+      "displayName": "Dashboard",
+      "path": "templates/projects/dashboard",
+      "purpose": "Create a read-only dashboard project for operational or executive visibility."
+    },
+    {
+      "type": "api-service",
+      "displayName": "API Service",
+      "path": "templates/projects/api-service",
+      "purpose": "Create a documented API service project without provider invocation or secret storage."
+    },
+    {
+      "type": "ai-agent",
+      "displayName": "AI Agent",
+      "path": "templates/projects/ai-agent",
+      "purpose": "Create an AI agent planning project with boundaries before implementation."
+    },
+    {
+      "type": "automation",
+      "displayName": "Automation",
+      "path": "templates/projects/automation",
+      "purpose": "Create an automation project plan without schedulers, workers, queues, or background services."
+    },
+    {
+      "type": "content-project",
+      "displayName": "Content Project",
+      "path": "templates/projects/content-project",
+      "purpose": "Create a content delivery project for campaigns, SEO, or publishing workflows."
+    }
+  ],
+  "boundaries": {
+    "readOnlyRegistry": true,
+    "localGenerationOnly": true,
+    "storesSecrets": false,
+    "performsApiCalls": false,
+    "executesDeployments": false,
+    "createsWorkersQueuesOrSchedulers": false,
+    "addsGovernanceLayer": false
+  }
+}

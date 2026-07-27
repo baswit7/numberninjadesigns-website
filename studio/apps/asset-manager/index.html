@@ -1,0 +1,1651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Artlist Asset Manager for locally managing licensed music, SFX and video metadata for NumberNinjaDesigns marketing content.">
+  <link rel="canonical" href="https://baswit7.github.io/numberninjadesigns.github.io/artlist-assets.html">
+  <title>Artlist Asset Manager | NumberNinjaDesigns Marketing OS</title>
+  <style>
+    :root {
+      --bg: #070707;
+      --surface: #0f0f0f;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --text: #edebe3;
+      --muted: #777;
+      --accent: #00ff94;
+      --accent-dim: #00cc76;
+      --red: #ff3b3b;
+      --gold: #c8a84c;
+      --border: #1f1f1f;
+      --line: rgba(237, 235, 227, .12);
+      --max: 1240px;
+      --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+      --display: "Orbitron", "Arial Narrow", Arial, sans-serif;
+      --headline: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 87% 4%, rgba(0, 255, 148, .12), transparent 29rem),
+        radial-gradient(circle at 8% 32%, rgba(200, 168, 76, .06), transparent 24rem),
+        linear-gradient(rgba(255, 255, 255, .012) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, auto, 100% 48px, auto;
+      color: var(--text);
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      line-height: 1.58;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .skip {
+      position: absolute;
+      top: 1rem;
+      left: -9999px;
+      z-index: 20;
+      padding: .65rem 1rem;
+      background: var(--accent);
+      color: #04130d;
+      font-weight: 700;
+    }
+    .skip:focus { left: 1rem; }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 7, 7, .94);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: .75rem 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .72rem;
+      font: 800 .98rem var(--display);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font: 700 .83rem var(--mono);
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .2rem;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+    .links a { padding: .5rem .6rem; border-radius: 4px; }
+    .links a:hover, .links a[aria-current="page"] { color: var(--text); background: var(--surface); }
+    .hero { padding: clamp(3rem, 7vw, 5.2rem) 0 2.2rem; }
+    .eyebrow {
+      color: var(--accent);
+      font: 700 .75rem var(--mono);
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 920px;
+      margin: .85rem 0 .9rem;
+      color: var(--text);
+      font: 700 clamp(2.15rem, 6.5vw, 4.8rem)/1.03 var(--headline);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    h1 span { color: var(--accent); }
+    .intro {
+      max-width: 770px;
+      margin: 0;
+      color: #c0bdb4;
+      font-size: clamp(1rem, 2vw, 1.14rem);
+    }
+    .safety {
+      max-width: 920px;
+      margin-top: 1.65rem;
+      padding: 1rem 1.15rem;
+      display: flex;
+      gap: .85rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid rgba(0, 255, 148, .25);
+      border-left: 3px solid var(--accent);
+      color: var(--text);
+    }
+    .safety strong {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font: 700 .73rem var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: .18rem;
+    }
+    .telemetry {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: 2.1rem;
+    }
+    .metric {
+      min-height: 88px;
+      padding: .9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .metric-label {
+      display: block;
+      margin-bottom: .34rem;
+      color: var(--muted);
+      font: .7rem var(--mono);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .metric-value { display: block; color: var(--text); font: 700 1.13rem var(--mono); }
+    .storage-state {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      color: var(--accent);
+      font-size: .9rem;
+    }
+    .storage-state::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 11px rgba(0, 255, 148, .7);
+    }
+    .storage-state.error { color: var(--red); }
+    .storage-state.error::before { background: var(--red); box-shadow: none; }
+    section.module { padding: clamp(2.2rem, 6vw, 4rem) 0; }
+    .section-head { margin-bottom: 1.4rem; }
+    .section-head p { max-width: 740px; margin: .45rem 0 0; color: var(--muted); }
+    h2 {
+      margin: 0;
+      font: 700 clamp(1.45rem, 3vw, 2rem)/1.18 var(--display);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h3 {
+      margin: 0 0 .8rem;
+      font: 700 1.05rem var(--display);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h3 small {
+      display: block;
+      margin-bottom: .35rem;
+      color: var(--gold);
+      font: 700 .69rem var(--mono);
+      letter-spacing: .14em;
+    }
+    .reference-grid, .working-grid, .planning-grid { display: grid; gap: 1rem; }
+    .panel {
+      min-width: 0;
+      padding: clamp(1.05rem, 3vw, 1.55rem);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+    }
+    .panel-accent { border-top: 2px solid var(--accent); }
+    .folder-tree {
+      margin: .2rem 0 0;
+      padding: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      background: #090909;
+      color: var(--accent);
+      font: .9rem/1.63 var(--mono);
+    }
+    .fine-print { margin: .9rem 0 0; color: var(--muted); font-size: .91rem; }
+    .checklist-columns { display: grid; gap: 1rem; }
+    .check-group-title {
+      margin-bottom: .45rem;
+      color: var(--gold);
+      font: 700 .73rem var(--mono);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .check {
+      display: flex;
+      gap: .52rem;
+      align-items: center;
+      margin: .36rem 0;
+      color: #d0cdc5;
+    }
+    .check input { width: 17px; height: 17px; accent-color: var(--accent); }
+    .keywords { display: grid; gap: 1rem; }
+    .keyword-set p {
+      margin: 0 0 .65rem;
+      color: var(--gold);
+      font: 700 .73rem var(--mono);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .chip {
+      padding: .36rem .58rem;
+      border: 1px solid rgba(0, 255, 148, .18);
+      background: #0b1511;
+      color: #b7dfcc;
+      font: .78rem var(--mono);
+    }
+    .toolbar {
+      display: grid;
+      gap: .8rem;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .field { display: grid; gap: .38rem; min-width: 0; }
+    label, .label {
+      color: var(--muted);
+      font: 700 .7rem var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    input, select, textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: .67rem .72rem;
+      border: 1px solid #2b2b2b;
+      border-radius: 4px;
+      color: var(--text);
+      background: #0b0b0b;
+      transition: border-color .16s ease, background .16s ease;
+    }
+    textarea { min-height: 82px; resize: vertical; }
+    input::placeholder, textarea::placeholder { color: #595959; }
+    input:hover, select:hover, textarea:hover, input:focus, select:focus, textarea:focus {
+      border-color: rgba(0, 255, 148, .48);
+      background: #0d110f;
+    }
+    select option { background: var(--surface); }
+    .actions { display: flex; flex-wrap: wrap; gap: .62rem; }
+    .button {
+      min-height: 46px;
+      padding: .68rem .92rem;
+      display: inline-flex;
+      gap: .45rem;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 700;
+      transition: border-color .17s ease, transform .17s ease, background .17s ease;
+    }
+    .button:hover { transform: translateY(-1px); border-color: var(--accent); background: var(--card-hover); }
+    .button-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #04150e;
+    }
+    .button-primary:hover { background: var(--accent-dim); color: #03110b; }
+    .button-danger:hover { border-color: var(--red); color: var(--red); }
+    .button-quiet { color: #c7c3ba; }
+    .form-grid { display: grid; gap: .75rem; }
+    .form-actions { margin-top: 1rem; }
+    .manager-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .manager-title p { margin: .35rem 0 0; color: var(--muted); font-size: .92rem; }
+    .asset-results { min-height: 280px; display: grid; gap: .72rem; }
+    .loading, .empty {
+      padding: 2.2rem 1.1rem;
+      display: grid;
+      gap: .45rem;
+      place-content: center;
+      min-height: 224px;
+      text-align: center;
+      border: 1px dashed #292929;
+      color: var(--muted);
+    }
+    .loading strong, .empty strong { color: var(--text); text-transform: uppercase; }
+    .asset-card {
+      padding: .92rem;
+      display: grid;
+      gap: .72rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      transition: border-color .18s ease, background .18s ease;
+    }
+    .asset-card:hover { background: var(--card-hover); }
+    .asset-card.selected { border-color: var(--accent); box-shadow: inset 0 0 0 1px rgba(0, 255, 148, .18); }
+    .asset-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .7rem;
+    }
+    .asset-top h4 {
+      margin: 0 0 .34rem;
+      font-size: 1.03rem;
+      line-height: 1.25;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: .34rem; }
+    .badge {
+      display: inline-flex;
+      padding: .22rem .43rem;
+      border: 1px solid #2c2c2c;
+      color: #bbb7ae;
+      font: .67rem var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .badge-demo { color: var(--gold); border-color: rgba(200, 168, 76, .45); }
+    .badge-type { color: var(--accent); border-color: rgba(0, 255, 148, .3); }
+    .asset-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .46rem .8rem;
+      color: #c1bdb4;
+      font-size: .89rem;
+    }
+    .asset-meta span { display: block; color: var(--muted); font: .66rem var(--mono); text-transform: uppercase; }
+    .asset-path {
+      overflow-wrap: anywhere;
+      padding: .47rem .55rem;
+      color: #c7ebdb;
+      background: #0a100d;
+      border: 1px solid rgba(0, 255, 148, .13);
+      font: .78rem var(--mono);
+    }
+    .recommend-tag {
+      color: var(--accent);
+      font: .75rem var(--mono);
+      letter-spacing: .02em;
+    }
+    .asset-controls { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .asset-controls .button { min-height: 40px; padding: .48rem .69rem; font-size: .88rem; }
+    .advice {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: #c8c5bd;
+    }
+    .advice strong { color: var(--accent); }
+    .ranked-list, .download-list { display: grid; gap: .64rem; margin-top: .9rem; }
+    .ranked, .download-item {
+      padding: .7rem .75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .ranked-title {
+      display: flex;
+      gap: .55rem;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+    .ranked p, .download-item p { margin: .38rem 0 0; color: var(--muted); font-size: .89rem; }
+    .score { color: var(--accent); font: .73rem var(--mono); white-space: nowrap; }
+    .download-item {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      border-left: 2px solid var(--accent);
+    }
+    .download-index {
+      color: var(--accent);
+      font: 700 .78rem var(--mono);
+      padding-top: .12rem;
+    }
+    .download-item strong { display: block; }
+    .plan-output {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .plan-output textarea { min-height: 178px; font: .81rem/1.52 var(--mono); }
+    .notice-line {
+      margin: 1rem 0 0;
+      padding: .8rem .9rem;
+      border-left: 3px solid var(--gold);
+      background: var(--surface);
+      color: #cac7bf;
+      font-size: .92rem;
+    }
+    footer {
+      margin-top: clamp(2rem, 5vw, 3.5rem);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: .91rem;
+    }
+    .footer-grid { display: grid; gap: 1rem; }
+    .footer-title { color: var(--text); font-weight: 700; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .6rem 1.15rem; }
+    .toast {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 30;
+      width: min(420px, calc(100% - 2rem));
+      padding: .82rem 1rem;
+      transform: translateY(calc(100% + 1.5rem));
+      opacity: 0;
+      pointer-events: none;
+      border: 1px solid rgba(0, 255, 148, .35);
+      background: #0a1510;
+      color: var(--text);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    .toast.error { border-color: rgba(255, 59, 59, .48); background: #180d0d; }
+    [hidden] { display: none !important; }
+    @media (min-width: 640px) {
+      .telemetry { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .field-wide { grid-column: 1 / -1; }
+      .checklist-columns, .keywords { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 930px) {
+      .reference-grid { grid-template-columns: .94fr 1.06fr; }
+      .keywords-panel { grid-column: 1 / -1; }
+      .working-grid { grid-template-columns: minmax(300px, .75fr) minmax(410px, 1.25fr); align-items: start; }
+      .toolbar { grid-template-columns: 1.45fr repeat(3, minmax(130px, .8fr)); }
+      .planning-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1.35fr 1fr; }
+    }
+    @media print {
+      header, .hero .actions, #manager, footer, .toast, .button { display: none !important; }
+      body { color: #111; background: #fff; }
+      .hero, section.module { padding: 1rem 0; }
+      .panel, .folder-tree, .download-item { color: #111; background: #fff; border-color: #bbb; }
+      .folder-tree, .chip { color: #111; }
+      .safety, .notice-line { background: #fff; color: #111; border-color: #444; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html"><span class="mark">NNT</span><span>NumberNinjaDesigns</span></a>
+      <div class="links">
+        <a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a><a href="pinterest-api.html">Pinterest API</a><a href="artlist-assets.html" aria-current="page">Artlist Assets</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Marketing OS / Licensed Asset Operations</div>
+        <h1>Artlist <span>Asset Manager</span></h1>
+        <p class="intro">Manage licensed music, sound effects and video assets for NumberNinjaDesigns marketing content.</p>
+        <div class="safety" role="note">
+          <strong>Manual Only</strong>
+          <span>Artlist assets are downloaded manually and managed locally. No Artlist API keys or login credentials are stored.</span>
+        </div>
+        <div class="telemetry" aria-label="Asset library status">
+          <div class="metric"><span class="metric-label">Storage</span><span class="storage-state" id="storageState">Checking local storage</span></div>
+          <div class="metric"><span class="metric-label">Asset Records</span><span class="metric-value" id="assetCount">0</span></div>
+          <div class="metric"><span class="metric-label">Selected Plan</span><span class="metric-value" id="selectedCount">0</span></div>
+          <div class="metric"><span class="metric-label">Real Downloads</span><span class="metric-value" id="realCount">0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module" aria-labelledby="prepTitle">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="prepTitle">Asset Intake Protocol</h2>
+          <p>Download files through your licensed Artlist account, file them locally, then register only their operational metadata in this manager.</p>
+        </div>
+        <div class="reference-grid">
+          <article class="panel panel-accent">
+            <h3><small>Local Storage Map</small>Recommended Folders</h3>
+            <pre class="folder-tree">/ASSETS
+  /ARTLIST
+    /MUSIC
+      /TIKTOK
+      /PINTEREST
+      /INSTAGRAM
+    /SFX
+      /KEYBOARD
+      /GLITCH
+      /UI
+      /NOTIFICATION
+      /TERMINAL
+    /VIDEO
+      /CODING
+      /DATA
+      /AI
+      /CYBERPUNK
+      /DARK_OFFICE
+      /SCREENS</pre>
+            <p class="fine-print">Keep licensed media in your local content library. Do not publish Artlist source files as public GitHub Pages assets.</p>
+          </article>
+          <article class="panel">
+            <h3><small>Acquisition Queue</small>Download Checklist</h3>
+            <div class="checklist-columns" id="downloadChecklist">
+              <div>
+                <div class="check-group-title">Music</div>
+                <label class="check"><input type="checkbox" data-check="music-synthwave">3x Synthwave</label>
+                <label class="check"><input type="checkbox" data-check="music-cyberpunk">3x Cyberpunk</label>
+                <label class="check"><input type="checkbox" data-check="music-future-bass">2x Future Bass</label>
+                <label class="check"><input type="checkbox" data-check="music-dark-tech">2x Dark Tech</label>
+              </div>
+              <div>
+                <div class="check-group-title">SFX</div>
+                <label class="check"><input type="checkbox" data-check="sfx-keyboard">Keyboard typing</label>
+                <label class="check"><input type="checkbox" data-check="sfx-glitch">Glitch transition</label>
+                <label class="check"><input type="checkbox" data-check="sfx-notification">Notification pop</label>
+                <label class="check"><input type="checkbox" data-check="sfx-digital-click">Digital click</label>
+                <label class="check"><input type="checkbox" data-check="sfx-terminal">Terminal sound</label>
+                <label class="check"><input type="checkbox" data-check="sfx-ui-click">UI click</label>
+              </div>
+              <div>
+                <div class="check-group-title">Video</div>
+                <label class="check"><input type="checkbox" data-check="video-coding">Coding screen</label>
+                <label class="check"><input type="checkbox" data-check="video-programmer">Programmer typing</label>
+                <label class="check"><input type="checkbox" data-check="video-data">Data animation</label>
+                <label class="check"><input type="checkbox" data-check="video-server">Server room</label>
+                <label class="check"><input type="checkbox" data-check="video-ai">AI abstract</label>
+                <label class="check"><input type="checkbox" data-check="video-cyberpunk">Neon cyberpunk</label>
+                <label class="check"><input type="checkbox" data-check="video-office">Dark office</label>
+                <label class="check"><input type="checkbox" data-check="video-monitor">Monitor glow</label>
+              </div>
+            </div>
+          </article>
+          <article class="panel keywords-panel">
+            <h3><small>Artlist Discovery</small>Search Keywords</h3>
+            <div class="keywords">
+              <div class="keyword-set">
+                <p>Music keywords</p>
+                <div class="chips"><span class="chip">cyberpunk</span><span class="chip">future bass</span><span class="chip">digital future</span><span class="chip">technology</span><span class="chip">coding</span><span class="chip">ai</span><span class="chip">glitch</span><span class="chip">electronic</span><span class="chip">synthwave</span><span class="chip">tech</span><span class="chip">dark trap</span><span class="chip">neon</span></div>
+              </div>
+              <div class="keyword-set">
+                <p>SFX keywords</p>
+                <div class="chips"><span class="chip">keyboard</span><span class="chip">typing</span><span class="chip">terminal</span><span class="chip">computer</span><span class="chip">glitch</span><span class="chip">notification</span><span class="chip">digital</span><span class="chip">ui</span><span class="chip">click</span><span class="chip">tech</span><span class="chip">data</span><span class="chip">robot</span><span class="chip">ai</span></div>
+              </div>
+              <div class="keyword-set">
+                <p>Video keywords</p>
+                <div class="chips"><span class="chip">coding</span><span class="chip">programmer</span><span class="chip">data</span><span class="chip">server</span><span class="chip">technology</span><span class="chip">computer</span><span class="chip">ai</span><span class="chip">cyberpunk</span><span class="chip">neon</span><span class="chip">typing</span><span class="chip">dark office</span><span class="chip">screens</span><span class="chip">developer</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="module" id="manager" aria-labelledby="managerTitle">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="managerTitle">Local Asset Database</h2>
+          <p>Records are stored in this browser only. Demo metadata is initialized on first use so planning works immediately; replace it with licensed local downloads.</p>
+        </div>
+        <div class="toolbar" aria-label="Asset filters and export actions">
+          <div class="field">
+            <label for="searchFilter">Search Assets</label>
+            <input id="searchFilter" type="search" placeholder="Title, tag, use, path..." autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="typeFilter">Type</label>
+            <select id="typeFilter">
+              <option value="">All types</option>
+              <option value="music">Music</option>
+              <option value="sfx">SFX</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="platformFilter">Platform</label>
+            <select id="platformFilter">
+              <option value="">All platforms</option>
+              <option>TikTok</option>
+              <option>Pinterest</option>
+              <option>Instagram</option>
+              <option>Etsy</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="moodFilter">Mood</label>
+            <select id="moodFilter">
+              <option value="">All moods</option>
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="synthwave">Synthwave</option>
+              <option value="dark tech">Dark Tech</option>
+              <option value="future bass">Future Bass</option>
+              <option value="glitch">Glitch</option>
+              <option value="clean tech">Clean Tech</option>
+              <option value="ai">AI</option>
+              <option value="data">Data</option>
+              <option value="subtle">Subtle</option>
+            </select>
+          </div>
+          <div class="actions field-wide">
+            <button class="button" type="button" id="exportButton">Export JSON</button>
+            <button class="button" type="button" id="importButton">Import JSON</button>
+            <button class="button" type="button" id="copyPlanButton">Copy selected asset plan</button>
+            <button class="button" type="button" id="printButton">Print asset checklist</button>
+            <input id="importFile" type="file" accept=".json,application/json" hidden>
+          </div>
+        </div>
+
+        <div class="working-grid">
+          <article class="panel panel-accent">
+            <h3><small id="formMode">New Record</small>Add Or Edit Asset</h3>
+            <form id="assetForm" novalidate>
+              <input type="hidden" id="assetId">
+              <div class="form-grid">
+                <div class="field field-wide">
+                  <label for="assetTitle">Title *</label>
+                  <input id="assetTitle" name="title" required maxlength="120" placeholder="Cyberpunk Coding Loop">
+                </div>
+                <div class="field">
+                  <label for="assetType">Type *</label>
+                  <select id="assetType" name="type" required>
+                    <option value="music">Music</option>
+                    <option value="sfx">SFX</option>
+                    <option value="video">Video</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="assetPlatform">Primary Platform *</label>
+                  <select id="assetPlatform" name="platform" required>
+                    <option>TikTok</option>
+                    <option>Pinterest</option>
+                    <option>Instagram</option>
+                    <option>Etsy</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="assetMood">Mood *</label>
+                  <select id="assetMood" name="mood" required>
+                    <option value="cyberpunk">Cyberpunk</option>
+                    <option value="synthwave">Synthwave</option>
+                    <option value="dark tech">Dark Tech</option>
+                    <option value="future bass">Future Bass</option>
+                    <option value="glitch">Glitch</option>
+                    <option value="clean tech">Clean Tech</option>
+                    <option value="AI">AI</option>
+                    <option value="data">Data</option>
+                    <option value="subtle">Subtle</option>
+                    <option value="tech">Tech</option>
+                    <option value="office tech">Office Tech</option>
+                    <option value="futuristic">Futuristic</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="assetBpm">BPM</label>
+                  <input id="assetBpm" name="bpm" type="number" min="0" max="300" step="1" placeholder="112">
+                </div>
+                <div class="field">
+                  <label for="assetDuration">Duration *</label>
+                  <input id="assetDuration" name="duration" required maxlength="12" placeholder="00:30">
+                </div>
+                <div class="field field-wide">
+                  <label for="assetPath">Local Path *</label>
+                  <input id="assetPath" name="localPath" required maxlength="280" placeholder="/ASSETS/ARTLIST/MUSIC/TIKTOK/track-name.wav">
+                </div>
+                <div class="field field-wide">
+                  <label for="assetLicense">License Notes *</label>
+                  <textarea id="assetLicense" name="licenseNotes" required maxlength="400" placeholder="Download date, Artlist project/license reference, subscription coverage."></textarea>
+                </div>
+                <div class="field field-wide">
+                  <label for="assetBestUse">Best Use</label>
+                  <textarea id="assetBestUse" name="bestUse" maxlength="300" placeholder="15 second product reveal with terminal overlay."></textarea>
+                </div>
+                <div class="field field-wide">
+                  <label for="assetTags">Tags</label>
+                  <input id="assetTags" name="tags" maxlength="300" placeholder="coding, energetic, neon, vertical">
+                </div>
+              </div>
+              <div class="actions form-actions">
+                <button class="button button-primary" type="submit" id="saveButton">Save asset</button>
+                <button class="button button-quiet" type="button" id="cancelEdit" hidden>Cancel edit</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="manager-title">
+              <div>
+                <h3><small>Library</small>Indexed Assets</h3>
+                <p id="filterSummary">Preparing asset index...</p>
+              </div>
+            </div>
+            <div class="asset-results" id="assetResults">
+              <div class="loading" id="loadingState"><strong>Loading local asset index</strong><span>Validating stored metadata and demo records.</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="planning-grid" style="margin-top:1rem">
+          <article class="panel">
+            <h3><small>Campaign Fit</small>Recommendation Engine</h3>
+            <div class="field">
+              <label for="campaignPlatform">Target Platform</label>
+              <select id="campaignPlatform">
+                <option>TikTok</option>
+                <option>Pinterest</option>
+                <option>Instagram</option>
+                <option>Etsy</option>
+              </select>
+            </div>
+            <div id="platformAdvice" class="advice" style="margin-top:.85rem"></div>
+            <div class="ranked-list" id="recommendedAssets"></div>
+          </article>
+          <article class="panel">
+            <h3><small>Product Match</small>Content Direction</h3>
+            <div class="field">
+              <label for="productSelect">NumberNinjaDesigns Product</label>
+              <select id="productSelect">
+                <option value="">Select a product</option>
+                <option>Logic Over Emotion</option>
+                <option>Caffeine Code Repeat</option>
+                <option>Data &gt; Opinions</option>
+                <option>Excel Overlord</option>
+                <option>Error 404 Sleep Not Found</option>
+                <option>Data Wizard</option>
+                <option>Trust the Algorithm</option>
+                <option>Machine Learning Master</option>
+                <option>Data Detective</option>
+                <option>Data Whisperer</option>
+              </select>
+            </div>
+            <div id="productAdvice" class="advice" style="margin-top:.85rem">Select a shirt to receive asset direction for a conversion-focused promo cut.</div>
+            <div class="plan-output" id="planOutput" hidden>
+              <label for="planText">Selected Asset Plan</label>
+              <textarea id="planText" readonly></textarea>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="module" aria-labelledby="nextTitle">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="nextTitle">Next Best Download</h2>
+          <p>Priority gaps are calculated from registered non-demo assets. Demo metadata helps test the workflow but never counts as a licensed download.</p>
+        </div>
+        <article class="panel panel-accent">
+          <div class="download-list" id="nextDownloads"></div>
+          <p class="notice-line">License control: confirm that every download and planned usage is covered by your active Artlist subscription and applicable license before publishing content.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">&copy; 2026 NumberNinjaDesigns | Marketing OS</div>
+        <div>Ninja-Level Data Tees for Analysts, Coders &amp; Excel Nerds</div>
+      </div>
+      <nav class="footer-links" aria-label="Legal and modules">
+        <a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a><a href="pinterest-api.html">Pinterest API</a><a href="artlist-assets.html">Artlist Assets</a>
+      </nav>
+    </div>
+  </footer>
+  <div class="toast" id="feedback" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEY = "numberninjadesigns.artlist.assets.v1";
+      var CHECKLIST_KEY = "numberninjadesigns.artlist.checklist.v1";
+      var MAX_ASSETS = 1000;
+      var PLATFORMS = ["TikTok", "Pinterest", "Instagram", "Etsy"];
+      var TYPES = ["music", "sfx", "video"];
+      var MOODS = ["cyberpunk", "synthwave", "dark tech", "future bass", "glitch", "clean tech", "ai", "data", "subtle", "tech", "office tech", "futuristic"];
+      var storageHealthy = true;
+      var memoryStorage = {};
+      var assets = [];
+      var selectedIds = {};
+      var toastTimer = null;
+
+      var DEMO_ASSETS = [
+        {
+          title: "Cyberpunk Coding Loop",
+          type: "music",
+          platform: "TikTok",
+          mood: "cyberpunk",
+          bpm: 124,
+          duration: "00:30",
+          localPath: "/ASSETS/ARTLIST/MUSIC/TIKTOK/demo-cyberpunk-coding-loop.wav",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Rapid coder shirt hook with terminal cuts.",
+          tags: ["coding", "energetic", "neon", "glitch"],
+          isDemo: true
+        },
+        {
+          title: "Synthwave Data Pulse",
+          type: "music",
+          platform: "Instagram",
+          mood: "synthwave",
+          bpm: 108,
+          duration: "00:25",
+          localPath: "/ASSETS/ARTLIST/MUSIC/INSTAGRAM/demo-synthwave-data-pulse.wav",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Animated dashboard reveal for a data tee reel.",
+          tags: ["data", "energetic", "digital", "reel"],
+          isDemo: true
+        },
+        {
+          title: "Keyboard Typing Fast",
+          type: "sfx",
+          platform: "TikTok",
+          mood: "clean tech",
+          bpm: "",
+          duration: "00:04",
+          localPath: "/ASSETS/ARTLIST/SFX/KEYBOARD/demo-keyboard-typing-fast.wav",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Code overlay typing beat before product reveal.",
+          tags: ["keyboard", "typing", "coder"],
+          isDemo: true
+        },
+        {
+          title: "Glitch Transition Short",
+          type: "sfx",
+          platform: "Instagram",
+          mood: "glitch",
+          bpm: "",
+          duration: "00:02",
+          localPath: "/ASSETS/ARTLIST/SFX/GLITCH/demo-glitch-transition-short.wav",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Transition from query output to shirt print.",
+          tags: ["glitch", "transition", "energetic"],
+          isDemo: true
+        },
+        {
+          title: "Dark Office Monitor Glow",
+          type: "video",
+          platform: "Pinterest",
+          mood: "dark tech",
+          bpm: "",
+          duration: "00:12",
+          localPath: "/ASSETS/ARTLIST/VIDEO/DARK_OFFICE/demo-dark-office-monitor-glow.mp4",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Vertical product promo background with readable headline.",
+          tags: ["dark office", "monitor", "vertical", "medium energy", "product"],
+          isDemo: true
+        },
+        {
+          title: "AI Abstract Background",
+          type: "video",
+          platform: "Etsy",
+          mood: "AI",
+          bpm: "",
+          duration: "00:15",
+          localPath: "/ASSETS/ARTLIST/VIDEO/AI/demo-ai-abstract-background.mp4",
+          licenseNotes: "DEMO METADATA ONLY - replace with a manually downloaded, licensed Artlist asset.",
+          bestUse: "Machine Learning Master product promo background.",
+          tags: ["ai", "futuristic", "background", "product"],
+          isDemo: true
+        }
+      ];
+
+      var PRODUCT_PROFILES = {
+        "Logic Over Emotion": { label: "Coder shirt direction", words: ["cyberpunk", "keyboard", "terminal", "glitch"], copy: "cyberpunk, keyboard, terminal, glitch" },
+        "Caffeine Code Repeat": { label: "Coder shirt direction", words: ["cyberpunk", "keyboard", "terminal", "glitch"], copy: "cyberpunk, keyboard, terminal, glitch" },
+        "Error 404 Sleep Not Found": { label: "Coder shirt direction", words: ["cyberpunk", "keyboard", "terminal", "glitch"], copy: "cyberpunk, keyboard, terminal, glitch" },
+        "Data > Opinions": { label: "Data shirt direction", words: ["data", "clean tech", "digital", "click"], copy: "data animation, clean tech, digital click" },
+        "Data Wizard": { label: "Data shirt direction", words: ["data", "clean tech", "digital", "click"], copy: "data animation, clean tech, digital click" },
+        "Data Detective": { label: "Data shirt direction", words: ["data", "clean tech", "digital", "click"], copy: "data animation, clean tech, digital click" },
+        "Data Whisperer": { label: "Data shirt direction", words: ["data", "clean tech", "digital", "click"], copy: "data animation, clean tech, digital click" },
+        "Excel Overlord": { label: "Excel shirt direction", words: ["office", "keyboard", "ui", "click"], copy: "office tech, keyboard, UI clicks" },
+        "Trust the Algorithm": { label: "AI/ML shirt direction", words: ["ai", "futuristic", "synthwave"], copy: "AI abstract, futuristic, synthwave" },
+        "Machine Learning Master": { label: "AI/ML shirt direction", words: ["ai", "futuristic", "synthwave"], copy: "AI abstract, futuristic, synthwave" }
+      };
+
+      var ids = [
+        "storageState", "assetCount", "selectedCount", "realCount", "downloadChecklist",
+        "searchFilter", "typeFilter", "platformFilter", "moodFilter", "exportButton",
+        "importButton", "importFile", "copyPlanButton", "printButton", "assetForm",
+        "assetId", "assetTitle", "assetType", "assetPlatform", "assetMood", "assetBpm",
+        "assetDuration", "assetPath", "assetLicense", "assetBestUse", "assetTags",
+        "saveButton", "cancelEdit", "formMode", "assetResults", "filterSummary",
+        "campaignPlatform", "platformAdvice", "recommendedAssets", "productSelect",
+        "productAdvice", "planOutput", "planText", "nextDownloads", "feedback"
+      ];
+      var el = {};
+      ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+      function log(message, data) {
+        if (window.console && typeof window.console.debug === "function") {
+          console.debug("[NNT:Artlist] " + message, data || "");
+        }
+      }
+
+      function showFeedback(message, isError) {
+        window.clearTimeout(toastTimer);
+        el.feedback.textContent = message;
+        el.feedback.className = "toast visible" + (isError ? " error" : "");
+        toastTimer = window.setTimeout(function () {
+          el.feedback.className = "toast";
+        }, 4200);
+      }
+
+      function updateStorageStatus() {
+        el.storageState.textContent = storageHealthy ? "Local only / ready" : "Session only / blocked";
+        el.storageState.classList.toggle("error", !storageHealthy);
+      }
+
+      function storeGet(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch (error) {
+          storageHealthy = false;
+          updateStorageStatus();
+          log("localStorage read blocked; using session memory.", error.message);
+          return Object.prototype.hasOwnProperty.call(memoryStorage, key) ? memoryStorage[key] : null;
+        }
+      }
+
+      function storeSet(key, value) {
+        memoryStorage[key] = value;
+        try {
+          window.localStorage.setItem(key, value);
+          return true;
+        } catch (error) {
+          storageHealthy = false;
+          updateStorageStatus();
+          log("localStorage write blocked; retaining session copy.", error.message);
+          showFeedback("Browser storage is blocked. Changes survive only for this open page.", true);
+          return false;
+        }
+      }
+
+      function testStorage() {
+        try {
+          var probe = "__nnt_artlist_probe__";
+          window.localStorage.setItem(probe, "1");
+          window.localStorage.removeItem(probe);
+        } catch (error) {
+          storageHealthy = false;
+          log("Storage probe failed.", error.message);
+        }
+        updateStorageStatus();
+      }
+
+      function stringValue(value, max) {
+        return String(value == null ? "" : value).trim().slice(0, max);
+      }
+
+      function lower(value) {
+        return String(value == null ? "" : value).trim().toLowerCase();
+      }
+
+      function createId() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return window.crypto.randomUUID();
+        }
+        return "asset-" + Date.now() + "-" + Math.random().toString(16).slice(2, 10);
+      }
+
+      function normalizeTags(value) {
+        var source = Array.isArray(value) ? value : String(value || "").split(",");
+        var seen = {};
+        return source.map(function (tag) {
+          return stringValue(tag, 40).toLowerCase();
+        }).filter(function (tag) {
+          if (!tag || seen[tag]) { return false; }
+          seen[tag] = true;
+          return true;
+        }).slice(0, 24);
+      }
+
+      function normalizeAsset(raw, strict) {
+        if (!raw || typeof raw !== "object") { return null; }
+        var type = lower(raw.type);
+        var platform = stringValue(raw.platform, 20);
+        var moodInput = stringValue(raw.mood, 30);
+        var mood = lower(moodInput);
+        var title = stringValue(raw.title, 120);
+        var duration = stringValue(raw.duration, 12);
+        var localPath = stringValue(raw.localPath, 280);
+        if (TYPES.indexOf(type) < 0 || PLATFORMS.indexOf(platform) < 0 || MOODS.indexOf(mood) < 0) {
+          return null;
+        }
+        if (strict && (!title || !duration || !localPath)) { return null; }
+        var licenseNotes = stringValue(raw.licenseNotes, 400);
+        if (strict && !licenseNotes) { return null; }
+        var bpm = raw.bpm === "" || raw.bpm == null ? "" : Number(raw.bpm);
+        if (bpm !== "" && (!Number.isFinite(bpm) || bpm < 0 || bpm > 300)) { return null; }
+        return {
+          id: stringValue(raw.id, 80) || createId(),
+          title: title,
+          type: type,
+          platform: platform,
+          mood: mood === "ai" ? "AI" : mood,
+          bpm: bpm === "" ? "" : Math.round(bpm),
+          duration: duration,
+          localPath: localPath,
+          licenseNotes: licenseNotes,
+          bestUse: stringValue(raw.bestUse, 300),
+          tags: normalizeTags(raw.tags),
+          isDemo: raw.isDemo === true,
+          updatedAt: stringValue(raw.updatedAt, 32) || new Date().toISOString()
+        };
+      }
+
+      function durationSeconds(duration) {
+        var value = String(duration || "").trim();
+        if (/^\d{1,3}:\d{2}$/.test(value)) {
+          var pieces = value.split(":");
+          return Number(pieces[0]) * 60 + Number(pieces[1]);
+        }
+        if (/^\d{1,5}s?$/i.test(value)) {
+          return Number(value.replace(/s/i, ""));
+        }
+        return 0;
+      }
+
+      function assetText(asset) {
+        return lower([asset.title, asset.type, asset.platform, asset.mood, asset.localPath, asset.licenseNotes, asset.bestUse, asset.tags.join(" ")].join(" "));
+      }
+
+      function persistAssets() {
+        storeSet(STORAGE_KEY, JSON.stringify(assets));
+        log("Asset database saved.", { count: assets.length });
+      }
+
+      function loadAssets() {
+        var raw = storeGet(STORAGE_KEY);
+        if (raw === null) {
+          assets = DEMO_ASSETS.map(function (record) { return normalizeAsset(record, true); });
+          persistAssets();
+          showFeedback("Six demo asset records loaded. Register licensed downloads to replace them.");
+          return;
+        }
+        try {
+          var parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) { throw new Error("Database is not an array."); }
+          assets = parsed.map(function (record) { return normalizeAsset(record, true); }).filter(Boolean).slice(0, MAX_ASSETS);
+          if (assets.length !== parsed.length) {
+            showFeedback("Invalid stored records were removed during recovery.", true);
+            persistAssets();
+          }
+        } catch (error) {
+          assets = DEMO_ASSETS.map(function (record) { return normalizeAsset(record, true); });
+          persistAssets();
+          showFeedback("Stored asset data was unreadable. Demo records restored.", true);
+          log("Database recovery initialized demo records.", error.message);
+        }
+      }
+
+      function loadChecklist() {
+        var saved = {};
+        try {
+          saved = JSON.parse(storeGet(CHECKLIST_KEY) || "{}");
+        } catch (error) {
+          log("Checklist state ignored after parse failure.", error.message);
+        }
+        el.downloadChecklist.querySelectorAll("input[data-check]").forEach(function (box) {
+          box.checked = saved[box.getAttribute("data-check")] === true;
+        });
+      }
+
+      function checklistData() {
+        var state = {};
+        el.downloadChecklist.querySelectorAll("input[data-check]").forEach(function (box) {
+          state[box.getAttribute("data-check")] = box.checked;
+        });
+        return state;
+      }
+
+      function saveChecklist() {
+        storeSet(CHECKLIST_KEY, JSON.stringify(checklistData()));
+        showFeedback("Download checklist updated locally.");
+      }
+
+      function scoreAsset(asset, platform) {
+        var text = assetText(asset);
+        var mood = lower(asset.mood);
+        var seconds = durationSeconds(asset.duration);
+        var score = asset.platform === platform ? 1 : 0;
+        var reasons = [];
+        if (platform === "TikTok") {
+          if (asset.type === "music") { score += 3; reasons.push("music hook"); }
+          if (Number(asset.bpm) >= 100) { score += 2; reasons.push("100+ BPM"); }
+          if (["cyberpunk", "glitch", "future bass"].indexOf(mood) >= 0) { score += 2; reasons.push(mood + " mood"); }
+          if (seconds && seconds <= 60) { score += 1; reasons.push("short cut"); }
+        }
+        if (platform === "Pinterest") {
+          if (asset.type === "video") { score += 3; reasons.push("video background"); }
+          if (["clean tech", "data", "dark tech"].indexOf(mood) >= 0) { score += 2; reasons.push(mood + " mood"); }
+          if (/calm|medium|vertical|background/.test(text)) { score += 1; reasons.push("measured visual pace"); }
+        }
+        if (platform === "Instagram") {
+          if (asset.type === "music" || asset.type === "sfx") { score += 2; reasons.push("music/SFX cut"); }
+          if (Number(asset.bpm) >= 100 || /energetic|transition/.test(text)) { score += 2; reasons.push("energetic edit"); }
+          if (["synthwave", "cyberpunk", "tech"].indexOf(mood) >= 0) { score += 2; reasons.push(mood + " mood"); }
+        }
+        if (platform === "Etsy") {
+          if (asset.type === "video" || /background|product|promo/.test(text)) { score += 2; reasons.push("product backdrop"); }
+          if (["clean tech", "subtle", "data"].indexOf(mood) >= 0) { score += 2; reasons.push(mood + " mood"); }
+          if (/product|background|subtle/.test(text)) { score += 1; reasons.push("product focus"); }
+        }
+        return { score: score, reasons: reasons };
+      }
+
+      function recommendedPlatforms(asset) {
+        var scored = PLATFORMS.map(function (platform) {
+          return { platform: platform, score: scoreAsset(asset, platform).score };
+        }).filter(function (entry) {
+          return entry.score >= 3 || entry.platform === asset.platform;
+        }).sort(function (a, b) {
+          return b.score - a.score;
+        });
+        return scored.map(function (entry) { return entry.platform; });
+      }
+
+      function createElement(tag, className, text) {
+        var element = document.createElement(tag);
+        if (className) { element.className = className; }
+        if (text != null) { element.textContent = text; }
+        return element;
+      }
+
+      function addBadge(parent, label, className) {
+        parent.appendChild(createElement("span", "badge " + (className || ""), label));
+      }
+
+      function renderAssetCard(asset) {
+        var card = createElement("article", "asset-card" + (selectedIds[asset.id] ? " selected" : ""));
+        card.setAttribute("data-id", asset.id);
+        var top = createElement("div", "asset-top");
+        var header = document.createElement("div");
+        header.appendChild(createElement("h4", "", asset.title));
+        var badges = createElement("div", "badges");
+        addBadge(badges, asset.type, "badge-type");
+        addBadge(badges, asset.platform, "");
+        addBadge(badges, asset.mood, "");
+        if (asset.isDemo) { addBadge(badges, "Demo metadata", "badge-demo"); }
+        header.appendChild(badges);
+        top.appendChild(header);
+        card.appendChild(top);
+
+        var meta = createElement("div", "asset-meta");
+        var bpm = document.createElement("div");
+        bpm.appendChild(createElement("span", "", "BPM"));
+        bpm.appendChild(document.createTextNode(asset.bpm === "" ? "N/A" : String(asset.bpm)));
+        var duration = document.createElement("div");
+        duration.appendChild(createElement("span", "", "Duration"));
+        duration.appendChild(document.createTextNode(asset.duration || "N/A"));
+        var bestUse = document.createElement("div");
+        bestUse.appendChild(createElement("span", "", "Best Use"));
+        bestUse.appendChild(document.createTextNode(asset.bestUse || "Not registered"));
+        bestUse.style.gridColumn = "1 / -1";
+        meta.appendChild(bpm);
+        meta.appendChild(duration);
+        meta.appendChild(bestUse);
+        card.appendChild(meta);
+        card.appendChild(createElement("div", "asset-path", asset.localPath || "No local path registered"));
+        card.appendChild(createElement("div", "recommend-tag", "Recommended for: " + recommendedPlatforms(asset).join(" / ")));
+
+        var controls = createElement("div", "asset-controls");
+        var select = createElement("button", "button " + (selectedIds[asset.id] ? "button-primary" : ""), selectedIds[asset.id] ? "Selected" : "Select plan");
+        select.type = "button";
+        select.setAttribute("data-action", "select");
+        var edit = createElement("button", "button", "Edit");
+        edit.type = "button";
+        edit.setAttribute("data-action", "edit");
+        var remove = createElement("button", "button button-danger", "Delete");
+        remove.type = "button";
+        remove.setAttribute("data-action", "delete");
+        controls.appendChild(select);
+        controls.appendChild(edit);
+        controls.appendChild(remove);
+        card.appendChild(controls);
+        return card;
+      }
+
+      function filteredAssets() {
+        var query = lower(el.searchFilter.value);
+        var type = el.typeFilter.value;
+        var platform = el.platformFilter.value;
+        var mood = lower(el.moodFilter.value);
+        return assets.filter(function (asset) {
+          if (query && assetText(asset).indexOf(query) < 0) { return false; }
+          if (type && asset.type !== type) { return false; }
+          if (platform && asset.platform !== platform) { return false; }
+          if (mood && lower(asset.mood) !== mood) { return false; }
+          return true;
+        });
+      }
+
+      function renderAssets() {
+        var matches = filteredAssets();
+        el.assetResults.textContent = "";
+        if (!matches.length) {
+          var empty = createElement("div", "empty");
+          empty.appendChild(createElement("strong", "", "No assets found"));
+          empty.appendChild(createElement("span", "", "Adjust the filters or register a licensed local asset."));
+          el.assetResults.appendChild(empty);
+        } else {
+          matches.forEach(function (asset) { el.assetResults.appendChild(renderAssetCard(asset)); });
+        }
+        el.filterSummary.textContent = matches.length + " of " + assets.length + " records shown.";
+        el.assetCount.textContent = String(assets.length);
+        el.selectedCount.textContent = String(Object.keys(selectedIds).length);
+        el.realCount.textContent = String(assets.filter(function (asset) { return !asset.isDemo; }).length);
+      }
+
+      function renderPlatformAdvice() {
+        var platform = el.campaignPlatform.value;
+        var statement = {
+          TikTok: "Fast hooks prefer music at 100+ BPM, short duration and cyberpunk, glitch or future bass moods.",
+          Pinterest: "Video-first pins prefer clean tech, data or dark tech backgrounds with calm or medium visual energy.",
+          Instagram: "Reels perform best here with energetic music plus SFX in synthwave, cyberpunk or tech styles.",
+          Etsy: "Product promos need restrained backgrounds with clean tech, subtle or data-focused mood."
+        };
+        el.platformAdvice.textContent = statement[platform];
+        el.recommendedAssets.textContent = "";
+        var ranked = assets.map(function (asset) {
+          var scoring = scoreAsset(asset, platform);
+          return { asset: asset, score: scoring.score, reasons: scoring.reasons };
+        }).sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
+        if (!ranked.length) {
+          el.recommendedAssets.appendChild(createElement("div", "empty", "Register an asset to generate platform matches."));
+          return;
+        }
+        ranked.forEach(function (match) {
+          var item = createElement("div", "ranked");
+          var title = createElement("div", "ranked-title");
+          title.appendChild(createElement("span", "", match.asset.title + (match.asset.isDemo ? " [DEMO]" : "")));
+          title.appendChild(createElement("span", "score", "FIT " + match.score));
+          item.appendChild(title);
+          item.appendChild(createElement("p", "", "Recommended for: " + platform + " | " + (match.reasons.join(", ") || "primary platform assignment")));
+          el.recommendedAssets.appendChild(item);
+        });
+      }
+
+      function renderProductAdvice() {
+        var product = el.productSelect.value;
+        if (!product || !PRODUCT_PROFILES[product]) {
+          el.productAdvice.textContent = "Select a shirt to receive asset direction for a conversion-focused promo cut.";
+          return;
+        }
+        var profile = PRODUCT_PROFILES[product];
+        var matching = assets.map(function (asset) {
+          var text = assetText(asset);
+          var hitCount = profile.words.filter(function (word) { return text.indexOf(word) >= 0; }).length;
+          return { title: asset.title, isDemo: asset.isDemo, hitCount: hitCount };
+        }).filter(function (asset) { return asset.hitCount > 0; })
+          .sort(function (a, b) { return b.hitCount - a.hitCount; })
+          .slice(0, 3);
+        var copy = profile.label + ": " + profile.copy + ".";
+        if (matching.length) {
+          copy += " Current matches: " + matching.map(function (asset) {
+            return asset.title + (asset.isDemo ? " [DEMO]" : "");
+          }).join(", ") + ".";
+        } else {
+          copy += " No matching registered assets yet.";
+        }
+        el.productAdvice.textContent = copy;
+      }
+
+      function realAssetsMatching(type, pattern, mood) {
+        return assets.filter(function (asset) {
+          if (asset.isDemo || asset.type !== type) { return false; }
+          if (mood && lower(asset.mood) !== mood) { return false; }
+          return !pattern || pattern.test(assetText(asset));
+        });
+      }
+
+      function renderNextDownloads() {
+        var suggestions = [];
+        if (!realAssetsMatching("sfx", /keyboard|typing/).length) {
+          suggestions.push({ title: "Download next: Keyboard typing SFX", reason: "No licensed keyboard SFX is registered for coder shirt hooks." });
+        }
+        var cyberpunkCount = realAssetsMatching("music", null, "cyberpunk").length;
+        if (cyberpunkCount < 3) {
+          suggestions.push({ title: "Download next: Cyberpunk music track", reason: (3 - cyberpunkCount) + " more required to complete the 3-track cyberpunk music target." });
+        }
+        if (!realAssetsMatching("video").some(function (asset) { return asset.platform === "Pinterest"; })) {
+          suggestions.push({ title: "Download next: Vertical tech/product background video", reason: "No licensed Pinterest-ready video background is registered." });
+        }
+        if (realAssetsMatching("music", null, "synthwave").length < 3) {
+          suggestions.push({ title: "Download next: Synthwave music track", reason: "Build the three-track synthwave pool for reels and product storytelling." });
+        }
+        if (!realAssetsMatching("sfx", /glitch|transition/).length) {
+          suggestions.push({ title: "Download next: Glitch transition SFX", reason: "Add a short tactical transition for coding and AI edits." });
+        }
+        if (!realAssetsMatching("video", /data|server|screen/).length) {
+          suggestions.push({ title: "Download next: Data or server-room video", reason: "Data shirts need a licensed technical visual layer." });
+        }
+        el.nextDownloads.textContent = "";
+        if (!suggestions.length) {
+          var complete = createElement("div", "download-item");
+          complete.appendChild(createElement("div", "download-index", "OK"));
+          var detail = document.createElement("div");
+          detail.appendChild(createElement("strong", "", "Core acquisition gaps covered"));
+          detail.appendChild(createElement("p", "", "Use the checklist to expand variation and confirm licenses before publishing."));
+          complete.appendChild(detail);
+          el.nextDownloads.appendChild(complete);
+          return;
+        }
+        suggestions.slice(0, 5).forEach(function (suggestion, index) {
+          var row = createElement("div", "download-item");
+          row.appendChild(createElement("div", "download-index", "0" + (index + 1)));
+          var text = document.createElement("div");
+          text.appendChild(createElement("strong", "", suggestion.title));
+          text.appendChild(createElement("p", "", suggestion.reason));
+          row.appendChild(text);
+          el.nextDownloads.appendChild(row);
+        });
+      }
+
+      function resetForm() {
+        el.assetForm.reset();
+        el.assetId.value = "";
+        el.assetType.value = "music";
+        el.assetPlatform.value = "TikTok";
+        el.assetMood.value = "cyberpunk";
+        el.formMode.textContent = "New Record";
+        el.saveButton.textContent = "Save asset";
+        el.cancelEdit.hidden = true;
+      }
+
+      function fillForm(asset) {
+        el.assetId.value = asset.id;
+        el.assetTitle.value = asset.title;
+        el.assetType.value = asset.type;
+        el.assetPlatform.value = asset.platform;
+        el.assetMood.value = asset.mood;
+        el.assetBpm.value = asset.bpm;
+        el.assetDuration.value = asset.duration;
+        el.assetPath.value = asset.localPath;
+        el.assetLicense.value = asset.licenseNotes;
+        el.assetBestUse.value = asset.bestUse;
+        el.assetTags.value = asset.tags.join(", ");
+        el.formMode.textContent = asset.isDemo ? "Edit Demo Record" : "Edit Record";
+        el.saveButton.textContent = "Update asset";
+        el.cancelEdit.hidden = false;
+        el.assetTitle.focus();
+      }
+
+      function rerender() {
+        renderAssets();
+        renderPlatformAdvice();
+        renderProductAdvice();
+        renderNextDownloads();
+        refreshPlanOutput();
+      }
+
+      function onSave(event) {
+        event.preventDefault();
+        if (!el.assetForm.reportValidity()) { return; }
+        var duration = stringValue(el.assetDuration.value, 12);
+        if (!/^(\d{1,3}:[0-5]\d|\d{1,5}s?)$/i.test(duration)) {
+          showFeedback("Use duration format MM:SS or seconds, for example 00:30 or 30s.", true);
+          el.assetDuration.focus();
+          return;
+        }
+        var record = normalizeAsset({
+          id: el.assetId.value,
+          title: el.assetTitle.value,
+          type: el.assetType.value,
+          platform: el.assetPlatform.value,
+          mood: el.assetMood.value,
+          bpm: el.assetBpm.value,
+          duration: duration,
+          localPath: el.assetPath.value,
+          licenseNotes: el.assetLicense.value,
+          bestUse: el.assetBestUse.value,
+          tags: el.assetTags.value,
+          isDemo: false,
+          updatedAt: new Date().toISOString()
+        }, true);
+        if (!record) {
+          showFeedback("Asset metadata failed validation. Check type, platform, mood, BPM and required fields.", true);
+          return;
+        }
+        var existingIndex = assets.findIndex(function (asset) { return asset.id === record.id; });
+        if (existingIndex >= 0) {
+          if (assets[existingIndex].isDemo && (/demo metadata/i.test(record.licenseNotes) || /\/demo-/i.test(record.localPath))) {
+            showFeedback("Replace the demo local path and license notes before converting this record.", true);
+            return;
+          }
+          if (assets[existingIndex].isDemo && !window.confirm("Convert this DEMO record into a real local asset? Continue only after downloading the licensed Artlist file manually and recording its license notes.")) {
+            showFeedback("Demo conversion cancelled. Register a licensed download before converting it.");
+            return;
+          }
+          assets[existingIndex] = record;
+          showFeedback("Asset updated and marked as a real local record.");
+        } else {
+          assets.unshift(record);
+          showFeedback("Asset saved to the local database.");
+        }
+        persistAssets();
+        resetForm();
+        rerender();
+      }
+
+      function onAssetAction(event) {
+        var button = event.target.closest("button[data-action]");
+        if (!button) { return; }
+        var card = button.closest("[data-id]");
+        var asset = assets.find(function (item) { return item.id === card.getAttribute("data-id"); });
+        if (!asset) { return; }
+        var action = button.getAttribute("data-action");
+        if (action === "select") {
+          if (selectedIds[asset.id]) { delete selectedIds[asset.id]; } else { selectedIds[asset.id] = true; }
+          renderAssets();
+          showFeedback(selectedIds[asset.id] ? "Asset added to the content plan." : "Asset removed from the content plan.");
+        }
+        if (action === "edit") {
+          fillForm(asset);
+        }
+        if (action === "delete") {
+          if (!window.confirm("Delete \"" + asset.title + "\" from the local asset database?")) { return; }
+          assets = assets.filter(function (item) { return item.id !== asset.id; });
+          delete selectedIds[asset.id];
+          persistAssets();
+          resetForm();
+          rerender();
+          showFeedback("Asset removed from the local database.");
+        }
+      }
+
+      function exportJson() {
+        var payload = {
+          schemaVersion: 1,
+          brand: "NumberNinjaDesigns",
+          exportedAt: new Date().toISOString(),
+          assets: assets,
+          downloadChecklist: checklistData()
+        };
+        var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "numberninjadesigns-artlist-assets.json";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+        showFeedback("JSON backup exported: numberninjadesigns-artlist-assets.json");
+      }
+
+      function importJson(event) {
+        var file = event.target.files && event.target.files[0];
+        event.target.value = "";
+        if (!file) { return; }
+        if (file.size > 2000000) {
+          showFeedback("Import rejected: JSON file exceeds the 2 MB metadata limit.", true);
+          return;
+        }
+        file.text().then(function (text) {
+          var parsed = JSON.parse(text);
+          var rawAssets = Array.isArray(parsed) ? parsed : parsed.assets;
+          if (!Array.isArray(rawAssets) || rawAssets.length > MAX_ASSETS) {
+            throw new Error("File must contain up to " + MAX_ASSETS + " asset records.");
+          }
+          var imported = rawAssets.map(function (record) { return normalizeAsset(record, true); });
+          if (imported.some(function (record) { return record === null; })) {
+            throw new Error("At least one asset contains invalid or incomplete metadata.");
+          }
+          var importedIds = {};
+          imported.forEach(function (record) {
+            if (importedIds[record.id]) { throw new Error("Import contains duplicate asset record IDs."); }
+            importedIds[record.id] = true;
+          });
+          if (!window.confirm("Overwrite the current local asset database with " + imported.length + " imported records?")) {
+            showFeedback("Import cancelled. Existing asset database unchanged.");
+            return;
+          }
+          assets = imported;
+          selectedIds = {};
+          persistAssets();
+          if (parsed.downloadChecklist && typeof parsed.downloadChecklist === "object") {
+            storeSet(CHECKLIST_KEY, JSON.stringify(parsed.downloadChecklist));
+            loadChecklist();
+          }
+          resetForm();
+          rerender();
+          showFeedback("JSON imported. Local asset database overwritten successfully.");
+        }).catch(function (error) {
+          log("Import failed.", error.message);
+          showFeedback("Import failed: " + error.message, true);
+        });
+      }
+
+      function selectedPlanText() {
+        var selected = assets.filter(function (asset) { return selectedIds[asset.id]; });
+        if (!selected.length) { return ""; }
+        var platform = el.campaignPlatform.value;
+        var product = el.productSelect.value || "Unassigned product";
+        var lines = [
+          "NUMBERNINJADESIGNS / ARTLIST ASSET PLAN",
+          "Product: " + product,
+          "Target platform: " + platform,
+          "Generated: " + new Date().toLocaleString(),
+          "",
+          "Selected assets:"
+        ];
+        selected.forEach(function (asset, index) {
+          lines.push(
+            (index + 1) + ". " + asset.title + (asset.isDemo ? " [DEMO - REPLACE BEFORE USE]" : ""),
+            "   Type: " + asset.type + " | Mood: " + asset.mood + " | BPM: " + (asset.bpm || "N/A") + " | Duration: " + asset.duration,
+            "   Local path: " + asset.localPath,
+            "   Best use: " + (asset.bestUse || "Not registered"),
+            "   Recommended for: " + recommendedPlatforms(asset).join(" / "),
+            "   License notes: " + (asset.licenseNotes || "Add license verification before publishing."),
+            ""
+          );
+        });
+        lines.push("Compliance: Assets must be downloaded manually through Artlist and used under valid license coverage. No Artlist credentials or API access are used.");
+        return lines.join("\n");
+      }
+
+      function refreshPlanOutput() {
+        if (el.planOutput.hidden) { return; }
+        var text = selectedPlanText();
+        if (!text) {
+          el.planOutput.hidden = true;
+          el.planText.value = "";
+          return;
+        }
+        el.planText.value = text;
+      }
+
+      function fallbackCopy(text) {
+        el.planText.focus();
+        el.planText.select();
+        try {
+          return document.execCommand("copy");
+        } catch (error) {
+          return false;
+        }
+      }
+
+      function copyPlan() {
+        var text = selectedPlanText();
+        if (!text) {
+          showFeedback("Select one or more assets before copying a content plan.", true);
+          return;
+        }
+        el.planText.value = text;
+        el.planOutput.hidden = false;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () {
+            showFeedback("Selected asset plan copied to clipboard.");
+          }).catch(function () {
+            var copied = fallbackCopy(text);
+            showFeedback(copied ? "Selected asset plan copied to clipboard." : "Plan prepared below. Clipboard permission was blocked.", !copied);
+          });
+          return;
+        }
+        var copied = fallbackCopy(text);
+        showFeedback(copied ? "Selected asset plan copied to clipboard." : "Plan prepared below. Select and copy it manually if required.", !copied);
+      }
+
+      function bindEvents() {
+        el.assetForm.addEventListener("submit", onSave);
+        el.cancelEdit.addEventListener("click", function () { resetForm(); showFeedback("Edit cancelled."); });
+        el.assetResults.addEventListener("click", onAssetAction);
+        [el.searchFilter, el.typeFilter, el.platformFilter, el.moodFilter].forEach(function (control) {
+          control.addEventListener("input", renderAssets);
+          control.addEventListener("change", renderAssets);
+        });
+        el.campaignPlatform.addEventListener("change", function () { renderPlatformAdvice(); refreshPlanOutput(); });
+        el.productSelect.addEventListener("change", function () { renderProductAdvice(); refreshPlanOutput(); });
+        el.downloadChecklist.addEventListener("change", saveChecklist);
+        el.exportButton.addEventListener("click", exportJson);
+        el.importButton.addEventListener("click", function () { el.importFile.click(); });
+        el.importFile.addEventListener("change", importJson);
+        el.copyPlanButton.addEventListener("click", copyPlan);
+        el.printButton.addEventListener("click", function () { window.print(); });
+      }
+
+      function initialize() {
+        testStorage();
+        loadAssets();
+        loadChecklist();
+        bindEvents();
+        resetForm();
+        rerender();
+        log("Artlist Asset Manager initialized.", { records: assets.length, storageHealthy: storageHealthy });
+      }
+
+      initialize();
+    }());
+  </script>
+</body>
+</html>

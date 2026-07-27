@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "requestId": "execution-request-deployment-review",
+  "createdAt": "2026-06-05T00:00:00Z",
+  "requestedAction": "deployment-review",
+  "requestedBy": "studio-os-governance",
+  "target": {
+    "targetType": "deployment",
+    "targetId": "studio-os-main",
+    "summary": "Evaluate whether a future deployment request has governance prerequisites."
+  },
+  "approvalRequirement": "single-human",
+  "forbiddenCapabilities": [
+    "workflow_execution",
+    "agent_execution",
+    "provider_execution",
+    "openai_calls",
+    "anthropic_calls",
+    "github_api_calls",
+    "deployments",
+    "runtime_mutation",
+    "secret_access",
+    "credential_access",
+    "queues",
+    "schedulers",
+    "workers",
+    "executors",
+    "business_features"
+  ],
+  "executionAllowed": false,
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "execution-governance-only"
+  }
+}

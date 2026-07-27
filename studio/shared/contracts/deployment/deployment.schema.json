@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/schemas/deployment.schema.json",
+  "title": "Studio OS Deployment Planning Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "capability",
+    "mode",
+    "sourceOfTruth",
+    "schema",
+    "generatedPlan",
+    "generatedAudit",
+    "generatedApprovalReport",
+    "consumes",
+    "allowedTargets",
+    "allowedDeploymentTypes",
+    "allowedDeploymentStates",
+    "approvalRequiredDeploymentTypes",
+    "allowedRequestingRoles",
+    "allowedBlockingRoles",
+    "auditRequiredFields",
+    "approvalRules",
+    "deploymentSafety",
+    "boundaries",
+    "deployments"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "contractId": { "type": "string" },
+    "capability": { "const": "deployment-planning" },
+    "mode": { "const": "offline-deployment-planning-approval-audit-only" },
+    "sourceOfTruth": { "type": "string" },
+    "schema": { "type": "string" },
+    "generatedPlan": { "type": "string" },
+    "generatedAudit": { "type": "string" },
+    "generatedApprovalReport": { "type": "string" },
+    "consumes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectTemplates",
+        "portfolioDashboard",
+        "githubExecutionLayer",
+        "apiExecutionLayer"
+      ],
+      "properties": {
+        "projectTemplates": { "type": "string" },
+        "portfolioDashboard": { "type": "string" },
+        "githubExecutionLayer": { "type": "string" },
+        "apiExecutionLayer": { "type": "string" }
+      }
+    },
+    "allowedTargets": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Vercel",
+          "GitHub Pages",
+          "Static Hosting",
+          "Future Custom Hosting"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedDeploymentTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PREVIEW_DEPLOYMENT",
+          "STAGING_DEPLOYMENT",
+          "PRODUCTION_DEPLOYMENT",
+          "ROLLBACK_RECOMMENDATION",
+          "RELEASE_REVIEW"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedDeploymentStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PLANNED",
+          "READY_FOR_APPROVAL",
+          "APPROVED",
+          "REJECTED",
+          "EXECUTED",
+          "FAILED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "approvalRequiredDeploymentTypes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "STAGING_DEPLOYMENT",
+          "PRODUCTION_DEPLOYMENT",
+          "ROLLBACK_RECOMMENDATION"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedRequestingRoles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "allowedBlockingRoles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "QA",
+          "Security",
+          "Human"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "auditRequiredFields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "approvalRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mandatoryHumanApproval",
+        "noAutomaticApproval",
+        "noApprovalBypass",
+        "noSelfApproval",
+        "noRoleMayApproveOwnRequest",
+        "qaMayBlock",
+        "securityMayBlock",
+        "humanFinalAuthority"
+      ],
+      "properties": {
+        "mandatoryHumanApproval": { "const": true },
+        "noAutomaticApproval": { "const": true },
+        "noApprovalBypass": { "const": true },
+        "noSelfApproval": { "const": true },
+        "noRoleMayApproveOwnRequest": { "const": true },
+        "qaMayBlock": { "const": true },
+        "securityMayBlock": { "const": true },
+        "humanFinalAuthority": { "const": true }
+      }
+    },
+    "deploymentSafety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validateDeploymentTarget",
+        "validateEnvironment",
+        "validateRollbackStrategy",
+        "validateApprovalStatus",
+        "preDeploymentValidationRequired"
+      ],
+      "properties": {
+        "validateDeploymentTarget": { "const": true },
+        "validateEnvironment": { "const": true },
+        "validateRollbackStrategy": { "const": true },
+        "validateApprovalStatus": { "const": true },
+        "preDeploymentValidationRequired": { "const": true }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "deployments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "deploymentId",
+          "project",
+          "requester",
+          "requesterRole",
+          "deploymentType",
+          "targetEnvironment",
+          "targetPlatform",
+          "approvalState",
+          "executionState",
+          "rollbackAvailable",
+          "rollbackStrategy",
+          "riskLevel",
+          "humanApprovalRequired",
+          "dryRunOnly",
+          "preparedByRole",
+          "approverRole",
+          "approvedByRequester",
+          "result",
+          "blockers",
+          "evidence"
+        ],
+        "properties": {
+          "deploymentId": { "type": "string" },
+          "project": { "type": "string" },
+          "requester": { "type": "string" },
+          "requesterRole": { "type": "string" },
+          "deploymentType": { "type": "string" },
+          "targetEnvironment": { "type": "string" },
+          "targetPlatform": { "type": "string" },
+          "approvalState": { "type": "string" },
+          "executionState": { "type": "string" },
+          "rollbackAvailable": { "type": "boolean" },
+          "rollbackStrategy": { "type": "string" },
+          "riskLevel": { "enum": ["low", "medium", "high"] },
+          "humanApprovalRequired": { "type": "boolean" },
+          "dryRunOnly": { "type": "boolean" },
+          "preparedByRole": { "type": "string" },
+          "approverRole": { "type": "string" },
+          "approvedByRequester": { "type": "boolean" },
+          "result": { "type": "string" },
+          "blockers": { "type": "array" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

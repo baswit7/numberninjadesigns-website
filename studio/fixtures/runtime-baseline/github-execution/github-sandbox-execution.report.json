@@ -1,0 +1,46 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "github-sandbox-execution",
+    "status":  "ok",
+    "summary":  {
+                    "totalExecutions":  2,
+                    "successfulExecutions":  1,
+                    "failedExecutions":  1,
+                    "realSandboxBranchCreated":  true,
+                    "mergeCapability":  false,
+                    "deleteCapability":  false,
+                    "deploymentCapability":  false
+                },
+    "latestExecution":  {
+                            "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                            "requestId":  "GHSX-002",
+                            "requesterRole":  "Human",
+                            "actionType":  "BRANCH_CREATE",
+                            "targetRepository":  "baswit7/professionele-ai-development-studio",
+                            "sourceBranch":  "origin/main",
+                            "targetBranch":  "sandbox/studio-os-v2-github-sandbox-execution",
+                            "result":  "sandbox-branch-created",
+                            "githubReference":  "refs/heads/sandbox/studio-os-v2-github-sandbox-execution@5a5d4d932cbaef3092069f7dfde6a64216189919",
+                            "approvalState":  "APPROVED",
+                            "executionState":  "EXECUTED",
+                            "errorDetails":  "",
+                            "riskLevel":  "medium",
+                            "humanApprovalRequired":  true,
+                            "approvedByRequester":  false,
+                            "sandboxOnly":  true,
+                            "protectedBranchWrite":  false,
+                            "forbiddenCapabilities":  {
+                                                          "merge":  false,
+                                                          "delete":  false,
+                                                          "rebase":  false,
+                                                          "forcePush":  false,
+                                                          "repositorySettings":  false,
+                                                          "collaborators":  false,
+                                                          "secrets":  false,
+                                                          "deployments":  false,
+                                                          "softwareFactory":  false,
+                                                          "autonomousRunner":  false
+                                                      }
+                        }
+}

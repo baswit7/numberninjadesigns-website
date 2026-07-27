@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.health",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "studioHealthScore",
+    "classification",
+    "scoringModel",
+    "components",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "allowedClassifications": [
+    "Elite",
+    "Healthy",
+    "Attention Required",
+    "At Risk",
+    "Critical"
+  ],
+  "traceability": {
+    "requiresInputs": true,
+    "requiresWeights": true,
+    "requiresCalculationPath": true
+  }
+}

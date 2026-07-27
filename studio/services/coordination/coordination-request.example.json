@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "requestId": "phase-8.sample.feature-development",
+  "createdAt": "2026-06-04T00:00:00.0000000Z",
+  "workflowId": "feature-development",
+  "approvalState": "approved_for_coordination",
+  "objective": "Coordinate a reviewed feature-development request into a non-executing Studio OS coordination graph.",
+  "sourcePhase": "phase-7-command-preparation",
+  "planningInputs": [
+    {
+      "id": "command-classification",
+      "type": "command_classification",
+      "description": "Approved non-executing command classification metadata from Phase 7."
+    },
+    {
+      "id": "action-plan",
+      "type": "action_plan",
+      "description": "Approved non-executing action-plan metadata from Phase 7."
+    },
+    {
+      "id": "governance-evidence",
+      "type": "governance_evidence",
+      "description": "Governance evidence confirming the request is coordination-only."
+    }
+  ],
+  "forbiddenCapabilities": [
+    "provider_execution",
+    "api_calls",
+    "deployments",
+    "runtime_mutation",
+    "shell_execution",
+    "command_execution",
+    "code_generation_execution",
+    "agent_execution",
+    "task_runners",
+    "schedulers",
+    "background_services",
+    "business_features",
+    "executable_hooks",
+    "provider_credentials"
+  ],
+  "executionAllowed": false,
+  "nonExecutableMetadata": {
+    "phase": "phase-8",
+    "owner": "studio-os",
+    "safetyClass": "coordination-only"
+  }
+}

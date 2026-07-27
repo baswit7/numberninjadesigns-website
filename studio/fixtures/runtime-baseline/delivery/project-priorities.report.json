@@ -1,0 +1,167 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:prioritization",
+    "sourceFile":  "config/delivery.tasks.json",
+    "scoringSourceFile":  "config/delivery.scoring.json",
+    "readOnly":  true,
+    "scoringModel":  {
+                         "schemaVersion":  "1.0.0",
+                         "scoringId":  "studio-os-sprint-1-project-delivery-scoring",
+                         "description":  "Deterministic delivery prioritization model for practical project work. No AI scoring.",
+                         "scoreRange":  {
+                                            "minimum":  0,
+                                            "maximum":  100
+                                        },
+                         "baseWeights":  {
+                                             "businessValue":  0.3,
+                                             "urgency":  0.2,
+                                             "userImpact":  0.2,
+                                             "unblockValue":  0.15,
+                                             "confidence":  0.1,
+                                             "effortPenalty":  0.05
+                                         },
+                         "projectWeights":  {
+                                                "platform":  {
+                                                                 "businessValue":  0.25,
+                                                                 "urgency":  0.15,
+                                                                 "userImpact":  0.2,
+                                                                 "unblockValue":  0.25,
+                                                                 "confidence":  0.1,
+                                                                 "effortPenalty":  0.05
+                                                             },
+                                                "ecommerce":  {
+                                                                  "businessValue":  0.35,
+                                                                  "urgency":  0.2,
+                                                                  "userImpact":  0.2,
+                                                                  "unblockValue":  0.1,
+                                                                  "confidence":  0.1,
+                                                                  "effortPenalty":  0.05
+                                                              },
+                                                "content":  {
+                                                                "businessValue":  0.25,
+                                                                "urgency":  0.25,
+                                                                "userImpact":  0.2,
+                                                                "unblockValue":  0.15,
+                                                                "confidence":  0.1,
+                                                                "effortPenalty":  0.05
+                                                            },
+                                                "product":  {
+                                                                "businessValue":  0.3,
+                                                                "urgency":  0.15,
+                                                                "userImpact":  0.25,
+                                                                "unblockValue":  0.15,
+                                                                "confidence":  0.1,
+                                                                "effortPenalty":  0.05
+                                                            }
+                                            },
+                         "roiWeights":  {
+                                            "expectedBusinessImpact":  0.45,
+                                            "businessValue":  0.25,
+                                            "confidence":  0.15,
+                                            "estimatedHoursPenalty":  0.15
+                                        },
+                         "releaseReadinessRules":  {
+                                                       "releaseReadyStatus":  "release_ready",
+                                                       "blockedStatus":  "blocked",
+                                                       "reviewStatus":  "review",
+                                                       "minimumPriorityScoreForReady":  70,
+                                                       "minimumRoiScoreForReady":  65
+                                                   },
+                         "boundaries":  {
+                                            "deterministicOnly":  true,
+                                            "aiScoring":  false,
+                                            "executionEngine":  false,
+                                            "providerExecution":  false,
+                                            "githubExecution":  false,
+                                            "deploymentExecution":  false,
+                                            "agentExecution":  false,
+                                            "credentialAccess":  false,
+                                            "secretAccess":  false,
+                                            "automaticApproval":  false,
+                                            "automaticDispatch":  false
+                                        }
+                     },
+    "rankedTasks":  [
+                        {
+                            "rank":  1,
+                            "taskId":  "numberninjadesigns-001",
+                            "projectId":  "numberninjadesigns",
+                            "title":  "Build Etsy listing workflow foundation",
+                            "priorityScore":  91,
+                            "roiScore":  92,
+                            "whyThisTask":  "Blocks 1 task",
+                            "effort":  4,
+                            "estimatedHours":  4
+                        },
+                        {
+                            "rank":  2,
+                            "taskId":  "studio-os-001",
+                            "projectId":  "studio-os",
+                            "title":  "Create project delivery system foundation",
+                            "priorityScore":  88,
+                            "roiScore":  76,
+                            "whyThisTask":  "Blocks 1 task",
+                            "effort":  5,
+                            "estimatedHours":  6
+                        },
+                        {
+                            "rank":  3,
+                            "taskId":  "boodschappenvergelijker-001",
+                            "projectId":  "boodschappenvergelijker",
+                            "title":  "Define first grocery comparison workflow",
+                            "priorityScore":  80,
+                            "roiScore":  74,
+                            "whyThisTask":  "Highest ROI",
+                            "effort":  5,
+                            "estimatedHours":  5
+                        },
+                        {
+                            "rank":  4,
+                            "taskId":  "tok-hub-001",
+                            "projectId":  "tok-hub",
+                            "title":  "Define content production pipeline",
+                            "priorityScore":  78,
+                            "roiScore":  76,
+                            "whyThisTask":  "Highest ROI",
+                            "effort":  5,
+                            "estimatedHours":  5
+                        },
+                        {
+                            "rank":  5,
+                            "taskId":  "numberninjadesigns-002",
+                            "projectId":  "numberninjadesigns",
+                            "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+                            "priorityScore":  76,
+                            "roiScore":  78,
+                            "whyThisTask":  "High business impact",
+                            "effort":  3,
+                            "estimatedHours":  3
+                        },
+                        {
+                            "rank":  6,
+                            "taskId":  "studio-os-002",
+                            "projectId":  "studio-os",
+                            "title":  "Link project cockpit output to daily operating routine",
+                            "priorityScore":  72,
+                            "roiScore":  73,
+                            "whyThisTask":  "Best current priority score",
+                            "effort":  2,
+                            "estimatedHours":  2
+                        }
+                    ],
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

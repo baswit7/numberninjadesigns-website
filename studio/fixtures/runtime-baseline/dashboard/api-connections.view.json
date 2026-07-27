@@ -1,0 +1,415 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T20:57:56.3858444Z",
+  "source": "api-connections:validate-api-connections.ps1",
+  "sourceFile": "runtime/api-connections/api-status.report.json",
+  "status": "missing",
+  "severity": "warning",
+  "summary": "API connection projection contains 16 sanitized provider status cards.",
+  "cards": [
+    {
+      "id": "api-connection.openai",
+      "title": "OpenAI",
+      "status": "connected",
+      "severity": "success",
+      "description": "OpenAI credentials are present and the models endpoint is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:56.4486883Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "openai",
+        "provider": "OpenAI",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:56.4486883Z",
+        "safeMessage": "OpenAI credentials are present and the models endpoint is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "OPENAI_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.github",
+      "title": "GitHub",
+      "status": "connected",
+      "severity": "success",
+      "description": "GitHub credentials are present and the authenticated user endpoint is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:57.3668696Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "github",
+        "provider": "GitHub",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:57.3668696Z",
+        "safeMessage": "GitHub credentials are present and the authenticated user endpoint is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "GITHUB_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.notion",
+      "title": "Notion",
+      "status": "connected",
+      "severity": "success",
+      "description": "Notion credentials are present and the integration user endpoint is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:57.6554572Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "notion",
+        "provider": "Notion",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:57.6554572Z",
+        "safeMessage": "Notion credentials are present and the integration user endpoint is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "NOTION_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.etsy",
+      "title": "Etsy",
+      "status": "connected",
+      "severity": "success",
+      "description": "Etsy client credentials are connected. OAuth alignment readiness: ETSY_API_KEY missing; ETSY_REDIRECT_URI present; ETSY_ACCESS_TOKEN missing.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:57.9615065Z",
+      "actionHint": "Keep existing Etsy client credentials in .env. Add ETSY_API_KEY, ETSY_REDIRECT_URI, and ETSY_ACCESS_TOKEN only when OAuth alignment is approved.",
+      "details": {
+        "providerId": "etsy",
+        "provider": "Etsy",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:57.9615065Z",
+        "safeMessage": "Etsy client credentials are connected. OAuth alignment readiness: ETSY_API_KEY missing; ETSY_REDIRECT_URI present; ETSY_ACCESS_TOKEN missing.",
+        "requiredAction": "Keep existing Etsy client credentials in .env. Add ETSY_API_KEY, ETSY_REDIRECT_URI, and ETSY_ACCESS_TOKEN only when OAuth alignment is approved.",
+        "requiredEnvironmentVariables": [
+          "ETSY_CLIENT_ID",
+          "ETSY_CLIENT_SECRET"
+        ],
+        "optionalEnvironmentVariables": [
+          "ETSY_API_KEY",
+          "ETSY_ACCESS_TOKEN",
+          "ETSY_REDIRECT_URI"
+        ]
+      }
+    },
+    {
+      "id": "api-connection.printify",
+      "title": "Printify",
+      "status": "connected",
+      "severity": "success",
+      "description": "Printify credentials are present and the configured shop is visible.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:58.1959278Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "printify",
+        "provider": "Printify",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:58.1959278Z",
+        "safeMessage": "Printify credentials are present and the configured shop is visible.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "PRINTIFY_API_KEY",
+          "PRINTIFY_SHOP_ID"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.vercel",
+      "title": "Vercel",
+      "status": "connected",
+      "severity": "success",
+      "description": "Vercel token is present and the read-only user endpoint is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:58.5506711Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "vercel",
+        "provider": "Vercel",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:58.5506711Z",
+        "safeMessage": "Vercel token is present and the read-only user endpoint is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "VERCEL_TOKEN"
+        ],
+        "optionalEnvironmentVariables": [
+          "VERCEL_ORG_ID",
+          "VERCEL_PROJECT_ID"
+        ]
+      }
+    },
+    {
+      "id": "api-connection.postman",
+      "title": "Postman",
+      "status": "missing",
+      "severity": "warning",
+      "description": "POSTMAN_API_KEY is missing from repo-root .env.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.0758161Z",
+      "actionHint": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+      "details": {
+        "providerId": "postman",
+        "provider": "Postman",
+        "status": "missing",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.0758161Z",
+        "safeMessage": "POSTMAN_API_KEY is missing from repo-root .env.",
+        "requiredAction": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+        "requiredEnvironmentVariables": [
+          "POSTMAN_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.telegram",
+      "title": "Telegram",
+      "status": "missing",
+      "severity": "warning",
+      "description": "TELEGRAM_BOT_TOKEN is missing from repo-root .env.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.0923261Z",
+      "actionHint": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+      "details": {
+        "providerId": "telegram",
+        "provider": "Telegram",
+        "status": "missing",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.0923261Z",
+        "safeMessage": "TELEGRAM_BOT_TOKEN is missing from repo-root .env.",
+        "requiredAction": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+        "requiredEnvironmentVariables": [
+          "TELEGRAM_BOT_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.exa",
+      "title": "Exa",
+      "status": "connected",
+      "severity": "success",
+      "description": "Exa API key is present and a minimal read-only search check is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.0962878Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "exa",
+        "provider": "Exa",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.0962878Z",
+        "safeMessage": "Exa API key is present and a minimal read-only search check is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "EXA_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.pexels",
+      "title": "Pexels",
+      "status": "connected",
+      "severity": "success",
+      "description": "Pexels API key is present and a minimal read-only media search is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.3416456Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "pexels",
+        "provider": "Pexels",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.3416456Z",
+        "safeMessage": "Pexels API key is present and a minimal read-only media search is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "PEXELS_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.pixabay",
+      "title": "Pixabay",
+      "status": "connected",
+      "severity": "success",
+      "description": "Pixabay API key is present and a minimal read-only media search is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.4209867Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "pixabay",
+        "provider": "Pixabay",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.4209867Z",
+        "safeMessage": "Pixabay API key is present and a minimal read-only media search is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "PIXABAY_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.google-ai",
+      "title": "Google AI / Gemini",
+      "status": "connected",
+      "severity": "success",
+      "description": "Google AI API key is present and the lightweight model list endpoint is reachable.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.7956763Z",
+      "actionHint": "No action required. Keep credentials in repo-root .env only.",
+      "details": {
+        "providerId": "google-ai",
+        "provider": "Google AI / Gemini",
+        "status": "connected",
+        "validationMode": "live",
+        "lastChecked": "2026-06-20T20:57:59.7956763Z",
+        "safeMessage": "Google AI API key is present and the lightweight model list endpoint is reachable.",
+        "requiredAction": "No action required. Keep credentials in repo-root .env only.",
+        "requiredEnvironmentVariables": [
+          "GOOGLE_AI_API_KEY"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.pinterest",
+      "title": "Pinterest",
+      "status": "missing",
+      "severity": "warning",
+      "description": "PINTEREST_CLIENT_ID or PINTEREST_CLIENT_SECRET is missing from repo-root .env.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.9538917Z",
+      "actionHint": "Add Pinterest OAuth app variable names to repo-root .env only; do not paste credential values into code, docs, runtime JSON, logs, or GitHub.",
+      "details": {
+        "providerId": "pinterest",
+        "provider": "Pinterest",
+        "status": "missing",
+        "validationMode": "oauth-readiness",
+        "lastChecked": "2026-06-20T20:57:59.9538917Z",
+        "safeMessage": "PINTEREST_CLIENT_ID or PINTEREST_CLIENT_SECRET is missing from repo-root .env.",
+        "requiredAction": "Add Pinterest OAuth app variable names to repo-root .env only; do not paste credential values into code, docs, runtime JSON, logs, or GitHub.",
+        "requiredEnvironmentVariables": [
+          "PINTEREST_CLIENT_ID",
+          "PINTEREST_CLIENT_SECRET"
+        ],
+        "optionalEnvironmentVariables": [
+          "PINTEREST_ACCESS_TOKEN"
+        ]
+      }
+    },
+    {
+      "id": "api-connection.tiktok",
+      "title": "TikTok",
+      "status": "not-configured",
+      "severity": "info",
+      "description": "TikTok is cataloged but not enabled in this validation phase.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.9886617Z",
+      "actionHint": "Keep cataloged until a specific TikTok insight workflow is scoped.",
+      "details": {
+        "providerId": "tiktok",
+        "provider": "TikTok",
+        "status": "not-configured",
+        "validationMode": "disabled",
+        "lastChecked": "2026-06-20T20:57:59.9886617Z",
+        "safeMessage": "TikTok is cataloged but not enabled in this validation phase.",
+        "requiredAction": "Keep cataloged until a specific TikTok insight workflow is scoped.",
+        "requiredEnvironmentVariables": [
+          "TIKTOK_ACCESS_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.instagram",
+      "title": "Instagram",
+      "status": "not-configured",
+      "severity": "info",
+      "description": "Instagram is cataloged but not enabled in this validation phase.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.9905059Z",
+      "actionHint": "Document channel ownership and read-only metrics needs before integration.",
+      "details": {
+        "providerId": "instagram",
+        "provider": "Instagram",
+        "status": "not-configured",
+        "validationMode": "disabled",
+        "lastChecked": "2026-06-20T20:57:59.9905059Z",
+        "safeMessage": "Instagram is cataloged but not enabled in this validation phase.",
+        "requiredAction": "Document channel ownership and read-only metrics needs before integration.",
+        "requiredEnvironmentVariables": [
+          "INSTAGRAM_ACCESS_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    },
+    {
+      "id": "api-connection.facebook",
+      "title": "Facebook",
+      "status": "not-configured",
+      "severity": "info",
+      "description": "Facebook is cataloged but not enabled in this validation phase.",
+      "sourceFile": "runtime/api-connections/api-status.report.json",
+      "lastUpdated": "2026-06-20T20:57:59.9908788Z",
+      "actionHint": "Keep cataloged until a concrete Meta page or campaign workflow is scoped.",
+      "details": {
+        "providerId": "facebook",
+        "provider": "Facebook",
+        "status": "not-configured",
+        "validationMode": "disabled",
+        "lastChecked": "2026-06-20T20:57:59.9908788Z",
+        "safeMessage": "Facebook is cataloged but not enabled in this validation phase.",
+        "requiredAction": "Keep cataloged until a concrete Meta page or campaign workflow is scoped.",
+        "requiredEnvironmentVariables": [
+          "FACEBOOK_ACCESS_TOKEN"
+        ],
+        "optionalEnvironmentVariables": []
+      }
+    }
+  ],
+  "warnings": [
+    "Postman is missing required .env configuration.",
+    "Telegram is missing required .env configuration.",
+    "Pinterest is missing required .env configuration."
+  ],
+  "errors": [],
+  "nextRecommendedAction": "Fix missing or failed live providers in repo-root .env and rerun validate-api-connections.ps1.",
+  "boundaries": {
+    "readsCredentialsFromEnvFileOnly": true,
+    "readsShellEnvironmentVariables": false,
+    "storesSecrets": false,
+    "exposesSecrets": false,
+    "writesSecretValues": false,
+    "writesProviderResponseBodies": false,
+    "printsSecrets": false,
+    "logsSecrets": false,
+    "usesBrowserStorageForSecrets": false,
+    "startsAutomation": false,
+    "sendsMessages": false,
+    "publishesContent": false,
+    "deploysSystems": false,
+    "executesProviderWorkflows": false,
+    "validatesReachabilityOnly": true
+  }
+}

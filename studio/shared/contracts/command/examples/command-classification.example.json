@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "classificationId": "phase7.classification.docs-example-001",
+  "createdAt": "2026-06-03T18:30:00Z",
+  "commandCategory": "documentation",
+  "riskLevel": "low",
+  "executionClass": "non_executing",
+  "requiresHumanApproval": false,
+  "providerSensitivity": "none",
+  "runtimeSensitivity": "none",
+  "allowedActions": [
+    "prepare reviewable documentation notes",
+    "summarize contract alignment",
+    "record blocked actions for human review"
+  ],
+  "forbiddenActions": [
+    "execute commands",
+    "call providers",
+    "mutate runtime state",
+    "trigger deployment",
+    "push or merge without explicit human approval"
+  ],
+  "blockedStates": [
+    "unknown_scope",
+    "missing_approval",
+    "unsafe_execution_request"
+  ],
+  "safetyNotes": [
+    "This classification is advisory and does not grant approval.",
+    "Any future provider-sensitive, runtime, deployment or Git mutation request must be reviewed by a human."
+  ],
+  "nonExecutableMetadata": {
+    "recordType": "example",
+    "preparedFor": "phase_7_schema_examples",
+    "traceId": "fake-trace-phase7-001"
+  },
+  "source": "shared contract example",
+  "userIntentSummary": "Classify a documentation-only command preparation request.",
+  "reviewStatus": "draft"
+}

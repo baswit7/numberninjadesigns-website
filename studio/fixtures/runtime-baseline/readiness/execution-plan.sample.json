@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "planId": "phase-10-sample-readiness-plan",
+  "createdAt": "2026-06-05T00:00:00Z",
+  "objective": "Model readiness for a future documentation-only governance handoff without granting execution permission.",
+  "sourceGovernanceRequestId": "execution-request-deployment-review",
+  "steps": [
+    { "stepId": "review-governance-evidence", "title": "Review governance evidence", "readinessStatus": "partial", "executionAllowed": false },
+    { "stepId": "confirm-human-approval-chain", "title": "Confirm human approval chain", "readinessStatus": "missing", "executionAllowed": false }
+  ],
+  "forbiddenCapabilities": ["workflow_execution", "agent_execution", "provider_execution", "model_api_calls", "github_api_calls", "deployments", "runtime_mutation", "secret_access", "credential_access", "queues", "schedulers", "workers", "executors", "business_features"],
+  "readinessDecisionId": "phase-10-sample-readiness-decision",
+  "executionAllowed": false,
+  "readinessOnly": true,
+  "nonExecutableMetadata": { "phase": "phase-10", "owner": "studio-os", "safetyClass": "readiness-sample" }
+}

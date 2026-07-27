@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "ok",
+  "sectionId": "opportunities",
+  "cards": [
+    {
+      "id": "opportunity.opp.pivot-table-operator",
+      "title": "Pivot Table Operator",
+      "status": "ok",
+      "description": "Excel Users, Data Analysts, Spreadsheet Nerds",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "product"
+        },
+        {
+          "label": "Classification",
+          "value": "A"
+        },
+        {
+          "label": "Confidence",
+          "value": 92.0
+        },
+        {
+          "label": "Evidence",
+          "value": 3
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "opportunity.opp.query-before-coffee",
+      "title": "Query Before Coffee",
+      "status": "ok",
+      "description": "SQL Developers, Programmers, Software Engineers",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "product"
+        },
+        {
+          "label": "Classification",
+          "value": "B"
+        },
+        {
+          "label": "Confidence",
+          "value": 86.0
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "opportunity.opp.model-is-overfitting",
+      "title": "Model Is Overfitting",
+      "status": "ok",
+      "description": "Machine Learning Engineers, AI Engineers, Data Scientists",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "product"
+        },
+        {
+          "label": "Classification",
+          "value": "B"
+        },
+        {
+          "label": "Confidence",
+          "value": 85.0
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "opportunity.opp.pivot-table-content-system",
+      "title": "Pivot Table Operator content angles",
+      "status": "ok",
+      "description": "Excel Users, Data Analysts, Business Analysts",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "content"
+        },
+        {
+          "label": "Classification",
+          "value": "B"
+        },
+        {
+          "label": "Confidence",
+          "value": 79.0
+        },
+        {
+          "label": "Evidence",
+          "value": 2
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "opportunity.opp.pivot-table-seo-cluster",
+      "title": "Pivot Table Operator SEO cluster",
+      "status": "ok",
+      "description": "Etsy buyers searching Excel and analyst gifts",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "seo"
+        },
+        {
+          "label": "Classification",
+          "value": "B"
+        },
+        {
+          "label": "Confidence",
+          "value": 84.0
+        },
+        {
+          "label": "Evidence",
+          "value": 1
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "opportunity.opp.manual-platform-mix",
+      "title": "Manual Etsy, TikTok and Pinterest visibility mix",
+      "status": "ok",
+      "description": "Manual content operations",
+      "facts": [
+        {
+          "label": "Kind",
+          "value": "platform"
+        },
+        {
+          "label": "Classification",
+          "value": "C"
+        },
+        {
+          "label": "Confidence",
+          "value": 62.0
+        },
+        {
+          "label": "Evidence",
+          "value": 2
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/market-intelligence/opportunities.report.json"
+    ],
+    "sourceContracts": [
+      "shared/contracts/market-intelligence/opportunities.contract.json"
+    ],
+    "sourceServices": [
+      "services/market-intelligence/generate-market-intelligence.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

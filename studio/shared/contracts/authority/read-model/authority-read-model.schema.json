@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/read-model/authority-read-model.schema.json",
+  "title": "Phase 16 Authority Read Model Projection",
+  "description": "Derived read-only projection over Phase 15 authority contracts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "projectionId",
+    "sourceContracts",
+    "generatedBy",
+    "generatedAt",
+    "summary",
+    "authorities",
+    "relationships",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "phase": {
+      "type": "string",
+      "const": "phase-16"
+    },
+    "projectionId": {
+      "type": "string",
+      "const": "studio-os-authority-read-model"
+    },
+    "sourceContracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constitution",
+        "authorityRegistry",
+        "classifications",
+        "decisions"
+      ],
+      "properties": {
+        "constitution": {
+          "type": "string",
+          "const": "shared/contracts/authority/constitution.rules.json"
+        },
+        "authorityRegistry": {
+          "type": "string",
+          "const": "shared/contracts/authority/authority-registry.json"
+        },
+        "classifications": {
+          "type": "string",
+          "const": "shared/contracts/authority/authority-classifications.json"
+        },
+        "decisions": {
+          "type": "string",
+          "const": "shared/contracts/authority/authority-decisions.json"
+        }
+      }
+    },
+    "generatedBy": {
+      "type": "string",
+      "const": "services/authority-read-model/generate-authority-read-model.ps1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "minLength": 20
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityCount",
+        "deniedAuthorityCount",
+        "constitutionalRuleCount",
+        "relationshipCount"
+      ],
+      "properties": {
+        "authorityCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deniedAuthorityCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "constitutionalRuleCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relationshipCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "authorities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorityView"
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relationshipView"
+      }
+    },
+    "boundary": {
+      "$ref": "#/$defs/readOnlyBoundary"
+    }
+  },
+  "$defs": {
+    "authorityView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityId",
+        "owner",
+        "classification",
+        "decision",
+        "approvalRequired",
+        "scope",
+        "allowedConsumers",
+        "forbiddenConsumers",
+        "governingRules",
+        "isDenied"
+      ],
+      "properties": {
+        "authorityId": {
+          "type": "string",
+          "minLength": 3
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 3
+        },
+        "classification": {
+          "type": "string",
+          "minLength": 3
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "ALLOW",
+            "DENY",
+            "REQUIRES_APPROVAL",
+            "OUT_OF_SCOPE"
+          ]
+        },
+        "approvalRequired": {
+          "type": "boolean"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 5
+        },
+        "allowedConsumers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbiddenConsumers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "governingRules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isDenied": {
+          "type": "boolean"
+        }
+      }
+    },
+    "relationshipView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relationshipId",
+        "authorityId",
+        "relationshipType",
+        "target",
+        "source"
+      ],
+      "properties": {
+        "relationshipId": {
+          "type": "string",
+          "minLength": 3
+        },
+        "authorityId": {
+          "type": "string",
+          "minLength": 3
+        },
+        "relationshipType": {
+          "type": "string",
+          "enum": [
+            "owned-by",
+            "allowed-consumer",
+            "forbidden-consumer",
+            "governed-by-rule",
+            "classified-as",
+            "decides-as"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "readOnlyBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "derivedOnly",
+        "ownsAuthority",
+        "writesAuthorityDecisions",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeMutationAllowed",
+        "approvalAutomationAllowed",
+        "workflowExecutionAllowed",
+        "browserAuthorityStorageAllowed"
+      ],
+      "properties": {
+        "derivedOnly": {
+          "type": "boolean",
+          "const": true
+        },
+        "ownsAuthority": {
+          "type": "boolean",
+          "const": false
+        },
+        "writesAuthorityDecisions": {
+          "type": "boolean",
+          "const": false
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "providerInvocationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "deploymentAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "credentialAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "secretAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "runtimeMutationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "approvalAutomationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "workflowExecutionAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "browserAuthorityStorageAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    }
+  }
+}

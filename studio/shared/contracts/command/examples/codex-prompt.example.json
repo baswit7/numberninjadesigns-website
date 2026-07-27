@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "promptId": "phase7.codex-prompt.docs-example-001",
+  "createdAt": "2026-06-03T18:32:00Z",
+  "userObjective": "Prepare Phase 7 command contract examples and validate their structural invariants without executing project workflows.",
+  "repoContext": {
+    "branch": "feature/phase-7-schema-examples-validator",
+    "relevantPaths": [
+      "shared/contracts/command",
+      "shared/contracts/command/examples",
+      "scripts/validation"
+    ],
+    "knownUntrackedFiles": [
+      "scripts/runtime/prune-dashboard-history.ps1"
+    ]
+  },
+  "phaseConstraints": {
+    "phase": "phase_7",
+    "allowedScope": [
+      "create JSON example records",
+      "create schema-only validation script",
+      "update changelog entry"
+    ],
+    "nonGoals": [
+      "executor",
+      "automation runner",
+      "provider orchestration",
+      "runtime mutation",
+      "dashboard mutation",
+      "deployment logic"
+    ]
+  },
+  "safetyBoundaries": {
+    "noProviderCalls": true,
+    "noDeployments": true,
+    "noRuntimeMutation": true,
+    "noSecretExposure": true,
+    "noUnapprovedPush": true
+  },
+  "allowedActions": [
+    "read command schemas",
+    "prepare non-executing examples",
+    "run schema-only invariant checks"
+  ],
+  "forbiddenActions": [
+    "execute project workflows",
+    "call providers",
+    "mutate runtime state",
+    "modify dashboard behavior",
+    "trigger deployment",
+    "push without explicit human approval"
+  ],
+  "expectedResponseShape": {
+    "summary": true,
+    "filesChanged": true,
+    "checksRun": true,
+    "risks": true,
+    "verdict": true
+  },
+  "approvalRequirements": {
+    "requiresHumanApproval": false,
+    "approvalReason": "This example covers read-only validation and documentation-safe preparation only.",
+    "blockedWithoutApproval": false
+  },
+  "nonExecutableMetadata": {
+    "recordType": "example",
+    "preparedFor": "phase_7_schema_examples",
+    "traceId": "fake-trace-phase7-003"
+  }
+}

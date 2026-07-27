@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/history/authority-evidence-history.schema.json",
+  "title": "Phase 20 Authority Evidence History Report",
+  "description": "Read-only historical trend and retention report derived from Phase 18 monitoring and Phase 19 evidence outputs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "reportId",
+    "generatedBy",
+    "generatedAt",
+    "sourceOfTruth",
+    "consumedReports",
+    "status",
+    "summary",
+    "history",
+    "trend",
+    "retention",
+    "lineage",
+    "freshness",
+    "regressions",
+    "unknowns",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "phase": { "type": "string", "const": "phase-20" },
+    "reportId": { "type": "string", "const": "authority-evidence-history" },
+    "generatedBy": { "type": "string", "const": "services/authority-history/generate-authority-evidence-history.ps1" },
+    "generatedAt": { "type": "string", "minLength": 20 },
+    "sourceOfTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constitution", "authorityRegistry", "monitoring", "evidence"],
+      "properties": {
+        "constitution": { "type": "string", "const": "shared/contracts/authority/constitution.rules.json" },
+        "authorityRegistry": { "type": "string", "const": "shared/contracts/authority/authority-registry.json" },
+        "monitoring": { "type": "string", "const": "runtime/authority/authority-projection-monitoring.report.json" },
+        "evidence": { "type": "string", "const": "runtime/authority/authority-monitoring-evidence.report.json" }
+      }
+    },
+    "consumedReports": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/reportInput" } },
+    "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshotCount", "knownInputCount", "unknownInputCount", "warningCount", "regressionCount"],
+      "properties": {
+        "snapshotCount": { "type": "integer", "minimum": 0 },
+        "knownInputCount": { "type": "integer", "minimum": 0 },
+        "unknownInputCount": { "type": "integer", "minimum": 0 },
+        "warningCount": { "type": "integer", "minimum": 0 },
+        "regressionCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "snapshots"],
+      "properties": {
+        "mode": { "type": "string", "const": "derived-current-snapshot" },
+        "snapshots": { "type": "array", "items": { "$ref": "#/$defs/snapshot" } }
+      }
+    },
+    "trend": { "$ref": "#/$defs/trendGroup" },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "retainedSnapshotCount", "pruningAllowed", "repairAllowed", "synchronizationAllowed", "reason"],
+      "properties": {
+        "policyId": { "type": "string", "const": "authority-evidence-history-retention" },
+        "retainedSnapshotCount": { "type": "integer", "minimum": 1 },
+        "pruningAllowed": { "type": "boolean", "const": false },
+        "repairAllowed": { "type": "boolean", "const": false },
+        "synchronizationAllowed": { "type": "boolean", "const": false },
+        "reason": { "type": "string", "minLength": 3 }
+      }
+    },
+    "lineage": { "$ref": "#/$defs/trendGroup" },
+    "freshness": { "$ref": "#/$defs/trendGroup" },
+    "regressions": { "$ref": "#/$defs/trendGroup" },
+    "unknowns": { "$ref": "#/$defs/trendGroup" },
+    "boundary": { "$ref": "#/$defs/boundary" }
+  },
+  "$defs": {
+    "reportInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "exists", "validJson", "lastModified", "verdict", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 3 },
+        "role": { "type": "string", "minLength": 3 },
+        "exists": { "type": "boolean" },
+        "validJson": { "type": "boolean" },
+        "lastModified": { "type": ["string", "null"] },
+        "verdict": { "type": "string", "enum": ["known", "unknown"] },
+        "reason": { "type": "string", "minLength": 3 }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshotId", "generatedAt", "monitoringStatus", "evidenceStatus", "findingCount", "unknownCount", "source"],
+      "properties": {
+        "snapshotId": { "type": "string", "minLength": 3 },
+        "generatedAt": { "type": "string", "minLength": 20 },
+        "monitoringStatus": { "type": "string", "minLength": 2 },
+        "evidenceStatus": { "type": "string", "minLength": 2 },
+        "findingCount": { "type": "integer", "minimum": 0 },
+        "unknownCount": { "type": "integer", "minimum": 0 },
+        "source": { "type": "string", "minLength": 3 }
+      }
+    },
+    "trendGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "items"],
+      "properties": {
+        "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/trendItem" } }
+      }
+    },
+    "trendItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "summary", "source", "safe"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+        "summary": { "type": "string", "minLength": 3 },
+        "source": { "type": "string", "minLength": 3 },
+        "safe": { "type": "boolean" }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historyOnly",
+        "trendOnly",
+        "readOnly",
+        "derivedOnly",
+        "reportWritingOnly",
+        "ownsAuthorityTruth",
+        "ownsEvidenceTruth",
+        "createsDecisions",
+        "createsApprovals",
+        "repairsProjection",
+        "synchronizesProjection",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeTruthMutationAllowed",
+        "dashboardMutationAllowed",
+        "approvalMutationAllowed",
+        "workflowExecutionAllowed",
+        "workerAllowed",
+        "schedulerAllowed",
+        "queueAllowed",
+        "automationAllowed",
+        "selfHealingAllowed",
+        "browserAuthorityStorageAllowed"
+      ],
+      "properties": {
+        "historyOnly": { "type": "boolean", "const": true },
+        "trendOnly": { "type": "boolean", "const": true },
+        "readOnly": { "type": "boolean", "const": true },
+        "derivedOnly": { "type": "boolean", "const": true },
+        "reportWritingOnly": { "type": "boolean", "const": true },
+        "ownsAuthorityTruth": { "type": "boolean", "const": false },
+        "ownsEvidenceTruth": { "type": "boolean", "const": false },
+        "createsDecisions": { "type": "boolean", "const": false },
+        "createsApprovals": { "type": "boolean", "const": false },
+        "repairsProjection": { "type": "boolean", "const": false },
+        "synchronizesProjection": { "type": "boolean", "const": false },
+        "executionAllowed": { "type": "boolean", "const": false },
+        "providerInvocationAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "credentialAccessAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false },
+        "runtimeTruthMutationAllowed": { "type": "boolean", "const": false },
+        "dashboardMutationAllowed": { "type": "boolean", "const": false },
+        "approvalMutationAllowed": { "type": "boolean", "const": false },
+        "workflowExecutionAllowed": { "type": "boolean", "const": false },
+        "workerAllowed": { "type": "boolean", "const": false },
+        "schedulerAllowed": { "type": "boolean", "const": false },
+        "queueAllowed": { "type": "boolean", "const": false },
+        "automationAllowed": { "type": "boolean", "const": false },
+        "selfHealingAllowed": { "type": "boolean", "const": false },
+        "browserAuthorityStorageAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

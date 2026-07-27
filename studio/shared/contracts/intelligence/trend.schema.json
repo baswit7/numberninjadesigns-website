@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "intelligence.trend",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "sampleSize",
+    "trends",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedTrendStatuses": [
+    "Improving",
+    "Stable",
+    "Declining"
+  ],
+  "traceability": {
+    "requiresSampleSize": true,
+    "requiresFirstValue": true,
+    "requiresLatestValue": true,
+    "requiresRule": true
+  }
+}

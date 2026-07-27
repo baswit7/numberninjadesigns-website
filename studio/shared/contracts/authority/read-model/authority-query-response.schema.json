@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/read-model/authority-query-response.schema.json",
+  "title": "Phase 16 Authority Query Response",
+  "description": "Read-only answer shape for authority lookup questions derived from Phase 15 contracts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "responseId",
+    "queryType",
+    "generatedBy",
+    "generatedAt",
+    "sourceProjection",
+    "answers",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "phase": {
+      "type": "string",
+      "const": "phase-16"
+    },
+    "responseId": {
+      "type": "string",
+      "minLength": 3
+    },
+    "queryType": {
+      "type": "string",
+      "enum": [
+        "owners-by-authority",
+        "consumers-by-authority",
+        "denied-authorities",
+        "decisions-by-authority",
+        "rules-by-authority",
+        "contracts-by-authority"
+      ]
+    },
+    "generatedBy": {
+      "type": "string",
+      "const": "services/authority-read-model/generate-authority-read-model.ps1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "minLength": 20
+    },
+    "sourceProjection": {
+      "type": "string",
+      "const": "runtime/authority/authority-read-model.report.json"
+    },
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readOnly",
+        "derivedOnly",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeMutationAllowed"
+      ],
+      "properties": {
+        "readOnly": {
+          "type": "boolean",
+          "const": true
+        },
+        "derivedOnly": {
+          "type": "boolean",
+          "const": true
+        },
+        "executionAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "providerInvocationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "deploymentAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "credentialAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "secretAccessAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "runtimeMutationAllowed": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    }
+  }
+}

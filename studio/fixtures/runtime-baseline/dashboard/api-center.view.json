@@ -1,0 +1,385 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-08T19:18:46.0795990Z",
+    "source":  "api-center:config/api-center.config.json",
+    "sourceFile":  "config/api-center.config.json",
+    "status":  "ok",
+    "readOnly":  true,
+    "summary":  {
+                    "providerCount":  10,
+                    "notConfiguredCount":  10,
+                    "configuredCount":  0,
+                    "totalEnvironmentVariableNameCount":  11,
+                    "authTypes":  [
+                                      "api-key",
+                                      "bot-token",
+                                      "integration-token",
+                                      "oauth2",
+                                      "token"
+                                  ],
+                    "usedByProjects":  [
+                                           "Future Client Projects",
+                                           "NumberNinjaDesigns",
+                                           "Studio OS",
+                                           "NumberNinjaDesigns / TOK Hub"
+                                       ]
+                },
+    "cards":  [
+                  {
+                      "id":  "api.pinterest",
+                      "title":  "Pinterest",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=oauth2; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Define read-only board and pin visibility needs before integration.",
+                      "details":  {
+                                      "providerId":  "pinterest",
+                                      "providerName":  "Pinterest",
+                                      "purpose":  "Visual content planning, pins, boards, and brand discovery workflows when activated.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns",
+                                                             "NumberNinjaDesigns / TOK Hub"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.pinterest.com/docs/api/v5",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "PINTEREST_ACCESS_TOKEN"
+                                                                       ],
+                                      "authType":  "oauth2",
+                                      "scopesRequired":  [
+                                                             "pins:read",
+                                                             "boards:read"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Access depends on Pinterest app configuration and approved scopes."
+                                                           ],
+                                      "nextAction":  "Define read-only board and pin visibility needs before integration."
+                                  }
+                  },
+                  {
+                      "id":  "api.tiktok",
+                      "title":  "TikTok",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=oauth2; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Keep cataloged until a specific TikTok insight workflow is scoped.",
+                      "details":  {
+                                      "providerId":  "tiktok",
+                                      "providerName":  "TikTok",
+                                      "purpose":  "Content insights, trend research, and creator/search context for social content planning.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns",
+                                                             "NumberNinjaDesigns / TOK Hub"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.tiktok.com/doc/overview",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "TIKTOK_ACCESS_TOKEN"
+                                                                       ],
+                                      "authType":  "oauth2",
+                                      "scopesRequired":  [
+                                                             "user.info.basic"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Available endpoints and scopes depend on TikTok app review and product approval."
+                                                           ],
+                                      "nextAction":  "Keep cataloged until a specific TikTok insight workflow is scoped."
+                                  }
+                  },
+                  {
+                      "id":  "api.instagram",
+                      "title":  "Instagram",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=oauth2; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Document channel ownership and read-only metrics needs before integration.",
+                      "details":  {
+                                      "providerId":  "instagram",
+                                      "providerName":  "Instagram",
+                                      "purpose":  "Social content planning and performance context for brand channels.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns",
+                                                             "NumberNinjaDesigns / TOK Hub"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.facebook.com/docs/instagram-platform",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "INSTAGRAM_ACCESS_TOKEN"
+                                                                       ],
+                                      "authType":  "oauth2",
+                                      "scopesRequired":  [
+                                                             "instagram_basic"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Business account and platform permissions determine available data."
+                                                           ],
+                                      "nextAction":  "Document channel ownership and read-only metrics needs before integration."
+                                  }
+                  },
+                  {
+                      "id":  "api.vercel",
+                      "title":  "Vercel",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=token; envVars=1; projects=3; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Use as catalog metadata only; do not add deployment automation in V1.3.",
+                      "details":  {
+                                      "providerId":  "vercel",
+                                      "providerName":  "Vercel",
+                                      "purpose":  "Deployment and hosting visibility for web projects when delivery workflows need it.",
+                                      "usedByProjects":  [
+                                                             "Studio OS",
+                                                             "NumberNinjaDesigns",
+                                                             "Future Client Projects"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://vercel.com/docs/rest-api",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "VERCEL_TOKEN"
+                                                                       ],
+                                      "authType":  "token",
+                                      "scopesRequired":  [
+
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Team, project, and token permissions determine visible deployments."
+                                                           ],
+                                      "nextAction":  "Use as catalog metadata only; do not add deployment automation in V1.3."
+                                  }
+                  },
+                  {
+                      "id":  "api.facebook",
+                      "title":  "Facebook",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=oauth2; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Keep cataloged until a concrete Meta page or campaign workflow is scoped.",
+                      "details":  {
+                                      "providerId":  "facebook",
+                                      "providerName":  "Facebook",
+                                      "purpose":  "Meta page, advertising, and social graph context for brand workflows when required.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns",
+                                                             "NumberNinjaDesigns / TOK Hub"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.facebook.com/docs/graph-api",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "FACEBOOK_ACCESS_TOKEN"
+                                                                       ],
+                                      "authType":  "oauth2",
+                                      "scopesRequired":  [
+                                                             "pages_read_engagement"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Meta permissions, app review, and asset ownership control access."
+                                                           ],
+                                      "nextAction":  "Keep cataloged until a concrete Meta page or campaign workflow is scoped."
+                                  }
+                  },
+                  {
+                      "id":  "api.github",
+                      "title":  "GitHub",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=token; envVars=1; projects=3; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "List required scopes per project before adding any GitHub integration workflow.",
+                      "details":  {
+                                      "providerId":  "github",
+                                      "providerName":  "GitHub",
+                                      "purpose":  "Repository, pull request, issue, and CI visibility for development delivery.",
+                                      "usedByProjects":  [
+                                                             "Studio OS",
+                                                             "NumberNinjaDesigns",
+                                                             "Future Client Projects"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://docs.github.com/rest",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "GITHUB_TOKEN"
+                                                                       ],
+                                      "authType":  "token",
+                                      "scopesRequired":  [
+                                                             "repo",
+                                                             "workflow"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Token scopes and organization policies determine accessible repositories."
+                                                           ],
+                                      "nextAction":  "List required scopes per project before adding any GitHub integration workflow."
+                                  }
+                  },
+                  {
+                      "id":  "api.openai",
+                      "title":  "OpenAI",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=api-key; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Keep documented until a project explicitly requires OpenAI runtime integration.",
+                      "details":  {
+                                      "providerId":  "openai",
+                                      "providerName":  "OpenAI",
+                                      "purpose":  "AI generation, analysis, embeddings, and assistant workflows when explicitly activated.",
+                                      "usedByProjects":  [
+                                                             "Studio OS",
+                                                             "Future Client Projects"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://platform.openai.com/docs",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "OPENAI_API_KEY"
+                                                                       ],
+                                      "authType":  "api-key",
+                                      "scopesRequired":  [
+
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Usage depends on model availability, rate limits, and configured billing."
+                                                           ],
+                                      "nextAction":  "Keep documented until a project explicitly requires OpenAI runtime integration."
+                                  }
+                  },
+                  {
+                      "id":  "api.telegram",
+                      "title":  "Telegram",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=bot-token; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Keep as catalog-only until a real Telegram bot use case is approved.",
+                      "details":  {
+                                      "providerId":  "telegram",
+                                      "providerName":  "Telegram",
+                                      "purpose":  "Messaging bot channel for alerts, publishing support, or client communication when needed.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns / TOK Hub",
+                                                             "Future Client Projects"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://core.telegram.org/bots/api",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "TELEGRAM_BOT_TOKEN"
+                                                                       ],
+                                      "authType":  "bot-token",
+                                      "scopesRequired":  [
+
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Bot permissions and chat access must be configured outside Studio OS."
+                                                           ],
+                                      "nextAction":  "Keep as catalog-only until a real Telegram bot use case is approved."
+                                  }
+                  },
+                  {
+                      "id":  "api.etsy",
+                      "title":  "Etsy",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=oauth2; envVars=2; projects=1; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Define read-only shop visibility requirements before any Etsy integration.",
+                      "details":  {
+                                      "providerId":  "etsy",
+                                      "providerName":  "Etsy",
+                                      "purpose":  "Commerce marketplace data for NumberNinjaDesigns product and shop workflows.",
+                                      "usedByProjects":  [
+                                                             "NumberNinjaDesigns"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.etsy.com/documentation",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "ETSY_API_KEY",
+                                                                           "ETSY_ACCESS_TOKEN"
+                                                                       ],
+                                      "authType":  "oauth2",
+                                      "scopesRequired":  [
+                                                             "shops_r",
+                                                             "listings_r"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Marketplace APIs require app registration and OAuth authorization outside this catalog."
+                                                           ],
+                                      "nextAction":  "Define read-only shop visibility requirements before any Etsy integration."
+                                  }
+                  },
+                  {
+                      "id":  "api.notion",
+                      "title":  "Notion",
+                      "status":  "not-configured",
+                      "severity":  "info",
+                      "description":  "auth=integration-token; envVars=1; projects=2; health=not-configured",
+                      "sourceFile":  "config/api-center.config.json",
+                      "lastUpdated":  "2026-06-08T19:18:46.0795990Z",
+                      "actionHint":  "Document target workspace and page boundaries before any Notion integration.",
+                      "details":  {
+                                      "providerId":  "notion",
+                                      "providerName":  "Notion",
+                                      "purpose":  "Knowledge base, project documentation, and workspace context integration when activated.",
+                                      "usedByProjects":  [
+                                                             "Studio OS",
+                                                             "Future Client Projects"
+                                                         ],
+                                      "status":  "cataloged",
+                                      "health":  "not-configured",
+                                      "docsReference":  "https://developers.notion.com",
+                                      "requiredEnvironmentVariables":  [
+                                                                           "NOTION_TOKEN"
+                                                                       ],
+                                      "authType":  "integration-token",
+                                      "scopesRequired":  [
+                                                             "read_content"
+                                                         ],
+                                      "knownLimitations":  [
+                                                               "Workspace sharing controls decide which pages an integration can access."
+                                                           ],
+                                      "nextAction":  "Document target workspace and page boundaries before any Notion integration."
+                                  }
+                  }
+              ],
+    "warnings":  [
+
+                 ],
+    "errors":  [
+
+               ],
+    "nextRecommendedAction":  "Use the API Center as a read-only catalog; add credentials or provider integrations only in explicitly scoped future work.",
+    "boundaries":  {
+                       "readOnlyCatalog":  true,
+                       "sourceOfTruth":  "config/api-center.config.json",
+                       "storesSecrets":  false,
+                       "exposesTokens":  false,
+                       "readsSecretValues":  false,
+                       "validatesCredentials":  false,
+                       "performsApiCalls":  false,
+                       "callsProviders":  false,
+                       "executesDeployments":  false,
+                       "createsApprovals":  false,
+                       "createsAgents":  false,
+                       "createsWorkersQueuesOrSchedulers":  false
+                   }
+}

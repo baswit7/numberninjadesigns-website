@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0.0",
+  "providers": [
+    {
+      "id": "openai",
+      "displayName": "OpenAI",
+      "category": "ai",
+      "credentialEnvVars": [
+        "OPENAI_API_KEY"
+      ],
+      "permissions": [
+        "model.invoke",
+        "agent.run"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "provider-header-aware",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 3
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "github",
+      "displayName": "GitHub",
+      "category": "governance",
+      "credentialEnvVars": [
+        "GITHUB_TOKEN"
+      ],
+      "permissions": [
+        "repo.read",
+        "repo.write",
+        "pull_request.manage"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "provider-header-aware",
+        "retryAfterHeader": "x-ratelimit-reset",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "notion",
+      "displayName": "Notion",
+      "category": "memory",
+      "credentialEnvVars": [
+        "NOTION_TOKEN"
+      ],
+      "permissions": [
+        "page.read",
+        "page.write",
+        "database.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 3
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "vercel",
+      "displayName": "Vercel",
+      "category": "deployment",
+      "credentialEnvVars": [
+        "VERCEL_TOKEN"
+      ],
+      "permissions": [
+        "deployment.read",
+        "deployment.write",
+        "project.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "pinterest",
+      "displayName": "Pinterest",
+      "category": "social",
+      "credentialEnvVars": [
+        "PINTEREST_ACCESS_TOKEN"
+      ],
+      "permissions": [
+        "content.read",
+        "content.write"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "tiktok",
+      "displayName": "TikTok",
+      "category": "social",
+      "credentialEnvVars": [
+        "TIKTOK_ACCESS_TOKEN"
+      ],
+      "permissions": [
+        "creator_search.read",
+        "content.analytics.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "reddit",
+      "displayName": "Reddit",
+      "category": "social",
+      "credentialEnvVars": [
+        "REDDIT_CLIENT_ID",
+        "REDDIT_CLIENT_SECRET"
+      ],
+      "permissions": [
+        "community.read",
+        "post.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "facebook",
+      "displayName": "Facebook",
+      "category": "social",
+      "credentialEnvVars": [
+        "META_GRAPH_API_VERSION",
+        "META_FACEBOOK_PAGE_ID",
+        "META_FACEBOOK_PAGE_ACCESS_TOKEN"
+      ],
+      "permissions": [
+        "page.read",
+        "insights.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    },
+    {
+      "id": "instagram",
+      "displayName": "Instagram",
+      "category": "social",
+      "credentialEnvVars": [
+        "META_GRAPH_API_VERSION",
+        "META_FACEBOOK_PAGE_ACCESS_TOKEN",
+        "INSTAGRAM_BUSINESS_ACCOUNT_ID"
+      ],
+      "permissions": [
+        "content.read",
+        "insights.read"
+      ],
+      "rateLimitPolicy": {
+        "strategy": "bounded-backoff",
+        "retryAfterHeader": "retry-after",
+        "maxRetries": 2
+      },
+      "health": {
+        "mode": "credential-presence",
+        "requiredForCoreRuntime": false
+      }
+    }
+  ]
+}

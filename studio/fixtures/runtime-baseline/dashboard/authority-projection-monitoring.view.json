@@ -1,0 +1,77 @@
+{
+    "generatedAt":  "2026-06-07T21:46:28.2585162Z",
+    "source":  "studio-dashboard:authority-projection-monitoring",
+    "status":  "warning",
+    "summary":  "Authority projection monitoring displays Phase 18 drift, freshness, lineage and completeness evidence only.",
+    "cards":  [
+                  {
+                      "id":  "authority-projection.stale-projection.authority-dashboard-projection-is-older-than-the-authority-read-model.",
+                      "title":  "stale-projection",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "Authority dashboard projection is older than the authority read model.",
+                      "sourceFile":  "runtime/authority/authority-projection-monitoring.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:20.0572095Z",
+                      "actionHint":  "Finding is report-only evidence. No correction path exists in monitoring or dashboard.",
+                      "details":  {
+                                      "type":  "stale-projection",
+                                      "source":  "runtime/authority/authority-read-model.report.json",
+                                      "projection":  "runtime/dashboard/authority.view.json",
+                                      "canExecute":  false,
+                                      "canMutate":  false,
+                                      "canRepair":  false,
+                                      "canSynchronize":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority-projection-monitoring.freshness",
+                      "title":  "Projection Freshness",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "sourceLastModified=2026-06-07T21:46:19.6989939Z; projectionLastModified=2026-06-07T21:43:48.8313350Z; olderThanSource=True",
+                      "sourceFile":  "runtime/authority/authority-projection-monitoring.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:20.0572095Z",
+                      "actionHint":  "Freshness is detected only; refresh decisions remain outside dashboard authority.",
+                      "details":  {
+                                      "sourceLastModified":  "2026-06-07T21:46:19.6989939Z",
+                                      "projectionLastModified":  "2026-06-07T21:43:48.8313350Z",
+                                      "projectionOlderThanSource":  true,
+                                      "canExecute":  false,
+                                      "canMutate":  false,
+                                      "canRepair":  false,
+                                      "canSynchronize":  false
+                                  }
+                  },
+                  {
+                      "id":  "authority-projection-monitoring.summary",
+                      "title":  "Projection Drift Summary",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "findings=1; missing=0; stale=1; mismatches=0",
+                      "sourceFile":  "runtime/authority/authority-projection-monitoring.report.json",
+                      "lastUpdated":  "2026-06-07T21:46:20.0572095Z",
+                      "actionHint":  "Monitoring is visibility only; no dashboard repair, synchronization or execution is available.",
+                      "details":  {
+                                      "authorityCount":  15,
+                                      "expectedProjectionCount":  11,
+                                      "missingProjectionCount":  0,
+                                      "staleProjectionCount":  1,
+                                      "structuralMismatchCount":  0,
+                                      "lineageIssueCount":  0,
+                                      "completenessIssueCount":  0,
+                                      "findingCount":  1,
+                                      "canExecute":  false,
+                                      "canMutate":  false,
+                                      "canRepair":  false,
+                                      "canSynchronize":  false
+                                  }
+                  }
+              ],
+    "warnings":  [
+
+                 ],
+    "errors":  [
+
+               ],
+    "nextRecommendedAction":  "Use monitoring findings as read-only evidence; correction remains outside Phase 18."
+}

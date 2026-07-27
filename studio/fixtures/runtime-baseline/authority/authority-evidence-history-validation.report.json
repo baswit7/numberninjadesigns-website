@@ -1,0 +1,57 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-20",
+    "reportId":  "authority-evidence-history-validation",
+    "status":  "passed",
+    "summary":  "Authority evidence history passed deterministic read-only trend and retention checks.",
+    "checks":  [
+                   {
+                       "id":  "history-manifest",
+                       "status":  "checked",
+                       "consumedReports":  4
+                   },
+                   {
+                       "id":  "history-report",
+                       "status":  "checked",
+                       "snapshots":  1,
+                       "statusValue":  "unknown"
+                   },
+                   {
+                       "id":  "phase-20-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "historyOnly":  true,
+                     "trendOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeTruthMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "queueAllowed":  false,
+                     "automationAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Executive Cockpit Runtime Report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "source",
+    "status",
+    "sectionId",
+    "cards",
+    "lineage",
+    "boundaries"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "generatedAt": { "type": "string" },
+    "source": { "type": "string" },
+    "status": { "enum": ["ok", "warning", "error", "unknown"] },
+    "sectionId": { "type": "string" },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "description", "facts", "lineage"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": { "type": "string" },
+          "description": { "type": "string" },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label", "value"],
+              "properties": {
+                "label": { "type": "string" },
+                "value": {}
+              }
+            }
+          },
+          "actionHint": { "type": "string" },
+          "lineage": {
+            "type": "object",
+            "required": ["sourceReport", "sourceContract", "sourceService"],
+            "properties": {
+              "sourceReport": { "type": "string" },
+              "sourceContract": { "type": "string" },
+              "sourceService": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["sourceReports", "sourceContracts", "sourceServices"],
+      "properties": {
+        "sourceReports": { "type": "array", "items": { "type": "string" } },
+        "sourceContracts": { "type": "array", "items": { "type": "string" } },
+        "sourceServices": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "required": [
+        "readOnly",
+        "executionEngine",
+        "providerExecution",
+        "publishingExecution",
+        "schedulerExecution",
+        "oauthCapability",
+        "credentialAccess",
+        "secretAccess",
+        "agentExecution",
+        "automaticDecisionMaking"
+      ],
+      "properties": {
+        "readOnly": { "const": true },
+        "executionEngine": { "const": false },
+        "providerExecution": { "const": false },
+        "publishingExecution": { "const": false },
+        "schedulerExecution": { "const": false },
+        "oauthCapability": { "const": false },
+        "credentialAccess": { "const": false },
+        "secretAccess": { "const": false },
+        "agentExecution": { "const": false },
+        "automaticDecisionMaking": { "const": false }
+      }
+    }
+  }
+}

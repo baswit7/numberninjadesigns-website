@@ -1,0 +1,72 @@
+{
+  "promptId": "phase7.codex-prompt.generated-example-001",
+  "createdAt": "2026-06-04T09:00:00Z",
+  "userObjective": "Prepare a documentation and schema-only Codex handoff for Phase 7 command preparation review.",
+  "repoContext": {
+    "branch": "feature/phase-7-codex-prompt-generator",
+    "relevantPaths": [
+      "docs/governance/PHASE_7_COMMAND_PREPARATION_DESIGN.md",
+      "shared/contracts/command/codex-prompt.schema.json",
+      "shared/contracts/command/examples"
+    ],
+    "knownUntrackedFiles": [
+      "scripts/runtime/prune-dashboard-history.ps1"
+    ]
+  },
+  "phaseConstraints": {
+    "phase": "phase_7",
+    "allowedScope": [
+      "prepare a non-executing Codex prompt artifact",
+      "review documentation and schema context",
+      "report validation results"
+    ],
+    "nonGoals": [
+      "executor",
+      "automation runner",
+      "provider orchestration",
+      "runtime mutation",
+      "dashboard mutation",
+      "deployment controller",
+      "pruning"
+    ]
+  },
+  "safetyBoundaries": {
+    "noProviderCalls": true,
+    "noDeployments": true,
+    "noRuntimeMutation": true,
+    "noSecretExposure": true,
+    "noUnapprovedPush": true
+  },
+  "allowedActions": [
+    "read repository documentation",
+    "prepare contract-shaped JSON",
+    "perform deterministic validation"
+  ],
+  "forbiddenActions": [
+    "command execution",
+    "shell execution",
+    "provider calls",
+    "runtime changes",
+    "dashboard changes",
+    "deployment actions",
+    "Git push merge or delete actions",
+    "history pruning"
+  ],
+  "expectedResponseShape": {
+    "summary": true,
+    "filesChanged": true,
+    "checksRun": true,
+    "risks": true,
+    "verdict": true
+  },
+  "approvalRequirements": {
+    "requiresHumanApproval": false,
+    "approvalReason": "The handoff is documentation and schema preparation only.",
+    "blockedWithoutApproval": false
+  },
+  "nonExecutableMetadata": {
+    "recordType": "generator_input_example",
+    "preparedFor": "phase_7_codex_prompt_generator",
+    "traceId": "fake-trace-phase7-generator-001"
+  }
+}

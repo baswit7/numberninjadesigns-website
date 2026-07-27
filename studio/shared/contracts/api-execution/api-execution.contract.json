@@ -1,0 +1,388 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "studio-os-v2-api-execution-layer",
+  "capability": "api-execution-planning",
+  "mode": "offline-planning-approval-audit-only",
+  "sourceOfTruth": "shared/contracts/api-execution/api-execution.contract.json",
+  "providerCatalogSource": "config/api-center.config.json",
+  "schema": "shared/contracts/api-execution/api-execution.schema.json",
+  "generatedPlan": "runtime/api-execution/api-execution.plan.json",
+  "generatedAudit": "runtime/api-execution/api-execution.audit.json",
+  "generatedApprovalReport": "runtime/api-execution/api-execution-approval.report.json",
+  "allowedProviders": [
+    "OpenAI",
+    "GitHub",
+    "Telegram",
+    "Notion",
+    "Etsy",
+    "TikTok",
+    "Pinterest",
+    "Instagram",
+    "Facebook",
+    "Vercel"
+  ],
+  "allowedActionTypes": [
+    "API_REQUEST_PLAN",
+    "API_AUTH_REQUIREMENT_REVIEW",
+    "API_SCOPE_REVIEW",
+    "API_COST_RISK_REVIEW",
+    "API_RATE_LIMIT_REVIEW",
+    "API_RESPONSE_SHAPE_REVIEW",
+    "API_EXECUTION_RECOMMENDATION"
+  ],
+  "allowedExecutionStates": [
+    "PLANNED",
+    "READY_FOR_APPROVAL",
+    "APPROVED",
+    "REJECTED",
+    "EXECUTED",
+    "FAILED"
+  ],
+  "allowedRequestingRoles": [
+    "Orchestrator",
+    "Architect",
+    "Developer",
+    "QA",
+    "Security"
+  ],
+  "allowedBlockingRoles": [
+    "QA",
+    "Security",
+    "Human"
+  ],
+  "humanApprovalRequiredActionTypes": [
+    "API_EXECUTION_RECOMMENDATION"
+  ],
+  "auditRequiredFields": [
+    "timestamp",
+    "requestId",
+    "providerName",
+    "actionType",
+    "requesterRole",
+    "usedByProject",
+    "authType",
+    "requiredEnvironmentVariables",
+    "scopesRequired",
+    "approvalState",
+    "executionState",
+    "riskLevel",
+    "costRisk",
+    "rateLimitRisk",
+    "dataAccessRisk",
+    "externalMutationRisk",
+    "humanApprovalRequired",
+    "result",
+    "blockers"
+  ],
+  "approvalRules": {
+    "mandatoryHumanApproval": true,
+    "noAutomaticApproval": true,
+    "noSelfApproval": true,
+    "noRoleMayApproveOwnRequest": true,
+    "securityMayBlock": true,
+    "qaMayBlock": true,
+    "humanFinalAuthority": true
+  },
+  "boundaries": {
+    "offlinePlanningOnly": true,
+    "planningApprovalAuditOnly": true,
+    "performsProviderCalls": false,
+    "performsOpenAiCalls": false,
+    "performsGitHubApiCalls": false,
+    "performsTelegramSends": false,
+    "performsNotionWrites": false,
+    "performsCommerceActions": false,
+    "performsSocialPublishing": false,
+    "performsDeployments": false,
+    "storesCredentials": false,
+    "storesSecrets": false,
+    "readsSecretValues": false,
+    "createsOAuthFlows": false,
+    "refreshesTokens": false,
+    "createsBackgroundJobs": false,
+    "createsWorkers": false,
+    "createsQueues": false,
+    "createsSchedulers": false,
+    "autonomousExecution": false,
+    "paidSpendExecution": false,
+    "contentPublication": false,
+    "aiWorkforceRuntimeExecution": false,
+    "softwareFactory": false
+  },
+  "requests": [
+    {
+      "requestId": "APIX-001",
+      "providerName": "OpenAI",
+      "requester": "Studio OS",
+      "requesterRole": "Architect",
+      "usedByProject": "Studio OS",
+      "actionType": "API_REQUEST_PLAN",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "medium",
+      "costRisk": "high",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "medium",
+      "externalMutationRisk": "low",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Architect",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "OpenAI planning may create cost in a future execution layer and remains approval-gated."
+      ]
+    },
+    {
+      "requestId": "APIX-002",
+      "providerName": "GitHub",
+      "requester": "Studio OS",
+      "requesterRole": "Developer",
+      "usedByProject": "Studio OS",
+      "actionType": "API_SCOPE_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "high",
+      "costRisk": "low",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "high",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Developer",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [
+        {
+          "role": "Security",
+          "status": "scope-review-required",
+          "reason": "Repository and workflow scopes can expose or mutate project data."
+        }
+      ],
+      "evidence": [
+        "GitHub scopes must be reviewed before any future provider call."
+      ]
+    },
+    {
+      "requestId": "APIX-003",
+      "providerName": "Telegram",
+      "requester": "Studio OS",
+      "requesterRole": "Orchestrator",
+      "usedByProject": "NumberNinjaDesigns / TOK Hub",
+      "actionType": "API_AUTH_REQUIREMENT_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "medium",
+      "costRisk": "low",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "medium",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Orchestrator",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "Telegram bot access can publish messages in future execution and must remain human-gated."
+      ]
+    },
+    {
+      "requestId": "APIX-004",
+      "providerName": "Notion",
+      "requester": "Studio OS",
+      "requesterRole": "Architect",
+      "usedByProject": "Studio OS",
+      "actionType": "API_RESPONSE_SHAPE_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "medium",
+      "costRisk": "low",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "high",
+      "externalMutationRisk": "medium",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Architect",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "Notion response shapes can expose workspace content and require explicit approval."
+      ]
+    },
+    {
+      "requestId": "APIX-005",
+      "providerName": "Etsy",
+      "requester": "Studio OS",
+      "requesterRole": "Developer",
+      "usedByProject": "NumberNinjaDesigns",
+      "actionType": "API_REQUEST_PLAN",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "high",
+      "costRisk": "medium",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "high",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Developer",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "Etsy commerce workflows must not read shop data or modify listings without human approval."
+      ]
+    },
+    {
+      "requestId": "APIX-006",
+      "providerName": "TikTok",
+      "requester": "Studio OS",
+      "requesterRole": "QA",
+      "usedByProject": "NumberNinjaDesigns",
+      "actionType": "API_RATE_LIMIT_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "medium",
+      "costRisk": "low",
+      "rateLimitRisk": "high",
+      "dataAccessRisk": "medium",
+      "externalMutationRisk": "medium",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "QA",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "TikTok insight workflows must review app approval, rate limits and data boundaries first."
+      ]
+    },
+    {
+      "requestId": "APIX-007",
+      "providerName": "Pinterest",
+      "requester": "Studio OS",
+      "requesterRole": "Architect",
+      "usedByProject": "NumberNinjaDesigns",
+      "actionType": "API_SCOPE_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "medium",
+      "costRisk": "low",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "medium",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Architect",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [],
+      "evidence": [
+        "Pinterest scopes must be reviewed before any future pin or board workflow."
+      ]
+    },
+    {
+      "requestId": "APIX-008",
+      "providerName": "Instagram",
+      "requester": "Studio OS",
+      "requesterRole": "Security",
+      "usedByProject": "NumberNinjaDesigns",
+      "actionType": "API_RESPONSE_SHAPE_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "high",
+      "costRisk": "low",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "high",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Security",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [
+        {
+          "role": "Security",
+          "status": "data-boundary-review-required",
+          "reason": "Instagram account data and channel ownership must be verified before future access."
+        }
+      ],
+      "evidence": [
+        "Instagram response data can include account context and must remain scoped."
+      ]
+    },
+    {
+      "requestId": "APIX-009",
+      "providerName": "Facebook",
+      "requester": "Studio OS",
+      "requesterRole": "Security",
+      "usedByProject": "NumberNinjaDesigns / TOK Hub",
+      "actionType": "API_COST_RISK_REVIEW",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "high",
+      "costRisk": "high",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "high",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Security",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [
+        {
+          "role": "Security",
+          "status": "ad-spend-boundary-required",
+          "reason": "Future Meta workflows must explicitly block paid spend unless separately approved."
+        }
+      ],
+      "evidence": [
+        "Facebook/Meta APIs can lead to paid or mutating workflows in later layers."
+      ]
+    },
+    {
+      "requestId": "APIX-010",
+      "providerName": "Vercel",
+      "requester": "Studio OS",
+      "requesterRole": "Orchestrator",
+      "usedByProject": "Studio OS",
+      "actionType": "API_EXECUTION_RECOMMENDATION",
+      "approvalState": "READY_FOR_APPROVAL",
+      "executionState": "READY_FOR_APPROVAL",
+      "riskLevel": "high",
+      "costRisk": "medium",
+      "rateLimitRisk": "medium",
+      "dataAccessRisk": "medium",
+      "externalMutationRisk": "high",
+      "humanApprovalRequired": true,
+      "dryRunOnly": true,
+      "preparedByRole": "Orchestrator",
+      "approverRole": "Human",
+      "approvedByRequester": false,
+      "result": "planned-offline",
+      "blockers": [
+        {
+          "role": "QA",
+          "status": "deployment-boundary-review-required",
+          "reason": "V2.3 may recommend future execution only; deployment remains forbidden."
+        }
+      ],
+      "evidence": [
+        "Vercel deployment execution is explicitly outside V2.3."
+      ]
+    }
+  ]
+}

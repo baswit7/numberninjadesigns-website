@@ -1,0 +1,69 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-approval-gateway",
+    "status":  "ok",
+    "summary":  {
+                    "totalApprovalRecords":  4,
+                    "approvedRecords":  1,
+                    "blockedRecords":  3,
+                    "unknownRecords":  1,
+                    "executionDispatched":  false,
+                    "autoApprovalAllowed":  false,
+                    "unknownAutoApproved":  false
+                },
+    "stateModel":  [
+                       "UNKNOWN",
+                       "REQUESTED",
+                       "PENDING_APPROVAL",
+                       "APPROVED",
+                       "REJECTED",
+                       "EXPIRED",
+                       "EXECUTED"
+                   ],
+    "ownership":  {
+                      "ownsApprovalStatus":  true,
+                      "ownsApprovalEvidence":  true,
+                      "ownsApprovalAuditTrail":  true,
+                      "ownsExecutionTruth":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsGithubTruth":  false,
+                      "ownsRuntimeTruth":  false,
+                      "ownsDashboardTruth":  false
+                  },
+    "approvalRules":  {
+                          "humanApprovalRequired":  true,
+                          "noAutomaticApproval":  true,
+                          "noApprovalBypass":  true,
+                          "noSelfApproval":  true,
+                          "unknownNeverAutoApproves":  true,
+                          "approvedDoesNotExecute":  true,
+                          "executionRequiresExternalExecutor":  true
+                      },
+    "boundaries":  {
+                       "approvalGatewayOnly":  true,
+                       "performsExecution":  false,
+                       "automaticExecution":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "providerExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "autoApproval":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "protectedBranchWrites":  false,
+                       "agentAutonomy":  false,
+                       "selfHealingSystems":  false,
+                       "selfModifyingSystems":  false,
+                       "approvalBypass":  false
+                   },
+    "recordsFile":  "runtime/approval/execution-approval.records.json",
+    "auditFile":  "runtime/approval/execution-approval.audit.json"
+}

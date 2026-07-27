@@ -1,0 +1,52 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-19",
+    "reportId":  "authority-monitoring-evidence-validation",
+    "status":  "passed",
+    "summary":  "Authority Monitoring Evidence Center passed deterministic read-only evidence and boundary checks.",
+    "checks":  [
+                   {
+                       "id":  "evidence-manifest",
+                       "status":  "checked",
+                       "consumedReports":  4
+                   },
+                   {
+                       "id":  "evidence-report",
+                       "status":  "checked",
+                       "pass":  19,
+                       "fail":  3,
+                       "unknown":  1
+                   },
+                   {
+                       "id":  "phase-19-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "evidenceOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsAuthority":  false,
+                     "ownsTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardActionAllowed":  false,
+                     "approvalAutomationAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "browserAuthorityStorageAllowed":  false
+                 }
+}

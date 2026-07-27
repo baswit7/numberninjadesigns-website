@@ -1,0 +1,263 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "execution-control-dashboard:derived-governance-runtime",
+    "sourceFiles":  {
+                        "requestPackages":  "runtime/execution-request/execution-request.packages.json",
+                        "requestReport":  "runtime/execution-request/execution-request.report.json",
+                        "approvalRecords":  "runtime/approval/execution-approval.records.json",
+                        "approvalReport":  "runtime/approval/execution-approval.report.json",
+                        "preflightDecisions":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                        "preflightReport":  "runtime/execution-preflight/execution-preflight.report.json",
+                        "reviewRecords":  "runtime/execution-review/execution-review.records.json",
+                        "reviewReport":  "runtime/execution-review/execution-review.report.json",
+                        "dispatchRegistry":  "runtime/execution-dispatch/execution-dispatch.registry.json",
+                        "dispatchReport":  "runtime/execution-dispatch/execution-dispatch.report.json",
+                        "auditReport":  "runtime/execution-audit/audit.report.json",
+                        "auditSummary":  "runtime/execution-audit/audit.summary.json",
+                        "auditBoundary":  "runtime/execution-audit/audit.boundary.json"
+                    },
+    "status":  "ok",
+    "readOnly":  true,
+    "projectionOnly":  true,
+    "ownsTruth":  false,
+    "summary":  {
+                    "totalRequests":  4,
+                    "approvedRequests":  1,
+                    "pendingRequests":  3,
+                    "blockedRequests":  3,
+                    "unknownRequests":  1,
+                    "dispatchEligible":  0,
+                    "dispatchDenied":  1,
+                    "manualEvidenceRequired":  4,
+                    "manualEvidencePresent":  0,
+                    "manualEvidenceVerified":  0,
+                    "unknownCount":  4
+                },
+    "statusSummary":  {
+                          "requestStatus":  {
+                                                "totalRequests":  4,
+                                                "approvedRequests":  1,
+                                                "pendingRequests":  3,
+                                                "blockedRequests":  3,
+                                                "unknownRequests":  1
+                                            },
+                          "approvalStatus":  {
+                                                 "approved":  1,
+                                                 "blocked":  3,
+                                                 "unknown":  1,
+                                                 "automaticApproval":  false,
+                                                 "unknownAutoApproved":  false
+                                             },
+                          "preflightStatus":  {
+                                                  "readyForManualReview":  1,
+                                                  "blocked":  3,
+                                                  "failed":  0,
+                                                  "unknownPassedAutomatically":  false,
+                                                  "executionDispatchAllowed":  0
+                                              },
+                          "reviewStatus":  {
+                                               "pendingReview":  1,
+                                               "blocked":  3,
+                                               "rejected":  0,
+                                               "approvedForDispatch":  0,
+                                               "approvedForDispatchWithoutManualEvidence":  0,
+                                               "executionDispatchAllowed":  0
+                                           },
+                          "dispatchStatus":  {
+                                                 "dispatchEligible":  0,
+                                                 "dispatchDenied":  1,
+                                                 "blocked":  3,
+                                                 "unknownDispatchEligible":  0,
+                                                 "triggeredActions":  0
+                                             }
+                      },
+    "auditSummary":  {
+                         "totalAuditEntries":  4,
+                         "passCount":  0,
+                         "unknownCount":  4,
+                         "unknownPassCount":  0,
+                         "unknownDispatchEligibleCount":  0,
+                         "automaticApprovalCount":  0
+                     },
+    "evidenceSummary":  {
+                            "manualEvidenceRequired":  4,
+                            "manualEvidencePresent":  0,
+                            "manualEvidenceVerified":  0,
+                            "eligibleWithoutVerifiedManualEvidence":  0
+                        },
+    "unknownSummary":  {
+                           "unknownRequests":  1,
+                           "approvalUnknown":  1,
+                           "auditUnknown":  4,
+                           "unknownPassCount":  0,
+                           "unknownDispatchEligibleCount":  0,
+                           "unknownRemainsUnknown":  true
+                       },
+    "boundarySummary":  {
+                            "readOnlyDashboard":  true,
+                            "visualizationOnly":  true,
+                            "ownsTruth":  false,
+                            "ownsExecutionTruth":  false,
+                            "ownsApprovalTruth":  false,
+                            "ownsPreflightTruth":  false,
+                            "ownsReviewTruth":  false,
+                            "ownsDispatchTruth":  false,
+                            "ownsAuditTruth":  false,
+                            "performsExecution":  false,
+                            "executionEngine":  false,
+                            "dispatchEngine":  false,
+                            "providerExecution":  false,
+                            "githubExecution":  false,
+                            "deploymentExecution":  false,
+                            "approvalMutation":  false,
+                            "dispatchMutation":  false,
+                            "runtimeMutation":  false,
+                            "queues":  false,
+                            "workers":  false,
+                            "schedulers":  false,
+                            "backgroundJobs":  false,
+                            "agentExecution":  false,
+                            "credentialAccess":  false,
+                            "secretAccess":  false,
+                            "branchWrites":  false,
+                            "repositorySettingsMutation":  false,
+                            "collaboratorMutation":  false,
+                            "localStorageAuthority":  false,
+                            "sessionStorageAuthority":  false,
+                            "actionEndpoints":  false,
+                            "actionControls":  false,
+                            "writesOnly":  "runtime/dashboard/execution-control.view.json",
+                            "consumesReportsOnly":  true
+                        },
+    "cards":  [
+                  {
+                      "id":  "execution-control.request-status",
+                      "title":  "Request Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "total=4; approved=1; pending=3; blocked=3; unknown=1",
+                      "sourceFile":  "runtime/execution-request/execution-request.packages.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Read-only execution governance visibility; dashboard cannot approve, dispatch or execute.",
+                      "details":  {
+                                      "totalRequests":  4,
+                                      "approvedRequests":  1,
+                                      "pendingRequests":  3,
+                                      "blockedRequests":  3,
+                                      "unknownRequests":  1
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.approval-status",
+                      "title":  "Approval Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "approved=1; blocked=3; unknown=1; automaticApproval=False",
+                      "sourceFile":  "runtime/approval/execution-approval.report.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Approval truth remains owned by the approval gateway.",
+                      "details":  {
+                                      "approved":  1,
+                                      "blocked":  3,
+                                      "unknown":  1,
+                                      "automaticApproval":  false,
+                                      "unknownAutoApproved":  false
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.preflight-status",
+                      "title":  "Preflight Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "readyForManualReview=1; blocked=3; failed=0",
+                      "sourceFile":  "runtime/execution-preflight/execution-preflight.report.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Preflight truth remains owned by the preflight gate.",
+                      "details":  {
+                                      "readyForManualReview":  1,
+                                      "blocked":  3,
+                                      "failed":  0,
+                                      "unknownPassedAutomatically":  false,
+                                      "executionDispatchAllowed":  0
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.review-status",
+                      "title":  "Review Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "pending=1; blocked=3; approvedForDispatch=0",
+                      "sourceFile":  "runtime/execution-review/execution-review.report.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Manual review remains outside the dashboard projection.",
+                      "details":  {
+                                      "pendingReview":  1,
+                                      "blocked":  3,
+                                      "rejected":  0,
+                                      "approvedForDispatch":  0,
+                                      "approvedForDispatchWithoutManualEvidence":  0,
+                                      "executionDispatchAllowed":  0
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.dispatch-status",
+                      "title":  "Dispatch Status",
+                      "status":  "ok",
+                      "severity":  "success",
+                      "description":  "eligible=0; denied=1; triggeredActions=0",
+                      "sourceFile":  "runtime/execution-dispatch/execution-dispatch.report.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Dashboard does not dispatch; dispatch registry remains source for eligibility.",
+                      "details":  {
+                                      "dispatchEligible":  0,
+                                      "dispatchDenied":  1,
+                                      "blocked":  3,
+                                      "unknownDispatchEligible":  0,
+                                      "triggeredActions":  0
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.audit-status",
+                      "title":  "Audit Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "entries=4; pass=0; unknown=4",
+                      "sourceFile":  "runtime/execution-audit/audit.summary.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Audit trail remains derived evidence, not execution authority.",
+                      "details":  {
+                                      "totalAuditEntries":  4,
+                                      "passCount":  0,
+                                      "unknownCount":  4,
+                                      "unknownPassCount":  0,
+                                      "unknownDispatchEligibleCount":  0,
+                                      "automaticApprovalCount":  0
+                                  }
+                  },
+                  {
+                      "id":  "execution-control.manual-evidence-status",
+                      "title":  "Manual Evidence Status",
+                      "status":  "warning",
+                      "severity":  "warning",
+                      "description":  "required=4; present=0; verified=0",
+                      "sourceFile":  "runtime/execution-audit/audit.summary.json",
+                      "lastUpdated":  "2026-06-09T00:00:00.0000000Z",
+                      "actionHint":  "Manual evidence must be supplied outside the dashboard projection.",
+                      "details":  {
+                                      "manualEvidenceRequired":  4,
+                                      "manualEvidencePresent":  0,
+                                      "manualEvidenceVerified":  0,
+                                      "eligibleWithoutVerifiedManualEvidence":  0
+                                  }
+                  }
+              ],
+    "warnings":  [
+                     "UNKNOWN states are displayed as UNKNOWN and are never promoted by the dashboard.",
+                     "Manual evidence is not present or verified in the current runtime proof."
+                 ],
+    "errors":  [
+
+               ],
+    "nextRecommendedAction":  "Use this read-only dashboard projection for governance visibility only; continue to use source layers for truth."
+}

@@ -1,0 +1,40 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-17",
+    "reportId":  "authority-dashboard-projection-validation",
+    "status":  "passed",
+    "summary":  "Authority dashboard projection passed deterministic read-only boundary checks.",
+    "checks":  [
+                   {
+                       "id":  "authority-dashboard-view",
+                       "status":  "checked",
+                       "cards":  12
+                   },
+                   {
+                       "id":  "dashboard-integration-paths",
+                       "status":  "checked",
+                       "files":  6
+                   },
+                   {
+                       "id":  "phase-17-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  11
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "dashboardReadOnly":  true,
+                     "derivedOnly":  true,
+                     "ownsAuthority":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "approvalAutomationAllowed":  false
+                 }
+}

@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-21T20:30:00.0000000Z",
+  "source": "shared/contracts/api-governance/api-registry.json",
+  "reportId": "api-governance-registry",
+  "totalApis": 16,
+  "apis": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "provider": "OpenAI",
+      "projectsUsing": [
+        "Studio OS",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "OPENAI_API_KEY"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "billing-active",
+        "model-access"
+      ],
+      "grantedPermissions": [
+        "billing-active",
+        "model-access"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:48.7185004Z",
+      "criticality": "critical",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "provider": "GitHub",
+      "projectsUsing": [
+        "Studio OS",
+        "NumberNinjaDesigns",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "GITHUB_TOKEN"
+      ],
+      "requiredScopes": [
+        "repo",
+        "workflow"
+      ],
+      "grantedScopes": [
+        "repo",
+        "workflow"
+      ],
+      "requiredPermissions": [
+        "repository-read",
+        "pull-request-read",
+        "workflow-read"
+      ],
+      "grantedPermissions": [
+        "repository-read",
+        "pull-request-read",
+        "workflow-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:49.6298525Z",
+      "criticality": "critical",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "provider": "Notion",
+      "projectsUsing": [
+        "Studio OS",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "NOTION_TOKEN"
+      ],
+      "requiredScopes": [
+        "read_content"
+      ],
+      "grantedScopes": [
+        "read_content"
+      ],
+      "requiredPermissions": [
+        "workspace-read",
+        "page-read"
+      ],
+      "grantedPermissions": [
+        "workspace-read",
+        "page-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:49.9798959Z",
+      "criticality": "high",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "provider": "Vercel",
+      "projectsUsing": [
+        "Studio OS",
+        "NumberNinjaDesigns",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "VERCEL_TOKEN",
+        "VERCEL_ORG_ID",
+        "VERCEL_PROJECT_ID"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "account-read",
+        "project-read",
+        "deployment-read"
+      ],
+      "grantedPermissions": [
+        "account-read",
+        "project-read",
+        "deployment-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:50.8607613Z",
+      "criticality": "high",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "etsy",
+      "name": "Etsy",
+      "provider": "Etsy",
+      "projectsUsing": [
+        "NumberNinjaDesigns"
+      ],
+      "requiredEnvVars": [
+        "ETSY_CLIENT_ID",
+        "ETSY_CLIENT_SECRET",
+        "ETSY_REDIRECT_URI",
+        "ETSY_ACCESS_TOKEN",
+        "ETSY_REFRESH_TOKEN"
+      ],
+      "requiredScopes": [
+        "shops_r",
+        "listings_r"
+      ],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "shop-read",
+        "listing-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "2026-06-21T20:11:50.3380506Z",
+      "criticality": "critical",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "printify",
+      "name": "Printify",
+      "provider": "Printify",
+      "projectsUsing": [
+        "NumberNinjaDesigns"
+      ],
+      "requiredEnvVars": [
+        "PRINTIFY_API_KEY",
+        "PRINTIFY_SHOP_ID"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "shop-read",
+        "product-read"
+      ],
+      "grantedPermissions": [
+        "shop-read",
+        "product-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:50.3380506Z",
+      "criticality": "critical",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "provider": "Meta",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "NumberNinjaDesigns / TOK Hub"
+      ],
+      "requiredEnvVars": [
+        "META_APP_ID",
+        "META_APP_SECRET",
+        "META_USER_ACCESS_TOKEN",
+        "META_FACEBOOK_PAGE_ID",
+        "META_FACEBOOK_PAGE_ACCESS_TOKEN"
+      ],
+      "requiredScopes": [
+        "pages_read_engagement",
+        "pages_show_list"
+      ],
+      "grantedScopes": [
+        "pages_show_list"
+      ],
+      "requiredPermissions": [
+        "page-read",
+        "insights-read"
+      ],
+      "grantedPermissions": [
+        "page-read"
+      ],
+      "status": "partially configured",
+      "lastValidation": "unknown",
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "provider": "Meta",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "NumberNinjaDesigns / TOK Hub"
+      ],
+      "requiredEnvVars": [
+        "INSTAGRAM_APP_ID",
+        "INSTAGRAM_APP_SECRET",
+        "INSTAGRAM_BUSINESS_ACCOUNT_ID"
+      ],
+      "requiredScopes": [
+        "instagram_basic",
+        "instagram_manage_insights"
+      ],
+      "grantedScopes": [
+        "instagram_basic"
+      ],
+      "requiredPermissions": [
+        "business-account-read",
+        "insights-read"
+      ],
+      "grantedPermissions": [
+        "business-account-read"
+      ],
+      "status": "partially configured",
+      "lastValidation": "unknown",
+      "criticality": "high",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "tiktok",
+      "name": "TikTok",
+      "provider": "TikTok",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "NumberNinjaDesigns / TOK Hub"
+      ],
+      "requiredEnvVars": [
+        "TIKTOK_CLIENT_KEY",
+        "TIKTOK_CLIENT_SECRET",
+        "TIKTOK_REDIRECT_URI"
+      ],
+      "requiredScopes": [
+        "user.info.basic",
+        "video.list"
+      ],
+      "grantedScopes": [
+        "user.info.basic"
+      ],
+      "requiredPermissions": [
+        "creator-insights-read",
+        "video-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "2026-06-21T20:11:53.3447503Z",
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest",
+      "provider": "Pinterest",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "NumberNinjaDesigns / TOK Hub"
+      ],
+      "requiredEnvVars": [
+        "PINTEREST_CLIENT_ID",
+        "PINTEREST_CLIENT_SECRET",
+        "PINTEREST_ACCESS_TOKEN"
+      ],
+      "requiredScopes": [
+        "pins:read",
+        "boards:read"
+      ],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "pin-read",
+        "board-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "2026-06-21T20:11:53.2980517Z",
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "provider": "Reddit",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "NumberNinjaDesigns / TOK Hub"
+      ],
+      "requiredEnvVars": [
+        "REDDIT_CLIENT_ID",
+        "REDDIT_CLIENT_SECRET"
+      ],
+      "requiredScopes": [
+        "read"
+      ],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "subreddit-read",
+        "trend-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "unknown",
+      "criticality": "medium",
+      "owner": "NumberNinjaDesigns"
+    },
+    {
+      "id": "google-analytics",
+      "name": "Google Analytics",
+      "provider": "Google",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "GOOGLE_ANALYTICS_ID",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/analytics.readonly"
+      ],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "property-read",
+        "report-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "unknown",
+      "criticality": "high",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "google-search-console",
+      "name": "Google Search Console",
+      "provider": "Google",
+      "projectsUsing": [
+        "NumberNinjaDesigns",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "GOOGLE_SEARCH_CONSOLE_SITE_URL",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/webmasters.readonly"
+      ],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "site-read",
+        "search-performance-read"
+      ],
+      "grantedPermissions": [],
+      "status": "partially configured",
+      "lastValidation": "unknown",
+      "criticality": "high",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "provider": "ElevenLabs",
+      "projectsUsing": [
+        "NumberNinjaDesigns / TOK Hub",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "ELEVENLABS_API_KEY"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "text-to-speech-access"
+      ],
+      "grantedPermissions": [],
+      "status": "configured",
+      "lastValidation": "unknown",
+      "criticality": "medium",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "exa",
+      "name": "Exa",
+      "provider": "Exa",
+      "projectsUsing": [
+        "Studio OS",
+        "Future Client Projects"
+      ],
+      "requiredEnvVars": [
+        "EXA_API_KEY"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "search-read"
+      ],
+      "grantedPermissions": [
+        "search-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:52.0537902Z",
+      "criticality": "medium",
+      "owner": "Studio OS"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "provider": "Postman",
+      "projectsUsing": [
+        "Studio OS"
+      ],
+      "requiredEnvVars": [
+        "POSTMAN_API_KEY"
+      ],
+      "requiredScopes": [],
+      "grantedScopes": [],
+      "requiredPermissions": [
+        "account-read",
+        "collection-read"
+      ],
+      "grantedPermissions": [
+        "account-read",
+        "collection-read"
+      ],
+      "status": "connected",
+      "lastValidation": "2026-06-21T20:11:51.4550461Z",
+      "criticality": "medium",
+      "owner": "Studio OS"
+    }
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "contractFirst": true,
+    "validatorFirst": true,
+    "storesSecrets": false,
+    "exposesTokens": false,
+    "readsSecretValues": false,
+    "performsApiCalls": false,
+    "callsProviders": false,
+    "executesDeployments": false,
+    "dashboardWritesAllowed": false,
+    "runtimeMutationScope": "runtime/api-governance"
+  }
+}

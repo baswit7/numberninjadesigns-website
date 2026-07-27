@@ -1,0 +1,126 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-approval-gateway",
+    "auditRequired":  true,
+    "entries":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "approvalId":  "APG-001",
+                        "requestId":  "GHLX-REQUEST-001",
+                        "intentType":  "GITHUB_LIVE_BRANCH_CREATE",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "approvalState":  "REQUESTED",
+                        "humanApprovalRequired":  true,
+                        "executionRefusedUntilApproved":  true,
+                        "executionDispatchAllowed":  false,
+                        "evidence":  [
+                                         "Execution intent was received and classified.",
+                                         "Gateway has not granted execution."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "approval-required",
+                                             "reason":  "Human approval is required before any external executor may consider this action."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "approvalId":  "APG-002",
+                        "requestId":  "GHSX-REQUEST-001",
+                        "intentType":  "GITHUB_SANDBOX_BRANCH_CREATE",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "approvalState":  "PENDING_APPROVAL",
+                        "humanApprovalRequired":  true,
+                        "executionRefusedUntilApproved":  true,
+                        "executionDispatchAllowed":  false,
+                        "evidence":  [
+                                         "Sandbox execution intent is pending human approval.",
+                                         "Gateway records approval status only and does not execute."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "pending-review",
+                                             "reason":  "Pending approval cannot execute."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "approvalId":  "APG-003",
+                        "requestId":  "UNKNOWN-REQUEST-001",
+                        "intentType":  "GITHUB_BRANCH_CREATE",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "approvalState":  "UNKNOWN",
+                        "humanApprovalRequired":  true,
+                        "executionRefusedUntilApproved":  true,
+                        "executionDispatchAllowed":  false,
+                        "evidence":  [
+                                         "UNKNOWN approval state is never promoted automatically.",
+                                         "Execution remains refused."
+                                     ],
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "unknown-state-block",
+                                             "reason":  "Unknown approval state must stay blocked until a human decision is recorded."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "approvalId":  "APG-004",
+                        "requestId":  "GHLX-APPROVED-001",
+                        "intentType":  "GITHUB_LIVE_BRANCH_CREATE",
+                        "requestedAction":  "BRANCH_CREATE",
+                        "approvalState":  "APPROVED",
+                        "humanApprovalRequired":  true,
+                        "executionRefusedUntilApproved":  false,
+                        "executionDispatchAllowed":  false,
+                        "evidence":  [
+                                         "Human approval exists.",
+                                         "Approval Gateway does not dispatch execution."
+                                     ],
+                        "blockers":  [
+
+                                     ]
+                    }
+                ],
+    "boundaries":  {
+                       "approvalGatewayOnly":  true,
+                       "performsExecution":  false,
+                       "automaticExecution":  false,
+                       "backgroundWorkers":  false,
+                       "schedulers":  false,
+                       "queues":  false,
+                       "autonomousRunner":  false,
+                       "softwareFactory":  false,
+                       "providerExecution":  false,
+                       "deploymentExecution":  false,
+                       "mergeExecution":  false,
+                       "autoApproval":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false,
+                       "protectedBranchWrites":  false,
+                       "agentAutonomy":  false,
+                       "selfHealingSystems":  false,
+                       "selfModifyingSystems":  false,
+                       "approvalBypass":  false
+                   },
+    "ownership":  {
+                      "ownsApprovalStatus":  true,
+                      "ownsApprovalEvidence":  true,
+                      "ownsApprovalAuditTrail":  true,
+                      "ownsExecutionTruth":  false,
+                      "ownsProviderTruth":  false,
+                      "ownsDeploymentTruth":  false,
+                      "ownsGithubTruth":  false,
+                      "ownsRuntimeTruth":  false,
+                      "ownsDashboardTruth":  false
+                  }
+}

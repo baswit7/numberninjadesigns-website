@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "vercel",
+  "profiles": [
+    {
+      "id": "local",
+      "environment": "local",
+      "requiresBranchProtection": false,
+      "requiresHealthReport": true,
+      "requiresManualApproval": false
+    },
+    {
+      "id": "preview",
+      "environment": "preview",
+      "requiresBranchProtection": true,
+      "requiresHealthReport": true,
+      "requiresManualApproval": true
+    },
+    {
+      "id": "production",
+      "environment": "production",
+      "requiresBranchProtection": true,
+      "requiresHealthReport": true,
+      "requiresManualApproval": true,
+      "requiresRollbackPlan": true
+    }
+  ]
+}

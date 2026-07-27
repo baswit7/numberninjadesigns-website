@@ -1,0 +1,33 @@
+{
+  "checklistId": "phase7.release-checklist.generated-example-001",
+  "createdAt": "2026-06-04T10:05:00Z",
+  "releaseScope": "Review readiness for documentation and schema-only Phase 7 preparation generators.",
+  "explicitSafeReadinessEvidence": true,
+  "docsCompleteness": {
+    "status": "passed",
+    "notes": "README and changelog coverage are prepared for review."
+  },
+  "schemaValidation": {
+    "status": "passed",
+    "notes": "Generated outputs are checked for required contract fields."
+  },
+  "safetyReview": {
+    "status": "passed",
+    "notes": "The generator scope excludes providers, runtime mutation, dashboard work and deployment logic."
+  },
+  "rollbackNotes": {
+    "status": "passed",
+    "notes": "The change can be reverted through normal source review if needed."
+  },
+  "testExpectations": {
+    "status": "passed",
+    "notes": "Generator tests write temporary artifacts outside repository runtime output."
+  },
+  "approvalState": "pending_review",
+  "blockingIssues": [],
+  "nonExecutableMetadata": {
+    "recordType": "generator_input_example",
+    "preparedFor": "phase_7_release_checklist_generator",
+    "traceId": "fake-trace-phase7-release-checklist-001"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/coordination/coordination-report.schema.json",
+  "title": "Phase 8 Coordination Summary Report",
+  "description": "Validates the read-only Phase 8 coordination summary report.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "source",
+    "status",
+    "summary",
+    "workflowId",
+    "agentCount",
+    "nodeCount",
+    "edgeCount",
+    "gateCount",
+    "executionAllowed",
+    "warnings",
+    "errors",
+    "nextRecommendedAction"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "const": "phase-8-coordination"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "blocked"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "workflowId": {
+      "type": "string"
+    },
+    "agentCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nodeCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "edgeCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gateCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextRecommendedAction": {
+      "type": "string"
+    }
+  }
+}

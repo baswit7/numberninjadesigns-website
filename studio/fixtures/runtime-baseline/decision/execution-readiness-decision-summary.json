@@ -1,0 +1,16 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-24",
+    "reportId":  "execution-readiness-decision-summary",
+    "generatedBy":  "services/execution-decision/generate-execution-decision.ps1",
+    "generatedAt":  "2026-06-08T14:21:10.8177730Z",
+    "decision":  "UNKNOWN",
+    "reasonCount":  3,
+    "blockingConditionCount":  4,
+    "missingInputCount":  0,
+    "unknownPropagationStatus":  "UNKNOWN",
+    "sourceSimulationStatus":  "unknown",
+    "sourceReviewStatus":  "unknown",
+    "authoritative":  false,
+    "executionAllowed":  false
+}

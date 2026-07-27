@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "phase-9-idempotency-records",
+  "executionAllowed": false,
+  "records": [
+    {
+      "schemaVersion": "1.0.0",
+      "idempotencyId": "idempotency-deployment-review",
+      "requestId": "execution-request-deployment-review",
+      "idempotencyKey": "deployment-review-studio-os-main",
+      "strategy": "business-key",
+      "replaySafe": false,
+      "dedupeWindowMinutes": 1440,
+      "conflictPolicy": "require-review",
+      "executionAllowed": false,
+      "nonExecutableMetadata": {
+        "phase": "phase-9",
+        "owner": "studio-os",
+        "safetyClass": "idempotency-governance-only"
+      }
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "idempotency-registry"
+  }
+}

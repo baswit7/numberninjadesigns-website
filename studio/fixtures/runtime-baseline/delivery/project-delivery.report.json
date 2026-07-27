@@ -1,0 +1,596 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:delivery-report",
+    "sourceFile":  "config/delivery.tasks.json",
+    "scoringSourceFile":  "config/delivery.scoring.json",
+    "readOnly":  true,
+    "summary":  {
+                    "taskCount":  6,
+                    "projectCount":  4,
+                    "highestPriorityTask":  [
+                                                {
+                                                    "taskId":  "numberninjadesigns-001",
+                                                    "projectId":  "numberninjadesigns",
+                                                    "title":  "Build Etsy listing workflow foundation",
+                                                    "priorityScore":  91,
+                                                    "roiScore":  92,
+                                                    "whyThisTask":  "Blocks 1 task",
+                                                    "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                                                }
+                                            ],
+                    "reviewNeededCount":  0,
+                    "blockedTaskCount":  1,
+                    "releaseReadyCount":  0,
+                    "taskCountsByStatus":  {
+                                               "intake":  2,
+                                               "ready":  4,
+                                               "in_progress":  0,
+                                               "review":  0,
+                                               "blocked":  0,
+                                               "release_ready":  0,
+                                               "done":  0
+                                           }
+                },
+    "tasks":  [
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "numberninjadesigns-001",
+                      "projectId":  "numberninjadesigns",
+                      "projectName":  "NumberNinjaDesigns",
+                      "projectType":  "ecommerce",
+                      "repository":  "baswit7/numberninjadesigns.github.io",
+                      "title":  "Build Etsy listing workflow foundation",
+                      "type":  "commerce",
+                      "status":  "ready",
+                      "problem":  "NumberNinjaDesigns product and listing work can fragment across keywords, mockups, copy, SEO, and publish checks.",
+                      "expectedOutcome":  "A repeatable Etsy listing workflow with keyword inputs, title formula, description structure, mockup checklist, SEO tags, and release checklist.",
+                      "businessValue":  10,
+                      "urgency":  9,
+                      "userImpact":  9,
+                      "unblockValue":  8,
+                      "effort":  4,
+                      "risk":  3,
+                      "confidence":  9,
+                      "priorityScore":  91,
+                      "roiScore":  92,
+                      "sourceRoiScore":  92,
+                      "rank":  1,
+                      "estimatedHours":  4,
+                      "expectedBusinessImpact":  10,
+                      "whyThisTask":  "Blocks 1 task",
+                      "releaseReadiness":  "planning-ready",
+                      "dependencies":  [
+
+                                       ],
+                      "blockers":  [
+
+                                   ],
+                      "deliverables":  [
+                                           "Etsy listing workflow document",
+                                           "SEO keyword checklist",
+                                           "mockup readiness checklist",
+                                           "listing release checklist",
+                                           "Codex implementation prompt"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Workflow covers keyword research, listing title, description, tags, images, price notes, and publish checks.",
+                                                 "Output uses the NumberNinjaDesigns tactical premium brand tone.",
+                                                 "Workflow can be reused for at least ten product ideas without redesign.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "low",
+                                          "riskScore":  3,
+                                          "summary":  "low risk. No active blockers."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/numberninjadesigns-001.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/numberninjadesigns-001.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/numberninjadesigns-001.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  },
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "studio-os-001",
+                      "projectId":  "studio-os",
+                      "projectName":  "Studio OS",
+                      "projectType":  "platform",
+                      "repository":  "baswit7/professionele-ai-development-studio",
+                      "title":  "Create project delivery system foundation",
+                      "type":  "feature",
+                      "status":  "ready",
+                      "problem":  "Studio OS has strong governance but lacks a practical delivery layer that tells Bas what to build next.",
+                      "expectedOutcome":  "A deterministic task intake, prioritization, delivery board, prompt generator, and cockpit for four supported projects.",
+                      "businessValue":  8,
+                      "urgency":  9,
+                      "userImpact":  9,
+                      "unblockValue":  10,
+                      "effort":  5,
+                      "risk":  4,
+                      "confidence":  9,
+                      "priorityScore":  88,
+                      "roiScore":  76,
+                      "sourceRoiScore":  86,
+                      "rank":  2,
+                      "estimatedHours":  6,
+                      "expectedBusinessImpact":  8,
+                      "whyThisTask":  "Blocks 1 task",
+                      "releaseReadiness":  "planning-ready",
+                      "dependencies":  [
+
+                                       ],
+                      "blockers":  [
+
+                                   ],
+                      "deliverables":  [
+                                           "delivery task registry",
+                                           "prioritization report",
+                                           "project delivery dashboard",
+                                           "project cockpit projections",
+                                           "validation script"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Dashboard identifies the highest-priority next task per supported project.",
+                                                 "Every task has generated acceptance criteria, Codex prompt, review checklist, and release checklist.",
+                                                 "Boundary flags prove no execution, provider, GitHub, deployment, or agent capability exists.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "low",
+                                          "riskScore":  4,
+                                          "summary":  "low risk. No active blockers."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/studio-os-001.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/studio-os-001.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/studio-os-001.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/studio-os-001.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  },
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "boodschappenvergelijker-001",
+                      "projectId":  "boodschappenvergelijker",
+                      "projectName":  "NumberNinjaDesigns / BoodschappenVergelijker",
+                      "projectType":  "product",
+                      "repository":  "local/projects/BoodschappenVergelijker",
+                      "title":  "Define first grocery comparison workflow",
+                      "type":  "product",
+                      "status":  "ready",
+                      "problem":  "The project needs a concrete first comparison workflow before data source or UI implementation choices make sense.",
+                      "expectedOutcome":  "A first workflow definition for comparing grocery prices with source assumptions, user flow, risk notes, and MVP output.",
+                      "businessValue":  8,
+                      "urgency":  7,
+                      "userImpact":  9,
+                      "unblockValue":  9,
+                      "effort":  5,
+                      "risk":  6,
+                      "confidence":  7,
+                      "priorityScore":  80,
+                      "roiScore":  74,
+                      "sourceRoiScore":  78,
+                      "rank":  3,
+                      "estimatedHours":  5,
+                      "expectedBusinessImpact":  8,
+                      "whyThisTask":  "Highest ROI",
+                      "releaseReadiness":  "blocked",
+                      "dependencies":  [
+
+                                       ],
+                      "blockers":  [
+                                       "Data source strategy is not selected."
+                                   ],
+                      "deliverables":  [
+                                           "comparison workflow definition",
+                                           "data source assumption list",
+                                           "MVP user flow",
+                                           "risk register"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Workflow identifies input product, store/source, comparison result, and user decision point.",
+                                                 "Data source risks are explicitly listed.",
+                                                 "MVP can be implemented without committing to full automation.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "medium",
+                                          "riskScore":  6,
+                                          "summary":  "medium risk. Blockers present: Data source strategy is not selected."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/boodschappenvergelijker-001.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/boodschappenvergelijker-001.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/boodschappenvergelijker-001.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  },
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "tok-hub-001",
+                      "projectId":  "tok-hub",
+                      "projectName":  "NumberNinjaDesigns / TOK Hub",
+                      "projectType":  "content",
+                      "repository":  "local/projects/TOKHub",
+                      "title":  "Define content production pipeline",
+                      "type":  "content",
+                      "status":  "ready",
+                      "problem":  "TOK Hub can expand into automation before the repeatable content workflow is defined.",
+                      "expectedOutcome":  "A documented idea-to-publish content pipeline with intake, script, asset, review, publish, and metrics states.",
+                      "businessValue":  8,
+                      "urgency":  8,
+                      "userImpact":  8,
+                      "unblockValue":  8,
+                      "effort":  5,
+                      "risk":  4,
+                      "confidence":  8,
+                      "priorityScore":  78,
+                      "roiScore":  76,
+                      "sourceRoiScore":  80,
+                      "rank":  4,
+                      "estimatedHours":  5,
+                      "expectedBusinessImpact":  8,
+                      "whyThisTask":  "Highest ROI",
+                      "releaseReadiness":  "planning-ready",
+                      "dependencies":  [
+
+                                       ],
+                      "blockers":  [
+
+                                   ],
+                      "deliverables":  [
+                                           "content pipeline document",
+                                           "content task states",
+                                           "review checklist",
+                                           "release checklist"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Pipeline defines each state from idea to metrics review.",
+                                                 "Pipeline identifies manual steps that should not be automated yet.",
+                                                 "Pipeline can support at least three content channels later.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "low",
+                                          "riskScore":  4,
+                                          "summary":  "low risk. No active blockers."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/tok-hub-001.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/tok-hub-001.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/tok-hub-001.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  },
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "numberninjadesigns-002",
+                      "projectId":  "numberninjadesigns",
+                      "projectName":  "NumberNinjaDesigns",
+                      "projectType":  "ecommerce",
+                      "repository":  "baswit7/numberninjadesigns.github.io",
+                      "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+                      "type":  "content",
+                      "status":  "intake",
+                      "problem":  "The brand needs a structured backlog of product concepts before design and listing work can scale.",
+                      "expectedOutcome":  "A prioritized product idea backlog with target persona, joke angle, SEO angle, and listing readiness notes.",
+                      "businessValue":  8,
+                      "urgency":  7,
+                      "userImpact":  8,
+                      "unblockValue":  6,
+                      "effort":  3,
+                      "risk":  3,
+                      "confidence":  8,
+                      "priorityScore":  76,
+                      "roiScore":  78,
+                      "sourceRoiScore":  84,
+                      "rank":  5,
+                      "estimatedHours":  3,
+                      "expectedBusinessImpact":  8,
+                      "whyThisTask":  "High business impact",
+                      "releaseReadiness":  "planning-ready",
+                      "dependencies":  [
+                                           "numberninjadesigns-001"
+                                       ],
+                      "blockers":  [
+
+                                   ],
+                      "deliverables":  [
+                                           "product idea backlog",
+                                           "persona notes",
+                                           "SEO angle notes"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Backlog contains at least 25 product ideas.",
+                                                 "Each idea has audience, joke, keyword angle, and confidence score.",
+                                                 "Top five ideas are ready for listing workflow execution.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "low",
+                                          "riskScore":  3,
+                                          "summary":  "low risk. No active blockers."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/numberninjadesigns-002.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-002.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/numberninjadesigns-002.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/numberninjadesigns-002.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  },
+                  {
+                      "schemaVersion":  "1.0.0",
+                      "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+                      "source":  "project-delivery:config/delivery.tasks.json",
+                      "sourceFile":  "config/delivery.tasks.json",
+                      "taskId":  "studio-os-002",
+                      "projectId":  "studio-os",
+                      "projectName":  "Studio OS",
+                      "projectType":  "platform",
+                      "repository":  "baswit7/professionele-ai-development-studio",
+                      "title":  "Link project cockpit output to daily operating routine",
+                      "type":  "process",
+                      "status":  "intake",
+                      "problem":  "Generated delivery views only create value if Bas uses them as a daily project selection routine.",
+                      "expectedOutcome":  "A short operating routine for reviewing next tasks, blockers, Codex prompts, and release readiness.",
+                      "businessValue":  7,
+                      "urgency":  6,
+                      "userImpact":  8,
+                      "unblockValue":  7,
+                      "effort":  2,
+                      "risk":  2,
+                      "confidence":  8,
+                      "priorityScore":  72,
+                      "roiScore":  73,
+                      "sourceRoiScore":  88,
+                      "rank":  6,
+                      "estimatedHours":  2,
+                      "expectedBusinessImpact":  7,
+                      "whyThisTask":  "Best current priority score",
+                      "releaseReadiness":  "planning-ready",
+                      "dependencies":  [
+                                           "studio-os-001"
+                                       ],
+                      "blockers":  [
+
+                                   ],
+                      "deliverables":  [
+                                           "daily project cockpit routine",
+                                           "manual update checklist"
+                                       ],
+                      "acceptanceCriteria":  [
+                                                 "Routine takes less than ten minutes.",
+                                                 "Routine starts from project-delivery.view.json.",
+                                                 "Routine ends with one selected task and one Codex prompt.",
+                                                 "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                                             ],
+                      "reviewChecklist":  [
+                                              "Confirm scope matches the expected outcome.",
+                                              "Confirm every acceptance criterion is satisfied.",
+                                              "Confirm no forbidden capability was introduced.",
+                                              "Confirm validation evidence is present."
+                                          ],
+                      "releaseChecklist":  [
+                                               "Review complete.",
+                                               "Validation complete.",
+                                               "Blockers resolved or accepted.",
+                                               "Release readiness confirmed."
+                                           ],
+                      "riskSummary":  {
+                                          "riskLevel":  "low",
+                                          "riskScore":  2,
+                                          "summary":  "low risk. No active blockers."
+                                      },
+                      "validationPlan":  [
+                                             "Run the relevant local validation command for the changed project.",
+                                             "Verify the deliverables against acceptance criteria.",
+                                             "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                                         ],
+                      "outputFiles":  {
+                                          "deliveryPackage":  "runtime/delivery/tasks/studio-os-002.delivery.json",
+                                          "codexPrompt":  "runtime/delivery/prompts/studio-os-002.codex-prompt.md",
+                                          "reviewChecklist":  "runtime/delivery/checklists/studio-os-002.review-checklist.md",
+                                          "releaseChecklist":  "runtime/delivery/checklists/studio-os-002.release-checklist.md"
+                                      },
+                      "boundaries":  {
+                                         "generatedPlanningOnly":  true,
+                                         "sourceOfTruth":  "config/delivery.tasks.json",
+                                         "generatedFilesAreTaskTruth":  false,
+                                         "executionEngine":  false,
+                                         "providerExecution":  false,
+                                         "githubExecution":  false,
+                                         "deploymentExecution":  false,
+                                         "agentExecution":  false,
+                                         "credentialAccess":  false,
+                                         "secretAccess":  false,
+                                         "automaticApproval":  false,
+                                         "automaticDispatch":  false
+                                     }
+                  }
+              ],
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

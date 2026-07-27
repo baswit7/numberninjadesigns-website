@@ -1,0 +1,148 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "deployment-plan",
+    "sourceFile":  "runtime/deployment/deployment.plan.json",
+    "status":  "ok",
+    "auditRequired":  true,
+    "entries":  [
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "deploymentId":  "DPLY-001",
+                        "project":  "Studio OS",
+                        "deploymentType":  "PREVIEW_DEPLOYMENT",
+                        "targetEnvironment":  "preview",
+                        "targetPlatform":  "Static Hosting",
+                        "approvalState":  "PLANNED",
+                        "executionState":  "PLANNED",
+                        "rollbackAvailable":  true,
+                        "rollbackStrategy":  "discard-preview-artifact-and-keep-current-main",
+                        "riskLevel":  "low",
+                        "humanApprovalRequired":  false,
+                        "dryRunOnly":  true,
+                        "result":  "planned-offline",
+                        "blockers":  [
+
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "deploymentId":  "DPLY-002",
+                        "project":  "Studio OS",
+                        "deploymentType":  "STAGING_DEPLOYMENT",
+                        "targetEnvironment":  "staging",
+                        "targetPlatform":  "Vercel",
+                        "approvalState":  "READY_FOR_APPROVAL",
+                        "executionState":  "READY_FOR_APPROVAL",
+                        "rollbackAvailable":  true,
+                        "rollbackStrategy":  "promote-previous-approved-staging-artifact",
+                        "riskLevel":  "medium",
+                        "humanApprovalRequired":  true,
+                        "dryRunOnly":  true,
+                        "result":  "planned-offline",
+                        "blockers":  [
+                                         {
+                                             "role":  "QA",
+                                             "status":  "validation-evidence-required",
+                                             "reason":  "Staging deployment requires validation evidence before future execution can be considered."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "deploymentId":  "DPLY-003",
+                        "project":  "NumberNinjaDesigns",
+                        "deploymentType":  "PRODUCTION_DEPLOYMENT",
+                        "targetEnvironment":  "production",
+                        "targetPlatform":  "GitHub Pages",
+                        "approvalState":  "READY_FOR_APPROVAL",
+                        "executionState":  "READY_FOR_APPROVAL",
+                        "rollbackAvailable":  true,
+                        "rollbackStrategy":  "restore-last-known-good-production-reference",
+                        "riskLevel":  "high",
+                        "humanApprovalRequired":  true,
+                        "dryRunOnly":  true,
+                        "result":  "planned-offline",
+                        "blockers":  [
+                                         {
+                                             "role":  "Security",
+                                             "status":  "production-boundary-review-required",
+                                             "reason":  "Production deployment must verify secrets, target platform and mutation boundaries before execution exists."
+                                         },
+                                         {
+                                             "role":  "QA",
+                                             "status":  "release-review-required",
+                                             "reason":  "Production deployment requires release review and rollback evidence."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "deploymentId":  "DPLY-004",
+                        "project":  "NumberNinjaDesigns / TOK Hub",
+                        "deploymentType":  "RELEASE_REVIEW",
+                        "targetEnvironment":  "staging",
+                        "targetPlatform":  "Future Custom Hosting",
+                        "approvalState":  "PLANNED",
+                        "executionState":  "PLANNED",
+                        "rollbackAvailable":  true,
+                        "rollbackStrategy":  "no-release-until-target-platform-is-approved",
+                        "riskLevel":  "medium",
+                        "humanApprovalRequired":  false,
+                        "dryRunOnly":  true,
+                        "result":  "planned-offline",
+                        "blockers":  [
+                                         {
+                                             "role":  "QA",
+                                             "status":  "target-platform-unknown",
+                                             "reason":  "Future Custom Hosting requires target definition before deployment planning can become executable."
+                                         }
+                                     ]
+                    },
+                    {
+                        "timestamp":  "2026-06-09T00:00:00.0000000Z",
+                        "deploymentId":  "DPLY-005",
+                        "project":  "Studio OS",
+                        "deploymentType":  "ROLLBACK_RECOMMENDATION",
+                        "targetEnvironment":  "production",
+                        "targetPlatform":  "Static Hosting",
+                        "approvalState":  "READY_FOR_APPROVAL",
+                        "executionState":  "READY_FOR_APPROVAL",
+                        "rollbackAvailable":  true,
+                        "rollbackStrategy":  "recommend-restore-previous-approved-release-only",
+                        "riskLevel":  "high",
+                        "humanApprovalRequired":  true,
+                        "dryRunOnly":  true,
+                        "result":  "planned-offline",
+                        "blockers":  [
+                                         {
+                                             "role":  "Human",
+                                             "status":  "final-approval-required",
+                                             "reason":  "Rollback recommendation cannot automatically execute rollback."
+                                         }
+                                     ]
+                    }
+                ],
+    "boundaries":  {
+                       "offlinePlanningOnly":  true,
+                       "planningApprovalAuditOnly":  true,
+                       "performsDeployments":  false,
+                       "performsVercelDeployment":  false,
+                       "performsGitHubPagesDeployment":  false,
+                       "performsGitHubActionsExecution":  false,
+                       "performsBuildExecution":  false,
+                       "performsHostingExecution":  false,
+                       "publishesContent":  false,
+                       "storesCredentials":  false,
+                       "storesSecrets":  false,
+                       "readsSecretValues":  false,
+                       "createsBackgroundJobs":  false,
+                       "createsWorkers":  false,
+                       "createsQueues":  false,
+                       "createsSchedulers":  false,
+                       "autonomousDeployment":  false,
+                       "automaticRollback":  false,
+                       "aiWorkforceRuntimeExecution":  false,
+                       "softwareFactory":  false
+                   }
+}

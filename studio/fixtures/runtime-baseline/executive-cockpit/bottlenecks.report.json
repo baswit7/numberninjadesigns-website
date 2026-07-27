@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "error",
+  "sectionId": "bottlenecks",
+  "cards": [
+    {
+      "id": "bottleneck.project.boodschappenvergelijker.0",
+      "title": "Data source strategy is not selected.",
+      "status": "error",
+      "description": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "facts": [
+        {
+          "label": "Project",
+          "value": "NumberNinjaDesigns / BoodschappenVergelijker"
+        },
+        {
+          "label": "Readiness",
+          "value": "blocked"
+        },
+        {
+          "label": "Source blockers",
+          "value": 1
+        }
+      ],
+      "actionHint": "Resolve through the source project workflow.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "bottleneck.api.api-connection.postman",
+      "title": "Postman",
+      "status": "warning",
+      "description": "POSTMAN_API_KEY is missing from repo-root .env.",
+      "facts": [
+        {
+          "label": "Provider status",
+          "value": "missing"
+        },
+        {
+          "label": "Validation mode",
+          "value": "live"
+        }
+      ],
+      "actionHint": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "config/providers.config.json",
+        "sourceService": "scripts/validation/validate-api-connections.ps1"
+      }
+    },
+    {
+      "id": "bottleneck.api.api-connection.telegram",
+      "title": "Telegram",
+      "status": "warning",
+      "description": "TELEGRAM_BOT_TOKEN is missing from repo-root .env.",
+      "facts": [
+        {
+          "label": "Provider status",
+          "value": "missing"
+        },
+        {
+          "label": "Validation mode",
+          "value": "live"
+        }
+      ],
+      "actionHint": "Add the required variable names to repo-root .env only; never paste secret values into HTML, JavaScript, docs, runtime JSON, logs, or GitHub.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "config/providers.config.json",
+        "sourceService": "scripts/validation/validate-api-connections.ps1"
+      }
+    },
+    {
+      "id": "bottleneck.api.api-connection.pinterest",
+      "title": "Pinterest",
+      "status": "warning",
+      "description": "PINTEREST_CLIENT_ID or PINTEREST_CLIENT_SECRET is missing from repo-root .env.",
+      "facts": [
+        {
+          "label": "Provider status",
+          "value": "missing"
+        },
+        {
+          "label": "Validation mode",
+          "value": "oauth-readiness"
+        }
+      ],
+      "actionHint": "Add Pinterest OAuth app variable names to repo-root .env only; do not paste credential values into code, docs, runtime JSON, logs, or GitHub.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/api-connections.view.json",
+        "sourceContract": "config/providers.config.json",
+        "sourceService": "scripts/validation/validate-api-connections.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/dashboard/api-connections.view.json",
+      "runtime/dashboard/project-delivery.view.json"
+    ],
+    "sourceContracts": [
+      "config/delivery.tasks.json",
+      "config/providers.config.json"
+    ],
+    "sourceServices": [
+      "scripts/validation/validate-api-connections.ps1",
+      "services/project-delivery/generate-project-delivery.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}

@@ -1,0 +1,461 @@
+{
+  "generatedAt": "2026-06-17T07:20:04.0986571Z",
+  "source": "studio-dashboard:market-intelligence",
+  "status": "error",
+  "summary": "Market Intelligence Center projects provider health, signal sources, ranked opportunities, approved-only recommendations and read-only approval queue status.",
+  "cards": [
+    {
+      "id": "market-intelligence.approval.approval.opp.manual-platform-mix",
+      "title": "Manual Etsy, TikTok and Pinterest visibility mix",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.62; opportunity=opp.manual-platform-mix",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.manual-platform-mix",
+        "opportunityId": "opp.manual-platform-mix",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.62,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.approval.approval.opp.model-is-overfitting",
+      "title": "Model Is Overfitting",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.85; opportunity=opp.model-is-overfitting",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.model-is-overfitting",
+        "opportunityId": "opp.model-is-overfitting",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.85,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.approval.approval.opp.pivot-table-content-system",
+      "title": "Pivot Table Operator content angles",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.79; opportunity=opp.pivot-table-content-system",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.pivot-table-content-system",
+        "opportunityId": "opp.pivot-table-content-system",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.79,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.approval.approval.opp.pivot-table-operator",
+      "title": "Pivot Table Operator",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.92; opportunity=opp.pivot-table-operator",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.pivot-table-operator",
+        "opportunityId": "opp.pivot-table-operator",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.92,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.approval.approval.opp.pivot-table-seo-cluster",
+      "title": "Pivot Table Operator SEO cluster",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.84; opportunity=opp.pivot-table-seo-cluster",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.pivot-table-seo-cluster",
+        "opportunityId": "opp.pivot-table-seo-cluster",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.84,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.approval.approval.opp.query-before-coffee",
+      "title": "Query Before Coffee",
+      "status": "warning",
+      "severity": "warning",
+      "description": "approvalStatus=PENDING_REVIEW; confidence=0.86; opportunity=opp.query-before-coffee",
+      "sourceFile": "runtime/market-intelligence/approval-queue.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "Queue is read-only; approval and rejection remain human-controlled outside this dashboard.",
+      "details": {
+        "section": "Approval Queue",
+        "approvalId": "approval.opp.query-before-coffee",
+        "opportunityId": "opp.query-before-coffee",
+        "approvalStatus": "PENDING_REVIEW",
+        "confidence": 0.86,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.manual-platform-mix",
+      "title": "Manual Etsy, TikTok and Pinterest visibility mix",
+      "status": "warning",
+      "severity": "warning",
+      "description": "kind=platform; class=C; confidence=0.62; audience=Manual content operations",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.manual-platform-mix",
+        "kind": "platform",
+        "classification": "C",
+        "confidence": 0.62,
+        "evidenceCount": 2,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md",
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.model-is-overfitting",
+      "title": "Model Is Overfitting",
+      "status": "warning",
+      "severity": "warning",
+      "description": "kind=product; class=B; confidence=0.85; audience=Machine Learning Engineers, AI Engineers, Data Scientists",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.model-is-overfitting",
+        "kind": "product",
+        "classification": "B",
+        "confidence": 0.85,
+        "evidenceCount": 1,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.pivot-table-content-system",
+      "title": "Pivot Table Operator content angles",
+      "status": "warning",
+      "severity": "warning",
+      "description": "kind=content; class=B; confidence=0.79; audience=Excel Users, Data Analysts, Business Analysts",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.pivot-table-content-system",
+        "kind": "content",
+        "classification": "B",
+        "confidence": 0.79,
+        "evidenceCount": 2,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/SOCIAL_CONTENT.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.pivot-table-operator",
+      "title": "Pivot Table Operator",
+      "status": "ok",
+      "severity": "success",
+      "description": "kind=product; class=A; confidence=0.92; audience=Excel Users, Data Analysts, Spreadsheet Nerds",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.pivot-table-operator",
+        "kind": "product",
+        "classification": "A",
+        "confidence": 0.92,
+        "evidenceCount": 3,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md",
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/PRODUCT_MASTER.md",
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.pivot-table-seo-cluster",
+      "title": "Pivot Table Operator SEO cluster",
+      "status": "warning",
+      "severity": "warning",
+      "description": "kind=seo; class=B; confidence=0.84; audience=Etsy buyers searching Excel and analyst gifts",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.pivot-table-seo-cluster",
+        "kind": "seo",
+        "classification": "B",
+        "confidence": 0.84,
+        "evidenceCount": 1,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/products/pivot-table-operator/SEO_KEYWORDS.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.opportunity.opp.query-before-coffee",
+      "title": "Query Before Coffee",
+      "status": "warning",
+      "severity": "warning",
+      "description": "kind=product; class=B; confidence=0.86; audience=SQL Developers, Programmers, Software Engineers",
+      "sourceFile": "runtime/market-intelligence/opportunities.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "details": {
+        "section": "Opportunity Ranking",
+        "opportunityId": "opp.query-before-coffee",
+        "kind": "product",
+        "classification": "B",
+        "confidence": 0.86,
+        "evidenceCount": 1,
+        "sourceLineage": [
+          "projects/NumberNinjaDesigns/docs/PRODUCT_IDEA_BACKLOG.md"
+        ],
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.etsy",
+      "title": "Etsy",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:56",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Etsy",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.github",
+      "title": "GitHub",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:54",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "GitHub",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.meta-facebook-page",
+      "title": "Meta Facebook Page",
+      "status": "error",
+      "severity": "error",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:55",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Meta Facebook Page",
+        "providerStatus": "failed",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.meta-instagram-business",
+      "title": "Meta Instagram Business",
+      "status": "error",
+      "severity": "error",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:55",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Meta Instagram Business",
+        "providerStatus": "failed",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.meta-user-token",
+      "title": "Meta User Token",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:55",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Meta User Token",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.notion",
+      "title": "Notion",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:53",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Notion",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.openai",
+      "title": "OpenAI",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:54",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "OpenAI",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.provider.printify",
+      "title": "Printify",
+      "status": "ok",
+      "severity": "success",
+      "description": "Read-only provider validation status for market intelligence visibility.",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "06/12/2026 14:20:56",
+      "actionHint": "Provider health is sanitized; no tokens, ids or response bodies are exposed.",
+      "details": {
+        "section": "Provider Health",
+        "providerName": "Printify",
+        "providerStatus": "connected",
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.recommendation-summary",
+      "title": "Recommendation Center",
+      "status": "unknown",
+      "severity": "info",
+      "description": "approvedRecommendations=0; pendingInputs=6",
+      "sourceFile": "runtime/market-intelligence/recommendations.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1687639Z",
+      "actionHint": "Recommendations are generated only for APPROVED opportunities; pending items remain review-only.",
+      "details": {
+        "section": "Recommendation Center",
+        "recommendationCount": 0,
+        "pendingRecommendationInputs": 6,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    },
+    {
+      "id": "market-intelligence.signal-sources",
+      "title": "Signal Sources",
+      "status": "ok",
+      "severity": "success",
+      "description": "studioKnowledge=connected; catalog=connected; publicSignals=unknown",
+      "sourceFile": "runtime/market-intelligence/market-signals.report.json",
+      "lastUpdated": "2026-06-17T07:19:08.1667568Z",
+      "actionHint": "UNKNOWN public signals must stay UNKNOWN until evidence is collected through an approved read-only source.",
+      "details": {
+        "section": "Signal Sources",
+        "currentStudioKnowledge": "connected",
+        "numberNinjaDesignsCatalog": "connected",
+        "publicSignals": "unknown",
+        "signalCount": 6,
+        "canExecute": false,
+        "canMutate": false,
+        "canPublish": false
+      }
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "nextRecommendedAction": "Review PENDING_REVIEW opportunities manually; keep unavailable public signals UNKNOWN until evidence exists."
+}

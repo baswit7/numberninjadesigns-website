@@ -1,0 +1,31 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-12T14:23:06.8183765Z",
+    "source":  "services/market-intelligence/generate-market-intelligence.ps1",
+    "status":  "unknown",
+    "summary":  "No recommendations generated because no opportunity is APPROVED.",
+    "recommendations":  [
+
+                        ],
+    "pendingRecommendationInputs":  [
+                                        "opp.pivot-table-operator",
+                                        "opp.query-before-coffee",
+                                        "opp.model-is-overfitting",
+                                        "opp.pivot-table-content-system",
+                                        "opp.pivot-table-seo-cluster",
+                                        "opp.manual-platform-mix"
+                                    ],
+    "boundaries":  {
+                       "readOnly":  true,
+                       "usesPublicSignalsOnly":  true,
+                       "usesLoginAutomation":  false,
+                       "usesOAuthAutomation":  false,
+                       "usesPrivateScraping":  false,
+                       "publishesContent":  false,
+                       "executesPosting":  false,
+                       "executesApprovalActions":  false,
+                       "mutatesExternalSystems":  false,
+                       "exposesSecrets":  false,
+                       "storesSecrets":  false
+                   }
+}

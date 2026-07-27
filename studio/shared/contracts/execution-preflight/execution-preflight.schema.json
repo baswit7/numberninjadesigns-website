@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/contracts/execution-preflight.schema.json",
+  "title": "Studio OS Execution Preflight Decisions",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "capability",
+    "sourceFile",
+    "packageInput",
+    "allowedPreflightStates",
+    "decisions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "capability": {
+      "const": "execution-preflight-gate"
+    },
+    "sourceFile": {
+      "type": "string"
+    },
+    "packageInput": {
+      "type": "string"
+    },
+    "allowedPreflightStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "UNKNOWN",
+          "BLOCKED",
+          "FAILED",
+          "PASSED",
+          "READY_FOR_MANUAL_REVIEW"
+        ]
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "preflightId",
+          "requestId",
+          "sourceApprovalId",
+          "approvalState",
+          "requestedAction",
+          "targetSystem",
+          "packageReadinessState",
+          "preflightState",
+          "riskClassification",
+          "executionDispatchAllowed",
+          "result",
+          "checks",
+          "blockers"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "preflightId": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "sourceApprovalId": {
+            "type": "string"
+          },
+          "approvalState": {
+            "type": "string"
+          },
+          "requestedAction": {
+            "type": "string"
+          },
+          "targetSystem": {
+            "type": "string"
+          },
+          "packageReadinessState": {
+            "type": "string"
+          },
+          "preflightState": {
+            "enum": [
+              "UNKNOWN",
+              "BLOCKED",
+              "FAILED",
+              "PASSED",
+              "READY_FOR_MANUAL_REVIEW"
+            ]
+          },
+          "riskClassification": {
+            "type": "string"
+          },
+          "executionDispatchAllowed": {
+            "const": false
+          },
+          "result": {
+            "type": "string"
+          },
+          "checks": {
+            "type": "object"
+          },
+          "blockers": {
+            "type": "array"
+          }
+        }
+      }
+    }
+  }
+}

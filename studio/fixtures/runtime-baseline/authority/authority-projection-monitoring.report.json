@@ -1,0 +1,133 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-18",
+    "reportId":  "authority-projection-monitoring",
+    "generatedBy":  "services/authority-monitoring/generate-authority-projection-monitoring.ps1",
+    "generatedAt":  "2026-06-07T21:46:19.9748694Z",
+    "sourceOfTruth":  {
+                          "constitution":  "shared/contracts/authority/constitution.rules.json",
+                          "authorityRegistry":  "shared/contracts/authority/authority-registry.json",
+                          "readModel":  "runtime/authority/authority-read-model.report.json"
+                      },
+    "consumedSources":  [
+                            {
+                                "path":  "shared/contracts/authority/constitution.rules.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T16:31:38.7402950Z"
+                            },
+                            {
+                                "path":  "shared/contracts/authority/authority-registry.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T16:31:38.7371866Z"
+                            },
+                            {
+                                "path":  "runtime/authority/authority-read-model.report.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T21:46:19.6989939Z"
+                            },
+                            {
+                                "path":  "runtime/authority/authority-query-responses.report.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T21:46:19.7073199Z"
+                            },
+                            {
+                                "path":  "runtime/dashboard/authority.view.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T21:43:48.8313350Z"
+                            }
+                        ],
+    "monitoredProjection":  {
+                                "path":  "runtime/dashboard/authority.view.json",
+                                "exists":  true,
+                                "validJson":  true,
+                                "lastModified":  "2026-06-07T21:43:48.8313350Z"
+                            },
+    "status":  "warning",
+    "summary":  {
+                    "authorityCount":  15,
+                    "expectedProjectionCount":  11,
+                    "missingProjectionCount":  0,
+                    "staleProjectionCount":  1,
+                    "structuralMismatchCount":  0,
+                    "lineageIssueCount":  0,
+                    "completenessIssueCount":  0,
+                    "findingCount":  1
+                },
+    "freshness":  {
+                      "status":  "warning",
+                      "sourceLastModified":  "2026-06-07T21:46:19.6989939Z",
+                      "projectionLastModified":  "2026-06-07T21:43:48.8313350Z",
+                      "projectionOlderThanSource":  true
+                  },
+    "lineage":  {
+                    "status":  "ok",
+                    "checks":  [
+                                   {
+                                       "id":  "dashboard-source-marker",
+                                       "status":  "ok",
+                                       "summary":  "Dashboard source marker is studio-dashboard:authority."
+                                   },
+                                   {
+                                       "id":  "summary-source-contracts",
+                                       "status":  "ok",
+                                       "summary":  "Authority summary lineage matches read model sourceContracts."
+                                   }
+                               ]
+                },
+    "completeness":  {
+                         "status":  "ok",
+                         "checks":  [
+                                        {
+                                            "id":  "expected-authority-cards",
+                                            "status":  "ok",
+                                            "summary":  "11 expected authority dashboard cards are present."
+                                        }
+                                    ]
+                     },
+    "structuralChecks":  {
+                             "status":  "ok",
+                             "checks":  [
+                                            {
+                                                "id":  "summary-counts",
+                                                "status":  "ok",
+                                                "summary":  "Authority summary counts match the authority read model."
+                                            },
+                                            {
+                                                "id":  "authority-field-parity",
+                                                "status":  "ok",
+                                                "summary":  "Projected authority fields match read model values."
+                                            }
+                                        ]
+                         },
+    "findings":  [
+                     {
+                         "id":  "authority-projection.stale-projection.authority-dashboard-projection-is-older-than-the-authority-read-model.",
+                         "type":  "stale-projection",
+                         "severity":  "warning",
+                         "source":  "runtime/authority/authority-read-model.report.json",
+                         "projection":  "runtime/dashboard/authority.view.json",
+                         "summary":  "Authority dashboard projection is older than the authority read model."
+                     }
+                 ],
+    "boundary":  {
+                     "monitoringOnly":  true,
+                     "derivedOnly":  true,
+                     "ownsAuthority":  false,
+                     "repairsProjection":  false,
+                     "synchronizesProjection":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "reportWritingOnly":  true,
+                     "dashboardActionAllowed":  false,
+                     "approvalAutomationAllowed":  false
+                 }
+}

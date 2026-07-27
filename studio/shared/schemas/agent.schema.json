@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "requiredFields": [
+    "id",
+    "role",
+    "authority",
+    "inputs",
+    "outputs",
+    "events",
+    "validationHooks"
+  ],
+  "allowedAuthorities": [
+    "architect",
+    "implementer",
+    "reviewer",
+    "validator",
+    "documenter",
+    "deployer"
+  ]
+}

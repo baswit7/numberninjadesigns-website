@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "studio-os-v1-portfolio-dashboard",
+  "description": "Read-only portfolio registry for active project overview and next actions.",
+  "sourceOfTruth": "config/portfolio.projects.json",
+  "generatedView": "runtime/dashboard/portfolio.view.json",
+  "requiredFields": [
+    "projectId",
+    "projectName",
+    "projectType",
+    "status",
+    "priority",
+    "health",
+    "lastActivity",
+    "nextAction",
+    "repoReference",
+    "openRisks",
+    "readinessSummary"
+  ],
+  "projects": [
+    {
+      "projectId": "studio-os",
+      "projectName": "Studio OS",
+      "projectType": "development-operating-system",
+      "status": "active",
+      "priority": "P0",
+      "health": "green",
+      "lastActivity": "2026-07-27",
+      "nextAction": "Validate the integrated Studio OS against the canonical NumberNinjaDesigns root.",
+      "repoReference": "local/numberninjadesigns.github.io/studio",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "openRisks": [
+        "Provider connectivity remains unverified until explicitly executed against the root environment."
+      ],
+      "readinessSummary": "Studio OS source, governance, apps and connectors are integrated as an internal NumberNinjaDesigns capability."
+    },
+    {
+      "projectId": "numberninjadesigns",
+      "projectName": "NumberNinjaDesigns",
+      "projectType": "commerce-brand",
+      "status": "active",
+      "priority": "P1",
+      "health": "yellow",
+      "lastActivity": "2026-07-27",
+      "nextAction": "Complete local validation, then review external account and storefront cutover gates.",
+      "repoReference": "local/numberninjadesigns.github.io",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "openRisks": [
+        "External Etsy and social account ownership is not yet verified in this local consolidation."
+      ],
+      "readinessSummary": "Physical products, digital products, Studio OS, intelligence modules and growth plans now share one canonical project."
+    },
+    {
+      "projectId": "tok-hub",
+      "projectName": "NumberNinjaDesigns / TOK Hub",
+      "projectType": "brand-initiative",
+      "status": "planned",
+      "priority": "P2",
+      "health": "yellow",
+      "lastActivity": "2026-06-08",
+      "nextAction": "Create a content-project foundation before expanding channel workflows.",
+      "repoReference": "local/projects/NumberNinjaDesigns/initiatives/TOKHub",
+      "activeBranch": "unknown",
+      "openRisks": [
+        "Scope can expand into automation before the content workflow is documented."
+      ],
+      "readinessSummary": "Needs project foundation and first delivery slice before build expansion."
+    },
+    {
+      "projectId": "boodschappenvergelijker",
+      "projectName": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "projectType": "brand-initiative",
+      "status": "planned",
+      "priority": "P2",
+      "health": "yellow",
+      "lastActivity": "2026-06-08",
+      "nextAction": "Create a web-app or dashboard project foundation and define first comparison workflow.",
+      "repoReference": "local/projects/NumberNinjaDesigns/initiatives/BoodschappenVergelijker",
+      "activeBranch": "unknown",
+      "openRisks": [
+        "Data source strategy is not visible in the current portfolio metadata."
+      ],
+      "readinessSummary": "Needs first workflow definition, source data notes, and template-based project documents."
+    },
+    {
+      "projectId": "ai-daytraden",
+      "projectName": "NumberNinjaDesigns / AI Daytraden",
+      "projectType": "brand-initiative",
+      "status": "research-only",
+      "priority": "P3",
+      "health": "yellow",
+      "lastActivity": "2026-07-27",
+      "nextAction": "Define a research question and evidence boundary without adding broker or trade execution.",
+      "repoReference": "local/projects/NumberNinjaDesigns/initiatives/AIDaytraden",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "openRisks": [
+        "Financial claims, market-data licensing and execution boundaries require specialist review."
+      ],
+      "readinessSummary": "Preserved as a NumberNinjaDesigns research initiative; execution is explicitly prohibited."
+    },
+    {
+      "projectId": "niveau-verhogen-paul",
+      "projectName": "NumberNinjaDesigns / Niveau Verhogen Paul",
+      "projectType": "brand-initiative",
+      "status": "planned",
+      "priority": "P3",
+      "health": "yellow",
+      "lastActivity": "2026-07-27",
+      "nextAction": "Confirm audience, measurable outcome and first manual workflow.",
+      "repoReference": "local/projects/NumberNinjaDesigns/initiatives/NiveauVerhogenPaul",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "openRisks": [
+        "Scope and product boundary are not yet validated."
+      ],
+      "readinessSummary": "Preserved as a NumberNinjaDesigns initiative pending scope validation."
+    },
+    {
+      "projectId": "leersystemen-verkoop",
+      "projectName": "NumberNinjaDesigns / Leersystemen Verkoop",
+      "projectType": "brand-initiative",
+      "status": "planned",
+      "priority": "P3",
+      "health": "yellow",
+      "lastActivity": "2026-07-27",
+      "nextAction": "Validate the audience, sales funnel, lawful data sources, privacy boundary and first KPI.",
+      "repoReference": "local/projects/NumberNinjaDesigns/initiatives/LeersystemenVerkoop",
+      "activeBranch": "feature/numberninjadesigns-unification-20260727",
+      "openRisks": [
+        "CRM, email and planning integrations are not selected.",
+        "Customer data storage is prohibited until privacy and access design are approved."
+      ],
+      "readinessSummary": "Preserved as a NumberNinjaDesigns initiative; no production code, provider connection or deployment is active."
+    }
+  ],
+  "boundaries": {
+    "readOnlyRegistry": true,
+    "readOnlyDashboard": true,
+    "documentDriven": true,
+    "storesSecrets": false,
+    "performsApiCalls": false,
+    "validatesCredentials": false,
+    "executesDeployments": false,
+    "createsApprovals": false,
+    "createsAgents": false,
+    "createsWorkersQueuesOrSchedulers": false
+  }
+}

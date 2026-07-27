@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectionId": "phase14:stale-dashboard-projection",
+  "generatedAt": "2026-06-07T10:10:00Z",
+  "source": "dashboard-adapter-projection",
+  "runtimeTruth": {
+    "owner": "runtime",
+    "authoritative": true,
+    "sourcePaths": [
+      "runtime/reports/health-report.json"
+    ]
+  },
+  "producer": {
+    "owner": "apps/studio-dashboard/dashboard-adapter.ps1",
+    "role": "projection-producer",
+    "onlyProducer": true
+  },
+  "consumer": {
+    "owner": "apps/studio-dashboard",
+    "role": "passive-visual-consumer",
+    "passive": true
+  },
+  "sources": [
+    {
+      "sourceId": "health-report",
+      "sourcePath": "runtime/reports/health-report.json",
+      "sourceKind": "health-result",
+      "status": "warning"
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "studio-health",
+      "title": "Studio health",
+      "status": "warning",
+      "sourceIds": [
+        "health-report"
+      ],
+      "summary": "Fixture projection generated before source evidence observation."
+    }
+  ],
+  "boundary": {
+    "readOnly": true,
+    "runtimeMutationAllowed": false,
+    "dashboardWriteAllowed": false,
+    "executionAllowed": false,
+    "providerCallAllowed": false,
+    "deploymentAllowed": false,
+    "credentialAccessAllowed": false,
+    "browserStorageAuthorityAllowed": false
+  },
+  "nonExecutableMetadata": {
+    "phase": "phase-13",
+    "owner": "studio-os",
+    "safetyClass": "read-only-projection-contract"
+  }
+}

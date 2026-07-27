@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/authority/observability/authority-observability.schema.json",
+  "title": "Phase 21 Authority Evidence Observability Report",
+  "description": "Read-only observability report derived from Phase 15 through Phase 20 authority, projection, monitoring, evidence and history outputs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "phase",
+    "reportId",
+    "generatedBy",
+    "generatedAt",
+    "sourceOfTruth",
+    "consumedReports",
+    "status",
+    "summary",
+    "freshness",
+    "lineage",
+    "coverage",
+    "trend",
+    "retention",
+    "health",
+    "unknowns",
+    "boundary"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "phase": { "type": "string", "const": "phase-21" },
+    "reportId": { "type": "string", "const": "authority-evidence-observability" },
+    "generatedBy": { "type": "string", "const": "services/authority-observability/generate-authority-observability.ps1" },
+    "generatedAt": { "type": "string", "minLength": 20 },
+    "sourceOfTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority", "readModel", "projection", "monitoring", "evidence", "history"],
+      "properties": {
+        "authority": { "type": "string", "const": "shared/contracts/authority/constitution.rules.json + shared/contracts/authority/authority-registry.json" },
+        "readModel": { "type": "string", "const": "runtime/authority/authority-read-model.report.json" },
+        "projection": { "type": "string", "const": "runtime/dashboard/authority.view.json" },
+        "monitoring": { "type": "string", "const": "runtime/authority/authority-projection-monitoring.report.json" },
+        "evidence": { "type": "string", "const": "runtime/authority/authority-monitoring-evidence.report.json" },
+        "history": { "type": "string", "const": "runtime/authority/authority-evidence-history.report.json" }
+      }
+    },
+    "consumedReports": { "type": "array", "minItems": 6, "items": { "$ref": "#/$defs/reportInput" } },
+    "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["knownInputCount", "unknownInputCount", "staleInputCount", "coveragePercent", "warningCount", "unknownCount"],
+      "properties": {
+        "knownInputCount": { "type": "integer", "minimum": 0 },
+        "unknownInputCount": { "type": "integer", "minimum": 0 },
+        "staleInputCount": { "type": "integer", "minimum": 0 },
+        "coveragePercent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "warningCount": { "type": "integer", "minimum": 0 },
+        "unknownCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "freshness": { "$ref": "#/$defs/observabilityGroup" },
+    "lineage": { "$ref": "#/$defs/observabilityGroup" },
+    "coverage": { "$ref": "#/$defs/observabilityGroup" },
+    "trend": { "$ref": "#/$defs/observabilityGroup" },
+    "retention": { "$ref": "#/$defs/observabilityGroup" },
+    "health": { "$ref": "#/$defs/observabilityGroup" },
+    "unknowns": { "$ref": "#/$defs/observabilityGroup" },
+    "boundary": { "$ref": "#/$defs/boundary" }
+  },
+  "$defs": {
+    "reportInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "exists", "validJson", "lastModified", "isStale", "isComplete", "verdict", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 3 },
+        "role": { "type": "string", "minLength": 3 },
+        "exists": { "type": "boolean" },
+        "validJson": { "type": "boolean" },
+        "lastModified": { "type": ["string", "null"] },
+        "isStale": { "type": "boolean" },
+        "isComplete": { "type": "boolean" },
+        "verdict": { "type": "string", "enum": ["known", "unknown"] },
+        "reason": { "type": "string", "minLength": 3 }
+      }
+    },
+    "observabilityGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "items"],
+      "properties": {
+        "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/observabilityItem" } }
+      }
+    },
+    "observabilityItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "summary", "source", "safe"],
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "status": { "type": "string", "enum": ["pass", "warning", "unknown"] },
+        "summary": { "type": "string", "minLength": 3 },
+        "source": { "type": "string", "minLength": 3 },
+        "safe": { "type": "boolean" }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observabilityOnly",
+        "visibilityOnly",
+        "readOnly",
+        "derivedOnly",
+        "reportWritingOnly",
+        "ownsAuthorityTruth",
+        "ownsEvidenceTruth",
+        "ownsMonitoringTruth",
+        "ownsProjectionTruth",
+        "ownsHistoryTruth",
+        "ownsRetentionTruth",
+        "createsDecisions",
+        "createsApprovals",
+        "repairsProjection",
+        "synchronizesProjection",
+        "executionAllowed",
+        "providerInvocationAllowed",
+        "deploymentAllowed",
+        "credentialAccessAllowed",
+        "secretAccessAllowed",
+        "runtimeTruthMutationAllowed",
+        "dashboardMutationAllowed",
+        "approvalMutationAllowed",
+        "workflowExecutionAllowed",
+        "workerAllowed",
+        "schedulerAllowed",
+        "queueAllowed",
+        "automationAllowed",
+        "selfHealingAllowed",
+        "browserAuthorityStorageAllowed"
+      ],
+      "properties": {
+        "observabilityOnly": { "type": "boolean", "const": true },
+        "visibilityOnly": { "type": "boolean", "const": true },
+        "readOnly": { "type": "boolean", "const": true },
+        "derivedOnly": { "type": "boolean", "const": true },
+        "reportWritingOnly": { "type": "boolean", "const": true },
+        "ownsAuthorityTruth": { "type": "boolean", "const": false },
+        "ownsEvidenceTruth": { "type": "boolean", "const": false },
+        "ownsMonitoringTruth": { "type": "boolean", "const": false },
+        "ownsProjectionTruth": { "type": "boolean", "const": false },
+        "ownsHistoryTruth": { "type": "boolean", "const": false },
+        "ownsRetentionTruth": { "type": "boolean", "const": false },
+        "createsDecisions": { "type": "boolean", "const": false },
+        "createsApprovals": { "type": "boolean", "const": false },
+        "repairsProjection": { "type": "boolean", "const": false },
+        "synchronizesProjection": { "type": "boolean", "const": false },
+        "executionAllowed": { "type": "boolean", "const": false },
+        "providerInvocationAllowed": { "type": "boolean", "const": false },
+        "deploymentAllowed": { "type": "boolean", "const": false },
+        "credentialAccessAllowed": { "type": "boolean", "const": false },
+        "secretAccessAllowed": { "type": "boolean", "const": false },
+        "runtimeTruthMutationAllowed": { "type": "boolean", "const": false },
+        "dashboardMutationAllowed": { "type": "boolean", "const": false },
+        "approvalMutationAllowed": { "type": "boolean", "const": false },
+        "workflowExecutionAllowed": { "type": "boolean", "const": false },
+        "workerAllowed": { "type": "boolean", "const": false },
+        "schedulerAllowed": { "type": "boolean", "const": false },
+        "queueAllowed": { "type": "boolean", "const": false },
+        "automationAllowed": { "type": "boolean", "const": false },
+        "selfHealingAllowed": { "type": "boolean", "const": false },
+        "browserAuthorityStorageAllowed": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

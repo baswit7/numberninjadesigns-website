@@ -1,0 +1,73 @@
+{
+    "schemaVersion":  "1.0.0",
+    "phase":  "phase-23",
+    "reportId":  "simulation-review-validation",
+    "status":  "passed",
+    "summary":  "Simulation evidence review passed deterministic explanation-only checks.",
+    "checks":  [
+                   {
+                       "id":  "review-manifest",
+                       "status":  "checked",
+                       "consumedReports":  6
+                   },
+                   {
+                       "id":  "review-report",
+                       "status":  "checked",
+                       "statusValue":  "unknown",
+                       "reviewConfidenceScore":  80
+                   },
+                   {
+                       "id":  "phase-23-forbidden-pattern-scan",
+                       "status":  "checked",
+                       "files":  8
+                   }
+               ],
+    "failures":  [
+
+                 ],
+    "boundary":  {
+                     "machineReadableReportOnly":  true,
+                     "reviewOnly":  true,
+                     "explanationOnly":  true,
+                     "readOnly":  true,
+                     "derivedOnly":  true,
+                     "reportWritingOnly":  true,
+                     "ownsReviewReports":  true,
+                     "ownsAuthorityTruth":  false,
+                     "ownsGovernanceTruth":  false,
+                     "ownsEvidenceTruth":  false,
+                     "ownsMonitoringTruth":  false,
+                     "ownsHistoryTruth":  false,
+                     "ownsObservabilityTruth":  false,
+                     "ownsSimulationTruth":  false,
+                     "createsDecisions":  false,
+                     "createsApprovals":  false,
+                     "executionAllowed":  false,
+                     "providerInvocationAllowed":  false,
+                     "deploymentAllowed":  false,
+                     "workflowExecutionAllowed":  false,
+                     "commandExecutionAllowed":  false,
+                     "orchestrationAllowed":  false,
+                     "automationAllowed":  false,
+                     "repairAllowed":  false,
+                     "synchronizationAllowed":  false,
+                     "approvalWorkflowAllowed":  false,
+                     "approvalMutationAllowed":  false,
+                     "authorityMutationAllowed":  false,
+                     "evidenceMutationAllowed":  false,
+                     "simulationMutationAllowed":  false,
+                     "contractMutationAllowed":  false,
+                     "credentialAccessAllowed":  false,
+                     "secretAccessAllowed":  false,
+                     "runtimeMutationAllowed":  false,
+                     "dashboardMutationAllowed":  false,
+                     "queueAllowed":  false,
+                     "workerAllowed":  false,
+                     "schedulerAllowed":  false,
+                     "backgroundJobAllowed":  false,
+                     "selfHealingAllowed":  false,
+                     "retryAllowed":  false,
+                     "providerAdapterAllowed":  false,
+                     "stateChangingRecommendationAllowed":  false
+                 }
+}

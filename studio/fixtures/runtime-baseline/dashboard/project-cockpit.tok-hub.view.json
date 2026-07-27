@@ -1,0 +1,65 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:project-cockpit",
+    "sourceFile":  "config/delivery.tasks.json",
+    "readOnly":  true,
+    "projectId":  "tok-hub",
+    "projectName":  "NumberNinjaDesigns / TOK Hub",
+    "projectType":  "content",
+    "projectStatus":  "active",
+    "nextTask":  {
+                     "taskId":  "tok-hub-001",
+                     "title":  "Define content production pipeline",
+                     "whyThisTask":  "Highest ROI",
+                     "priorityScore":  78,
+                     "roiScore":  76,
+                     "releaseReadiness":  "planning-ready",
+                     "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md"
+                 },
+    "blockers":  [
+
+                 ],
+    "releaseReadiness":  "planning-ready",
+    "highestRiskTask":  {
+                            "taskId":  "tok-hub-001",
+                            "title":  "Define content production pipeline",
+                            "risk":  4,
+                            "riskSummary":  "low risk. No active blockers."
+                        },
+    "reviewNeededCount":  0,
+    "taskCountsByStatus":  {
+                               "intake":  0,
+                               "ready":  1,
+                               "in_progress":  0,
+                               "review":  0,
+                               "blocked":  0,
+                               "release_ready":  0,
+                               "done":  0
+                           },
+    "tasks":  [
+                  {
+                      "taskId":  "tok-hub-001",
+                      "title":  "Define content production pipeline",
+                      "status":  "ready",
+                      "priorityScore":  78,
+                      "roiScore":  76,
+                      "whyThisTask":  "Highest ROI",
+                      "releaseReadiness":  "planning-ready",
+                      "codexPrompt":  "runtime/delivery/prompts/tok-hub-001.codex-prompt.md"
+                  }
+              ],
+    "boundaries":  {
+                       "readOnlyDashboard":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

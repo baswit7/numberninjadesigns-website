@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/command/codex-prompt.schema.json",
+  "title": "Phase 7 Codex Prompt Handoff",
+  "description": "Validates a normalized non-executing prompt handoff to Codex. This schema validates prompt context only; it does not execute Codex actions, call providers, mutate runtime state, trigger deployments or bypass human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "promptId",
+    "createdAt",
+    "userObjective",
+    "repoContext",
+    "phaseConstraints",
+    "safetyBoundaries",
+    "allowedActions",
+    "forbiddenActions",
+    "expectedResponseShape",
+    "approvalRequirements",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "description": "Semantic version of this Codex prompt handoff schema contract.",
+      "const": "1.0.0",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "promptId": {
+      "type": "string",
+      "description": "Deterministic, id-safe identifier for this prompt handoff.",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "UTC timestamp for when the prompt handoff was created.",
+      "format": "date-time"
+    },
+    "userObjective": {
+      "type": "string",
+      "description": "Concise objective the prompt handoff is meant to preserve for review.",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "repoContext": {
+      "type": "object",
+      "description": "Repository context required for the prompt handoff without embedding secrets or local machine-specific paths.",
+      "additionalProperties": false,
+      "required": [
+        "branch",
+        "relevantPaths",
+        "knownUntrackedFiles"
+      ],
+      "properties": {
+        "branch": {
+          "type": "string",
+          "description": "Expected Git branch for the work.",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "^[A-Za-z0-9._/-]+$"
+        },
+        "relevantPaths": {
+          "type": "array",
+          "description": "Repository-relative paths relevant to the handoff.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^(?!/)[^:\\\\]+$"
+          },
+          "uniqueItems": true
+        },
+        "knownUntrackedFiles": {
+          "type": "array",
+          "description": "Known untracked repository-relative files that must remain out of scope.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^(?!/)[^:\\\\]+$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "phaseConstraints": {
+      "type": "object",
+      "description": "Phase-specific scope boundaries for the prompt handoff.",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "allowedScope",
+        "nonGoals"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "description": "Studio OS phase identifier for the handoff.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "allowedScope": {
+          "type": "array",
+          "description": "Allowed work boundaries for the handoff.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "uniqueItems": true
+        },
+        "nonGoals": {
+          "type": "array",
+          "description": "Explicit non-goals that the handoff must not perform.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "safetyBoundaries": {
+      "type": "object",
+      "description": "Explicit safety boundaries that constrain the prompt handoff.",
+      "additionalProperties": false,
+      "required": [
+        "noProviderCalls",
+        "noDeployments",
+        "noRuntimeMutation",
+        "noSecretExposure",
+        "noUnapprovedPush"
+      ],
+      "properties": {
+        "noProviderCalls": {
+          "type": "boolean",
+          "description": "Whether provider calls are forbidden by this handoff.",
+          "const": true
+        },
+        "noDeployments": {
+          "type": "boolean",
+          "description": "Whether deployments are forbidden by this handoff.",
+          "const": true
+        },
+        "noRuntimeMutation": {
+          "type": "boolean",
+          "description": "Whether runtime mutation is forbidden by this handoff.",
+          "const": true
+        },
+        "noSecretExposure": {
+          "type": "boolean",
+          "description": "Whether secret or token exposure is forbidden by this handoff.",
+          "const": true
+        },
+        "noUnapprovedPush": {
+          "type": "boolean",
+          "description": "Whether Git push without explicit human approval is forbidden by this handoff.",
+          "const": true
+        }
+      }
+    },
+    "allowedActions": {
+      "type": "array",
+      "description": "Explicit actions allowed within the non-executing prompt handoff boundary.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "uniqueItems": true
+    },
+    "forbiddenActions": {
+      "type": "array",
+      "description": "Explicit actions forbidden by the prompt handoff, including provider calls, runtime mutation, deployments and unapproved pushes where relevant.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "uniqueItems": true
+    },
+    "expectedResponseShape": {
+      "type": "object",
+      "description": "Expected response sections for the Codex handoff.",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "filesChanged",
+        "checksRun",
+        "risks",
+        "verdict"
+      ],
+      "properties": {
+        "summary": {
+          "type": "boolean",
+          "description": "Whether the response must include a concise summary."
+        },
+        "filesChanged": {
+          "type": "boolean",
+          "description": "Whether the response must list changed files."
+        },
+        "checksRun": {
+          "type": "boolean",
+          "description": "Whether the response must report checks run or explicitly skipped."
+        },
+        "risks": {
+          "type": "boolean",
+          "description": "Whether the response must identify residual risks."
+        },
+        "verdict": {
+          "type": "boolean",
+          "description": "Whether the response must include a final go, hold or stop verdict."
+        }
+      }
+    },
+    "approvalRequirements": {
+      "type": "object",
+      "description": "Human approval requirements for the prompt handoff.",
+      "additionalProperties": false,
+      "required": [
+        "requiresHumanApproval",
+        "blockedWithoutApproval"
+      ],
+      "properties": {
+        "requiresHumanApproval": {
+          "type": "boolean",
+          "description": "Whether explicit human approval is required before downstream action."
+        },
+        "approvalReason": {
+          "type": "string",
+          "description": "Reason human approval is required, when applicable.",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "blockedWithoutApproval": {
+          "type": "boolean",
+          "description": "Whether the handoff must remain blocked until approval is granted."
+        }
+      }
+    },
+    "nonExecutableMetadata": {
+      "type": "object",
+      "description": "Review and traceability metadata only. This object must not contain executable instructions, provider credentials, secrets, tokens, deployment actions or local machine paths.",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.quality-gates",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "gateStatus",
+    "thresholds",
+    "gates",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "allowedStatuses": [
+    "PASS",
+    "WARNING",
+    "BLOCKED"
+  ],
+  "traceability": {
+    "requiresReason": true,
+    "requiresImpact": true,
+    "requiresRemediation": true
+  }
+}

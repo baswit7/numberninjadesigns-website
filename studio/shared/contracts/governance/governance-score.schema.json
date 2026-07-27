@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "governance.score",
+  "status": "active",
+  "requiredFields": [
+    "generatedAt",
+    "source",
+    "status",
+    "governanceScore",
+    "classification",
+    "scoringModel",
+    "checks",
+    "summary",
+    "nextRecommendedAction"
+  ],
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "allowedClassifications": [
+    "Elite",
+    "Healthy",
+    "Attention Required",
+    "At Risk",
+    "Critical"
+  ],
+  "traceability": {
+    "requiresWeights": true,
+    "requiresEvidence": true,
+    "requiresRemediation": true
+  }
+}

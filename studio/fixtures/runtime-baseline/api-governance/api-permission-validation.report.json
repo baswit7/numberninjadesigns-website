@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-21T20:30:00.0000000Z",
+  "source": "shared/contracts/api-governance/api-permission-contract.json",
+  "reportId": "api-permission-validation",
+  "summary": {
+    "totalApis": 16,
+    "missingPermissions": 9,
+    "passed": 7
+  },
+  "apis": [
+    {
+      "apiId": "openai",
+      "name": "OpenAI",
+      "requiredPermissions": [
+        "billing-active",
+        "model-access"
+      ],
+      "grantedPermissions": [
+        "billing-active",
+        "model-access"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "github",
+      "name": "GitHub",
+      "requiredPermissions": [
+        "repository-read",
+        "pull-request-read",
+        "workflow-read"
+      ],
+      "grantedPermissions": [
+        "repository-read",
+        "pull-request-read",
+        "workflow-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "notion",
+      "name": "Notion",
+      "requiredPermissions": [
+        "workspace-read",
+        "page-read"
+      ],
+      "grantedPermissions": [
+        "workspace-read",
+        "page-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "vercel",
+      "name": "Vercel",
+      "requiredPermissions": [
+        "account-read",
+        "project-read",
+        "deployment-read"
+      ],
+      "grantedPermissions": [
+        "account-read",
+        "project-read",
+        "deployment-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "etsy",
+      "name": "Etsy",
+      "requiredPermissions": [
+        "shop-read",
+        "listing-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "shop-read",
+        "listing-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "printify",
+      "name": "Printify",
+      "requiredPermissions": [
+        "shop-read",
+        "product-read"
+      ],
+      "grantedPermissions": [
+        "shop-read",
+        "product-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "meta",
+      "name": "Meta",
+      "requiredPermissions": [
+        "page-read",
+        "insights-read"
+      ],
+      "grantedPermissions": [
+        "page-read"
+      ],
+      "missingPermissions": "insights-read",
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "instagram",
+      "name": "Instagram",
+      "requiredPermissions": [
+        "business-account-read",
+        "insights-read"
+      ],
+      "grantedPermissions": [
+        "business-account-read"
+      ],
+      "missingPermissions": "insights-read",
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "tiktok",
+      "name": "TikTok",
+      "requiredPermissions": [
+        "creator-insights-read",
+        "video-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "creator-insights-read",
+        "video-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "pinterest",
+      "name": "Pinterest",
+      "requiredPermissions": [
+        "pin-read",
+        "board-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "pin-read",
+        "board-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "reddit",
+      "name": "Reddit",
+      "requiredPermissions": [
+        "subreddit-read",
+        "trend-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "subreddit-read",
+        "trend-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "google-analytics",
+      "name": "Google Analytics",
+      "requiredPermissions": [
+        "property-read",
+        "report-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "property-read",
+        "report-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "google-search-console",
+      "name": "Google Search Console",
+      "requiredPermissions": [
+        "site-read",
+        "search-performance-read"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": [
+        "site-read",
+        "search-performance-read"
+      ],
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "elevenlabs",
+      "name": "ElevenLabs",
+      "requiredPermissions": [
+        "text-to-speech-access"
+      ],
+      "grantedPermissions": [],
+      "missingPermissions": "text-to-speech-access",
+      "status": "missing permissions"
+    },
+    {
+      "apiId": "exa",
+      "name": "Exa",
+      "requiredPermissions": [
+        "search-read"
+      ],
+      "grantedPermissions": [
+        "search-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    },
+    {
+      "apiId": "postman",
+      "name": "Postman",
+      "requiredPermissions": [
+        "account-read",
+        "collection-read"
+      ],
+      "grantedPermissions": [
+        "account-read",
+        "collection-read"
+      ],
+      "missingPermissions": null,
+      "status": "pass"
+    }
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "contractFirst": true,
+    "validatorFirst": true,
+    "storesSecrets": false,
+    "exposesTokens": false,
+    "readsSecretValues": false,
+    "performsApiCalls": false,
+    "callsProviders": false,
+    "executesDeployments": false,
+    "dashboardWritesAllowed": false,
+    "runtimeMutationScope": "runtime/api-governance"
+  }
+}

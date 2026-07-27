@@ -1,0 +1,91 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:config/delivery.tasks.json",
+    "sourceFile":  "config/delivery.tasks.json",
+    "taskId":  "boodschappenvergelijker-001",
+    "projectId":  "boodschappenvergelijker",
+    "projectName":  "NumberNinjaDesigns / BoodschappenVergelijker",
+    "projectType":  "product",
+    "repository":  "local/projects/BoodschappenVergelijker",
+    "title":  "Define first grocery comparison workflow",
+    "type":  "product",
+    "status":  "ready",
+    "problem":  "The project needs a concrete first comparison workflow before data source or UI implementation choices make sense.",
+    "expectedOutcome":  "A first workflow definition for comparing grocery prices with source assumptions, user flow, risk notes, and MVP output.",
+    "businessValue":  8,
+    "urgency":  7,
+    "userImpact":  9,
+    "unblockValue":  9,
+    "effort":  5,
+    "risk":  6,
+    "confidence":  7,
+    "priorityScore":  80,
+    "roiScore":  74,
+    "sourceRoiScore":  78,
+    "rank":  3,
+    "estimatedHours":  5,
+    "expectedBusinessImpact":  8,
+    "whyThisTask":  "Highest ROI",
+    "releaseReadiness":  "blocked",
+    "dependencies":  [
+
+                     ],
+    "blockers":  [
+                     "Data source strategy is not selected."
+                 ],
+    "deliverables":  [
+                         "comparison workflow definition",
+                         "data source assumption list",
+                         "MVP user flow",
+                         "risk register"
+                     ],
+    "acceptanceCriteria":  [
+                               "Workflow identifies input product, store/source, comparison result, and user decision point.",
+                               "Data source risks are explicitly listed.",
+                               "MVP can be implemented without committing to full automation.",
+                               "No execution, provider, GitHub, deployment, agent, credential, or secret capability is introduced."
+                           ],
+    "reviewChecklist":  [
+                            "Confirm scope matches the expected outcome.",
+                            "Confirm every acceptance criterion is satisfied.",
+                            "Confirm no forbidden capability was introduced.",
+                            "Confirm validation evidence is present."
+                        ],
+    "releaseChecklist":  [
+                             "Review complete.",
+                             "Validation complete.",
+                             "Blockers resolved or accepted.",
+                             "Release readiness confirmed."
+                         ],
+    "riskSummary":  {
+                        "riskLevel":  "medium",
+                        "riskScore":  6,
+                        "summary":  "medium risk. Blockers present: Data source strategy is not selected."
+                    },
+    "validationPlan":  [
+                           "Run the relevant local validation command for the changed project.",
+                           "Verify the deliverables against acceptance criteria.",
+                           "Confirm no forbidden execution, provider, GitHub, deployment, agent, credential, or secret capability was added."
+                       ],
+    "outputFiles":  {
+                        "deliveryPackage":  "runtime/delivery/tasks/boodschappenvergelijker-001.delivery.json",
+                        "codexPrompt":  "runtime/delivery/prompts/boodschappenvergelijker-001.codex-prompt.md",
+                        "reviewChecklist":  "runtime/delivery/checklists/boodschappenvergelijker-001.review-checklist.md",
+                        "releaseChecklist":  "runtime/delivery/checklists/boodschappenvergelijker-001.release-checklist.md"
+                    },
+    "boundaries":  {
+                       "generatedPlanningOnly":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "generatedFilesAreTaskTruth":  false,
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

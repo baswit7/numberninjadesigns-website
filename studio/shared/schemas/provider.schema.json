@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "requiredFields": [
+    "id",
+    "displayName",
+    "category",
+    "credentialEnvVars",
+    "permissions",
+    "rateLimitPolicy",
+    "health"
+  ],
+  "allowedCategories": [
+    "ai",
+    "governance",
+    "memory",
+    "deployment",
+    "social",
+    "analytics",
+    "commerce",
+    "storage"
+  ],
+  "allowedHealthModes": [
+    "credential-presence",
+    "manual",
+    "http-probe"
+  ]
+}

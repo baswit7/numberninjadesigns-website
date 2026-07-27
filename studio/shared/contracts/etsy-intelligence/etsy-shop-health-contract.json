@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractId": "etsy-shop-health-contract",
+  "description": "Derived shop health contract for read-only Etsy Intelligence reports.",
+  "requiredFields": [
+    "totalListings",
+    "activeListings",
+    "views",
+    "favorites",
+    "orders",
+    "conversionRate",
+    "healthStatus"
+  ],
+  "allowedHealthStatuses": [
+    "healthy",
+    "watch",
+    "weak",
+    "unknown"
+  ],
+  "boundaries": {
+    "readOnly": true,
+    "ownsTruth": false,
+    "createsListings": false,
+    "updatesListings": false,
+    "publishesListings": false,
+    "updatesInventory": false,
+    "updatesOrders": false,
+    "respondsToReviews": false,
+    "providerExecution": false,
+    "automationExecution": false
+  }
+}

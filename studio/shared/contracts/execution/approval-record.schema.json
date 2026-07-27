@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "studio-os://shared/contracts/execution/approval-record.schema.json",
+  "title": "Phase 9 Approval Record",
+  "description": "Models human approval state for a future execution request. Approval records are advisory and never dispatch execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "approvalId",
+    "requestId",
+    "approvalState",
+    "reviewedBy",
+    "reviewedAt",
+    "reason",
+    "constraints",
+    "executionAllowed",
+    "nonExecutableMetadata"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "approvalId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*[a-z0-9]$"
+    },
+    "approvalState": {
+      "type": "string",
+      "enum": [
+        "missing",
+        "pending",
+        "approved_for_review",
+        "denied",
+        "expired"
+      ]
+    },
+    "reviewedBy": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 800
+    },
+    "constraints": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 200
+      }
+    },
+    "executionAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "nonExecutableMetadata": {
+      "$ref": "#/$defs/nonExecutableMetadata"
+    }
+  },
+  "$defs": {
+    "nonExecutableMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "owner",
+        "safetyClass"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "const": "phase-9"
+        },
+        "owner": {
+          "type": "string",
+          "const": "studio-os"
+        },
+        "safetyClass": {
+          "type": "string",
+          "const": "approval-governance-only"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "phase-9-risk-assessments",
+  "executionAllowed": false,
+  "assessments": [
+    {
+      "schemaVersion": "1.0.0",
+      "assessmentId": "risk-deployment-review-blocked",
+      "requestId": "execution-request-deployment-review",
+      "assessedAt": "2026-06-05T00:00:00Z",
+      "riskLevel": "blocked",
+      "riskScore": 100,
+      "riskFactors": [
+        {
+          "factor": "deployment execution is outside Phase 9",
+          "impact": "high",
+          "likelihood": "high"
+        }
+      ],
+      "blockingConditions": [
+        "deployment execution prohibited",
+        "approval missing"
+      ],
+      "executionAllowed": false,
+      "nonExecutableMetadata": {
+        "phase": "phase-9",
+        "owner": "studio-os",
+        "safetyClass": "risk-governance-only"
+      }
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-9",
+    "owner": "studio-os",
+    "safetyClass": "risk-registry"
+  }
+}

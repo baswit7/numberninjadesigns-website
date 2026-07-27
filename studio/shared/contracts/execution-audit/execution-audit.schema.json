@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/contracts/execution-audit.schema.json",
+  "title": "Studio OS Execution Audit Trail",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "capability",
+    "sourceFile",
+    "entries",
+    "summary",
+    "boundaries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "capability": {
+      "const": "execution-audit-trail"
+    },
+    "sourceFile": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "auditId",
+          "timestamp",
+          "sourceLayer",
+          "decisionLayer",
+          "decisionOutcome",
+          "evidencePresent",
+          "authoritySource",
+          "reviewSource",
+          "reviewOutcome",
+          "dispatchEligible",
+          "unknownState",
+          "notes",
+          "manualEvidenceRequired",
+          "manualEvidencePresent",
+          "manualEvidenceVerified"
+        ],
+        "properties": {
+          "auditId": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "sourceLayer": { "type": "string" },
+          "decisionLayer": { "type": "string" },
+          "decisionOutcome": { "enum": [ "UNKNOWN", "PASS", "DENY", "BLOCK" ] },
+          "evidencePresent": { "type": "boolean" },
+          "authoritySource": { "type": "string" },
+          "reviewSource": { "type": "string" },
+          "reviewOutcome": { "type": "string" },
+          "dispatchEligible": { "type": "boolean" },
+          "unknownState": { "type": "boolean" },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "manualEvidenceRequired": { "type": "boolean" },
+          "manualEvidencePresent": { "type": "boolean" },
+          "manualEvidenceVerified": { "type": "boolean" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "boundaries": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "studio-os.phase-8.workflow-registry",
+  "executionAllowed": false,
+  "workflows": [
+    {
+      "id": "feature-development",
+      "displayName": "Feature Development",
+      "purpose": "Coordinate approved feature work from architecture framing through documentation, review, future implementation handoff and quality planning without executing work.",
+      "orderedStages": [
+        {
+          "id": "architecture",
+          "displayName": "Architecture",
+          "agentId": "chatgpt-architect",
+          "purpose": "Frame the architecture and compatibility boundary for the approved feature request.",
+          "inputRefs": [
+            "coordination-request",
+            "architecture-docs"
+          ],
+          "outputRefs": [
+            "architecture-coordination-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "documentation",
+          "displayName": "Documentation",
+          "agentId": "documentation-agent",
+          "purpose": "Coordinate required documentation updates and traceability expectations.",
+          "inputRefs": [
+            "architecture-coordination-notes"
+          ],
+          "outputRefs": [
+            "documentation-plan"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "review",
+          "displayName": "Review",
+          "agentId": "review-agent",
+          "purpose": "Define review checkpoints and approval dependencies before future implementation.",
+          "inputRefs": [
+            "architecture-coordination-notes",
+            "documentation-plan"
+          ],
+          "outputRefs": [
+            "review-checkpoints"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "future-build-handoff",
+          "displayName": "Future Build Handoff",
+          "agentId": "codex-builder",
+          "purpose": "Prepare non-executing implementation readiness metadata for a future approved branch.",
+          "inputRefs": [
+            "review-checkpoints"
+          ],
+          "outputRefs": [
+            "implementation-readiness-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "quality-planning",
+          "displayName": "Quality Planning",
+          "agentId": "qa-agent",
+          "purpose": "Coordinate validation expectations and acceptance criteria for future work.",
+          "inputRefs": [
+            "implementation-readiness-notes"
+          ],
+          "outputRefs": [
+            "qa-readiness-notes"
+          ],
+          "executionAllowed": false
+        }
+      ],
+      "requiredAgents": [
+        "chatgpt-architect",
+        "documentation-agent",
+        "review-agent",
+        "codex-builder",
+        "qa-agent"
+      ],
+      "dependencies": [
+        {
+          "fromStage": "architecture",
+          "toStage": "documentation",
+          "type": "provides_context"
+        },
+        {
+          "fromStage": "documentation",
+          "toStage": "review",
+          "type": "requires_evidence"
+        },
+        {
+          "fromStage": "review",
+          "toStage": "future-build-handoff",
+          "type": "blocks_until_reviewed"
+        },
+        {
+          "fromStage": "future-build-handoff",
+          "toStage": "quality-planning",
+          "type": "provides_context"
+        }
+      ],
+      "gates": [
+        {
+          "id": "human-review",
+          "displayName": "Human Review Required",
+          "type": "human_review",
+          "blocksExecution": true,
+          "executionAllowed": false
+        },
+        {
+          "id": "contract-check",
+          "displayName": "Contract Boundary Check",
+          "type": "contract_check",
+          "blocksExecution": true,
+          "executionAllowed": false
+        }
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "executionAllowed": false
+    },
+    {
+      "id": "bug-resolution",
+      "displayName": "Bug Resolution",
+      "purpose": "Coordinate approved bug-resolution planning from architecture triage through review, future implementation handoff and QA planning without executing fixes.",
+      "orderedStages": [
+        {
+          "id": "architecture-triage",
+          "displayName": "Architecture Triage",
+          "agentId": "chatgpt-architect",
+          "purpose": "Classify the bug impact and identify architecture boundaries that must be preserved.",
+          "inputRefs": [
+            "coordination-request",
+            "bug-evidence"
+          ],
+          "outputRefs": [
+            "triage-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "review",
+          "displayName": "Review",
+          "agentId": "review-agent",
+          "purpose": "Coordinate root-cause review questions and safety gates.",
+          "inputRefs": [
+            "triage-notes"
+          ],
+          "outputRefs": [
+            "review-checkpoints"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "future-build-handoff",
+          "displayName": "Future Build Handoff",
+          "agentId": "codex-builder",
+          "purpose": "Prepare non-executing repair handoff metadata.",
+          "inputRefs": [
+            "review-checkpoints"
+          ],
+          "outputRefs": [
+            "repair-readiness-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "quality-planning",
+          "displayName": "Quality Planning",
+          "agentId": "qa-agent",
+          "purpose": "Coordinate regression and acceptance validation expectations.",
+          "inputRefs": [
+            "repair-readiness-notes"
+          ],
+          "outputRefs": [
+            "qa-readiness-notes"
+          ],
+          "executionAllowed": false
+        }
+      ],
+      "requiredAgents": [
+        "chatgpt-architect",
+        "review-agent",
+        "codex-builder",
+        "qa-agent"
+      ],
+      "dependencies": [
+        {
+          "fromStage": "architecture-triage",
+          "toStage": "review",
+          "type": "requires_evidence"
+        },
+        {
+          "fromStage": "review",
+          "toStage": "future-build-handoff",
+          "type": "blocks_until_reviewed"
+        },
+        {
+          "fromStage": "future-build-handoff",
+          "toStage": "quality-planning",
+          "type": "provides_context"
+        }
+      ],
+      "gates": [
+        {
+          "id": "human-review",
+          "displayName": "Human Review Required",
+          "type": "human_review",
+          "blocksExecution": true,
+          "executionAllowed": false
+        }
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "executionAllowed": false
+    },
+    {
+      "id": "documentation-update",
+      "displayName": "Documentation Update",
+      "purpose": "Coordinate documentation-only work while preserving review and governance traceability without writing files automatically.",
+      "orderedStages": [
+        {
+          "id": "documentation-scope",
+          "displayName": "Documentation Scope",
+          "agentId": "documentation-agent",
+          "purpose": "Identify documentation impact and traceability requirements.",
+          "inputRefs": [
+            "coordination-request",
+            "doc-evidence"
+          ],
+          "outputRefs": [
+            "documentation-plan"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "architecture-review",
+          "displayName": "Architecture Review",
+          "agentId": "chatgpt-architect",
+          "purpose": "Confirm documentation changes preserve architecture meaning.",
+          "inputRefs": [
+            "documentation-plan"
+          ],
+          "outputRefs": [
+            "architecture-review-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "governance-review",
+          "displayName": "Governance Review",
+          "agentId": "governance-agent",
+          "purpose": "Coordinate governance evidence needed before documentation work is accepted.",
+          "inputRefs": [
+            "documentation-plan",
+            "architecture-review-notes"
+          ],
+          "outputRefs": [
+            "governance-readiness-notes"
+          ],
+          "executionAllowed": false
+        }
+      ],
+      "requiredAgents": [
+        "documentation-agent",
+        "chatgpt-architect",
+        "governance-agent"
+      ],
+      "dependencies": [
+        {
+          "fromStage": "documentation-scope",
+          "toStage": "architecture-review",
+          "type": "provides_context"
+        },
+        {
+          "fromStage": "architecture-review",
+          "toStage": "governance-review",
+          "type": "requires_evidence"
+        }
+      ],
+      "gates": [
+        {
+          "id": "documentation-check",
+          "displayName": "Documentation Check",
+          "type": "documentation_check",
+          "blocksExecution": true,
+          "executionAllowed": false
+        }
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "executionAllowed": false
+    },
+    {
+      "id": "release-preparation",
+      "displayName": "Release Preparation",
+      "purpose": "Coordinate release-readiness planning across governance, review and deployment planning without triggering release activity.",
+      "orderedStages": [
+        {
+          "id": "governance-readiness",
+          "displayName": "Governance Readiness",
+          "agentId": "governance-agent",
+          "purpose": "Coordinate governance and quality gate evidence needed for release planning.",
+          "inputRefs": [
+            "coordination-request",
+            "release-checklist"
+          ],
+          "outputRefs": [
+            "governance-readiness-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "review",
+          "displayName": "Review",
+          "agentId": "review-agent",
+          "purpose": "Coordinate final review dependencies before future release action.",
+          "inputRefs": [
+            "governance-readiness-notes"
+          ],
+          "outputRefs": [
+            "release-review-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "deployment-planning",
+          "displayName": "Deployment Planning",
+          "agentId": "deployment-planning-agent",
+          "purpose": "Coordinate future deployment planning metadata without deployment execution.",
+          "inputRefs": [
+            "release-review-notes"
+          ],
+          "outputRefs": [
+            "deployment-planning-notes"
+          ],
+          "executionAllowed": false
+        }
+      ],
+      "requiredAgents": [
+        "governance-agent",
+        "review-agent",
+        "deployment-planning-agent"
+      ],
+      "dependencies": [
+        {
+          "fromStage": "governance-readiness",
+          "toStage": "review",
+          "type": "requires_evidence"
+        },
+        {
+          "fromStage": "review",
+          "toStage": "deployment-planning",
+          "type": "blocks_until_reviewed"
+        }
+      ],
+      "gates": [
+        {
+          "id": "governance-readiness",
+          "displayName": "Governance Readiness Required",
+          "type": "governance_readiness",
+          "blocksExecution": true,
+          "executionAllowed": false
+        },
+        {
+          "id": "release-safety",
+          "displayName": "Release Safety Required",
+          "type": "release_safety",
+          "blocksExecution": true,
+          "executionAllowed": false
+        }
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "executionAllowed": false
+    },
+    {
+      "id": "architecture-review",
+      "displayName": "Architecture Review",
+      "purpose": "Coordinate architecture review across architect, governance, documentation and review roles without changing architecture files automatically.",
+      "orderedStages": [
+        {
+          "id": "architecture-analysis",
+          "displayName": "Architecture Analysis",
+          "agentId": "chatgpt-architect",
+          "purpose": "Coordinate architecture impact analysis and compatibility questions.",
+          "inputRefs": [
+            "coordination-request",
+            "architecture-docs"
+          ],
+          "outputRefs": [
+            "architecture-analysis-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "governance-review",
+          "displayName": "Governance Review",
+          "agentId": "governance-agent",
+          "purpose": "Coordinate governance implications of the architecture review.",
+          "inputRefs": [
+            "architecture-analysis-notes"
+          ],
+          "outputRefs": [
+            "governance-review-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "documentation-review",
+          "displayName": "Documentation Review",
+          "agentId": "documentation-agent",
+          "purpose": "Coordinate documentation impact and required architecture traceability.",
+          "inputRefs": [
+            "architecture-analysis-notes",
+            "governance-review-notes"
+          ],
+          "outputRefs": [
+            "documentation-review-notes"
+          ],
+          "executionAllowed": false
+        },
+        {
+          "id": "final-review",
+          "displayName": "Final Review",
+          "agentId": "review-agent",
+          "purpose": "Coordinate final review blockers and human approval dependencies.",
+          "inputRefs": [
+            "documentation-review-notes"
+          ],
+          "outputRefs": [
+            "final-review-notes"
+          ],
+          "executionAllowed": false
+        }
+      ],
+      "requiredAgents": [
+        "chatgpt-architect",
+        "governance-agent",
+        "documentation-agent",
+        "review-agent"
+      ],
+      "dependencies": [
+        {
+          "fromStage": "architecture-analysis",
+          "toStage": "governance-review",
+          "type": "provides_context"
+        },
+        {
+          "fromStage": "governance-review",
+          "toStage": "documentation-review",
+          "type": "requires_evidence"
+        },
+        {
+          "fromStage": "documentation-review",
+          "toStage": "final-review",
+          "type": "blocks_until_reviewed"
+        }
+      ],
+      "gates": [
+        {
+          "id": "contract-check",
+          "displayName": "Contract Boundary Check",
+          "type": "contract_check",
+          "blocksExecution": true,
+          "executionAllowed": false
+        },
+        {
+          "id": "human-review",
+          "displayName": "Human Review Required",
+          "type": "human_review",
+          "blocksExecution": true,
+          "executionAllowed": false
+        }
+      ],
+      "forbiddenCapabilities": [
+        "provider_execution",
+        "api_calls",
+        "deployments",
+        "runtime_mutation",
+        "shell_execution",
+        "command_execution",
+        "code_generation_execution",
+        "agent_execution",
+        "task_runners",
+        "schedulers",
+        "background_services",
+        "business_features",
+        "executable_hooks",
+        "provider_credentials"
+      ],
+      "executionAllowed": false
+    }
+  ],
+  "nonExecutableMetadata": {
+    "phase": "phase-8",
+    "owner": "studio-os",
+    "safetyClass": "coordination-only",
+    "dashboardMode": "read-only"
+  }
+}

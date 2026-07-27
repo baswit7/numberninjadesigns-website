@@ -1,0 +1,49 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "capability":  "execution-audit-trail",
+    "derivationRules":  {
+                            "ownsTruth":  false,
+                            "ownsExecution":  false,
+                            "ownsDispatch":  false,
+                            "ownsAuditReports":  true,
+                            "readsExecutionRequest":  true,
+                            "readsExecutionApproval":  true,
+                            "readsExecutionPreflight":  true,
+                            "readsExecutionReview":  true,
+                            "readsExecutionDispatch":  true,
+                            "writesOnlyExecutionAuditRuntime":  true
+                        },
+    "boundaries":  {
+                       "readOnly":  true,
+                       "nonExecuting":  true,
+                       "nonDispatching":  true,
+                       "performsExecution":  false,
+                       "executionEngine":  false,
+                       "dispatchEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false,
+                       "queues":  false,
+                       "workers":  false,
+                       "schedulers":  false,
+                       "backgroundJobs":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "branchWrites":  false,
+                       "repositorySettingsMutation":  false,
+                       "collaboratorMutation":  false
+                   },
+    "forbiddenCapabilitiesPresent":  false,
+    "writesOnly":  "runtime/execution-audit",
+    "readsOnly":  {
+                      "executionRequest":  "runtime/execution-request/execution-request.packages.json",
+                      "executionApproval":  "runtime/approval/execution-approval.records.json",
+                      "executionPreflight":  "runtime/execution-preflight/execution-preflight.decisions.json",
+                      "executionReview":  "runtime/execution-review/execution-review.records.json",
+                      "executionDispatch":  "runtime/execution-dispatch/execution-dispatch.registry.json"
+                  }
+}

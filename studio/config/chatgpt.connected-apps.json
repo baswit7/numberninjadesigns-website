@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "name": "ChatGPT Connected Apps Registry",
+    "purpose": "Registry-only catalog of ChatGPT apps and connectors available to Studio OS.",
+    "source": "User-provided connector availability list for local Studio OS configuration.",
+    "installPolicy": "available_connector registry only; external account setup is managed outside this repository.",
+    "lastUpdated": "2026-07-04"
+  },
+  "apps": [
+    {
+      "id": "adobe-acrobat",
+      "name": "Adobe Acrobat",
+      "category": "documents",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for PDF workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "adobe-express",
+      "name": "Adobe Express",
+      "category": "design",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for design workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "adobe-photoshop",
+      "name": "Adobe Photoshop",
+      "category": "image-editing",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for image editing workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "category": "database",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for structured data workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "anypdf",
+      "name": "AnyPDF",
+      "category": "documents",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for PDF conversion workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "b12-website-generator",
+      "name": "B12 Website Generator",
+      "category": "website-generation",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for website generation workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "base44",
+      "name": "Base44",
+      "category": "app-builder",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for application generation workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "category": "design",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for design and presentation workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "chatgpt-ads-manager",
+      "name": "ChatGPT Ads Manager",
+      "category": "advertising",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for ads management workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "conductor",
+      "name": "Conductor",
+      "category": "marketing-analytics",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for search and AI visibility analytics; account setup is managed outside this repository."
+    },
+    {
+      "id": "datacamp",
+      "name": "DataCamp",
+      "category": "learning",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for training workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "fal",
+      "name": "Fal",
+      "category": "media-generation",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for generative media workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "category": "development",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for repository workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail",
+      "category": "communication",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available internal connector reference for email workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "google-calendar",
+      "name": "Google Calendar",
+      "category": "productivity",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available internal connector reference for scheduling workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "google-contacts",
+      "name": "Google Contacts",
+      "category": "productivity",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available internal connector reference for contact workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "category": "documents",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for Drive, Docs, Sheets, and Slides workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "kraken",
+      "name": "Kraken",
+      "category": "finance",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for crypto workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "motherduck",
+      "name": "MotherDuck",
+      "category": "data-warehouse",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for analytical database workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "category": "knowledge-management",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for documentation and workspace workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "openai-platform",
+      "name": "OpenAI Platform",
+      "category": "ai-platform",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for OpenAI API workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "category": "payments",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for payment workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "replit",
+      "name": "Replit",
+      "category": "development",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for development environment workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "category": "commerce",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for commerce workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "ubersuggest",
+      "name": "Ubersuggest",
+      "category": "seo",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for SEO research workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "upwork",
+      "name": "Upwork",
+      "category": "talent",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for hiring workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "deployment",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for deployment and hosting workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "invideo",
+      "name": "InVideo",
+      "category": "video-generation",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for video generation workflows; account setup is managed outside this repository."
+    },
+    {
+      "id": "vidiq",
+      "name": "vidIQ",
+      "category": "video-seo",
+      "status": "available",
+      "installType": "chatgpt_connector_registry_only",
+      "notes": "Available connector reference for YouTube optimization workflows; account setup is managed outside this repository."
+    }
+  ]
+}

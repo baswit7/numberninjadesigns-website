@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0",
+  "scoringId": "studio-os-sprint-1-project-delivery-scoring",
+  "description": "Deterministic delivery prioritization model for practical project work. No AI scoring.",
+  "scoreRange": {
+    "minimum": 0,
+    "maximum": 100
+  },
+  "baseWeights": {
+    "businessValue": 0.3,
+    "urgency": 0.2,
+    "userImpact": 0.2,
+    "unblockValue": 0.15,
+    "confidence": 0.1,
+    "effortPenalty": 0.05
+  },
+  "projectWeights": {
+    "platform": {
+      "businessValue": 0.25,
+      "urgency": 0.15,
+      "userImpact": 0.2,
+      "unblockValue": 0.25,
+      "confidence": 0.1,
+      "effortPenalty": 0.05
+    },
+    "ecommerce": {
+      "businessValue": 0.35,
+      "urgency": 0.2,
+      "userImpact": 0.2,
+      "unblockValue": 0.1,
+      "confidence": 0.1,
+      "effortPenalty": 0.05
+    },
+    "content": {
+      "businessValue": 0.25,
+      "urgency": 0.25,
+      "userImpact": 0.2,
+      "unblockValue": 0.15,
+      "confidence": 0.1,
+      "effortPenalty": 0.05
+    },
+    "product": {
+      "businessValue": 0.3,
+      "urgency": 0.15,
+      "userImpact": 0.25,
+      "unblockValue": 0.15,
+      "confidence": 0.1,
+      "effortPenalty": 0.05
+    }
+  },
+  "roiWeights": {
+    "expectedBusinessImpact": 0.45,
+    "businessValue": 0.25,
+    "confidence": 0.15,
+    "estimatedHoursPenalty": 0.15
+  },
+  "releaseReadinessRules": {
+    "releaseReadyStatus": "release_ready",
+    "blockedStatus": "blocked",
+    "reviewStatus": "review",
+    "minimumPriorityScoreForReady": 70,
+    "minimumRoiScoreForReady": 65
+  },
+  "boundaries": {
+    "deterministicOnly": true,
+    "aiScoring": false,
+    "executionEngine": false,
+    "providerExecution": false,
+    "githubExecution": false,
+    "deploymentExecution": false,
+    "agentExecution": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "automaticApproval": false,
+    "automaticDispatch": false
+  }
+}

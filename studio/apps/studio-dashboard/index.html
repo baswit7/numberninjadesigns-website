@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Studio OS local read-only visual runtime dashboard.">
+  <title>Studio OS Runtime Dashboard</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar" aria-label="Global status bar">
+      <div class="brand-block">
+        <span class="runtime-mark" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">Studio OS</p>
+          <h1>Runtime Command Center</h1>
+        </div>
+      </div>
+      <div class="status-strip" id="global-status-strip" aria-live="polite"></div>
+      <div class="topbar-actions">
+        <button class="icon-button" id="collapse-all" type="button" title="Collapse all panels" aria-label="Collapse all panels">-</button>
+        <button class="icon-button" id="import-dashboard" type="button" title="Import dashboard JSON files" aria-label="Import dashboard JSON files">in</button>
+        <button class="primary-button" id="refresh-dashboard" type="button">Reload JSON</button>
+        <input id="dashboard-file-input" class="is-hidden" type="file" accept="application/json,.json" multiple>
+      </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Dashboard controls">
+      <section class="control-block">
+        <p class="control-label">Severity</p>
+        <div class="segmented-control" id="severity-filter" role="group" aria-label="Filter by severity">
+          <button type="button" class="is-active" data-filter="all">All</button>
+          <button type="button" data-filter="warning">Warn</button>
+          <button type="button" data-filter="error">Error</button>
+          <button type="button" data-filter="unknown">Unknown</button>
+        </div>
+      </section>
+      <section class="control-block">
+        <p class="control-label">Runtime Boundary</p>
+        <div class="boundary-stack">
+          <span>Runtime Console</span>
+          <span>runtime/*.json</span>
+          <span>Dashboard Adapter</span>
+          <span>Historical Snapshot Layer</span>
+          <span>Operational Intelligence Layer</span>
+          <strong>Visual Dashboard</strong>
+        </div>
+      </section>
+      <section class="control-block">
+        <p class="control-label">Loader State</p>
+        <div id="loader-state" class="loader-state">Waiting for view models.</div>
+      </section>
+    </aside>
+
+    <main class="dashboard-grid" id="dashboard-root">
+      <section class="module-panel span-12" data-module="summary">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Runtime Overview</p>
+            <h2>Global Status Bar</h2>
+          </div>
+          <span class="panel-source">dashboard-summary.json</span>
+        </div>
+        <div id="summary-module" class="metric-grid"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="operational-intelligence">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Judgment System</p>
+            <h2>Operational Intelligence Center</h2>
+          </div>
+          <span class="panel-source">operational-*.view.json</span>
+        </div>
+        <div id="operational-intelligence-module" class="metric-grid oi-grid"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="confidence">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Trust Signal</p>
+            <h2>Operational Intelligence Confidence</h2>
+          </div>
+          <span class="panel-source">confidence.view.json</span>
+        </div>
+        <div id="confidence-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="explainability">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Audit Trail</p>
+            <h2>Explainability Panel</h2>
+          </div>
+          <span class="panel-source">intelligence-explainability.view.json</span>
+        </div>
+        <div id="explainability-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="governance-center">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Authority Layer</p>
+            <h2>Governance Center</h2>
+          </div>
+          <span class="panel-source">governance-*.view.json</span>
+        </div>
+        <div id="governance-center-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="release-control">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Eligibility Layer</p>
+            <h2>Release Control Center</h2>
+          </div>
+          <span class="panel-source">release-readiness / quality-gates</span>
+        </div>
+        <div id="release-control-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="execution-readiness">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Read-Only Execution Boundary</p>
+            <h2>Execution Readiness Dashboard Center</h2>
+          </div>
+          <span class="panel-source">execution-readiness.view.json</span>
+        </div>
+        <div id="execution-readiness-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="authority">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Authority Intelligence</p>
+            <h2>Authority Dashboard Projection</h2>
+          </div>
+          <span class="panel-source">authority.view.json</span>
+        </div>
+        <div id="authority-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="authority-projection-monitoring">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Authority Monitoring</p>
+            <h2>Projection Drift & Freshness</h2>
+          </div>
+          <span class="panel-source">authority-projection-monitoring.view.json</span>
+        </div>
+        <div id="authority-projection-monitoring-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="authority-monitoring-evidence">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Evidence Center</p>
+            <h2>Authority Monitoring Evidence</h2>
+          </div>
+          <span class="panel-source">authority-monitoring-evidence.view.json</span>
+        </div>
+        <div id="authority-monitoring-evidence-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="api-governance">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Read-Only API Projection</p>
+            <h2>API Governance Center</h2>
+          </div>
+          <span class="panel-source">api-governance.view.json</span>
+        </div>
+        <div id="api-governance-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-12" data-module="market-intelligence">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Business Value Layer</p>
+            <h2>Market Intelligence Center</h2>
+          </div>
+          <span class="panel-source">market-intelligence.view.json</span>
+        </div>
+        <div id="market-intelligence-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-8" data-module="projects">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Registry</p>
+            <h2>Project Control Center</h2>
+          </div>
+          <span class="panel-source">projects.view.json</span>
+        </div>
+        <div id="projects-module" class="card-grid"></div>
+      </section>
+
+      <section class="module-panel span-4" data-module="health">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Readiness</p>
+            <h2>Health Center</h2>
+          </div>
+          <span class="panel-source">health.view.json</span>
+        </div>
+        <div id="health-module" class="stack-list compact"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="providers">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">External Systems</p>
+            <h2>Provider Status Center</h2>
+          </div>
+          <span class="panel-source">providers.view.json</span>
+        </div>
+        <div id="providers-module" class="card-grid dense"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="telemetry">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Signals</p>
+            <h2>Telemetry Center</h2>
+          </div>
+          <span class="panel-source">telemetry.view.json</span>
+        </div>
+        <div id="telemetry-module" class="metric-grid"></div>
+      </section>
+
+      <section class="module-panel span-7" data-module="events">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Runtime Log</p>
+            <h2>Event Timeline</h2>
+          </div>
+          <span class="panel-source">events.view.json</span>
+        </div>
+        <div id="events-module" class="timeline"></div>
+      </section>
+
+      <section class="module-panel span-5" data-module="contracts">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Schemas</p>
+            <h2>Contract Center</h2>
+          </div>
+          <span class="panel-source">contracts.view.json</span>
+        </div>
+        <div id="contracts-module" class="stack-list"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="deployments">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Read-Only Profiles</p>
+            <h2>Deployment Center</h2>
+          </div>
+          <span class="panel-source">deployments.view.json</span>
+        </div>
+        <div id="deployments-module" class="card-grid dense"></div>
+      </section>
+
+      <section class="module-panel span-6" data-module="documentation">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Knowledge State</p>
+            <h2>Documentation Center</h2>
+          </div>
+          <span class="panel-source">documentation.view.json</span>
+        </div>
+        <div id="documentation-module" class="stack-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="empty-state-template">
+    <div class="empty-state">
+      <strong>No dashboard data available.</strong>
+      <span>Regenerate view models with: powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\runtime\studio-console.ps1 -Command dashboard</span>
+    </div>
+  </template>
+
+  <script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-09T00:00:00.0000000Z",
+    "source":  "api-execution-plan",
+    "sourceFile":  "runtime/api-execution/api-execution.plan.json",
+    "status":  "READY_FOR_APPROVAL",
+    "humanFinalAuthority":  true,
+    "noAutomaticApproval":  true,
+    "noSelfApproval":  true,
+    "noRoleMayApproveOwnRequest":  true,
+    "securityMayBlock":  true,
+    "qaMayBlock":  true,
+    "summary":  {
+                    "totalActions":  10,
+                    "requiresHumanApproval":  10,
+                    "blockedActions":  4,
+                    "approvalBypassAllowed":  false,
+                    "providerCallsAllowed":  false
+                },
+    "approvals":  [
+                      {
+                          "requestId":  "APIX-001",
+                          "providerName":  "OpenAI",
+                          "actionType":  "API_REQUEST_PLAN",
+                          "requesterRole":  "Architect",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-002",
+                          "providerName":  "GitHub",
+                          "actionType":  "API_SCOPE_REVIEW",
+                          "requesterRole":  "Developer",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "Security",
+                                               "status":  "scope-review-required",
+                                               "reason":  "Repository and workflow scopes can expose or mutate project data."
+                                           }
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-003",
+                          "providerName":  "Telegram",
+                          "actionType":  "API_AUTH_REQUIREMENT_REVIEW",
+                          "requesterRole":  "Orchestrator",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-004",
+                          "providerName":  "Notion",
+                          "actionType":  "API_RESPONSE_SHAPE_REVIEW",
+                          "requesterRole":  "Architect",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-005",
+                          "providerName":  "Etsy",
+                          "actionType":  "API_REQUEST_PLAN",
+                          "requesterRole":  "Developer",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-006",
+                          "providerName":  "TikTok",
+                          "actionType":  "API_RATE_LIMIT_REVIEW",
+                          "requesterRole":  "QA",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-007",
+                          "providerName":  "Pinterest",
+                          "actionType":  "API_SCOPE_REVIEW",
+                          "requesterRole":  "Architect",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-008",
+                          "providerName":  "Instagram",
+                          "actionType":  "API_RESPONSE_SHAPE_REVIEW",
+                          "requesterRole":  "Security",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "Security",
+                                               "status":  "data-boundary-review-required",
+                                               "reason":  "Instagram account data and channel ownership must be verified before future access."
+                                           }
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-009",
+                          "providerName":  "Facebook",
+                          "actionType":  "API_COST_RISK_REVIEW",
+                          "requesterRole":  "Security",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "Security",
+                                               "status":  "ad-spend-boundary-required",
+                                               "reason":  "Future Meta workflows must explicitly block paid spend unless separately approved."
+                                           }
+                                       ]
+                      },
+                      {
+                          "requestId":  "APIX-010",
+                          "providerName":  "Vercel",
+                          "actionType":  "API_EXECUTION_RECOMMENDATION",
+                          "requesterRole":  "Orchestrator",
+                          "approvalState":  "READY_FOR_APPROVAL",
+                          "executionState":  "READY_FOR_APPROVAL",
+                          "approverRole":  "Human",
+                          "approvedByRequester":  false,
+                          "humanApprovalRequired":  true,
+                          "dryRunOnly":  true,
+                          "blockers":  [
+                                           {
+                                               "role":  "QA",
+                                               "status":  "deployment-boundary-review-required",
+                                               "reason":  "V2.3 may recommend future execution only; deployment remains forbidden."
+                                           }
+                                       ]
+                      }
+                  ],
+    "boundaries":  {
+                       "offlinePlanningOnly":  true,
+                       "planningApprovalAuditOnly":  true,
+                       "performsProviderCalls":  false,
+                       "performsOpenAiCalls":  false,
+                       "performsGitHubApiCalls":  false,
+                       "performsTelegramSends":  false,
+                       "performsNotionWrites":  false,
+                       "performsCommerceActions":  false,
+                       "performsSocialPublishing":  false,
+                       "performsDeployments":  false,
+                       "storesCredentials":  false,
+                       "storesSecrets":  false,
+                       "readsSecretValues":  false,
+                       "createsOAuthFlows":  false,
+                       "refreshesTokens":  false,
+                       "createsBackgroundJobs":  false,
+                       "createsWorkers":  false,
+                       "createsQueues":  false,
+                       "createsSchedulers":  false,
+                       "autonomousExecution":  false,
+                       "paidSpendExecution":  false,
+                       "contentPublication":  false,
+                       "aiWorkforceRuntimeExecution":  false,
+                       "softwareFactory":  false
+                   }
+}

@@ -1,0 +1,75 @@
+{
+    "schemaVersion":  "1.0.0",
+    "generatedAt":  "2026-06-10T08:18:39.6837897Z",
+    "source":  "project-delivery:project-cockpit",
+    "sourceFile":  "config/delivery.tasks.json",
+    "readOnly":  true,
+    "projectId":  "numberninjadesigns",
+    "projectName":  "NumberNinjaDesigns",
+    "projectType":  "ecommerce",
+    "projectStatus":  "active",
+    "nextTask":  {
+                     "taskId":  "numberninjadesigns-001",
+                     "title":  "Build Etsy listing workflow foundation",
+                     "whyThisTask":  "Blocks 1 task",
+                     "priorityScore":  91,
+                     "roiScore":  92,
+                     "releaseReadiness":  "planning-ready",
+                     "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                 },
+    "blockers":  [
+
+                 ],
+    "releaseReadiness":  "planning-ready",
+    "highestRiskTask":  {
+                            "taskId":  "numberninjadesigns-001",
+                            "title":  "Build Etsy listing workflow foundation",
+                            "risk":  3,
+                            "riskSummary":  "low risk. No active blockers."
+                        },
+    "reviewNeededCount":  0,
+    "taskCountsByStatus":  {
+                               "intake":  1,
+                               "ready":  1,
+                               "in_progress":  0,
+                               "review":  0,
+                               "blocked":  0,
+                               "release_ready":  0,
+                               "done":  0
+                           },
+    "tasks":  [
+                  {
+                      "taskId":  "numberninjadesigns-001",
+                      "title":  "Build Etsy listing workflow foundation",
+                      "status":  "ready",
+                      "priorityScore":  91,
+                      "roiScore":  92,
+                      "whyThisTask":  "Blocks 1 task",
+                      "releaseReadiness":  "planning-ready",
+                      "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-001.codex-prompt.md"
+                  },
+                  {
+                      "taskId":  "numberninjadesigns-002",
+                      "title":  "Create product idea backlog for data and spreadsheet humor shirts",
+                      "status":  "intake",
+                      "priorityScore":  76,
+                      "roiScore":  78,
+                      "whyThisTask":  "High business impact",
+                      "releaseReadiness":  "planning-ready",
+                      "codexPrompt":  "runtime/delivery/prompts/numberninjadesigns-002.codex-prompt.md"
+                  }
+              ],
+    "boundaries":  {
+                       "readOnlyDashboard":  true,
+                       "sourceOfTruth":  "config/delivery.tasks.json",
+                       "executionEngine":  false,
+                       "providerExecution":  false,
+                       "githubExecution":  false,
+                       "deploymentExecution":  false,
+                       "agentExecution":  false,
+                       "credentialAccess":  false,
+                       "secretAccess":  false,
+                       "automaticApproval":  false,
+                       "automaticDispatch":  false
+                   }
+}

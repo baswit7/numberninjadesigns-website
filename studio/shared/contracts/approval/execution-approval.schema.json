@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio-os.local/schemas/execution-approval.schema.json",
+  "title": "Studio OS Execution Approval Gateway Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "capability",
+    "mode",
+    "sourceOfTruth",
+    "schema",
+    "generatedReport",
+    "generatedAudit",
+    "generatedRecords",
+    "allowedApprovalStates",
+    "allowedIntentTypes",
+    "ownership",
+    "approvalRules",
+    "boundaries",
+    "approvalRequests"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "contractId": { "type": "string" },
+    "capability": { "const": "execution-approval-gateway" },
+    "mode": { "const": "non-autonomous-approval-gateway-only" },
+    "sourceOfTruth": { "type": "string" },
+    "schema": { "type": "string" },
+    "generatedReport": { "type": "string" },
+    "generatedAudit": { "type": "string" },
+    "generatedRecords": { "type": "string" },
+    "allowedApprovalStates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "UNKNOWN",
+          "REQUESTED",
+          "PENDING_APPROVAL",
+          "APPROVED",
+          "REJECTED",
+          "EXPIRED",
+          "EXECUTED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "allowedIntentTypes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "approvalRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "humanApprovalRequired",
+        "noAutomaticApproval",
+        "noApprovalBypass",
+        "noSelfApproval",
+        "unknownNeverAutoApproves",
+        "approvedDoesNotExecute",
+        "executionRequiresExternalExecutor"
+      ],
+      "properties": {
+        "humanApprovalRequired": { "const": true },
+        "noAutomaticApproval": { "const": true },
+        "noApprovalBypass": { "const": true },
+        "noSelfApproval": { "const": true },
+        "unknownNeverAutoApproves": { "const": true },
+        "approvedDoesNotExecute": { "const": true },
+        "executionRequiresExternalExecutor": { "const": true }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "approvalRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "approvalId",
+          "requestId",
+          "intentType",
+          "requestedAction",
+          "requestedByRole",
+          "approvalState",
+          "targetSystem",
+          "targetReference",
+          "riskLevel",
+          "humanApprovalRequired",
+          "requestedAt",
+          "expiresAt",
+          "approvedByRole",
+          "approvedAt",
+          "approvedByRequester",
+          "executionRefusedUntilApproved",
+          "executionDispatchAllowed",
+          "evidence",
+          "blockers"
+        ],
+        "properties": {
+          "approvalId": { "type": "string" },
+          "requestId": { "type": "string" },
+          "intentType": { "type": "string" },
+          "requestedAction": { "type": "string" },
+          "requestedByRole": { "type": "string" },
+          "approvalState": { "type": "string" },
+          "targetSystem": { "type": "string" },
+          "targetReference": { "type": "string" },
+          "riskLevel": { "enum": ["low", "medium", "high"] },
+          "humanApprovalRequired": { "type": "boolean" },
+          "requestedAt": { "type": "string" },
+          "expiresAt": { "type": "string" },
+          "approvedByRole": { "type": "string" },
+          "approvedAt": { "type": "string" },
+          "approvedByRequester": { "type": "boolean" },
+          "executionRefusedUntilApproved": { "type": "boolean" },
+          "executionDispatchAllowed": { "type": "boolean" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "blockers": { "type": "array" }
+        }
+      }
+    }
+  }
+}

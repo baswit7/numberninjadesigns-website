@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-06-20T22:53:14.9293932Z",
+  "source": "services/executive-cockpit/generate-executive-cockpit.ps1",
+  "status": "error",
+  "sectionId": "today",
+  "cards": [
+    {
+      "id": "today.highest-priority",
+      "title": "Build Etsy listing workflow foundation",
+      "status": "ok",
+      "description": "Blocks 1 task",
+      "facts": [
+        {
+          "label": "Project",
+          "value": "numberninjadesigns"
+        },
+        {
+          "label": "Priority",
+          "value": 91
+        },
+        {
+          "label": "ROI",
+          "value": 92
+        }
+      ],
+      "actionHint": "Open the highest-priority task Codex prompt and use it as the next practical delivery input.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "today.blocker.boodschappenvergelijker",
+      "title": "NumberNinjaDesigns / BoodschappenVergelijker",
+      "status": "error",
+      "description": "Data source strategy is not selected.",
+      "facts": [
+        {
+          "label": "Project status",
+          "value": "blocked"
+        },
+        {
+          "label": "Blocked items",
+          "value": 1
+        },
+        {
+          "label": "Readiness",
+          "value": "blocked"
+        }
+      ],
+      "actionHint": "See source project cockpit report.",
+      "lineage": {
+        "sourceReport": "runtime/dashboard/project-delivery.view.json",
+        "sourceContract": "config/delivery.tasks.json + config/delivery.scoring.json",
+        "sourceService": "services/project-delivery/generate-project-delivery.ps1"
+      }
+    },
+    {
+      "id": "today.opportunity.opp.pivot-table-operator",
+      "title": "Pivot Table Operator",
+      "status": "ok",
+      "description": "Excel Users, Data Analysts, Spreadsheet Nerds",
+      "facts": [
+        {
+          "label": "Classification",
+          "value": "A"
+        },
+        {
+          "label": "Confidence",
+          "value": 92.0
+        },
+        {
+          "label": "Evidence",
+          "value": 3
+        }
+      ],
+      "actionHint": "Review evidence and decide APPROVED or REJECTED in a future human-controlled approval pass.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/opportunities.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/opportunities.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    },
+    {
+      "id": "today.review.approval.opp.pivot-table-operator",
+      "title": "Pivot Table Operator",
+      "status": "warning",
+      "description": "opp.pivot-table-operator",
+      "facts": [
+        {
+          "label": "Approval",
+          "value": "PENDING_REVIEW"
+        },
+        {
+          "label": "Confidence",
+          "value": 92.0
+        },
+        {
+          "label": "Can execute",
+          "value": "unknown"
+        }
+      ],
+      "actionHint": "Approval remains human-controlled outside this dashboard.",
+      "lineage": {
+        "sourceReport": "runtime/market-intelligence/approval-queue.report.json",
+        "sourceContract": "shared/contracts/market-intelligence/approval-queue.contract.json",
+        "sourceService": "services/market-intelligence/generate-market-intelligence.ps1"
+      }
+    }
+  ],
+  "lineage": {
+    "sourceReports": [
+      "runtime/dashboard/project-delivery.view.json",
+      "runtime/market-intelligence/approval-queue.report.json",
+      "runtime/market-intelligence/opportunities.report.json"
+    ],
+    "sourceContracts": [
+      "config/delivery.tasks.json",
+      "shared/contracts/market-intelligence/approval-queue.contract.json",
+      "shared/contracts/market-intelligence/opportunities.contract.json"
+    ],
+    "sourceServices": [
+      "services/market-intelligence/generate-market-intelligence.ps1",
+      "services/project-delivery/generate-project-delivery.ps1"
+    ]
+  },
+  "boundaries": {
+    "readOnly": true,
+    "executionEngine": false,
+    "providerExecution": false,
+    "publishingExecution": false,
+    "schedulerExecution": false,
+    "oauthCapability": false,
+    "credentialAccess": false,
+    "secretAccess": false,
+    "agentExecution": false,
+    "automaticDecisionMaking": false
+  }
+}
