@@ -6,14 +6,13 @@ import { fileURLToPath } from "node:url";
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const expectedPalette = Object.freeze({
-  "--brand-bg": "#f9fbfc",
-  "--brand-surface": "#ffffff",
-  "--brand-surface-2": "#e9f5f3",
-  "--brand-accent": "#13b8a7",
-  "--brand-accent-strong": "#08766d",
-  "--brand-secondary": "#2463e9",
-  "--brand-text": "#0c1426",
-  "--brand-muted": "#545a63",
+  "--brand-bg": "#07090c",
+  "--brand-surface": "#11151b",
+  "--brand-surface-2": "#151b23",
+  "--brand-accent": "#00e891",
+  "--brand-secondary": "#6ee7ff",
+  "--brand-text": "#f3f5f7",
+  "--brand-muted": "#8b96a5",
 });
 
 const coreStylesheets = [
@@ -22,10 +21,10 @@ const coreStylesheets = [
   "commerce.css",
   "support/styles.css",
 ];
-const stylesheetVersion = "20260724-etsy-banner";
+const stylesheetVersion = "20260727-dark-standard";
 
 const obsoletePalettePattern =
-  /#07090c|#11151b|#182129|#202b35|#00e891|#00c97d|#6ee7ff|#f3f5f7|#8b96a5/i;
+  /#f9fbfc|#ffffff|#e9f5f3|#d7efeb|#13b8a7|#08766d|#2463e9|#0c1426|#545a63|#b42318|#b45309/i;
 
 function relativeUrlPath(filePath) {
   return path.relative(repositoryRoot, filePath).replaceAll("\\", "/");
@@ -94,6 +93,11 @@ for (const [token, value] of Object.entries(expectedPalette)) {
     `${token} must remain ${value}.`,
   );
 }
+assert.match(
+  brandCss,
+  /--brand-on-accent:\s*var\(--brand-bg\)/,
+  "--brand-on-accent must remain bound to the canonical background.",
+);
 
 for (const stylesheet of coreStylesheets) {
   const content = await readFile(path.join(repositoryRoot, stylesheet), "utf8");
@@ -154,7 +158,7 @@ for (const htmlFile of htmlFiles) {
   if (colorScheme) {
     assert.equal(
       colorScheme[1].toLowerCase(),
-      "light",
+      "dark",
       `${htmlRelativePath} has the wrong browser color scheme.`,
     );
   }
@@ -175,7 +179,7 @@ for (const htmlFile of htmlFiles) {
   }
 }
 
-assert.ok(themeColorCount >= 40, "Expected theme-color coverage across public pages.");
+assert.ok(themeColorCount >= 50, "Expected theme-color coverage across public pages.");
 assert.ok(
   sharedStylesheetCount >= themeColorCount,
   "Expected versioned shared stylesheets across all themed pages.",
@@ -184,7 +188,7 @@ assert.ok(
 for (const foreground of [
   expectedPalette["--brand-text"],
   expectedPalette["--brand-muted"],
-  expectedPalette["--brand-accent-strong"],
+  expectedPalette["--brand-accent"],
   expectedPalette["--brand-secondary"],
 ]) {
   assert.ok(
@@ -195,7 +199,7 @@ for (const foreground of [
 
 assert.ok(
   contrastRatio(
-    expectedPalette["--brand-text"],
+    expectedPalette["--brand-bg"],
     expectedPalette["--brand-accent"],
   ) >= 4.5,
   "Primary button text must meet WCAG AA contrast.",
@@ -203,10 +207,10 @@ assert.ok(
 
 assert.ok(
   contrastRatio(
-    expectedPalette["--brand-accent-strong"],
+    expectedPalette["--brand-accent"],
     expectedPalette["--brand-surface-2"],
   ) >= 4.5,
-  "Accessible accent text must meet WCAG AA contrast on the mint surface.",
+  "Accessible accent text must meet WCAG AA contrast on the elevated surface.",
 );
 
 console.log(
