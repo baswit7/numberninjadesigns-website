@@ -1,4 +1,4 @@
-@import url("brand.css?v=20260724-etsy-banner");
+@import url("brand.css?v=20260727-etsy-light-standard");
 
 :root {
   --commerce-max: 1440px;
@@ -11,9 +11,9 @@
   --commerce-text: var(--brand-text);
   --commerce-muted: var(--brand-muted);
   --commerce-line: var(--brand-line);
-  --commerce-ledger: #f1f1e9;
-  --commerce-ledger-stripe: #e4ebe0;
-  --commerce-ink: #123c2d;
+  --commerce-ledger: #F9FBFC;
+  --commerce-ledger-stripe: #D7EFEB;
+  --commerce-ink: #0C1426;
   --commerce-radius: 7px;
   --commerce-display: "Bebas Neue", "Orbitron", "Arial Narrow", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
   --commerce-mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
@@ -327,7 +327,7 @@ body.commerce-page {
   border-radius: var(--commerce-radius);
   background:
     radial-gradient(circle at 50% 46%, rgba(19, 184, 167, 0.11), transparent 48%),
-    #050505;
+    var(--brand-surface-2);
 }
 
 .hero-apparel-visual img {
@@ -342,15 +342,15 @@ body.commerce-page {
 
 .workbook-preview {
   overflow: hidden;
-  border: 1px solid rgba(18, 60, 45, 0.3);
+  border: 1px solid rgba(12, 20, 38, 0.3);
   border-radius: var(--commerce-radius);
   background-color: var(--commerce-ledger);
   background-image: repeating-linear-gradient(
     0deg,
     transparent 0,
     transparent 31px,
-    rgba(176, 195, 173, 0.28) 31px,
-    rgba(176, 195, 173, 0.28) 62px
+    rgba(84, 90, 99, 0.28) 31px,
+    rgba(84, 90, 99, 0.28) 62px
   );
   color: var(--commerce-ink);
   box-shadow: 0 28px 70px var(--brand-shadow);
@@ -375,7 +375,7 @@ body.commerce-page {
 }
 
 .workbook-status {
-  color: #486758;
+  color: #545A63;
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -387,7 +387,7 @@ body.commerce-page {
   margin: 0;
   padding: 0;
   overflow-x: auto;
-  border-bottom: 1px solid rgba(18, 60, 45, 0.5);
+  border-bottom: 1px solid rgba(12, 20, 38, 0.5);
   list-style: none;
   scrollbar-width: none;
 }
@@ -396,20 +396,20 @@ body.commerce-page {
   flex: 0 0 auto;
   min-height: 35px;
   padding: 8px 11px;
-  border: 1px solid rgba(18, 60, 45, 0.22);
+  border: 1px solid rgba(12, 20, 38, 0.22);
   border-bottom: 0;
-  color: #596a61;
+  color: #545A63;
   font: 700 0.68rem/1 var(--commerce-mono);
 }
 
 .workbook-tabs button {
   flex: 0 0 auto;
   min-height: 44px;
-  border: 1px solid rgba(18, 60, 45, 0.22);
+  border: 1px solid rgba(12, 20, 38, 0.22);
   border-bottom: 0;
   padding: 9px 12px;
   background: transparent;
-  color: #596a61;
+  color: #545A63;
   cursor: pointer;
   font: 700 0.68rem/1.2 var(--commerce-mono);
   white-space: nowrap;
@@ -432,8 +432,8 @@ body.commerce-page {
 .workbook-grid {
   display: grid;
   grid-template-columns: 34px minmax(0, 1fr) minmax(0, 0.7fr);
-  border-top: 1px solid rgba(18, 60, 45, 0.22);
-  border-left: 1px solid rgba(18, 60, 45, 0.22);
+  border-top: 1px solid rgba(12, 20, 38, 0.22);
+  border-left: 1px solid rgba(12, 20, 38, 0.22);
   background: rgba(255, 255, 255, 0.32);
   font-family: Arial, sans-serif;
 }
@@ -441,14 +441,14 @@ body.commerce-page {
 .workbook-grid > * {
   min-height: 36px;
   padding: 9px 8px;
-  border-right: 1px solid rgba(18, 60, 45, 0.22);
-  border-bottom: 1px solid rgba(18, 60, 45, 0.22);
+  border-right: 1px solid rgba(12, 20, 38, 0.22);
+  border-bottom: 1px solid rgba(12, 20, 38, 0.22);
   font-size: 0.66rem;
 }
 
 .workbook-grid > :nth-child(3n + 1),
 .workbook-row-number {
-  color: #50685b;
+  color: #545A63;
   text-align: center;
 }
 
@@ -547,7 +547,7 @@ body.commerce-page {
   border-radius: var(--commerce-radius);
   background:
     radial-gradient(circle at 50% 46%, rgba(19, 184, 167, 0.11), transparent 48%),
-    #050505;
+    var(--brand-surface-2);
   transition: border-color 160ms ease;
 }
 
@@ -796,13 +796,13 @@ body.commerce-page {
 
 .workbook-grid-large .column-heading,
 .workbook-grid-large .column-corner {
-  background: rgba(18, 60, 45, 0.08);
+  background: rgba(12, 20, 38, 0.08);
   text-align: center;
 }
 
 .workbook-caption {
   margin-top: 16px;
-  color: #486758;
+  color: #545A63;
   font-size: 0.68rem;
 }
 
@@ -897,13 +897,13 @@ body.commerce-page {
 .workbook-preview-detail th,
 .workbook-preview-detail td {
   padding: 10px 8px;
-  border: 1px solid rgba(18, 60, 45, 0.22);
+  border: 1px solid rgba(12, 20, 38, 0.22);
   color: var(--commerce-ink);
   text-align: left;
 }
 
 .workbook-preview-detail thead th {
-  background: rgba(18, 60, 45, 0.08);
+  background: rgba(12, 20, 38, 0.08);
 }
 
 .workbook-preview-detail code {
@@ -1492,7 +1492,7 @@ body.commerce-page {
 
 .preview-status {
   margin-top: 14px;
-  color: #486758;
+  color: #545A63;
   font: 700 0.7rem/1.4 var(--commerce-mono);
 }
 

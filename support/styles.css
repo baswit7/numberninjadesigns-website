@@ -1,4 +1,4 @@
-@import url("../brand.css?v=20260724-etsy-banner");
+@import url("../brand.css?v=20260727-etsy-light-standard");
 
 :root {
   --support-bg: var(--brand-bg);
@@ -114,7 +114,7 @@
   margin-top: 6px;
   border-radius: 50%;
   background: var(--support-warning);
-  box-shadow: 0 0 0 5px rgba(255, 184, 77, 0.1);
+  box-shadow: 0 0 0 5px rgba(180, 83, 9, 0.1);
 }
 
 .availability strong {
@@ -140,7 +140,7 @@
 }
 
 .availability[data-state="error"] {
-  border-color: rgba(255, 102, 115, 0.38);
+  border-color: rgba(180, 35, 24, 0.38);
 }
 
 .availability[data-state="error"] > span {
@@ -170,7 +170,7 @@
 }
 
 .answer-panel[data-state="escalated"] {
-  border-color: rgba(255, 184, 77, 0.42);
+  border-color: rgba(180, 83, 9, 0.42);
 }
 
 .panel-heading {
@@ -455,9 +455,9 @@
 
 .escalation {
   padding: 20px;
-  border: 1px solid rgba(255, 184, 77, 0.3);
+  border: 1px solid rgba(180, 83, 9, 0.3);
   border-radius: var(--support-radius);
-  background: rgba(255, 184, 77, 0.08);
+  background: rgba(180, 83, 9, 0.08);
 }
 
 .support-page .escalation h3 {

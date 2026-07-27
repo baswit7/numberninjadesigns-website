@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0.0",
+  "standard": "NND-ETSY-LIGHT-2026.1",
+  "brand": "NumberNinjaDesigns",
+  "reference": "Live Etsy banner palette established by repository commit b89b341",
+  "publicStylesheet": "brand.css",
+  "stylesheetVersion": "20260727-etsy-light-standard",
+  "colors": {
+    "background": "#F9FBFC",
+    "surface": "#FFFFFF",
+    "surfaceSoft": "#E9F5F3",
+    "surfaceStrong": "#D7EFEB",
+    "accent": "#13B8A7",
+    "accentStrong": "#08766D",
+    "secondary": "#2463E9",
+    "text": "#0C1426",
+    "muted": "#545A63",
+    "danger": "#B42318",
+    "warning": "#B45309"
+  },
+  "assets": {
+    "assets/brand/numberninjadesigns-social.png": {
+      "sha256": "17CEA111F29B9012C40FDE53A5A9881AEFB7B8CCD119C94889B63DA6495B49B9",
+      "source": "assets/brand/numberninjadesigns-social.svg",
+      "width": 1200,
+      "height": 630
+    }
+  },
+  "enforcement": {
+    "mode": "deny-by-default",
+    "allowDarkTheme": false,
+    "allowUnapprovedPaletteSubstitution": false,
+    "forbidTextTokenAsBackground": true,
+    "requireAutomatedValidation": true,
+    "requireVersionedLocalStylesheets": true,
+    "requiredThemeColor": "#F9FBFC",
+    "requiredColorScheme": "light",
+    "minimumPublicHtmlFiles": 53,
+    "minimumPublicUiFiles": 69,
+    "validator": "scripts/validation/validate-brand-colors.ps1",
+    "regressionTests": [
+      "tests/brand-color-policy.test.mjs",
+      "tests/brand-palette.test.mjs"
+    ],
+    "allowedHex": [
+      "#F9FBFC",
+      "#FFFFFF",
+      "#E9F5F3",
+      "#D7EFEB",
+      "#13B8A7",
+      "#08766D",
+      "#2463E9",
+      "#0C1426",
+      "#545A63",
+      "#B42318",
+      "#B45309"
+    ],
+    "allowedRgbBases": [
+      "249,251,252",
+      "255,255,255",
+      "233,245,243",
+      "215,239,235",
+      "19,184,167",
+      "8,118,109",
+      "36,99,233",
+      "12,20,38",
+      "84,90,99",
+      "180,35,24",
+      "180,83,9"
+    ],
+    "allowedKeywords": [
+      "transparent",
+      "currentcolor",
+      "inherit",
+      "initial",
+      "unset",
+      "none"
+    ],
+    "forbiddenColorFunctions": [
+      "hsl",
+      "hsla",
+      "hwb",
+      "lab",
+      "lch",
+      "oklab",
+      "oklch",
+      "color",
+      "color-mix"
+    ],
+    "forbidNamedColors": true,
+    "publicUiDiscovery": {
+      "fileExtensions": [
+        ".html",
+        ".css",
+        ".js",
+        ".mjs",
+        ".svg"
+      ],
+      "excludedDirectories": [
+        ".git",
+        ".github",
+        ".studio-os",
+        ".vercel",
+        "branding",
+        "config",
+        "docs",
+        "modules",
+        "node_modules",
+        "output",
+        "outputs",
+        "release-candidates",
+        "runtime",
+        "scripts",
+        "services",
+        "shared",
+        "tests",
+        "tmp",
+        "work"
+      ]
+    }
+  },
+  "changeControl": {
+    "requiresExplicitUserApproval": true,
+    "requiredFiles": [
+      "AGENTS.md",
+      ".github/CODEOWNERS",
+      ".github/workflows/brand-color-gate.yml",
+      ".vercelignore",
+      "assets/brand/numberninjadesigns-social.png",
+      "assets/brand/numberninjadesigns-social.svg",
+      "assets/brand/numberninjadesigns-wordmark.svg",
+      "commerce.css",
+      "docs/BRAND_COLOR_STANDARD.md",
+      "favicon.svg",
+      "config/brand.tokens.json",
+      "brand.css",
+      "privacy-consent.css",
+      "scripts/deploy-website.ps1",
+      "scripts/validation/validate-brand-colors.ps1",
+      "tests/brand-color-policy.test.mjs",
+      "tests/brand-palette.test.mjs",
+      "seo.css",
+      "styles.css",
+      "support/styles.css"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+# Binding brand contract and release enforcement
+/.github/CODEOWNERS @baswit7
+/AGENTS.md @baswit7
+/assets/brand/numberninjadesigns-social.png @baswit7
+/assets/brand/numberninjadesigns-social.svg @baswit7
+/assets/brand/numberninjadesigns-wordmark.svg @baswit7
+/brand.css @baswit7
+/commerce.css @baswit7
+/config/brand.tokens.json @baswit7
+/docs/BRAND_COLOR_STANDARD.md @baswit7
+/favicon.svg @baswit7
+/privacy-consent.css @baswit7
+/scripts/deploy-website.ps1 @baswit7
+/scripts/validation/validate-brand-colors.ps1 @baswit7
+/seo.css @baswit7
+/styles.css @baswit7
+/support/styles.css @baswit7
+/tests/brand-color-policy.test.mjs @baswit7
+/tests/brand-palette.test.mjs @baswit7
+/.vercelignore @baswit7
+/.github/workflows/brand-color-gate.yml @baswit7

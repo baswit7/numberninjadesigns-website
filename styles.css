@@ -1,4 +1,4 @@
-@import url("brand.css?v=20260724-etsy-banner");
+@import url("brand.css?v=20260727-etsy-light-standard");
 
 :root {
   color-scheme: light;
@@ -307,7 +307,7 @@ p {
   place-items: center;
   border: 1px dashed rgba(19, 184, 167, 0.45);
   border-radius: var(--radius);
-  background: #000000;
+  background: var(--brand-surface-2);
   color: var(--brand-accent-strong);
   text-align: center;
   font-weight: 900;
@@ -320,7 +320,7 @@ p {
   object-position: center;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #000000;
+  background: var(--brand-surface-2);
   padding: 0;
   transition: opacity 180ms ease, transform 180ms ease;
 }
@@ -479,7 +479,7 @@ p {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(12, 20, 38, 0.82);
 }
 
 .modal.is-open {
@@ -502,7 +502,7 @@ p {
 .preview-mockup-frame img {
   display: block;
   width: 100%;
-  background: #000000;
+  background: var(--brand-surface-2);
   border-radius: var(--radius);
 }
 
@@ -530,7 +530,7 @@ p {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--radius);
-  background: #000000;
+  background: var(--brand-surface-2);
 }
 
 .preview-mockup-frame img {

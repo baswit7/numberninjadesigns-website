@@ -5,8 +5,14 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const brandStylesheetVersion = "20260727-etsy-light-standard";
+const consentScriptVersion = "20260727";
 const consentScript = fs.readFileSync(
   path.join(repositoryRoot, "privacy-consent.js"),
+  "utf8"
+);
+const consentStyles = fs.readFileSync(
+  path.join(repositoryRoot, "privacy-consent.css"),
   "utf8"
 );
 const privacyPolicy = fs.readFileSync(
@@ -58,12 +64,16 @@ test("all public pages load the consent UI exactly once", () => {
     );
     assert.match(
       html,
-      new RegExp(`href="${prefix.replaceAll("../", "\\.\\./")}privacy-consent\\.css\\?v=20260727"`),
-      `${relativePath} must use a working relative stylesheet path`
+      new RegExp(
+        `href="${prefix.replaceAll("../", "\\.\\./")}privacy-consent\\.css\\?v=${brandStylesheetVersion}"`
+      ),
+      `${relativePath} must use the current consent stylesheet cache version`
     );
     assert.match(
       html,
-      new RegExp(`src="${prefix.replaceAll("../", "\\.\\./")}privacy-consent\\.js\\?v=20260727"`),
+      new RegExp(
+        `src="${prefix.replaceAll("../", "\\.\\./")}privacy-consent\\.js\\?v=${consentScriptVersion}"`
+      ),
       `${relativePath} must use a working relative script path`
     );
     assert.doesNotMatch(
@@ -72,6 +82,30 @@ test("all public pages load the consent UI exactly once", () => {
       `${relativePath} must not load Pinterest before consent`
     );
   }
+});
+
+test("consent stylesheet imports and binds the canonical Etsy-light tokens", () => {
+  assert.match(
+    consentStyles,
+    new RegExp(
+      `^@import url\\("brand\\.css\\?v=${brandStylesheetVersion}"\\);`
+    )
+  );
+
+  for (const [label, pattern] of [
+    ["root text", /#nnd-consent-root\s*\{[^}]*color:\s*var\(--brand-text\)/],
+    ["banner surface", /\.nnd-consent-banner\s*\{[^}]*background:\s*var\(--brand-surface\)/],
+    ["banner text", /\.nnd-consent-banner\s*\{[^}]*color:\s*var\(--brand-text\)/],
+    ["primary action", /\.nnd-consent-button-primary\s*\{[^}]*background:\s*var\(--brand-accent\)/],
+    ["primary action text", /\.nnd-consent-button-primary\s*\{[^}]*color:\s*var\(--brand-on-accent\)/],
+    ["secondary action", /\.nnd-consent-button-secondary,[^}]*background:\s*var\(--brand-surface-2\)/],
+    ["accessible link", /\.nnd-consent-copy a,[^}]*color:\s*var\(--brand-secondary\)/],
+    ["accessible accent", /\.nnd-consent-option span\s*\{[^}]*color:\s*var\(--brand-accent-strong\)/],
+  ]) {
+    assert.match(consentStyles, pattern, `missing canonical ${label} binding`);
+  }
+
+  assert.doesNotMatch(consentStyles, /color-scheme\s*:\s*dark/i);
 });
 
 test("Pinterest tracking is production-only and contains no enhanced-match payload", () => {

@@ -5,27 +5,62 @@ import { fileURLToPath } from "node:url";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
+const expectedColors = Object.freeze({
+  background: "#F9FBFC",
+  surface: "#FFFFFF",
+  surfaceSoft: "#E9F5F3",
+  surfaceStrong: "#D7EFEB",
+  accent: "#13B8A7",
+  accentStrong: "#08766D",
+  secondary: "#2463E9",
+  text: "#0C1426",
+  muted: "#545A63",
+  danger: "#B42318",
+  warning: "#B45309",
+});
 const expectedPalette = Object.freeze({
-  "--brand-bg": "#f9fbfc",
-  "--brand-surface": "#ffffff",
-  "--brand-surface-2": "#e9f5f3",
-  "--brand-accent": "#13b8a7",
-  "--brand-accent-strong": "#08766d",
-  "--brand-secondary": "#2463e9",
-  "--brand-text": "#0c1426",
-  "--brand-muted": "#545a63",
+  "--brand-bg": expectedColors.background,
+  "--brand-surface": expectedColors.surface,
+  "--brand-surface-2": expectedColors.surfaceSoft,
+  "--brand-surface-3": expectedColors.surfaceStrong,
+  "--brand-accent": expectedColors.accent,
+  "--brand-accent-strong": expectedColors.accentStrong,
+  "--brand-secondary": expectedColors.secondary,
+  "--brand-text": expectedColors.text,
+  "--brand-muted": expectedColors.muted,
+  "--brand-danger": expectedColors.danger,
+  "--brand-warning": expectedColors.warning,
 });
 
 const coreStylesheets = [
   "styles.css",
   "seo.css",
   "commerce.css",
+  "privacy-consent.css",
   "support/styles.css",
 ];
-const stylesheetVersion = "20260724-etsy-banner";
-
-const obsoletePalettePattern =
-  /#07090c|#11151b|#182129|#202b35|#00e891|#00c97d|#6ee7ff|#f3f5f7|#8b96a5/i;
+const stylesheetVersion = "20260727-etsy-light-standard";
+const excludedDirectories = new Set([
+  ".git",
+  ".github",
+  ".studio-os",
+  ".vercel",
+  "branding",
+  "config",
+  "docs",
+  "modules",
+  "node_modules",
+  "output",
+  "outputs",
+  "release-candidates",
+  "runtime",
+  "scripts",
+  "services",
+  "shared",
+  "tests",
+  "tmp",
+  "work",
+]);
 
 function relativeUrlPath(filePath) {
   return path.relative(repositoryRoot, filePath).replaceAll("\\", "/");
@@ -69,7 +104,7 @@ async function listHtmlFiles(directory) {
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name.startsWith(".") || entry.name === "node_modules") {
+    if (entry.isDirectory() && excludedDirectories.has(entry.name)) {
       continue;
     }
 
@@ -85,100 +120,123 @@ async function listHtmlFiles(directory) {
   return files;
 }
 
+function getAttributes(tag) {
+  return new Map(
+    [...tag.matchAll(/([:\w-]+)\s*=\s*(["'])(.*?)\2/gs)].map((match) => [
+      match[1].toLowerCase(),
+      match[3],
+    ]),
+  );
+}
+
+function getTags(content, tagName) {
+  return [
+    ...content.matchAll(new RegExp(`<${tagName}\\b[^>]*>`, "gi")),
+  ].map((match) => match[0]);
+}
+
+const brandTokens = JSON.parse(
+  await readFile(
+    path.join(repositoryRoot, "config", "brand.tokens.json"),
+    "utf8",
+  ),
+);
+assert.equal(brandTokens.standard, "NND-ETSY-LIGHT-2026.1");
+assert.equal(brandTokens.stylesheetVersion, stylesheetVersion);
+assert.deepEqual(brandTokens.colors, expectedColors);
+
 const brandCss = await readFile(path.join(repositoryRoot, "brand.css"), "utf8");
 
 for (const [token, value] of Object.entries(expectedPalette)) {
   assert.match(
     brandCss,
-    new RegExp(`${token}:\\s*${value}`, "i"),
+    new RegExp(`^\\s*${token}:\\s*${value}\\s*;`, "m"),
     `${token} must remain ${value}.`,
   );
 }
 
 for (const stylesheet of coreStylesheets) {
   const content = await readFile(path.join(repositoryRoot, stylesheet), "utf8");
-  assert.doesNotMatch(
-    content,
-    obsoletePalettePattern,
-    `${stylesheet} contains an obsolete website palette color.`,
-  );
   assert.match(
     content,
-    /@import url\("(?:\.\.\/)?brand\.css(?:\?[^"]*)?"\);/,
-    `${stylesheet} must import the shared brand palette.`,
+    new RegExp(
+      `^\\s*@import url\\("(?:\\.\\./)?brand\\.css\\?v=${stylesheetVersion}"\\);`,
+      "m",
+    ),
+    `${stylesheet} must import the versioned shared brand palette.`,
   );
 }
 
 const htmlFiles = await listHtmlFiles(repositoryRoot);
 let themeColorCount = 0;
-let sharedStylesheetCount = 0;
+let localStylesheetCount = 0;
 
 for (const htmlFile of htmlFiles) {
   const htmlRelativePath = relativeUrlPath(htmlFile);
-
-  if (
-    htmlRelativePath.startsWith("modules/") ||
-    htmlRelativePath.startsWith("tiktok/")
-  ) {
-    continue;
-  }
-
   const content = await readFile(htmlFile, "utf8");
-  const themeColor = content.match(
-    /<meta name="theme-color" content="(#[0-9a-f]{6})">/i,
+  const metaAttributes = getTags(content, "meta").map(getAttributes);
+  const themeColors = metaAttributes.filter(
+    (attributes) => attributes.get("name")?.toLowerCase() === "theme-color",
   );
-  const usesSharedWebsiteStyles =
-    /<link rel="stylesheet" href="(?:\.\.\/)*styles\.css(?:\?[^"]*)?">/i.test(
-      content,
-    );
-
-  if (!themeColor && !usesSharedWebsiteStyles) {
-    continue;
-  }
-
-  assert.ok(
-    themeColor,
-    `${htmlRelativePath} must declare the shared browser theme color.`,
+  assert.equal(
+    themeColors.length,
+    1,
+    `${htmlRelativePath} must declare theme-color exactly once.`,
   );
   themeColorCount += 1;
   assert.equal(
-    themeColor[1].toLowerCase(),
-    expectedPalette["--brand-bg"],
-    `${htmlRelativePath} has the wrong browser theme color.`,
+    themeColors[0].get("content"),
+    expectedColors.background,
+    `${htmlRelativePath} must use exact theme-color ${expectedColors.background}.`,
   );
 
-  const colorScheme = content.match(
-    /<meta name="color-scheme" content="([^"]+)">/i,
+  const colorSchemes = metaAttributes.filter(
+    (attributes) => attributes.get("name")?.toLowerCase() === "color-scheme",
+  );
+  assert.equal(
+    colorSchemes.length,
+    1,
+    `${htmlRelativePath} must declare color-scheme exactly once.`,
+  );
+  assert.equal(
+    colorSchemes[0].get("content"),
+    "light",
+    `${htmlRelativePath} must use color-scheme light.`,
   );
 
-  if (colorScheme) {
-    assert.equal(
-      colorScheme[1].toLowerCase(),
-      "light",
-      `${htmlRelativePath} has the wrong browser color scheme.`,
+  const stylesheets = getTags(content, "link")
+    .map(getAttributes)
+    .filter((attributes) =>
+      (attributes.get("rel") ?? "")
+        .toLowerCase()
+        .split(/\s+/)
+        .includes("stylesheet"),
     );
-  }
 
-  const sharedStylesheets = [
-    ...content.matchAll(
-      /<link rel="stylesheet" href="([^"]*(?:styles|seo|commerce)\.css(?:\?[^"]*)?)">/gi,
-    ),
-  ].map((match) => match[1]);
-
-  for (const stylesheetHref of sharedStylesheets) {
-    sharedStylesheetCount += 1;
+  for (const attributes of stylesheets) {
+    const stylesheetHref = attributes.get("href");
+    assert.ok(stylesheetHref, `${htmlRelativePath} has a stylesheet without href.`);
+    assert.doesNotMatch(
+      stylesheetHref,
+      /^(?:https?:)?\/\//i,
+      `${htmlRelativePath} must not load a remote stylesheet.`,
+    );
+    localStylesheetCount += 1;
     assert.match(
       stylesheetHref,
-      new RegExp(`\\?v=${stylesheetVersion}$`),
-      `${htmlRelativePath} must use the current brand cache version for ${stylesheetHref}.`,
+      new RegExp(`\\.css\\?v=${stylesheetVersion}$`),
+      `${htmlRelativePath} must pin ${stylesheetHref} to the current brand cache version.`,
     );
   }
 }
 
-assert.ok(themeColorCount >= 40, "Expected theme-color coverage across public pages.");
 assert.ok(
-  sharedStylesheetCount >= themeColorCount,
-  "Expected versioned shared stylesheets across all themed pages.",
+  themeColorCount >= brandTokens.enforcement.minimumPublicHtmlFiles,
+  "Expected theme-color coverage across every public HTML route.",
+);
+assert.ok(
+  localStylesheetCount >= themeColorCount,
+  "Expected versioned local stylesheet coverage across public routes.",
 );
 
 for (const foreground of [
@@ -210,5 +268,5 @@ assert.ok(
 );
 
 console.log(
-  `Brand palette validation passed for ${coreStylesheets.length} stylesheets, ${themeColorCount} themed pages and ${sharedStylesheetCount} versioned stylesheet links.`,
+  `Brand palette validation passed for ${coreStylesheets.length} stylesheets, ${themeColorCount} themed pages and ${localStylesheetCount} versioned stylesheet links.`,
 );

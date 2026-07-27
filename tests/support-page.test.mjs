@@ -6,6 +6,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const stylesheetVersion = "20260727-etsy-light-standard";
 const html = readFileSync(path.join(root, "support", "index.html"), "utf8");
 const css = readFileSync(path.join(root, "support", "styles.css"), "utf8");
 const app = readFileSync(path.join(root, "support", "app.js"), "utf8");
@@ -17,12 +18,14 @@ test("public support assets are valid standalone static files", () => {
     assert.equal(result.status, 0, result.stderr || result.stdout);
   }
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.numberninjadesigns\.com\/support\/">/);
-  assert.match(html, /<link rel="stylesheet" href="\.\.\/styles\.css(?:\?[^"]*)?">/);
-  assert.match(html, /<link rel="stylesheet" href="\.\.\/commerce\.css(?:\?[^"]*)?">/);
+  assert.match(html, new RegExp(`<link rel="stylesheet" href="\\.\\./styles\\.css\\?v=${stylesheetVersion}">`));
+  assert.match(html, new RegExp(`<link rel="stylesheet" href="\\.\\./commerce\\.css\\?v=${stylesheetVersion}">`));
+  assert.match(html, new RegExp(`<link rel="stylesheet" href="\\./styles\\.css\\?v=${stylesheetVersion}">`));
+  assert.match(html, new RegExp(`<link rel="stylesheet" href="\\.\\./privacy-consent\\.css\\?v=${stylesheetVersion}">`));
   assert.match(html, /<body class="commerce-page support-page">/);
-  assert.match(html, /<meta name="theme-color" content="#f9fbfc">/);
+  assert.match(html, /<meta name="theme-color" content="#F9FBFC">/);
   assert.match(html, /<meta name="color-scheme" content="light">/);
-  assert.match(css, /@import url\("\.\.\/brand\.css(?:\?[^"]*)?"\)/);
+  assert.match(css, new RegExp(`^@import url\\("\\.\\./brand\\.css\\?v=${stylesheetVersion}"\\);`));
   assert.match(css, /--support-bg:\s*var\(--brand-bg\)/);
   assert.match(css, /--support-accent:\s*var\(--brand-accent\)/);
   assert.match(css, /--support-text:\s*var\(--brand-text\)/);
