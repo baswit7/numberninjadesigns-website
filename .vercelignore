@@ -1,0 +1,33 @@
+# Repository and local environment metadata
+.git
+.github
+.studio-os
+.vercel
+.env
+.env.*
+!.env.example
+AGENTS.md
+
+# Internal source, automation, QA and generated evidence
+branding
+config
+docs
+modules
+node_modules
+output
+outputs
+release-candidates
+runtime
+scripts
+services
+shared
+tests
+tmp
+work
+
+# Non-public package and credential metadata
+.env.example
+*.key
+*.pem
+credentials*.json
+package*.json

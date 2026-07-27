@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0.0",
+  "standard": "NND-BRAND-COLOR-2026.1",
+  "brand": "NumberNinjaDesigns",
+  "publicStylesheet": "brand.css",
+  "stylesheetVersion": "20260727-dark-standard",
+  "colors": {
+    "background": "#07090C",
+    "surface": "#11151B",
+    "surfaceElevated": "#151B23",
+    "accent": "#00E891",
+    "secondaryAccent": "#6EE7FF",
+    "text": "#F3F5F7",
+    "muted": "#8B96A5"
+  },
+  "enforcement": {
+    "mode": "deny-by-default",
+    "allowUnapprovedPaletteSubstitution": false,
+    "requireAutomatedValidation": true,
+    "validator": "scripts/validation/validate-brand-colors.ps1",
+    "regressionTest": "tests/brand-color-policy.test.mjs",
+    "allowedHex": [
+      "#07090C",
+      "#11151B",
+      "#151B23",
+      "#00E891",
+      "#6EE7FF",
+      "#F3F5F7",
+      "#8B96A5"
+    ],
+    "allowedRgbBases": [
+      "7,9,12",
+      "17,21,27",
+      "21,27,35",
+      "0,232,145",
+      "110,231,255",
+      "243,245,247",
+      "139,150,165"
+    ],
+    "allowedKeywords": [
+      "transparent",
+      "currentcolor",
+      "inherit",
+      "initial",
+      "unset",
+      "none"
+    ],
+    "forbiddenColorFunctions": [
+      "hsl",
+      "hsla",
+      "hwb",
+      "lab",
+      "lch",
+      "oklab",
+      "oklch",
+      "color",
+      "color-mix"
+    ],
+    "forbidNamedColors": true,
+    "publicUiDiscovery": {
+      "fileExtensions": [
+        ".html",
+        ".css",
+        ".js",
+        ".mjs",
+        ".svg"
+      ],
+      "excludedDirectories": [
+        ".git",
+        ".github",
+        ".studio-os",
+        ".vercel",
+        "branding",
+        "config",
+        "docs",
+        "modules",
+        "node_modules",
+        "output",
+        "outputs",
+        "release-candidates",
+        "runtime",
+        "scripts",
+        "services",
+        "shared",
+        "tests",
+        "tmp",
+        "work"
+      ]
+    }
+  }
+}
