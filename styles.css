@@ -1,7 +1,7 @@
-@import url("brand.css?v=20260724-etsy-banner");
+@import url("brand.css?v=20260728-brand-color-gate");
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --bg: var(--brand-bg);
   --surface: var(--brand-surface);
   --surface-2: var(--brand-surface-2);
@@ -142,7 +142,7 @@ h1 {
   position: relative;
   word-break: keep-all;
   text-wrap: balance;
-  text-shadow: 0 1px 0 rgba(12, 20, 38, 0.08), 0 28px 70px var(--brand-accent-soft);
+  text-shadow: 0 1px 0 rgba(243, 245, 247, 0.08), 0 28px 70px var(--brand-accent-soft);
 }
 
 .hero-title-text {
@@ -215,7 +215,7 @@ p {
 .button-primary {
   background: var(--brand-accent);
   border-color: var(--brand-accent);
-  color: var(--text);
+  color: var(--bg);
 }
 
 .button-secondary {
@@ -225,7 +225,7 @@ p {
 .signal-panel,
 .design-card,
 .policy-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(233, 245, 243, 0.9));
+  background: linear-gradient(180deg, rgba(17, 21, 27, 0.98), rgba(21, 27, 35, 0.90));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -251,7 +251,7 @@ p {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 18px rgba(19, 184, 167, 0.38);
+  box-shadow: 0 0 18px rgba(0, 232, 145, 0.38);
 }
 
 .panel-title {
@@ -298,16 +298,16 @@ p {
 }
 
 .design-card:focus-within {
-  border-color: rgba(19, 184, 167, 0.72);
+  border-color: rgba(0, 232, 145, 0.72);
 }
 
 .asset-placeholder {
   min-height: 220px;
   display: grid;
   place-items: center;
-  border: 1px dashed rgba(19, 184, 167, 0.45);
+  border: 1px dashed rgba(0, 232, 145, 0.45);
   border-radius: var(--radius);
-  background: #000000;
+  background: #07090C;
   color: var(--brand-accent-strong);
   text-align: center;
   font-weight: 900;
@@ -320,7 +320,7 @@ p {
   object-position: center;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #000000;
+  background: #07090C;
   padding: 0;
   transition: opacity 180ms ease, transform 180ms ease;
 }
@@ -358,7 +358,7 @@ p {
 .tag,
 .status-pill {
   width: fit-content;
-  border: 1px solid rgba(19, 184, 167, 0.44);
+  border: 1px solid rgba(0, 232, 145, 0.44);
   border-radius: 999px;
   padding: 4px 10px;
   color: var(--brand-accent-strong);
@@ -392,7 +392,7 @@ p {
 }
 
 .collection-grid a:hover {
-  border-color: rgba(19, 184, 167, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
 }
 
 .gallery-toolbar {
@@ -459,14 +459,14 @@ p {
 
 .preview-button:hover,
 .buy-links a:hover {
-  border-color: rgba(19, 184, 167, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
   color: var(--accent-strong);
 }
 
 .empty-state {
   margin-top: 22px;
   padding: 22px;
-  border: 1px dashed rgba(19, 184, 167, 0.4);
+  border: 1px dashed rgba(0, 232, 145, 0.4);
   border-radius: var(--radius);
   color: var(--muted);
 }
@@ -479,7 +479,7 @@ p {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(7, 9, 12, 0.82);
 }
 
 .modal.is-open {
@@ -502,7 +502,7 @@ p {
 .preview-mockup-frame img {
   display: block;
   width: 100%;
-  background: #000000;
+  background: #07090C;
   border-radius: var(--radius);
 }
 
@@ -530,7 +530,7 @@ p {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--radius);
-  background: #000000;
+  background: #07090C;
 }
 
 .preview-mockup-frame img {

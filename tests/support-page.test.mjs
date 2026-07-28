@@ -20,8 +20,8 @@ test("public support assets are valid standalone static files", () => {
   assert.match(html, /<link rel="stylesheet" href="\.\.\/styles\.css(?:\?[^"]*)?">/);
   assert.match(html, /<link rel="stylesheet" href="\.\.\/commerce\.css(?:\?[^"]*)?">/);
   assert.match(html, /<body class="commerce-page support-page">/);
-  assert.match(html, /<meta name="theme-color" content="#f9fbfc">/);
-  assert.match(html, /<meta name="color-scheme" content="light">/);
+  assert.match(html, /<meta name="theme-color" content="#07090C">/);
+  assert.match(html, /<meta name="color-scheme" content="dark">/);
   assert.match(css, /@import url\("\.\.\/brand\.css(?:\?[^"]*)?"\)/);
   assert.match(css, /--support-bg:\s*var\(--brand-bg\)/);
   assert.match(css, /--support-accent:\s*var\(--brand-accent\)/);

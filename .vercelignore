@@ -1,0 +1,36 @@
+# Private development, governance and repository metadata
+.git
+.github
+.studio-os
+.codex-remote-attachments
+.playwright-cli
+.vercel
+node_modules
+.env
+.env.*
+AGENTS.md
+README.md
+
+# Internal source, automation, QA and generated production evidence
+branding
+config
+docs
+modules
+output
+outputs
+release-candidates
+runtime
+scripts
+services
+shared
+tests
+tmp
+work
+
+# Non-public environment and package metadata
+.env.example
+gha-creds-*.json
+gsc-readonly-report*.json
+finance-google-factory-report*.json
+google-factory-*.json
+package*.json

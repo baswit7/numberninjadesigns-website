@@ -1,21 +1,21 @@
 :root {
-  color-scheme: light;
-  --brand-bg: #f9fbfc;
-  --brand-surface: #ffffff;
-  --brand-surface-2: #e9f5f3;
-  --brand-surface-3: #d7efeb;
-  --brand-accent: #13b8a7;
-  --brand-accent-strong: #08766d;
-  --brand-secondary: #2463e9;
-  --brand-text: #0c1426;
-  --brand-muted: #545a63;
-  --brand-danger: #b42318;
-  --brand-warning: #b45309;
-  --brand-line: rgba(12, 20, 38, 0.14);
-  --brand-line-strong: rgba(12, 20, 38, 0.26);
-  --brand-accent-soft: rgba(19, 184, 167, 0.12);
-  --brand-secondary-soft: rgba(36, 99, 233, 0.1);
-  --brand-shadow: rgba(12, 20, 38, 0.14);
+  color-scheme: dark;
+  --brand-bg: #07090C;
+  --brand-surface: #11151B;
+  --brand-surface-2: #151B23;
+  --brand-surface-3: #151B23;
+  --brand-accent: #00E891;
+  --brand-accent-strong: #00E891;
+  --brand-secondary: #6EE7FF;
+  --brand-text: #F3F5F7;
+  --brand-muted: #8B96A5;
+  --brand-danger: #6EE7FF;
+  --brand-warning: #6EE7FF;
+  --brand-line: rgba(243, 245, 247, 0.14);
+  --brand-line-strong: rgba(243, 245, 247, 0.26);
+  --brand-accent-soft: rgba(0, 232, 145, 0.12);
+  --brand-secondary-soft: rgba(110, 231, 255, 0.1);
+  --brand-shadow: rgba(7, 9, 12, 0.55);
 }
 
 html {
