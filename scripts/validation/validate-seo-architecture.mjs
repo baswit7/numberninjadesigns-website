@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const ORIGIN = "https://www.numberninjadesigns.com";
-const GENERATED_DATE = "2026-07-23";
+const GENERATED_DATE = "2026-07-28";
 const failures = [];
 let assertions = 0;
 
@@ -182,7 +182,7 @@ for (const slug of guideSlugs) assert(existsSync(resolve(ROOT, "guides", slug, "
 
 const guideHubSource = read("guides/index.html");
 assert((guideHubSource.match(/class="guide-index-card"/g) || []).length === guideSlugs.length, "guides/index.html: every guide is rendered exactly once.");
-assert(guideHubSource.includes("seo.css?v=20260723-guide-grid"), "guides/index.html: guide hub is missing the balanced-grid stylesheet cache key.");
+assert(guideHubSource.includes("seo.css?v=20260728-brand-color-gate"), "guides/index.html: guide hub is missing the balanced-grid stylesheet cache key.");
 
 const rootHtml = readdirSync(ROOT, { withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
@@ -283,7 +283,7 @@ for (const file of conceptFiles) {
   assert((source.match(/class="variant-card is-mockup"/g) || []).length === 1, `${relativePath}: expected exactly one product mockup.`);
   assert(source.includes(`variant-count-${group.length + 1}`), `${relativePath}: gallery is missing its deterministic variant-count layout class.`);
   assert(source.includes("Product mockup · enhanced for clarity"), `${relativePath}: product mockup is missing the approved clarity label.`);
-  assert(source.includes("seo.css?v=20260723-product-stage"), `${relativePath}: detail page is missing the product-stage stylesheet cache key.`);
+  assert(source.includes("seo.css?v=20260728-brand-color-gate"), `${relativePath}: detail page is missing the product-stage stylesheet cache key.`);
 }
 
 for (const file of collectionFiles.filter((path) => repoPath(path) !== "collections/index.html")) {
