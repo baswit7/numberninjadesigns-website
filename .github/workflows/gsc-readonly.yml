@@ -1,0 +1,97 @@
+name: Search Console readonly
+
+on:
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: Query the canonical Search Console property
+        required: true
+        type: boolean
+        default: false
+      start_date:
+        description: Optional start date in YYYY-MM-DD
+        required: false
+        type: string
+      end_date:
+        description: Optional end date in YYYY-MM-DD
+        required: false
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: gsc-readonly
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - name: Validate readonly Search Console contracts
+        run: node --test tests/gsc-readonly.test.mjs tests/gsc-workflow.test.mjs
+
+  query:
+    if: ${{ inputs.execute }}
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      GCP_WIF_PROVIDER: ${{ vars.GCP_WIF_PROVIDER }}
+      GCP_GSC_SERVICE_ACCOUNT: ${{ vars.GCP_GSC_SERVICE_ACCOUNT }}
+      GSC_SITE_URL: https://www.numberninjadesigns.com/
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - name: Validate readonly configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$GCP_WIF_PROVIDER" =~ ^projects/[0-9]+/locations/global/workloadIdentityPools/[a-z0-9-]+/providers/[a-z0-9-]+$ ]]
+          [[ "$GCP_GSC_SERVICE_ACCOUNT" =~ ^[a-z0-9-]+@[a-z0-9-]+\.iam\.gserviceaccount\.com$ ]]
+          [[ "$GSC_SITE_URL" == "https://www.numberninjadesigns.com/" ]]
+
+      - name: Authenticate with Workload Identity Federation
+        id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ env.GCP_WIF_PROVIDER }}
+          service_account: ${{ env.GCP_GSC_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_lifetime: 900s
+          access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
+          create_credentials_file: false
+
+      - name: Query finalized Search Console data
+        shell: bash
+        env:
+          GSC_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+          GSC_START_DATE: ${{ inputs.start_date }}
+          GSC_END_DATE: ${{ inputs.end_date }}
+        run: |
+          set -euo pipefail
+          args=(--output "$RUNNER_TEMP/gsc-readonly-report.json")
+          if [[ -n "$GSC_START_DATE" ]]; then args+=(--start-date "$GSC_START_DATE"); fi
+          if [[ -n "$GSC_END_DATE" ]]; then args+=(--end-date "$GSC_END_DATE"); fi
+          node scripts/gsc/fetch-search-console.mjs "${args[@]}"
+
+      - name: Store private readonly report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: gsc-readonly-report
+          path: ${{ runner.temp }}/gsc-readonly-report.json
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 9
