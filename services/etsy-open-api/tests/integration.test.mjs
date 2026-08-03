@@ -354,6 +354,39 @@ test('idempotent sync returns the recorded result, blocks conflicts, and quarant
   };
   await assert.rejects(api.runIdempotentSync(uncertain), { code: 'API_NETWORK_ERROR' });
   await assert.rejects(api.runIdempotentSync(uncertain), { code: 'SYNC_RECONCILIATION_REQUIRED' });
+  assert.deepEqual(await api.runIdempotentSync({
+    ...uncertain,
+    reconcile: async () => ({
+      status: 'succeeded',
+      result: { externalResourceId: 'event-99', outcome: 'social-campaign-enqueued' }
+    })
+  }), {
+    externalResourceId: 'event-99',
+    outcome: 'social-campaign-enqueued'
+  });
+
+  let safeRetryExecutions = 0;
+  const retryable = {
+    operation: 'enqueue-social-event',
+    resourceKey: 'local-product-100',
+    payload: { listingId: 100 },
+    execute: async () => {
+      safeRetryExecutions += 1;
+      if (safeRetryExecutions === 1) {
+        throw new EtsyIntegrationError('SOCIAL_EVENT_OUTCOME_UNKNOWN', 'unknown outcome');
+      }
+      return { externalResourceId: 'event-100', outcome: 'social-campaign-enqueued' };
+    }
+  };
+  await assert.rejects(api.runIdempotentSync(retryable), { code: 'SOCIAL_EVENT_OUTCOME_UNKNOWN' });
+  assert.deepEqual(await api.runIdempotentSync({
+    ...retryable,
+    reconcile: async () => ({ status: 'absent' })
+  }), {
+    externalResourceId: 'event-100',
+    outcome: 'social-campaign-enqueued'
+  });
+  assert.equal(safeRetryExecutions, 2);
 });
 
 test('concurrent sync calls reserve the operation before provider execution', async () => {

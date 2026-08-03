@@ -154,6 +154,17 @@ Only `active` entries that pass every publication and asset check enter the
 bulk run. A successful activation is recorded and is no longer eligible on the
 next Product Studio refresh.
 
+When `ETSY_SOCIAL_EVENT_ENDPOINT` equals the fixed local Product Factory route,
+the publisher performs two read-only Etsy checks after activation: the exact
+listing must be active at its canonical Etsy URL and at least three Etsy image
+receipts must belong to that listing. It then enqueues one deterministic
+five-channel campaign with pending preview approval. Only public Etsy CDN URLs
+cross the service boundary; local paths, tokens and provider response bodies do
+not. A timeout is reconciled against the Product Factory receipt before retry,
+so an already accepted event is never blindly duplicated. When this sink is
+enabled, fewer than three source images blocks the run before the first Etsy
+write.
+
 ## Lifecycle contract
 
 1. `beginAuthorization()` returns the Etsy authorization URL and stores the
@@ -171,6 +182,10 @@ next Product Studio refresh.
 7. Product Studio loads `/api/etsy/listings`, presents the exact eligible set,
    and posts the confirmed catalog revision to
    `/api/etsy/listings/publish-all`.
+8. After Etsy activation and readback, the optional local social sink enqueues
+   the Product Factory campaign. An incomplete handoff remains eligible for a
+   safe social-only retry while Etsy create/upload/activate writes stay
+   idempotently suppressed.
 
 ## Validation
 

@@ -371,6 +371,7 @@ export class EtsyOpenApi {
     this.lastErrorCode = 'NOT_CONNECTED';
     this.lastCheckedAt = null;
     this.refreshPromise = null;
+    this.reconciliationLocks = new Set();
   }
 
   async beginAuthorization() {
@@ -644,7 +645,7 @@ export class EtsyOpenApi {
     this.logger.log('oauth.disconnected');
   }
 
-  async runIdempotentSync({ operation, resourceKey, payload, execute }) {
+  async runIdempotentSync({ operation, resourceKey, payload, execute, reconcile = null }) {
     requireNonEmpty(operation, 'sync operation');
     requireNonEmpty(resourceKey, 'sync resource key');
     if (typeof execute !== 'function') {
@@ -669,11 +670,54 @@ export class EtsyOpenApi {
       );
     }
     if (existing?.status === 'succeeded') return structuredClone(existing.result);
-    if (existing?.status === 'uncertain') {
-      throw new EtsyIntegrationError(
-        'SYNC_RECONCILIATION_REQUIRED',
-        'Previous sync outcome is uncertain and must be reconciled before retry'
-      );
+    if (['uncertain', 'reconciling'].includes(existing?.status)) {
+      if (typeof reconcile !== 'function') {
+        throw new EtsyIntegrationError(
+          'SYNC_RECONCILIATION_REQUIRED',
+          'Previous sync outcome is uncertain and must be reconciled before retry'
+        );
+      }
+      if (this.reconciliationLocks.has(key)) {
+        throw new EtsyIntegrationError('SYNC_IN_PROGRESS', 'The same sync operation is being reconciled');
+      }
+      this.reconciliationLocks.add(key);
+      try {
+        await this.store.set(key, { ...existing, status: 'reconciling' });
+        const resolution = await reconcile();
+        if (resolution?.status === 'succeeded') {
+          const safeResult = {
+            externalResourceId: String(resolution.result?.externalResourceId || ''),
+            outcome: String(resolution.result?.outcome || 'completed')
+          };
+          await this.store.set(key, {
+            operation,
+            resourceHash,
+            payloadHash,
+            status: 'succeeded',
+            finishedAt: this.now(),
+            result: safeResult
+          });
+          this.logger.log('sync.reconciled', { operation, resourceHash });
+          return safeResult;
+        }
+        if (resolution?.status !== 'absent') {
+          await this.store.set(key, { ...existing, status: 'uncertain' });
+          throw new EtsyIntegrationError(
+            'SYNC_RECONCILIATION_REQUIRED',
+            'Previous sync outcome could not be reconciled'
+          );
+        }
+        await this.store.set(key, started);
+        this.logger.log('sync.retry_authorized', { operation, resourceHash });
+      } catch (error) {
+        const current = await this.store.get(key).catch(() => null);
+        if (current?.status === 'reconciling') {
+          await this.store.set(key, { ...existing, status: 'uncertain' }).catch(() => undefined);
+        }
+        throw error;
+      } finally {
+        this.reconciliationLocks.delete(key);
+      }
     }
     if (existing?.status === 'started') {
       throw new EtsyIntegrationError(

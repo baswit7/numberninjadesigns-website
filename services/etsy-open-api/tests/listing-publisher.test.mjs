@@ -59,7 +59,7 @@ class FakeIntegration {
   constructor() {
     this.requests = [];
     this.records = new Map();
-    this.nextId = 100;
+    this.nextId = 1_000;
   }
 
   key(operation, resourceKey) {
@@ -96,6 +96,33 @@ class FakeIntegration {
             }]
           }]
         }]
+      }), { status: 200 });
+    }
+    const listingMatch = /^\/v3\/application\/listings\/(\d+)$/u.exec(resourcePath);
+    if (options.method === 'GET' && listingMatch) {
+      const listingId = Number(listingMatch[1]);
+      return new Response(JSON.stringify({
+        listing_id: listingId,
+        state: 'active',
+        url: `https://www.etsy.com/listing/${listingId}/excel-budget-planner`,
+        title: 'Excel Budget Planner',
+        description: 'A complete offline budget planner. Digital product; nothing is shipped.',
+        tags: ['excel budget', 'budget planner'],
+        last_modified_timestamp: 1785686400,
+        state_timestamp: 1785686400
+      }), { status: 200 });
+    }
+    const imageReadbackMatch = /^\/v3\/application\/listings\/(\d+)\/images$/u.exec(resourcePath);
+    if (options.method === 'GET' && imageReadbackMatch) {
+      const listingId = Number(imageReadbackMatch[1]);
+      return new Response(JSON.stringify({
+        count: 3,
+        results: [1, 2, 3].map((rank) => ({
+          listing_id: listingId,
+          listing_image_id: 800 + rank,
+          rank,
+          url_fullxfull: `https://i.etsystatic.com/12345678/r/il/image-${rank}/full-${rank}.jpg`
+        }))
       }), { status: 200 });
     }
     const id = this.nextId++;
@@ -248,6 +275,118 @@ test('bulk publication creates a draft, uploads assets, activates, and remains i
   assert.equal(integration.requests.length, 4);
 });
 
+test('active Etsy readback durably enqueues one five-channel Product Factory campaign', async (context) => {
+  const filename = await fixture(context, [listing({
+    assets: {
+      images: [
+        { path: 'assets/cover.png', altText: 'Budget planner dashboard' },
+        { path: 'assets/cover.png', altText: 'Budget planner workflow' },
+        { path: 'assets/cover.png', altText: 'Budget planner summary' }
+      ],
+      files: [{ path: 'assets/product.zip', name: 'Budget-Planner.zip' }]
+    }
+  })]);
+  const integration = new FakeIntegration();
+  const events = [];
+  const socialEventSink = {
+    async enqueue(event) {
+      events.push(event);
+      return { externalResourceId: 'event-key', outcome: 'social-campaign-enqueued' };
+    },
+    async reconcile() {
+      return { status: 'absent' };
+    }
+  };
+  const publisher = new EtsyListingPublisher({
+    integration,
+    catalog: new FileListingCatalog(filename),
+    shopId: 42,
+    socialEventSink
+  });
+  const overview = await publisher.overview();
+  const result = await publisher.publishAllActive({ revision: overview.revision });
+  assert.equal(result.published, 1, JSON.stringify(result));
+  assert.equal(events.length, 1);
+  assert.deepEqual(events[0].channels, ['youtube', 'tiktok', 'instagram', 'facebook', 'pinterest']);
+  assert.equal(events[0].mode, 'APPROVAL');
+  assert.equal(events[0].approval.status, 'PENDING');
+  assert.equal(events[0].etsyReceipt.status, 'ACTIVE');
+  assert.equal(events[0].etsyReceipt.readbackVerified, true);
+  assert.equal(events[0].assetUrls.length, 3);
+  assert.match(result.results[0].social.eventKey, /^[a-f0-9]{32}$/u);
+  assert.deepEqual(
+    integration.requests.slice(-2).map(({ resourcePath, options }) => [resourcePath, options.method, options.oauth]),
+    [
+      [`/v3/application/listings/${result.results[0].externalListingId}`, 'GET', false],
+      [`/v3/application/listings/${result.results[0].externalListingId}/images`, 'GET', false]
+    ]
+  );
+
+  const after = await publisher.overview();
+  assert.equal(after.eligible, 0);
+  assert.deepEqual(after.listings[0].blockers, ['ALREADY_PUBLISHED']);
+  assert.equal(after.listings[0].socialHandoffPending, false);
+});
+
+test('social-enabled publication requires three source images before any Etsy write', async (context) => {
+  const filename = await fixture(context, [listing()]);
+  const integration = new FakeIntegration();
+  const publisher = new EtsyListingPublisher({
+    integration,
+    catalog: new FileListingCatalog(filename),
+    shopId: 42,
+    socialEventSink: {
+      async enqueue() { throw new Error('not expected'); },
+      async reconcile() { return { status: 'absent' }; }
+    }
+  });
+  const overview = await publisher.overview();
+  assert.equal(overview.eligible, 0);
+  assert.deepEqual(overview.listings[0].blockers, ['SOCIAL_ASSETS_REQUIRED']);
+  assert.deepEqual(integration.requests, []);
+});
+
+test('a failed social handoff retries without repeating Etsy provider writes', async (context) => {
+  const filename = await fixture(context, [listing({
+    assets: {
+      images: [
+        { path: 'assets/cover.png', altText: 'Budget planner dashboard' },
+        { path: 'assets/cover.png', altText: 'Budget planner workflow' },
+        { path: 'assets/cover.png', altText: 'Budget planner summary' }
+      ],
+      files: [{ path: 'assets/product.zip', name: 'Budget-Planner.zip' }]
+    }
+  })]);
+  const integration = new FakeIntegration();
+  let handoffs = 0;
+  const publisher = new EtsyListingPublisher({
+    integration,
+    catalog: new FileListingCatalog(filename),
+    shopId: 42,
+    socialEventSink: {
+      async enqueue() {
+        handoffs += 1;
+        if (handoffs === 1) throw new Error('temporary local outage');
+        return { externalResourceId: 'event-key', outcome: 'social-campaign-enqueued' };
+      },
+      async reconcile() { return { status: 'absent' }; }
+    }
+  });
+  const overview = await publisher.overview();
+  const first = await publisher.publishAllActive({ revision: overview.revision });
+  assert.equal(first.failed, 1);
+  const pending = await publisher.overview();
+  assert.equal(pending.eligible, 1);
+  assert.equal(pending.listings[0].socialHandoffPending, true);
+  const second = await publisher.publishAllActive({ revision: overview.revision });
+  assert.equal(second.published, 1, JSON.stringify(second));
+  assert.equal(handoffs, 2);
+  assert.deepEqual(
+    integration.requests.filter(({ options }) => ['POST', 'PATCH'].includes(options.method)).map(({ options }) => options.method),
+    ['POST', 'POST', 'POST', 'POST', 'POST', 'PATCH']
+  );
+});
+
 test('bulk publication refuses a stale catalog revision', async (context) => {
   const filename = await fixture(context, [listing()]);
   const publisher = new EtsyListingPublisher({
@@ -364,7 +503,9 @@ test('publication configuration stays disabled by default and validates required
     ETSY_EXECUTION_ENABLED: 'true',
     ETSY_SHOP_ID: '42',
     ETSY_PRODUCT_STUDIO_RELEASE_PATH: 'C:\\ProductStudio\\release',
-    ETSY_PRODUCT_STUDIO_LISTINGS_PATH: 'C:\\ProductStudio\\listings'
+    ETSY_PRODUCT_STUDIO_LISTINGS_PATH: 'C:\\ProductStudio\\listings',
+    ETSY_SOCIAL_EVENT_ENDPOINT: 'http://127.0.0.1:4173/api/social/etsy-events'
   }, {});
   assert.ok(publisher.catalog instanceof ProductStudioListingCatalog);
+  assert.ok(publisher.socialEventSink);
 });

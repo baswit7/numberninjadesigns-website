@@ -9,6 +9,8 @@ ETSY_SHOP_ID=
 # Recommended: derive listings from Product Studio release contracts.
 ETSY_PRODUCT_STUDIO_RELEASE_PATH=C:\NumberNinjaDesigns\release-candidates\finance-launch
 ETSY_PRODUCT_STUDIO_LISTINGS_PATH=C:\NumberNinjaDesigns\outputs\finance-product-factory
+# Local-only durable handoff after Etsy confirms the listing as active.
+ETSY_SOCIAL_EVENT_ENDPOINT=http://127.0.0.1:4173/api/social/etsy-events
 # Optional alternative: use one manual catalog and leave both paths above empty.
 ETSY_LISTING_CATALOG_PATH=
 ETSY_TOKEN_STORE_PATH=C:\NumberNinjaDesigns\private\etsy-vault.json
