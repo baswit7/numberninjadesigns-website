@@ -6,7 +6,7 @@
     "executionReadinessEnabled": true,
     "executionPlaneEnabled": false,
     "providerCallsAllowed": false,
-    "deploymentAllowed": true,
+    "deploymentAllowed": false,
     "secretAccessAllowed": false,
     "dashboardUiEnabled": true
   },
