@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "productVersion": "1.0.1",
+  "identity": {
+    "id": "budget-planner-basic",
+    "slug": "budget-planner-basic",
+    "productId": "numberninja-budget-planner-v1",
+    "sku": "NND-DIG-FIN-001",
+    "route": "budget-planner-basic.html"
+  },
+  "organization": {
+    "brand": "NumberNinjaDesigns",
+    "branch": "Digital Production",
+    "governance": "Studio OS"
+  },
+  "catalog": {
+    "name": "Budget Planner",
+    "status": "coming-soon",
+    "statusLabel": "Coming soon",
+    "type": "Excel workbook",
+    "shortDescription": "An offline Excel budget planner for income and expense tracking, plan-versus-actual budgeting, savings goals, and a 12-month cash-flow dashboard.",
+    "targetAudience": "households, couples, and budget-conscious individuals",
+    "availability": "preview-only",
+    "cta": {
+      "label": "View product preview"
+    }
+  },
+  "workbook": {
+    "features": [
+      "Income and expense tracking",
+      "Plan versus actual monthly budget",
+      "Savings goal progress",
+      "12-month cash-flow dashboard",
+      "Built-in model checks",
+      "Privacy-safe offline workflow"
+    ],
+    "sheets": [
+      "Start",
+      "Setup",
+      "Transactions",
+      "Monthly Budget",
+      "Savings Goals",
+      "Dashboard",
+      "Checks"
+    ],
+    "formulaFamilies": [
+      "SUM",
+      "SUMIFS",
+      "COUNTIF",
+      "IF"
+    ],
+    "compatibility": [
+      "Microsoft Excel 2021 or later on Windows"
+    ],
+    "dashboards": [
+      "NumberNinja Budget Planner Dashboard"
+    ],
+    "charts": [
+      "Product-specific progress chart"
+    ]
+  },
+  "delivery": {
+    "fileFormats": [
+      "ZIP",
+      "XLSX",
+      "PDF"
+    ],
+    "includedFiles": [
+      "NumberNinja-Budget-Planner-v1.0.1.xlsx",
+      "NumberNinja-Budget-Planner-Guide-v1.0.1.pdf"
+    ],
+    "deliveryFiles": [
+      "NumberNinja-Budget-Planner-v1.0.1.zip"
+    ]
+  },
+  "seo": {
+    "primaryKeyword": "excel budget planner",
+    "title": "Excel Budget Planner Spreadsheet | Monthly Expenses, Savings and Cash Flow | Digital Download",
+    "tags": [
+      "excel budget planner",
+      "monthly budget",
+      "expense tracker",
+      "income tracker",
+      "savings tracker",
+      "cash flow planner",
+      "budget spreadsheet",
+      "finance template",
+      "money organizer",
+      "digital download",
+      "excel template",
+      "household budget",
+      "personal finance"
+    ]
+  },
+  "instructions": [
+    "Download the ZIP from Etsy Purchases",
+    "Extract the ZIP on a computer",
+    "Open the XLSX file in Microsoft Excel 2021 or later on Windows",
+    "Replace blue example cells with personal data",
+    "Review the Dashboard and Checks sheets"
+  ],
+  "pricing": {
+    "strategy": "FIXED_LAUNCH",
+    "amount": 12.95,
+    "currency": "EUR",
+    "discountFloor": 8.95,
+    "basis": "owner-hypothesis",
+    "marketDataUsed": false,
+    "rationale": "Seller-defined introductory launch price; not derived from marketplace sales, demand, conversion, or revenue evidence."
+  },
+  "disclosures": {
+    "ai": "Created with assistance from AI tools, then reviewed, customized, and quality-tested by NumberNinjaDesigns.",
+    "legal": "Organizational and educational tool only; not financial, tax, legal, credit, debt-management, or investment advice."
+  },
+  "launchState": {
+    "stage": "quality-approved",
+    "approval": "owner-approved",
+    "publicationReady": false
+  },
+  "provider": {
+    "enabled": false,
+    "adapter": null,
+    "externalListingId": null,
+    "syncState": "not-configured"
+  },
+  "provenance": {
+    "sourceManifest": "outputs/finance-product-factory/budget-planner/product-manifest.json",
+    "sourceProductId": "numberninja-budget-planner-v1",
+    "sourceProductName": "NumberNinja Budget Planner",
+    "blueprintId": "finance-budget-v1",
+    "language": "English",
+    "locale": "en-US",
+    "theme": "Dark tactical",
+    "generatedAt": "2026-07-12T12:00:00.000Z"
+  }
+}

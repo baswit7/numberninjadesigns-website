@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.numberninjadesigns.com/schemas/finance-product.schema.json",
+  "title": "NumberNinjaDesigns canonical finance product",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "productVersion",
+    "identity",
+    "organization",
+    "catalog",
+    "workbook",
+    "delivery",
+    "seo",
+    "instructions",
+    "pricing",
+    "disclosures",
+    "launchState",
+    "provider",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "productVersion": {
+      "const": "1.0.1"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "slug", "productId", "sku", "route"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "slug": {
+          "$ref": "#/$defs/slug"
+        },
+        "productId": {
+          "$ref": "#/$defs/slug"
+        },
+        "sku": {
+          "type": "string",
+          "pattern": "^NND-DIG-FIN-[0-9]{3}$"
+        },
+        "route": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.html$"
+        }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand", "branch", "governance"],
+      "properties": {
+        "brand": {
+          "const": "NumberNinjaDesigns"
+        },
+        "branch": {
+          "const": "Digital Production"
+        },
+        "governance": {
+          "const": "Studio OS"
+        }
+      }
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "statusLabel",
+        "type",
+        "shortDescription",
+        "targetAudience",
+        "availability",
+        "cta"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "const": "coming-soon"
+        },
+        "statusLabel": {
+          "const": "Coming soon"
+        },
+        "type": {
+          "const": "Excel workbook"
+        },
+        "shortDescription": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "targetAudience": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "availability": {
+          "const": "preview-only"
+        },
+        "cta": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label"],
+          "properties": {
+            "label": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          }
+        }
+      }
+    },
+    "workbook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "features",
+        "sheets",
+        "formulaFamilies",
+        "compatibility",
+        "dashboards",
+        "charts"
+      ],
+      "properties": {
+        "features": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "sheets": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "formulaFamilies": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "dashboards": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "charts": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileFormats", "includedFiles", "deliveryFiles"],
+      "properties": {
+        "fileFormats": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "includedFiles": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        },
+        "deliveryFiles": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryKeyword", "title", "tags"],
+      "properties": {
+        "primaryKeyword": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "tags": {
+          "$ref": "#/$defs/nonEmptyUniqueStrings"
+        }
+      }
+    },
+    "instructions": {
+      "$ref": "#/$defs/nonEmptyUniqueStrings"
+    },
+    "pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "amount",
+        "currency",
+        "discountFloor",
+        "basis",
+        "marketDataUsed",
+        "rationale"
+      ],
+      "properties": {
+        "strategy": {
+          "const": "FIXED_LAUNCH"
+        },
+        "amount": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "discountFloor": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "basis": {
+          "const": "owner-hypothesis"
+        },
+        "marketDataUsed": {
+          "const": false
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "disclosures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ai", "legal"],
+      "properties": {
+        "ai": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "legal": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "launchState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "approval", "publicationReady"],
+      "properties": {
+        "stage": {
+          "const": "quality-approved"
+        },
+        "approval": {
+          "const": "owner-approved"
+        },
+        "publicationReady": {
+          "const": false
+        }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "adapter", "externalListingId", "syncState"],
+      "properties": {
+        "enabled": {
+          "const": false
+        },
+        "adapter": {
+          "type": "null"
+        },
+        "externalListingId": {
+          "type": "null"
+        },
+        "syncState": {
+          "const": "not-configured"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceManifest",
+        "sourceProductId",
+        "sourceProductName",
+        "blueprintId",
+        "language",
+        "locale",
+        "theme",
+        "generatedAt"
+      ],
+      "properties": {
+        "sourceManifest": {
+          "type": "string",
+          "pattern": "^outputs/finance-product-factory/[a-z0-9-]+/product-manifest\\.json$"
+        },
+        "sourceProductId": {
+          "$ref": "#/$defs/slug"
+        },
+        "sourceProductName": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "blueprintId": {
+          "$ref": "#/$defs/slug"
+        },
+        "language": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^[a-z]{2}-[A-Z]{2}$"
+        },
+        "theme": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    }
+  }
+}
