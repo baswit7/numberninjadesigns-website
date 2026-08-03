@@ -1,0 +1,13 @@
+{
+  "name": "@numberninjadesigns/social-product-flow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "dry-run:budget": "node scripts/dry-run.mjs --product ../finance-product-factory/products/budget-planner-basic.json"
+  }
+}

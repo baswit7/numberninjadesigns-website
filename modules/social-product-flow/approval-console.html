@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090C">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none'; script-src 'sha256-Y59XOS3a+B6syMAyWb5ng/Oss6YdgddRmt0g2PBgFu0='; style-src 'unsafe-inline'; img-src blob: data:; media-src blob:; connect-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'"
+  >
+  <title>NumberNinjaDesigns — Social Approval Console</title>
+  <style>
+    :root {
+      --background: #07090C;
+      --surface: #11151B;
+      --elevated: #151B23;
+      --accent: #00E891;
+      --secondary: #6EE7FF;
+      --text: #F3F5F7;
+      --muted: #8B96A5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--background);
+      color: var(--text);
+      font-family: "JetBrains Mono", Consolas, monospace;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        linear-gradient(rgba(0, 232, 145, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(110, 231, 255, 0.025) 1px, transparent 1px),
+        var(--background);
+      background-size: 32px 32px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      color: var(--text);
+      font: inherit;
+    }
+
+    button,
+    .file-label {
+      min-height: 44px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--accent);
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: transform 150ms ease, background 150ms ease, box-shadow 150ms ease;
+    }
+
+    button:hover:not(:disabled),
+    .file-label:hover {
+      transform: translateY(-1px);
+      background: var(--elevated);
+      box-shadow: 0 0 24px rgba(0, 232, 145, 0.14);
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    .file-label:focus-within {
+      outline: 2px solid var(--secondary);
+      outline-offset: 3px;
+    }
+
+    button:disabled {
+      border-color: var(--muted);
+      color: var(--muted);
+      cursor: not-allowed;
+      opacity: 0.65;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--muted);
+      border-radius: 6px;
+      background: var(--background);
+      padding: 0.8rem;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(110, 231, 255, 0.18);
+      background: rgba(7, 9, 12, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar,
+    main {
+      width: min(1440px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-family: Orbitron, "JetBrains Mono", monospace;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .connection {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .connection::before {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 14px rgba(110, 231, 255, 0.75);
+      content: "";
+    }
+
+    main {
+      padding: 2rem 0 4rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow,
+    .label {
+      color: var(--accent);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin-bottom: 0;
+      font-family: Orbitron, "JetBrains Mono", monospace;
+      font-size: clamp(2rem, 6vw, 4.75rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .hero p,
+    .muted {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .toolbar,
+    .panel,
+    .platform-card,
+    .metric {
+      border: 1px solid rgba(139, 150, 165, 0.25);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .file-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .file-label input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .alert {
+      display: none;
+      border: 1px solid var(--secondary);
+      border-left-width: 5px;
+      border-radius: 6px;
+      background: var(--elevated);
+      color: var(--text);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      white-space: pre-wrap;
+    }
+
+    .alert.visible {
+      display: block;
+    }
+
+    .loading {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: 1rem;
+    }
+
+    .panel {
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+
+    .panel h2 {
+      font-family: Orbitron, "JetBrains Mono", monospace;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .metric {
+      padding: 0.9rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 0.45rem;
+      color: var(--text);
+      font-family: Orbitron, "JetBrains Mono", monospace;
+      font-size: 1rem;
+      overflow-wrap: anywhere;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 620px;
+      border: 1px solid rgba(110, 231, 255, 0.2);
+      border-radius: 6px;
+      background: var(--background);
+      object-fit: contain;
+    }
+
+    .platforms {
+      display: grid;
+      gap: 0.8rem;
+      max-height: 780px;
+      overflow: auto;
+      scrollbar-color: var(--accent) var(--background);
+    }
+
+    .platform-card {
+      padding: 1rem;
+    }
+
+    .platform-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .platform-card h3 {
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .status {
+      flex: 0 0 auto;
+      border: 1px solid var(--secondary);
+      border-radius: 999px;
+      color: var(--secondary);
+      padding: 0.25rem 0.55rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+    }
+
+    pre {
+      max-height: 240px;
+      overflow: auto;
+      border-left: 2px solid var(--accent);
+      background: var(--background);
+      color: var(--muted);
+      padding: 0.75rem;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 0.73rem;
+      line-height: 1.55;
+    }
+
+    .approval {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      align-items: start;
+      gap: 0.75rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .check input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .secondary {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .fingerprint {
+      color: var(--muted);
+      font-size: 0.72rem;
+      overflow-wrap: anywhere;
+    }
+
+    .empty {
+      display: grid;
+      min-height: 240px;
+      place-items: center;
+      border: 1px dashed var(--muted);
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .toolbar,
+      .dashboard,
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dashboard > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar,
+      .toolbar,
+      .dashboard,
+      .metrics,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.75rem 0;
+      }
+
+      .toolbar {
+        display: grid;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto;
+        transition-duration: 0.001ms;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">NumberNinja<span>Designs</span> // Approval</div>
+      <div class="connection">Local-only · zero provider calls</div>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="hero">
+      <div class="eyebrow">Social Product Distribution Flow</div>
+      <h1>Approve the exact revision. Nothing else ships.</h1>
+      <p>Import a campaign JSON, inspect the real video and every platform payload, then export a signed decision artifact.</p>
+    </section>
+
+    <section class="toolbar" aria-label="Campaign controls">
+      <label class="file-label">
+        Import campaign JSON
+        <input id="campaignFile" type="file" accept="application/json,.json">
+      </label>
+      <label class="file-label">
+        Select local MP4 preview
+        <input id="videoFile" type="file" accept="video/mp4,.mp4">
+      </label>
+      <button id="resetButton" class="secondary" type="button">Reset console</button>
+    </section>
+
+    <div id="alert" class="alert" role="status" aria-live="polite"></div>
+
+    <section id="overview" class="metrics" aria-label="Campaign overview">
+      <div class="metric"><span class="label">Campaign</span><strong>NOT LOADED</strong></div>
+      <div class="metric"><span class="label">State</span><strong>—</strong></div>
+      <div class="metric"><span class="label">Revision</span><strong>—</strong></div>
+      <div class="metric"><span class="label">Approval</span><strong>—</strong></div>
+    </section>
+
+    <section class="dashboard">
+      <div>
+        <article class="panel">
+          <h2>Master preview</h2>
+          <div id="videoEmpty" class="empty">Select the exact local MP4 referenced by the campaign. Filename matching is checked; visual truth remains a human decision.</div>
+          <video id="videoPreview" controls preload="metadata" hidden></video>
+        </article>
+
+        <article class="panel approval">
+          <h2>Fingerprint approval</h2>
+          <div>
+            <label class="label" for="approver">Approver identity</label>
+            <input id="approver" type="text" maxlength="120" autocomplete="off" placeholder="Owner or reviewer name">
+          </div>
+          <label class="check">
+            <input id="visualApproved" type="checkbox">
+            <span>I inspected the exact video at 100%, verified real product truth, readable source artwork, mobile legibility, safe zones, and absence of halos, fake UI, anatomical/object artifacts, or stock-looking output.</span>
+          </label>
+          <div>
+            <label class="label" for="rejectionReason">Rejection reason</label>
+            <textarea id="rejectionReason" maxlength="1000" placeholder="Required when rejecting; identify the exact blocking defect."></textarea>
+          </div>
+          <div id="fingerprint" class="fingerprint">Fingerprint unavailable.</div>
+          <div class="actions">
+            <button id="approveButton" type="button" disabled>Export approval</button>
+            <button id="rejectButton" class="secondary" type="button" disabled>Export rejection</button>
+          </div>
+        </article>
+      </div>
+
+      <aside class="panel">
+        <h2>Platform payloads</h2>
+        <div id="platforms" class="platforms">
+          <div class="empty">Import a campaign to inspect platform copy, cover instructions, modes, links, and states.</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    "use strict";
+
+    const ui = Object.freeze({
+      app: document.getElementById("app"),
+      campaignFile: document.getElementById("campaignFile"),
+      videoFile: document.getElementById("videoFile"),
+      resetButton: document.getElementById("resetButton"),
+      alert: document.getElementById("alert"),
+      overview: document.getElementById("overview"),
+      videoEmpty: document.getElementById("videoEmpty"),
+      videoPreview: document.getElementById("videoPreview"),
+      approver: document.getElementById("approver"),
+      visualApproved: document.getElementById("visualApproved"),
+      rejectionReason: document.getElementById("rejectionReason"),
+      fingerprint: document.getElementById("fingerprint"),
+      approveButton: document.getElementById("approveButton"),
+      rejectButton: document.getElementById("rejectButton"),
+      platforms: document.getElementById("platforms")
+    });
+
+    const state = {
+      campaign: null,
+      fingerprint: null,
+      videoUrl: null,
+      videoFileName: null,
+      logs: []
+    };
+
+    function log(event, details = {}) {
+      state.logs.push({ at: new Date().toISOString(), event, details });
+      if (state.logs.length > 100) {
+        state.logs.shift();
+      }
+      console.debug("[NND Social Approval]", event, details);
+    }
+
+    function setBusy(busy) {
+      ui.app.classList.toggle("loading", busy);
+      ui.campaignFile.disabled = busy;
+      ui.videoFile.disabled = busy;
+    }
+
+    function showAlert(message) {
+      ui.alert.textContent = message;
+      ui.alert.classList.toggle("visible", Boolean(message));
+    }
+
+    function assertDocumentBounds(value) {
+      const stack = [{ value, depth: 0 }];
+      let nodes = 0;
+      while (stack.length > 0) {
+        const current = stack.pop();
+        nodes += 1;
+        if (nodes > 20000 || current.depth > 24) {
+          throw new Error("Campaign JSON exceeds the safe structure limit.");
+        }
+        if (typeof current.value === "string" && current.value.length > 100000) {
+          throw new Error("Campaign JSON contains an oversized text field.");
+        }
+        if (current.value && typeof current.value === "object") {
+          for (const entry of Object.values(current.value)) {
+            stack.push({ value: entry, depth: current.depth + 1 });
+          }
+        }
+      }
+    }
+
+    function stable(value) {
+      if (Array.isArray(value)) {
+        return value.map(stable);
+      }
+      if (value && typeof value === "object") {
+        return Object.fromEntries(
+          Object.entries(value)
+            .sort(([left], [right]) => left.localeCompare(right))
+            .map(([key, entry]) => [key, stable(entry)])
+        );
+      }
+      return value;
+    }
+
+    async function sha256(value) {
+      const bytes = new TextEncoder().encode(JSON.stringify(stable(value)));
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      return [...new Uint8Array(digest)]
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("")
+        .toUpperCase();
+    }
+
+    function approvalInput(campaign) {
+      const platforms = Object.keys(campaign.platforms).sort();
+      return {
+        revision: campaign.revision,
+        video: {
+          fileName: campaign.media.master.fileName,
+          sha256: campaign.media.master.sha256,
+          profile: campaign.media.master.profile,
+          facts: campaign.media.master.technicalValidation?.facts ?? null,
+          variants: Object.fromEntries(
+            Object.entries(campaign.media.variants ?? {}).map(([name, variant]) => [
+              name,
+              {
+                fileName: variant.fileName,
+                sha256: variant.sha256,
+                profile: variant.profile,
+                facts: variant.technicalValidation?.facts ?? null
+              }
+            ])
+          )
+        },
+        cover: Object.fromEntries(
+          platforms.map((platform) => [platform, campaign.content.platforms[platform].cover])
+        ),
+        text: Object.fromEntries(
+          platforms.map((platform) => [platform, campaign.content.platforms[platform].metadata])
+        ),
+        link: campaign.content.canonical.shareAndSaveUrl,
+        platforms,
+        audience: campaign.content.canonical.audience
+      };
+    }
+
+    function element(tagName, className, text) {
+      const node = document.createElement(tagName);
+      if (className) {
+        node.className = className;
+      }
+      if (text !== undefined) {
+        node.textContent = text;
+      }
+      return node;
+    }
+
+    function renderOverview() {
+      const campaign = state.campaign;
+      const values = campaign
+        ? [
+            ["Campaign", campaign.campaignId],
+            ["State", campaign.state],
+            ["Revision", String(campaign.revision)],
+            ["Approval", campaign.approval ? "RECORDED" : "NOT RECORDED"]
+          ]
+        : [
+            ["Campaign", "NOT LOADED"],
+            ["State", "—"],
+            ["Revision", "—"],
+            ["Approval", "—"]
+          ];
+      ui.overview.replaceChildren(
+        ...values.map(([label, value]) => {
+          const card = element("div", "metric");
+          card.append(element("span", "label", label), element("strong", "", value));
+          return card;
+        })
+      );
+    }
+
+    function renderPlatforms() {
+      ui.platforms.replaceChildren();
+      if (!state.campaign) {
+        ui.platforms.append(element("div", "empty", "Import a campaign to inspect platform payloads."));
+        return;
+      }
+
+      for (const platform of Object.keys(state.campaign.platforms).sort()) {
+        const platformState = state.campaign.platforms[platform];
+        const content = state.campaign.content.platforms[platform];
+        const card = element("article", "platform-card");
+        const head = element("div", "platform-head");
+        const heading = element("div");
+        heading.append(
+          element("h3", "", platform),
+          element("div", "muted", `Mode: ${platformState.mode} · ${content.linkBehavior}`)
+        );
+        head.append(heading, element("span", "status", platformState.state));
+        const payload = element("pre", "", JSON.stringify({
+          metadata: content.metadata,
+          cover: content.cover,
+          capabilityReason: platformState.capability.reason
+        }, null, 2));
+        card.append(head, payload);
+        ui.platforms.append(card);
+      }
+    }
+
+    function exactVideoSelected() {
+      return Boolean(
+        state.campaign &&
+        state.videoFileName &&
+        state.videoFileName === state.campaign.media.master.fileName
+      );
+    }
+
+    function refreshActions() {
+      const readyState = state.campaign?.state === "AWAITING_APPROVAL";
+      const hasApprover = ui.approver.value.trim().length >= 2;
+      ui.approveButton.disabled = !(
+        readyState &&
+        hasApprover &&
+        ui.visualApproved.checked &&
+        exactVideoSelected() &&
+        state.fingerprint
+      );
+      ui.rejectButton.disabled = !(
+        state.campaign &&
+        hasApprover &&
+        ui.rejectionReason.value.trim().length >= 8 &&
+        state.fingerprint
+      );
+    }
+
+    async function loadCampaign(file) {
+      setBusy(true);
+      showAlert("");
+      try {
+        if (file.size > 10 * 1024 * 1024) {
+          throw new Error("Campaign JSON exceeds the 10 MB local safety limit.");
+        }
+        const parsed = JSON.parse(await file.text());
+        assertDocumentBounds(parsed);
+        const campaign = parsed.campaign ?? parsed;
+        if (
+          campaign?.schemaVersion !== "1.0.0" ||
+          !campaign.campaignId ||
+          !campaign.media?.master ||
+          !campaign.content?.platforms ||
+          !campaign.platforms
+        ) {
+          throw new Error("Unsupported or incomplete campaign schema.");
+        }
+        if (Object.keys(campaign.platforms).length > 8) {
+          throw new Error("Campaign contains more than the eight governed platforms.");
+        }
+        state.campaign = campaign;
+        state.fingerprint = await sha256(approvalInput(campaign));
+        ui.fingerprint.textContent = `SHA-256 ${state.fingerprint}`;
+        renderOverview();
+        renderPlatforms();
+        if (state.videoFileName && !exactVideoSelected()) {
+          showAlert(`Selected MP4 does not match ${campaign.media.master.fileName}.`);
+        }
+        log("CAMPAIGN_IMPORTED", {
+          campaignId: campaign.campaignId,
+          revision: campaign.revision,
+          state: campaign.state
+        });
+      } catch (error) {
+        state.campaign = null;
+        state.fingerprint = null;
+        renderOverview();
+        renderPlatforms();
+        ui.fingerprint.textContent = "Fingerprint unavailable.";
+        showAlert(`Import blocked: ${error.message}`);
+        log("CAMPAIGN_IMPORT_FAILED", { message: error.message });
+      } finally {
+        setBusy(false);
+        refreshActions();
+      }
+    }
+
+    function loadVideo(file) {
+      if (state.videoUrl) {
+        URL.revokeObjectURL(state.videoUrl);
+      }
+      state.videoUrl = URL.createObjectURL(file);
+      state.videoFileName = file.name;
+      ui.videoPreview.src = state.videoUrl;
+      ui.videoPreview.hidden = false;
+      ui.videoEmpty.hidden = true;
+      showAlert(
+        state.campaign && !exactVideoSelected()
+          ? `Selected MP4 does not match ${state.campaign.media.master.fileName}.`
+          : ""
+      );
+      log("VIDEO_SELECTED", { fileName: file.name, bytes: file.size });
+      refreshActions();
+    }
+
+    function downloadJson(fileName, payload) {
+      const url = URL.createObjectURL(
+        new Blob([`${JSON.stringify(payload, null, 2)}\n`], { type: "application/json" })
+      );
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+    }
+
+    function exportDecision(decision) {
+      const campaign = state.campaign;
+      const approvedBy = ui.approver.value.trim();
+      const documentBody = {
+        schemaVersion: "1.0.0",
+        type: "SOCIAL_CAMPAIGN_APPROVAL_DECISION",
+        campaignId: campaign.campaignId,
+        revision: campaign.revision,
+        fingerprint: state.fingerprint,
+        decision,
+        visualApproved: decision === "APPROVE",
+        approvedBy,
+        decidedAt: new Date().toISOString(),
+        reason: decision === "REJECT" ? ui.rejectionReason.value.trim() : null,
+        videoFileName: state.videoFileName,
+        executionMode: "LOCAL_DECISION_ONLY"
+      };
+      downloadJson(
+        `${campaign.campaignId}-${decision.toLowerCase()}.json`,
+        documentBody
+      );
+      log("DECISION_EXPORTED", {
+        campaignId: campaign.campaignId,
+        revision: campaign.revision,
+        decision
+      });
+    }
+
+    function reset() {
+      if (state.videoUrl) {
+        URL.revokeObjectURL(state.videoUrl);
+      }
+      state.campaign = null;
+      state.fingerprint = null;
+      state.videoUrl = null;
+      state.videoFileName = null;
+      ui.campaignFile.value = "";
+      ui.videoFile.value = "";
+      ui.videoPreview.removeAttribute("src");
+      ui.videoPreview.load();
+      ui.videoPreview.hidden = true;
+      ui.videoEmpty.hidden = false;
+      ui.approver.value = "";
+      ui.visualApproved.checked = false;
+      ui.rejectionReason.value = "";
+      ui.fingerprint.textContent = "Fingerprint unavailable.";
+      showAlert("");
+      renderOverview();
+      renderPlatforms();
+      refreshActions();
+      log("CONSOLE_RESET");
+    }
+
+    ui.campaignFile.addEventListener("change", (event) => {
+      const [file] = event.target.files;
+      if (file) {
+        loadCampaign(file);
+      }
+    });
+    ui.videoFile.addEventListener("change", (event) => {
+      const [file] = event.target.files;
+      if (file) {
+        loadVideo(file);
+      }
+    });
+    ui.approver.addEventListener("input", refreshActions);
+    ui.visualApproved.addEventListener("change", refreshActions);
+    ui.rejectionReason.addEventListener("input", refreshActions);
+    ui.approveButton.addEventListener("click", () => exportDecision("APPROVE"));
+    ui.rejectButton.addEventListener("click", () => exportDecision("REJECT"));
+    ui.resetButton.addEventListener("click", reset);
+    window.addEventListener("beforeunload", () => {
+      if (state.videoUrl) {
+        URL.revokeObjectURL(state.videoUrl);
+      }
+    }, { once: true });
+
+    renderOverview();
+    renderPlatforms();
+    log("CONSOLE_READY");
+  </script>
+</body>
+</html>

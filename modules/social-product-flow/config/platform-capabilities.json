@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedAt": "2026-07-28",
+  "defaultExecutionMode": "DRY_RUN",
+  "platforms": {
+    "etsy": {
+      "mode": "BLOCKED",
+      "publicationPath": "EXISTING_SERVER_BRIDGE_REQUIRED",
+      "supportsAutomaticPublish": false,
+      "supportsMetrics": false,
+      "requiresShareAndSaveUrl": true,
+      "reason": "Existing Etsy service has no proven listing-video/social-source bridge and repository execution is disabled.",
+      "evidence": [
+        "https://help.etsy.com/hc/en-us/articles/360053206073-How-to-Add-Listing-Videos",
+        "https://help.etsy.com/hc/en-us/articles/16981332744087-How-to-Save-on-Etsy-Fees-with-the-Share-Save-Program"
+      ]
+    },
+    "facebook": {
+      "mode": "ASSISTED",
+      "publicationPath": "REELS_API",
+      "supportsAutomaticPublish": true,
+      "supportsMetrics": true,
+      "requiresShareAndSaveUrl": true,
+      "reason": "Official API exists, but no local adapter, app permission, Page identity, or production right is proven.",
+      "evidence": [
+        "https://www.postman.com/meta/facebook/folder/simabyk/reels-publishing"
+      ]
+    },
+    "instagram": {
+      "mode": "ASSISTED",
+      "publicationPath": "REELS_API",
+      "supportsAutomaticPublish": true,
+      "supportsMetrics": true,
+      "requiresShareAndSaveUrl": false,
+      "reason": "Official API exists, but no local adapter, app permission, professional account, or production right is proven.",
+      "evidence": [
+        "https://www.postman.com/meta/instagram/folder/f95kq5e/reels-publishing"
+      ]
+    },
+    "youtube": {
+      "mode": "ASSISTED",
+      "publicationPath": "DATA_API_V3",
+      "supportsAutomaticPublish": true,
+      "supportsMetrics": true,
+      "requiresShareAndSaveUrl": false,
+      "reason": "Official upload APIs exist, but no local connector, audit, channel authorization, or related-video automation is proven.",
+      "evidence": [
+        "https://developers.google.com/youtube/v3/docs/videos",
+        "https://developers.google.com/youtube/v3/docs/captions",
+        "https://developers.google.com/youtube/v3/docs/thumbnails/set"
+      ]
+    },
+    "tiktok": {
+      "mode": "ASSISTED",
+      "publicationPath": "UPLOAD_DRAFT",
+      "supportsAutomaticPublish": false,
+      "supportsMetrics": false,
+      "requiresShareAndSaveUrl": false,
+      "reason": "No audited Direct Post client or local adapter is proven; assisted inbox completion is the safe path.",
+      "evidence": [
+        "https://developers.tiktok.com/doc/content-posting-api-reference-direct-post",
+        "https://developers.tiktok.com/doc/content-posting-api-reference-upload-video",
+        "https://developers.tiktok.com/doc/content-sharing-guidelines/"
+      ]
+    },
+    "pinterest": {
+      "mode": "ASSISTED",
+      "publicationPath": "MANUAL_ORGANIC_PIN",
+      "supportsAutomaticPublish": true,
+      "supportsMetrics": true,
+      "requiresShareAndSaveUrl": true,
+      "reason": "Official API exists, but reviewed production access and a write adapter are not proven.",
+      "evidence": [
+        "https://developers.pinterest.com/docs/work-with-organic-content-and-users/create-boards-and-pins/",
+        "https://help.pinterest.com/en/article/review-pin-specs"
+      ]
+    },
+    "threads": {
+      "mode": "DISABLED",
+      "publicationPath": "THREADS_API",
+      "supportsAutomaticPublish": true,
+      "supportsMetrics": true,
+      "requiresShareAndSaveUrl": true,
+      "reason": "Optional channel; no local connector or permissions evidence exists.",
+      "evidence": [
+        "https://www.postman.com/meta/threads/overview"
+      ]
+    },
+    "reddit": {
+      "mode": "BLOCKED",
+      "publicationPath": "MANUAL_POLICY_GATED",
+      "supportsAutomaticPublish": false,
+      "supportsMetrics": false,
+      "requiresShareAndSaveUrl": true,
+      "reason": "Promotional posting is community-specific and no connector exists; destination rules require explicit manual acceptance.",
+      "evidence": [
+        "https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam",
+        "https://support.reddithelp.com/hc/en-us/articles/28012014962580-How-do-I-keep-spam-out-of-my-community",
+        "https://redditinc.com/policies/reddit-rules"
+      ]
+    }
+  }
+}

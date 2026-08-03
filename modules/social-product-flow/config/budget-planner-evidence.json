@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "inspectedAt": "2026-07-28",
+  "productId": "numberninja-budget-planner-v1",
+  "productVersion": "1.0.1",
+  "sourceFile": "release-candidates/finance-launch-2026-07-24/budget-planner/NumberNinja-Budget-Planner-v1.0.1.xlsx",
+  "sha256": "1E9886CEF184FF2C65C66C59A50C4713601EC05E20629EEB47B75736D65A8190",
+  "workbook": {
+    "worksheetCount": 7,
+    "worksheets": [
+      "Start",
+      "Setup",
+      "Transactions",
+      "Monthly Budget",
+      "Savings Goals",
+      "Dashboard",
+      "Checks"
+    ],
+    "formulaCellCount": 124,
+    "hasMacros": false,
+    "hasExternalWorkbookLinks": false
+  },
+  "verification": {
+    "method": "Read-only XLSX ZIP/XML inspection",
+    "sourceArtifactRequiredAtRuntime": true,
+    "humanVisualApprovalRequired": true
+  },
+  "etsy": {
+    "inspectedAt": "2026-07-28T23:24:32+02:00",
+    "verificationMethod": "Authenticated Shop Manager and public canonical metadata",
+    "shop": "NumberNinjaDesigns",
+    "listingId": "4545099893",
+    "status": "ACTIVE",
+    "listedAt": "2026-07-27",
+    "price": {
+      "amount": 9.99,
+      "currency": "EUR"
+    },
+    "primaryVideoPresent": true,
+    "publicUrl": "https://www.etsy.com/nl/listing/4545099893/maandelijks-budgetplanningsspreadsheet",
+    "shareAndSave": {
+      "enrolled": true,
+      "status": "ACTIVE",
+      "enrolledAt": "2026-07-28T23:24:32+02:00",
+      "url": "https://numberninjadesigns.etsy.com/nl/listing/4545099893/maandelijks-budgetplanningsspreadsheet"
+    }
+  }
+}
