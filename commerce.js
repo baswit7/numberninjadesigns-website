@@ -28,6 +28,18 @@
       summary: "Assets, liabilities, monthly history, net-worth trends and integrity checks."
     }
   ];
+  var LIVE_LISTING_IDS = [
+    "4545118638",
+    "4545117498",
+    "4545117926",
+    "4545118486",
+    "4545118344",
+    "4545100025",
+    "4545099893",
+    "4545099579",
+    "4545117616",
+    "4545099189"
+  ];
 
   function log(level, message, detail) {
     if (!window.console || typeof window.console[level] !== "function") return;
@@ -194,6 +206,133 @@
     return card;
   }
 
+  function validateLiveListings(listings) {
+    if (!Array.isArray(listings) || listings.length !== LIVE_LISTING_IDS.length) {
+      throw new Error("The live Etsy catalog must contain exactly " + LIVE_LISTING_IDS.length + " listings.");
+    }
+
+    var seen = new Set();
+    listings.forEach(function validateListing(listing) {
+      if (!listing || typeof listing !== "object") throw new Error("Invalid live Etsy listing record.");
+      if (!LIVE_LISTING_IDS.includes(listing.listingId)) throw new Error("Unexpected Etsy listing: " + listing.listingId);
+      if (seen.has(listing.listingId)) throw new Error("Duplicate Etsy listing: " + listing.listingId);
+      seen.add(listing.listingId);
+      if (!listing.name || !listing.title || !listing.category || !listing.priceDisplay) {
+        throw new Error("Incomplete Etsy listing: " + listing.listingId);
+      }
+      if (listing.status !== "live" || listing.kind !== "Digital download") {
+        throw new Error("Non-live or non-digital Etsy listing: " + listing.listingId);
+      }
+
+      var listingUrl = new URL(listing.url);
+      var imageUrl = new URL(listing.image);
+      if (
+        listingUrl.protocol !== "https:" ||
+        listingUrl.hostname !== "www.etsy.com" ||
+        listingUrl.pathname !== "/listing/" + listing.listingId + "/"
+      ) {
+        throw new Error("Invalid Etsy URL for listing " + listing.listingId);
+      }
+      if (imageUrl.protocol !== "https:" || imageUrl.hostname !== "i.etsystatic.com") {
+        throw new Error("Invalid Etsy image URL for listing " + listing.listingId);
+      }
+    });
+
+    LIVE_LISTING_IDS.forEach(function requireListing(listingId) {
+      if (!seen.has(listingId)) throw new Error("Missing Etsy listing: " + listingId);
+    });
+  }
+
+  function externalListingLink(className, label, listing) {
+    var link = element("a", className, label);
+    link.href = listing.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    return link;
+  }
+
+  function buildLiveListingCard(listing) {
+    var cardClass = "live-listing-card" + (listing.featuredRank ? " is-featured" : "");
+    var card = element("article", cardClass);
+    card.dataset.listingId = listing.listingId;
+
+    var media = externalListingLink("live-listing-media", "", listing);
+    media.setAttribute("aria-label", "View on Etsy: " + listing.title);
+    var image = element("img", "live-listing-image");
+    image.src = listing.image;
+    image.alt = listing.title;
+    image.width = 800;
+    image.height = 800;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", function recoverListingImage() {
+      image.hidden = true;
+      media.classList.add("is-unavailable");
+      media.appendChild(element("span", "live-listing-image-fallback", "Product image available on Etsy"));
+    }, { once: true });
+    media.appendChild(image);
+
+    var badges = element("div", "live-listing-badges");
+    badges.appendChild(element("span", "live-listing-status", "Live on Etsy"));
+    if (listing.featuredRank) {
+      badges.appendChild(element("span", "live-listing-featured", "Featured " + String(listing.featuredRank).padStart(2, "0")));
+    }
+    media.appendChild(badges);
+    card.appendChild(media);
+
+    var copy = element("div", "live-listing-copy");
+    copy.appendChild(element("p", "live-listing-category", listing.category));
+    copy.appendChild(element("h3", "live-listing-name", listing.name));
+    copy.appendChild(element("p", "live-listing-title", listing.title));
+
+    var facts = element("div", "live-listing-facts");
+    var price = element("strong", "live-listing-price", listing.priceDisplay);
+    price.setAttribute("aria-label", "Public Etsy price observed in the Netherlands: " + listing.priceDisplay);
+    facts.appendChild(price);
+    facts.appendChild(element("span", "live-listing-kind", listing.kind));
+    copy.appendChild(facts);
+
+    var link = externalListingLink("commerce-button commerce-button-primary", "View on Etsy", listing);
+    link.setAttribute("aria-label", "View on Etsy: " + listing.name);
+    link.appendChild(arrowIcon());
+    copy.appendChild(link);
+    card.appendChild(copy);
+    return card;
+  }
+
+  function buildLiveListingRecovery(sync, error) {
+    var card = element("article", "live-listing-recovery");
+    card.setAttribute("role", "status");
+    card.appendChild(element("p", "product-status", "Catalog recovery"));
+    card.appendChild(element("h3", "product-story-title", "Live Etsy catalog"));
+    card.appendChild(element("p", "", "The listing overview is temporarily unavailable. Open the Etsy shop to see the current catalog."));
+    var link = element("a", "commerce-button commerce-button-outline", "Open Etsy shop");
+    link.href = sync && sync.shopUrl ? sync.shopUrl : "https://www.etsy.com/shop/NumberNinjaDesigns";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.appendChild(arrowIcon());
+    card.appendChild(link);
+    log("error", "Live Etsy catalog recovery activated.", error);
+    return card;
+  }
+
+  function renderLiveListings(catalog) {
+    document.querySelectorAll("[data-live-listing-catalog]").forEach(function renderMount(mount) {
+      var fragment = document.createDocumentFragment();
+      try {
+        var listings = catalog && catalog.liveListings;
+        validateLiveListings(listings);
+        listings.forEach(function renderListing(listing) {
+          fragment.appendChild(buildLiveListingCard(listing));
+        });
+      } catch (error) {
+        fragment.appendChild(buildLiveListingRecovery(catalog && catalog.liveListingSync, error));
+      }
+      mount.replaceChildren(fragment);
+      mount.removeAttribute("aria-busy");
+    });
+  }
+
   function renderCatalog(catalog) {
     document.querySelectorAll("[data-product-catalog]").forEach(function renderMount(mount) {
       var fragment = document.createDocumentFragment();
@@ -268,6 +407,7 @@
 
   function start() {
     setupMobileMenus();
+    renderLiveListings(window.NumberNinjaCatalog);
     renderCatalog(window.NumberNinjaCatalog);
     setupTabPreviews();
     log("info", "Commerce interface ready.");

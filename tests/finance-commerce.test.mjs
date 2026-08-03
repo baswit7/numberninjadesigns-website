@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import vm from "node:vm";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const routes = [
@@ -25,6 +26,19 @@ const routes = [
     formulas: "150+"
   }
 ];
+const liveListingTruth = [
+  ["4545118638", "Family Budget Binder Spreadsheet | Household Income, Shared Expenses and Bill Split | Excel Digital Download", "Budget Planners", "€ 30,24", 1],
+  ["4545117498", "Dividend Tracker Spreadsheet | Passive Income Goal and Distribution Log | Excel Portfolio Organizer Digital Download", "Investing & Net Worth", "€ 18,14", 2],
+  ["4545117926", "Debt Snowball Tracker Spreadsheet | Payoff Plan, Payment Log and Progress Dashboard | Excel Digital Download", "Debt Payoff", "€ 14,51", 3],
+  ["4545118486", "Wedding Budget Spreadsheet | Vendor Cost, Payment and Expense Tracker | Excel Event Planner Digital Download", "Wedding & Events", "€ 10,88", 4],
+  ["4545118344", "Small Business Profit Loss Spreadsheet | Excel Monthly Revenue Expense Tracker (Digital Download)", "Business Finance", "€ 21,77", 5],
+  ["4545100025", "Focus-Friendly Budget Planner | Simple Weekly Spending and Bill Tracker Spreadsheet | Excel Digital Download", "Budget Planners", "€ 12,09", null],
+  ["4545099893", "Monthly Budget Planner Spreadsheet | Income, Expense and Cash Flow Tracker | Excel Household Digital Download", "Budget Planners", "€ 12,09", null],
+  ["4545099579", "Net Worth Tracker Spreadsheet | Assets, Liabilities and Monthly Wealth Dashboard | Excel Finance Digital Download", "Investing & Net Worth", "€ 15,72", null],
+  ["4545117616", "Small Business Expense Tracker | Income, Profit and Category Summary Spreadsheet | Excel Bookkeeping Download", "Business Finance", "€ 26,61", null],
+  ["4545099189", "FIRE Retirement Planner Spreadsheet | Financial Independence Assets, Expenses and Withdrawal Rate | Excel Download", "Investing & Net Worth", "€ 36,29", null]
+];
+const liveListingIds = liveListingTruth.map(([listingId]) => listingId);
 
 async function source(file) {
   return readFile(path.join(root, file), "utf8");
@@ -53,9 +67,41 @@ test("all finance routes exist and the catalog references each route", async () 
   }
 
   assert.match(index, /data-product-catalog/);
+  assert.match(index, /data-live-listing-catalog/);
   assert.match(index, /aria-busy=["']true["']/);
   assert.match(index, /src=["']data\/products\.js["']/);
   assert.match(index, /src=["']commerce\.js["']/);
+});
+
+test("website catalog mirrors the protected 10-listing Etsy snapshot", async () => {
+  const catalogSource = await source("data/products.js");
+  const sandbox = { window: {} };
+  vm.runInNewContext(catalogSource, sandbox, { filename: "data/products.js" });
+  const catalog = sandbox.window.NumberNinjaCatalog;
+  const listings = Array.from(catalog.liveListings);
+
+  assert.equal(catalog.liveListingSync.listingCount, 10);
+  assert.equal(catalog.liveListingSync.observedAt, "2026-08-03");
+  assert.deepEqual(listings.map((listing) => listing.listingId), liveListingIds);
+  assert.equal(new Set(listings.map((listing) => listing.listingId)).size, 10);
+
+  listings.forEach((listing, index) => {
+    const [listingId, title, category, priceDisplay, featuredRank] = liveListingTruth[index];
+    assert.equal(listing.listingId, listingId);
+    assert.equal(listing.title, title);
+    assert.equal(listing.category, category);
+    assert.equal(listing.priceDisplay, priceDisplay);
+    assert.equal(listing.featuredRank, featuredRank);
+    assert.equal(listing.status, "live");
+    assert.equal(listing.kind, "Digital download");
+    assert.equal(listing.url, `https://www.etsy.com/listing/${listingId}/`);
+    assert.match(listing.image, /^https:\/\/i\.etsystatic\.com\//);
+  });
+
+  const commerce = await source("commerce.js");
+  assert.match(commerce, /validateLiveListings/);
+  assert.match(commerce, /renderLiveListings/);
+  for (const listingId of liveListingIds) assert.ok(commerce.includes(listingId));
 });
 
 test("brand and launch gate are consistent across public finance pages", async () => {
@@ -75,22 +121,33 @@ test("brand and launch gate are consistent across public finance pages", async (
   }
 });
 
-test("finance pages contain no transaction or direct-file access routes", async () => {
+test("finance pages allow only verified Etsy listing actions and no direct-file routes", async () => {
   const files = ["index.html", ...routes.map((route) => route.file)];
+  const verifiedEtsyListings = new Set([
+    "https://www.etsy.com/listing/4545099893/monthly-budget-planner-spreadsheet",
+    "https://www.etsy.com/listing/4545117926/debt-snowball-tracker-spreadsheet-payoff",
+    "https://www.etsy.com/listing/4545099579/net-worth-tracker-spreadsheet-assets"
+  ]);
   for (const file of files) {
     const html = await source(file);
     const hrefs = [...html.matchAll(/href=["']([^"']+)["']/gi)].map((match) => match[1]);
     assert.equal(
-      hrefs.some((href) => /(?:checkout|cart|purchase|download|\.xlsx(?:$|[?#])|\.zip(?:$|[?#]))/i.test(href)),
+      hrefs.some((href) => /(?:checkout|cart|purchase|\.xlsx(?:$|[?#])|\.zip(?:$|[?#]))/i.test(href)),
       false,
-      `${file} must not expose a transaction or direct-file route`
+      `${file} must not expose a checkout, cart or direct-file route`
+    );
+    const listingHrefs = hrefs.filter((href) => href.startsWith("https://www.etsy.com/listing/"));
+    assert.equal(
+      listingHrefs.every((href) => verifiedEtsyListings.has(href)),
+      true,
+      `${file} must reference only a verified Etsy listing`
     );
     const actionText = [...html.matchAll(/<(?:a|button)\b[^>]*>([\s\S]*?)<\/(?:a|button)>/gi)]
       .map((match) => match[1].replace(/<[^>]+>/g, " "));
     assert.equal(
-      actionText.some((text) => /\b(?:buy|purchase|download|checkout)\b/i.test(text)),
+      actionText.some((text) => /\b(?:buy|purchase|download|checkout)\b/i.test(text)) && listingHrefs.length === 0,
       false,
-      `${file} must not present a live transaction action`
+      `${file} must pair a transaction action with a verified Etsy listing`
     );
   }
 });
@@ -152,4 +209,22 @@ test("storefront has no remote scripts or provider calls and includes recovery s
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(css, /\.catalog-recovery/);
   assert.match(css, /:focus-visible/);
+});
+
+test("all local assets referenced by finance pages resolve on disk", async () => {
+  const files = ["index.html", ...routes.map((route) => route.file)];
+
+  for (const file of files) {
+    const html = await source(file);
+    const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)]
+      .map((match) => match[1])
+      .filter((reference) => !/^(?:[a-z][a-z0-9+.-]*:|#|\/)/i.test(reference))
+      .map((reference) => reference.split(/[?#]/, 1)[0])
+      .filter(Boolean);
+
+    for (const reference of references) {
+      const target = reference.endsWith("/") ? `${reference}index.html` : reference;
+      await access(path.join(root, path.dirname(file), target));
+    }
+  }
 });
