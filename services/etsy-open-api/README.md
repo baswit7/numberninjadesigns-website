@@ -67,6 +67,13 @@ EXECUTION_DISABLED`; the callback at
 `https://api.numberninjadesigns.com/etsy/oauth/callback` also fails closed
 without reading or echoing query values.
 
+`GET /pinterest/oauth/callback` is a separate passive handoff endpoint for the
+desktop Finance OS OAuth flow. It validates the presence of exactly one bounded
+`code` and `state`, never exchanges or echoes them, never calls Pinterest and
+returns a `no-store`, `no-referrer`, `noindex` page. The user can explicitly
+copy the full callback URI to the local DPAPI-backed token manager; after a
+successful copy the page removes the sensitive query from the address bar.
+
 The Vercel deployment excludes the owner dashboard, active integration runtime,
 tests and example configuration. It contains no Etsy credentials and cannot be
 enabled through environment configuration. Before go-live, replace this shell

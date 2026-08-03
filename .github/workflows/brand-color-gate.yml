@@ -1,0 +1,31 @@
+name: brand-color-gate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Enforce NND-BRAND-COLOR-2026.1
+    runs-on: windows-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate canonical brand policy
+        shell: pwsh
+        run: ./scripts/validation/validate-brand-colors.ps1
+
+      - name: Run independent brand regression tests
+        shell: pwsh
+        run: node --test ./tests/brand-color-policy.test.mjs

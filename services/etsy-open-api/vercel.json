@@ -26,6 +26,10 @@
     {
       "source": "/etsy/oauth/callback",
       "destination": "/api/oauth-callback"
+    },
+    {
+      "source": "/pinterest/oauth/callback",
+      "destination": "/api/pinterest-oauth-callback"
     }
   ],
   "headers": [

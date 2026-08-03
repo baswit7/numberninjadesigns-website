@@ -16,7 +16,7 @@ test("public support assets are valid standalone static files", () => {
     const result = spawnSync(process.execPath, ["--check", path.join(root, file)], { encoding: "utf8" });
     assert.equal(result.status, 0, result.stderr || result.stdout);
   }
-  assert.match(html, /<link rel="canonical" href="https:\/\/www\.ninjanumbertees\.com\/support\/">/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/www\.numberninjadesigns\.com\/support\/">/);
   assert.match(html, /src="\.\/data\.js"/);
   assert.match(html, /src="\.\/app\.js"/);
   assert.doesNotMatch(html, /\b(?:src|href)="https?:\/\/[^"]+\.(?:js|css)"/i);

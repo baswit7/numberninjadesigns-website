@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "standard": "NND-BRAND-COLOR-2026.1",
+  "brand": "NumberNinjaDesigns",
+  "sources": [
+    "branding/manifest.json",
+    "branding/banners/etsy-banner.png",
+    "branding/banners/website-hero.png"
+  ],
+  "colors": {
+    "background": "#07090C",
+    "surface": "#11151B",
+    "surfaceElevated": "#151B23",
+    "accent": "#00E891",
+    "secondaryAccent": "#6EE7FF",
+    "text": "#F3F5F7",
+    "muted": "#8B96A5"
+  },
+  "enforcement": {
+    "scope": [
+      "public website",
+      "Studio OS",
+      "Digital Production",
+      "Physical Production",
+      "Etsy assets",
+      "internal dashboards"
+    ],
+    "allowUnapprovedPaletteSubstitution": false,
+    "requireAutomatedValidation": true,
+    "validator": "scripts/validation/validate-brand-colors.ps1",
+    "literalColorPolicy": {
+      "mode": "deny-by-default",
+      "allowedHex": [
+        "#07090C",
+        "#11151B",
+        "#151B23",
+        "#00E891",
+        "#6EE7FF",
+        "#F3F5F7",
+        "#8B96A5"
+      ],
+      "allowedRgbBases": [
+        "7,9,12",
+        "17,21,27",
+        "21,27,35",
+        "0,232,145",
+        "110,231,255",
+        "243,245,247",
+        "139,150,165"
+      ],
+      "allowedKeywords": [
+        "transparent",
+        "currentcolor",
+        "inherit",
+        "initial",
+        "unset",
+        "none"
+      ],
+      "forbiddenColorFunctions": [
+        "hsl",
+        "hsla",
+        "hwb",
+        "lab",
+        "lch",
+        "oklab",
+        "oklch",
+        "color",
+        "color-mix"
+      ],
+      "forbidNamedColors": true,
+      "publicUiDiscovery": {
+        "rootFileExtensions": [
+          ".html",
+          ".css",
+          ".js",
+          ".svg"
+        ],
+        "recursiveDirectories": [
+          "data",
+          "support",
+          "tiktok",
+          "modules/social-product-flow"
+        ],
+        "recursiveFileExtensions": [
+          ".html",
+          ".css",
+          ".js",
+          ".svg"
+        ]
+      }
+    }
+  }
+}

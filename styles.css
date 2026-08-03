@@ -1,14 +1,15 @@
 :root {
   color-scheme: dark;
-  --bg: #070707;
-  --surface: #0f0f0f;
-  --surface-2: #161616;
-  --accent: #00ff94;
-  --text: #edebe3;
-  --muted: #8b8b8b;
-  --line: rgba(237, 235, 227, 0.14);
-  --danger: #ff4f5e;
-  --warn: #ffb84d;
+  --bg: #07090c;
+  --surface: #11151b;
+  --surface-2: #151b23;
+  --accent: #00e891;
+  --secondary-accent: #6ee7ff;
+  --text: #f3f5f7;
+  --muted: #8b96a5;
+  --line: rgba(243, 245, 247, 0.14);
+  --danger: var(--secondary-accent);
+  --warn: var(--accent);
   --radius: 8px;
   --max: 1180px;
 }
@@ -34,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 80% 0%, rgba(0, 255, 148, 0.09), transparent 28rem), var(--bg);
+  background: radial-gradient(circle at 80% 0%, rgba(0, 232, 145, 0.09), transparent 28rem), var(--bg);
   color: var(--text);
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   line-height: 1.6;
@@ -127,7 +128,7 @@ h1 {
   position: relative;
   word-break: keep-all;
   text-wrap: balance;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 70px rgba(0, 255, 148, 0.11);
+  text-shadow: 0 1px 0 rgba(243, 245, 247, 0.08), 0 28px 70px rgba(0, 232, 145, 0.11);
 }
 
 .hero-title-text {
@@ -200,17 +201,17 @@ p {
 .button-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #03130c;
+  color: var(--bg);
 }
 
 .button-secondary {
-  background: rgba(237, 235, 227, 0.04);
+  background: rgba(243, 245, 247, 0.04);
 }
 
 .signal-panel,
 .design-card,
 .policy-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+  background: linear-gradient(180deg, rgba(243,245,247,0.045), rgba(243,245,247,0.018));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -219,7 +220,7 @@ p {
   padding: 28px;
   display: grid;
   gap: 18px;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.35);
+  box-shadow: 0 20px 80px rgba(7,9,12,0.35);
 }
 
 .status-line {
@@ -236,7 +237,7 @@ p {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 20px rgba(0, 255, 148, 0.8);
+  box-shadow: 0 0 20px rgba(0, 232, 145, 0.8);
 }
 
 .panel-title {
@@ -283,16 +284,16 @@ p {
 }
 
 .design-card:focus-within {
-  border-color: rgba(0, 255, 148, 0.72);
+  border-color: rgba(0, 232, 145, 0.72);
 }
 
 .asset-placeholder {
   min-height: 220px;
   display: grid;
   place-items: center;
-  border: 1px dashed rgba(0, 255, 148, 0.45);
+  border: 1px dashed rgba(0, 232, 145, 0.45);
   border-radius: var(--radius);
-  background: repeating-linear-gradient(135deg, rgba(0,255,148,0.07), rgba(0,255,148,0.07) 8px, transparent 8px, transparent 18px);
+  background: repeating-linear-gradient(135deg, rgba(0,232,145,0.07), rgba(0,232,145,0.07) 8px, transparent 8px, transparent 18px);
   color: var(--accent);
   text-align: center;
   font-weight: 900;
@@ -302,9 +303,9 @@ p {
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border: 1px solid rgba(237, 235, 227, 0.12);
+  border: 1px solid rgba(243, 245, 247, 0.12);
   border-radius: var(--radius);
-  background: #000000;
+  background: var(--bg);
   padding: 0;
   transition: opacity 180ms ease, transform 180ms ease;
 }
@@ -344,7 +345,7 @@ p {
 .tag,
 .status-pill {
   width: fit-content;
-  border: 1px solid rgba(0, 255, 148, 0.4);
+  border: 1px solid rgba(0, 232, 145, 0.4);
   border-radius: 999px;
   padding: 4px 10px;
   color: var(--accent);
@@ -378,7 +379,7 @@ p {
 }
 
 .collection-grid a:hover {
-  border-color: rgba(0, 255, 148, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
 }
 
 .gallery-toolbar {
@@ -409,7 +410,7 @@ p {
   min-height: 42px;
   min-width: 220px;
   color: var(--text);
-  background: #090909;
+  background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 8px 12px;
@@ -436,7 +437,7 @@ p {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(0, 255, 148, 0.12);
+  background: rgba(0, 232, 145, 0.12);
   color: var(--accent);
   padding: 8px 10px;
   cursor: pointer;
@@ -445,14 +446,14 @@ p {
 
 .preview-button:hover,
 .buy-links a:hover {
-  border-color: rgba(0, 255, 148, 0.65);
+  border-color: rgba(0, 232, 145, 0.65);
   color: var(--accent);
 }
 
 .empty-state {
   margin-top: 22px;
   padding: 22px;
-  border: 1px dashed rgba(0, 255, 148, 0.38);
+  border: 1px dashed rgba(0, 232, 145, 0.38);
   border-radius: var(--radius);
   color: var(--muted);
 }
@@ -465,7 +466,7 @@ p {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(7, 9, 12, 0.82);
 }
 
 .modal.is-open {
@@ -488,7 +489,7 @@ p {
   width: 100%;
   max-height: 68vh;
   object-fit: contain;
-  background: #000000;
+  background: var(--bg);
   border-radius: var(--radius);
 }
 
@@ -521,7 +522,7 @@ p {
   height: 42px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #090909;
+  background: var(--bg);
   color: var(--text);
   cursor: pointer;
 }

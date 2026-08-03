@@ -3,32 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Developer API Use Case | NumberNinjaTees</title>
-  <meta name="description" content="Official NumberNinjaTees API use case for Pinterest, Meta, Instagram, TikTok, Google, Reddit, Printify and Etsy reviewers.">
-  <link rel="canonical" href="https://www.ninjanumbertees.com/developer.html">
+  <meta name="theme-color" content="#07090C">
+  <title>Developer API Use Case | NumberNinjaDesigns</title>
+  <meta name="description" content="Official NumberNinjaDesigns API use case, requested permissions, security controls and data handling for platform reviewers.">
+  <link rel="canonical" href="https://www.numberninjadesigns.com/developer.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="Developer API Use Case | NumberNinjaTees">
-  <meta property="og:description" content="Official API review information, platform usage, security principles and data handling for NumberNinjaTees Studio.">
+  <meta property="og:title" content="Developer API Use Case | NumberNinjaDesigns">
+  <meta property="og:description" content="Official API review information, requested permissions, security controls and data handling for NumberNinjaDesigns Studio.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.ninjanumbertees.com/developer.html">
+  <meta property="og:url" content="https://www.numberninjadesigns.com/developer.html">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="styles.css">
+  <script src="privacy-consent.js" defer></script>
 </head>
 <body>
-  <header class="site-header"><a class="brand" href="index.html">NumberNinjaTees</a><nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="designs.html">Apparel</a><a href="index.html#digital-products">Digital Products</a><a href="index.html#bundles">Bundles</a><a href="index.html#free-resources">Free Resources</a><a href="about.html">About</a></nav></header>
+  <header class="site-header"><a class="brand" href="index.html">NumberNinjaDesigns</a><nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="designs.html">Apparel</a><a href="index.html#digital-products">Digital Products</a><a href="index.html#bundles">Bundles</a><a href="index.html#free-resources">Free Resources</a><a href="about.html">About</a></nav></header>
   <main class="content-page">
     <section>
       <h1>Developer / API Use Case</h1>
-      <p><strong>Official Brand:</strong> NumberNinjaTees</p>
-      <p><strong>Official Website:</strong> https://www.ninjanumbertees.com</p>
-      <p><strong>Organization:</strong> Independent creative apparel brand</p>
+      <p><strong>Official Brand:</strong> NumberNinjaDesigns</p>
+      <p><strong>Official Website:</strong> https://www.numberninjadesigns.com</p>
+      <p><strong>Organization:</strong> Independent digital-product and physical-product design studio</p>
       <p><strong>Country:</strong> Netherlands</p>
       <p><strong>Developer Contact:</strong> <a href="mailto:api@ninjanumbertees.com">api@ninjanumbertees.com</a></p>
-      <p><strong>Purpose:</strong> NumberNinjaTees Studio is used internally to manage product content, creative assets, listings, metadata, publishing preparation and performance insights for the NumberNinjaTees brand.</p>
+      <p><strong>Purpose:</strong> NumberNinjaDesigns Studio is an internal, single-shop operations tool used by the shop owner to prepare and maintain NumberNinjaDesigns product listings. It is not offered to third-party sellers or buyers.</p>
     </section>
     <section>
       <h2>Official API Usage</h2>
-      <p>API access is requested only for authorized NumberNinjaTees brand accounts and only through official platform APIs, approved permissions and OAuth flows where required.</p>
+      <p>API access is requested only for authorized NumberNinjaDesigns brand accounts and only through official platform APIs, approved permissions and OAuth flows where required.</p>
     </section>
     <section class="policy-grid">
       <article class="policy-card"><h2>Pinterest</h2><p><strong>Purpose:</strong> Prepare, publish and analyze brand content. <strong>Official API:</strong> Pinterest API. <strong>OAuth:</strong> Used for authorized brand accounts. <strong>Human Approval:</strong> Required for publishing-sensitive workflows. <strong>Allowed Usage:</strong> Brand pins, boards, creative metadata and analytics. <strong>Data Usage:</strong> Account-authorized content and performance data. <strong>Restrictions:</strong> No scraping, no unauthorized posting. <strong>Compliance:</strong> Only approved scopes. <strong>Privacy:</strong> See privacy policy. <strong>Security:</strong> Least privilege.</p></article>
@@ -38,13 +40,17 @@
       <article class="policy-card"><h2>Google</h2><p><strong>Purpose:</strong> Support authorized brand operations, business metadata and review workflows. <strong>Official API:</strong> Google APIs. <strong>OAuth:</strong> Used where required. <strong>Human Approval:</strong> Used for sensitive changes. <strong>Allowed Usage:</strong> Approved brand workflows. <strong>Data Usage:</strong> Data required for the approved use case. <strong>Restrictions:</strong> No unauthorized data access. <strong>Compliance:</strong> Approved scopes only. <strong>Privacy:</strong> Request-based handling. <strong>Security:</strong> Scoped access.</p></article>
       <article class="policy-card"><h2>Reddit</h2><p><strong>Purpose:</strong> Support compliant brand account and community-related workflows. <strong>Official API:</strong> Reddit API. <strong>OAuth:</strong> Official authorization only. <strong>Human Approval:</strong> Required for posting. <strong>Allowed Usage:</strong> Brand-related content workflows. <strong>Data Usage:</strong> Approved account data. <strong>Restrictions:</strong> No surveillance or scraping. <strong>Compliance:</strong> Reddit policy aligned. <strong>Privacy:</strong> Limited use. <strong>Security:</strong> Least privilege.</p></article>
       <article class="policy-card"><h2>Printify</h2><p><strong>Purpose:</strong> Product preparation, fulfillment preparation and catalog operations. <strong>Official API:</strong> Printify API. <strong>OAuth:</strong> Used if required by platform flow. <strong>Human Approval:</strong> Required for product publishing decisions. <strong>Allowed Usage:</strong> Product and fulfillment metadata. <strong>Data Usage:</strong> Product operations only. <strong>Restrictions:</strong> No unrelated account access. <strong>Compliance:</strong> Approved platform usage. <strong>Privacy:</strong> Minimal operational data. <strong>Security:</strong> Restricted access.</p></article>
-      <article class="policy-card"><h2>Etsy</h2><p><strong>Purpose:</strong> Listing management, product metadata and shop operations. <strong>Official API:</strong> Etsy API. <strong>OAuth:</strong> Used for authorized shop access. <strong>Human Approval:</strong> Required for listing and shop-sensitive changes. <strong>Allowed Usage:</strong> Authorized shop workflows. <strong>Data Usage:</strong> Listing, product and shop metadata. <strong>Restrictions:</strong> No credential collection or scraping. <strong>Compliance:</strong> Etsy policy aligned. <strong>Privacy:</strong> Shop operations only. <strong>Security:</strong> Scoped access.</p></article>
+      <article class="policy-card"><h2>Etsy Open API v3</h2><p><strong>Use case:</strong> Read the owner's shop and listing metadata, create or update draft listings, and synchronize approved NumberNinjaDesigns product metadata. <strong>Users:</strong> The NumberNinjaDesigns shop owner only. <strong>Scopes:</strong> <code>listings_r</code>, <code>listings_w</code> and <code>shops_r</code>; no buyer, address, payment, favorites, profile or transaction scopes are requested. <strong>Authorization:</strong> OAuth 2.0 Authorization Code with PKCE, single-use state and an exact HTTPS redirect URI. <strong>Human approval:</strong> Public listing activation and shop-sensitive changes remain manual. <strong>Data:</strong> Only shop and listing metadata required for this internal workflow. <strong>Restrictions:</strong> No scraping, resale, advertising profiles, buyer surveillance, password collection or access by unrelated accounts.</p></article>
     </section>
     <section>
       <h2>Security Principles</h2>
       <ul>
         <li>Least Privilege</li>
-        <li>Official OAuth</li>
+        <li>OAuth 2.0 with PKCE and single-use state</li>
+        <li>Server-side encrypted token storage; API secrets and tokens never enter browser code or localStorage</li>
+        <li>Refresh-token rotation, explicit reconnect handling and exact HTTPS redirect matching</li>
+        <li>Rate-limit handling, bounded retry for read requests and idempotent write synchronization</li>
+        <li>Audit events exclude tokens, credentials and personal data</li>
         <li>No Credential Collection</li>
         <li>No Password Storage</li>
         <li>No Login Automation</li>
@@ -55,13 +61,13 @@
       </ul>
     </section>
     <section class="policy-grid">
-      <article class="policy-card"><h2>Data Handling</h2><p>Data is used only for authorized brand operations, product metadata, content preparation, publishing review and performance analysis within approved permissions.</p></article>
-      <article class="policy-card"><h2>Data Retention</h2><p>Operational API data is retained only as long as needed for approved workflows, troubleshooting, compliance review or platform requirements.</p></article>
+      <article class="policy-card"><h2>Data Handling</h2><p>Etsy data is used only for authorized NumberNinjaDesigns listing preparation and shop operations. API credentials and OAuth tokens remain on the private server; operational logs contain status and technical error codes, not listing content, buyer data or tokens.</p></article>
+      <article class="policy-card"><h2>Data Retention</h2><p>OAuth tokens are deleted when the Etsy connection is disconnected or no longer required. Cached shop or listing metadata is minimized, refreshed when needed and deleted following a verified deletion request unless retention is legally required.</p></article>
       <article class="policy-card"><h2>Incident Reporting</h2><p>Suspected platform, privacy or security incidents can be reported through the official contact address and will be reviewed with priority.</p></article>
       <article class="policy-card"><h2>Contact</h2><p>Developer and API review questions: <a href="mailto:api@ninjanumbertees.com">api@ninjanumbertees.com</a>.</p></article>
     </section>
     <section class="actions"><a class="button button-secondary" href="privacy.html">Privacy Policy</a><a class="button button-secondary" href="terms.html">Terms of Service</a><a class="button button-secondary" href="contact.html">Contact</a></section>
   </main>
-  <footer class="footer"><div class="footer-brand"><strong>NumberNinjaTees</strong><span>Official Website</span><span>Operated from the Netherlands</span><a href="mailto:hello@ninjanumbertees.com">hello@ninjanumbertees.com</a></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="https://numberninjatees.etsy.com" rel="noopener">Shop</a><a href="designs.html">Designs</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Data Deletion</a><a href="developer.html">Developer</a><a href="developer.html">API Use</a></nav><p class="footer-meta">Copyright © 2026 NumberNinjaTees.</p></footer>
+  <footer class="footer"><div class="footer-brand"><strong>NumberNinjaDesigns</strong><span>Official Website</span><span>Operated from the Netherlands</span><a href="mailto:hello@ninjanumbertees.com">hello@ninjanumbertees.com</a></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="https://numberninjatees.etsy.com" rel="noopener">Shop</a><a href="designs.html">Designs</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Data Deletion</a><a href="developer.html">Developer</a><a href="developer.html">API Use</a></nav><p class="footer-meta">Copyright © 2026 NumberNinjaDesigns.</p></footer>
 </body>
 </html>
