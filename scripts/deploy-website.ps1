@@ -20,6 +20,7 @@ $supportTest = Join-Path $root 'tests\support-page.test.mjs'
 $vercelConfigPath = Join-Path $root 'vercel.json'
 $studioConfigPath = Join-Path $root 'config\studio.config.json'
 $vercelProject = 'numberninjadesigns-website'
+$taskIdProvided = $PSBoundParameters.ContainsKey('TaskId')
 
 function Assert-DeploymentConfiguration {
   $vercelConfig = Get-Content -Raw -LiteralPath $vercelConfigPath | ConvertFrom-Json
@@ -28,7 +29,7 @@ function Assert-DeploymentConfiguration {
   }
 
   if ($Target -ne 'ValidateOnly' -and (Test-Path -LiteralPath $studioConfigPath)) {
-    if (-not $PSBoundParameters.ContainsKey('TaskId')) {
+    if (-not $taskIdProvided) {
       throw 'TaskId is required for Preview and Production deployments.'
     }
 

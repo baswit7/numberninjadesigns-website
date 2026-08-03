@@ -17,6 +17,8 @@ test("Vercel Git deployments are disabled in favor of the governed release scrip
   assert.match(releaseScript, /brand-color-policy\.test\.mjs/);
   assert.match(releaseScript, /studioOs\.deploymentAllowed/);
   assert.match(releaseScript, /Get-Command vercel/);
+  assert.match(releaseScript, /\$taskIdProvided\s*=\s*\$PSBoundParameters\.ContainsKey\('TaskId'\)/);
+  assert.match(releaseScript, /if\s*\(-not\s+\$taskIdProvided\)/);
 
   const validationIndex = releaseScript.indexOf("& $brandValidator");
   const deploymentIndex = releaseScript.indexOf("& $vercel.Source");
