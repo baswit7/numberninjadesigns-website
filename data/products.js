@@ -174,7 +174,7 @@
     ],
     "liveListingSync": {
       "shopUrl": "https://www.etsy.com/shop/NumberNinjaDesigns",
-      "observedAt": "2026-08-02",
+      "observedAt": "2026-08-03",
       "observedMarket": "NL",
       "currency": "EUR",
       "listingCount": 10,
@@ -221,7 +221,7 @@
         "listingId": "4545118486",
         "name": "Wedding Budget",
         "title": "Wedding Budget Spreadsheet | Vendor Cost, Payment and Expense Tracker | Excel Event Planner Digital Download",
-        "category": "Weddings & Events",
+        "category": "Wedding & Events",
         "kind": "Digital download",
         "status": "live",
         "featuredRank": 4,

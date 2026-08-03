@@ -80,7 +80,7 @@ test("website catalog mirrors the 10 publicly verified Etsy listings", async () 
   const listings = Array.from(catalog.liveListings);
 
   assert.equal(catalog.liveListingSync.listingCount, 10);
-  assert.equal(catalog.liveListingSync.observedAt, "2026-08-02");
+  assert.equal(catalog.liveListingSync.observedAt, "2026-08-03");
   assert.deepEqual(Array.from(listings, (listing) => listing.listingId), liveListingIds);
   assert.equal(new Set(listings.map((listing) => listing.listingId)).size, 10);
   assert.deepEqual(
