@@ -39,18 +39,37 @@ try {
     throw 'Brand and deployment regression tests blocked release.'
   }
 
+  & npm run test:social-publisher
+  if ($LASTEXITCODE -ne 0) {
+    throw 'Social publisher regression tests blocked release.'
+  }
+
   if ($Target -eq 'ValidateOnly') {
     Write-Host 'PASS: deployment gate validated without starting an external deployment.'
     return
   }
 
   $vercel = Get-Command vercel -ErrorAction Stop
-  $arguments = @('--yes')
-  if ($Target -eq 'Production') {
-    $arguments += '--prod'
+  $environment = if ($Target -eq 'Production') { 'production' } else { 'preview' }
+  & $vercel.Source pull --yes --environment $environment
+  if ($LASTEXITCODE -ne 0) {
+    throw "Vercel $Target settings pull failed."
   }
 
-  & $vercel.Source @arguments
+  $buildArguments = @('build', '--yes')
+  if ($Target -eq 'Production') {
+    $buildArguments += '--prod'
+  }
+  & $vercel.Source @buildArguments
+  if ($LASTEXITCODE -ne 0) {
+    throw "Vercel $Target prebuilt bundle failed."
+  }
+
+  $deployArguments = @('deploy', '--prebuilt', '--yes')
+  if ($Target -eq 'Production') {
+    $deployArguments += '--prod'
+  }
+  & $vercel.Source @deployArguments
   if ($LASTEXITCODE -ne 0) {
     throw "Vercel $Target deployment failed."
   }

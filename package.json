@@ -1,0 +1,18 @@
+{
+  "name": "numberninjadesigns-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "test:social-publisher": "node --test tests/social-publisher-*.test.mjs",
+    "migrate:social-publisher": "node scripts/migrate-social-publisher.mjs",
+    "validate:social-publisher": "node scripts/validate-social-publisher-config.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0",
+    "fix-webm-duration": "1.0.6"
+  }
+}

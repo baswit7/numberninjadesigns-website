@@ -17,9 +17,13 @@ test("Vercel Git deployments are disabled in favor of the governed release scrip
   assert.match(releaseScript, /brand-color-policy\.test\.mjs/);
   assert.match(releaseScript, /studioOs\.deploymentAllowed/);
   assert.match(releaseScript, /Get-Command vercel/);
+  assert.match(releaseScript, /npm run test:social-publisher/);
+  assert.match(releaseScript, /pull --yes --environment/);
+  assert.match(releaseScript, /'build', '--yes'/);
+  assert.match(releaseScript, /'deploy', '--prebuilt', '--yes'/);
 
   const validationIndex = releaseScript.indexOf("& $brandValidator");
-  const deploymentIndex = releaseScript.indexOf("& $vercel.Source");
+  const deploymentIndex = releaseScript.indexOf("& $vercel.Source @deployArguments");
   assert.ok(validationIndex >= 0, "release script must invoke the brand validator");
   assert.ok(deploymentIndex > validationIndex, "release script must validate before invoking Vercel");
 });

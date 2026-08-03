@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Etsy Promo Publisher | NumberNinjaDesigns</title>
+  <meta name="description" content="Connect your Etsy shop, create an original vertical listing promo, review every TikTok setting and publish with explicit consent.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#07090C">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://www.numberninjadesigns.com/social-publisher/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260728-brand-color-gate">
+  <script src="vendor/fix-webm-duration.js?v=1.0.6" defer></script>
+  <script src="media.js?v=20260803-nn73" defer></script>
+  <script src="app.js?v=20260803-nn73" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#publisher-main">Skip to publisher</a>
+
+  <header class="app-header">
+    <a class="brand" href="../" aria-label="NumberNinjaDesigns home">
+      <span class="brand-mark" aria-hidden="true">NN</span>
+      <span><strong>Number Ninja</strong><small>Etsy Promo Publisher</small></span>
+    </a>
+    <div class="header-state">
+      <span class="environment" id="environmentLabel">Checking environment</span>
+      <span class="connection-state" data-state="loading" id="runtimeState"><i aria-hidden="true"></i><span>Connecting</span></span>
+      <a href="../support/">Help</a>
+    </div>
+  </header>
+
+  <main id="publisher-main" class="publisher-shell" aria-busy="true">
+    <aside class="step-rail" aria-label="Publication workflow">
+      <ol>
+        <li data-step="etsy" data-state="current">
+          <span class="step-number">1</span>
+          <span><strong>Connect Etsy</strong><small id="etsyStepState">Required</small></span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li data-step="listing" data-state="locked">
+          <span class="step-number">2</span>
+          <span><strong>Select listing</strong><small id="listingStepState">Locked</small></span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li data-step="preview" data-state="locked">
+          <span class="step-number">3</span>
+          <span><strong>Generate preview</strong><small id="previewStepState">Locked</small></span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li data-step="tiktok" data-state="locked">
+          <span class="step-number">4</span>
+          <span><strong>Connect TikTok</strong><small id="tiktokStepState">Locked</small></span>
+          <i aria-hidden="true"></i>
+        </li>
+        <li data-step="publish" data-state="locked">
+          <span class="step-number">5</span>
+          <span><strong>Review &amp; publish</strong><small id="publishStepState">Locked</small></span>
+          <i aria-hidden="true"></i>
+        </li>
+      </ol>
+
+      <section class="rail-account" aria-labelledby="account-title">
+        <h2 id="account-title">Connections</h2>
+        <p><span class="status-dot" id="etsyDot" data-state="off"></span><span id="etsyAccountLabel">Etsy not connected</span></p>
+        <p><span class="status-dot" id="tiktokDot" data-state="off"></span><span id="tiktokAccountLabel">TikTok not connected</span></p>
+        <button class="text-button" id="manageDataButton" type="button">Manage connections &amp; data</button>
+      </section>
+    </aside>
+
+    <section class="workspace" aria-label="Listing and video preview">
+      <div class="notice" id="notice" data-state="info" role="status" aria-live="polite" hidden>
+        <strong id="noticeTitle">Status</strong>
+        <span id="noticeMessage"></span>
+        <button id="noticeDismiss" type="button" aria-label="Dismiss status">×</button>
+      </div>
+
+      <section class="connection-intro" id="etsyConnectPanel" aria-labelledby="etsy-connect-title">
+        <div>
+          <span class="section-index">01 / OWNERSHIP</span>
+          <h1 id="etsy-connect-title">Turn an owned Etsy listing into an original TikTok promo.</h1>
+          <p>Connect Etsy to prove shop ownership. We only import active listings from the shop you authorize—never arbitrary marketplace content.</p>
+        </div>
+        <button class="primary-action" id="connectEtsyButton" type="button">
+          <span>Connect Etsy shop</span><span aria-hidden="true">↗</span>
+        </button>
+      </section>
+
+      <section class="listing-section" id="listingSection" aria-labelledby="listing-title" hidden>
+        <div class="section-heading">
+          <div>
+            <span class="section-index">02 / SOURCE LISTING</span>
+            <h2 id="listing-title">Choose one of your active listings</h2>
+          </div>
+          <button class="secondary-action" id="refreshListingsButton" type="button">Refresh listings</button>
+        </div>
+        <div class="listing-strip" id="listingStrip" aria-live="polite"></div>
+      </section>
+
+      <section class="selected-listing" id="selectedListing" aria-label="Selected listing" hidden>
+        <img id="selectedListingImage" alt="" width="92" height="92">
+        <div>
+          <span>Selected Etsy listing</span>
+          <strong id="selectedListingTitle"></strong>
+          <small id="selectedListingMeta"></small>
+        </div>
+        <button class="text-button" id="changeListingButton" type="button">Change</button>
+      </section>
+
+      <section class="preview-section" aria-labelledby="preview-title">
+        <div class="section-heading">
+          <div>
+            <span class="section-index">03 / ORIGINAL VIDEO</span>
+            <h2 id="preview-title">Exact upload preview <small>9:16 · 10 sec · WebM</small></h2>
+          </div>
+          <button class="secondary-action" id="generateButton" type="button" disabled>Generate preview</button>
+        </div>
+
+        <div class="preview-stage" id="previewStage" data-state="empty">
+          <div class="preview-empty" id="previewEmpty">
+            <span class="frame-corners" aria-hidden="true"></span>
+            <strong>Select a listing to begin</strong>
+            <p>The browser creates an original vertical promo from the authenticated listing image and metadata.</p>
+          </div>
+          <video id="videoPreview" controls playsinline preload="metadata" aria-label="Exact TikTok upload preview" hidden></video>
+          <canvas id="renderCanvas" width="720" height="1280" aria-hidden="true" hidden></canvas>
+          <div class="render-progress" id="renderProgress" role="progressbar" aria-label="Video generation" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <div><strong>Generating your original promo</strong><small id="renderProgressText">Preparing artwork…</small></div>
+            <div class="progress-track"><i id="renderProgressBar"></i></div>
+          </div>
+        </div>
+
+        <div class="media-proof" id="mediaProof" hidden>
+          <span><small>Integrity</small><strong id="mediaHash">—</strong></span>
+          <span><small>File size</small><strong id="mediaSize">—</strong></span>
+          <span><small>Render</small><strong>720 × 1280 · 24 fps</strong></span>
+          <button class="text-button" id="downloadPreviewButton" type="button">Download preview</button>
+        </div>
+      </section>
+
+      <section class="activity-section" aria-labelledby="activity-title">
+        <div class="section-heading compact">
+          <div><span class="section-index">LIVE STATUS</span><h2 id="activity-title">Publication trail</h2></div>
+          <button class="text-button" id="refreshStatusButton" type="button" disabled>Refresh</button>
+        </div>
+        <ol class="activity-list" id="activityList" aria-live="polite">
+          <li data-state="waiting"><i></i><span><strong>Waiting for an approved preview</strong><small>No provider write has been performed.</small></span></li>
+        </ol>
+      </section>
+    </section>
+
+    <aside class="publish-panel" aria-labelledby="publish-title">
+      <div class="publish-heading">
+        <div><span class="section-index">04–05 / DESTINATION</span><h2 id="publish-title">Publish to TikTok</h2></div>
+        <span class="status-badge" id="publishModeBadge">Locked</span>
+      </div>
+
+      <section class="creator-card" id="creatorCard" data-state="locked">
+        <div class="creator-avatar" aria-hidden="true">TT</div>
+        <div><small>Creator identity</small><strong id="creatorName">Connect TikTok</strong><span id="creatorUsername">Account readback required</span></div>
+        <button class="secondary-action compact-button" id="connectTikTokButton" type="button" disabled>Connect</button>
+      </section>
+
+      <button class="refresh-context" id="refreshCreatorButton" type="button" disabled>
+        <span>Refresh account &amp; controls</span><small>TikTok requires current creator settings</small>
+      </button>
+
+      <fieldset id="publishControls" disabled>
+        <label class="field-label" for="captionInput"><span>Caption</span><small id="captionCount">0 / 2200</small></label>
+        <textarea id="captionInput" maxlength="4400" rows="6" placeholder="Write a product-specific caption. Hashtags remain editable."></textarea>
+
+        <label class="field-label" for="privacySelect"><span>Privacy</span><small>Required · no default</small></label>
+        <select id="privacySelect">
+          <option value="" selected>Choose privacy</option>
+        </select>
+        <p class="field-help" id="privacyHelp">Options are loaded from the connected TikTok creator.</p>
+
+        <div class="control-group" aria-labelledby="interactions-title">
+          <div class="field-label"><span id="interactions-title">Interactions</span><small>Off by default</small></div>
+          <label><input id="allowComment" type="checkbox"><span>Allow comments</span><small id="commentAvailability"></small></label>
+          <label><input id="allowDuet" type="checkbox"><span>Allow Duet</span><small id="duetAvailability"></small></label>
+          <label><input id="allowStitch" type="checkbox"><span>Allow Stitch</span><small id="stitchAvailability"></small></label>
+        </div>
+
+        <div class="control-group disclosure" aria-labelledby="disclosure-title">
+          <div class="field-label"><span id="disclosure-title">Commercial content</span><small>Required</small></div>
+          <label><input type="radio" name="disclosure" value="own_brand"><span>My own business</span><small>This listing promotes my own Etsy shop.</small></label>
+          <label><input type="radio" name="disclosure" value="paid_partnership"><span>Paid partnership</span><small>A third party compensated this post.</small></label>
+        </div>
+
+        <div class="consent-block">
+          <label><input id="previewAcknowledged" type="checkbox"><span>I reviewed the exact video above</span></label>
+          <label><input id="publishConsent" type="checkbox"><span>I consent to publish this video to the displayed TikTok account</span></label>
+          <p>Consent is bound to the video hash, creator settings and publication choices. Changing any field clears consent.</p>
+        </div>
+      </fieldset>
+
+      <div class="publish-gate" id="publishGate">
+        <span class="lock-icon" aria-hidden="true">⌁</span>
+        <p id="publishGateText">Complete the required steps to enable publishing.</p>
+      </div>
+      <button class="publish-action" id="publishButton" type="button" disabled>Publish to TikTok</button>
+      <p class="review-note" id="reviewNote">No content is posted until you press Publish and the server confirms every gate.</p>
+    </aside>
+  </main>
+
+  <footer class="app-footer">
+    <span>NumberNinjaDesigns · Public seller tool</span>
+    <nav aria-label="Legal"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="../data-deletion.html">Data deletion</a></nav>
+  </footer>
+
+  <dialog id="dataDialog" aria-labelledby="data-dialog-title">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-heading"><div><span class="section-index">ACCOUNT CONTROL</span><h2 id="data-dialog-title">Connections &amp; data</h2></div><button value="cancel" aria-label="Close">×</button></div>
+      <p>Disconnect one provider or permanently remove this publisher workspace. Tokens are server-side and are never stored in this browser.</p>
+      <div class="dialog-actions">
+        <button id="disconnectEtsyButton" type="button" class="secondary-action">Disconnect Etsy</button>
+        <button id="disconnectTikTokButton" type="button" class="secondary-action">Disconnect TikTok</button>
+      </div>
+      <div class="danger-zone">
+        <strong>Delete publisher data</strong>
+        <p>Revokes TikTok access where possible and removes sessions, encrypted tokens, listing cache, jobs and audit records.</p>
+        <label><input id="deleteConfirm" type="checkbox"> I understand this cannot be undone.</label>
+        <button id="deleteDataButton" type="button" class="danger-action" disabled>Delete all publisher data</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
