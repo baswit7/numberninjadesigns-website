@@ -90,3 +90,11 @@ test("privacy policy documents consent, withdrawal and disabled enhanced matchin
   assert.match(privacyPolicy, /Consent can be withdrawn at any time/);
   assert.match(privacyPolicy, /Pinterest Privacy Policy/);
 });
+
+test("privacy policy contains the complete Pinterest API disclosure", () => {
+  assert.match(privacyPolicy, /uses the official Pinterest API/);
+  assert.match(privacyPolicy, /not endorsed by or affiliated with Pinterest/);
+  assert.match(privacyPolicy, /never sold, resold, licensed, redistributed or made available to third parties/);
+  assert.match(privacyPolicy, /If the account owner disconnects or revokes access, API calls stop/);
+  assert.match(privacyPolicy, /encrypted OAuth grant and pending authorization records are deleted/);
+});
