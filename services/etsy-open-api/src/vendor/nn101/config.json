@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "taskId": "NN-101",
+  "expectedShopName": "NumberNinjaDesigns",
+  "expectedListingIds": [
+    "4545099189",
+    "4545099579",
+    "4545099893",
+    "4545100025",
+    "4545117498",
+    "4545117616",
+    "4545117926",
+    "4545118344",
+    "4545118486",
+    "4545118638",
+    "4549606111"
+  ],
+  "schedule": {
+    "taskName": "FinanceOS-NN101-EtsyOrganicGrowth",
+    "dailyAt": "06:15"
+  },
+  "marketIntelligence": {
+    "schemaVersion": "1.0.0",
+    "currencyCode": "EUR",
+    "resultLimit": 100,
+    "pagesPerKeyword": 2,
+    "schedule": {
+      "dailyAt": "06:45"
+    },
+    "keywords": [
+      { "id": "fire-retirement-planner", "label": "FIRE retirement planner", "query": "fire retirement planner spreadsheet" },
+      { "id": "net-worth-tracker", "label": "Net worth tracker", "query": "net worth tracker spreadsheet" },
+      { "id": "monthly-budget-planner", "label": "Monthly budget planner", "query": "monthly budget planner spreadsheet" },
+      { "id": "focus-friendly-budget", "label": "Focus-friendly budget", "query": "simple weekly budget spreadsheet" },
+      { "id": "dividend-tracker", "label": "Dividend tracker", "query": "dividend tracker spreadsheet" },
+      { "id": "small-business-expense", "label": "Small business expense tracker", "query": "small business expense tracker spreadsheet" },
+      { "id": "debt-snowball", "label": "Debt snowball tracker", "query": "debt snowball tracker spreadsheet" },
+      { "id": "profit-loss", "label": "Profit and loss spreadsheet", "query": "small business profit loss spreadsheet" },
+      { "id": "wedding-budget", "label": "Wedding budget spreadsheet", "query": "wedding budget spreadsheet" },
+      { "id": "family-budget", "label": "Family budget spreadsheet", "query": "family budget spreadsheet" },
+      { "id": "budgetplanner-excel-nl", "label": "Budgetplanner Excel NL", "query": "budgetplanner excel" }
+    ]
+  }
+}

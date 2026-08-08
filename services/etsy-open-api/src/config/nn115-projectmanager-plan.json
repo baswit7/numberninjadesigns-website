@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshotId": "snapshot-nn115-cloud-2026-08-08",
+  "evaluatedAt": "2026-08-08T19:11:02.810Z",
+  "orderedTaskIds": [
+    "NN-115"
+  ],
+  "nextAction": {
+    "taskId": "NN-115",
+    "title": "Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.",
+    "projectId": "numberninja-projectmanager",
+    "status": "In uitvoering",
+    "terminal": false,
+    "priorityScore": 430,
+    "priorityBreakdown": {
+      "impact": 200,
+      "urgency": 150,
+      "riskReduction": 100,
+      "effortPenalty": 20,
+      "score": 430,
+      "formula": "impact*40 + urgency*30 + riskReduction*20 - effort*10"
+    },
+    "eligible": true,
+    "blockers": [],
+    "dependencies": [],
+    "action": {
+      "actionId": "nn115-etsy-intelligence-read",
+      "kind": "read-only",
+      "repositoryId": "numberninjadesigns-website",
+      "requiredCapabilities": [
+        "etsy.market-intelligence.read",
+        "cloud.serverless",
+        "durable.redis"
+      ],
+      "requiredAgentTypes": [
+        "finance-os-data-productflow-engineer"
+      ],
+      "estimatedCostEur": 0,
+      "credentialRef": "etsy-open-api-read-only",
+      "idempotencyKey": "NN-115:etsy-intelligence:daily:v2"
+    }
+  },
+  "decisions": [
+    {
+      "taskId": "NN-115",
+      "title": "Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.",
+      "projectId": "numberninja-projectmanager",
+      "status": "In uitvoering",
+      "terminal": false,
+      "priorityScore": 430,
+      "priorityBreakdown": {
+        "impact": 200,
+        "urgency": 150,
+        "riskReduction": 100,
+        "effortPenalty": 20,
+        "score": 430,
+        "formula": "impact*40 + urgency*30 + riskReduction*20 - effort*10"
+      },
+      "eligible": true,
+      "blockers": [],
+      "dependencies": [],
+      "action": {
+        "actionId": "nn115-etsy-intelligence-read",
+        "kind": "read-only",
+        "repositoryId": "numberninjadesigns-website",
+        "requiredCapabilities": [
+          "etsy.market-intelligence.read",
+          "cloud.serverless",
+          "durable.redis"
+        ],
+        "requiredAgentTypes": [
+          "finance-os-data-productflow-engineer"
+        ],
+        "estimatedCostEur": 0,
+        "credentialRef": "etsy-open-api-read-only",
+        "idempotencyKey": "NN-115:etsy-intelligence:daily:v2"
+      }
+    }
+  ],
+  "audit": {
+    "generatedAt": "2026-08-08T19:11:02.810Z",
+    "sourceTaskId": "NN-115",
+    "sourceReadbackVerified": true,
+    "taskCount": 1,
+    "eligibleCount": 1,
+    "blockedCount": 0,
+    "terminalCount": 0,
+    "policyFingerprint": "sha256:5539304cab1d2735217ad4f3cdbafc942a08c948df7b86b8e4abae77b2574eea",
+    "secretsIncluded": false
+  },
+  "planId": "sha256:e0663f9d36637cd77ddc4ab64c180746f1359538908a2be8e45e6aa8a454af0f"
+}

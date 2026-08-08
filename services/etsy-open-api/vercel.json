@@ -1,0 +1,76 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/api/projectmanager/cron",
+      "destination": "/api/projectmanager-cron"
+    },
+    {
+      "source": "/api/projectmanager/executions",
+      "destination": "/api/projectmanager-executions"
+    },
+    {
+      "source": "/api/projectmanager/status",
+      "destination": "/api/projectmanager-status"
+    },
+    {
+      "source": "/healthz",
+      "destination": "/api/health"
+    },
+    {
+      "source": "/api/etsy/status",
+      "destination": "/api/status"
+    },
+    {
+      "source": "/api/etsy/test-connection",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/api/etsy/connect",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/api/etsy/disconnect",
+      "destination": "/api/disabled-action"
+    },
+    {
+      "source": "/etsy/oauth/callback",
+      "destination": "/api/oauth-callback"
+    },
+    {
+      "source": "/pinterest/oauth/callback",
+      "destination": "/api/pinterest-oauth-callback"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/projectmanager/cron",
+      "schedule": "0 6 * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
+      ]
+    }
+  ]
+}
