@@ -1,6 +1,11 @@
 # Copy these names into a server-side secret manager. Never serve this file.
 # Leave ETSY_EXECUTION_ENABLED=false until Etsy approval and the go-live gate pass.
 ETSY_EXECUTION_ENABLED=false
+ETSY_PUBLICATION_ENABLED=false
+# NN-115 read-only Projectmanager cloud execution uses only server-side bindings.
+CRON_SECRET=
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
 ETSY_API_KEYSTRING=
 ETSY_SHARED_SECRET=
 ETSY_REDIRECT_URI=https://api.numberninjadesigns.com/etsy/oauth/callback

@@ -4,6 +4,18 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/api/projectmanager/cron",
+      "destination": "/api/projectmanager-cron"
+    },
+    {
+      "source": "/api/projectmanager/executions",
+      "destination": "/api/projectmanager-executions"
+    },
+    {
+      "source": "/api/projectmanager/status",
+      "destination": "/api/projectmanager-status"
+    },
+    {
       "source": "/healthz",
       "destination": "/api/health"
     },
@@ -30,6 +42,12 @@
     {
       "source": "/pinterest/oauth/callback",
       "destination": "/api/pinterest-oauth-callback"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/projectmanager/cron",
+      "schedule": "0 6 * * *"
     }
   ],
   "headers": [

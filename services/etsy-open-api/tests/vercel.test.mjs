@@ -163,4 +163,33 @@ test('Vercel deployment excludes the owner dashboard and active integration', as
       destination: '/api/pinterest-oauth-callback'
     }
   );
+
+  assert.deepEqual(
+    config.rewrites.filter(({ source }) => source.startsWith('/api/projectmanager/')),
+    [
+      { source: '/api/projectmanager/cron', destination: '/api/projectmanager-cron' },
+      { source: '/api/projectmanager/executions', destination: '/api/projectmanager-executions' },
+      { source: '/api/projectmanager/status', destination: '/api/projectmanager-status' }
+    ]
+  );
+  assert.deepEqual(config.crons, [
+    { path: '/api/projectmanager/cron', schedule: '0 6 * * *' }
+  ]);
+});
+
+test('cloud example declares only server-side NN-115 bindings and keeps provider writes disabled', async () => {
+  const example = await readFile(new URL('../environment.example', import.meta.url), 'utf8');
+  for (const key of [
+    'CRON_SECRET',
+    'KV_REST_API_URL',
+    'KV_REST_API_TOKEN',
+    'ETSY_API_KEYSTRING',
+    'ETSY_SHARED_SECRET',
+    'ETSY_SHOP_ID',
+    'ETSY_ADMIN_TOKEN'
+  ]) {
+    assert.match(example, new RegExp(`^${key}=$`, 'm'));
+  }
+  assert.match(example, /^ETSY_EXECUTION_ENABLED=false$/m);
+  assert.match(example, /^ETSY_PUBLICATION_ENABLED=false$/m);
 });

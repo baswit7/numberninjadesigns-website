@@ -57,13 +57,31 @@ vault that implements the same `get`, `set`, `delete`, atomic `take` and atomic
 `createIfAbsent` operations. Do not share the encrypted file through a public or
 eventually consistent filesystem.
 
-## Vercel disabled shell
+## Vercel bounded cloud plane
 
-The separate production project `numberninjadesigns-etsy-api` currently exposes
-only a hard-disabled serverless shell at `https://api.numberninjadesigns.com`.
-`GET /healthz` and `GET /api/etsy/status` are safe, non-provider checks.
-Connect, disconnect and test-connection actions return `503
-EXECUTION_DISABLED`; the callback at
+The production project `numberninjadesigns-etsy-api` keeps the general Etsy
+execution and publication plane hard-disabled. NN-115 adds one separately
+bounded, read-only Projectmanager workflow backed by the existing Upstash Redis
+store:
+
+- `GET /api/projectmanager/cron` accepts only Vercel's `CRON_SECRET` bearer and
+  runs daily at `06:00 UTC` with a server-derived daily idempotency identity;
+- `POST /api/projectmanager/executions` accepts only `ETSY_ADMIN_TOKEN` and the
+  exact approved owner intent;
+- `GET /api/projectmanager/status` accepts only `ETSY_ADMIN_TOKEN` and projects
+  actual durable execution, store, worker and Etsy snapshot state;
+- the cloud worker calls only Etsy Open API `GET` endpoints and keeps
+  publication approval-required and disabled.
+
+Execution records, leases with fencing tokens, checkpoints, results and the
+single canonical daily snapshot are persisted through Upstash Redis REST.
+Identical triggers coalesce, expired leases can be reclaimed and a fresh
+snapshot prevents unnecessary Etsy load. Credentials remain server-side and
+are never persisted in durable payloads.
+
+`GET /healthz` and `GET /api/etsy/status` remain safe, non-provider checks for
+the disabled general Etsy plane. Connect, disconnect and test-connection
+actions still return `503 EXECUTION_DISABLED`; the callback at
 `https://api.numberninjadesigns.com/etsy/oauth/callback` also fails closed
 without reading or echoing query values.
 
@@ -74,12 +92,10 @@ returns a `no-store`, `no-referrer`, `noindex` page. The user can explicitly
 copy the full callback URI to the local DPAPI-backed token manager; after a
 successful copy the page removes the sensitive query from the address bar.
 
-The Vercel deployment excludes the owner dashboard, active integration runtime,
-tests and example configuration. It contains no Etsy credentials and cannot be
-enabled through environment configuration. Before go-live, replace this shell
-with an authenticated serverless adapter backed by a transactional shared store
-or managed vault, complete the technical gate, and perform a separate reviewed
-deployment.
+The Vercel deployment excludes the owner dashboard, write-capable integration
+runtime, tests and example configuration. Only the NN-115 vendored read-only
+adapter and durable runtime are included. The existing write flags remain
+`false`; changing them is outside NN-115 and requires a separate approval.
 
 ## Owner dashboard
 
