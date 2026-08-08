@@ -87,7 +87,11 @@ function exactFields(value) {
   const keys = Object.keys(value).sort();
   const expected = [...REQUIRED_FIELDS].sort();
   if (keys.length !== expected.length || keys.some((key, index) => key !== expected[index])) {
-    fail('Durable execution contains missing or unknown fields.');
+    const present = new Set(keys);
+    const expectedSet = new Set(expected);
+    const missing = expected.filter(key => !present.has(key));
+    const unknownCount = keys.filter(key => !expectedSet.has(key)).length;
+    fail(`Durable execution field mismatch: missing=${missing.join(',') || 'none'}; unknownCount=${unknownCount}.`);
   }
 }
 
