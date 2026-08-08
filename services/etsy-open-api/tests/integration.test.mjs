@@ -439,7 +439,10 @@ test('encrypted file store never writes token material in plaintext and detects 
     assert.deepEqual(await store.get('oauth-token'), {
       accessToken: 'plain-token-must-not-appear'
     });
-    await writeFile(filePath, raw.replace(/"ciphertext":"./, '"ciphertext":"A'), 'utf8');
+    const envelope = JSON.parse(raw);
+    const replacement = envelope.ciphertext.startsWith('A') ? 'B' : 'A';
+    envelope.ciphertext = `${replacement}${envelope.ciphertext.slice(1)}`;
+    await writeFile(filePath, JSON.stringify(envelope), 'utf8');
     await assert.rejects(store.get('oauth-token'), { code: 'VAULT_DECRYPT_FAILED' });
   } finally {
     await rm(directory, { recursive: true, force: true });
