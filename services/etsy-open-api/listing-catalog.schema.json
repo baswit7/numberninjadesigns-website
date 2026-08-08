@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://numberninjadesigns.com/schemas/etsy-listing-catalog.v1.schema.json",
+  "title": "NumberNinjaDesigns Etsy listing catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "listings"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "listings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/listing"
+      }
+    }
+  },
+  "$defs": {
+    "listing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "status", "publication", "etsy", "assets"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9]+(?:[a-z0-9._-]*[a-z0-9])?$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "status": {
+          "enum": ["active", "draft", "inactive"]
+        },
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "validationStatus",
+            "visualQualityStandard",
+            "visualQualityApproved",
+            "ownerApproved"
+          ],
+          "properties": {
+            "validationStatus": {
+              "enum": ["PUBLICATION_READY", "READY_FOR_REVIEW", "BLOCKED"]
+            },
+            "visualQualityStandard": {
+              "const": "NND-VISUAL-QUALITY-2026.1"
+            },
+            "visualQualityApproved": {
+              "type": "boolean"
+            },
+            "ownerApproved": {
+              "type": "boolean"
+            }
+          }
+        },
+        "etsy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "description",
+            "price",
+            "quantity",
+            "whoMade",
+            "whenMade",
+            "isSupply",
+            "type",
+            "shouldAutoRenew",
+            "tags"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 140
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "price": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "quantity": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "whoMade": {
+              "enum": ["i_did", "someone_else", "collective"]
+            },
+            "whenMade": {
+              "enum": [
+                "made_to_order",
+                "2020_2026",
+                "2010_2019",
+                "2007_2009",
+                "before_2007",
+                "2000_2006",
+                "1990s",
+                "1980s",
+                "1970s",
+                "1960s",
+                "1950s",
+                "1940s",
+                "1930s",
+                "1920s",
+                "1910s",
+                "1900s",
+                "1800s",
+                "1700s",
+                "before_1700"
+              ]
+            },
+            "taxonomyId": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "taxonomyPath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "isSupply": {
+              "type": "boolean"
+            },
+            "type": {
+              "enum": ["physical", "download", "both"]
+            },
+            "shouldAutoRenew": {
+              "type": "boolean"
+            },
+            "tags": {
+              "type": "array",
+              "maxItems": 13,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 20,
+                "pattern": "^[\\p{L}\\p{N}\\p{Zs}\\-'™©®]+$"
+              }
+            }
+          },
+          "anyOf": [
+            {
+              "required": ["taxonomyId"]
+            },
+            {
+              "required": ["taxonomyPath"]
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["images", "files"],
+          "properties": {
+            "images": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 20,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["path", "altText"],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "altText": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            },
+            "files": {
+              "type": "array",
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["path", "name"],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 70,
+                    "pattern": "^[A-Za-z0-9._-]+$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "physical": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["shippingProfileId", "returnPolicyId", "readinessStateId"],
+          "properties": {
+            "shippingProfileId": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "returnPolicyId": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "readinessStateId": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "etsy": {
+                "properties": {
+                  "type": {
+                    "enum": ["physical", "both"]
+                  }
+                },
+                "required": ["type"]
+              }
+            }
+          },
+          "then": {
+            "required": ["physical"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "etsy": {
+                "properties": {
+                  "type": {
+                    "enum": ["download", "both"]
+                  }
+                },
+                "required": ["type"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "assets": {
+                "properties": {
+                  "files": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

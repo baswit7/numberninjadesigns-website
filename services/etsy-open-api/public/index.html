@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product Studio · Etsy | NumberNinjaDesigns</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="stylesheet" href="/etsy-admin/styles.css?v=20260727-3">
+  <script src="/etsy-admin/app.js?v=20260727-3" type="module"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">NUMBERNINJADESIGNS / PRODUCT STUDIO</p>
+      <h1>Etsy-publicatie</h1>
+      <p>Beheer de beveiligde Etsy-koppeling en plaats alle actieve, volledig goedgekeurde listings in één gecontroleerde run.</p>
+    </header>
+
+    <section id="login-panel" class="panel">
+      <h2>Eigenaarstoegang</h2>
+      <form id="login-form">
+        <label for="admin-token">Admin-toegangstoken</label>
+        <input id="admin-token" name="admin-token" type="password" autocomplete="current-password" required>
+        <button type="submit">Product Studio ontgrendelen</button>
+      </form>
+      <p id="login-error" class="message" role="alert"></p>
+    </section>
+
+    <section id="connection-panel" class="panel" hidden>
+      <div class="status-row">
+        <div>
+          <p class="eyebrow">ETSY-VERBINDING</p>
+          <h2 id="status-label">Controleren…</h2>
+        </div>
+        <span id="status-dot" class="status-dot" aria-hidden="true"></span>
+      </div>
+      <p id="status-detail" class="message" aria-live="polite"></p>
+      <dl>
+        <div><dt>Toegestane scopes</dt><dd>listings_r · listings_w · shops_r</dd></div>
+        <div><dt>Laatste controle</dt><dd id="last-check">Nog niet uitgevoerd</dd></div>
+      </dl>
+      <div class="actions">
+        <button id="connect" type="button">Verbinden</button>
+        <button id="test" class="secondary" type="button">Verbinding testen</button>
+        <button id="disconnect" class="danger" type="button">Ontkoppelen</button>
+      </div>
+    </section>
+
+    <section id="publication-panel" class="panel" hidden>
+      <div class="publication-head">
+        <div>
+          <p class="eyebrow">ACTIEVE LISTINGS</p>
+          <h2>Publicatiewachtrij</h2>
+        </div>
+        <button id="refresh-listings" class="secondary compact" type="button">Vernieuwen</button>
+      </div>
+      <p id="publication-detail" class="message" aria-live="polite">Listingstatus laden…</p>
+      <div class="metrics" aria-label="Publicatieoverzicht">
+        <div><strong id="active-count">—</strong><span>actief</span></div>
+        <div><strong id="eligible-count">—</strong><span>klaar</span></div>
+        <div><strong id="blocked-count">—</strong><span>geblokkeerd</span></div>
+      </div>
+      <div id="listing-rows" class="listing-rows"></div>
+      <button id="publish-all" class="publish-button" type="button" disabled>
+        Alle actieve listings op Etsy plaatsen
+      </button>
+      <p class="safety-note">Alleen listings met eigenaarstoestemming en een goedgekeurde NND-VISUAL-QUALITY-2026.1-controle worden geplaatst.</p>
+    </section>
+
+    <dialog id="publish-dialog">
+      <form id="publish-form">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">DEFINITIEVE CONTROLE</p>
+            <h2>Alles publiceren?</h2>
+          </div>
+          <button id="close-dialog" class="icon-button" type="button" aria-label="Sluiten">×</button>
+        </div>
+        <p id="publish-summary">De geselecteerde listings worden als Etsy-draft aangemaakt, voorzien van bestanden en afbeeldingen, en daarna geactiveerd.</p>
+        <label for="publish-confirmation">Typ <strong>PLAATSEN</strong> om te bevestigen</label>
+        <input id="publish-confirmation" autocomplete="off" spellcheck="false" required>
+        <div class="dialog-actions">
+          <button id="cancel-publish" class="secondary" type="button">Annuleren</button>
+          <button id="confirm-publish" type="submit" disabled>Nu op Etsy plaatsen</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Copy these names into a server-side secret manager. Never serve this file.
+# Leave ETSY_EXECUTION_ENABLED=false until Etsy approval and the go-live gate pass.
+ETSY_EXECUTION_ENABLED=false
+ETSY_API_KEYSTRING=
+ETSY_SHARED_SECRET=
+ETSY_REDIRECT_URI=https://api.numberninjadesigns.com/etsy/oauth/callback
+ETSY_SCOPES=listings_r listings_w shops_r
+ETSY_SHOP_ID=
+# Recommended: derive listings from Product Studio release contracts.
+ETSY_PRODUCT_STUDIO_RELEASE_PATH=C:\NumberNinjaDesigns\release-candidates\finance-launch
+ETSY_PRODUCT_STUDIO_LISTINGS_PATH=C:\NumberNinjaDesigns\outputs\finance-product-factory
+# Optional alternative: use one manual catalog and leave both paths above empty.
+ETSY_LISTING_CATALOG_PATH=
+ETSY_TOKEN_STORE_PATH=C:\NumberNinjaDesigns\private\etsy-vault.json
+ETSY_TOKEN_ENCRYPTION_KEY_BASE64=
+ETSY_ADMIN_TOKEN=
+ETSY_PUBLIC_ORIGIN=https://api.numberninjadesigns.com
+ETSY_BIND_HOST=127.0.0.1
+ETSY_PORT=8787
