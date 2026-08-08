@@ -143,6 +143,8 @@ test('Pinterest callback UI uses only canonical brand colors', async () => {
 
 test('Vercel deployment excludes the owner dashboard and active integration', async () => {
   const ignored = await readFile(new URL('../.vercelignore', import.meta.url), 'utf8');
+  assert.match(ignored, /^\.env\*$/m);
+  assert.match(ignored, /^\.vercel\/$/m);
   assert.match(ignored, /^public\/$/m);
   assert.match(ignored, /^src\/integration\.mjs$/m);
   assert.match(ignored, /^src\/server\.mjs$/m);

@@ -1,3 +1,5 @@
+.env*
+.vercel/
 public/
 tests/
 README.md
