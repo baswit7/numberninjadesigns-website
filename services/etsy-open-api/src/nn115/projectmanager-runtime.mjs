@@ -11,8 +11,8 @@ import {
   createEtsyIntelligenceWorker,
 } from './etsy-intelligence-worker.mjs';
 
-export const OWNER_INTENT = 'Analyseer actuele Etsy-marktdata en bepaal de slimste volgende listing opportunity.';
-const DAILY_IDEMPOTENCY_PREFIX = 'NN-115:etsy-intelligence:daily:v1';
+export const OWNER_INTENT = 'Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.';
+const DAILY_IDEMPOTENCY_PREFIX = 'NN-115:etsy-intelligence:daily:v2';
 const INVOCATION_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{2,159}$/u;
 const TERMINAL_STATES = new Set(['COMPLETED', 'FAILED_TERMINAL']);
 const EXTERNAL_BLOCKERS = new Set([

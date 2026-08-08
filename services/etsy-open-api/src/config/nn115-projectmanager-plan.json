@@ -7,7 +7,7 @@
   ],
   "nextAction": {
     "taskId": "NN-115",
-    "title": "Analyseer actuele Etsy-marktdata en bepaal de slimste volgende listing opportunity.",
+    "title": "Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.",
     "projectId": "numberninja-projectmanager",
     "status": "In uitvoering",
     "terminal": false,
@@ -37,13 +37,13 @@
       ],
       "estimatedCostEur": 0,
       "credentialRef": "etsy-open-api-read-only",
-      "idempotencyKey": "NN-115:etsy-intelligence:daily:v1"
+      "idempotencyKey": "NN-115:etsy-intelligence:daily:v2"
     }
   },
   "decisions": [
     {
       "taskId": "NN-115",
-      "title": "Analyseer actuele Etsy-marktdata en bepaal de slimste volgende listing opportunity.",
+      "title": "Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.",
       "projectId": "numberninja-projectmanager",
       "status": "In uitvoering",
       "terminal": false,
@@ -73,7 +73,7 @@
         ],
         "estimatedCostEur": 0,
         "credentialRef": "etsy-open-api-read-only",
-        "idempotencyKey": "NN-115:etsy-intelligence:daily:v1"
+        "idempotencyKey": "NN-115:etsy-intelligence:daily:v2"
       }
     }
   ],
@@ -88,5 +88,5 @@
     "policyFingerprint": "sha256:5539304cab1d2735217ad4f3cdbafc942a08c948df7b86b8e4abae77b2574eea",
     "secretsIncluded": false
   },
-  "planId": "sha256:f848d2174b2f83b1a80c27dc824a3b7fe9db2759660bafe0c207e907ba5d8114"
+  "planId": "sha256:e0663f9d36637cd77ddc4ab64c180746f1359538908a2be8e45e6aa8a454af0f"
 }

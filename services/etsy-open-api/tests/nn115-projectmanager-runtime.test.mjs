@@ -23,7 +23,7 @@ function plan() {
       action: {
         kind: 'read-only',
         estimatedCostEur: 0,
-        idempotencyKey: 'NN-115:etsy-intelligence:daily:v1',
+        idempotencyKey: 'NN-115:etsy-intelligence:daily:v2',
       },
     },
     audit: {
@@ -153,7 +153,8 @@ function worker(resultOverrides = {}) {
 }
 
 test('daily identity is deterministic within a UTC day and rotates on the next day', () => {
-  assert.equal(dailyExecutionKey(new Date(NOW)), 'NN-115:etsy-intelligence:daily:v1:2026-08-08');
+  assert.equal(OWNER_INTENT, 'Analyseer actuele Etsy-marktdata voor NumberNinjaDesigns en bepaal de slimste volgende listing opportunity. Gebruik alleen verse data; als de data te oud is, ververs deze automatisch. Controleer bestaande producten om duplicatie te voorkomen. Publiceer niets zonder vereiste approval.');
+  assert.equal(dailyExecutionKey(new Date(NOW)), 'NN-115:etsy-intelligence:daily:v2:2026-08-08');
   assert.notEqual(dailyExecutionKey(new Date(NOW)), dailyExecutionKey(new Date('2026-08-09T06:00:00.000Z')));
 });
 

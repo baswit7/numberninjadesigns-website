@@ -22,7 +22,7 @@ function planFixture(overrides = {}) {
     requiredAgentTypes: ['finance-os-data-productflow-engineer'],
     estimatedCostEur: 0,
     credentialRef: 'etsy-open-api-read-only',
-    idempotencyKey: 'NN-115:etsy-intelligence:daily:v1',
+    idempotencyKey: 'NN-115:etsy-intelligence:daily:v2',
   };
   return {
     schemaVersion: '1.0.0',

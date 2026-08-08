@@ -83,7 +83,7 @@ test('cron route fails closed and an authorized Vercel bearer starts only the ca
   assert.equal(allowed.statusCode, 200);
   assert.equal(runtime.executions.length, 1);
   assert.equal(runtime.executions[0].ownerIntent, OWNER_INTENT);
-  assert.equal(runtime.executions[0].idempotencyKey, 'NN-115:etsy-intelligence:daily:v1:2026-08-08');
+  assert.equal(runtime.executions[0].idempotencyKey, 'NN-115:etsy-intelligence:daily:v2:2026-08-08');
   assert.match(runtime.executions[0].invocationId, /^vercel-cron-/u);
   assert.equal(allowed.headers.get('cache-control'), 'no-store, max-age=0');
   assert.equal(allowed.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
@@ -120,7 +120,7 @@ test('manual route accepts one exact owner intent and derives identity server-si
 
   assert.equal(result.statusCode, 200);
   assert.equal(runtime.executions.length, 1);
-  assert.equal(runtime.executions[0].idempotencyKey, 'NN-115:etsy-intelligence:daily:v1:2026-08-08');
+  assert.equal(runtime.executions[0].idempotencyKey, 'NN-115:etsy-intelligence:daily:v2:2026-08-08');
   assert.match(runtime.executions[0].invocationId, /^owner-request-/u);
 });
 

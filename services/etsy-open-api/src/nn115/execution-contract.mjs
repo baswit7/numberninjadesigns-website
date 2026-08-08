@@ -49,7 +49,7 @@ export function assertReadOnlyProjectManagerPlan(plan, ownerIntent) {
     fail('PLAN_NOT_READ_ONLY', 'Projectmanager plan is blocked or not read-only.');
   }
   if (next.action?.estimatedCostEur !== 0) fail('PLAN_COST_BLOCKED', 'Projectmanager plan is not proven at zero new cost.');
-  if (next.action?.idempotencyKey !== 'NN-115:etsy-intelligence:daily:v1') {
+  if (next.action?.idempotencyKey !== 'NN-115:etsy-intelligence:daily:v2') {
     fail('PLAN_IDEMPOTENCY_INVALID', 'Projectmanager plan idempotency contract is invalid.');
   }
   return plan;
