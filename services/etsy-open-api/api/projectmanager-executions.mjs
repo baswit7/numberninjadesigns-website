@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import {
   HttpBoundaryError,
   header,
+  logSafeError,
   readStrictJson,
   requireBearer,
   requireMethod,
@@ -60,6 +61,7 @@ export function createProjectManagerExecutionsHandler({
       });
       sendJson(response, result.reason ? 202 : 200, result);
     } catch (error) {
+      logSafeError(error, 'projectmanager-executions');
       if (error?.code === 'METHOD_NOT_ALLOWED') error.allowedMethod = 'POST';
       sendError(response, error);
     }

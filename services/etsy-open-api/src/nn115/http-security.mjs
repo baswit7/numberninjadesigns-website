@@ -1,6 +1,7 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
 
 const MAX_BODY_BYTES = 16 * 1024;
+const SAFE_DIAGNOSTIC_CODES = new Set(['EXECUTION_CONTRACT_INVALID', 'ERR_INVALID_ARG_TYPE']);
 const BASE_HEADERS = Object.freeze({
   'cache-control': 'no-store, max-age=0',
   'content-type': 'application/json; charset=utf-8',
@@ -104,4 +105,25 @@ export function sendError(response, error) {
   const errorCode = candidate.length >= 3 && candidate.length <= 160 ? candidate : 'INTERNAL_ERROR';
   const headers = errorCode === 'METHOD_NOT_ALLOWED' ? { allow: error?.allowedMethod ?? 'GET' } : {};
   sendJson(response, statusCode, { errorCode, secretValuesReported: false }, headers);
+}
+
+export function logSafeError(error, route) {
+  if (Number.isInteger(error?.statusCode) && error.statusCode < 500) return;
+  const code = String(error?.code ?? 'INTERNAL_ERROR').toLocaleUpperCase('en-US').replace(/[^A-Z0-9_]/gu, '_').slice(0, 160);
+  const stackFrames = String(error?.stack ?? '')
+    .split('\n')
+    .slice(1, 8)
+    .map(line => line.trim().slice(0, 500));
+  const message = SAFE_DIAGNOSTIC_CODES.has(code)
+    ? String(error?.message ?? '').replace(/\s+/gu, ' ').trim().slice(0, 500)
+    : null;
+  console.error(JSON.stringify({
+    event: 'nn115-route-error',
+    route,
+    errorCode: code || 'INTERNAL_ERROR',
+    errorName: String(error?.name ?? 'Error').slice(0, 120),
+    message,
+    stackFrames,
+    secretValuesReported: false,
+  }));
 }

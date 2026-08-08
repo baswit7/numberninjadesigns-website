@@ -1,4 +1,5 @@
 import {
+  logSafeError,
   requireBearer,
   requireMethod,
   sendError,
@@ -18,6 +19,7 @@ export function createProjectManagerStatusHandler({
       const status = await runtime.status();
       sendJson(response, status.ok ? 200 : 503, status);
     } catch (error) {
+      logSafeError(error, 'projectmanager-status');
       if (error?.code === 'METHOD_NOT_ALLOWED') error.allowedMethod = 'GET';
       sendError(response, error);
     }

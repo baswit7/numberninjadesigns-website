@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import {
   requireBearer,
   requireMethod,
+  logSafeError,
   sendError,
   sendJson,
 } from '../src/nn115/http-security.mjs';
@@ -31,6 +32,7 @@ export function createProjectManagerCronHandler({
       });
       sendJson(response, result.reason ? 202 : 200, result);
     } catch (error) {
+      logSafeError(error, 'projectmanager-cron');
       if (error?.code === 'METHOD_NOT_ALLOWED') error.allowedMethod = 'GET';
       sendError(response, error);
     }
