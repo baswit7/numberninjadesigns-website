@@ -4,6 +4,7 @@ ETSY_EXECUTION_ENABLED=false
 ETSY_PUBLICATION_ENABLED=false
 # NN-115 read-only Projectmanager cloud execution uses only server-side bindings.
 CRON_SECRET=
+PROJECTMANAGER_ADMIN_SECRET=
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
 ETSY_API_KEYSTRING=

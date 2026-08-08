@@ -45,7 +45,7 @@ export function createProjectManagerExecutionsHandler({
   return async function projectManagerExecutions(request, response) {
     try {
       requireMethod(request, 'POST');
-      requireBearer(request, env.ETSY_ADMIN_TOKEN);
+      requireBearer(request, env.PROJECTMANAGER_ADMIN_SECRET);
       const body = validateBody(await readStrictJson(request), request);
       const now = new Date(clock());
       const runtime = await runtimeFactory();

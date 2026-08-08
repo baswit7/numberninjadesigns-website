@@ -13,7 +13,7 @@ export function createProjectManagerStatusHandler({
   return async function projectManagerStatus(request, response) {
     try {
       requireMethod(request, 'GET');
-      requireBearer(request, env.ETSY_ADMIN_TOKEN);
+      requireBearer(request, env.PROJECTMANAGER_ADMIN_SECRET);
       const runtime = await runtimeFactory();
       const status = await runtime.status();
       sendJson(response, status.ok ? 200 : 503, status);

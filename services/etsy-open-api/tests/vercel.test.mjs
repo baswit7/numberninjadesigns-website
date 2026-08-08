@@ -181,6 +181,7 @@ test('cloud example declares only server-side NN-115 bindings and keeps provider
   const example = await readFile(new URL('../environment.example', import.meta.url), 'utf8');
   for (const key of [
     'CRON_SECRET',
+    'PROJECTMANAGER_ADMIN_SECRET',
     'KV_REST_API_URL',
     'KV_REST_API_TOKEN',
     'ETSY_API_KEYSTRING',

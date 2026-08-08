@@ -8,7 +8,8 @@ import { OWNER_INTENT } from '../src/nn115/projectmanager-runtime.mjs';
 
 const SECRETS = Object.freeze({
   CRON_SECRET: 'cron-secret-with-at-least-thirty-two-bytes-123456',
-  ETSY_ADMIN_TOKEN: 'admin-secret-with-at-least-thirty-two-bytes-1234',
+  ETSY_ADMIN_TOKEN: 'legacy-admin-token',
+  PROJECTMANAGER_ADMIN_SECRET: 'projectmanager-admin-secret-with-thirty-two-bytes',
 });
 const NOW = Date.parse('2026-08-08T06:00:00.000Z');
 
@@ -92,7 +93,7 @@ test('cron route fails closed and an authorized Vercel bearer starts only the ca
 test('manual execution route rejects unauthorized, malformed, oversized, and out-of-scope requests', async () => {
   const runtime = runtimeFixture();
   const handler = createProjectManagerExecutionsHandler({ env: SECRETS, runtimeFactory: async () => runtime, clock: () => NOW });
-  const authorization = `Bearer ${SECRETS.ETSY_ADMIN_TOKEN}`;
+  const authorization = `Bearer ${SECRETS.PROJECTMANAGER_ADMIN_SECRET}`;
 
   const unauthorized = await invoke(handler, request({ method: 'POST', headers: { 'content-type': 'application/json' }, body: { ownerIntent: OWNER_INTENT } }));
   const wrongType = await invoke(handler, request({ method: 'POST', headers: { authorization, 'content-type': 'text/plain' }, body: { ownerIntent: OWNER_INTENT } }));
@@ -113,7 +114,7 @@ test('manual route accepts one exact owner intent and derives identity server-si
   const handler = createProjectManagerExecutionsHandler({ env: SECRETS, runtimeFactory: async () => runtime, clock: () => NOW });
   const result = await invoke(handler, request({
     method: 'POST',
-    headers: { authorization: `Bearer ${SECRETS.ETSY_ADMIN_TOKEN}`, 'content-type': 'application/json' },
+    headers: { authorization: `Bearer ${SECRETS.PROJECTMANAGER_ADMIN_SECRET}`, 'content-type': 'application/json' },
     body: { ownerIntent: OWNER_INTENT },
   }));
 
@@ -127,7 +128,7 @@ test('controlled interruption pilot requires explicit authenticated pilot header
   const runtime = runtimeFixture();
   const handler = createProjectManagerExecutionsHandler({ env: SECRETS, runtimeFactory: async () => runtime, clock: () => NOW });
   const baseHeaders = {
-    authorization: `Bearer ${SECRETS.ETSY_ADMIN_TOKEN}`,
+    authorization: `Bearer ${SECRETS.PROJECTMANAGER_ADMIN_SECRET}`,
     'content-type': 'application/json',
   };
   const body = {
@@ -155,9 +156,11 @@ test('status route requires the admin boundary and reads actual runtime state', 
   const runtime = runtimeFixture();
   const handler = createProjectManagerStatusHandler({ env: SECRETS, runtimeFactory: async () => runtime });
   const denied = await invoke(handler, request());
-  const allowed = await invoke(handler, request({ headers: { authorization: `Bearer ${SECRETS.ETSY_ADMIN_TOKEN}` } }));
+  const legacyDenied = await invoke(handler, request({ headers: { authorization: `Bearer ${SECRETS.ETSY_ADMIN_TOKEN}` } }));
+  const allowed = await invoke(handler, request({ headers: { authorization: `Bearer ${SECRETS.PROJECTMANAGER_ADMIN_SECRET}` } }));
 
   assert.equal(denied.statusCode, 401);
+  assert.equal(legacyDenied.statusCode, 401);
   assert.equal(allowed.statusCode, 200);
   assert.equal(runtime.statusCalls, 1);
   assert.equal(allowed.body.projectmanager.status, 'COMPLETED');

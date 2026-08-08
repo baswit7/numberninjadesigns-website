@@ -66,9 +66,11 @@ store:
 
 - `GET /api/projectmanager/cron` accepts only Vercel's `CRON_SECRET` bearer and
   runs daily at `06:00 UTC` with a server-derived daily idempotency identity;
-- `POST /api/projectmanager/executions` accepts only `ETSY_ADMIN_TOKEN` and the
+- `POST /api/projectmanager/executions` accepts only the isolated
+  `PROJECTMANAGER_ADMIN_SECRET` and the
   exact approved owner intent;
-- `GET /api/projectmanager/status` accepts only `ETSY_ADMIN_TOKEN` and projects
+- `GET /api/projectmanager/status` accepts only
+  `PROJECTMANAGER_ADMIN_SECRET` and projects
   actual durable execution, store, worker and Etsy snapshot state;
 - the cloud worker calls only Etsy Open API `GET` endpoints and keeps
   publication approval-required and disabled.
