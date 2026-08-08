@@ -36,27 +36,9 @@ return {'created', ARGV[1]}`;
 const CLAIM_EXECUTION = `-- nn115:claim-execution
 local raw = redis.call('GET', KEYS[1])
 if not raw then return {'missing'} end
-local record = cjson.decode(raw)
-if record.state == 'COMPLETED' or record.state == 'FAILED_TERMINAL' then return {'terminal', raw} end
-if record.nextEligibleRun ~= cjson.null and record.nextEligibleRun > ARGV[1] then
-  return {'not-eligible', raw}
-end
-if record.leaseOwner ~= cjson.null and record.leaseExpiresAt ~= cjson.null and record.leaseExpiresAt > ARGV[1] then
-  return {'lease-held', raw}
-end
-record.state = 'RUNNING'
-record.updatedAt = ARGV[1]
-record.lastHeartbeatAt = ARGV[1]
-record.step = 'claimed'
-record.currentComponent = 'projectmanager-runtime'
-record.attempt = record.attempt + 1
-record.retryEligible = false
-record.leaseOwner = ARGV[2]
-record.fencingToken = record.fencingToken + 1
-record.leaseExpiresAt = ARGV[3]
-local updated = cjson.encode(record)
-redis.call('SET', KEYS[1], updated)
-return {'claimed', updated}`;
+if raw ~= ARGV[1] then return {'changed', raw} end
+redis.call('SET', KEYS[1], ARGV[2])
+return {'claimed', ARGV[2]}`;
 
 const UPDATE_EXECUTION = `-- nn115:update-execution
 local raw = redis.call('GET', KEYS[1])
@@ -212,25 +194,48 @@ export class DurableExecutionStore {
 
   async claimExecution(executionId, ownerId) {
     assertIdentifier(ownerId, 'ownerId');
-    const now = new Date(this.clock());
-    const leaseExpiresAt = new Date(now.getTime() + this.leaseMs).toISOString();
-    const reply = await this.client.eval(CLAIM_EXECUTION, [this.executionKey(executionId)], [
-      now.toISOString(),
-      ownerId,
-      leaseExpiresAt,
-    ]);
-    const status = reply?.[0];
-    if (status === 'missing') fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
-    const execution = validateDurableExecution(parseJson(reply?.[1]));
-    if (status === 'lease-held') return Object.freeze({ claimed: false, reason: 'LEASE_HELD', execution });
-    if (status === 'not-eligible') return Object.freeze({ claimed: false, reason: 'NOT_ELIGIBLE', execution });
-    if (status === 'terminal') return Object.freeze({ claimed: false, reason: 'TERMINAL', execution });
-    if (status !== 'claimed') fail('DURABLE_STATE_CORRUPT', 'Unexpected claim result.', 500);
-    return Object.freeze({
-      claimed: true,
-      execution,
-      claim: Object.freeze({ ownerId, fencingToken: execution.fencingToken }),
-    });
+    const key = this.executionKey(executionId);
+    for (let contentionAttempt = 0; contentionAttempt < 3; contentionAttempt += 1) {
+      const current = await this.readExecution(executionId);
+      if (!current) fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
+      const now = new Date(this.clock());
+      const nowMs = now.getTime();
+      if (!Number.isFinite(nowMs)) fail('DURABLE_STORE_CONFIG_INVALID', 'Durable store clock is invalid.', 500);
+      if (TERMINAL_STATES.has(current.state)) {
+        return Object.freeze({ claimed: false, reason: 'TERMINAL', execution: current });
+      }
+      if (current.nextEligibleRun !== null && Date.parse(current.nextEligibleRun) > nowMs) {
+        return Object.freeze({ claimed: false, reason: 'NOT_ELIGIBLE', execution: current });
+      }
+      if (current.leaseOwner !== null && current.leaseExpiresAt !== null && Date.parse(current.leaseExpiresAt) > nowMs) {
+        return Object.freeze({ claimed: false, reason: 'LEASE_HELD', execution: current });
+      }
+      const next = validateDurableExecution({
+        ...current,
+        state: 'RUNNING',
+        updatedAt: now.toISOString(),
+        lastHeartbeatAt: now.toISOString(),
+        step: 'claimed',
+        currentComponent: 'projectmanager-runtime',
+        attempt: current.attempt + 1,
+        retryEligible: false,
+        leaseOwner: ownerId,
+        fencingToken: current.fencingToken + 1,
+        leaseExpiresAt: new Date(nowMs + this.leaseMs).toISOString(),
+      });
+      const reply = await this.client.eval(CLAIM_EXECUTION, [key], [serialized(current), serialized(next)]);
+      const status = reply?.[0];
+      if (status === 'missing') fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
+      if (status === 'changed') continue;
+      if (status !== 'claimed') fail('DURABLE_STATE_CORRUPT', 'Unexpected claim result.', 500);
+      const execution = validateDurableExecution(parseJson(reply?.[1]));
+      return Object.freeze({
+        claimed: true,
+        execution,
+        claim: Object.freeze({ ownerId, fencingToken: execution.fencingToken }),
+      });
+    }
+    fail('DURABLE_CLAIM_CONTENDED', 'Execution claim changed repeatedly; retry safely.', 503);
   }
 
   async updateExecution(executionId, claim, patch = {}) {

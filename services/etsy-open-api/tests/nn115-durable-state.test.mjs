@@ -60,8 +60,9 @@ function planFixture(overrides = {}) {
 }
 
 class AtomicRedisFixture {
-  constructor() {
+  constructor({ dropNullsOnClaim = false } = {}) {
     this.values = new Map();
+    this.dropNullsOnClaim = dropNullsOnClaim;
   }
 
   async command(command, ...args) {
@@ -87,6 +88,13 @@ class AtomicRedisFixture {
       return ['created', args[0]];
     }
     if (operation === 'claim-execution') {
+      if (args.length === 2) {
+        const current = this.values.get(keys[0]);
+        if (current === undefined) return ['missing'];
+        if (current !== args[0]) return ['changed', current];
+        this.values.set(keys[0], args[1]);
+        return ['claimed', args[1]];
+      }
       const record = JSON.parse(this.values.get(keys[0]));
       const nowMs = Date.parse(args[0]);
       const owner = args[1];
@@ -110,6 +118,11 @@ class AtomicRedisFixture {
       record.leaseOwner = owner;
       record.fencingToken += 1;
       record.leaseExpiresAt = leaseExpiresAt;
+      if (this.dropNullsOnClaim) {
+        for (const [key, value] of Object.entries(record)) {
+          if (value === null) delete record[key];
+        }
+      }
       this.values.set(keys[0], JSON.stringify(record));
       return ['claimed', JSON.stringify(record)];
     }
@@ -254,6 +267,28 @@ test('expired leases are reclaimed with fencing while stale invocations cannot c
     storeA.completeExecution(seed.executionId, first.claim, result),
     { code: 'FENCE_REJECTED' },
   );
+});
+
+test('claim preserves closed-contract null fields when Redis Lua JSON omits null members', async () => {
+  const nowMs = Date.parse('2026-08-08T18:10:00.000Z');
+  const client = new AtomicRedisFixture({ dropNullsOnClaim: true });
+  const store = new DurableExecutionStore({ client, clock: () => nowMs, leaseMs: 1_000 });
+  const seed = buildExecutionSeed({
+    plan: planFixture(),
+    ownerIntent: OWNER_INTENT,
+    idempotencyKey: 'nn115:pilot:null-preservation:2026-08-08',
+    now: new Date(nowMs),
+  });
+
+  await store.createExecution(seed);
+  const claimed = await store.claimExecution(seed.executionId, 'process-a');
+
+  assert.equal(claimed.claimed, true);
+  assert.equal(claimed.execution.blockingReason, null);
+  assert.equal(claimed.execution.lastErrorClass, null);
+  assert.equal(claimed.execution.nextEligibleRun, null);
+  assert.equal(claimed.execution.resultId, null);
+  assert.equal(claimed.execution.resultHash, null);
 });
 
 test('retry backoff prevents a claim until nextEligibleRun', async () => {
