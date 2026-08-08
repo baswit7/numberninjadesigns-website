@@ -128,9 +128,20 @@ class AtomicRedisFixture {
     }
     if (operation === 'update-execution') {
       const current = JSON.parse(this.values.get(keys[0]));
-      if (current.leaseOwner !== args[0] || current.fencingToken !== Number(args[1])) return ['fence-rejected', JSON.stringify(current)];
+      if (current.leaseOwner !== args[0] || current.fencingToken !== Number(args[1]) || current.leaseExpiresAt <= args[3]) return ['fence-rejected', JSON.stringify(current)];
       this.values.set(keys[0], args[2]);
       return ['updated', args[2]];
+    }
+    if (operation === 'renew-execution') {
+      const current = this.values.get(keys[0]);
+      if (current === undefined) return ['missing'];
+      const record = JSON.parse(current);
+      if (record.leaseOwner !== args[0] || record.fencingToken !== Number(args[1]) || record.leaseExpiresAt <= args[2]) {
+        return ['fence-rejected', current];
+      }
+      if (current !== args[3]) return ['changed', current];
+      this.values.set(keys[0], args[4]);
+      return ['renewed', args[4]];
     }
     if (operation === 'write-checkpoint') {
       const current = JSON.parse(this.values.get(keys[0]));
@@ -146,17 +157,21 @@ class AtomicRedisFixture {
       return ['completed', args[2]];
     }
     if (operation === 'publish-snapshot') {
-      const existing = this.values.get(keys[0]);
+      const execution = JSON.parse(this.values.get(keys[0]));
+      if (execution.leaseOwner !== args[0] || execution.fencingToken !== Number(args[1]) || execution.leaseExpiresAt <= args[2]) {
+        return ['fence-rejected'];
+      }
+      const existing = this.values.get(keys[1]);
       if (existing) {
         const existingSnapshot = JSON.parse(existing);
-        const candidate = JSON.parse(args[0]);
+        const candidate = JSON.parse(args[3]);
         return existingSnapshot.snapshotHash === candidate.snapshotHash
           ? ['existing', existing]
           : ['conflict', existing];
       }
-      this.values.set(keys[0], args[0]);
-      this.values.set(keys[1], keys[0]);
-      return ['created', args[0]];
+      this.values.set(keys[1], args[3]);
+      this.values.set(keys[2], keys[1]);
+      return ['created', args[3]];
     }
     throw new Error(`unsupported test script ${operation}`);
   }
@@ -320,13 +335,108 @@ test('retry backoff prevents a claim until nextEligibleRun', async () => {
   assert.equal(eligible.execution.attempt, 1);
 });
 
+test('blocked non-retryable executions and the two-attempt contract cannot be claimed again', async () => {
+  const nowMs = Date.parse('2026-08-08T18:10:00.000Z');
+  const client = new AtomicRedisFixture();
+  const store = new DurableExecutionStore({ client, clock: () => nowMs, leaseMs: 1_000 });
+  const blockedSeed = buildExecutionSeed({
+    plan: planFixture(),
+    ownerIntent: OWNER_INTENT,
+    idempotencyKey: 'nn115:blocked:2026-08-08',
+    now: new Date(nowMs),
+  });
+  await store.createExecution({
+    ...blockedSeed,
+    state: 'BLOCKED_EXTERNAL',
+    step: 'blocked-external',
+    currentComponent: 'etsy-intelligence-worker',
+    retryEligible: false,
+    blockingReason: 'Operator attention required.',
+    lastErrorClass: 'ETSY_AUTHORITY_MISSING',
+    providerReadbackState: 'FAILED',
+    attempt: 1,
+  });
+
+  const blocked = await store.claimExecution(blockedSeed.executionId, 'process-a');
+  assert.equal(blocked.claimed, false);
+  assert.equal(blocked.reason, 'RETRY_DISABLED');
+  assert.equal(blocked.execution.attempt, 1);
+
+  const exhaustedSeed = buildExecutionSeed({
+    plan: planFixture(),
+    ownerIntent: OWNER_INTENT,
+    idempotencyKey: 'nn115:exhausted:2026-08-08',
+    now: new Date(nowMs),
+  });
+  await store.createExecution({
+    ...exhaustedSeed,
+    state: 'RETRY_ELIGIBLE',
+    retryEligible: true,
+    attempt: 2,
+  });
+
+  const exhausted = await store.claimExecution(exhaustedSeed.executionId, 'process-b');
+  assert.equal(exhausted.claimed, false);
+  assert.equal(exhausted.reason, 'MAX_ATTEMPTS');
+  assert.equal(exhausted.execution.attempt, 2);
+});
+
+test('lease heartbeat extends ownership while reclaimed workers remain fenced from snapshot publication', async () => {
+  let nowMs = Date.parse('2026-08-08T18:10:00.000Z');
+  const client = new AtomicRedisFixture();
+  const storeA = new DurableExecutionStore({ client, clock: () => nowMs, leaseMs: 1_000 });
+  const storeB = new DurableExecutionStore({ client, clock: () => nowMs, leaseMs: 1_000 });
+  const seed = buildExecutionSeed({
+    plan: planFixture(),
+    ownerIntent: OWNER_INTENT,
+    idempotencyKey: 'nn115:snapshot-fence:2026-08-08',
+    now: new Date(nowMs),
+  });
+  await storeA.createExecution(seed);
+  const first = await storeA.claimExecution(seed.executionId, 'process-a');
+
+  nowMs += 900;
+  const renewed = await storeA.renewExecutionLease(seed.executionId, first.claim);
+  assert.equal(renewed.leaseExpiresAt, '2026-08-08T18:10:01.900Z');
+  nowMs += 600;
+  const stillHeld = await storeB.claimExecution(seed.executionId, 'process-b');
+  assert.equal(stillHeld.claimed, false);
+  assert.equal(stillHeld.reason, 'LEASE_HELD');
+
+  nowMs += 401;
+  const recovered = await storeB.claimExecution(seed.executionId, 'process-b');
+  assert.equal(recovered.claimed, true);
+  assert.equal(recovered.execution.attempt, 2);
+  const snapshot = {
+    schemaVersion: '1.0.0',
+    snapshotId: 'etsy:daily:2026-08-08',
+    capturedAt: '2026-08-08T18:00:00.000Z',
+    snapshotHash: 'a'.repeat(64),
+  };
+  await assert.rejects(
+    storeA.publishDailySnapshot(seed.executionId, first.claim, '2026-08-08', snapshot),
+    { code: 'FENCE_REJECTED' },
+  );
+  const published = await storeB.publishDailySnapshot(seed.executionId, recovered.claim, '2026-08-08', snapshot);
+  assert.equal(published.created, true);
+});
+
 test('default lease covers a bounded serverless provider-read window', () => {
   const store = new DurableExecutionStore({ client: new AtomicRedisFixture() });
   assert.equal(store.leaseMs, 300_000);
 });
 
 test('canonical daily snapshot publication is create-once and rejects conflicting content', async () => {
-  const store = new DurableExecutionStore({ client: new AtomicRedisFixture() });
+  const nowMs = Date.parse('2026-08-08T18:10:00.000Z');
+  const store = new DurableExecutionStore({ client: new AtomicRedisFixture(), clock: () => nowMs });
+  const seed = buildExecutionSeed({
+    plan: planFixture(),
+    ownerIntent: OWNER_INTENT,
+    idempotencyKey: 'nn115:snapshot:2026-08-08',
+    now: new Date(nowMs),
+  });
+  await store.createExecution(seed);
+  const claimed = await store.claimExecution(seed.executionId, 'process-a');
   const snapshot = {
     schemaVersion: '1.0.0',
     snapshotId: 'etsy:daily:2026-08-08',
@@ -334,12 +444,12 @@ test('canonical daily snapshot publication is create-once and rejects conflictin
     snapshotHash: 'a'.repeat(64),
     projection: { keywords: 11, observations: 220 },
   };
-  const first = await store.publishDailySnapshot('2026-08-08', snapshot);
-  const replay = await store.publishDailySnapshot('2026-08-08', snapshot);
+  const first = await store.publishDailySnapshot(seed.executionId, claimed.claim, '2026-08-08', snapshot);
+  const replay = await store.publishDailySnapshot(seed.executionId, claimed.claim, '2026-08-08', snapshot);
   assert.equal(first.created, true);
   assert.equal(replay.created, false);
   await assert.rejects(
-    store.publishDailySnapshot('2026-08-08', { ...snapshot, snapshotHash: 'b'.repeat(64) }),
+    store.publishDailySnapshot(seed.executionId, claimed.claim, '2026-08-08', { ...snapshot, snapshotHash: 'b'.repeat(64) }),
     { code: 'SNAPSHOT_CONFLICT' },
   );
 });

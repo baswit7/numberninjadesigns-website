@@ -190,9 +190,16 @@ export class EtsyIntelligenceWorker {
     delay = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds)),
     clock = Date.now,
     freshnessHours = 30,
+    heartbeatMs = null,
     afterCheckpoint = async () => {},
   }) {
-    if (!store || typeof store.readLatestSnapshot !== 'function' || typeof store.writeCheckpoint !== 'function') {
+    if (
+      !store
+      || typeof store.readLatestSnapshot !== 'function'
+      || typeof store.writeCheckpoint !== 'function'
+      || typeof store.renewExecutionLease !== 'function'
+      || typeof store.publishDailySnapshot !== 'function'
+    ) {
       fail('WORKER_CONFIG_INVALID', 'Durable store is required.', 500);
     }
     if (!config || !Array.isArray(config.keywords) || config.keywords.length < 1) fail('WORKER_CONFIG_INVALID', 'NN-101 config is required.', 500);
@@ -209,10 +216,36 @@ export class EtsyIntelligenceWorker {
     this.delay = delay;
     this.clock = clock;
     this.freshnessHours = boundedInteger(freshnessHours, 30, 1, 168);
+    const defaultHeartbeatMs = Math.min(60_000, Math.max(250, Math.floor((store.leaseMs ?? 300_000) / 3)));
+    this.heartbeatMs = boundedInteger(heartbeatMs, defaultHeartbeatMs, 10, 100_000);
     this.afterCheckpoint = afterCheckpoint;
   }
 
   async run({ executionId, claim, control = null }) {
+    let heartbeatError = null;
+    let heartbeatTail = Promise.resolve();
+    const renewLease = () => this.store.renewExecutionLease(executionId, claim);
+    await renewLease();
+    const heartbeat = setInterval(() => {
+      heartbeatTail = heartbeatTail
+        .then(renewLease)
+        .catch((error) => { heartbeatError ??= error; });
+    }, this.heartbeatMs);
+    heartbeat.unref?.();
+    const assertLease = async () => {
+      await heartbeatTail;
+      if (heartbeatError) throw heartbeatError;
+      await renewLease();
+    };
+    try {
+      return await this.#executeWithLease({ executionId, claim, control }, assertLease);
+    } finally {
+      clearInterval(heartbeat);
+      await heartbeatTail;
+    }
+  }
+
+  async #executeWithLease({ executionId, claim, control }, assertLease) {
     const now = new Date(this.clock());
     if (!Number.isFinite(now.getTime())) fail('CLOCK_INVALID', 'Worker clock is invalid.', 500);
     const controlledInterruption = control?.controlledInterruption === true;
@@ -319,7 +352,8 @@ export class EtsyIntelligenceWorker {
       secretValuesReported: false,
     };
     const snapshot = Object.freeze({ ...snapshotCore, snapshotHash: hashCanonical(snapshotCore) });
-    const published = await this.store.publishDailySnapshot(capture.capturedDate, snapshot);
+    await assertLease();
+    const published = await this.store.publishDailySnapshot(executionId, claim, capture.capturedDate, snapshot);
     return resultFromSnapshot({
       executionId,
       snapshot: published.snapshot,

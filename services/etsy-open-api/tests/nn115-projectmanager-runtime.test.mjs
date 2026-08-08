@@ -158,10 +158,33 @@ test('daily identity is deterministic within a UTC day and rotates on the next d
   assert.notEqual(dailyExecutionKey(new Date(NOW)), dailyExecutionKey(new Date('2026-08-09T06:00:00.000Z')));
 });
 
+test('runtime execution fails closed before durable or provider work when execution is disabled', async () => {
+  const store = new RuntimeStoreFixture();
+  const specialist = worker();
+  const runtime = new ProjectManagerRuntime({
+    store,
+    worker: specialist,
+    plan: plan(),
+    clock: () => Date.parse(NOW),
+    executionEnabled: false,
+  });
+
+  await assert.rejects(
+    runtime.execute({
+      ownerIntent: OWNER_INTENT,
+      idempotencyKey: dailyExecutionKey(new Date(NOW)),
+      invocationId: 'cloud-invocation-disabled',
+    }),
+    { code: 'ETSY_EXECUTION_DISABLED', statusCode: 503 },
+  );
+  assert.equal(store.executions.size, 0);
+  assert.equal(specialist.calls.length, 0);
+});
+
 test('Projectmanager claims durable state, routes to NN-101, validates provider readback, and completes', async () => {
   const store = new RuntimeStoreFixture();
   const specialist = worker();
-  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW) });
+  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW), executionEnabled: true });
 
   const output = await runtime.execute({
     ownerIntent: OWNER_INTENT,
@@ -184,7 +207,7 @@ test('Projectmanager claims durable state, routes to NN-101, validates provider 
 test('identical terminal replay reads the durable result without invoking Etsy again', async () => {
   const store = new RuntimeStoreFixture();
   const specialist = worker();
-  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW) });
+  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW), executionEnabled: true });
   const input = { ownerIntent: OWNER_INTENT, idempotencyKey: dailyExecutionKey(new Date(NOW)), invocationId: 'cloud-invocation-a' };
 
   const first = await runtime.execute(input);
@@ -201,7 +224,7 @@ test('identical terminal replay reads the durable result without invoking Etsy a
 test('status is computed from durable execution, store health, snapshot, and result without hardcoded green', async () => {
   const store = new RuntimeStoreFixture();
   const specialist = worker();
-  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW) });
+  const runtime = new ProjectManagerRuntime({ store, worker: specialist, plan: plan(), clock: () => Date.parse(NOW), executionEnabled: true });
   await runtime.execute({ ownerIntent: OWNER_INTENT, idempotencyKey: dailyExecutionKey(new Date(NOW)), invocationId: 'cloud-invocation-a' });
   store.snapshot = {
     snapshotId: 'etsy:daily:2026-08-08',

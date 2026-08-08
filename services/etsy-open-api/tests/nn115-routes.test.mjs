@@ -8,6 +8,7 @@ import { OWNER_INTENT } from '../src/nn115/projectmanager-runtime.mjs';
 
 const SECRETS = Object.freeze({
   CRON_SECRET: 'cron-secret-with-at-least-thirty-two-bytes-123456',
+  ETSY_EXECUTION_ENABLED: 'true',
   ETSY_ADMIN_TOKEN: 'legacy-admin-token',
   PROJECTMANAGER_ADMIN_SECRET: 'projectmanager-admin-secret-with-thirty-two-bytes',
 });
@@ -88,6 +89,36 @@ test('cron route fails closed and an authorized Vercel bearer starts only the ca
   assert.equal(allowed.headers.get('cache-control'), 'no-store, max-age=0');
   assert.equal(allowed.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
   assert.doesNotMatch(JSON.stringify(allowed.body), /cron-secret|admin-secret/u);
+});
+
+test('cron and owner execution stay safely disabled unless the exact execution gate is true', async () => {
+  let factories = 0;
+  const runtimeFactory = async () => { factories += 1; return runtimeFixture(); };
+  const disabledEnv = { ...SECRETS, ETSY_EXECUTION_ENABLED: 'false' };
+  const missingEnv = { ...SECRETS };
+  delete missingEnv.ETSY_EXECUTION_ENABLED;
+  const cron = createProjectManagerCronHandler({ env: disabledEnv, runtimeFactory, clock: () => NOW });
+  const executions = createProjectManagerExecutionsHandler({ env: missingEnv, runtimeFactory, clock: () => NOW });
+
+  const cronResult = await invoke(cron, request({
+    headers: { authorization: `Bearer ${SECRETS.CRON_SECRET}` },
+  }));
+  const ownerResult = await invoke(executions, request({
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${SECRETS.PROJECTMANAGER_ADMIN_SECRET}`,
+      'content-type': 'application/json',
+    },
+    body: { ownerIntent: OWNER_INTENT },
+  }));
+
+  assert.equal(cronResult.statusCode, 503);
+  assert.equal(cronResult.body.errorCode, 'ETSY_EXECUTION_DISABLED');
+  assert.equal(ownerResult.statusCode, 503);
+  assert.equal(ownerResult.body.errorCode, 'ETSY_EXECUTION_DISABLED');
+  assert.equal(factories, 0);
+  assert.equal(cronResult.body.secretValuesReported, false);
+  assert.equal(ownerResult.body.secretValuesReported, false);
 });
 
 test('manual execution route rejects unauthorized, malformed, oversized, and out-of-scope requests', async () => {

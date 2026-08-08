@@ -75,11 +75,19 @@ store:
 - the cloud worker calls only Etsy Open API `GET` endpoints and keeps
   publication approval-required and disabled.
 
+Both execution routes also require the exact server-side gate
+`ETSY_EXECUTION_ENABLED=true`; otherwise they return a redacted
+`503 ETSY_EXECUTION_DISABLED` response before initializing the worker or durable
+execution state.
+
 Execution records, leases with fencing tokens, checkpoints, results and the
 single canonical daily snapshot are persisted through Upstash Redis REST.
-Identical triggers coalesce, expired leases can be reclaimed and a fresh
-snapshot prevents unnecessary Etsy load. Credentials remain server-side and
-are never persisted in durable payloads.
+Identical triggers coalesce, active workers renew their lease during provider
+reads, and snapshot creation atomically verifies the lease owner and fencing
+token. Expired leases can be reclaimed, stale workers cannot publish, blocked
+non-retryable records stay blocked, and an execution is never claimed after its
+second attempt. A fresh snapshot prevents unnecessary Etsy load. Credentials
+remain server-side and are never persisted in durable payloads.
 
 `GET /healthz` and `GET /api/etsy/status` remain safe, non-provider checks for
 the disabled general Etsy plane. Connect, disconnect and test-connection

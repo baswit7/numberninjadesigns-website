@@ -11,6 +11,7 @@ import {
   createProjectManagerRuntime,
   dailyExecutionKey,
   OWNER_INTENT,
+  requireEtsyExecutionEnabled,
 } from '../src/nn115/projectmanager-runtime.mjs';
 
 export function createProjectManagerCronHandler({
@@ -23,6 +24,7 @@ export function createProjectManagerCronHandler({
     try {
       requireMethod(request, 'GET');
       requireBearer(request, env.CRON_SECRET);
+      requireEtsyExecutionEnabled(env);
       const now = new Date(clock());
       const runtime = await runtimeFactory();
       const result = await runtime.execute({

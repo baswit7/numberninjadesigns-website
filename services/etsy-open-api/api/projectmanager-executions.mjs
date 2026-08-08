@@ -14,6 +14,7 @@ import {
   createProjectManagerRuntime,
   dailyExecutionKey,
   OWNER_INTENT,
+  requireEtsyExecutionEnabled,
 } from '../src/nn115/projectmanager-runtime.mjs';
 
 const PILOT_ID = /^nn115-live-pilot-[a-z0-9]+(?:-[a-z0-9]+)*$/u;
@@ -47,6 +48,7 @@ export function createProjectManagerExecutionsHandler({
     try {
       requireMethod(request, 'POST');
       requireBearer(request, env.PROJECTMANAGER_ADMIN_SECRET);
+      requireEtsyExecutionEnabled(env);
       const body = validateBody(await readStrictJson(request), request);
       const now = new Date(clock());
       const runtime = await runtimeFactory();

@@ -48,6 +48,7 @@ class WorkerStoreFixture {
     this.latest = latest;
     this.checkpoints = new Map();
     this.published = 0;
+    this.heartbeats = 0;
   }
 
   async readLatestSnapshot() {
@@ -63,7 +64,15 @@ class WorkerStoreFixture {
     this.checkpoints.set(`${executionId}:${name}`, structuredClone(value));
   }
 
-  async publishDailySnapshot(date, snapshot) {
+  async renewExecutionLease(executionId, claim) {
+    assert.equal(typeof executionId, 'string');
+    assert.equal(typeof claim.ownerId, 'string');
+    this.heartbeats += 1;
+  }
+
+  async publishDailySnapshot(executionId, claim, date, snapshot) {
+    assert.equal(typeof executionId, 'string');
+    assert.equal(typeof claim.ownerId, 'string');
     if (this.latest && this.latest.snapshotHash !== snapshot.snapshotHash) {
       const error = new Error('conflict');
       error.code = 'SNAPSHOT_CONFLICT';
@@ -75,6 +84,33 @@ class WorkerStoreFixture {
     return { created, snapshot: structuredClone(this.latest) };
   }
 }
+
+test('long provider work renews its execution lease before fenced snapshot publication', async () => {
+  const calls = [];
+  const store = new WorkerStoreFixture();
+  const provider = providerFixture(calls);
+  const worker = new EtsyIntelligenceWorker({
+    store,
+    config: configFixture(),
+    authority: { apiKeyHeader: 'keystring-test:shared-secret-test', ownShopId: '67071325' },
+    fetchImpl: async (...args) => {
+      await new Promise(resolve => setTimeout(resolve, 35));
+      return provider(...args);
+    },
+    clock: () => Date.parse('2026-08-08T08:00:00.000Z'),
+    freshnessHours: 30,
+    heartbeatMs: 10,
+  });
+
+  const result = await worker.run({
+    executionId: 'nn115-exec-heartbeat',
+    claim: { ownerId: 'cloud-a', fencingToken: 1 },
+  });
+
+  assert.equal(result.outcome, 'REFRESHED');
+  assert(store.heartbeats >= 2);
+  assert.equal(store.published, 1);
+});
 
 function providerFixture(calls) {
   return async (url, init) => {

@@ -37,6 +37,12 @@ function fail(code, message, statusCode, details) {
   throw new ProjectManagerRuntimeError(code, message, statusCode, details);
 }
 
+export function requireEtsyExecutionEnabled(env = process.env) {
+  if (env?.ETSY_EXECUTION_ENABLED !== 'true') {
+    fail('ETSY_EXECUTION_DISABLED', 'NN-115 Etsy execution is disabled.', 503);
+  }
+}
+
 function instant(clock) {
   const now = new Date(clock());
   if (!Number.isFinite(now.getTime())) fail('CLOCK_INVALID', 'Runtime clock is invalid.', 500);
@@ -137,19 +143,22 @@ function resultProjection(result) {
 }
 
 export class ProjectManagerRuntime {
-  constructor({ store, worker, plan, clock = Date.now }) {
+  constructor({ store, worker, plan, clock = Date.now, executionEnabled = false }) {
     if (!store || typeof store.createExecution !== 'function' || typeof store.health !== 'function') {
       fail('RUNTIME_CONFIG_INVALID', 'Durable execution store is required.', 500);
     }
     if (!worker || typeof worker.run !== 'function') fail('RUNTIME_CONFIG_INVALID', 'NN-101 specialist worker is required.', 500);
     if (typeof clock !== 'function') fail('RUNTIME_CONFIG_INVALID', 'Runtime clock is required.', 500);
+    if (typeof executionEnabled !== 'boolean') fail('RUNTIME_CONFIG_INVALID', 'Execution gate is invalid.', 500);
     this.plan = assertReadOnlyProjectManagerPlan(plan, OWNER_INTENT);
     this.store = store;
     this.worker = worker;
     this.clock = clock;
+    this.executionEnabled = executionEnabled;
   }
 
   async execute({ ownerIntent, idempotencyKey, invocationId, control = null }) {
+    if (!this.executionEnabled) fail('ETSY_EXECUTION_DISABLED', 'NN-115 Etsy execution is disabled.', 503);
     if (ownerIntent !== OWNER_INTENT) fail('OWNER_INTENT_REJECTED', 'Owner intent is outside the accepted NN-115 scope.', 400);
     if (typeof invocationId !== 'string' || !INVOCATION_ID.test(invocationId)) {
       fail('INVOCATION_ID_INVALID', 'Cloud invocation identity is invalid.', 400);
@@ -274,5 +283,11 @@ export async function createProjectManagerRuntime(env = process.env, dependencie
   const store = dependencies.store ?? createDurableExecutionStore(env, dependencies.storeDependencies ?? {});
   const worker = dependencies.worker ?? await createEtsyIntelligenceWorker(env, { store, ...dependencies.workerDependencies });
   const plan = dependencies.plan ?? await loadProjectManagerPlan(dependencies.planUrl);
-  return new ProjectManagerRuntime({ store, worker, plan, clock: dependencies.clock ?? Date.now });
+  return new ProjectManagerRuntime({
+    store,
+    worker,
+    plan,
+    clock: dependencies.clock ?? Date.now,
+    executionEnabled: env?.ETSY_EXECUTION_ENABLED === 'true',
+  });
 }

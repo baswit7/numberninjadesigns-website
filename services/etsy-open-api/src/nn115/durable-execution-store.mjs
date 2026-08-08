@@ -12,6 +12,8 @@ const IDENTIFIER = /^[A-Za-z0-9][A-Za-z0-9._:-]{2,159}$/u;
 const CHECKPOINT = /^[a-z0-9]+(?:[._-][a-z0-9]+)*$/u;
 const DATE = /^\d{4}-\d{2}-\d{2}$/u;
 const TERMINAL_STATES = new Set(['COMPLETED', 'FAILED_TERMINAL']);
+const BLOCKED_STATES = new Set(['BLOCKED_EXTERNAL', 'BLOCKED_INTERNAL']);
+const MAX_EXECUTION_ATTEMPTS = 2;
 const SECRET_KEY = /(?:authorization|bearer|credential|password|secret|token|api[ _-]?key)/iu;
 const SECRET_VALUE = /(?:bearer\s+[a-z0-9._~+/-]{12,}|(?:password|secret|token)\s*[:=])/iu;
 const SAFE_CONTRACT_KEYS = new Set(['fencingToken']);
@@ -50,6 +52,17 @@ end
 redis.call('SET', KEYS[1], ARGV[3])
 return {'updated', ARGV[3]}`;
 
+const RENEW_EXECUTION = `-- nn115:renew-execution
+local raw = redis.call('GET', KEYS[1])
+if not raw then return {'missing'} end
+local record = cjson.decode(raw)
+if record.leaseOwner ~= ARGV[1] or tonumber(record.fencingToken) ~= tonumber(ARGV[2]) or record.leaseExpiresAt <= ARGV[3] then
+  return {'fence-rejected', raw}
+end
+if raw ~= ARGV[4] then return {'changed', raw} end
+redis.call('SET', KEYS[1], ARGV[5])
+return {'renewed', ARGV[5]}`;
+
 const WRITE_CHECKPOINT = `-- nn115:write-checkpoint
 local raw = redis.call('GET', KEYS[1])
 if not raw then return {'missing'} end
@@ -72,16 +85,22 @@ redis.call('SET', KEYS[1], ARGV[3])
 return {'completed', ARGV[3]}`;
 
 const PUBLISH_SNAPSHOT = `-- nn115:publish-snapshot
-local current = redis.call('GET', KEYS[1])
+local executionRaw = redis.call('GET', KEYS[1])
+if not executionRaw then return {'missing'} end
+local execution = cjson.decode(executionRaw)
+if execution.leaseOwner ~= ARGV[1] or tonumber(execution.fencingToken) ~= tonumber(ARGV[2]) or execution.leaseExpiresAt <= ARGV[3] then
+  return {'fence-rejected'}
+end
+local current = redis.call('GET', KEYS[2])
 if current then
   local existing = cjson.decode(current)
-  local candidate = cjson.decode(ARGV[1])
+  local candidate = cjson.decode(ARGV[4])
   if existing.snapshotHash == candidate.snapshotHash then return {'existing', current} end
   return {'conflict', current}
 end
-redis.call('SET', KEYS[1], ARGV[1], 'EX', ARGV[2])
-redis.call('SET', KEYS[2], KEYS[1])
-return {'created', ARGV[1]}`;
+redis.call('SET', KEYS[2], ARGV[4], 'EX', ARGV[5])
+redis.call('SET', KEYS[3], KEYS[2])
+return {'created', ARGV[4]}`;
 
 function fail(code, message, statusCode = 409) {
   throw new DurableStoreError(code, message, statusCode);
@@ -204,6 +223,12 @@ export class DurableExecutionStore {
       if (TERMINAL_STATES.has(current.state)) {
         return Object.freeze({ claimed: false, reason: 'TERMINAL', execution: current });
       }
+      if (BLOCKED_STATES.has(current.state) && current.retryEligible === false) {
+        return Object.freeze({ claimed: false, reason: 'RETRY_DISABLED', execution: current });
+      }
+      if (current.attempt >= MAX_EXECUTION_ATTEMPTS) {
+        return Object.freeze({ claimed: false, reason: 'MAX_ATTEMPTS', execution: current });
+      }
       if (current.nextEligibleRun !== null && Date.parse(current.nextEligibleRun) > nowMs) {
         return Object.freeze({ claimed: false, reason: 'NOT_ELIGIBLE', execution: current });
       }
@@ -265,6 +290,36 @@ export class DurableExecutionStore {
     return validateDurableExecution(parseJson(reply?.[1]));
   }
 
+  async renewExecutionLease(executionId, claim) {
+    const key = this.executionKey(executionId);
+    for (let contentionAttempt = 0; contentionAttempt < 3; contentionAttempt += 1) {
+      const current = await this.readExecution(executionId);
+      if (!current) fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
+      const now = new Date(this.clock());
+      const nowMs = now.getTime();
+      if (!Number.isFinite(nowMs)) fail('DURABLE_STORE_CONFIG_INVALID', 'Durable store clock is invalid.', 500);
+      const next = validateDurableExecution({
+        ...current,
+        updatedAt: now.toISOString(),
+        lastHeartbeatAt: now.toISOString(),
+        leaseExpiresAt: new Date(nowMs + this.leaseMs).toISOString(),
+      });
+      const reply = await this.client.eval(RENEW_EXECUTION, [key], [
+        claim.ownerId,
+        claim.fencingToken,
+        now.toISOString(),
+        serialized(current),
+        serialized(next),
+      ]);
+      if (reply?.[0] === 'changed') continue;
+      if (reply?.[0] === 'fence-rejected') fail('FENCE_REJECTED', 'Execution lease is stale.');
+      if (reply?.[0] === 'missing') fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
+      if (reply?.[0] !== 'renewed') fail('DURABLE_STATE_CORRUPT', 'Unexpected lease renewal result.', 500);
+      return validateDurableExecution(parseJson(reply?.[1]));
+    }
+    fail('DURABLE_HEARTBEAT_CONTENDED', 'Execution heartbeat changed repeatedly; retry safely.', 503);
+  }
+
   async writeCheckpoint(executionId, claim, name, value) {
     const now = new Date(this.clock()).toISOString();
     const reply = await this.client.eval(WRITE_CHECKPOINT, [
@@ -321,16 +376,21 @@ export class DurableExecutionStore {
     return raw === null ? null : parseJson(raw, 'RESULT_CORRUPT');
   }
 
-  async publishDailySnapshot(date, snapshot) {
+  async publishDailySnapshot(executionId, claim, date, snapshot) {
     if (typeof date !== 'string' || !DATE.test(date)) fail('SNAPSHOT_DATE_INVALID', 'Snapshot date is invalid.', 400);
     if (!snapshot || typeof snapshot !== 'object' || !/^[a-f0-9]{64}$/u.test(snapshot.snapshotHash ?? '')) {
       fail('SNAPSHOT_INVALID', 'Snapshot contract is invalid.', 400);
     }
     const payload = serialized(snapshot);
+    const now = new Date(this.clock());
+    if (!Number.isFinite(now.getTime())) fail('DURABLE_STORE_CONFIG_INVALID', 'Durable store clock is invalid.', 500);
     const reply = await this.client.eval(PUBLISH_SNAPSHOT, [
+      this.executionKey(executionId),
       `${this.prefix}:snapshot:etsy:daily:${date}`,
       `${this.prefix}:latest-snapshot`,
-    ], [payload, this.snapshotTtlSeconds]);
+    ], [claim.ownerId, claim.fencingToken, now.toISOString(), payload, this.snapshotTtlSeconds]);
+    if (reply?.[0] === 'fence-rejected') fail('FENCE_REJECTED', 'Execution lease is stale.');
+    if (reply?.[0] === 'missing') fail('EXECUTION_NOT_FOUND', 'Execution does not exist.', 404);
     if (reply?.[0] === 'conflict') fail('SNAPSHOT_CONFLICT', 'Canonical daily snapshot already has different content.');
     if (!['created', 'existing'].includes(reply?.[0])) fail('DURABLE_STATE_CORRUPT', 'Unexpected snapshot result.', 500);
     return Object.freeze({ created: reply[0] === 'created', snapshot: parseJson(reply[1], 'SNAPSHOT_CORRUPT') });
