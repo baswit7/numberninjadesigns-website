@@ -49,7 +49,7 @@ function isObject(value) {
 }
 
 async function readRegularFile(filePath, maximumBytes, label) {
-  const resolved = path.resolve(filePath);
+  const resolved = path.resolve(filePath instanceof URL ? fileURLToPath(filePath) : filePath);
   let info;
   try { info = await lstat(resolved); } catch { throw new EtsyMarketError(`${label.toUpperCase()}_MISSING`, `${label} ontbreekt.`); }
   assert(info.isFile() && !info.isSymbolicLink() && info.size > 0 && info.size <= maximumBytes, `${label.toUpperCase()}_UNSAFE`, `${label} is onveilig of te groot.`);
